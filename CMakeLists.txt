@@ -15,7 +15,9 @@ include_directories(${GTKMM_INCLUDE_DIRS})
 include_directories(${POPPLER_INCLUDE_DIRS})
 include_directories(${CAIROMM_INCLUDE_DIRS})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra -Wpedantic -Wshadow")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra -Wpedantic -Wshadow -lpng16")
+
+add_subdirectory(PDF-Writer)
 
 configure_file(config.hpp.cmake ${CMAKE_SOURCE_DIR}/config.hpp)
 
@@ -33,7 +35,8 @@ add_executable(poppler-stuff
 target_link_libraries(poppler-stuff
     ${GTKMM_LIBRARIES}
     ${CAIROMM_LIBRARIES}
-    ${POPPLER_LIBRARIES})
+    ${POPPLER_LIBRARIES}
+    PDFWriter)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lti2.pdf
     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
