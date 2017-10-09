@@ -1,0 +1,22 @@
+﻿---
+BasedOnStyle: WebKit
+AlignAfterOpenBracket: Align
+AlignOperands: 'true'
+AlignTrailingComments: 'true'
+AllowShortBlocksOnASingleLine: 'true'
+AllowShortFunctionsOnASingleLine: All
+AlwaysBreakBeforeMultilineStrings: 'true'
+AlwaysBreakTemplateDeclarations: 'true'
+BinPackArguments: 'false'
+BinPackParameters: 'false'
+BreakBeforeBraces: Stroustrup
+Cpp11BracedListStyle: 'true'
+KeepEmptyLinesAtTheStartOfBlocks: 'true'
+PointerAlignment: Left
+SortIncludes: 'false'
+SpaceAfterCStyleCast: 'true'
+SpacesBeforeTrailingComments: '1'
+TabWidth: '4'
+UseTab: ForIndentation
+
+...
