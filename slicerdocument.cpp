@@ -1,12 +1,17 @@
 #include "slicerdocument.hpp"
 #include <cairomm/context.h>
 #include <glibmm/convert.h>
+#include "PDF-Writer/PDFWriter/PDFWriter.h"
+#include "PDF-Writer/PDFWriter/PDFPage.h"
+#include "PDF-Writer/PDFWriter/PDFDocumentCopyingContext.h"
+#include "config.hpp"
 
 namespace Slicer {
 
 Document::Document(std::string filePath)
+    : m_sourcePath{filePath}
 {
-    Glib::ustring uri = Glib::filename_to_uri(filePath);
+    Glib::ustring uri = Glib::filename_to_uri(m_sourcePath);
 
     m_popplerDocument = poppler_document_new_from_file(uri.c_str(),
                                                        nullptr,
@@ -36,7 +41,7 @@ Document::~Document()
 
 Glib::RefPtr<Gdk::Pixbuf> Document::renderPage(int pageNumber,
                                                int width,
-                                               int height)
+                                               int height) const
 {
     auto surface = Cairo::ImageSurface::create(Cairo::FORMAT_ARGB32, width, height);
     auto cr = Cairo::Context::create(surface);
@@ -83,5 +88,27 @@ Glib::RefPtr<Gdk::Pixbuf> Document::renderPage(int pageNumber,
     auto pixbuf = Gdk::Pixbuf::create(surface, 0, 0, width, height);
 
     return pixbuf;
+}
+
+void Document::saveDocument(std::string filePath) const
+{
+    PDFWriter pdfWriter;
+    pdfWriter.StartPDF(filePath, ePDFVersion13);
+    PDFDocumentCopyingContext* copyingContext = pdfWriter.CreatePDFCopyingContext(m_sourcePath);
+
+    for (PopplerPage* page : m_pages) {
+        const int pageNumber = poppler_page_get_index(page);
+        double width, height;
+        poppler_page_get_size(page, &width, &height);
+
+        PDFPage* pdfPage = new PDFPage();
+        pdfPage->SetMediaBox(PDFRectangle(0, 0, width, height));
+
+        copyingContext->MergePDFPageToPage(pdfPage, pageNumber);
+        pdfWriter.WritePageAndRelease(pdfPage);
+    }
+
+    pdfWriter.EndPDF();
+    delete copyingContext;
 }
 }

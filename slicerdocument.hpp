@@ -17,13 +17,15 @@ public:
     // Interface
     Glib::RefPtr<Gdk::Pixbuf> renderPage(int pageNumber,
                                          int width,
-                                         int height);
+                                         int height) const;
+    void saveDocument(std::string filePath) const;
 
     // Member element access
     const std::vector<PopplerPage*>& pages() const { return m_pages; };
 
 private:
     // Member objects
+    std::string m_sourcePath;
     PopplerDocument* m_popplerDocument;
     std::vector<PopplerPage*> m_pages;
 };
