@@ -22,21 +22,18 @@ View::View(Slicer::Document& document)
         add(*image);
     }
 
-    signal_child_activated().connect(sigc::mem_fun(*this, &Slicer::View::onChildActivated));
-}
+    signal_child_activated().connect([this](Gtk::FlowBoxChild* child) {
+        // Render a big preview and create the preview window
+        const int pageIndex = child->get_index();
+        auto pixbuf = m_document.renderPage(pageIndex, 600, 800);
+        m_previewWindow = std::make_unique<Slicer::PreviewWindow>(pixbuf);
 
-void View::onChildActivated(Gtk::FlowBoxChild* child)
-{
-    // Render a big preview and create the preview window
-    const int pageIndex = child->get_index();
-    auto pixbuf = m_document.renderPage(pageIndex, 600, 800);
-    m_previewWindow = std::make_unique<Slicer::PreviewWindow>(pixbuf);
+        // Make the preview window modal
+        m_previewWindow->set_modal();
+        Gtk::Window* parent = dynamic_cast<Gtk::Window*>(this->get_toplevel());
+        m_previewWindow->set_transient_for(*parent);
 
-    // Make the preview window modal
-    m_previewWindow->set_modal();
-    Gtk::Window* parent = dynamic_cast<Gtk::Window*>(this->get_toplevel());
-    m_previewWindow->set_transient_for(*parent);
-
-    m_previewWindow->show();
+        m_previewWindow->show();
+    });
 }
 }

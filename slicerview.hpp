@@ -13,8 +13,6 @@ public:
     virtual ~View(){};
 
 private:
-    void onChildActivated(Gtk::FlowBoxChild* child);
-
     Slicer::Document& m_document;
     std::unique_ptr<Slicer::PreviewWindow> m_previewWindow;
 };
