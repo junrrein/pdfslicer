@@ -17,6 +17,13 @@ include_directories(${CAIROMM_INCLUDE_DIRS})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra -Wpedantic -Wshadow -lpng16")
 
+# Check for PDFWriter's dependencies
+PKG_CHECK_MODULES(LIBJPEG libjpeg REQUIRED)
+PKG_CHECK_MODULES(LIBTIFF libtiff-4 REQUIRED)
+PKG_CHECK_MODULES(LINPNG libpng REQUIRED)
+
+# Don't use PDFWriter's bundled dependencies
+set(USE_BUNDLED FALSE)
 add_subdirectory(PDF-Writer)
 
 configure_file(config.hpp.cmake ${CMAKE_SOURCE_DIR}/config.hpp)
@@ -32,6 +39,7 @@ add_executable(poppler-stuff
     previewwindow.cpp
     slicerwindow.hpp
     slicerwindow.cpp)
+
 target_link_libraries(poppler-stuff
     ${GTKMM_LIBRARIES}
     ${CAIROMM_LIBRARIES}
