@@ -9,7 +9,6 @@ namespace Slicer {
 
 class PreviewWindow : public Gtk::Window {
 public:
-    PreviewWindow(){};
     PreviewWindow(Glib::RefPtr<Gdk::Pixbuf> previewPixbuf);
     virtual ~PreviewWindow(){};
 
