@@ -15,7 +15,7 @@ View::View(Slicer::Document& document)
     const auto& pages = m_document.pages();
 
     for (unsigned int i = 0; i < pages.size(); ++i) {
-        auto pixbuf = m_document.renderPage(i, 170, 200);
+        auto pixbuf = m_document.renderPage(i, 160, 200);
         auto image = Gtk::manage(new Gtk::Image);
         image->set(pixbuf);
 
@@ -25,7 +25,7 @@ View::View(Slicer::Document& document)
     signal_child_activated().connect([this](Gtk::FlowBoxChild* child) {
         // Render a big preview and create the preview window
         const int pageIndex = child->get_index();
-        auto pixbuf = m_document.renderPage(pageIndex, 600, 800);
+        auto pixbuf = m_document.renderPage(pageIndex, 640, 800);
         m_previewWindow = std::make_unique<Slicer::PreviewWindow>(pixbuf);
 
         // Make the preview window modal
