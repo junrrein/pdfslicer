@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.9)
 
-project(poppler-stuff)
+project(pdfSlicer)
 
 find_package(PkgConfig)
 
@@ -28,7 +28,7 @@ add_subdirectory(PDF-Writer)
 
 configure_file(config.hpp.cmake ${CMAKE_SOURCE_DIR}/config.hpp)
 
-add_executable(poppler-stuff
+add_executable(pdfSlicer
     main.cpp
     config.hpp
     slicerdocument.hpp
@@ -40,7 +40,7 @@ add_executable(poppler-stuff
     slicerwindow.hpp
     slicerwindow.cpp)
 
-target_link_libraries(poppler-stuff
+target_link_libraries(pdfSlicer
     ${GTKMM_LIBRARIES}
     ${CAIROMM_LIBRARIES}
     ${POPPLER_LIBRARIES}
