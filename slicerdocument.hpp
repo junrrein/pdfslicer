@@ -21,13 +21,13 @@ public:
     void saveDocument(std::string filePath) const;
 
     // Member element access
-    const std::vector<PopplerPage*>& pages() const { return m_pages; };
+    const std::vector<const PopplerPage*>& pages() const { return m_pages; };
 
 private:
     // Member objects
     std::string m_sourcePath;
-    PopplerDocument* m_popplerDocument;
-    std::vector<PopplerPage*> m_pages;
+    const PopplerDocument* m_popplerDocument;
+    std::vector<const PopplerPage*> m_pages;
 };
 }
 
