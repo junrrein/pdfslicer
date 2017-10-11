@@ -112,4 +112,13 @@ void Document::saveDocument(std::string filePath) const
     pdfWriter.EndPDF();
     delete copyingContext;
 }
+
+void Document::removePage(int pageNumber)
+{
+    const PopplerPage* p = m_pages.at(pageNumber);
+
+    m_pages.erase(begin(m_pages) + pageNumber);
+
+    g_object_unref(const_cast<PopplerPage*>(p));
+}
 }

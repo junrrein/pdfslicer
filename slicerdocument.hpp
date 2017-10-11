@@ -19,6 +19,7 @@ public:
                                          int width,
                                          int height) const;
     void saveDocument(std::string filePath) const;
+    void removePage(int pageNumber);
 
     // Member element access
     const std::vector<const PopplerPage*>& pages() const { return m_pages; };

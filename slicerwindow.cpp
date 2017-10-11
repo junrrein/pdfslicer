@@ -1,5 +1,6 @@
 #include "slicerwindow.hpp"
 #include <gtkmm/filechooserdialog.h>
+#include <gtkmm/modelbutton.h>
 #include <glibmm/main.h>
 
 namespace Slicer {
@@ -18,7 +19,33 @@ Window::Window(std::string filePath)
     m_headerBar.set_has_subtitle(false);
 
     m_buttonSave.set_image_from_icon_name("document-save");
+    m_buttonSave.set_tooltip_text("Save as...");
     m_headerBar.pack_start(m_buttonSave);
+
+    m_buttonRemovePages.set_image_from_icon_name("edit-delete");
+    m_buttonRemovePages.set_tooltip_text("Remove selected pages");
+    m_boxRemovePages.pack_start(m_buttonRemovePages);
+
+    m_buttonRemoveOptions.set_image_from_icon_name("go-down");
+    m_buttonRemoveOptions.set_tooltip_text("More removing options");
+    m_boxRemovePages.pack_start(m_buttonRemoveOptions);
+
+    m_headerBar.pack_start(m_boxRemovePages);
+
+    auto removePrevious = Gtk::manage(new Gtk::ModelButton());
+    removePrevious->set_label("Remove previous pages");
+    auto removeNext = Gtk::manage(new Gtk::ModelButton());
+    removeNext->set_label("Remove next pages");
+    auto menuBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_VERTICAL});
+    menuBox->pack_start(*removePrevious);
+    menuBox->pack_start(*removeNext);
+    menuBox->set_margin_top(10);
+    menuBox->set_margin_bottom(10);
+    menuBox->set_margin_left(10);
+    menuBox->set_margin_right(10);
+    m_menuRemoveOptions.add(*menuBox);
+    m_menuRemoveOptions.set_relative_to(m_buttonRemoveOptions);
+    m_menuRemoveOptions.show_all_children();
 
     m_scroller.add(m_view);
 
@@ -44,6 +71,49 @@ Window::Window(std::string filePath)
     // Signal handlers
     m_buttonSave.signal_clicked().connect([this]() {
         onSaveAction();
+    });
+
+    m_buttonRemovePages.signal_clicked().connect([this]() {
+        m_view.removeSelectedPages();
+    });
+
+    m_buttonRemoveOptions.signal_clicked().connect([this]() {
+        m_menuRemoveOptions.popup();
+    });
+
+    removePrevious->signal_clicked().connect([this]() {
+        m_view.removePreviousPages();
+    });
+
+    removeNext->signal_clicked().connect([this]() {
+        m_view.removeNextPages();
+    });
+
+    m_view.signal_selected_children_changed().connect([this, removePrevious, removeNext]() {
+        const int numSelected = m_view.get_selected_children().size();
+
+        if (numSelected == 0)
+            m_buttonRemovePages.set_sensitive(false);
+        else
+            m_buttonRemovePages.set_sensitive(true);
+
+        if (numSelected == 1) {
+            m_buttonRemoveOptions.set_sensitive(true);
+
+            const unsigned int index = m_view.get_selected_children().at(0)->get_index();
+            if (index == 0)
+                removePrevious->set_sensitive(false);
+            else
+                removePrevious->set_sensitive(true);
+
+            if (index == m_view.get_children().size() - 1)
+                removeNext->set_sensitive(false);
+            else
+                removeNext->set_sensitive(true);
+        }
+        else
+            m_buttonRemoveOptions.set_sensitive(false);
+
     });
 
     m_buttonDoneClose.signal_clicked().connect([this]() {
