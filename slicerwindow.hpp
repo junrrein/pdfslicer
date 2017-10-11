@@ -44,6 +44,11 @@ private:
     sigc::signal<void> m_signalSaved;
     sigc::connection m_connectionSaved;
 
+    // Functions
+    void removeSelectedPages();
+    void removePreviousPages();
+    void removeNextPages();
+
     // Callbacks
     void onSaveAction();
 };

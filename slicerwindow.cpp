@@ -74,7 +74,7 @@ Window::Window(std::string filePath)
     });
 
     m_buttonRemovePages.signal_clicked().connect([this]() {
-        m_view.removeSelectedPages();
+        removeSelectedPages();
     });
 
     m_buttonRemoveOptions.signal_clicked().connect([this]() {
@@ -82,11 +82,11 @@ Window::Window(std::string filePath)
     });
 
     removePrevious->signal_clicked().connect([this]() {
-        m_view.removePreviousPages();
+        removePreviousPages();
     });
 
     removeNext->signal_clicked().connect([this]() {
-        m_view.removeNextPages();
+        removeNextPages();
     });
 
     m_view.signal_selected_children_changed().connect([this, removePrevious, removeNext]() {
@@ -135,6 +135,46 @@ Window::Window(std::string filePath)
     });
 
     show_all_children();
+}
+
+void Window::removeSelectedPages()
+{
+    auto children = m_view.get_selected_children();
+
+    // FIXME
+    // The following won't work with a multiple selection!
+    for (Gtk::FlowBoxChild* c : children) {
+        const int index = c->get_index();
+        m_document.removePage(index);
+    }
+}
+
+void Window::removePreviousPages()
+{
+    auto selected = m_view.get_selected_children();
+
+    if (selected.size() != 1)
+        throw std::runtime_error(
+            "Tried to remove previous pages with more "
+            "than one page selected. This should never happen!");
+
+    const int index = selected.at(0)->get_index();
+
+    m_document.removePageRange(0, index - 1);
+}
+
+void Window::removeNextPages()
+{
+    auto selected = m_view.get_selected_children();
+
+    if (selected.size() != 1)
+        throw std::runtime_error(
+            "Tried to remove next pages with more "
+            "than one page selected. This should never happen!");
+
+    const int index = selected.at(0)->get_index();
+
+    m_document.removePageRange(index + 1, m_document.pages()->get_n_items() - 1);
 }
 
 void Window::onSaveAction()

@@ -13,34 +13,35 @@ Document::Document(std::string filePath)
 {
     Glib::ustring uri = Glib::filename_to_uri(m_sourcePath);
 
-    m_popplerDocument = poppler_document_new_from_file(uri.c_str(),
-                                                       nullptr,
-                                                       nullptr);
+    PopplerDocument* popplerDocument = poppler_document_new_from_file(uri.c_str(),
+                                                                      nullptr,
+                                                                      nullptr);
 
-    if (!m_popplerDocument)
+    if (!popplerDocument)
         throw std::runtime_error("No se pudo cargar el PDF");
 
-    const int num_pages = poppler_document_get_n_pages(const_cast<PopplerDocument*>(m_popplerDocument));
+    const int num_pages = poppler_document_get_n_pages(popplerDocument);
     if (num_pages == 0)
         throw std::runtime_error("El PDF tiene 0 páginas?!");
 
+    m_pages = Gio::ListStore<GPopplerPage>::create();
+
     for (int i = 0; i < num_pages; ++i) {
-        const PopplerPage* page = poppler_document_get_page(const_cast<PopplerDocument*>(m_popplerDocument),
-                                                            i);
-        m_pages.push_back(page);
+        PopplerPage* page = poppler_document_get_page(popplerDocument, i);
+        auto gPage = new GPopplerPage{page};
+
+        // Disgusting hack to get a RefPtr from our GPopplerPage.
+        // Gio::ListStore needs a RefPtr.
+        Glib::RefPtr<Glib::Object> glibRefPtr = Glib::wrap(gPage->gobj());
+        auto slicerPageRefPtr = Glib::RefPtr<GPopplerPage>::cast_dynamic(glibRefPtr);
+
+        m_pages->append(slicerPageRefPtr);
     }
+
+    g_object_unref(popplerDocument);
 }
 
-Document::~Document()
-{
-    // Hay que destruir manualmente todo lo que fue creado usando Poppler
-    for (const PopplerPage* p : m_pages)
-        g_object_unref(const_cast<PopplerPage*>(p));
-
-    g_object_unref(const_cast<PopplerDocument*>(m_popplerDocument));
-}
-
-Glib::RefPtr<Gdk::Pixbuf> Document::renderPage(int pageNumber,
+Glib::RefPtr<Gdk::Pixbuf> Document::renderPage(PopplerPage* page,
                                                int width,
                                                int height) const
 {
@@ -58,12 +59,10 @@ Glib::RefPtr<Gdk::Pixbuf> Document::renderPage(int pageNumber,
     cr->rectangle(0, 0, width, height);
     cr->stroke();
 
-    const PopplerPage* page = m_pages.at(pageNumber);
-
     // Scale Context to match the ImageSurface's area.
     // Otherwise the page would get rendered at (realWidth x realHeight).
     double realWidth = 0, realHeight = 0;
-    poppler_page_get_size(const_cast<PopplerPage*>(page), &realWidth, &realHeight);
+    poppler_page_get_size(page, &realWidth, &realHeight);
 
     double scale;
     if (realWidth >= realHeight)
@@ -85,10 +84,19 @@ Glib::RefPtr<Gdk::Pixbuf> Document::renderPage(int pageNumber,
         cr->translate(double(width) / 2 - renderedWidth / 2, 0);
 
     // Render page and convert to Pixbuf
-    poppler_page_render(const_cast<PopplerPage*>(page), cr->cobj());
+    poppler_page_render(page, cr->cobj());
     auto pixbuf = Gdk::Pixbuf::create(surface, 0, 0, width, height);
 
     return pixbuf;
+}
+
+Glib::RefPtr<Gdk::Pixbuf> Document::renderPage(int pageNumber,
+                                               int width,
+                                               int height) const
+{
+    PopplerPage* page = m_pages->get_item(pageNumber)->page;
+
+    return renderPage(page, width, height);
 }
 
 void Document::saveDocument(std::string filePath) const
@@ -97,10 +105,11 @@ void Document::saveDocument(std::string filePath) const
     pdfWriter.StartPDF(filePath, ePDFVersion13);
     PDFDocumentCopyingContext* copyingContext = pdfWriter.CreatePDFCopyingContext(m_sourcePath);
 
-    for (const PopplerPage* page : m_pages) {
-        const int pageNumber = poppler_page_get_index(const_cast<PopplerPage*>(page));
+    for (unsigned int i = 0; i < m_pages->get_n_items(); ++i) {
+        PopplerPage* page = m_pages->get_item(i)->page;
+        const int pageNumber = poppler_page_get_index(page);
         double width, height;
-        poppler_page_get_size(const_cast<PopplerPage*>(page), &width, &height);
+        poppler_page_get_size(page, &width, &height);
 
         PDFPage* pdfPage = new PDFPage();
         pdfPage->SetMediaBox(PDFRectangle(0, 0, width, height));
@@ -115,10 +124,13 @@ void Document::saveDocument(std::string filePath) const
 
 void Document::removePage(int pageNumber)
 {
-    const PopplerPage* p = m_pages.at(pageNumber);
+    m_pages->remove(pageNumber);
+}
 
-    m_pages.erase(begin(m_pages) + pageNumber);
+void Document::removePageRange(int first, int last)
+{
+    const int nElem = last - first + 1;
 
-    g_object_unref(const_cast<PopplerPage*>(p));
+    m_pages->splice(first, nElem, {});
 }
 }
