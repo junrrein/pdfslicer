@@ -10,7 +10,6 @@
 #include <gtkmm/revealer.h>
 #include <gtkmm/label.h>
 #include <gtkmm/box.h>
-#include <gtkmm/popovermenu.h>
 #include <gtkmm/modelbutton.h>
 #include <gtkmm/menubutton.h>
 
@@ -32,7 +31,6 @@ private:
     Gtk::Box m_boxRemovePages;
     Gtk::Button m_buttonRemovePages;
     Gtk::MenuButton m_buttonRemoveOptions;
-    Gtk::PopoverMenu m_menuRemoveOptions;
     Gtk::Box m_boxMenuRemoveOptions;
     Gtk::ModelButton m_buttonRemovePrevious;
     Gtk::ModelButton m_buttonRemoveNext;

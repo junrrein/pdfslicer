@@ -1,6 +1,7 @@
 #include "slicerwindow.hpp"
-#include <gtkmm/filechooserdialog.h>
 #include <glibmm/main.h>
+#include <gtkmm/filechooserdialog.h>
+#include <gtkmm/popovermenu.h>
 
 namespace Slicer {
 
@@ -25,11 +26,6 @@ Window::Window()
     m_buttonSave.set_sensitive(false);
     m_headerBar.pack_start(m_buttonSave);
 
-    // FIXME:
-    // The commit that introduced this comment also introduced
-    // a warning that Gtk is trying to destroy an already destroyed
-    // widget when closing the window.
-    // Look through the changes to find out what's wrong.
     m_buttonRemovePages.set_image_from_icon_name("edit-delete");
     m_buttonRemovePages.set_tooltip_text("Remove selected pages");
     m_buttonRemovePages.set_sensitive(false);
@@ -44,11 +40,13 @@ Window::Window()
     m_boxMenuRemoveOptions.set_margin_bottom(10);
     m_boxMenuRemoveOptions.set_margin_left(10);
     m_boxMenuRemoveOptions.set_margin_right(10);
-    m_menuRemoveOptions.add(m_boxMenuRemoveOptions);
-    m_menuRemoveOptions.show_all_children();
+
+    auto menuRemoveOptions = Gtk::manage(new Gtk::PopoverMenu);
+    menuRemoveOptions->add(m_boxMenuRemoveOptions);
+    menuRemoveOptions->show_all_children();
 
     m_buttonRemoveOptions.set_tooltip_text("More removing options");
-    m_buttonRemoveOptions.set_popover(m_menuRemoveOptions);
+    m_buttonRemoveOptions.set_popover(*menuRemoveOptions);
     m_buttonRemoveOptions.set_sensitive(false);
     m_boxRemovePages.pack_start(m_buttonRemoveOptions);
 
