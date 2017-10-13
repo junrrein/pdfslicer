@@ -52,16 +52,13 @@ Window::Window(std::string filePath)
 
     m_scroller.add(m_view);
 
-    m_labelDone.set_margin_left(10);
-    m_labelDone.set_margin_right(10);
-    m_labelDone.set_margin_top(10);
-    m_labelDone.set_margin_bottom(10);
+    m_labelDone.set_margin_left(5);
     m_buttonDoneClose.set_image_from_icon_name("window-close",
                                                Gtk::ICON_SIZE_SMALL_TOOLBAR);
-    m_boxDone.pack_start(m_labelDone);
-    m_boxDone.pack_start(m_buttonDoneClose);
-    auto styleContext = m_boxDone.get_style_context();
-    styleContext->add_class("osd");
+    m_boxDone.pack_start(m_labelDone, true, true, 10);
+    m_boxDone.pack_start(m_buttonDoneClose, false, false);
+    m_boxDone.get_style_context()->add_class("osd");
+    m_boxDone.set_size_request(1, 36);
     m_revealerDone.add(m_boxDone);
     m_revealerDone.set_halign(Gtk::ALIGN_CENTER);
     m_revealerDone.set_valign(Gtk::ALIGN_START);
