@@ -1,5 +1,3 @@
-configure_file(config.hpp.cmake ${CMAKE_CURRENT_SOURCE_DIR}/config.hpp)
-
 add_executable(pdfSlicer
     main.cpp
     config.hpp

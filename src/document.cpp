@@ -4,7 +4,6 @@
 #include "../PDF-Writer/PDFWriter/PDFWriter.h"
 #include "../PDF-Writer/PDFWriter/PDFPage.h"
 #include "../PDF-Writer/PDFWriter/PDFDocumentCopyingContext.h"
-#include "config.hpp"
 
 namespace Slicer {
 

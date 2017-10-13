@@ -1,5 +1,4 @@
 #include "window.hpp"
-#include "config.hpp"
 #include <gtkmm/application.h>
 
 int main()
