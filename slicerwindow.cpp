@@ -18,7 +18,7 @@ Window::Window()
     m_headerBar.set_has_subtitle(false);
 
     m_buttonOpen.set_image_from_icon_name("document-open");
-    m_buttonOpen.set_tooltip_text("Open file...");
+    m_buttonOpen.set_tooltip_text("Open document...");
     m_headerBar.pack_start(m_buttonOpen);
 
     m_buttonSave.set_image_from_icon_name("document-save");
@@ -155,13 +155,23 @@ void Window::removeNextPages()
     m_document->removePageRange(index + 1, m_document->pages()->get_n_items() - 1);
 }
 
+Glib::RefPtr<Gtk::FileFilter> pdfFilter()
+{
+    auto filter = Gtk::FileFilter::create();
+    filter->set_name("PDF documents");
+    filter->add_mime_type("application/pdf");
+
+    return filter;
+}
+
 void Window::onSaveAction()
 {
     Gtk::FileChooserDialog dialog{*this,
-                                  "Save file as",
+                                  "Save document as",
                                   Gtk::FILE_CHOOSER_ACTION_SAVE};
     dialog.set_transient_for(*this);
     dialog.set_current_name("untitled");
+    dialog.set_filter(pdfFilter());
 
     dialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
     dialog.add_button("Save", Gtk::RESPONSE_OK);
@@ -178,10 +188,11 @@ void Window::onSaveAction()
 void Window::onOpenAction()
 {
     Gtk::FileChooserDialog dialog{*this,
-                                  "Open file",
+                                  "Open document",
                                   Gtk::FILE_CHOOSER_ACTION_OPEN};
     dialog.set_transient_for(*this);
     dialog.set_select_multiple(false);
+    dialog.set_filter(pdfFilter());
 
     dialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
     dialog.add_button("Open", Gtk::RESPONSE_OK);
