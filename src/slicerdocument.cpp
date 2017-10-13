@@ -1,9 +1,9 @@
 #include "slicerdocument.hpp"
 #include <cairomm/context.h>
 #include <glibmm/convert.h>
-#include "PDF-Writer/PDFWriter/PDFWriter.h"
-#include "PDF-Writer/PDFWriter/PDFPage.h"
-#include "PDF-Writer/PDFWriter/PDFDocumentCopyingContext.h"
+#include "../PDF-Writer/PDFWriter/PDFWriter.h"
+#include "../PDF-Writer/PDFWriter/PDFPage.h"
+#include "../PDF-Writer/PDFWriter/PDFDocumentCopyingContext.h"
 #include "config.hpp"
 
 namespace Slicer {
