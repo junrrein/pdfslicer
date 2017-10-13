@@ -6,6 +6,7 @@ namespace Slicer {
 
 Window::Window(std::string filePath)
     : m_document{filePath}
+    , m_boxMenuRemoveOptions{Gtk::ORIENTATION_VERTICAL}
     , m_view{m_document}
     , m_labelDone{"Saved!"}
 {
@@ -21,29 +22,33 @@ Window::Window(std::string filePath)
     m_buttonSave.set_tooltip_text("Save as...");
     m_headerBar.pack_start(m_buttonSave);
 
+    // FIXME:
+    // The commit that introduced this comment also introduced
+    // a warning that Gtk is trying to destroy an already destroyed
+    // widget when closing the window.
+    // Look through the changes to find out what's wrong.
     m_buttonRemovePages.set_image_from_icon_name("edit-delete");
     m_buttonRemovePages.set_tooltip_text("Remove selected pages");
     m_boxRemovePages.pack_start(m_buttonRemovePages);
 
-    m_buttonRemoveOptions.set_image_from_icon_name("go-down");
+    m_buttonRemovePrevious.set_label("Remove previous pages");
+    m_buttonRemoveNext.set_label("Remove next pages");
+
+    m_boxMenuRemoveOptions.pack_start(m_buttonRemovePrevious);
+    m_boxMenuRemoveOptions.pack_start(m_buttonRemoveNext);
+    m_boxMenuRemoveOptions.set_margin_top(10);
+    m_boxMenuRemoveOptions.set_margin_bottom(10);
+    m_boxMenuRemoveOptions.set_margin_left(10);
+    m_boxMenuRemoveOptions.set_margin_right(10);
+    m_menuRemoveOptions.add(m_boxMenuRemoveOptions);
+    m_menuRemoveOptions.show_all_children();
+
     m_buttonRemoveOptions.set_tooltip_text("More removing options");
+    m_buttonRemoveOptions.set_popover(m_menuRemoveOptions);
     m_boxRemovePages.pack_start(m_buttonRemoveOptions);
 
     m_boxRemovePages.get_style_context()->add_class("linked");
     m_headerBar.pack_start(m_boxRemovePages);
-
-    m_buttonRemovePrevious.set_label("Remove previous pages");
-    m_buttonRemoveNext.set_label("Remove next pages");
-    auto menuBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_VERTICAL});
-    menuBox->pack_start(m_buttonRemovePrevious);
-    menuBox->pack_start(m_buttonRemoveNext);
-    menuBox->set_margin_top(10);
-    menuBox->set_margin_bottom(10);
-    menuBox->set_margin_left(10);
-    menuBox->set_margin_right(10);
-    m_menuRemoveOptions.add(*menuBox);
-    m_menuRemoveOptions.set_relative_to(m_buttonRemoveOptions);
-    m_menuRemoveOptions.show_all_children();
 
     m_scroller.add(m_view);
 
@@ -73,10 +78,6 @@ Window::Window(std::string filePath)
 
     m_buttonRemovePages.signal_clicked().connect([this]() {
         removeSelectedPages();
-    });
-
-    m_buttonRemoveOptions.signal_clicked().connect([this]() {
-        m_menuRemoveOptions.popup();
     });
 
     m_buttonRemovePrevious.signal_clicked().connect([this]() {
