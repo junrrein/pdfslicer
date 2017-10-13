@@ -2,11 +2,9 @@
 
 namespace Slicer {
 
-ViewChild::ViewChild(const Slicer::Document& document,
-                     const Glib::RefPtr<GPopplerPage>& gPage,
+ViewChild::ViewChild(const Glib::RefPtr<GPopplerPage>& gPage,
                      Glib::Dispatcher& uiDispatcher)
-    : m_document{document}
-    , m_uiDispatcher{uiDispatcher}
+    : m_uiDispatcher{uiDispatcher}
     , m_gPage{gPage}
     , m_isRendered{false}
     , m_isShown{false}
@@ -19,7 +17,7 @@ ViewChild::ViewChild(const Slicer::Document& document,
 
 void ViewChild::renderPage()
 {
-    auto pixbuf = m_document.renderPage(m_gPage->page, 200);
+    auto pixbuf = Slicer::renderPage(m_gPage->page, 200);
     m_thumbnail.set(pixbuf);
 
     m_isRendered = true;

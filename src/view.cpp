@@ -15,8 +15,7 @@ View::View(const Slicer::Document& document)
     set_activate_on_single_click(false);
 
     bind_list_store(m_document.pages(), [this](const Glib::RefPtr<GPopplerPage>& gPage) {
-        auto child = Gtk::manage(new Slicer::ViewChild{m_document,
-                                                       gPage,
+        auto child = Gtk::manage(new Slicer::ViewChild{gPage,
                                                        m_uiDispatcher});
 
         m_uiDispatcher.connect([this, child]() {

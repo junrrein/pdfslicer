@@ -25,8 +25,6 @@ public:
     Document(std::string filePath);
 
     // Interface
-    Glib::RefPtr<Gdk::Pixbuf> renderPage(PopplerPage* page,
-                                         int targetSize) const;
     Glib::RefPtr<Gdk::Pixbuf> renderPage(int pageNumber,
                                          int targetSize) const;
     void saveDocument(std::string filePath) const;
@@ -41,6 +39,9 @@ private:
     std::string m_sourcePath;
     Glib::RefPtr<Gio::ListStore<GPopplerPage>> m_pages;
 };
+
+Glib::RefPtr<Gdk::Pixbuf> renderPage(PopplerPage* page,
+                                     int targetSize);
 }
 
 #endif // DOCUMENT_HPP

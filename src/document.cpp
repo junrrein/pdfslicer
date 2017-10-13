@@ -40,8 +40,8 @@ Document::Document(std::string filePath)
     g_object_unref(popplerDocument);
 }
 
-Glib::RefPtr<Gdk::Pixbuf> Document::renderPage(PopplerPage* page,
-                                               int targetSize) const
+Glib::RefPtr<Gdk::Pixbuf> renderPage(PopplerPage* page,
+                                     int targetSize)
 {
     double realWidth = 0, realHeight = 0;
     poppler_page_get_size(page, &realWidth, &realHeight);
@@ -95,7 +95,7 @@ Glib::RefPtr<Gdk::Pixbuf> Document::renderPage(int pageNumber,
 {
     PopplerPage* page = m_pages->get_item(pageNumber)->page;
 
-    return renderPage(page, targetSize);
+    return Slicer::renderPage(page, targetSize);
 }
 
 void Document::saveDocument(std::string filePath) const
