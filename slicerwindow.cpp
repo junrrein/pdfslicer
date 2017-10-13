@@ -169,7 +169,7 @@ void Window::onSaveAction()
                                   "Save document as",
                                   Gtk::FILE_CHOOSER_ACTION_SAVE};
     dialog.set_transient_for(*this);
-    dialog.set_current_name("untitled");
+    dialog.set_current_name("Untitled document");
     dialog.set_filter(pdfFilter());
 
     dialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
@@ -179,6 +179,11 @@ void Window::onSaveAction()
 
     if (result == Gtk::RESPONSE_OK) {
         std::string filePath = dialog.get_filename();
+        const Glib::ustring baseName = dialog.get_file()->get_basename();
+
+        if (baseName.find(".pdf") != baseName.size() - 4)
+            filePath += ".pdf";
+
         m_document->saveDocument(filePath);
         m_signalSaved.emit();
     }
