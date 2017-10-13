@@ -44,7 +44,7 @@ private:
     Gtk::Revealer m_revealerDone;
     Gtk::Box m_boxDone;
     Gtk::Label m_labelDone;
-    Gtk::Button m_buttonDoneClose;
+    Gtk::Button m_buttonCloseDone;
 
     // Preview window
     std::unique_ptr<Slicer::PreviewWindow> m_previewWindow;

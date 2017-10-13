@@ -2,6 +2,7 @@
 #include <glibmm/main.h>
 #include <gtkmm/filechooserdialog.h>
 #include <gtkmm/popovermenu.h>
+#include <gtkmm/cssprovider.h>
 
 namespace Slicer {
 
@@ -17,16 +18,16 @@ Window::Window()
     m_headerBar.set_title("PDF Slicer");
     m_headerBar.set_show_close_button(true);
 
-    m_buttonOpen.set_image_from_icon_name("document-open");
+    m_buttonOpen.set_image_from_icon_name("document-open-symbolic");
     m_buttonOpen.set_tooltip_text("Open document...");
     m_headerBar.pack_start(m_buttonOpen);
 
-    m_buttonSave.set_image_from_icon_name("document-save");
+    m_buttonSave.set_image_from_icon_name("document-save-symbolic");
     m_buttonSave.set_tooltip_text("Save as...");
     m_buttonSave.set_sensitive(false);
     m_headerBar.pack_start(m_buttonSave);
 
-    m_buttonRemovePages.set_image_from_icon_name("edit-delete");
+    m_buttonRemovePages.set_image_from_icon_name("edit-delete-symbolic");
     m_buttonRemovePages.set_tooltip_text("Remove selected pages");
     m_buttonRemovePages.set_sensitive(false);
     m_boxRemovePages.pack_start(m_buttonRemovePages);
@@ -58,13 +59,19 @@ Window::Window()
     m_buttonPreviewPage.set_sensitive(false);
     m_headerBar.pack_end(m_buttonPreviewPage);
 
-    m_labelDone.set_margin_left(5);
-    m_buttonDoneClose.set_image_from_icon_name("window-close",
-                                               Gtk::ICON_SIZE_SMALL_TOOLBAR);
-    m_boxDone.pack_start(m_labelDone, true, true, 10);
-    m_boxDone.pack_start(m_buttonDoneClose, false, false);
+    m_labelDone.set_margin_top(10);
+    m_labelDone.set_margin_bottom(10);
+    m_labelDone.set_margin_left(15);
+    m_labelDone.set_margin_right(7);
+    m_buttonCloseDone.set_image_from_icon_name("window-close");
+    m_buttonCloseDone.get_style_context()->add_class("flat");
+    m_buttonCloseDone.set_margin_top(5);
+    m_buttonCloseDone.set_margin_bottom(5);
+    m_buttonCloseDone.set_margin_right(5);
+    m_boxDone.pack_start(m_labelDone, true, true);
+    m_boxDone.pack_start(m_buttonCloseDone, false, false);
     m_boxDone.get_style_context()->add_class("osd");
-    m_boxDone.set_size_request(1, 36);
+    m_boxDone.set_size_request(1, 35);
     m_revealerDone.add(m_boxDone);
     m_revealerDone.set_halign(Gtk::ALIGN_CENTER);
     m_revealerDone.set_valign(Gtk::ALIGN_START);
@@ -96,13 +103,13 @@ Window::Window()
         removeNextPages();
     });
 
-    m_buttonDoneClose.signal_clicked().connect([this]() {
-        m_revealerDone.set_reveal_child(false);
-    });
-
     m_buttonPreviewPage.signal_clicked().connect([this]() {
         const int index = m_view->get_selected_children().at(0)->get_index();
         previewPage(index);
+    });
+
+    m_buttonCloseDone.signal_clicked().connect([this]() {
+        m_revealerDone.set_reveal_child(false);
     });
 
     m_signalSaved.connect([this]() {
@@ -118,6 +125,18 @@ Window::Window()
         },
                                                            5000);
     });
+
+    // Load custom CSS
+    auto screen = Gdk::Screen::get_default();
+    auto provider = Gtk::CssProvider::create();
+    provider->load_from_data(R"(
+                             overlay > revealer > box {
+                                border-radius: 0px 0px 11px 11px
+                             }
+                             )");
+    Gtk::StyleContext::add_provider_for_screen(screen,
+                                               provider,
+                                               GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
     show_all_children();
 }
