@@ -3,8 +3,8 @@ configure_file(config.hpp.cmake ${CMAKE_CURRENT_SOURCE_DIR}/config.hpp)
 add_executable(pdfSlicer
     main.cpp
     config.hpp
-    slicerdocument.hpp
-    slicerdocument.cpp
+    document.hpp
+    document.cpp
     slicerview.hpp
     slicerview.cpp
     previewwindow.hpp

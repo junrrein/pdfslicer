@@ -1,7 +1,7 @@
 #ifndef SLICERVIEW_HPP
 #define SLICERVIEW_HPP
 
-#include "slicerdocument.hpp"
+#include "document.hpp"
 #include <gtkmm/flowbox.h>
 
 namespace Slicer {

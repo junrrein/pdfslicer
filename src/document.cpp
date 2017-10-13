@@ -1,4 +1,4 @@
-#include "slicerdocument.hpp"
+#include "document.hpp"
 #include <cairomm/context.h>
 #include <glibmm/convert.h>
 #include "../PDF-Writer/PDFWriter/PDFWriter.h"
