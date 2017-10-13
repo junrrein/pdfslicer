@@ -45,6 +45,3 @@ target_link_libraries(pdfSlicer
     ${CAIROMM_LIBRARIES}
     ${POPPLER_LIBRARIES}
     PDFWriter)
-
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lti2.pdf
-    DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
