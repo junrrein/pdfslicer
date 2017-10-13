@@ -15,7 +15,6 @@ Window::Window()
 
     m_headerBar.set_title("PDF Slicer");
     m_headerBar.set_show_close_button(true);
-    m_headerBar.set_has_subtitle(false);
 
     m_buttonOpen.set_image_from_icon_name("document-open");
     m_buttonOpen.set_tooltip_text("Open document...");
@@ -205,6 +204,7 @@ void Window::onOpenAction()
         m_scroller.remove();
         m_view = std::make_unique<Slicer::View>(*m_document);
 
+        m_headerBar.set_subtitle(dialog.get_file()->get_basename());
         m_scroller.add(*m_view);
         m_scroller.show_all_children();
         m_buttonSave.set_sensitive(true);
