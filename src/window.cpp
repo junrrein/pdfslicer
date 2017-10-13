@@ -1,4 +1,4 @@
-#include "slicerwindow.hpp"
+#include "window.hpp"
 #include <glibmm/main.h>
 #include <gtkmm/filechooserdialog.h>
 #include <gtkmm/popovermenu.h>

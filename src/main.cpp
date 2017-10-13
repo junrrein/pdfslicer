@@ -1,4 +1,4 @@
-#include "slicerwindow.hpp"
+#include "window.hpp"
 #include "config.hpp"
 #include <gtkmm/application.h>
 

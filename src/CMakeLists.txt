@@ -9,8 +9,8 @@ add_executable(pdfSlicer
     view.cpp
     previewwindow.hpp
     previewwindow.cpp
-    slicerwindow.hpp
-    slicerwindow.cpp)
+    window.hpp
+    window.cpp)
 
 target_link_libraries(pdfSlicer
     ${GTKMM_LIBRARIES}
