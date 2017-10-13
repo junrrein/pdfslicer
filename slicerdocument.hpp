@@ -26,11 +26,9 @@ public:
 
     // Interface
     Glib::RefPtr<Gdk::Pixbuf> renderPage(PopplerPage* page,
-                                         int width,
-                                         int height) const;
+                                         int targetSize) const;
     Glib::RefPtr<Gdk::Pixbuf> renderPage(int pageNumber,
-                                         int width,
-                                         int height) const;
+                                         int targetSize) const;
     void saveDocument(std::string filePath) const;
     void removePage(int pageNumber);
     void removePageRange(int first, int last);

@@ -193,7 +193,7 @@ Glib::RefPtr<Gtk::FileFilter> pdfFilter()
 void Window::previewPage(int pageNumber)
 {
     const int pageIndex = pageNumber;
-    auto pixbuf = m_document->renderPage(pageIndex, 640, 800);
+    auto pixbuf = m_document->renderPage(pageIndex, 800);
     m_previewWindow = std::make_unique<Slicer::PreviewWindow>(pixbuf);
 
     m_previewWindow->set_modal();

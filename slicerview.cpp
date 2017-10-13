@@ -13,7 +13,7 @@ View::View(Slicer::Document& document)
     set_activate_on_single_click(false);
 
     bind_list_store(m_document.pages(), [this](const Glib::RefPtr<GPopplerPage>& gPage) {
-        auto pixbuf = m_document.renderPage(gPage->page, 160, 200);
+        auto pixbuf = m_document.renderPage(gPage->page, 200);
         auto image = Gtk::manage(new Gtk::Image);
         image->set(pixbuf);
 
