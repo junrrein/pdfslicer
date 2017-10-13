@@ -1,6 +1,5 @@
 #include "slicerwindow.hpp"
 #include <gtkmm/filechooserdialog.h>
-#include <gtkmm/modelbutton.h>
 #include <glibmm/main.h>
 
 namespace Slicer {
@@ -32,13 +31,11 @@ Window::Window(std::string filePath)
 
     m_headerBar.pack_start(m_boxRemovePages);
 
-    auto removePrevious = Gtk::manage(new Gtk::ModelButton());
-    removePrevious->set_label("Remove previous pages");
-    auto removeNext = Gtk::manage(new Gtk::ModelButton());
-    removeNext->set_label("Remove next pages");
+    m_buttonRemovePrevious.set_label("Remove previous pages");
+    m_buttonRemoveNext.set_label("Remove next pages");
     auto menuBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_VERTICAL});
-    menuBox->pack_start(*removePrevious);
-    menuBox->pack_start(*removeNext);
+    menuBox->pack_start(m_buttonRemovePrevious);
+    menuBox->pack_start(m_buttonRemoveNext);
     menuBox->set_margin_top(10);
     menuBox->set_margin_bottom(10);
     menuBox->set_margin_left(10);
@@ -81,15 +78,15 @@ Window::Window(std::string filePath)
         m_menuRemoveOptions.popup();
     });
 
-    removePrevious->signal_clicked().connect([this]() {
+    m_buttonRemovePrevious.signal_clicked().connect([this]() {
         removePreviousPages();
     });
 
-    removeNext->signal_clicked().connect([this]() {
+    m_buttonRemoveNext.signal_clicked().connect([this]() {
         removeNextPages();
     });
 
-    m_view.signal_selected_children_changed().connect([this, removePrevious, removeNext]() {
+    m_view.signal_selected_children_changed().connect([this]() {
         const int numSelected = m_view.get_selected_children().size();
 
         if (numSelected == 0)
@@ -102,14 +99,14 @@ Window::Window(std::string filePath)
 
             const unsigned int index = m_view.get_selected_children().at(0)->get_index();
             if (index == 0)
-                removePrevious->set_sensitive(false);
+                m_buttonRemovePrevious.set_sensitive(false);
             else
-                removePrevious->set_sensitive(true);
+                m_buttonRemovePrevious.set_sensitive(true);
 
             if (index == m_view.get_children().size() - 1)
-                removeNext->set_sensitive(false);
+                m_buttonRemoveNext.set_sensitive(false);
             else
-                removeNext->set_sensitive(true);
+                m_buttonRemoveNext.set_sensitive(true);
         }
         else
             m_buttonRemoveOptions.set_sensitive(false);

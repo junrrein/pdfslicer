@@ -10,6 +10,7 @@
 #include <gtkmm/label.h>
 #include <gtkmm/box.h>
 #include <gtkmm/popovermenu.h>
+#include <gtkmm/modelbutton.h>
 
 namespace Slicer {
 
@@ -29,6 +30,8 @@ private:
     Gtk::Button m_buttonRemovePages;
     Gtk::Button m_buttonRemoveOptions;
     Gtk::PopoverMenu m_menuRemoveOptions;
+    Gtk::ModelButton m_buttonRemovePrevious;
+    Gtk::ModelButton m_buttonRemoveNext;
 
     // View
     Slicer::View m_view;
