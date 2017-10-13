@@ -4,22 +4,26 @@
 
 namespace Slicer {
 
-Window::Window(std::string filePath)
-    : m_document{filePath}
-    , m_boxMenuRemoveOptions{Gtk::ORIENTATION_VERTICAL}
-    , m_view{m_document}
+Window::Window()
+    : m_boxMenuRemoveOptions{Gtk::ORIENTATION_VERTICAL}
     , m_labelDone{"Saved!"}
 {
     // Widget setup
     set_titlebar(m_headerBar);
+    set_size_request(500, 500);
     set_default_size(800, 600);
 
     m_headerBar.set_title("PDF Slicer");
     m_headerBar.set_show_close_button(true);
     m_headerBar.set_has_subtitle(false);
 
+    m_buttonOpen.set_image_from_icon_name("document-open");
+    m_buttonOpen.set_tooltip_text("Open file...");
+    m_headerBar.pack_start(m_buttonOpen);
+
     m_buttonSave.set_image_from_icon_name("document-save");
     m_buttonSave.set_tooltip_text("Save as...");
+    m_buttonSave.set_sensitive(false);
     m_headerBar.pack_start(m_buttonSave);
 
     // FIXME:
@@ -29,6 +33,7 @@ Window::Window(std::string filePath)
     // Look through the changes to find out what's wrong.
     m_buttonRemovePages.set_image_from_icon_name("edit-delete");
     m_buttonRemovePages.set_tooltip_text("Remove selected pages");
+    m_buttonRemovePages.set_sensitive(false);
     m_boxRemovePages.pack_start(m_buttonRemovePages);
 
     m_buttonRemovePrevious.set_label("Remove previous pages");
@@ -45,12 +50,11 @@ Window::Window(std::string filePath)
 
     m_buttonRemoveOptions.set_tooltip_text("More removing options");
     m_buttonRemoveOptions.set_popover(m_menuRemoveOptions);
+    m_buttonRemoveOptions.set_sensitive(false);
     m_boxRemovePages.pack_start(m_buttonRemoveOptions);
 
     m_boxRemovePages.get_style_context()->add_class("linked");
     m_headerBar.pack_start(m_boxRemovePages);
-
-    m_scroller.add(m_view);
 
     m_labelDone.set_margin_left(5);
     m_buttonDoneClose.set_image_from_icon_name("window-close",
@@ -63,12 +67,17 @@ Window::Window(std::string filePath)
     m_revealerDone.set_halign(Gtk::ALIGN_CENTER);
     m_revealerDone.set_valign(Gtk::ALIGN_START);
 
+    m_scroller.add(*Gtk::manage(new Gtk::Label{"Hello there!"}));
     m_overlay.add(m_scroller);
     m_overlay.add_overlay(m_revealerDone);
 
     add(m_overlay);
 
     // Signal handlers
+    m_buttonOpen.signal_clicked().connect([this]() {
+        onOpenAction();
+    });
+
     m_buttonSave.signal_clicked().connect([this]() {
         onSaveAction();
     });
@@ -83,33 +92,6 @@ Window::Window(std::string filePath)
 
     m_buttonRemoveNext.signal_clicked().connect([this]() {
         removeNextPages();
-    });
-
-    m_view.signal_selected_children_changed().connect([this]() {
-        const int numSelected = m_view.get_selected_children().size();
-
-        if (numSelected == 0)
-            m_buttonRemovePages.set_sensitive(false);
-        else
-            m_buttonRemovePages.set_sensitive(true);
-
-        if (numSelected == 1) {
-            m_buttonRemoveOptions.set_sensitive(true);
-
-            const unsigned int index = m_view.get_selected_children().at(0)->get_index();
-            if (index == 0)
-                m_buttonRemovePrevious.set_sensitive(false);
-            else
-                m_buttonRemovePrevious.set_sensitive(true);
-
-            if (index == m_view.get_children().size() - 1)
-                m_buttonRemoveNext.set_sensitive(false);
-            else
-                m_buttonRemoveNext.set_sensitive(true);
-        }
-        else
-            m_buttonRemoveOptions.set_sensitive(false);
-
     });
 
     m_buttonDoneClose.signal_clicked().connect([this]() {
@@ -135,19 +117,19 @@ Window::Window(std::string filePath)
 
 void Window::removeSelectedPages()
 {
-    auto children = m_view.get_selected_children();
+    auto children = m_view->get_selected_children();
 
     // FIXME
     // The following won't work with a multiple selection!
     for (Gtk::FlowBoxChild* c : children) {
         const int index = c->get_index();
-        m_document.removePage(index);
+        m_document->removePage(index);
     }
 }
 
 void Window::removePreviousPages()
 {
-    auto selected = m_view.get_selected_children();
+    auto selected = m_view->get_selected_children();
 
     if (selected.size() != 1)
         throw std::runtime_error(
@@ -156,12 +138,12 @@ void Window::removePreviousPages()
 
     const int index = selected.at(0)->get_index();
 
-    m_document.removePageRange(0, index - 1);
+    m_document->removePageRange(0, index - 1);
 }
 
 void Window::removeNextPages()
 {
-    auto selected = m_view.get_selected_children();
+    auto selected = m_view->get_selected_children();
 
     if (selected.size() != 1)
         throw std::runtime_error(
@@ -170,7 +152,7 @@ void Window::removeNextPages()
 
     const int index = selected.at(0)->get_index();
 
-    m_document.removePageRange(index + 1, m_document.pages()->get_n_items() - 1);
+    m_document->removePageRange(index + 1, m_document->pages()->get_n_items() - 1);
 }
 
 void Window::onSaveAction()
@@ -187,8 +169,58 @@ void Window::onSaveAction()
 
     if (result == Gtk::RESPONSE_OK) {
         std::string filePath = dialog.get_filename();
-        m_document.saveDocument(filePath);
+        m_document->saveDocument(filePath);
         m_signalSaved.emit();
+    }
+}
+
+void Window::onOpenAction()
+{
+    Gtk::FileChooserDialog dialog{*this,
+                                  "Open file",
+                                  Gtk::FILE_CHOOSER_ACTION_OPEN};
+    dialog.set_transient_for(*this);
+
+    dialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
+    dialog.add_button("Open", Gtk::RESPONSE_OK);
+
+    const int result = dialog.run();
+
+    if (result == Gtk::RESPONSE_OK) {
+        std::string filePath = dialog.get_filename();
+        m_document = std::make_unique<Slicer::Document>(filePath);
+        m_scroller.remove();
+        m_view = std::make_unique<Slicer::View>(*m_document);
+        m_scroller.add(*m_view);
+        m_scroller.show_all_children();
+
+        m_buttonSave.set_sensitive(true);
+
+        m_view->signal_selected_children_changed().connect([this]() {
+            const int numSelected = m_view->get_selected_children().size();
+
+            if (numSelected == 0)
+                m_buttonRemovePages.set_sensitive(false);
+            else
+                m_buttonRemovePages.set_sensitive(true);
+
+            if (numSelected == 1) {
+                m_buttonRemoveOptions.set_sensitive(true);
+
+                const unsigned int index = m_view->get_selected_children().at(0)->get_index();
+                if (index == 0)
+                    m_buttonRemovePrevious.set_sensitive(false);
+                else
+                    m_buttonRemovePrevious.set_sensitive(true);
+
+                if (index == m_view->get_children().size() - 1)
+                    m_buttonRemoveNext.set_sensitive(false);
+                else
+                    m_buttonRemoveNext.set_sensitive(true);
+            }
+            else
+                m_buttonRemoveOptions.set_sensitive(false);
+        });
     }
 }
 }

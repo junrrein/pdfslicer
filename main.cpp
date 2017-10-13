@@ -5,8 +5,7 @@
 int main()
 {
     auto app = Gtk::Application::create();
-
-    Slicer::Window window(Slicer::binaryDir + "/lti2.pdf");
+    Slicer::Window window;
 
     return app->run(window);
 }

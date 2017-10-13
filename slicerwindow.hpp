@@ -17,15 +17,16 @@ namespace Slicer {
 
 class Window : public Gtk::Window {
 public:
-    Window(std::string filePath);
+    Window();
     virtual ~Window(){};
 
 private:
     // Model
-    Slicer::Document m_document;
+    std::unique_ptr<Slicer::Document> m_document;
 
     // Header bar
     Gtk::HeaderBar m_headerBar;
+    Gtk::Button m_buttonOpen;
     Gtk::Button m_buttonSave;
     Gtk::Box m_boxRemovePages;
     Gtk::Button m_buttonRemovePages;
@@ -36,7 +37,7 @@ private:
     Gtk::ModelButton m_buttonRemoveNext;
 
     // View
-    Slicer::View m_view;
+    std::unique_ptr<Slicer::View> m_view;
     Gtk::ScrolledWindow m_scroller;
     Gtk::Overlay m_overlay;
 
@@ -56,6 +57,7 @@ private:
 
     // Callbacks
     void onSaveAction();
+    void onOpenAction();
 };
 }
 
