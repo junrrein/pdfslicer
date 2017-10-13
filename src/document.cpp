@@ -40,56 +40,6 @@ Document::Document(std::string filePath)
     g_object_unref(popplerDocument);
 }
 
-Glib::RefPtr<Gdk::Pixbuf> renderPage(PopplerPage* page,
-                                     int targetSize)
-{
-    double realWidth = 0, realHeight = 0;
-    poppler_page_get_size(page, &realWidth, &realHeight);
-
-    int width, height;
-
-    if (realHeight > realWidth) {
-        height = targetSize;
-        width = floor(targetSize * (realWidth / realHeight));
-    }
-    else {
-        width = targetSize;
-        height = floor(targetSize * (realHeight / realWidth));
-    }
-
-    auto surface = Cairo::ImageSurface::create(Cairo::FORMAT_ARGB32, width, height);
-    auto cr = Cairo::Context::create(surface);
-
-    // Paint a white background
-    cr->set_source_rgb(255, 255, 255);
-    cr->rectangle(0, 0, width, height);
-    cr->fill();
-
-    // Scale Context to match the ImageSurface's area.
-    // Otherwise the page would get rendered at (realWidth x realHeight).
-    double scale;
-    if (realWidth >= realHeight)
-        scale = double(width) / realWidth;
-    else
-        scale = double(height) / realHeight;
-    cr->scale(scale, scale);
-
-    // Render page
-    poppler_page_render(page, cr->cobj());
-
-    // Scale back and paint a black outline
-    cr->scale(1 / scale, 1 / scale);
-    cr->set_line_width(1);
-    cr->set_source_rgb(0, 0, 0);
-    cr->rectangle(0, 0, width, height);
-    cr->stroke();
-
-    // Convert rendered page to a pixbuf
-    auto pixbuf = Gdk::Pixbuf::create(surface, 0, 0, width, height);
-
-    return pixbuf;
-}
-
 Glib::RefPtr<Gdk::Pixbuf> Document::renderPage(int pageNumber,
                                                int targetSize) const
 {
@@ -131,5 +81,67 @@ void Document::removePageRange(int first, int last)
     const int nElem = last - first + 1;
 
     m_pages->splice(first, nElem, {});
+}
+
+Glib::RefPtr<Gdk::Pixbuf> renderPage(PopplerPage* page,
+                                     int targetSize)
+{
+
+    int width, height;
+    std::tie(width, height) = getImageSize(page, targetSize);
+
+    auto surface = Cairo::ImageSurface::create(Cairo::FORMAT_ARGB32, width, height);
+    auto cr = Cairo::Context::create(surface);
+
+    // Paint a white background
+    cr->set_source_rgb(255, 255, 255);
+    cr->rectangle(0, 0, width, height);
+    cr->fill();
+
+    // Scale Context to match the ImageSurface's area.
+    // Otherwise the page would get rendered at (realWidth x realHeight).
+    double realWidth = 0, realHeight = 0;
+    poppler_page_get_size(page, &realWidth, &realHeight);
+
+    double scale;
+    if (realWidth >= realHeight)
+        scale = double(width) / realWidth;
+    else
+        scale = double(height) / realHeight;
+    cr->scale(scale, scale);
+
+    // Render page
+    poppler_page_render(page, cr->cobj());
+
+    // Scale back and paint a black outline
+    cr->scale(1 / scale, 1 / scale);
+    cr->set_line_width(1);
+    cr->set_source_rgb(0, 0, 0);
+    cr->rectangle(0, 0, width, height);
+    cr->stroke();
+
+    // Convert rendered page to a pixbuf
+    auto pixbuf = Gdk::Pixbuf::create(surface, 0, 0, width, height);
+
+    return pixbuf;
+}
+
+std::pair<int, int> getImageSize(PopplerPage* page, int targetSize)
+{
+    double realWidth = 0, realHeight = 0;
+    poppler_page_get_size(page, &realWidth, &realHeight);
+
+    int width, height;
+
+    if (realHeight > realWidth) {
+        height = targetSize;
+        width = floor(targetSize * (realWidth / realHeight));
+    }
+    else {
+        width = targetSize;
+        height = floor(targetSize * (realHeight / realWidth));
+    }
+
+    return {width, height};
 }
 }

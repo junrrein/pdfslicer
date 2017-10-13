@@ -5,7 +5,6 @@
 #include <poppler.h>
 #include <giomm/liststore.h>
 #include <string>
-#include <vector>
 
 namespace Slicer {
 
@@ -42,6 +41,8 @@ private:
 
 Glib::RefPtr<Gdk::Pixbuf> renderPage(PopplerPage* page,
                                      int targetSize);
+std::pair<int, int> getImageSize(PopplerPage* page,
+                                 int targetSize);
 }
 
 #endif // DOCUMENT_HPP
