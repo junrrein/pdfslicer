@@ -1,4 +1,4 @@
-#include "slicerview.hpp"
+#include "view.hpp"
 #include <gtkmm/image.h>
 
 namespace Slicer {

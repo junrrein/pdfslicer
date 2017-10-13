@@ -1,7 +1,7 @@
 #ifndef SLICERWINDOW_HPP
 #define SLICERWINDOW_HPP
 
-#include "slicerview.hpp"
+#include "view.hpp"
 #include "previewwindow.hpp"
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/headerbar.h>

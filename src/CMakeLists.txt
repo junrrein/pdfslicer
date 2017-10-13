@@ -5,8 +5,8 @@ add_executable(pdfSlicer
     config.hpp
     document.hpp
     document.cpp
-    slicerview.hpp
-    slicerview.cpp
+    view.hpp
+    view.cpp
     previewwindow.hpp
     previewwindow.cpp
     slicerwindow.hpp
