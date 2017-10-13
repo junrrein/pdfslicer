@@ -161,6 +161,7 @@ void Window::onSaveAction()
                                   "Save file as",
                                   Gtk::FILE_CHOOSER_ACTION_SAVE};
     dialog.set_transient_for(*this);
+    dialog.set_current_name("untitled");
 
     dialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
     dialog.add_button("Save", Gtk::RESPONSE_OK);
@@ -180,6 +181,7 @@ void Window::onOpenAction()
                                   "Open file",
                                   Gtk::FILE_CHOOSER_ACTION_OPEN};
     dialog.set_transient_for(*this);
+    dialog.set_select_multiple(false);
 
     dialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
     dialog.add_button("Open", Gtk::RESPONSE_OK);
@@ -191,9 +193,9 @@ void Window::onOpenAction()
         m_document = std::make_unique<Slicer::Document>(filePath);
         m_scroller.remove();
         m_view = std::make_unique<Slicer::View>(*m_document);
+
         m_scroller.add(*m_view);
         m_scroller.show_all_children();
-
         m_buttonSave.set_sensitive(true);
 
         m_view->signal_selected_children_changed().connect([this]() {
