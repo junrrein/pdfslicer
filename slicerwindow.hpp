@@ -2,6 +2,7 @@
 #define SLICERWINDOW_HPP
 
 #include "slicerview.hpp"
+#include "previewwindow.hpp"
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/headerbar.h>
 #include <gtkmm/button.h>
@@ -35,6 +36,7 @@ private:
     Gtk::Box m_boxMenuRemoveOptions;
     Gtk::ModelButton m_buttonRemovePrevious;
     Gtk::ModelButton m_buttonRemoveNext;
+    Gtk::Button m_buttonPreviewPage;
 
     // View
     std::unique_ptr<Slicer::View> m_view;
@@ -46,6 +48,9 @@ private:
     Gtk::Label m_labelDone;
     Gtk::Button m_buttonDoneClose;
 
+    // Preview window
+    std::unique_ptr<Slicer::PreviewWindow> m_previewWindow;
+
     // Signals
     sigc::signal<void> m_signalSaved;
     sigc::connection m_connectionSaved;
@@ -54,6 +59,7 @@ private:
     void removeSelectedPages();
     void removePreviousPages();
     void removeNextPages();
+    void previewPage(int pageNumber);
 
     // Callbacks
     void onSaveAction();

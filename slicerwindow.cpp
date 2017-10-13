@@ -55,6 +55,11 @@ Window::Window()
     m_boxRemovePages.get_style_context()->add_class("linked");
     m_headerBar.pack_start(m_boxRemovePages);
 
+    m_buttonPreviewPage.set_image_from_icon_name("document-print-preview-symbolic");
+    m_buttonPreviewPage.set_tooltip_text("Preview the selected page");
+    m_buttonPreviewPage.set_sensitive(false);
+    m_headerBar.pack_end(m_buttonPreviewPage);
+
     m_labelDone.set_margin_left(5);
     m_buttonDoneClose.set_image_from_icon_name("window-close",
                                                Gtk::ICON_SIZE_SMALL_TOOLBAR);
@@ -95,6 +100,11 @@ Window::Window()
 
     m_buttonDoneClose.signal_clicked().connect([this]() {
         m_revealerDone.set_reveal_child(false);
+    });
+
+    m_buttonPreviewPage.signal_clicked().connect([this]() {
+        const int index = m_view->get_selected_children().at(0)->get_index();
+        previewPage(index);
     });
 
     m_signalSaved.connect([this]() {
@@ -163,6 +173,17 @@ Glib::RefPtr<Gtk::FileFilter> pdfFilter()
     return filter;
 }
 
+void Window::previewPage(int pageNumber)
+{
+    const int pageIndex = pageNumber;
+    auto pixbuf = m_document->renderPage(pageIndex, 640, 800);
+    m_previewWindow = std::make_unique<Slicer::PreviewWindow>(pixbuf);
+
+    m_previewWindow->set_modal();
+    m_previewWindow->set_transient_for(*this);
+    m_previewWindow->show();
+}
+
 void Window::onSaveAction()
 {
     Gtk::FileChooserDialog dialog{*this,
@@ -224,6 +245,7 @@ void Window::onOpenAction()
 
             if (numSelected == 1) {
                 m_buttonRemoveOptions.set_sensitive(true);
+                m_buttonPreviewPage.set_sensitive(true);
 
                 const unsigned int index = m_view->get_selected_children().at(0)->get_index();
                 if (index == 0)
@@ -236,8 +258,15 @@ void Window::onOpenAction()
                 else
                     m_buttonRemoveNext.set_sensitive(true);
             }
-            else
+            else {
                 m_buttonRemoveOptions.set_sensitive(false);
+                m_buttonPreviewPage.set_sensitive(false);
+            }
+        });
+
+        m_view->signal_child_activated().connect([this](Gtk::FlowBoxChild* child) {
+            const int pageIndex = child->get_index();
+            previewPage(pageIndex);
         });
     }
 }

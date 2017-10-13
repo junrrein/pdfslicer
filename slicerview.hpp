@@ -2,7 +2,6 @@
 #define SLICERVIEW_HPP
 
 #include "slicerdocument.hpp"
-#include "previewwindow.hpp"
 #include <gtkmm/flowbox.h>
 
 namespace Slicer {
@@ -14,7 +13,6 @@ public:
 
 private:
     Slicer::Document& m_document;
-    std::unique_ptr<Slicer::PreviewWindow> m_previewWindow;
 };
 }
 
