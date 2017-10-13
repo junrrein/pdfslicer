@@ -3,6 +3,7 @@
 #include <gtkmm/filechooserdialog.h>
 #include <gtkmm/popovermenu.h>
 #include <gtkmm/cssprovider.h>
+#include <gtkmm/adjustment.h>
 
 namespace Slicer {
 
@@ -97,6 +98,7 @@ Window::Window()
 
     m_buttonRemovePrevious.signal_clicked().connect([this]() {
         removePreviousPages();
+        m_scroller.get_vadjustment()->set_value(0);
     });
 
     m_buttonRemoveNext.signal_clicked().connect([this]() {
