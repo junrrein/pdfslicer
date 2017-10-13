@@ -15,8 +15,8 @@ public:
 
 private:
     const Slicer::Document& m_document;
-    ThreadPool m_threadPool;
-    Glib::Dispatcher m_uiDispatcher;
+    ThreadPool m_pageRendererPool;
+    Glib::Dispatcher m_viewUpdater;
 };
 }
 

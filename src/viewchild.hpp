@@ -11,15 +11,13 @@ namespace Slicer {
 
 class ViewChild : public Gtk::Box {
 public:
-    ViewChild(const Glib::RefPtr<Slicer::GPopplerPage>& gPage,
-              Glib::Dispatcher& uiDispatcher);
+    ViewChild(const Glib::RefPtr<Slicer::GPopplerPage>& gPage);
     virtual ~ViewChild(){};
 
     void renderPage();
     void showPage();
 
 private:
-    Glib::Dispatcher& m_uiDispatcher;
     const Glib::RefPtr<Slicer::GPopplerPage> m_gPage;
     Gtk::Image m_thumbnail;
     Gtk::Spinner m_spinner;
