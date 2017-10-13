@@ -3,16 +3,20 @@
 
 #include "document.hpp"
 #include <gtkmm/flowbox.h>
+#include <ThreadPool.h>
+#include <glibmm/dispatcher.h>
 
 namespace Slicer {
 
 class View : public Gtk::FlowBox {
 public:
-    View(Slicer::Document& document);
+    View(const Slicer::Document& document);
     virtual ~View(){};
 
 private:
-    Slicer::Document& m_document;
+    const Slicer::Document& m_document;
+    ThreadPool m_threadPool;
+    Glib::Dispatcher m_uiDispatcher;
 };
 }
 

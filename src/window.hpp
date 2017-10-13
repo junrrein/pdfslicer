@@ -37,7 +37,7 @@ private:
     Gtk::Button m_buttonPreviewPage;
 
     // View
-    std::unique_ptr<Slicer::View> m_view;
+    Slicer::View* m_view;
     Gtk::ScrolledWindow m_scroller;
     Gtk::Overlay m_overlay;
 

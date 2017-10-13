@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.9)
 
 project(pdfSlicer)
 
-find_package(PkgConfig)
+find_package (PkgConfig REQUIRED)
+find_package (Threads REQUIRED)
 
 pkg_check_modules(GTKMM gtkmm-3.0 REQUIRED)
 pkg_check_modules(POPPLER poppler-glib REQUIRED)
@@ -24,6 +25,11 @@ PKG_CHECK_MODULES(LINPNG libpng REQUIRED)
 
 # Don't use PDFWriter's bundled dependencies
 set(USE_BUNDLED OFF)
+
 add_subdirectory(PDF-Writer)
+add_subdirectory(ThreadPool)
+
+include_directories (${CMAKE_SOURCE_DIR}/PDF-Writer/PDFWriter)
+include_directories (${CMAKE_SOURCE_DIR}/ThreadPool)
 
 add_subdirectory(src)

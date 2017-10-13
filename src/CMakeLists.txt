@@ -1,10 +1,11 @@
 add_executable(pdfSlicer
     main.cpp
-    config.hpp
     document.hpp
     document.cpp
     view.hpp
     view.cpp
+    viewchild.hpp
+    viewchild.cpp
     previewwindow.hpp
     previewwindow.cpp
     window.hpp
@@ -14,4 +15,5 @@ target_link_libraries(pdfSlicer
     ${GTKMM_LIBRARIES}
     ${CAIROMM_LIBRARIES}
     ${POPPLER_LIBRARIES}
-    PDFWriter)
+    PDFWriter
+    ThreadPool)

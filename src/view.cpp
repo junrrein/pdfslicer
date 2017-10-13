@@ -1,10 +1,12 @@
 #include "view.hpp"
+#include "viewchild.hpp"
 #include <gtkmm/image.h>
 
 namespace Slicer {
 
-View::View(Slicer::Document& document)
+View::View(const Slicer::Document& document)
     : m_document{document}
+    , m_threadPool{1}
 {
     set_column_spacing(10);
     set_row_spacing(20);
@@ -13,11 +15,19 @@ View::View(Slicer::Document& document)
     set_activate_on_single_click(false);
 
     bind_list_store(m_document.pages(), [this](const Glib::RefPtr<GPopplerPage>& gPage) {
-        auto pixbuf = m_document.renderPage(gPage->page, 200);
-        auto image = Gtk::manage(new Gtk::Image);
-        image->set(pixbuf);
+        auto child = Gtk::manage(new Slicer::ViewChild{m_document,
+                                                       gPage,
+                                                       m_uiDispatcher});
 
-        return image;
+        m_uiDispatcher.connect([this, child]() {
+            child->showPage();
+        });
+
+        m_threadPool.enqueue([child]() {
+            child->renderPage();
+        });
+
+        return child;
     });
 }
 }

@@ -11,7 +11,7 @@ Window::Window()
     : m_boxMenuRemoveOptions{Gtk::ORIENTATION_VERTICAL}
     , m_labelDone{"Saved!"}
 {
-    // Widget setup
+    // Widget setupb
     set_titlebar(m_headerBar);
     set_size_request(500, 500);
     set_default_size(800, 600);
@@ -247,11 +247,13 @@ void Window::onOpenAction()
         std::string filePath = dialog.get_filename();
         m_document = std::make_unique<Slicer::Document>(filePath);
         m_scroller.remove();
-        m_view = std::make_unique<Slicer::View>(*m_document);
+
+        m_view = Gtk::manage(new Slicer::View{*m_document});
 
         m_headerBar.set_subtitle(dialog.get_file()->get_basename());
         m_scroller.add(*m_view);
         m_scroller.show_all_children();
+
         m_buttonSave.set_sensitive(true);
 
         m_view->signal_selected_children_changed().connect([this]() {
