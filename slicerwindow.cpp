@@ -29,6 +29,7 @@ Window::Window(std::string filePath)
     m_buttonRemoveOptions.set_tooltip_text("More removing options");
     m_boxRemovePages.pack_start(m_buttonRemoveOptions);
 
+    m_boxRemovePages.get_style_context()->add_class("linked");
     m_headerBar.pack_start(m_boxRemovePages);
 
     m_buttonRemovePrevious.set_label("Remove previous pages");
