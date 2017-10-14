@@ -4,7 +4,8 @@
 
 namespace Slicer {
 
-View::View(const Slicer::Document& document)
+View::View(const Slicer::Document& document,
+           int targetThumbnailSize)
     : m_document{document}
     , m_pageRendererPool{1}
 {
@@ -14,8 +15,8 @@ View::View(const Slicer::Document& document)
     set_selection_mode(Gtk::SELECTION_SINGLE);
     set_activate_on_single_click(false);
 
-    bind_list_store(m_document.pages(), [this](const Glib::RefPtr<GPopplerPage>& gPage) {
-        auto child = Gtk::manage(new Slicer::ViewChild{gPage});
+    bind_list_store(m_document.pages(), [=](const Glib::RefPtr<GPopplerPage>& gPage) {
+        auto child = Gtk::manage(new Slicer::ViewChild{gPage, targetThumbnailSize});
 
         // We are going to render the pages on another thread,
         // so the UI stays responsive, but updating the view
@@ -23,13 +24,13 @@ View::View(const Slicer::Document& document)
         // the main thread, or strange crashes will occur!
 
         // The dispatcher runs the view updates on the main thread
-        m_viewUpdater.connect([this, child]() {
+        m_viewUpdater.connect([=]() {
             child->showPage();
         });
 
         // The thread pool renders the pages on another thread
         // and signals the dispatcher when it finishes rendering.
-        m_pageRendererPool.enqueue([this, child]() {
+        m_pageRendererPool.enqueue([=]() {
             child->renderPage();
             m_viewUpdater.emit();
         });

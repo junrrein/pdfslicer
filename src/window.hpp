@@ -21,6 +21,12 @@ public:
     virtual ~Window(){};
 
 private:
+    enum class ZoomLevel {
+        small = 200,
+        medium = 300,
+        large = 400
+    };
+
     // Model
     std::unique_ptr<Slicer::Document> m_document;
 
@@ -35,6 +41,10 @@ private:
     Gtk::ModelButton m_buttonRemovePrevious;
     Gtk::ModelButton m_buttonRemoveNext;
     Gtk::Button m_buttonPreviewPage;
+    Gtk::Button m_buttonZoomOut;
+    Gtk::Button m_buttonZoomIn;
+    Gtk::Box m_boxZoom;
+    ZoomLevel m_zoomLevel;
 
     // View
     Slicer::View* m_view;
@@ -52,12 +62,16 @@ private:
     // Signals
     sigc::signal<void> m_signalSaved;
     sigc::connection m_connectionSaved;
+    sigc::signal<void> m_signalZoomChanged;
 
     // Functions
     void removeSelectedPages();
     void removePreviousPages();
     void removeNextPages();
     void previewPage(int pageNumber);
+    void increaseZoomLevel();
+    void decreaseZoomLevel();
+    void buildView();
 
     // Callbacks
     void onSaveAction();

@@ -10,7 +10,8 @@ namespace Slicer {
 
 class View : public Gtk::FlowBox {
 public:
-    View(const Slicer::Document& document);
+    View(const Slicer::Document& document,
+         int targetThumbnailSize);
     virtual ~View(){};
 
 private:

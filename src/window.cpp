@@ -9,6 +9,8 @@ namespace Slicer {
 
 Window::Window()
     : m_boxMenuRemoveOptions{Gtk::ORIENTATION_VERTICAL}
+    , m_zoomLevel{ZoomLevel::small}
+    , m_view{nullptr}
     , m_labelDone{"Saved!"}
 {
     // Widget setupb
@@ -60,6 +62,17 @@ Window::Window()
     m_buttonPreviewPage.set_sensitive(false);
     m_headerBar.pack_end(m_buttonPreviewPage);
 
+    m_buttonZoomOut.set_image_from_icon_name("zoom-out");
+    m_buttonZoomOut.set_tooltip_text("Zoom out");
+    m_buttonZoomOut.set_sensitive(false);
+    m_buttonZoomIn.set_image_from_icon_name("zoom-in");
+    m_buttonZoomIn.set_tooltip_text("Zoom in");
+    m_buttonZoomIn.set_sensitive(false);
+    m_boxZoom.pack_start(m_buttonZoomOut);
+    m_boxZoom.pack_start(m_buttonZoomIn);
+    m_boxZoom.get_style_context()->add_class("linked");
+    m_headerBar.pack_end(m_boxZoom);
+
     m_labelDone.set_margin_top(10);
     m_labelDone.set_margin_bottom(10);
     m_labelDone.set_margin_left(15);
@@ -110,6 +123,24 @@ Window::Window()
         previewPage(index);
     });
 
+    m_buttonZoomOut.signal_clicked().connect([this]() {
+        decreaseZoomLevel();
+
+        m_buttonZoomIn.set_sensitive(true);
+
+        if (m_zoomLevel == ZoomLevel::small)
+            m_buttonZoomOut.set_sensitive(false);
+    });
+
+    m_buttonZoomIn.signal_clicked().connect([this]() {
+        increaseZoomLevel();
+
+        m_buttonZoomOut.set_sensitive(true);
+
+        if (m_zoomLevel == ZoomLevel::large)
+            m_buttonZoomIn.set_sensitive(false);
+    });
+
     m_buttonCloseDone.signal_clicked().connect([this]() {
         m_revealerDone.set_reveal_child(false);
     });
@@ -126,6 +157,10 @@ Window::Window()
             return false;
         },
                                                            5000);
+    });
+
+    m_signalZoomChanged.connect([this]() {
+        buildView();
     });
 
     // Load custom CSS
@@ -203,6 +238,88 @@ void Window::previewPage(int pageNumber)
     m_previewWindow->show();
 }
 
+void Window::increaseZoomLevel()
+{
+    switch (m_zoomLevel) {
+    case ZoomLevel::small:
+        m_zoomLevel = ZoomLevel::medium;
+        break;
+
+    case ZoomLevel::medium:
+        m_zoomLevel = ZoomLevel::large;
+        break;
+
+    case ZoomLevel::large:;
+    }
+
+    m_signalZoomChanged.emit();
+}
+
+void Window::decreaseZoomLevel()
+{
+    switch (m_zoomLevel) {
+    case ZoomLevel::large:
+        m_zoomLevel = ZoomLevel::medium;
+        break;
+
+    case ZoomLevel::medium:
+        m_zoomLevel = ZoomLevel::small;
+        break;
+
+    case ZoomLevel::small:;
+    }
+
+    m_signalZoomChanged.emit();
+}
+
+void Window::buildView()
+{
+    if (m_view == nullptr)
+        m_buttonZoomIn.set_sensitive(true);
+
+    m_scroller.remove();
+    m_view = Gtk::manage(new Slicer::View{*m_document, int(m_zoomLevel)});
+
+    m_scroller.add(*m_view);
+    m_scroller.show_all_children();
+
+    m_buttonSave.set_sensitive(true);
+
+    m_view->signal_selected_children_changed().connect([this]() {
+        const int numSelected = m_view->get_selected_children().size();
+
+        if (numSelected == 0)
+            m_buttonRemovePages.set_sensitive(false);
+        else
+            m_buttonRemovePages.set_sensitive(true);
+
+        if (numSelected == 1) {
+            m_buttonRemoveOptions.set_sensitive(true);
+            m_buttonPreviewPage.set_sensitive(true);
+
+            const unsigned int index = m_view->get_selected_children().at(0)->get_index();
+            if (index == 0)
+                m_buttonRemovePrevious.set_sensitive(false);
+            else
+                m_buttonRemovePrevious.set_sensitive(true);
+
+            if (index == m_view->get_children().size() - 1)
+                m_buttonRemoveNext.set_sensitive(false);
+            else
+                m_buttonRemoveNext.set_sensitive(true);
+        }
+        else {
+            m_buttonRemoveOptions.set_sensitive(false);
+            m_buttonPreviewPage.set_sensitive(false);
+        }
+    });
+
+    m_view->signal_child_activated().connect([this](Gtk::FlowBoxChild* child) {
+        const int pageIndex = child->get_index();
+        previewPage(pageIndex);
+    });
+}
+
 void Window::onSaveAction()
 {
     Gtk::FileChooserDialog dialog{*this,
@@ -246,49 +363,10 @@ void Window::onOpenAction()
     if (result == Gtk::RESPONSE_OK) {
         std::string filePath = dialog.get_filename();
         m_document = std::make_unique<Slicer::Document>(filePath);
-        m_scroller.remove();
 
-        m_view = Gtk::manage(new Slicer::View{*m_document});
+        buildView();
 
         m_headerBar.set_subtitle(dialog.get_file()->get_basename());
-        m_scroller.add(*m_view);
-        m_scroller.show_all_children();
-
-        m_buttonSave.set_sensitive(true);
-
-        m_view->signal_selected_children_changed().connect([this]() {
-            const int numSelected = m_view->get_selected_children().size();
-
-            if (numSelected == 0)
-                m_buttonRemovePages.set_sensitive(false);
-            else
-                m_buttonRemovePages.set_sensitive(true);
-
-            if (numSelected == 1) {
-                m_buttonRemoveOptions.set_sensitive(true);
-                m_buttonPreviewPage.set_sensitive(true);
-
-                const unsigned int index = m_view->get_selected_children().at(0)->get_index();
-                if (index == 0)
-                    m_buttonRemovePrevious.set_sensitive(false);
-                else
-                    m_buttonRemovePrevious.set_sensitive(true);
-
-                if (index == m_view->get_children().size() - 1)
-                    m_buttonRemoveNext.set_sensitive(false);
-                else
-                    m_buttonRemoveNext.set_sensitive(true);
-            }
-            else {
-                m_buttonRemoveOptions.set_sensitive(false);
-                m_buttonPreviewPage.set_sensitive(false);
-            }
-        });
-
-        m_view->signal_child_activated().connect([this](Gtk::FlowBoxChild* child) {
-            const int pageIndex = child->get_index();
-            previewPage(pageIndex);
-        });
     }
 }
 }

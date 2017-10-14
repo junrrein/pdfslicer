@@ -2,13 +2,15 @@
 
 namespace Slicer {
 
-ViewChild::ViewChild(const Glib::RefPtr<GPopplerPage>& gPage)
+ViewChild::ViewChild(const Glib::RefPtr<GPopplerPage>& gPage,
+                     int targetSize)
     : m_gPage{gPage}
+    , m_targetSize{targetSize}
     , m_isRendered{false}
     , m_isShown{false}
 {
     int width, height;
-    std::tie(width, height) = getImageSize(gPage->page, 200);
+    std::tie(width, height) = getImageSize(gPage->page, m_targetSize);
     set_size_request(width, height);
 
     m_spinner.start();
@@ -17,7 +19,7 @@ ViewChild::ViewChild(const Glib::RefPtr<GPopplerPage>& gPage)
 
 void ViewChild::renderPage()
 {
-    auto pixbuf = Slicer::renderPage(m_gPage->page, 200);
+    auto pixbuf = Slicer::renderPage(m_gPage->page, m_targetSize);
     m_thumbnail.set(pixbuf);
 
     m_isRendered = true;
