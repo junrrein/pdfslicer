@@ -65,7 +65,7 @@ private:
     sigc::signal<void> m_signalZoomChanged;
 
     // Functions
-    void removeSelectedPages();
+    void removeSelectedPage();
     void removePreviousPages();
     void removeNextPages();
     void previewPage(int pageNumber);

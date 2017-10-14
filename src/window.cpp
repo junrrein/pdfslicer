@@ -31,7 +31,7 @@ Window::Window()
     m_headerBar.pack_start(m_buttonSave);
 
     m_buttonRemovePages.set_image_from_icon_name("edit-delete-symbolic");
-    m_buttonRemovePages.set_tooltip_text("Remove selected pages");
+    m_buttonRemovePages.set_tooltip_text("Remove the selected page");
     m_buttonRemovePages.set_sensitive(false);
     m_boxRemovePages.pack_start(m_buttonRemovePages);
 
@@ -120,7 +120,7 @@ Window::Window()
     });
 
     m_buttonRemovePages.signal_clicked().connect([this]() {
-        removeSelectedPages();
+        removeSelectedPage();
     });
 
     m_buttonRemovePrevious.signal_clicked().connect([this]() {
@@ -201,16 +201,11 @@ Window::Window()
     show_all_children();
 }
 
-void Window::removeSelectedPages()
+void Window::removeSelectedPage()
 {
-    auto children = m_view->get_selected_children();
-
-    // FIXME
-    // The following won't work with a multiple selection!
-    for (Gtk::FlowBoxChild* c : children) {
-        const int index = c->get_index();
-        m_document->removePage(index);
-    }
+    auto child = m_view->get_selected_children().at(0);
+    const int index = child->get_index();
+    m_document->removePage(index);
 }
 
 void Window::removePreviousPages()
