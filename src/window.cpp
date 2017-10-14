@@ -231,7 +231,8 @@ void Window::previewPage(int pageNumber)
 {
     // We need to wait till the thumbnails finish rendering
     // before rendering a big preview, to prevent crashes.
-    // Cairo doesn't seem to like threading very much.
+    // Poppler isn't designed for rendering many pages of
+    // the same document in different threads.
     m_view->waitForRenderCompletion();
 
     auto gPage = m_document->pages()->get_item(pageNumber);

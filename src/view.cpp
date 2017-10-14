@@ -7,7 +7,7 @@ namespace Slicer {
 View::View(const Slicer::Document& document,
            int targetThumbnailSize)
     : m_document{document}
-    , m_pageRendererPool{1}
+    , m_pageRendererPool{1} // Only one thread - Poppler doesn't handle more
 {
     set_column_spacing(10);
     set_row_spacing(20);
