@@ -3,7 +3,7 @@
 
 #include "document.hpp"
 #include <gtkmm/flowbox.h>
-#include <ThreadPool.h>
+#include <ctpl_stl.h>
 #include <glibmm/dispatcher.h>
 
 namespace Slicer {
@@ -14,9 +14,14 @@ public:
          int targetThumbnailSize);
     virtual ~View(){};
 
+    // This SHOULD be done manually before removing a view
+    // from a window, or the program crashes.
+    // Doing it in the destructor isn't soon enough.
+    void stopRendering();
+
 private:
     const Slicer::Document& m_document;
-    ThreadPool m_pageRendererPool;
+    ctpl::thread_pool m_pageRendererPool;
     Glib::Dispatcher m_viewUpdater;
 };
 }

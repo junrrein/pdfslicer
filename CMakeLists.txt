@@ -27,9 +27,9 @@ PKG_CHECK_MODULES(LINPNG libpng REQUIRED)
 set(USE_BUNDLED OFF)
 
 add_subdirectory(PDF-Writer)
-add_subdirectory(ThreadPool)
+add_subdirectory(CTPL)
 
 include_directories (${CMAKE_SOURCE_DIR}/PDF-Writer/PDFWriter)
-include_directories (${CMAKE_SOURCE_DIR}/ThreadPool)
+include_directories (${CMAKE_SOURCE_DIR}/CTPL)
 
 add_subdirectory(src)

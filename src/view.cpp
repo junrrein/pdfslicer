@@ -30,12 +30,21 @@ View::View(const Slicer::Document& document,
 
         // The thread pool renders the pages on another thread
         // and signals the dispatcher when it finishes rendering.
-        m_pageRendererPool.enqueue([=]() {
-            child->renderPage();
-            m_viewUpdater.emit();
-        });
+        m_pageRendererPool.push([](int,
+                                   Slicer::ViewChild* c,
+                                   Glib::Dispatcher* d) {
+            c->renderPage();
+            d->emit();
+        },
+                                child,
+                                &m_viewUpdater);
 
         return child;
     });
+}
+
+void View::stopRendering()
+{
+    m_pageRendererPool.stop();
 }
 }

@@ -276,6 +276,8 @@ void Window::buildView()
 {
     if (m_view == nullptr)
         m_buttonZoomIn.set_sensitive(true);
+    else
+        m_view->stopRendering();
 
     m_scroller.remove();
     m_view = Gtk::manage(new Slicer::View{*m_document, int(m_zoomLevel)});

@@ -16,4 +16,4 @@ target_link_libraries(pdfSlicer
     ${CAIROMM_LIBRARIES}
     ${POPPLER_LIBRARIES}
     PDFWriter
-    ThreadPool)
+    CTPL)
