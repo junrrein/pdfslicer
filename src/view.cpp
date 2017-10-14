@@ -43,6 +43,11 @@ View::View(const Slicer::Document& document,
     });
 }
 
+void View::waitForRenderCompletion()
+{
+    m_pageRendererPool.stop(true);
+}
+
 void View::stopRendering()
 {
     m_pageRendererPool.stop();

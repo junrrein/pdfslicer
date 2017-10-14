@@ -14,6 +14,7 @@ public:
          int targetThumbnailSize);
     virtual ~View(){};
 
+    void waitForRenderCompletion();
     // This SHOULD be done manually before removing a view
     // from a window, or the program crashes.
     // Doing it in the destructor isn't soon enough.

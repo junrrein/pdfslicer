@@ -9,7 +9,7 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<GPopplerPage>& gPage)
 {
     set_title("Preview");
     set_size_request(400, 400);
-    set_default_size(800, 600);
+    set_default_size(900, 600);
 
     auto pixbuf = Slicer::renderPage(m_gPage->page, int(m_zoomLevel));
     auto image = Gtk::manage(new Gtk::Image);

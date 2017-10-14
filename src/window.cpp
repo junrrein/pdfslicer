@@ -229,6 +229,11 @@ Glib::RefPtr<Gtk::FileFilter> pdfFilter()
 
 void Window::previewPage(int pageNumber)
 {
+    // We need to wait till the thumbnails finish rendering
+    // before rendering a big preview, to prevent crashes.
+    // Cairo doesn't seem to like threading very much.
+    m_view->waitForRenderCompletion();
+
     auto gPage = m_document->pages()->get_item(pageNumber);
     m_previewWindow = std::make_unique<Slicer::PreviewWindow>(gPage);
 
