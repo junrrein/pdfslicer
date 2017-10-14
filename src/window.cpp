@@ -90,7 +90,20 @@ Window::Window()
     m_revealerDone.set_halign(Gtk::ALIGN_CENTER);
     m_revealerDone.set_valign(Gtk::ALIGN_START);
 
-    m_scroller.add(*Gtk::manage(new Gtk::Label{"Hello there!"}));
+    auto welcomeIcon = Gtk::manage(new Gtk::Image);
+    welcomeIcon->set_from_icon_name("edit-cut-symbolic", Gtk::ICON_SIZE_BUTTON);
+    welcomeIcon->set_pixel_size(256);
+    auto welcomeLabel = Gtk::manage(new Gtk::Label{"Open a document to start slicing!"});
+    welcomeLabel->get_style_context()->add_class("dim-label");
+    welcomeLabel->get_style_context()->add_class("welcome-label");
+    auto welcomeBox1 = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_VERTICAL});
+    welcomeBox1->pack_start(*welcomeIcon, false, false, 10);
+    welcomeBox1->pack_start(*welcomeLabel, false, false, 10);
+    welcomeBox1->set_valign(Gtk::ALIGN_CENTER);
+    auto welcomeBox2 = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_VERTICAL});
+    welcomeBox2->pack_start(*welcomeBox1);
+    m_scroller.add(*welcomeBox2);
+
     m_overlay.add(m_scroller);
     m_overlay.add_overlay(m_revealerDone);
 
@@ -167,10 +180,15 @@ Window::Window()
     auto screen = Gdk::Screen::get_default();
     auto provider = Gtk::CssProvider::create();
     provider->load_from_data(R"(
-                             overlay > revealer > box {
-                                border-radius: 0px 0px 11px 11px
-                             }
-                             )");
+        overlay > revealer > box {
+            border-radius: 0px 0px 11px 11px;
+        }
+
+        .welcome-label {
+            font-size: 19px;
+            font-weight: bold;
+        }
+    )");
     Gtk::StyleContext::add_provider_for_screen(screen,
                                                provider,
                                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
