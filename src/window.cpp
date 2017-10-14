@@ -50,6 +50,7 @@ Window::Window()
     menuRemoveOptions->show_all_children();
 
     m_buttonRemoveOptions.set_tooltip_text("More removing options");
+    m_buttonRemoveOptions.get_style_context()->add_class("pepino");
     m_buttonRemoveOptions.set_popover(*menuRemoveOptions);
     m_buttonRemoveOptions.set_sensitive(false);
     m_boxRemovePages.pack_start(m_buttonRemoveOptions);
@@ -187,6 +188,10 @@ Window::Window()
         .welcome-label {
             font-size: 19px;
             font-weight: bold;
+        }
+
+        .pepino {
+            padding: 3px;
         }
     )");
     Gtk::StyleContext::add_provider_for_screen(screen,
