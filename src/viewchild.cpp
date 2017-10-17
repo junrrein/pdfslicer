@@ -13,8 +13,9 @@ ViewChild::ViewChild(const Glib::RefPtr<GPopplerPage>& gPage,
     std::tie(width, height) = getImageSize(gPage->page, m_targetSize);
     set_size_request(width, height);
 
+    m_spinner.set_size_request(38, 38);
     m_spinner.start();
-    pack_start(m_spinner);
+    pack_start(m_spinner, true, false);
 }
 
 void ViewChild::renderPage()
