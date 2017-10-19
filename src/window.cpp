@@ -201,6 +201,12 @@ Window::Window()
     show_all_children();
 }
 
+Window::~Window()
+{
+    if (m_view)
+        m_view->stopRendering();
+}
+
 void Window::removeSelectedPage()
 {
     auto child = m_view->get_selected_children().at(0);

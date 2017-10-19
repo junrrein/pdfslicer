@@ -18,7 +18,7 @@ namespace Slicer {
 class Window : public Gtk::Window {
 public:
     Window();
-    virtual ~Window(){};
+    virtual ~Window();
 
 private:
     enum class ZoomLevel {
