@@ -23,16 +23,16 @@ Document::Document(std::string filePath)
     if (num_pages == 0)
         throw std::runtime_error("El PDF tiene 0 páginas?!");
 
-    m_pages = Gio::ListStore<GPopplerPage>::create();
+    m_pages = Gio::ListStore<Page>::create();
 
     for (int i = 0; i < num_pages; ++i) {
         PopplerPage* page = poppler_document_get_page(popplerDocument, i);
-        auto gPage = new GPopplerPage{page};
+        auto gPage = new Page{page};
 
         // Disgusting hack to get a RefPtr from our GPopplerPage.
         // Gio::ListStore needs a RefPtr.
         Glib::RefPtr<Glib::Object> glibRefPtr = Glib::wrap(gPage->gobj());
-        auto slicerPageRefPtr = Glib::RefPtr<GPopplerPage>::cast_dynamic(glibRefPtr);
+        auto slicerPageRefPtr = Glib::RefPtr<Page>::cast_dynamic(glibRefPtr);
 
         m_pages->append(slicerPageRefPtr);
     }

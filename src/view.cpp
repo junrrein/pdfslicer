@@ -15,7 +15,7 @@ View::View(const Slicer::Document& document,
     set_selection_mode(Gtk::SELECTION_SINGLE);
     set_activate_on_single_click(false);
 
-    bind_list_store(m_document.pages(), [=](const Glib::RefPtr<GPopplerPage>& gPage) {
+    bind_list_store(m_document.pages(), [=](const Glib::RefPtr<Page>& gPage) {
         auto child = Gtk::manage(new Slicer::ViewChild{gPage, targetThumbnailSize});
 
         // We are going to render the pages on another thread,

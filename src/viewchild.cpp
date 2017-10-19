@@ -2,7 +2,7 @@
 
 namespace Slicer {
 
-ViewChild::ViewChild(const Glib::RefPtr<GPopplerPage>& gPage,
+ViewChild::ViewChild(const Glib::RefPtr<Page>& gPage,
                      int targetSize)
     : m_gPage{gPage}
     , m_targetSize{targetSize}
