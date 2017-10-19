@@ -1,5 +1,7 @@
 add_executable(pdfSlicer
     main.cpp
+    page.hpp
+    page.cpp
     document.hpp
     document.cpp
     view.hpp

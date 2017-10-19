@@ -13,7 +13,7 @@ namespace Slicer {
 
 class PreviewWindow : public Gtk::Window {
 public:
-    PreviewWindow(Glib::RefPtr<Page>& gPage);
+    PreviewWindow(Glib::RefPtr<Page>& page);
     virtual ~PreviewWindow(){};
 
 private:
@@ -23,7 +23,7 @@ private:
         large = 1600
     };
 
-    Glib::RefPtr<Page> m_gPage;
+    Glib::RefPtr<Page> m_page;
     Gtk::ScrolledWindow m_scroller;
     Gtk::Overlay m_overlay;
     Gtk::Button m_buttonZoomIn;

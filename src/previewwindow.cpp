@@ -3,15 +3,15 @@
 
 namespace Slicer {
 
-PreviewWindow::PreviewWindow(Glib::RefPtr<Page>& gPage)
-    : m_gPage{gPage}
+PreviewWindow::PreviewWindow(Glib::RefPtr<Page>& page)
+    : m_page{page}
     , m_zoomLevel{ZoomLevel::small}
 {
     set_title("Preview");
     set_size_request(400, 400);
     set_default_size(900, 600);
 
-    auto pixbuf = Slicer::renderPage(m_gPage->page, int(m_zoomLevel));
+    auto pixbuf = m_page->renderPage(static_cast<int>(m_zoomLevel));
     auto image = Gtk::manage(new Gtk::Image);
     image->set(pixbuf);
 
@@ -62,7 +62,7 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page>& gPage)
     });
 
     m_signalZoomChanged.connect([this]() {
-        auto pixbuf2 = Slicer::renderPage(m_gPage->page, int(m_zoomLevel));
+        auto pixbuf2 = m_page->renderPage(static_cast<int>(m_zoomLevel));
         auto image2 = Gtk::manage(new Gtk::Image);
         image2->set(pixbuf2);
 

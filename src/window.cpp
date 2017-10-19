@@ -259,8 +259,8 @@ void Window::previewPage(int pageNumber)
     // the same document in different threads.
     m_view->waitForRenderCompletion();
 
-    auto gPage = m_document->pages()->get_item(pageNumber);
-    m_previewWindow = std::make_unique<Slicer::PreviewWindow>(gPage);
+    auto page = m_document->pages()->get_item(pageNumber);
+    m_previewWindow = std::make_unique<Slicer::PreviewWindow>(page);
 
     m_previewWindow->set_modal();
     m_previewWindow->set_transient_for(*this);
