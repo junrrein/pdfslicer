@@ -18,9 +18,9 @@ public:
 
 private:
     enum class ZoomLevel {
-        small = 800,
-        medium = 1200,
-        large = 1600
+        small = 1000,
+        medium = 1400,
+        large = 1800
     };
 
     Glib::RefPtr<Page> m_page;
