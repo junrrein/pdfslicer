@@ -18,7 +18,7 @@ namespace Slicer {
 class Window : public Gtk::Window {
 public:
     Window();
-    virtual ~Window();
+    virtual ~Window(){};
 
 private:
     enum class ZoomLevel {
@@ -47,7 +47,7 @@ private:
     ZoomLevel m_zoomLevel;
 
     // View
-    Slicer::View* m_view;
+    std::unique_ptr<Slicer::View> m_view;
     Gtk::ScrolledWindow m_scroller;
     Gtk::Overlay m_overlay;
 

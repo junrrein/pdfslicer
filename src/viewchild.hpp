@@ -2,6 +2,7 @@
 #define VIEWCHILD_HPP
 
 #include "document.hpp"
+#include <ctpl_stl.h>
 #include <glibmm/dispatcher.h>
 #include <gtkmm/box.h>
 #include <gtkmm/image.h>
@@ -12,7 +13,8 @@ namespace Slicer {
 class ViewChild : public Gtk::Box {
 public:
     ViewChild(const Glib::RefPtr<Slicer::Page>& page,
-              int targetSize);
+              int targetSize,
+              ctpl::thread_pool& threadPool);
     virtual ~ViewChild(){};
 
     void renderPage();
@@ -23,8 +25,7 @@ private:
     const int m_targetSize;
     Gtk::Image m_thumbnail;
     Gtk::Spinner m_spinner;
-    bool m_isRendered;
-    bool m_isShown;
+    Glib::Dispatcher m_signalRendered;
 };
 
 } // namespace Slicer
