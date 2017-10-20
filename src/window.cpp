@@ -302,15 +302,14 @@ void Window::buildView()
 
     m_scroller.remove();
 
-    // It is necessary to invoke reset() as a separate command, and not join
-    // both lines together by using the new pointer as the argument to reset().
+    // It is necessary to invoke an empty reset() as a separate command.
     // reset() erases the old object it owns as the last thing it does.
     // So it may be the case that the new View starts rendering pages while the
     // old one is still rendering pages.
     // Poppler doesn't like two threads rendering pages from the same PDF, so this
     // would crash the program.
     m_view.reset();
-    m_view = std::make_unique<Slicer::View>(*m_document, int(m_zoomLevel));
+    m_view.reset(new Slicer::View{*m_document, static_cast<int>(m_zoomLevel)});
 
     m_scroller.add(*m_view);
     m_scroller.show_all_children();
