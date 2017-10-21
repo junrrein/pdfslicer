@@ -17,11 +17,11 @@ Document::Document(std::string filePath)
                                                                       nullptr);
 
     if (!popplerDocument)
-        throw std::runtime_error("No se pudo cargar el PDF");
+        throw std::runtime_error("Couldn't load file: " + m_sourcePath);
 
     const int num_pages = poppler_document_get_n_pages(popplerDocument);
     if (num_pages == 0)
-        throw std::runtime_error("El PDF tiene 0 páginas?!");
+        throw std::runtime_error("The file has zero pages");
 
     m_pages = Gio::ListStore<Page>::create();
 
