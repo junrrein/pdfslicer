@@ -13,6 +13,8 @@ AppWindow::AppWindow()
     , m_view{nullptr}
     , m_labelDone{"Saved!"}
 {
+    set_icon_name("edit-cut-symbolic");
+
     // Widget setupb
     set_titlebar(m_headerBar);
     set_size_request(500, 500);

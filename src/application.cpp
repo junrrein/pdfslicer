@@ -1,4 +1,5 @@
 #include "application.hpp"
+#include "aboutdialog.hpp"
 
 namespace Slicer {
 
@@ -10,6 +11,19 @@ Glib::RefPtr<Application> Application::create()
 Application::Application()
     : Gtk::Application{"com.junrrein.pdfslicer", Gio::APPLICATION_HANDLES_OPEN}
 {
+}
+
+void Application::on_startup()
+{
+    Gtk::Application::on_startup();
+
+    add_action("about", sigc::mem_fun(*this, &Application::onActionAbout));
+    add_action("quit", sigc::mem_fun(*this, &Application::onActionQuit));
+
+    auto menu = Gio::Menu::create();
+    menu->append("About", "app.about");
+    menu->append("Quit", "app.quit");
+    set_app_menu(menu);
 }
 
 void Application::on_activate()
@@ -26,6 +40,27 @@ void Application::on_open(const Application::type_vec_files& files,
         window->openDocument(file);
         window->present();
     }
+}
+
+void Application::onActionAbout()
+{
+    auto aboutDialog = new Slicer::AboutDialog{};
+
+    aboutDialog->signal_hide().connect([aboutDialog]() {
+        delete aboutDialog;
+    });
+
+    auto window = get_active_window();
+    aboutDialog->set_transient_for(*window);
+    aboutDialog->set_modal();
+
+    aboutDialog->present();
+}
+
+void Application::onActionQuit()
+{
+    for (auto window : get_windows())
+        window->hide();
 }
 
 AppWindow* Application::createWindow()
