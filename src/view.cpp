@@ -6,7 +6,7 @@ namespace Slicer {
 View::View(const Slicer::Document& document,
            int targetThumbnailSize)
     : m_document{document}
-    , m_pageRendererPool{1} // Only one thread - Poppler doesn't handle more
+    , m_pageRendererPool{new ctpl::thread_pool{1}} // Only one thread - Poppler doesn't handle more
 {
     set_column_spacing(10);
     set_row_spacing(20);
@@ -17,17 +17,21 @@ View::View(const Slicer::Document& document,
     bind_list_store(m_document.pages(), [this, targetThumbnailSize](const Glib::RefPtr<Page>& page) {
         return Gtk::manage(new Slicer::ViewChild{page,
                                                  targetThumbnailSize,
-                                                 m_pageRendererPool});
+                                                 *m_pageRendererPool});
     });
 }
 
 View::~View()
 {
-    m_pageRendererPool.stop();
+    m_pageRendererPool->stop();
 }
 
 void View::waitForRenderCompletion()
 {
-    m_pageRendererPool.stop(true);
+    m_pageRendererPool->stop(true);
+
+    // thread_pool.stop() makes the pool unusable for later use,
+    // so we need to create a new one.
+    m_pageRendererPool.reset(new ctpl::thread_pool{1});
 }
 }

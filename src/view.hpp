@@ -17,7 +17,7 @@ public:
 
 private:
     const Slicer::Document& m_document;
-    ctpl::thread_pool m_pageRendererPool;
+    std::unique_ptr<ctpl::thread_pool> m_pageRendererPool;
 };
 }
 

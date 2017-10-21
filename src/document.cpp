@@ -57,15 +57,88 @@ void Document::saveDocument(std::string filePath) const
     delete copyingContext;
 }
 
+bool Document::canUndo() const
+{
+    return m_commandManager.canUndo();
+}
+
+bool Document::canRedo() const
+{
+    return m_commandManager.canRedo();
+}
+
 void Document::removePage(int pageNumber)
 {
-    m_pages->remove(pageNumber);
+    auto command = std::make_shared<RemovePageCommand>(m_pages, pageNumber);
+    m_commandManager.execute(command);
 }
 
 void Document::removePageRange(int first, int last)
 {
-    const int nElem = last - first + 1;
+    auto command = std::make_shared<RemovePageRangeCommand>(m_pages, first, last);
+    m_commandManager.execute(command);
+}
 
-    m_pages->splice(first, nElem, {});
+void Document::undoCommand()
+{
+    m_commandManager.undo();
+}
+
+void Document::redoCommand()
+{
+    m_commandManager.redo();
+}
+
+Document::RemovePageCommand::RemovePageCommand(const Glib::RefPtr<Gio::ListStore<Page>> pages,
+                                               int position)
+    : m_pages{pages}
+    , m_position{position}
+{
+    m_removedPage = m_pages->get_item(position);
+}
+
+void Document::RemovePageCommand::execute()
+{
+    m_pages->remove(m_position);
+}
+
+void Document::RemovePageCommand::undo()
+{
+    m_pages->insert(m_position, m_removedPage);
+}
+
+void Document::RemovePageCommand::redo()
+{
+    execute();
+}
+
+Document::RemovePageRangeCommand::RemovePageRangeCommand(const Glib::RefPtr<Gio::ListStore<Page>> pages,
+                                                         int first,
+                                                         int last)
+    : m_pages{pages}
+    , m_first{first}
+    , m_last{last}
+{
+    // Store pages in reversed order, since Gio::ListStore::splice()
+    // inserts them in reversed order.
+    for (int i = last; i >= first; --i)
+        m_removedPages.push_back(m_pages->get_item(i));
+}
+
+void Document::RemovePageRangeCommand::execute()
+{
+    const int nElem = m_last - m_first + 1;
+
+    m_pages->splice(m_first, nElem, {});
+}
+
+void Document::RemovePageRangeCommand::undo()
+{
+    m_pages->splice(m_first, 0, m_removedPages);
+}
+
+void Document::RemovePageRangeCommand::redo()
+{
+    execute();
 }
 }

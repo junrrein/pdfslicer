@@ -58,6 +58,19 @@ Window::Window()
     m_boxRemovePages.get_style_context()->add_class("linked");
     m_headerBar.pack_start(m_boxRemovePages);
 
+    m_buttonUndo.set_image_from_icon_name("edit-undo");
+    m_buttonUndo.set_tooltip_text("Undo");
+    m_buttonUndo.set_sensitive(false);
+    m_buttonRedo.set_image_from_icon_name("edit-redo");
+    m_buttonRedo.set_tooltip_text("Redo");
+    m_buttonRedo.set_sensitive(false);
+
+    auto undoBox = Gtk::manage(new Gtk::Box);
+    undoBox->get_style_context()->add_class("linked");
+    undoBox->pack_start(m_buttonUndo);
+    undoBox->pack_start(m_buttonRedo);
+    m_headerBar.pack_start(*undoBox);
+
     m_buttonPreviewPage.set_image_from_icon_name("document-print-preview-symbolic");
     m_buttonPreviewPage.set_tooltip_text("Preview the selected page");
     m_buttonPreviewPage.set_sensitive(false);
@@ -130,6 +143,16 @@ Window::Window()
 
     m_buttonRemoveNext.signal_clicked().connect([this]() {
         removeNextPages();
+    });
+
+    m_buttonUndo.signal_clicked().connect([this]() {
+        m_view->waitForRenderCompletion();
+        m_document->undoCommand();
+    });
+
+    m_buttonRedo.signal_clicked().connect([this]() {
+        m_view->waitForRenderCompletion();
+        m_document->redoCommand();
     });
 
     m_buttonPreviewPage.signal_clicked().connect([this]() {
@@ -398,6 +421,20 @@ void Window::onOpenAction()
         buildView();
 
         m_headerBar.set_subtitle(dialog.get_file()->get_basename());
+        m_buttonUndo.set_sensitive(false);
+        m_buttonRedo.set_sensitive(false);
+
+        m_document->commandExecuted().connect([this]() {
+            if (m_document->canUndo())
+                m_buttonUndo.set_sensitive(true);
+            else
+                m_buttonUndo.set_sensitive(false);
+
+            if (m_document->canRedo())
+                m_buttonRedo.set_sensitive(true);
+            else
+                m_buttonRedo.set_sensitive(false);
+        });
     }
 }
 }

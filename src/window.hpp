@@ -40,6 +40,8 @@ private:
     Gtk::Box m_boxMenuRemoveOptions;
     Gtk::ModelButton m_buttonRemovePrevious;
     Gtk::ModelButton m_buttonRemoveNext;
+    Gtk::Button m_buttonUndo;
+    Gtk::Button m_buttonRedo;
     Gtk::Button m_buttonPreviewPage;
     Gtk::Button m_buttonZoomOut;
     Gtk::Button m_buttonZoomIn;

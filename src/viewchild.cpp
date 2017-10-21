@@ -15,6 +15,7 @@ ViewChild::ViewChild(const Glib::RefPtr<Page>& page,
     m_spinner.set_size_request(38, 38);
     m_spinner.start();
     pack_start(m_spinner, true, false);
+    show_all_children();
 
     m_signalRendered.connect([this]() {
         showPage();
