@@ -1,5 +1,7 @@
-add_executable(pdfSlicer
+add_executable(pdfslicer
     main.cpp
+    application.hpp
+    application.cpp
     page.hpp
     page.cpp
     commandmanager.hpp
@@ -15,7 +17,7 @@ add_executable(pdfSlicer
     window.hpp
     window.cpp)
 
-target_link_libraries(pdfSlicer
+target_link_libraries(pdfslicer
     ${GTKMM_LIBRARIES}
     ${CAIROMM_LIBRARIES}
     ${POPPLER_LIBRARIES}

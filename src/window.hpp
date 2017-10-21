@@ -3,6 +3,7 @@
 
 #include "view.hpp"
 #include "previewwindow.hpp"
+#include <gtkmm/applicationwindow.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/headerbar.h>
 #include <gtkmm/button.h>
@@ -15,10 +16,12 @@
 
 namespace Slicer {
 
-class Window : public Gtk::Window {
+class AppWindow : public Gtk::ApplicationWindow {
 public:
-    Window();
-    virtual ~Window(){};
+    AppWindow();
+    virtual ~AppWindow(){};
+
+    void openDocument(const Glib::RefPtr<Gio::File>& file);
 
 private:
     enum class ZoomLevel {

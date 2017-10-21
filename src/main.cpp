@@ -1,10 +1,8 @@
-#include "window.hpp"
-#include <gtkmm/application.h>
+#include "application.hpp"
 
-int main()
+int main(int num_args, char* args_array[])
 {
-    auto app = Gtk::Application::create();
-    Slicer::Window window;
+    auto app = Slicer::Application::create();
 
-    return app->run(window);
+    return app->run(num_args, args_array);
 }

@@ -7,7 +7,7 @@
 
 namespace Slicer {
 
-Window::Window()
+AppWindow::AppWindow()
     : m_boxMenuRemoveOptions{Gtk::ORIENTATION_VERTICAL}
     , m_zoomLevel{ZoomLevel::small}
     , m_view{nullptr}
@@ -224,14 +224,38 @@ Window::Window()
     show_all_children();
 }
 
-void Window::removeSelectedPage()
+void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
+{
+    std::string filePath = file->get_path();
+    m_document = std::make_unique<Slicer::Document>(filePath);
+
+    buildView();
+
+    m_headerBar.set_subtitle(file->get_basename());
+    m_buttonUndo.set_sensitive(false);
+    m_buttonRedo.set_sensitive(false);
+
+    m_document->commandExecuted().connect([this]() {
+        if (m_document->canUndo())
+            m_buttonUndo.set_sensitive(true);
+        else
+            m_buttonUndo.set_sensitive(false);
+
+        if (m_document->canRedo())
+            m_buttonRedo.set_sensitive(true);
+        else
+            m_buttonRedo.set_sensitive(false);
+    });
+}
+
+void AppWindow::removeSelectedPage()
 {
     auto child = m_view->get_selected_children().at(0);
     const int index = child->get_index();
     m_document->removePage(index);
 }
 
-void Window::removePreviousPages()
+void AppWindow::removePreviousPages()
 {
     auto selected = m_view->get_selected_children();
 
@@ -245,7 +269,7 @@ void Window::removePreviousPages()
     m_document->removePageRange(0, index - 1);
 }
 
-void Window::removeNextPages()
+void AppWindow::removeNextPages()
 {
     auto selected = m_view->get_selected_children();
 
@@ -268,7 +292,7 @@ Glib::RefPtr<Gtk::FileFilter> pdfFilter()
     return filter;
 }
 
-void Window::previewPage(int pageNumber)
+void AppWindow::previewPage(int pageNumber)
 {
     // We need to wait till the thumbnails finish rendering
     // before rendering a big preview, to prevent crashes.
@@ -284,7 +308,7 @@ void Window::previewPage(int pageNumber)
     m_previewWindow->show();
 }
 
-void Window::increaseZoomLevel()
+void AppWindow::increaseZoomLevel()
 {
     switch (m_zoomLevel) {
     case ZoomLevel::small:
@@ -301,7 +325,7 @@ void Window::increaseZoomLevel()
     m_signalZoomChanged.emit();
 }
 
-void Window::decreaseZoomLevel()
+void AppWindow::decreaseZoomLevel()
 {
     switch (m_zoomLevel) {
     case ZoomLevel::large:
@@ -318,7 +342,7 @@ void Window::decreaseZoomLevel()
     m_signalZoomChanged.emit();
 }
 
-void Window::buildView()
+void AppWindow::buildView()
 {
     if (m_view == nullptr)
         m_buttonZoomIn.set_sensitive(true);
@@ -374,7 +398,7 @@ void Window::buildView()
     });
 }
 
-void Window::onSaveAction()
+void AppWindow::onSaveAction()
 {
     Gtk::FileChooserDialog dialog{*this,
                                   "Save document as",
@@ -400,7 +424,7 @@ void Window::onSaveAction()
     }
 }
 
-void Window::onOpenAction()
+void AppWindow::onOpenAction()
 {
     Gtk::FileChooserDialog dialog{*this,
                                   "Open document",
@@ -415,26 +439,7 @@ void Window::onOpenAction()
     const int result = dialog.run();
 
     if (result == Gtk::RESPONSE_OK) {
-        std::string filePath = dialog.get_filename();
-        m_document = std::make_unique<Slicer::Document>(filePath);
-
-        buildView();
-
-        m_headerBar.set_subtitle(dialog.get_file()->get_basename());
-        m_buttonUndo.set_sensitive(false);
-        m_buttonRedo.set_sensitive(false);
-
-        m_document->commandExecuted().connect([this]() {
-            if (m_document->canUndo())
-                m_buttonUndo.set_sensitive(true);
-            else
-                m_buttonUndo.set_sensitive(false);
-
-            if (m_document->canRedo())
-                m_buttonRedo.set_sensitive(true);
-            else
-                m_buttonRedo.set_sensitive(false);
-        });
+        openDocument(dialog.get_file());
     }
 }
 }
