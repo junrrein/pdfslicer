@@ -13,8 +13,6 @@ AppWindow::AppWindow()
     , m_view{nullptr}
     , m_labelDone{"Saved!"}
 {
-    set_icon_name("edit-cut-symbolic");
-
     // Widget setupb
     set_titlebar(m_headerBar);
     set_size_request(500, 500);
@@ -60,10 +58,10 @@ AppWindow::AppWindow()
     m_boxRemovePages.get_style_context()->add_class("linked");
     m_headerBar.pack_start(m_boxRemovePages);
 
-    m_buttonUndo.set_image_from_icon_name("edit-undo");
+    m_buttonUndo.set_image_from_icon_name("edit-undo-symbolic");
     m_buttonUndo.set_tooltip_text("Undo");
     m_buttonUndo.set_sensitive(false);
-    m_buttonRedo.set_image_from_icon_name("edit-redo");
+    m_buttonRedo.set_image_from_icon_name("edit-redo-symbolic");
     m_buttonRedo.set_tooltip_text("Redo");
     m_buttonRedo.set_sensitive(false);
 
@@ -78,10 +76,10 @@ AppWindow::AppWindow()
     m_buttonPreviewPage.set_sensitive(false);
     m_headerBar.pack_end(m_buttonPreviewPage);
 
-    m_buttonZoomOut.set_image_from_icon_name("zoom-out");
+    m_buttonZoomOut.set_image_from_icon_name("zoom-out-symbolic");
     m_buttonZoomOut.set_tooltip_text("Zoom out");
     m_buttonZoomOut.set_sensitive(false);
-    m_buttonZoomIn.set_image_from_icon_name("zoom-in");
+    m_buttonZoomIn.set_image_from_icon_name("zoom-in-symbolic");
     m_buttonZoomIn.set_tooltip_text("Zoom in");
     m_buttonZoomIn.set_sensitive(false);
     m_boxZoom.pack_start(m_buttonZoomOut);
@@ -93,7 +91,7 @@ AppWindow::AppWindow()
     m_labelDone.set_margin_bottom(10);
     m_labelDone.set_margin_left(15);
     m_labelDone.set_margin_right(7);
-    m_buttonCloseDone.set_image_from_icon_name("window-close");
+    m_buttonCloseDone.set_image_from_icon_name("window-close-symbolic");
     m_buttonCloseDone.get_style_context()->add_class("flat");
     m_buttonCloseDone.set_margin_top(5);
     m_buttonCloseDone.set_margin_bottom(5);

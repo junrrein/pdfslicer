@@ -17,6 +17,8 @@ void Application::on_startup()
 {
     Gtk::Application::on_startup();
 
+    Gtk::Window::set_default_icon_name("edit-cut-symbolic");
+
     add_action("about", sigc::mem_fun(*this, &Application::onActionAbout));
     add_action("quit", sigc::mem_fun(*this, &Application::onActionQuit));
 
