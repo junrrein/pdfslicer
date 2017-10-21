@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=PDF Slicer
-Icon=exampleapp
+Icon=edit-cut-symbolic
 StartupNotify=true
 Exec=${CMAKE_BINARY_DIR}/src/pdfslicer %U
 Categories=GNOME;GTK;Utility
