@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.9)
 
-project(pdfSlicer)
+project(pdfslicer)
 
 find_package (PkgConfig REQUIRED)
 find_package (Threads REQUIRED)
