@@ -2,6 +2,59 @@
 
 namespace Slicer {
 
+RemovePageCommand::RemovePageCommand(const Glib::RefPtr<Gio::ListStore<Page>> pages,
+                                     int position)
+    : m_pages{pages}
+    , m_position{position}
+{
+    m_removedPage = m_pages->get_item(position);
+}
+
+void RemovePageCommand::execute()
+{
+    m_pages->remove(m_position);
+}
+
+void RemovePageCommand::undo()
+{
+    m_pages->insert(m_position, m_removedPage);
+}
+
+void RemovePageCommand::redo()
+{
+    execute();
+}
+
+RemovePageRangeCommand::RemovePageRangeCommand(const Glib::RefPtr<Gio::ListStore<Page>> pages,
+                                               int first,
+                                               int last)
+    : m_pages{pages}
+    , m_first{first}
+    , m_last{last}
+{
+    // Store pages in reversed order, since Gio::ListStore::splice()
+    // inserts them in reversed order.
+    for (int i = last; i >= first; --i)
+        m_removedPages.push_back(m_pages->get_item(i));
+}
+
+void RemovePageRangeCommand::execute()
+{
+    const int nElem = m_last - m_first + 1;
+
+    m_pages->splice(m_first, nElem, {});
+}
+
+void RemovePageRangeCommand::undo()
+{
+    m_pages->splice(m_first, 0, m_removedPages);
+}
+
+void RemovePageRangeCommand::redo()
+{
+    execute();
+}
+
 bool CommandManager::canUndo() const
 {
     return !m_undoStack.empty();
