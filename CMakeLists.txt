@@ -16,7 +16,9 @@ include_directories(${GTKMM_INCLUDE_DIRS})
 include_directories(${POPPLER_INCLUDE_DIRS})
 include_directories(${CAIROMM_INCLUDE_DIRS})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra -Wpedantic -Wshadow -lpng16")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 \
+    -Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wduplicated-branches -Wlogical-op\
+    -lpng16")
 
 # Check for PDFWriter's dependencies
 PKG_CHECK_MODULES(LIBJPEG libjpeg REQUIRED)
