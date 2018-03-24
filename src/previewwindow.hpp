@@ -14,7 +14,7 @@ namespace Slicer {
 class PreviewWindow : public Gtk::Window {
 public:
     PreviewWindow(Glib::RefPtr<Page>& page);
-    virtual ~PreviewWindow(){};
+    virtual ~PreviewWindow();
 
 private:
     enum class ZoomLevel {

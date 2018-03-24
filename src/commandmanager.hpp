@@ -9,7 +9,7 @@ namespace Slicer {
 
 class Command {
 public:
-    virtual ~Command(){};
+    virtual ~Command();
 
     virtual void execute() = 0;
     virtual void undo() = 0;
@@ -51,7 +51,7 @@ using CommandStack = std::stack<std::shared_ptr<Command>>;
 
 class CommandManager {
 public:
-    CommandManager(){};
+    CommandManager() {}
 
     void execute(std::shared_ptr<Command> command);
     void undo();
@@ -60,7 +60,7 @@ public:
     bool canUndo() const;
     bool canRedo() const;
 
-    sigc::signal<void>& commandExecuted() { return m_commandExecuted; };
+    sigc::signal<void>& commandExecuted() { return m_commandExecuted; }
 
 private:
     CommandStack m_undoStack;

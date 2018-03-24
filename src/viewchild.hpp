@@ -15,7 +15,7 @@ public:
     ViewChild(const Glib::RefPtr<Slicer::Page>& page,
               int targetSize,
               ctpl::thread_pool& threadPool);
-    virtual ~ViewChild(){};
+    virtual ~ViewChild();
 
     void renderPage();
     void showPage();

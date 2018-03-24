@@ -8,7 +8,7 @@ namespace Slicer {
 class AboutDialog : public Gtk::AboutDialog {
 public:
     AboutDialog();
-    ~AboutDialog(){};
+    virtual ~AboutDialog();
 };
 
 } // namespace Slicer

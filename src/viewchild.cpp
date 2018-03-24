@@ -27,6 +27,10 @@ ViewChild::ViewChild(const Glib::RefPtr<Page>& page,
     });
 }
 
+ViewChild::~ViewChild()
+{
+}
+
 void ViewChild::renderPage()
 {
     auto pixbuf = m_page->renderPage(m_targetSize);

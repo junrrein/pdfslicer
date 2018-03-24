@@ -84,6 +84,10 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page>& page)
     show_all_children();
 }
 
+PreviewWindow::~PreviewWindow()
+{
+}
+
 void PreviewWindow::increaseZoomLevel()
 {
     switch (m_zoomLevel) {

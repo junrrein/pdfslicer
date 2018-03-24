@@ -9,7 +9,7 @@ namespace Slicer {
 class Application : public Gtk::Application {
 public:
     static Glib::RefPtr<Application> create();
-    ~Application(){};
+    virtual ~Application() override {}
 
 private:
     Application();

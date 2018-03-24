@@ -224,6 +224,10 @@ AppWindow::AppWindow()
     show_all_children();
 }
 
+AppWindow::~AppWindow()
+{
+}
+
 void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
 {
     std::string filePath = file->get_path();

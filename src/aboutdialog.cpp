@@ -11,4 +11,8 @@ AboutDialog::AboutDialog()
     set_license_type(Gtk::LICENSE_GPL_3_0_ONLY);
 }
 
+AboutDialog::~AboutDialog()
+{
+}
+
 } // namespace Slicer
