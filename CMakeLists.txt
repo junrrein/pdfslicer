@@ -9,9 +9,6 @@ pkg_check_modules(GTKMM gtkmm-3.0 REQUIRED)
 pkg_check_modules(POPPLER poppler-glib REQUIRED)
 pkg_check_modules(CAIROMM cairomm-1.0 REQUIRED)
 
-link_directories(${GTKMM_LIBRARY_DIRS})
-link_directories(${POPPLER_LIBRARY_DIRS})
-link_directories(${CAIROMM_LIBRARY_DIRS})
 include_directories(${GTKMM_INCLUDE_DIRS})
 include_directories(${POPPLER_INCLUDE_DIRS})
 include_directories(${CAIROMM_INCLUDE_DIRS})
@@ -26,7 +23,7 @@ PKG_CHECK_MODULES(LIBTIFF libtiff-4 REQUIRED)
 PKG_CHECK_MODULES(LINPNG libpng REQUIRED)
 
 # Don't use PDFWriter's bundled dependencies
-set(USE_BUNDLED OFF)
+set(USE_BUNDLED "FALSE")
 
 add_subdirectory(PDF-Writer)
 add_subdirectory(CTPL)
