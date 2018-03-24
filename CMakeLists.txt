@@ -26,7 +26,7 @@ PKG_CHECK_MODULES(LIBTIFF libtiff-4 REQUIRED)
 PKG_CHECK_MODULES(LINPNG libpng REQUIRED)
 
 # Don't use PDFWriter's bundled dependencies
-set(USE_BUNDLED "FALSE")
+set(USE_BUNDLED OFF)
 
 add_subdirectory(PDF-Writer)
 add_subdirectory(CTPL)
