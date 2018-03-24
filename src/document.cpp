@@ -48,7 +48,7 @@ void Document::saveDocument(std::string filePath) const
         PDFPage* pdfPage = new PDFPage();
         pdfPage->SetMediaBox(PDFRectangle(0, 0, width, height));
 
-        copyingContext->MergePDFPageToPage(pdfPage, page->number());
+        copyingContext->MergePDFPageToPage(pdfPage, static_cast<unsigned>(page->number()));
         pdfWriter.WritePageAndRelease(pdfPage);
     }
 

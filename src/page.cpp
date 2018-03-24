@@ -35,11 +35,11 @@ std::pair<int, int> Page::scaledSize(int targetSize) const
 
     if (realHeight > realWidth) {
         height = targetSize;
-        width = floor(targetSize * (realWidth / realHeight));
+        width = static_cast<int>(floor(targetSize * (realWidth / realHeight)));
     }
     else {
         width = targetSize;
-        height = floor(targetSize * (realHeight / realWidth));
+        height = static_cast<int>(floor(targetSize * (realHeight / realWidth)));
     }
 
     return {width, height};

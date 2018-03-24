@@ -284,7 +284,8 @@ void AppWindow::removeNextPages()
 
     const int index = selected.at(0)->get_index();
 
-    m_document->removePageRange(index + 1, m_document->pages()->get_n_items() - 1);
+    m_document->removePageRange(index + 1,
+                                static_cast<int>(m_document->pages()->get_n_items()) - 1);
 }
 
 Glib::RefPtr<Gtk::FileFilter> pdfFilter()
@@ -304,7 +305,7 @@ void AppWindow::previewPage(int pageNumber)
     // the same document in different threads.
     m_view->waitForRenderCompletion();
 
-    auto page = m_document->pages()->get_item(pageNumber);
+    auto page = m_document->pages()->get_item(static_cast<unsigned>(pageNumber));
     m_previewWindow = std::make_unique<Slicer::PreviewWindow>(page);
 
     m_previewWindow->set_modal();
@@ -368,7 +369,7 @@ void AppWindow::buildView()
     m_buttonSave.set_sensitive(true);
 
     m_view->signal_selected_children_changed().connect([this]() {
-        const int numSelected = m_view->get_selected_children().size();
+        const unsigned long numSelected = m_view->get_selected_children().size();
 
         if (numSelected == 0)
             m_buttonRemovePages.set_sensitive(false);
@@ -379,13 +380,13 @@ void AppWindow::buildView()
             m_buttonRemoveOptions.set_sensitive(true);
             m_buttonPreviewPage.set_sensitive(true);
 
-            const unsigned int index = m_view->get_selected_children().at(0)->get_index();
+            const int index = m_view->get_selected_children().at(0)->get_index();
             if (index == 0)
                 m_buttonRemovePrevious.set_sensitive(false);
             else
                 m_buttonRemovePrevious.set_sensitive(true);
 
-            if (index == m_view->get_children().size() - 1)
+            if (index == static_cast<int>(m_view->get_children().size()) - 1)
                 m_buttonRemoveNext.set_sensitive(false);
             else
                 m_buttonRemoveNext.set_sensitive(true);

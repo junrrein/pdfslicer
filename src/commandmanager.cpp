@@ -7,17 +7,17 @@ RemovePageCommand::RemovePageCommand(const Glib::RefPtr<Gio::ListStore<Page>> pa
     : m_pages{pages}
     , m_position{position}
 {
-    m_removedPage = m_pages->get_item(position);
+    m_removedPage = m_pages->get_item(static_cast<unsigned>(position));
 }
 
 void RemovePageCommand::execute()
 {
-    m_pages->remove(m_position);
+    m_pages->remove(static_cast<unsigned>(m_position));
 }
 
 void RemovePageCommand::undo()
 {
-    m_pages->insert(m_position, m_removedPage);
+    m_pages->insert(static_cast<unsigned>(m_position), m_removedPage);
 }
 
 void RemovePageCommand::redo()
@@ -35,19 +35,21 @@ RemovePageRangeCommand::RemovePageRangeCommand(const Glib::RefPtr<Gio::ListStore
     // Store pages in reversed order, since Gio::ListStore::splice()
     // inserts them in reversed order.
     for (int i = last; i >= first; --i)
-        m_removedPages.push_back(m_pages->get_item(i));
+        m_removedPages.push_back(m_pages->get_item(static_cast<unsigned>(i)));
 }
 
 void RemovePageRangeCommand::execute()
 {
     const int nElem = m_last - m_first + 1;
 
-    m_pages->splice(m_first, nElem, {});
+    m_pages->splice(static_cast<unsigned>(m_first),
+                    static_cast<unsigned>(nElem),
+                    {});
 }
 
 void RemovePageRangeCommand::undo()
 {
-    m_pages->splice(m_first, 0, m_removedPages);
+    m_pages->splice(static_cast<unsigned>(m_first), 0, m_removedPages);
 }
 
 void RemovePageRangeCommand::redo()
