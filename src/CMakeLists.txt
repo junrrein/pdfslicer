@@ -16,6 +16,10 @@ add_executable(pdfslicer
     viewchild.cpp
     previewwindow.hpp
     previewwindow.cpp
+	utils.hpp
+	utils.cpp
+	openfiledialog.hpp
+	openfiledialog.cpp
     window.hpp
     window.cpp)
 

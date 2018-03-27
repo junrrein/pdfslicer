@@ -1,4 +1,6 @@
 #include "window.hpp"
+#include "openfiledialog.hpp"
+#include "utils.hpp"
 #include <glibmm/main.h>
 #include <gtkmm/filechooserdialog.h>
 #include <gtkmm/popovermenu.h>
@@ -288,15 +290,6 @@ void AppWindow::removeNextPages()
                                 static_cast<int>(m_document->pages()->get_n_items()) - 1);
 }
 
-Glib::RefPtr<Gtk::FileFilter> pdfFilter()
-{
-    auto filter = Gtk::FileFilter::create();
-    filter->set_name("PDF documents");
-    filter->add_mime_type("application/pdf");
-
-    return filter;
-}
-
 void AppWindow::previewPage(int pageNumber)
 {
     // We need to wait till the thumbnails finish rendering
@@ -431,15 +424,7 @@ void AppWindow::onSaveAction()
 
 void AppWindow::onOpenAction()
 {
-    Gtk::FileChooserDialog dialog{*this,
-                                  "Open document",
-                                  Gtk::FILE_CHOOSER_ACTION_OPEN};
-    dialog.set_transient_for(*this);
-    dialog.set_select_multiple(false);
-    dialog.set_filter(pdfFilter());
-
-    dialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
-    dialog.add_button("Open", Gtk::RESPONSE_OK);
+    Slicer::OpenFileDialog dialog{*this};
 
     const int result = dialog.run();
 
