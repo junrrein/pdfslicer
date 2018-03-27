@@ -4,7 +4,7 @@ project(LibTiff)
 set(LIBTIFF_INCLUDE_DIRS ${LibTiff_SOURCE_DIR} PARENT_SCOPE)
 set(LIBTIFF_LDFLAGS LibTiff PARENT_SCOPE)
 
-include_directories (${Zlib_SOURCE_DIR})
+#include_directories (${Zlib_SOURCE_DIR})
 
 add_definitions(
 -D_CRT_SECURE_NO_DEPRECATE=1
@@ -65,7 +65,6 @@ tif_warning.c
 tif_write.c
 tif_zip.c
 
-
 #headers
 t4.h
 tiff.h
@@ -79,7 +78,6 @@ tif_dir.h
 tif_fax3.h
 tif_predict.h
 uvcode.h
-
-
-
 )
+
+target_link_libraries(LibTiff ${ZLIB_LIBRARIES})

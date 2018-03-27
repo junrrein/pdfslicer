@@ -2,9 +2,8 @@ cmake_minimum_required(VERSION 3.9)
 
 project(pdfslicer)
 
-find_package (PkgConfig REQUIRED)
 find_package (Threads REQUIRED)
-
+find_package (PkgConfig REQUIRED)
 pkg_check_modules(GTKMM gtkmm-3.0 REQUIRED)
 pkg_check_modules(POPPLER poppler-glib REQUIRED)
 pkg_check_modules(CAIROMM cairomm-1.0 REQUIRED)
@@ -17,13 +16,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 \
     -Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wduplicated-branches -Wlogical-op\
     -lpng16")
 
-# Check for PDFWriter's dependencies
-PKG_CHECK_MODULES(LIBJPEG libjpeg REQUIRED)
-PKG_CHECK_MODULES(LIBTIFF libtiff-4 REQUIRED)
-PKG_CHECK_MODULES(LINPNG libpng REQUIRED)
-
 # Don't use PDFWriter's bundled dependencies
-set(USE_BUNDLED "FALSE")
+set(USE_BUNDLED "Off")
 
 add_subdirectory(PDF-Writer)
 add_subdirectory(CTPL)
