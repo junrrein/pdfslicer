@@ -18,11 +18,10 @@ include_directories(${CAIROMM_INCLUDE_DIRS})
 # (Only a couple of them)
 set(USE_BUNDLED "Off")
 
-add_subdirectory(PDF-Writer)
-add_subdirectory(CTPL)
+add_subdirectory(third-party)
 
-include_directories (${CMAKE_SOURCE_DIR}/PDF-Writer/PDFWriter)
-include_directories (${CMAKE_SOURCE_DIR}/CTPL)
+include_directories (${CMAKE_SOURCE_DIR}/third-party/PDF-Writer/PDFWriter)
+include_directories (${CMAKE_SOURCE_DIR}/third-party/CTPL)
 
 add_subdirectory(src)
 add_subdirectory(data)
