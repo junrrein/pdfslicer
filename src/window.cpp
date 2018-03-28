@@ -256,14 +256,14 @@ void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
 
 void AppWindow::removeSelectedPage()
 {
-    auto child = m_view->get_selected_children().at(0);
+    Gtk::FlowBoxChild* child = m_view->get_selected_children().at(0);
     const int index = child->get_index();
     m_document->removePage(index);
 }
 
 void AppWindow::removePreviousPages()
 {
-    auto selected = m_view->get_selected_children();
+    std::vector<Gtk::FlowBoxChild*> selected = m_view->get_selected_children();
 
     if (selected.size() != 1)
         throw std::runtime_error(
@@ -277,7 +277,7 @@ void AppWindow::removePreviousPages()
 
 void AppWindow::removeNextPages()
 {
-    auto selected = m_view->get_selected_children();
+    std::vector<Gtk::FlowBoxChild*> selected = m_view->get_selected_children();
 
     if (selected.size() != 1)
         throw std::runtime_error(
@@ -298,7 +298,8 @@ void AppWindow::previewPage(int pageNumber)
     // the same document in different threads.
     m_view->waitForRenderCompletion();
 
-    auto page = m_document->pages()->get_item(static_cast<unsigned>(pageNumber));
+    Glib::RefPtr<Slicer::Page> page
+        = m_document->pages()->get_item(static_cast<unsigned>(pageNumber));
     m_previewWindow = std::make_unique<Slicer::PreviewWindow>(page);
 
     m_previewWindow->set_modal();

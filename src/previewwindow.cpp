@@ -11,7 +11,7 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page>& page)
     set_size_request(400, 400);
     set_default_size(900, 600);
 
-    auto pixbuf = m_page->renderPage(static_cast<int>(m_zoomLevel));
+    Glib::RefPtr<Gdk::Pixbuf> pixbuf = m_page->renderPage(static_cast<int>(m_zoomLevel));
     auto image = Gtk::manage(new Gtk::Image);
     image->set(pixbuf);
 
@@ -61,7 +61,7 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page>& page)
     });
 
     m_signalZoomChanged.connect([this]() {
-        auto pixbuf2 = m_page->renderPage(static_cast<int>(m_zoomLevel));
+        Glib::RefPtr<Gdk::Pixbuf> pixbuf2 = m_page->renderPage(static_cast<int>(m_zoomLevel));
         auto image2 = Gtk::manage(new Gtk::Image);
         image2->set(pixbuf2);
 

@@ -43,7 +43,7 @@ void Document::saveDocument(std::string filePath) const
     PDFDocumentCopyingContext* copyingContext = pdfWriter.CreatePDFCopyingContext(m_sourcePath);
 
     for (unsigned int i = 0; i < m_pages->get_n_items(); ++i) {
-        auto page = m_pages->get_item(i);
+        Glib::RefPtr<Slicer::Page> page = m_pages->get_item(i);
 
         double width, height;
         std::tie(width, height) = page->size();

@@ -30,14 +30,13 @@ void Application::on_startup()
 
 void Application::on_activate()
 {
-    auto window = createWindow();
-    window->present();
+    createWindow()->present();
 }
 
 void Application::on_open(const Application::type_vec_files& files,
                           const Glib::ustring&)
 {
-    for (const auto& file : files) {
+    for (const Glib::RefPtr<Gio::File>& file : files) {
         AppWindow* window = createWindow();
         window->openDocument(file);
         window->present();
@@ -51,7 +50,7 @@ void Application::onActionAbout()
 
 void Application::onActionQuit()
 {
-    for (auto window : get_windows())
+    for (Gtk::Window* window : get_windows())
         window->hide();
 }
 

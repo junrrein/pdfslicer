@@ -33,7 +33,7 @@ ViewChild::~ViewChild()
 
 void ViewChild::renderPage()
 {
-    auto pixbuf = m_page->renderPage(m_targetSize);
+    Glib::RefPtr<Gdk::Pixbuf> pixbuf = m_page->renderPage(m_targetSize);
     m_thumbnail.set(pixbuf);
 }
 
