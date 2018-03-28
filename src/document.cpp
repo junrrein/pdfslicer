@@ -11,26 +11,29 @@ Document::Document(std::string filePath)
 {
     Glib::ustring uri = Glib::filename_to_uri(m_sourcePath);
 
-    PopplerDocument* popplerDocument = poppler_document_new_from_file(uri.c_str(),
-                                                                      nullptr,
-                                                                      nullptr);
+    m_popplerDocument = poppler_document_new_from_file(uri.c_str(),
+                                                       nullptr,
+                                                       nullptr);
 
-    if (!popplerDocument)
+    if (!m_popplerDocument)
         throw std::runtime_error("Couldn't load file: " + m_sourcePath);
 
-    const int num_pages = poppler_document_get_n_pages(popplerDocument);
+    const int num_pages = poppler_document_get_n_pages(m_popplerDocument);
     if (num_pages == 0)
         throw std::runtime_error("The file has zero pages");
 
     m_pages = Gio::ListStore<Page>::create();
 
     for (int i = 0; i < num_pages; ++i) {
-        PopplerPage* popplerPage = poppler_document_get_page(popplerDocument, i);
+        PopplerPage* popplerPage = poppler_document_get_page(m_popplerDocument, i);
         auto page = Glib::RefPtr<Page>{new Page{popplerPage}};
         m_pages->append(page);
     }
+}
 
-    g_object_unref(popplerDocument);
+Document::~Document()
+{
+    g_object_unref(m_popplerDocument);
 }
 
 void Document::saveDocument(std::string filePath) const

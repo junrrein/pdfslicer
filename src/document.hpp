@@ -8,6 +8,7 @@ namespace Slicer {
 class Document {
 public:
     Document(std::string filePath);
+    ~Document();
 
     void saveDocument(std::string filePath) const;
     void removePage(int pageNumber);
@@ -22,6 +23,7 @@ public:
     sigc::signal<void>& commandExecuted() { return m_commandManager.commandExecuted(); }
 
 private:
+    PopplerDocument* m_popplerDocument;
     std::string m_sourcePath;
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
     CommandManager m_commandManager;
