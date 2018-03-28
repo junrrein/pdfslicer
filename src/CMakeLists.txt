@@ -32,6 +32,9 @@ target_link_libraries(pdfslicer
     PDFWriter
     CTPL)
 
+set_target_properties(pdfslicer PROPERTIES COMPILE_FLAGS
+	"-Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wduplicated-branches -Wlogical-op")
+
 if (MINGW)
 	set (PDFWRITER_DLL "${CMAKE_BINARY_DIR}/PDF-Writer/PDFWriter/libPDFWriter.dll")
 	set (PDFWRITER_AESGM_DLL "${CMAKE_BINARY_DIR}/PDF-Writer/LibAesgm/libLibAesgm.dll")
