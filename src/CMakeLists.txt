@@ -20,6 +20,8 @@ add_executable(pdfslicer
 	utils.cpp
 	openfiledialog.hpp
 	openfiledialog.cpp
+	savefiledialog.hpp
+	savefiledialog.cpp
     window.hpp
     window.cpp)
 

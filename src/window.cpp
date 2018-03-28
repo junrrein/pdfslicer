@@ -1,6 +1,6 @@
 #include "window.hpp"
 #include "openfiledialog.hpp"
-#include "utils.hpp"
+#include "savefiledialog.hpp"
 #include <glibmm/main.h>
 #include <gtkmm/filechooserdialog.h>
 #include <gtkmm/popovermenu.h>
@@ -398,26 +398,12 @@ void AppWindow::buildView()
 
 void AppWindow::onSaveAction()
 {
-    Gtk::FileChooserDialog dialog{*this,
-                                  "Save document as",
-                                  Gtk::FILE_CHOOSER_ACTION_SAVE};
-    dialog.set_transient_for(*this);
-    dialog.set_current_name("Untitled document");
-    dialog.set_filter(pdfFilter());
-
-    dialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
-    dialog.add_button("Save", Gtk::RESPONSE_OK);
+    Slicer::SaveFileDialog dialog{*this};
 
     const int result = dialog.run();
 
     if (result == Gtk::RESPONSE_OK) {
-        std::string filePath = dialog.get_filename();
-        const Glib::ustring baseName = dialog.get_file()->get_basename();
-
-        if (baseName.find(".pdf") != baseName.size() - 4)
-            filePath += ".pdf";
-
-        m_document->saveDocument(filePath);
+        m_document->saveDocument(dialog.getSavePath());
         m_signalSaved.emit();
     }
 }
