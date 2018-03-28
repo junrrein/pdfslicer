@@ -6,8 +6,8 @@ namespace Slicer {
 View::View(const Slicer::Document& document,
            int targetThumbnailSize)
     : m_document{document}
-    , m_pageRendererPool{new ctpl::thread_pool{1}} // Only one thread - Poppler doesn't handle more
 {
+    m_pageRendererPool = std::make_unique<ctpl::thread_pool>(1); // Only one thread - Poppler doesn't handle more
     set_column_spacing(10);
     set_row_spacing(20);
 
@@ -32,6 +32,6 @@ void View::waitForRenderCompletion()
 
     // thread_pool.stop() makes the pool unusable for later use,
     // so we need to create a new one.
-    m_pageRendererPool.reset(new ctpl::thread_pool{1});
+    m_pageRendererPool = std::make_unique<ctpl::thread_pool>(1);
 }
 }
