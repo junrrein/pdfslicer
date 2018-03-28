@@ -7,7 +7,7 @@ namespace Slicer {
 
 class AboutDialog : public Gtk::AboutDialog {
 public:
-    AboutDialog();
+    AboutDialog(Gtk::Window& parent);
     virtual ~AboutDialog();
 };
 

@@ -46,17 +46,7 @@ void Application::on_open(const Application::type_vec_files& files,
 
 void Application::onActionAbout()
 {
-    auto aboutDialog = new Slicer::AboutDialog{};
-
-    aboutDialog->signal_hide().connect([aboutDialog]() {
-        delete aboutDialog;
-    });
-
-    auto window = get_active_window();
-    aboutDialog->set_transient_for(*window);
-    aboutDialog->set_modal();
-
-    aboutDialog->present();
+    new Slicer::AboutDialog{*get_active_window()};
 }
 
 void Application::onActionQuit()
