@@ -10,6 +10,8 @@ add_executable(pdfslicer
     commandmanager.cpp
     document.hpp
     document.cpp
+	zoomlevel.hpp
+	zoomlevel.cpp
     view.hpp
     view.cpp
     viewchild.hpp

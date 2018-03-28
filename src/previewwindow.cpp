@@ -5,13 +5,13 @@ namespace Slicer {
 
 PreviewWindow::PreviewWindow(Glib::RefPtr<Page>& page)
     : m_page{page}
-    , m_zoomLevel{ZoomLevel::small}
+    , m_zoomLevel{{1000, 1400, 1800}}
 {
     set_title("Preview");
     set_size_request(400, 400);
     set_default_size(900, 600);
 
-    Glib::RefPtr<Gdk::Pixbuf> pixbuf = m_page->renderPage(static_cast<int>(m_zoomLevel));
+    Glib::RefPtr<Gdk::Pixbuf> pixbuf = m_page->renderPage(m_zoomLevel.currentLevel());
     auto image = Gtk::manage(new Gtk::Image);
     image->set(pixbuf);
 
@@ -43,25 +43,25 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page>& page)
     add(m_overlay);
 
     m_buttonZoomOut.signal_clicked().connect([this]() {
-        decreaseZoomLevel();
+        --m_zoomLevel;
 
         m_buttonZoomIn.set_sensitive(true);
 
-        if (m_zoomLevel == ZoomLevel::small)
+        if (m_zoomLevel.currentLevel() == m_zoomLevel.minLevel())
             m_buttonZoomOut.set_sensitive(false);
     });
 
     m_buttonZoomIn.signal_clicked().connect([this]() {
-        increaseZoomLevel();
+        ++m_zoomLevel;
 
         m_buttonZoomOut.set_sensitive(true);
 
-        if (m_zoomLevel == ZoomLevel::large)
+        if (m_zoomLevel.currentLevel() == m_zoomLevel.maxLevel())
             m_buttonZoomIn.set_sensitive(false);
     });
 
-    m_signalZoomChanged.connect([this]() {
-        Glib::RefPtr<Gdk::Pixbuf> pixbuf2 = m_page->renderPage(static_cast<int>(m_zoomLevel));
+    m_zoomLevel.changed.connect([this](int level) {
+        Glib::RefPtr<Gdk::Pixbuf> pixbuf2 = m_page->renderPage(level);
         auto image2 = Gtk::manage(new Gtk::Image);
         image2->set(pixbuf2);
 
@@ -86,40 +86,6 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page>& page)
 
 PreviewWindow::~PreviewWindow()
 {
-}
-
-void PreviewWindow::increaseZoomLevel()
-{
-    switch (m_zoomLevel) {
-    case ZoomLevel::small:
-        m_zoomLevel = ZoomLevel::medium;
-        break;
-
-    case ZoomLevel::medium:
-        m_zoomLevel = ZoomLevel::large;
-        break;
-
-    case ZoomLevel::large:;
-    }
-
-    m_signalZoomChanged.emit();
-}
-
-void PreviewWindow::decreaseZoomLevel()
-{
-    switch (m_zoomLevel) {
-    case ZoomLevel::large:
-        m_zoomLevel = ZoomLevel::medium;
-        break;
-
-    case ZoomLevel::medium:
-        m_zoomLevel = ZoomLevel::small;
-        break;
-
-    case ZoomLevel::small:;
-    }
-
-    m_signalZoomChanged.emit();
 }
 
 } // namespace Slicer

@@ -11,7 +11,7 @@ namespace Slicer {
 
 AppWindow::AppWindow()
     : m_boxMenuRemoveOptions{Gtk::ORIENTATION_VERTICAL}
-    , m_zoomLevel{ZoomLevel::small}
+    , m_zoomLevel{{200, 300, 400}}
     , m_view{nullptr}
     , m_labelDone{"Saved!"}
 {
@@ -163,20 +163,20 @@ AppWindow::AppWindow()
     });
 
     m_buttonZoomOut.signal_clicked().connect([this]() {
-        decreaseZoomLevel();
+        --m_zoomLevel;
 
         m_buttonZoomIn.set_sensitive(true);
 
-        if (m_zoomLevel == ZoomLevel::small)
+        if (m_zoomLevel.currentLevel() == m_zoomLevel.minLevel())
             m_buttonZoomOut.set_sensitive(false);
     });
 
     m_buttonZoomIn.signal_clicked().connect([this]() {
-        increaseZoomLevel();
+        ++m_zoomLevel;
 
         m_buttonZoomOut.set_sensitive(true);
 
-        if (m_zoomLevel == ZoomLevel::large)
+        if (m_zoomLevel.currentLevel() == m_zoomLevel.maxLevel())
             m_buttonZoomIn.set_sensitive(false);
     });
 
@@ -198,7 +198,7 @@ AppWindow::AppWindow()
                                                            5000);
     });
 
-    m_signalZoomChanged.connect([this]() {
+    m_zoomLevel.changed.connect([this](int) {
         buildView();
     });
 
@@ -307,40 +307,6 @@ void AppWindow::previewPage(int pageNumber)
     m_previewWindow->show();
 }
 
-void AppWindow::increaseZoomLevel()
-{
-    switch (m_zoomLevel) {
-    case ZoomLevel::small:
-        m_zoomLevel = ZoomLevel::medium;
-        break;
-
-    case ZoomLevel::medium:
-        m_zoomLevel = ZoomLevel::large;
-        break;
-
-    case ZoomLevel::large:;
-    }
-
-    m_signalZoomChanged.emit();
-}
-
-void AppWindow::decreaseZoomLevel()
-{
-    switch (m_zoomLevel) {
-    case ZoomLevel::large:
-        m_zoomLevel = ZoomLevel::medium;
-        break;
-
-    case ZoomLevel::medium:
-        m_zoomLevel = ZoomLevel::small;
-        break;
-
-    case ZoomLevel::small:;
-    }
-
-    m_signalZoomChanged.emit();
-}
-
 void AppWindow::buildView()
 {
     if (m_view == nullptr)
@@ -355,7 +321,7 @@ void AppWindow::buildView()
     // Poppler doesn't like two threads rendering pages from the same PDF, so this
     // would crash the program.
     m_view.reset();
-    m_view = std::make_unique<Slicer::View>(*m_document, static_cast<int>(m_zoomLevel));
+    m_view = std::make_unique<Slicer::View>(*m_document, m_zoomLevel.currentLevel());
 
     m_scroller.add(*m_view);
     m_scroller.show_all_children();
