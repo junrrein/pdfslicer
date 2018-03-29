@@ -14,10 +14,6 @@ include_directories(${GTKMM_INCLUDE_DIRS})
 include_directories(${POPPLER_INCLUDE_DIRS})
 include_directories(${CAIROMM_INCLUDE_DIRS})
 
-# Don't use PDFWriter's bundled dependencies
-# (Only a couple of them)
-set(USE_BUNDLED "Off")
-
 add_subdirectory(third-party)
 
 include_directories (${CMAKE_SOURCE_DIR}/third-party/PDF-Writer/PDFWriter)
