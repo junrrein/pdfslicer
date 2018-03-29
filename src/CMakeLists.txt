@@ -32,11 +32,16 @@ target_link_libraries(pdfslicer
     ${CAIROMM_LIBRARIES}
     ${POPPLER_LIBRARIES}
     PDFWriter
-    CTPL)
+	CTPL)
 
-if (CMAKE_CXX_COMPILER_ID EQUAL GNU)
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
+		AND
+		CMAKE_BUILD_TYPE STREQUAL "Debug")
 	set_target_properties(pdfslicer PROPERTIES COMPILE_FLAGS
-		"-Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wduplicated-branches -Wlogical-op")
+		"-fno-omit-frame-pointer -fsanitize=address -fsanitize=undefined \
+		-Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wduplicated-branches -Wlogical-op")
+	set_target_properties(pdfslicer PROPERTIES LINK_FLAGS
+		"-lasan -lubsan")
 endif()
 
 if (MINGW)
