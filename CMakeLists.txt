@@ -19,5 +19,8 @@ add_subdirectory(third-party)
 include_directories (${CMAKE_SOURCE_DIR}/third-party/PDF-Writer/PDFWriter)
 include_directories (${CMAKE_SOURCE_DIR}/third-party/CTPL)
 
+include (InstallRequiredSystemLibraries)
+include (CPack)
+
 add_subdirectory(src)
 add_subdirectory(data)

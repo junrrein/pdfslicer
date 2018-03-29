@@ -377,17 +377,6 @@ target_link_libraries(PDFWriter
 	${PNG_LIBRARIES})
 set_target_properties(PDFWriter PROPERTIES VERSION ${PDFWRITER_LIB_VERSION} SOVERSION ${PDFWRITER_SO_VERSION})
 
-install(TARGETS PDFWriter
-    RUNTIME DESTINATION bin COMPONENT libraries
-    ARCHIVE DESTINATION lib${LIB_SUFFIX} COMPONENT libraries
-    LIBRARY DESTINATION lib${LIB_SUFFIX} COMPONENT libraries
-)
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    DESTINATION include
-    FILES_MATCHING
-    PATTERN "*.h"
-)
-
 # groups definitions
 source_group("Document Context Level" FILES
 AbstractContentContext.cpp
