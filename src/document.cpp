@@ -1,5 +1,8 @@
 #include "document.hpp"
 #include <glibmm/convert.h>
+#include <glibmm/fileutils.h>
+#include <glibmm/miscutils.h>
+#include <giomm/file.h>
 #include <PDFWriter.h>
 #include <PDFPage.h>
 #include <PDFDocumentCopyingContext.h>
@@ -36,14 +39,26 @@ Document::~Document()
     g_object_unref(m_popplerDocument);
 }
 
-void Document::saveDocument(std::string filePath) const
+std::string getTempFilePath()
+{
+    const std::string tempDirectory = Glib::get_tmp_dir();
+    const std::string tempFileName = "pdfslicer-temp.pdf";
+    const std::vector<std::string> pathParts = {tempDirectory, tempFileName};
+    const std::string tempFilePath = Glib::build_filename(pathParts);
+
+    return tempFilePath;
+}
+
+void makePDFCopy(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
+                 const std::string& sourcePath,
+                 const std::string& destinationPath)
 {
     PDFWriter pdfWriter;
-    pdfWriter.StartPDF(filePath, ePDFVersion13);
-    PDFDocumentCopyingContext* copyingContext = pdfWriter.CreatePDFCopyingContext(m_sourcePath);
+    pdfWriter.StartPDF(destinationPath, ePDFVersionMax);
+    PDFDocumentCopyingContext* copyingContext = pdfWriter.CreatePDFCopyingContext(sourcePath);
 
-    for (unsigned int i = 0; i < m_pages->get_n_items(); ++i) {
-        Glib::RefPtr<Slicer::Page> page = m_pages->get_item(i);
+    for (unsigned int i = 0; i < pages->get_n_items(); ++i) {
+        Glib::RefPtr<Slicer::Page> page = pages->get_item(i);
 
         double width, height;
         std::tie(width, height) = page->size();
@@ -57,6 +72,17 @@ void Document::saveDocument(std::string filePath) const
 
     pdfWriter.EndPDF();
     delete copyingContext;
+}
+
+void Document::saveDocument(std::string destinationPath) const
+{
+    const std::string tempFilePath = getTempFilePath();
+
+    makePDFCopy(m_pages, m_sourcePath, getTempFilePath());
+
+    auto oldFile = Gio::File::create_for_path(destinationPath);
+    auto newFile = Gio::File::create_for_path(tempFilePath);
+    newFile->move(oldFile, Gio::FILE_COPY_OVERWRITE);
 }
 
 void Document::removePage(int pageNumber)

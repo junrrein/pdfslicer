@@ -3,14 +3,15 @@
 
 namespace Slicer {
 
-SaveFileDialog::SaveFileDialog(Gtk::Window &parent)
-	: Gtk::FileChooserDialog{parent,
-							 "Save Document As",
-							 Gtk::FILE_CHOOSER_ACTION_SAVE}
+SaveFileDialog::SaveFileDialog(Gtk::Window& parent)
+    : Gtk::FileChooserDialog{parent,
+                             "Save Document As",
+                             Gtk::FILE_CHOOSER_ACTION_SAVE}
 {
 	set_transient_for(parent);
 	set_current_name("Untitled document");
 	set_filter(pdfFilter());
+    set_do_overwrite_confirmation();
 
 	add_button("Cancel", Gtk::RESPONSE_CANCEL);
 	add_button("Save", Gtk::RESPONSE_OK);
