@@ -2,9 +2,9 @@
 
 namespace Slicer {
 
-RemovePageCommand::RemovePageCommand(const Glib::RefPtr<Gio::ListStore<Page>> pages,
+RemovePageCommand::RemovePageCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
                                      int position)
-    : m_pages{pages}
+    : m_pages{std::move(pages)}
     , m_position{position}
 {
     m_removedPage = m_pages->get_item(static_cast<unsigned>(position));
@@ -25,10 +25,10 @@ void RemovePageCommand::redo()
     execute();
 }
 
-RemovePageRangeCommand::RemovePageRangeCommand(const Glib::RefPtr<Gio::ListStore<Page>> pages,
+RemovePageRangeCommand::RemovePageRangeCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
                                                int first,
                                                int last)
-    : m_pages{pages}
+    : m_pages{std::move(pages)}
     , m_first{first}
     , m_last{last}
 {
@@ -67,7 +67,7 @@ bool CommandManager::canRedo() const
     return !m_redoStack.empty();
 }
 
-void CommandManager::execute(std::shared_ptr<Command> command)
+void CommandManager::execute(const std::shared_ptr<Command>& command)
 {
     m_redoStack = CommandStack{};
     command->execute();

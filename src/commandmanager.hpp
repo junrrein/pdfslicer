@@ -18,7 +18,7 @@ public:
 
 class RemovePageCommand : public Command {
 public:
-    RemovePageCommand(const Glib::RefPtr<Gio::ListStore<Page>> pages,
+    RemovePageCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
                       int position);
 
     void execute() override;
@@ -33,7 +33,7 @@ private:
 
 class RemovePageRangeCommand : public Command {
 public:
-    RemovePageRangeCommand(const Glib::RefPtr<Gio::ListStore<Page>> pages,
+    RemovePageRangeCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
                            int first,
                            int last);
 
@@ -53,7 +53,7 @@ class CommandManager {
 public:
     CommandManager() {}
 
-    void execute(std::shared_ptr<Command> command);
+    void execute(const std::shared_ptr<Command>& command);
     void undo();
     void redo();
 
