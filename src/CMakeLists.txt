@@ -1,15 +1,3 @@
-find_program(
-  CLANG_TIDY_EXE
-  NAMES "clang-tidy"
-  DOC "Path to clang-tidy executable"
-  )
-if(NOT CLANG_TIDY_EXE)
-  message(STATUS "clang-tidy not found.")
-else()
-  message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")
-  set(DO_CLANG_TIDY "${CLANG_TIDY_EXE}" "-config=")
-endif()
-
 add_executable(pdfslicer
     main.cpp
     application.hpp
@@ -47,12 +35,6 @@ target_link_libraries(pdfslicer
 	CTPL)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-	if (CLANG_TIDY_EXE)
-	  set_target_properties(
-		pdfslicer PROPERTIES
-		CXX_CLANG_TIDY "${DO_CLANG_TIDY}")
-	endif()
-
 	if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 		set_target_properties(pdfslicer PROPERTIES COMPILE_FLAGS
 			"-fno-omit-frame-pointer -fsanitize=address -fsanitize=undefined \
