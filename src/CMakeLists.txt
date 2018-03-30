@@ -46,20 +46,20 @@ target_link_libraries(pdfslicer
     PDFWriter
 	CTPL)
 
-if (CLANG_TIDY_EXE)
-  set_target_properties(
-	pdfslicer PROPERTIES
-	CXX_CLANG_TIDY "${DO_CLANG_TIDY}")
-endif()
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+	if (CLANG_TIDY_EXE)
+	  set_target_properties(
+		pdfslicer PROPERTIES
+		CXX_CLANG_TIDY "${DO_CLANG_TIDY}")
+	endif()
 
-if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
-		AND
-		CMAKE_BUILD_TYPE STREQUAL "Debug")
-	set_target_properties(pdfslicer PROPERTIES COMPILE_FLAGS
-		"-fno-omit-frame-pointer -fsanitize=address -fsanitize=undefined \
-		-Wall -Wextra -Wpedantic -Wshadow")
-	set_target_properties(pdfslicer PROPERTIES LINK_FLAGS
-		"-lasan -lubsan")
+	if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+		set_target_properties(pdfslicer PROPERTIES COMPILE_FLAGS
+			"-fno-omit-frame-pointer -fsanitize=address -fsanitize=undefined \
+			-Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wduplicated-branches -Wlogical-op")
+		set_target_properties(pdfslicer PROPERTIES LINK_FLAGS
+			"-lasan -lubsan")
+	endif()
 endif()
 
 if (MINGW)

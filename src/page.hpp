@@ -18,7 +18,7 @@ public:
     Glib::RefPtr<Gdk::Pixbuf> renderPage(int targetSize) const;
 
 private:
-    const PopplerPage* m_ppage;
+    PopplerPage* m_ppage;
 };
 
 } // namespace Slicer

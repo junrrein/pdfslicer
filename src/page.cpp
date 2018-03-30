@@ -10,18 +10,18 @@ Page::Page(PopplerPage* ppage)
 
 Page::~Page()
 {
-    g_object_unref(const_cast<PopplerPage*>(m_ppage));
+    g_object_unref(m_ppage);
 }
 
 int Page::number() const
 {
-    return poppler_page_get_index(const_cast<PopplerPage*>(m_ppage));
+    return poppler_page_get_index(m_ppage);
 }
 
 std::pair<int, int> Page::size() const
 {
     double width = 0, height = 0;
-    poppler_page_get_size(const_cast<PopplerPage*>(m_ppage), &width, &height);
+    poppler_page_get_size(m_ppage, &width, &height);
 
     return {width, height};
 }
@@ -71,7 +71,7 @@ Glib::RefPtr<Gdk::Pixbuf> Page::renderPage(int targetSize) const
     cr->scale(scale, scale);
 
     // Render page
-    poppler_page_render(const_cast<PopplerPage*>(m_ppage), cr->cobj());
+    poppler_page_render(m_ppage, cr->cobj());
 
     // Scale back and paint a black outline
     cr->scale(1 / scale, 1 / scale);
