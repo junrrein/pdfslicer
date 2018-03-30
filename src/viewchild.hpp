@@ -12,10 +12,10 @@ namespace Slicer {
 
 class ViewChild : public Gtk::Box {
 public:
-    ViewChild(const Glib::RefPtr<Slicer::Page>& page,
+    ViewChild(Glib::RefPtr<Page> page,
               int targetSize,
               ctpl::thread_pool& threadPool);
-    virtual ~ViewChild();
+    virtual ~ViewChild() = default;
 
     void renderPage();
     void showPage();

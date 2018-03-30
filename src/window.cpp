@@ -123,7 +123,7 @@ AppWindow::AppWindow()
     m_overlay.add(m_scroller);
     m_overlay.add_overlay(m_revealerDone);
 
-    add(m_overlay);
+    add(m_overlay); // NOLINT
 
     // Signal handlers
     m_buttonOpen.signal_clicked().connect([this]() {
@@ -224,10 +224,6 @@ AppWindow::AppWindow()
                                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
     show_all_children();
-}
-
-AppWindow::~AppWindow()
-{
 }
 
 void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)

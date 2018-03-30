@@ -10,7 +10,7 @@ public:
     Document(std::string filePath);
     ~Document();
 
-    void saveDocument(std::string destinationPath) const;
+    void saveDocument(const std::string& destinationPath) const;
     void removePage(int pageNumber);
     void removePageRange(int first, int last);
     void undoCommand() { m_commandManager.undo(); }

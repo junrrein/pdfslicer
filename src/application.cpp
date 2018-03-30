@@ -34,7 +34,7 @@ void Application::on_activate()
 }
 
 void Application::on_open(const Application::type_vec_files& files,
-                          const Glib::ustring&)
+                          __attribute__((unused)) const Glib::ustring& hint)
 {
     for (const Glib::RefPtr<Gio::File>& file : files) {
         AppWindow* window = createWindow();

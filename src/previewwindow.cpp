@@ -40,7 +40,7 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page>& page)
     m_scroller.add(*image);
     m_overlay.add(m_scroller);
     m_overlay.add_overlay(m_boxZoom);
-    add(m_overlay);
+    add(m_overlay); // NOLINT
 
     m_buttonZoomOut.signal_clicked().connect([this]() {
         --m_zoomLevel;
@@ -82,10 +82,6 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page>& page)
                                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
     show_all_children();
-}
-
-PreviewWindow::~PreviewWindow()
-{
 }
 
 } // namespace Slicer

@@ -10,7 +10,7 @@
 namespace Slicer {
 
 Document::Document(std::string filePath)
-    : m_sourcePath{filePath}
+    : m_sourcePath{std::move(filePath)}
 {
     Glib::ustring uri = Glib::filename_to_uri(m_sourcePath);
 
@@ -18,7 +18,7 @@ Document::Document(std::string filePath)
                                                        nullptr,
                                                        nullptr);
 
-    if (!m_popplerDocument)
+    if (m_popplerDocument == nullptr)
         throw std::runtime_error("Couldn't load file: " + m_sourcePath);
 
     const int num_pages = poppler_document_get_n_pages(m_popplerDocument);
@@ -63,7 +63,7 @@ void makePDFCopy(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
         double width, height;
         std::tie(width, height) = page->size();
 
-        PDFPage* pdfPage = new PDFPage();
+        auto pdfPage = new PDFPage{};
         pdfPage->SetMediaBox(PDFRectangle(0, 0, width, height));
 
         copyingContext->MergePDFPageToPage(pdfPage, static_cast<unsigned>(page->number()));
@@ -74,7 +74,7 @@ void makePDFCopy(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
     delete copyingContext;
 }
 
-void Document::saveDocument(std::string destinationPath) const
+void Document::saveDocument(const std::string& destinationPath) const
 {
     const std::string tempFilePath = getTempFilePath();
 

@@ -20,8 +20,4 @@ AboutDialog::AboutDialog(Gtk::Window& parent)
     present();
 }
 
-AboutDialog::~AboutDialog()
-{
-}
-
 } // namespace Slicer

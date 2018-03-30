@@ -2,10 +2,10 @@
 
 namespace Slicer {
 
-ViewChild::ViewChild(const Glib::RefPtr<Page>& page,
+ViewChild::ViewChild(Glib::RefPtr<Page> page,
                      int targetSize,
                      ctpl::thread_pool& threadPool)
-    : m_page{page}
+    : m_page{std::move(page)}
     , m_targetSize{targetSize}
 {
     int width, height;
@@ -25,10 +25,6 @@ ViewChild::ViewChild(const Glib::RefPtr<Page>& page,
         renderPage();
         m_signalRendered.emit();
     });
-}
-
-ViewChild::~ViewChild()
-{
 }
 
 void ViewChild::renderPage()

@@ -20,7 +20,7 @@ namespace Slicer {
 class AppWindow : public Gtk::ApplicationWindow {
 public:
     AppWindow();
-    virtual ~AppWindow();
+    virtual ~AppWindow() = default;
 
     void openDocument(const Glib::RefPtr<Gio::File>& file);
 

@@ -93,8 +93,4 @@ void CommandManager::redo()
 
     m_commandExecuted.emit();
 }
-
-Command::~Command()
-{
-}
 }

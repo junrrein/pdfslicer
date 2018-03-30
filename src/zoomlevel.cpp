@@ -13,7 +13,7 @@ ZoomLevel::ZoomLevel(const std::set<int>& levels)
     : m_levels{levels}
     , m_currentLevel{*levels.begin()}
 {
-    if (m_levels.size() == 0)
+    if (m_levels.empty())
         throw std::runtime_error("There has to be at least one zoom level");
 
     if (std::any_of(m_levels.begin(), m_levels.end(), isNonPositive))
