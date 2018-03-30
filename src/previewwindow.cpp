@@ -3,7 +3,7 @@
 
 namespace Slicer {
 
-PreviewWindow::PreviewWindow(Glib::RefPtr<Page>& page)
+PreviewWindow::PreviewWindow(const Glib::RefPtr<Page>& page)
     : m_page{page}
     , m_zoomLevel{{1000, 1400, 1800}}
 {
