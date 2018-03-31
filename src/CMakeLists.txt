@@ -38,13 +38,6 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
 	if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 		set_target_properties(pdfslicer PROPERTIES COMPILE_FLAGS
 			"-Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wduplicated-branches -Wlogical-op")
-
-		if (NOT MINGW)
-			set_target_properties(pdfslicer PROPERTIES COMPILE_FLAGS
-				"-fno-omit-frame-pointer -fsanitize=address -fsanitize=undefined")
-			set_target_properties(pdfslicer PROPERTIES LINK_FLAGS
-				"-lasan -lubsan")
-		endif()
 	endif()
 endif()
 
