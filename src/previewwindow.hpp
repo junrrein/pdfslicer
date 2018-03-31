@@ -19,6 +19,7 @@ public:
 
 private:
     Glib::RefPtr<Page> m_page;
+    Gtk::Image m_image;
     Gtk::ScrolledWindow m_scroller;
     Gtk::Overlay m_overlay;
     Gtk::Button m_buttonZoomIn;

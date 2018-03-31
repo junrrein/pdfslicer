@@ -11,10 +11,6 @@ PreviewWindow::PreviewWindow(const Glib::RefPtr<Page>& page)
     set_size_request(400, 400);
     set_default_size(900, 600);
 
-    Glib::RefPtr<Gdk::Pixbuf> pixbuf = m_page->renderPage(m_zoomLevel.currentLevel());
-    auto image = Gtk::manage(new Gtk::Image);
-    image->set(pixbuf);
-
     m_buttonZoomOut.set_image_from_icon_name("zoom-out-symbolic");
     m_buttonZoomOut.set_tooltip_text("Zoom out");
     m_buttonZoomOut.get_style_context()->add_class("flat");
@@ -37,7 +33,8 @@ PreviewWindow::PreviewWindow(const Glib::RefPtr<Page>& page)
     m_boxZoom.set_margin_bottom(15);
     m_boxZoom.set_margin_right(15);
 
-    m_scroller.add(*image);
+    m_image.set(m_page->renderPage(m_zoomLevel.currentLevel()));
+    m_scroller.add(m_image);
     m_overlay.add(m_scroller);
     m_overlay.add_overlay(m_boxZoom);
     add(m_overlay); // NOLINT
@@ -60,14 +57,8 @@ PreviewWindow::PreviewWindow(const Glib::RefPtr<Page>& page)
             m_buttonZoomIn.set_sensitive(false);
     });
 
-    m_zoomLevel.changed.connect([this](int level) {
-        Glib::RefPtr<Gdk::Pixbuf> pixbuf2 = m_page->renderPage(level);
-        auto image2 = Gtk::manage(new Gtk::Image);
-        image2->set(pixbuf2);
-
-        m_scroller.remove();
-        m_scroller.add(*image2);
-        image2->show();
+    m_zoomLevel.changed.connect([&](int level) {
+        m_image.set(m_page->renderPage(level));
     });
 
     auto screen = Gdk::Screen::get_default();
