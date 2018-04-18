@@ -60,7 +60,8 @@ void makePDFCopy(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
     for (unsigned int i = 0; i < pages->get_n_items(); ++i) {
         Glib::RefPtr<Slicer::Page> page = pages->get_item(i);
 
-        const auto[width, height] = page->size();
+        double width, height;
+        std::tie(width, height) = page->size();
 
         auto pdfPage = new PDFPage{};
         pdfPage->SetMediaBox(PDFRectangle(0, 0, width, height));
