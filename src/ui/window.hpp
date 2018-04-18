@@ -5,16 +5,14 @@
 #include "previewwindow.hpp"
 #include "zoomlevel.hpp"
 #include "welcomescreen.hpp"
+#include "headerbar.hpp"
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/scrolledwindow.h>
-#include <gtkmm/headerbar.h>
 #include <gtkmm/button.h>
 #include <gtkmm/overlay.h>
 #include <gtkmm/revealer.h>
 #include <gtkmm/label.h>
 #include <gtkmm/box.h>
-#include <gtkmm/modelbutton.h>
-#include <gtkmm/menubutton.h>
 
 namespace Slicer {
 
@@ -29,27 +27,12 @@ private:
     // Model
     std::unique_ptr<Slicer::Document> m_document;
 
-    // Header bar
-    Gtk::HeaderBar m_headerBar;
-    Gtk::Button m_buttonOpen;
-    Gtk::Button m_buttonSave;
-    Gtk::Box m_boxRemovePages;
-    Gtk::Button m_buttonRemovePages;
-    Gtk::MenuButton m_buttonRemoveOptions;
-    Gtk::Box m_boxMenuRemoveOptions;
-    Gtk::ModelButton m_buttonRemovePrevious;
-    Gtk::ModelButton m_buttonRemoveNext;
-    Gtk::Button m_buttonUndo;
-    Gtk::Button m_buttonRedo;
-    Gtk::Button m_buttonPreviewPage;
-    Gtk::Button m_buttonZoomOut;
-    Gtk::Button m_buttonZoomIn;
-    Gtk::Box m_boxZoom;
+    HeaderBar m_headerBar;
     WelcomeScreen m_welcomeScreen;
-    ZoomLevel m_zoomLevel;
 
     // View
     std::unique_ptr<Slicer::View> m_view;
+    ZoomLevel m_zoomLevel;
     static const std::set<int> zoomLevels;
     Gtk::ScrolledWindow m_scroller;
     Gtk::Overlay m_overlay;

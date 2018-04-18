@@ -11,6 +11,8 @@ set (SLICER_UI_SOURCES
 	ui/aboutdialog.cpp
 	ui/application.hpp
 	ui/application.cpp
+	ui/headerbar.hpp
+	ui/headerbar.cpp
 	ui/openfiledialog.hpp
 	ui/openfiledialog.cpp
 	ui/previewwindow.hpp
