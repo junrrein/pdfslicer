@@ -67,10 +67,10 @@ AppWindow::AppWindow()
 
     m_buttonUndo.set_image_from_icon_name("edit-undo-symbolic");
     m_buttonUndo.set_tooltip_text("Undo");
-    m_buttonUndo.set_sensitive(false);
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonUndo.gobj()), "win.undo");
     m_buttonRedo.set_image_from_icon_name("edit-redo-symbolic");
     m_buttonRedo.set_tooltip_text("Redo");
-    m_buttonRedo.set_sensitive(false);
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRedo.gobj()), "win.redo");
 
     auto undoBox = Gtk::manage(new Gtk::Box);
     undoBox->get_style_context()->add_class("linked");
@@ -131,16 +131,6 @@ AppWindow::AppWindow()
     add(m_overlay); // NOLINT
 
     // Signal handlers
-    m_buttonUndo.signal_clicked().connect([this]() {
-        m_view->waitForRenderCompletion();
-        m_document->undoCommand();
-    });
-
-    m_buttonRedo.signal_clicked().connect([this]() {
-        m_view->waitForRenderCompletion();
-        m_document->redoCommand();
-    });
-
     m_buttonCloseDone.signal_clicked().connect([this]() {
         m_revealerDone.set_reveal_child(false);
     });
@@ -198,17 +188,7 @@ void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
     m_buttonUndo.set_sensitive(false);
     m_buttonRedo.set_sensitive(false);
 
-    m_document->commandExecuted().connect([this]() {
-        if (m_document->canUndo())
-            m_buttonUndo.set_sensitive(true);
-        else
-            m_buttonUndo.set_sensitive(false);
-
-        if (m_document->canRedo())
-            m_buttonRedo.set_sensitive(true);
-        else
-            m_buttonRedo.set_sensitive(false);
-    });
+    m_document->commandExecuted().connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
 
     m_saveAction->set_enabled();
 }
@@ -223,6 +203,8 @@ void AppWindow::addActions()
     m_previewPageAction = add_action("preview-selected", sigc::mem_fun(*this, &AppWindow::previewPage));
     m_zoomInAction = add_action("zoom-in", sigc::mem_fun(*this, &AppWindow::onZoomInAction));
     m_zoomOutAction = add_action("zoom-out", sigc::mem_fun(*this, &AppWindow::onZoomOutAction));
+    m_undoAction = add_action("undo", sigc::mem_fun(*this, &AppWindow::onUndoAction));
+    m_redoAction = add_action("redo", sigc::mem_fun(*this, &AppWindow::onRedoAction));
 
     m_saveAction->set_enabled(false);
     m_removeSelectedAction->set_enabled(false);
@@ -231,6 +213,8 @@ void AppWindow::addActions()
     m_previewPageAction->set_enabled(false);
     m_zoomInAction->set_enabled(false);
     m_zoomOutAction->set_enabled(false);
+    m_undoAction->set_enabled(false);
+    m_redoAction->set_enabled(false);
 }
 
 void AppWindow::removeSelectedPage()
@@ -394,5 +378,30 @@ void AppWindow::onZoomLevelChanged()
 {
     manageZoomActionsState();
     buildView();
+}
+
+void AppWindow::onUndoAction()
+{
+    m_view->waitForRenderCompletion();
+    m_document->undoCommand();
+}
+
+void AppWindow::onRedoAction()
+{
+    m_view->waitForRenderCompletion();
+    m_document->redoCommand();
+}
+
+void AppWindow::onCommandExecuted()
+{
+    if (m_document->canUndo())
+        m_undoAction->set_enabled();
+    else
+        m_undoAction->set_enabled(false);
+
+    if (m_document->canRedo())
+        m_redoAction->set_enabled();
+    else
+        m_redoAction->set_enabled(false);
 }
 }

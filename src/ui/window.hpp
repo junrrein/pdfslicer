@@ -72,6 +72,8 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_previewPageAction;
     Glib::RefPtr<Gio::SimpleAction> m_zoomInAction;
     Glib::RefPtr<Gio::SimpleAction> m_zoomOutAction;
+    Glib::RefPtr<Gio::SimpleAction> m_undoAction;
+    Glib::RefPtr<Gio::SimpleAction> m_redoAction;
 
     // Functions
     void addActions();
@@ -88,6 +90,9 @@ private:
     void onZoomInAction();
     void onZoomOutAction();
     void onZoomLevelChanged();
+    void onUndoAction();
+    void onRedoAction();
+    void onCommandExecuted();
 };
 }
 
