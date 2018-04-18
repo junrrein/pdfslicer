@@ -160,18 +160,11 @@ AppWindow::AppWindow()
 
 void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
 {
-    std::string filePath = file->get_path();
-    m_document = std::make_unique<Slicer::Document>(filePath);
-
-    buildView();
-
-    m_headerBar.set_subtitle(file->get_basename());
-    m_buttonUndo.set_sensitive(false);
-    m_buttonRedo.set_sensitive(false);
-
+    m_document = std::make_unique<Slicer::Document>(file->get_path());
     m_document->commandExecuted().connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
-
+    m_headerBar.set_subtitle(file->get_basename());
     m_saveAction->set_enabled();
+    buildView();
 }
 
 void AppWindow::addActions()
