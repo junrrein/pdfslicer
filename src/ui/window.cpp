@@ -15,7 +15,9 @@ AppWindow::AppWindow()
     , m_view{nullptr}
     , m_labelDone{"Saved!"}
 {
-    // Widget setupb
+    addActions();
+
+    // Widget setup
     set_titlebar(m_headerBar);
     set_size_request(500, 500);
     set_default_size(800, 600);
@@ -25,20 +27,23 @@ AppWindow::AppWindow()
 
     m_buttonOpen.set_image_from_icon_name("document-open-symbolic");
     m_buttonOpen.set_tooltip_text("Open document...");
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonOpen.gobj()), "win.open-document");
     m_headerBar.pack_start(m_buttonOpen);
 
     m_buttonSave.set_image_from_icon_name("document-save-symbolic");
     m_buttonSave.set_tooltip_text("Save as...");
-    m_buttonSave.set_sensitive(false);
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonSave.gobj()), "win.save-document");
     m_headerBar.pack_start(m_buttonSave);
 
     m_buttonRemovePages.set_image_from_icon_name("edit-delete-symbolic");
     m_buttonRemovePages.set_tooltip_text("Remove the selected page");
-    m_buttonRemovePages.set_sensitive(false);
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePages.gobj()), "win.remove-selected");
     m_boxRemovePages.pack_start(m_buttonRemovePages);
 
     m_buttonRemovePrevious.set_label("Remove previous pages");
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePrevious.gobj()), "win.remove-previous");
     m_buttonRemoveNext.set_label("Remove next pages");
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemoveNext.gobj()), "win.remove-next");
 
     m_boxMenuRemoveOptions.pack_start(m_buttonRemovePrevious);
     m_boxMenuRemoveOptions.pack_start(m_buttonRemoveNext);
@@ -126,27 +131,6 @@ AppWindow::AppWindow()
     add(m_overlay); // NOLINT
 
     // Signal handlers
-    m_buttonOpen.signal_clicked().connect([this]() {
-        onOpenAction();
-    });
-
-    m_buttonSave.signal_clicked().connect([this]() {
-        onSaveAction();
-    });
-
-    m_buttonRemovePages.signal_clicked().connect([this]() {
-        removeSelectedPage();
-    });
-
-    m_buttonRemovePrevious.signal_clicked().connect([this]() {
-        removePreviousPages();
-        m_scroller.get_vadjustment()->set_value(0);
-    });
-
-    m_buttonRemoveNext.signal_clicked().connect([this]() {
-        removeNextPages();
-    });
-
     m_buttonUndo.signal_clicked().connect([this]() {
         m_view->waitForRenderCompletion();
         m_document->undoCommand();
@@ -248,6 +232,27 @@ void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
         else
             m_buttonRedo.set_sensitive(false);
     });
+
+    m_saveAction->set_enabled();
+}
+
+void AppWindow::addActions()
+{
+    m_openAction = add_action("open-document", sigc::mem_fun(*this, &AppWindow::onOpenAction));
+    m_saveAction = add_action("save-document", sigc::mem_fun(*this, &AppWindow::onSaveAction));
+    m_removeSelectedAction = add_action("remove-selected", sigc::mem_fun(*this, &AppWindow::removeSelectedPage));
+    m_removePreviousAction = add_action("remove-previous", sigc::mem_fun(*this, &AppWindow::removePreviousPages));
+    m_removeNextAction = add_action("remove-next", sigc::mem_fun(*this, &AppWindow::removeNextPages));
+
+    m_saveAction->set_enabled(false);
+    m_removeSelectedAction->set_enabled(false);
+    m_removePreviousAction->set_enabled(false);
+    m_removeNextAction->set_enabled(false);
+
+    // TODO
+    //    add_action("preview-page", );
+    //    add_action("increase-zoom", );
+    //    add_action("decrease-zoom", );
 }
 
 void AppWindow::removeSelectedPage()
@@ -328,9 +333,9 @@ void AppWindow::buildView()
         const unsigned long numSelected = m_view->get_selected_children().size();
 
         if (numSelected == 0)
-            m_buttonRemovePages.set_sensitive(false);
+            m_removeSelectedAction->set_enabled(false);
         else
-            m_buttonRemovePages.set_sensitive(true);
+            m_removeSelectedAction->set_enabled();
 
         if (numSelected == 1) {
             m_buttonRemoveOptions.set_sensitive(true);
@@ -338,14 +343,14 @@ void AppWindow::buildView()
 
             const int index = m_view->get_selected_children().at(0)->get_index();
             if (index == 0)
-                m_buttonRemovePrevious.set_sensitive(false);
+                m_removePreviousAction->set_enabled(false);
             else
-                m_buttonRemovePrevious.set_sensitive(true);
+                m_removePreviousAction->set_enabled();
 
             if (index == static_cast<int>(m_view->get_children().size()) - 1)
-                m_buttonRemoveNext.set_sensitive(false);
+                m_removeNextAction->set_enabled(false);
             else
-                m_buttonRemoveNext.set_sensitive(true);
+                m_removeNextAction->set_enabled(true);
         }
         else {
             m_buttonRemoveOptions.set_sensitive(false);

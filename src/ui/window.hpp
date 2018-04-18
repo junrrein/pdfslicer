@@ -63,7 +63,15 @@ private:
     sigc::signal<void> m_signalSaved;
     sigc::connection m_connectionSaved;
 
+    // Actions
+    Glib::RefPtr<Gio::SimpleAction> m_openAction;
+    Glib::RefPtr<Gio::SimpleAction> m_saveAction;
+    Glib::RefPtr<Gio::SimpleAction> m_removeSelectedAction;
+    Glib::RefPtr<Gio::SimpleAction> m_removePreviousAction;
+    Glib::RefPtr<Gio::SimpleAction> m_removeNextAction;
+
     // Functions
+    void addActions();
     void removeSelectedPage();
     void removePreviousPages();
     void removeNextPages();
