@@ -70,6 +70,8 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_removePreviousAction;
     Glib::RefPtr<Gio::SimpleAction> m_removeNextAction;
     Glib::RefPtr<Gio::SimpleAction> m_previewPageAction;
+    Glib::RefPtr<Gio::SimpleAction> m_zoomInAction;
+    Glib::RefPtr<Gio::SimpleAction> m_zoomOutAction;
 
     // Functions
     void addActions();
@@ -78,10 +80,14 @@ private:
     void removeNextPages();
     void previewPage();
     void buildView();
+    void manageZoomActionsState();
 
     // Callbacks
     void onSaveAction();
     void onOpenAction();
+    void onZoomInAction();
+    void onZoomOutAction();
+    void onZoomLevelChanged();
 };
 }
 

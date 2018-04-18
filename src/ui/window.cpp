@@ -85,10 +85,10 @@ AppWindow::AppWindow()
 
     m_buttonZoomOut.set_image_from_icon_name("zoom-out-symbolic");
     m_buttonZoomOut.set_tooltip_text("Zoom out");
-    m_buttonZoomOut.set_sensitive(false);
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonZoomOut.gobj()), "win.zoom-out");
     m_buttonZoomIn.set_image_from_icon_name("zoom-in-symbolic");
     m_buttonZoomIn.set_tooltip_text("Zoom in");
-    m_buttonZoomIn.set_sensitive(false);
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonZoomIn.gobj()), "win.zoom-in");
     m_boxZoom.pack_start(m_buttonZoomOut);
     m_boxZoom.pack_start(m_buttonZoomIn);
     m_boxZoom.get_style_context()->add_class("linked");
@@ -141,24 +141,6 @@ AppWindow::AppWindow()
         m_document->redoCommand();
     });
 
-    m_buttonZoomOut.signal_clicked().connect([this]() {
-        --m_zoomLevel;
-
-        m_buttonZoomIn.set_sensitive(true);
-
-        if (m_zoomLevel.currentLevel() == m_zoomLevel.minLevel())
-            m_buttonZoomOut.set_sensitive(false);
-    });
-
-    m_buttonZoomIn.signal_clicked().connect([this]() {
-        ++m_zoomLevel;
-
-        m_buttonZoomOut.set_sensitive(true);
-
-        if (m_zoomLevel.currentLevel() == m_zoomLevel.maxLevel())
-            m_buttonZoomIn.set_sensitive(false);
-    });
-
     m_buttonCloseDone.signal_clicked().connect([this]() {
         m_revealerDone.set_reveal_child(false);
     });
@@ -178,7 +160,7 @@ AppWindow::AppWindow()
     });
 
     m_zoomLevel.changed.connect([this](int) {
-        buildView();
+        onZoomLevelChanged();
     });
 
     // Load custom CSS
@@ -239,17 +221,16 @@ void AppWindow::addActions()
     m_removePreviousAction = add_action("remove-previous", sigc::mem_fun(*this, &AppWindow::removePreviousPages));
     m_removeNextAction = add_action("remove-next", sigc::mem_fun(*this, &AppWindow::removeNextPages));
     m_previewPageAction = add_action("preview-selected", sigc::mem_fun(*this, &AppWindow::previewPage));
+    m_zoomInAction = add_action("zoom-in", sigc::mem_fun(*this, &AppWindow::onZoomInAction));
+    m_zoomOutAction = add_action("zoom-out", sigc::mem_fun(*this, &AppWindow::onZoomOutAction));
 
     m_saveAction->set_enabled(false);
     m_removeSelectedAction->set_enabled(false);
     m_removePreviousAction->set_enabled(false);
     m_removeNextAction->set_enabled(false);
     m_previewPageAction->set_enabled(false);
-
-    // TODO
-    //    add_action("preview-page", );
-    //    add_action("increase-zoom", );
-    //    add_action("decrease-zoom", );
+    m_zoomInAction->set_enabled(false);
+    m_zoomOutAction->set_enabled(false);
 }
 
 void AppWindow::removeSelectedPage()
@@ -310,7 +291,7 @@ void AppWindow::previewPage()
 void AppWindow::buildView()
 {
     if (m_view == nullptr)
-        m_buttonZoomIn.set_sensitive(true);
+        m_zoomInAction->set_enabled();
 
     m_scroller.remove();
 
@@ -362,6 +343,19 @@ void AppWindow::buildView()
     });
 }
 
+void AppWindow::manageZoomActionsState()
+{
+    if (m_zoomLevel.currentLevel() == m_zoomLevel.maxLevel())
+        m_zoomInAction->set_enabled(false);
+    else
+        m_zoomInAction->set_enabled();
+
+    if (m_zoomLevel.currentLevel() == m_zoomLevel.minLevel())
+        m_zoomOutAction->set_enabled(false);
+    else
+        m_zoomOutAction->set_enabled();
+}
+
 void AppWindow::onSaveAction()
 {
     Slicer::SaveFileDialog dialog{*this};
@@ -384,5 +378,21 @@ void AppWindow::onOpenAction()
     if (result == Gtk::RESPONSE_OK) {
         openDocument(dialog.get_file());
     }
+}
+
+void AppWindow::onZoomInAction()
+{
+    ++m_zoomLevel;
+}
+
+void AppWindow::onZoomOutAction()
+{
+    --m_zoomLevel;
+}
+
+void AppWindow::onZoomLevelChanged()
+{
+    manageZoomActionsState();
+    buildView();
 }
 }
