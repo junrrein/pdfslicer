@@ -1,7 +1,7 @@
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
 
-#include "window.hpp"
+#include "ui/window.hpp"
 #include <gtkmm/application.h>
 
 namespace Slicer {

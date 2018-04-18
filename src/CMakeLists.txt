@@ -9,8 +9,6 @@ set (SLICER_BACKEND_SOURCES
 set (SLICER_UI_SOURCES
 	ui/aboutdialog.hpp
 	ui/aboutdialog.cpp
-	ui/application.hpp
-	ui/application.cpp
 	ui/headerbar.hpp
 	ui/headerbar.cpp
 	ui/openfiledialog.hpp
@@ -34,6 +32,8 @@ set (SLICER_UI_SOURCES
 
 add_executable(pdfslicer
     main.cpp
+	application.hpp
+	application.cpp
 	${SLICER_BACKEND_SOURCES}
 	${SLICER_UI_SOURCES})
 

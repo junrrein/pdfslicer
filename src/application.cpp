@@ -1,5 +1,5 @@
 #include "application.hpp"
-#include "aboutdialog.hpp"
+#include "ui/aboutdialog.hpp"
 
 namespace Slicer {
 
