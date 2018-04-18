@@ -1,7 +1,7 @@
 #ifndef PREVIEWWINDOW_HPP
 #define PREVIEWWINDOW_HPP
 
-#include "document.hpp"
+#include "../backend/document.hpp"
 #include "zoomlevel.hpp"
 #include <gtkmm/window.h>
 #include <gtkmm/image.h>

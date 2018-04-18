@@ -1,7 +1,7 @@
 #ifndef VIEWCHILD_HPP
 #define VIEWCHILD_HPP
 
-#include "document.hpp"
+#include "../backend/document.hpp"
 #include <ctpl_stl.h>
 #include <glibmm/dispatcher.h>
 #include <gtkmm/box.h>

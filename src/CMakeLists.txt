@@ -1,31 +1,37 @@
+set (SLICER_BACKEND_SOURCES
+	backend/document.hpp
+	backend/document.cpp
+	backend/commandmanager.hpp
+	backend/commandmanager.cpp
+	backend/page.hpp
+	backend/page.cpp)
+
+set (SLICER_UI_SOURCES
+	ui/aboutdialog.hpp
+	ui/aboutdialog.cpp
+	ui/application.hpp
+	ui/application.cpp
+	ui/openfiledialog.hpp
+	ui/openfiledialog.cpp
+	ui/previewwindow.hpp
+	ui/previewwindow.cpp
+	ui/savefiledialog.hpp
+	ui/savefiledialog.cpp
+	ui/utils.hpp
+	ui/utils.cpp
+	ui/view.hpp
+	ui/view.cpp
+	ui/viewchild.hpp
+	ui/viewchild.cpp
+	ui/window.hpp
+	ui/window.cpp
+	ui/zoomlevel.hpp
+	ui/zoomlevel.cpp)
+
 add_executable(pdfslicer
     main.cpp
-    application.hpp
-    application.cpp
-    aboutdialog.hpp
-    aboutdialog.cpp
-    page.hpp
-    page.cpp
-    commandmanager.hpp
-    commandmanager.cpp
-    document.hpp
-    document.cpp
-	zoomlevel.hpp
-	zoomlevel.cpp
-    view.hpp
-    view.cpp
-    viewchild.hpp
-    viewchild.cpp
-    previewwindow.hpp
-    previewwindow.cpp
-	utils.hpp
-	utils.cpp
-	openfiledialog.hpp
-	openfiledialog.cpp
-	savefiledialog.hpp
-	savefiledialog.cpp
-    window.hpp
-    window.cpp)
+	${SLICER_BACKEND_SOURCES}
+	${SLICER_UI_SOURCES})
 
 target_link_libraries(pdfslicer
     ${GTKMM_LIBRARIES}

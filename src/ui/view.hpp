@@ -1,7 +1,7 @@
 #ifndef SLICERVIEW_HPP
 #define SLICERVIEW_HPP
 
-#include "document.hpp"
+#include "../backend/document.hpp"
 #include <gtkmm/flowbox.h>
 #include <ctpl_stl.h>
 

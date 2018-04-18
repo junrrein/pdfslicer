@@ -1,4 +1,4 @@
-#include "application.hpp"
+#include "ui/application.hpp"
 
 int main(int num_args, char* args_array[])
 {
