@@ -34,11 +34,11 @@ std::pair<int, int> Page::scaledSize(int targetSize) const
 
     if (realHeight > realWidth) {
         height = targetSize;
-        width = static_cast<int>(floor(targetSize * (realWidth / realHeight)));
+        width = static_cast<int>(floor(targetSize * (static_cast<double>(realWidth) / realHeight)));
     }
     else {
         width = targetSize;
-        height = static_cast<int>(floor(targetSize * (realHeight / realWidth)));
+        height = static_cast<int>(floor(targetSize * (static_cast<double>(realHeight) / realWidth)));
     }
 
     return {width, height};
@@ -62,9 +62,9 @@ Glib::RefPtr<Gdk::Pixbuf> Page::renderPage(int targetSize) const
 
     double scale;
     if (realWidth >= realHeight)
-        scale = double(width) / realWidth;
+        scale = static_cast<double>(width) / realWidth;
     else
-        scale = double(height) / realHeight;
+        scale = static_cast<double>(height) / realHeight;
     cr->scale(scale, scale);
 
     // Render page
