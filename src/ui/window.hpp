@@ -4,6 +4,7 @@
 #include "view.hpp"
 #include "previewwindow.hpp"
 #include "zoomlevel.hpp"
+#include "welcomescreen.hpp"
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/headerbar.h>
@@ -44,6 +45,7 @@ private:
     Gtk::Button m_buttonZoomOut;
     Gtk::Button m_buttonZoomIn;
     Gtk::Box m_boxZoom;
+    Slicer::WelcomeScreen m_welcomeScreen;
     ZoomLevel m_zoomLevel;
 
     // View

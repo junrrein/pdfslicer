@@ -15,15 +15,15 @@ AppWindow::AppWindow()
     , m_view{nullptr}
     , m_labelDone{"Saved!"}
 {
+    set_size_request(500, 500);
+    set_default_size(800, 600);
+
     addActions();
 
     // Widget setup
     set_titlebar(m_headerBar);
-    set_size_request(500, 500);
-    set_default_size(800, 600);
-
     m_headerBar.set_title("PDF Slicer");
-    m_headerBar.set_show_close_button(true);
+    m_headerBar.set_show_close_button();
 
     m_buttonOpen.set_image_from_icon_name("document-open-symbolic");
     m_buttonOpen.set_tooltip_text("Open document...");
@@ -111,19 +111,7 @@ AppWindow::AppWindow()
     m_revealerDone.set_halign(Gtk::ALIGN_CENTER);
     m_revealerDone.set_valign(Gtk::ALIGN_START);
 
-    auto welcomeIcon = Gtk::manage(new Gtk::Image);
-    welcomeIcon->set_from_icon_name("edit-cut-symbolic", Gtk::ICON_SIZE_BUTTON);
-    welcomeIcon->set_pixel_size(256);
-    auto welcomeLabel = Gtk::manage(new Gtk::Label{"Open a document to start slicing!"});
-    welcomeLabel->get_style_context()->add_class("dim-label");
-    welcomeLabel->get_style_context()->add_class("welcome-label");
-    auto welcomeBox1 = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_VERTICAL});
-    welcomeBox1->pack_start(*welcomeIcon, false, false, 10);
-    welcomeBox1->pack_start(*welcomeLabel, false, false, 10);
-    welcomeBox1->set_valign(Gtk::ALIGN_CENTER);
-    auto welcomeBox2 = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_VERTICAL});
-    welcomeBox2->pack_start(*welcomeBox1);
-    m_scroller.add(*welcomeBox2);
+    m_scroller.add(m_welcomeScreen);
 
     m_overlay.add(m_scroller);
     m_overlay.add_overlay(m_revealerDone);

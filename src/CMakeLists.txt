@@ -23,6 +23,8 @@ set (SLICER_UI_SOURCES
 	ui/view.cpp
 	ui/viewchild.hpp
 	ui/viewchild.cpp
+	ui/welcomescreen.hpp
+	ui/welcomescreen.cpp
 	ui/window.hpp
 	ui/window.cpp
 	ui/zoomlevel.hpp
