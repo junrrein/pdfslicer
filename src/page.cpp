@@ -28,8 +28,7 @@ std::pair<int, int> Page::size() const
 
 std::pair<int, int> Page::scaledSize(int targetSize) const
 {
-    double realWidth, realHeight;
-    std::tie(realWidth, realHeight) = size();
+    const auto[realWidth, realHeight] = size();
 
     int width, height;
 
@@ -47,8 +46,7 @@ std::pair<int, int> Page::scaledSize(int targetSize) const
 
 Glib::RefPtr<Gdk::Pixbuf> Page::renderPage(int targetSize) const
 {
-    int width, height;
-    std::tie(width, height) = scaledSize(targetSize);
+    const auto[width, height] = scaledSize(targetSize);
 
     auto surface = Cairo::ImageSurface::create(Cairo::FORMAT_ARGB32, width, height);
     auto cr = Cairo::Context::create(surface);
@@ -60,8 +58,7 @@ Glib::RefPtr<Gdk::Pixbuf> Page::renderPage(int targetSize) const
 
     // Scale Context to match the ImageSurface's area.
     // Otherwise the page would get rendered at (realWidth x realHeight).
-    double realWidth, realHeight;
-    std::tie(realWidth, realHeight) = size();
+    const auto[realWidth, realHeight] = size();
 
     double scale;
     if (realWidth >= realHeight)
