@@ -153,26 +153,7 @@ AppWindow::AppWindow()
         onZoomLevelChanged();
     });
 
-    // Load custom CSS
-    auto screen = Gdk::Screen::get_default();
-    auto provider = Gtk::CssProvider::create();
-    provider->load_from_data(R"(
-        overlay > revealer > box {
-            border-radius: 0px 0px 11px 11px;
-        }
-
-        .welcome-label {
-            font-size: 19px;
-            font-weight: bold;
-        }
-
-        .pepino {
-            padding: 3px;
-        }
-    )");
-    Gtk::StyleContext::add_provider_for_screen(screen,
-                                               provider,
-                                               GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    loadCustomCSS();
 
     show_all_children();
 }
@@ -215,6 +196,29 @@ void AppWindow::addActions()
     m_zoomOutAction->set_enabled(false);
     m_undoAction->set_enabled(false);
     m_redoAction->set_enabled(false);
+}
+
+void AppWindow::loadCustomCSS()
+{
+    auto screen = Gdk::Screen::get_default();
+    auto provider = Gtk::CssProvider::create();
+    provider->load_from_data(R"(
+        overlay > revealer > box {
+            border-radius: 0px 0px 11px 11px;
+        }
+
+        .welcome-label {
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .pepino {
+            padding: 3px;
+        }
+    )");
+    Gtk::StyleContext::add_provider_for_screen(screen,
+                                               provider,
+                                               GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
 void AppWindow::removeSelectedPage()

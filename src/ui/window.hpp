@@ -77,6 +77,7 @@ private:
 
     // Functions
     void addActions();
+    void loadCustomCSS();
     void removeSelectedPage();
     void removePreviousPages();
     void removeNextPages();
