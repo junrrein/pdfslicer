@@ -10,17 +10,58 @@
 namespace Slicer {
 
 AppWindow::AppWindow()
-    : m_boxMenuRemoveOptions{Gtk::ORIENTATION_VERTICAL}
-    , m_zoomLevel{{200, 300, 400}}
-    , m_view{nullptr}
-    , m_labelDone{"Saved!"}
+    : m_zoomLevel{zoomLevels}
 {
     set_size_request(500, 500);
     set_default_size(800, 600);
 
     addActions();
+    setupWidgets();
+    setupSignalHandlers();
+    loadCustomCSS();
 
-    // Widget setup
+    show_all_children();
+}
+
+const std::set<int> AppWindow::zoomLevels = {200, 300, 400};
+
+void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
+{
+    m_document = std::make_unique<Slicer::Document>(file->get_path());
+    m_document->commandExecuted().connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
+    m_headerBar.set_subtitle(file->get_basename());
+    m_saveAction->set_enabled();
+    buildView();
+}
+
+void AppWindow::addActions()
+{
+    m_openAction = add_action("open-document", sigc::mem_fun(*this, &AppWindow::onOpenAction));
+    m_saveAction = add_action("save-document", sigc::mem_fun(*this, &AppWindow::onSaveAction));
+    m_removeSelectedAction = add_action("remove-selected", sigc::mem_fun(*this, &AppWindow::removeSelectedPage));
+    m_removePreviousAction = add_action("remove-previous", sigc::mem_fun(*this, &AppWindow::removePreviousPages));
+    m_removeNextAction = add_action("remove-next", sigc::mem_fun(*this, &AppWindow::removeNextPages));
+    m_previewPageAction = add_action("preview-selected", sigc::mem_fun(*this, &AppWindow::previewPage));
+    m_zoomInAction = add_action("zoom-in", sigc::mem_fun(*this, &AppWindow::onZoomInAction));
+    m_zoomOutAction = add_action("zoom-out", sigc::mem_fun(*this, &AppWindow::onZoomOutAction));
+    m_undoAction = add_action("undo", sigc::mem_fun(*this, &AppWindow::onUndoAction));
+    m_redoAction = add_action("redo", sigc::mem_fun(*this, &AppWindow::onRedoAction));
+
+    m_saveAction->set_enabled(false);
+    m_removeSelectedAction->set_enabled(false);
+    m_removePreviousAction->set_enabled(false);
+    m_removeNextAction->set_enabled(false);
+    m_previewPageAction->set_enabled(false);
+    m_zoomInAction->set_enabled(false);
+    m_zoomOutAction->set_enabled(false);
+    m_undoAction->set_enabled(false);
+    m_redoAction->set_enabled(false);
+}
+
+void AppWindow::setupWidgets()
+{
+    m_view = nullptr;
+
     set_titlebar(m_headerBar);
     m_headerBar.set_title("PDF Slicer");
     m_headerBar.set_show_close_button();
@@ -45,6 +86,7 @@ AppWindow::AppWindow()
     m_buttonRemoveNext.set_label("Remove next pages");
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemoveNext.gobj()), "win.remove-next");
 
+    m_boxMenuRemoveOptions.set_orientation(Gtk::ORIENTATION_VERTICAL);
     m_boxMenuRemoveOptions.pack_start(m_buttonRemovePrevious);
     m_boxMenuRemoveOptions.pack_start(m_buttonRemoveNext);
     m_boxMenuRemoveOptions.set_margin_top(10);
@@ -94,6 +136,7 @@ AppWindow::AppWindow()
     m_boxZoom.get_style_context()->add_class("linked");
     m_headerBar.pack_end(m_boxZoom);
 
+    m_labelDone.set_label("Saved!");
     m_labelDone.set_margin_top(10);
     m_labelDone.set_margin_bottom(10);
     m_labelDone.set_margin_left(15);
@@ -112,13 +155,14 @@ AppWindow::AppWindow()
     m_revealerDone.set_valign(Gtk::ALIGN_START);
 
     m_scroller.add(m_welcomeScreen);
-
     m_overlay.add(m_scroller);
     m_overlay.add_overlay(m_revealerDone);
 
     add(m_overlay); // NOLINT
+}
 
-    // Signal handlers
+void AppWindow::setupSignalHandlers()
+{
     m_buttonCloseDone.signal_clicked().connect([this]() {
         m_revealerDone.set_reveal_child(false);
     });
@@ -140,43 +184,6 @@ AppWindow::AppWindow()
     m_zoomLevel.changed.connect([this](int) {
         onZoomLevelChanged();
     });
-
-    loadCustomCSS();
-
-    show_all_children();
-}
-
-void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
-{
-    m_document = std::make_unique<Slicer::Document>(file->get_path());
-    m_document->commandExecuted().connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
-    m_headerBar.set_subtitle(file->get_basename());
-    m_saveAction->set_enabled();
-    buildView();
-}
-
-void AppWindow::addActions()
-{
-    m_openAction = add_action("open-document", sigc::mem_fun(*this, &AppWindow::onOpenAction));
-    m_saveAction = add_action("save-document", sigc::mem_fun(*this, &AppWindow::onSaveAction));
-    m_removeSelectedAction = add_action("remove-selected", sigc::mem_fun(*this, &AppWindow::removeSelectedPage));
-    m_removePreviousAction = add_action("remove-previous", sigc::mem_fun(*this, &AppWindow::removePreviousPages));
-    m_removeNextAction = add_action("remove-next", sigc::mem_fun(*this, &AppWindow::removeNextPages));
-    m_previewPageAction = add_action("preview-selected", sigc::mem_fun(*this, &AppWindow::previewPage));
-    m_zoomInAction = add_action("zoom-in", sigc::mem_fun(*this, &AppWindow::onZoomInAction));
-    m_zoomOutAction = add_action("zoom-out", sigc::mem_fun(*this, &AppWindow::onZoomOutAction));
-    m_undoAction = add_action("undo", sigc::mem_fun(*this, &AppWindow::onUndoAction));
-    m_redoAction = add_action("redo", sigc::mem_fun(*this, &AppWindow::onRedoAction));
-
-    m_saveAction->set_enabled(false);
-    m_removeSelectedAction->set_enabled(false);
-    m_removePreviousAction->set_enabled(false);
-    m_removeNextAction->set_enabled(false);
-    m_previewPageAction->set_enabled(false);
-    m_zoomInAction->set_enabled(false);
-    m_zoomOutAction->set_enabled(false);
-    m_undoAction->set_enabled(false);
-    m_redoAction->set_enabled(false);
 }
 
 void AppWindow::loadCustomCSS()

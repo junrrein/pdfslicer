@@ -45,11 +45,12 @@ private:
     Gtk::Button m_buttonZoomOut;
     Gtk::Button m_buttonZoomIn;
     Gtk::Box m_boxZoom;
-    Slicer::WelcomeScreen m_welcomeScreen;
+    WelcomeScreen m_welcomeScreen;
     ZoomLevel m_zoomLevel;
 
     // View
     std::unique_ptr<Slicer::View> m_view;
+    static const std::set<int> zoomLevels;
     Gtk::ScrolledWindow m_scroller;
     Gtk::Overlay m_overlay;
 
@@ -79,6 +80,8 @@ private:
 
     // Functions
     void addActions();
+    void setupWidgets();
+    void setupSignalHandlers();
     void loadCustomCSS();
     void removeSelectedPage();
     void removePreviousPages();
