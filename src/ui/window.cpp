@@ -80,7 +80,7 @@ AppWindow::AppWindow()
 
     m_buttonPreviewPage.set_image_from_icon_name("document-print-preview-symbolic");
     m_buttonPreviewPage.set_tooltip_text("Preview the selected page");
-    m_buttonPreviewPage.set_sensitive(false);
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonPreviewPage.gobj()), "win.preview-selected");
     m_headerBar.pack_end(m_buttonPreviewPage);
 
     m_buttonZoomOut.set_image_from_icon_name("zoom-out-symbolic");
@@ -139,11 +139,6 @@ AppWindow::AppWindow()
     m_buttonRedo.signal_clicked().connect([this]() {
         m_view->waitForRenderCompletion();
         m_document->redoCommand();
-    });
-
-    m_buttonPreviewPage.signal_clicked().connect([this]() {
-        const int index = m_view->get_selected_children().at(0)->get_index();
-        previewPage(index);
     });
 
     m_buttonZoomOut.signal_clicked().connect([this]() {
@@ -243,11 +238,13 @@ void AppWindow::addActions()
     m_removeSelectedAction = add_action("remove-selected", sigc::mem_fun(*this, &AppWindow::removeSelectedPage));
     m_removePreviousAction = add_action("remove-previous", sigc::mem_fun(*this, &AppWindow::removePreviousPages));
     m_removeNextAction = add_action("remove-next", sigc::mem_fun(*this, &AppWindow::removeNextPages));
+    m_previewPageAction = add_action("preview-selected", sigc::mem_fun(*this, &AppWindow::previewPage));
 
     m_saveAction->set_enabled(false);
     m_removeSelectedAction->set_enabled(false);
     m_removePreviousAction->set_enabled(false);
     m_removeNextAction->set_enabled(false);
+    m_previewPageAction->set_enabled(false);
 
     // TODO
     //    add_action("preview-page", );
@@ -291,13 +288,15 @@ void AppWindow::removeNextPages()
                                 static_cast<int>(m_document->pages()->get_n_items()) - 1);
 }
 
-void AppWindow::previewPage(int pageNumber)
+void AppWindow::previewPage()
 {
     // We need to wait till the thumbnails finish rendering
     // before rendering a big preview, to prevent crashes.
     // Poppler isn't designed for rendering many pages of
     // the same document in different threads.
     m_view->waitForRenderCompletion();
+
+    const int pageNumber = m_view->get_selected_children().at(0)->get_index();
 
     Glib::RefPtr<Slicer::Page> page
         = m_document->pages()->get_item(static_cast<unsigned>(pageNumber));
@@ -339,7 +338,7 @@ void AppWindow::buildView()
 
         if (numSelected == 1) {
             m_buttonRemoveOptions.set_sensitive(true);
-            m_buttonPreviewPage.set_sensitive(true);
+            m_previewPageAction->set_enabled();
 
             const int index = m_view->get_selected_children().at(0)->get_index();
             if (index == 0)
@@ -350,17 +349,16 @@ void AppWindow::buildView()
             if (index == static_cast<int>(m_view->get_children().size()) - 1)
                 m_removeNextAction->set_enabled(false);
             else
-                m_removeNextAction->set_enabled(true);
+                m_removeNextAction->set_enabled();
         }
         else {
             m_buttonRemoveOptions.set_sensitive(false);
-            m_buttonPreviewPage.set_sensitive(false);
+            m_previewPageAction->set_enabled(false);
         }
     });
 
-    m_view->signal_child_activated().connect([this](Gtk::FlowBoxChild* child) {
-        const int pageIndex = child->get_index();
-        previewPage(pageIndex);
+    m_view->signal_child_activated().connect([this](Gtk::FlowBoxChild*) {
+        m_previewPageAction->activate();
     });
 }
 

@@ -69,13 +69,14 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_removeSelectedAction;
     Glib::RefPtr<Gio::SimpleAction> m_removePreviousAction;
     Glib::RefPtr<Gio::SimpleAction> m_removeNextAction;
+    Glib::RefPtr<Gio::SimpleAction> m_previewPageAction;
 
     // Functions
     void addActions();
     void removeSelectedPage();
     void removePreviousPages();
     void removeNextPages();
-    void previewPage(int pageNumber);
+    void previewPage();
     void buildView();
 
     // Callbacks
