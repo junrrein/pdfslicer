@@ -8,7 +8,6 @@ namespace Slicer {
 
 AppWindow::AppWindow()
     : m_headerBar{*this}
-    , m_zoomLevel{zoomLevels}
 {
     set_size_request(500, 500);
     set_default_size(800, 600);
@@ -20,8 +19,6 @@ AppWindow::AppWindow()
 
     show_all_children();
 }
-
-const std::set<int> AppWindow::zoomLevels = {200, 300, 400};
 
 void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
 {
@@ -36,22 +33,10 @@ void AppWindow::addActions()
 {
     m_openAction = add_action("open-document", sigc::mem_fun(*this, &AppWindow::onOpenAction));
     m_saveAction = add_action("save-document", sigc::mem_fun(*this, &AppWindow::onSaveAction));
-    m_removeSelectedAction = add_action("remove-selected", sigc::mem_fun(*this, &AppWindow::removeSelectedPage));
-    m_removePreviousAction = add_action("remove-previous", sigc::mem_fun(*this, &AppWindow::removePreviousPages));
-    m_removeNextAction = add_action("remove-next", sigc::mem_fun(*this, &AppWindow::removeNextPages));
-    m_previewPageAction = add_action("preview-selected", sigc::mem_fun(*this, &AppWindow::previewPage));
-    m_zoomInAction = add_action("zoom-in", sigc::mem_fun(*this, &AppWindow::onZoomInAction));
-    m_zoomOutAction = add_action("zoom-out", sigc::mem_fun(*this, &AppWindow::onZoomOutAction));
     m_undoAction = add_action("undo", sigc::mem_fun(*this, &AppWindow::onUndoAction));
     m_redoAction = add_action("redo", sigc::mem_fun(*this, &AppWindow::onRedoAction));
 
     m_saveAction->set_enabled(false);
-    m_removeSelectedAction->set_enabled(false);
-    m_removePreviousAction->set_enabled(false);
-    m_removeNextAction->set_enabled(false);
-    m_previewPageAction->set_enabled(false);
-    m_zoomInAction->set_enabled(false);
-    m_zoomOutAction->set_enabled(false);
     m_undoAction->set_enabled(false);
     m_redoAction->set_enabled(false);
 }
@@ -106,10 +91,6 @@ void AppWindow::setupSignalHandlers()
         },
                                                            5000);
     });
-
-    m_zoomLevel.changed.connect([this](int) {
-        onZoomLevelChanged();
-    });
 }
 
 void AppWindow::loadCustomCSS()
@@ -135,66 +116,8 @@ void AppWindow::loadCustomCSS()
                                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
-void AppWindow::removeSelectedPage()
-{
-    Gtk::FlowBoxChild* child = m_view->get_selected_children().at(0);
-    const int index = child->get_index();
-    m_document->removePage(index);
-}
-
-void AppWindow::removePreviousPages()
-{
-    std::vector<Gtk::FlowBoxChild*> selected = m_view->get_selected_children();
-
-    if (selected.size() != 1)
-        throw std::runtime_error(
-            "Tried to remove previous pages with more "
-            "than one page selected. This should never happen!");
-
-    const int index = selected.at(0)->get_index();
-
-    m_document->removePageRange(0, index - 1);
-}
-
-void AppWindow::removeNextPages()
-{
-    std::vector<Gtk::FlowBoxChild*> selected = m_view->get_selected_children();
-
-    if (selected.size() != 1)
-        throw std::runtime_error(
-            "Tried to remove next pages with more "
-            "than one page selected. This should never happen!");
-
-    const int index = selected.at(0)->get_index();
-
-    m_document->removePageRange(index + 1,
-                                static_cast<int>(m_document->pages()->get_n_items()) - 1);
-}
-
-void AppWindow::previewPage()
-{
-    // We need to wait till the thumbnails finish rendering
-    // before rendering a big preview, to prevent crashes.
-    // Poppler isn't designed for rendering many pages of
-    // the same document in different threads.
-    m_view->waitForRenderCompletion();
-
-    const int pageNumber = m_view->get_selected_children().at(0)->get_index();
-
-    Glib::RefPtr<Slicer::Page> page
-        = m_document->pages()->get_item(static_cast<unsigned>(pageNumber));
-    m_previewWindow = std::make_unique<Slicer::PreviewWindow>(page);
-
-    m_previewWindow->set_modal();
-    m_previewWindow->set_transient_for(*this);
-    m_previewWindow->show();
-}
-
 void AppWindow::buildView()
 {
-    if (m_view == nullptr)
-        m_zoomInAction->set_enabled();
-
     m_scroller.remove();
 
     // It is necessary to invoke an empty reset() as a separate command.
@@ -204,54 +127,10 @@ void AppWindow::buildView()
     // Poppler doesn't like two threads rendering pages from the same PDF, so this
     // would crash the program.
     m_view.reset();
-    m_view = std::make_unique<Slicer::View>(*m_document, m_zoomLevel.currentLevel());
+    m_view = std::make_unique<Slicer::View>(*this, *m_document);
 
     m_scroller.add(*m_view);
     m_scroller.show_all_children();
-
-    m_view->signal_selected_children_changed().connect([this]() {
-        const unsigned long numSelected = m_view->get_selected_children().size();
-
-        if (numSelected == 0)
-            m_removeSelectedAction->set_enabled(false);
-        else
-            m_removeSelectedAction->set_enabled();
-
-        if (numSelected == 1) {
-            m_previewPageAction->set_enabled();
-
-            const int index = m_view->get_selected_children().at(0)->get_index();
-            if (index == 0)
-                m_removePreviousAction->set_enabled(false);
-            else
-                m_removePreviousAction->set_enabled();
-
-            if (index == static_cast<int>(m_view->get_children().size()) - 1)
-                m_removeNextAction->set_enabled(false);
-            else
-                m_removeNextAction->set_enabled();
-        }
-        else {
-            m_previewPageAction->set_enabled(false);
-        }
-    });
-
-    m_view->signal_child_activated().connect([this](Gtk::FlowBoxChild*) {
-        m_previewPageAction->activate();
-    });
-}
-
-void AppWindow::manageZoomActionsState()
-{
-    if (m_zoomLevel.currentLevel() == m_zoomLevel.maxLevel())
-        m_zoomInAction->set_enabled(false);
-    else
-        m_zoomInAction->set_enabled();
-
-    if (m_zoomLevel.currentLevel() == m_zoomLevel.minLevel())
-        m_zoomOutAction->set_enabled(false);
-    else
-        m_zoomOutAction->set_enabled();
 }
 
 void AppWindow::onSaveAction()
@@ -276,22 +155,6 @@ void AppWindow::onOpenAction()
     if (result == Gtk::RESPONSE_OK) {
         openDocument(dialog.get_file());
     }
-}
-
-void AppWindow::onZoomInAction()
-{
-    ++m_zoomLevel;
-}
-
-void AppWindow::onZoomOutAction()
-{
-    --m_zoomLevel;
-}
-
-void AppWindow::onZoomLevelChanged()
-{
-    manageZoomActionsState();
-    buildView();
 }
 
 void AppWindow::onUndoAction()

@@ -28,7 +28,9 @@ set (SLICER_UI_SOURCES
 	ui/window.hpp
 	ui/window.cpp
 	ui/zoomlevel.hpp
-	ui/zoomlevel.cpp)
+	ui/zoomlevel.cpp
+	ui/zoomlevelwithactions.hpp
+	ui/zoomlevelwithactions.cpp)
 
 add_executable(pdfslicer
     main.cpp
