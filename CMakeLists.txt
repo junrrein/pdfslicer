@@ -10,6 +10,18 @@ pkg_check_modules(GTKMM gtkmm-3.0 REQUIRED)
 pkg_check_modules(POPPLER poppler-glib REQUIRED)
 pkg_check_modules(CAIROMM cairomm-1.0 REQUIRED)
 
+find_program(
+  CLANG_TIDY_EXE
+  NAMES "clang-tidy"
+  DOC "Path to clang-tidy executable"
+  )
+if(NOT CLANG_TIDY_EXE)
+  message(STATUS "clang-tidy not found.")
+else()
+  message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")
+  set(DO_CLANG_TIDY "${CLANG_TIDY_EXE}" "-config=")
+endif()
+
 include_directories(${GTKMM_INCLUDE_DIRS})
 include_directories(${POPPLER_INCLUDE_DIRS})
 include_directories(${CAIROMM_INCLUDE_DIRS})

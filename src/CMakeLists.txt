@@ -49,6 +49,10 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
 		set_target_properties(pdfslicer PROPERTIES COMPILE_FLAGS
 			"-Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wduplicated-branches -Wlogical-op")
 	endif()
+
+#	if(CLANG_TIDY_EXE)
+#	  set_target_properties(pdfslicer PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}")
+#	endif()
 endif()
 
 if (MINGW)

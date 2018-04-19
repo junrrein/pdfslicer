@@ -3,8 +3,8 @@
 
 namespace Slicer {
 
-PreviewWindow::PreviewWindow(const Glib::RefPtr<Page>& page)
-    : m_page{page}
+PreviewWindow::PreviewWindow(Glib::RefPtr<Page> page)
+    : m_page{std::move(page)}
     , m_zoomLevel{{1000, 1400, 1800}}
 {
     set_title("Preview");

@@ -10,23 +10,23 @@ HeaderBar::HeaderBar(Gtk::ApplicationWindow& window)
 
     m_buttonOpen.set_image_from_icon_name("document-open-symbolic");
     m_buttonOpen.set_tooltip_text("Open document...");
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonOpen.gobj()), "win.open-document");
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonOpen.gobj()), "win.open-document"); // NOLINT
     pack_start(m_buttonOpen);
 
     m_buttonSave.set_image_from_icon_name("document-save-symbolic");
     m_buttonSave.set_tooltip_text("Save as...");
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonSave.gobj()), "win.save-document");
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonSave.gobj()), "win.save-document"); // NOLINT
     pack_start(m_buttonSave);
 
     m_buttonRemovePages.set_image_from_icon_name("edit-delete-symbolic");
     m_buttonRemovePages.set_tooltip_text("Remove the selected page");
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePages.gobj()), "win.remove-selected");
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePages.gobj()), "win.remove-selected"); // NOLINT
     m_boxRemovePages.pack_start(m_buttonRemovePages);
 
     m_buttonRemovePrevious.set_label("Remove previous pages");
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePrevious.gobj()), "win.remove-previous");
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePrevious.gobj()), "win.remove-previous"); // NOLINT
     m_buttonRemoveNext.set_label("Remove next pages");
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemoveNext.gobj()), "win.remove-next");
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemoveNext.gobj()), "win.remove-next"); // NOLINT
 
     m_boxMenuRemoveOptions.set_orientation(Gtk::ORIENTATION_VERTICAL);
     m_boxMenuRemoveOptions.pack_start(m_buttonRemovePrevious);
@@ -51,10 +51,10 @@ HeaderBar::HeaderBar(Gtk::ApplicationWindow& window)
 
     m_buttonUndo.set_image_from_icon_name("edit-undo-symbolic");
     m_buttonUndo.set_tooltip_text("Undo");
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonUndo.gobj()), "win.undo");
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonUndo.gobj()), "win.undo"); // NOLINT
     m_buttonRedo.set_image_from_icon_name("edit-redo-symbolic");
     m_buttonRedo.set_tooltip_text("Redo");
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRedo.gobj()), "win.redo");
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRedo.gobj()), "win.redo"); // NOLINT
 
     auto undoBox = Gtk::manage(new Gtk::Box);
     undoBox->get_style_context()->add_class("linked");
@@ -64,15 +64,15 @@ HeaderBar::HeaderBar(Gtk::ApplicationWindow& window)
 
     m_buttonPreviewPage.set_image_from_icon_name("document-print-preview-symbolic");
     m_buttonPreviewPage.set_tooltip_text("Preview the selected page");
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonPreviewPage.gobj()), "win.preview-selected");
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonPreviewPage.gobj()), "win.preview-selected"); // NOLINT
     pack_end(m_buttonPreviewPage);
 
     m_buttonZoomOut.set_image_from_icon_name("zoom-out-symbolic");
     m_buttonZoomOut.set_tooltip_text("Zoom out");
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonZoomOut.gobj()), "win.zoom-out");
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonZoomOut.gobj()), "win.zoom-out"); // NOLINT
     m_buttonZoomIn.set_image_from_icon_name("zoom-in-symbolic");
     m_buttonZoomIn.set_tooltip_text("Zoom in");
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonZoomIn.gobj()), "win.zoom-in");
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonZoomIn.gobj()), "win.zoom-in"); // NOLINT
     m_boxZoom.pack_start(m_buttonZoomOut);
     m_boxZoom.pack_start(m_buttonZoomIn);
     m_boxZoom.get_style_context()->add_class("linked");
