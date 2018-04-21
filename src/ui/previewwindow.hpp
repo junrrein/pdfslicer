@@ -1,7 +1,7 @@
 #ifndef PREVIEWWINDOW_HPP
 #define PREVIEWWINDOW_HPP
 
-#include "../backend/document.hpp"
+#include "../backend/page.hpp"
 #include "zoomlevelwithactions.hpp"
 #include <gtkmm/window.h>
 #include <giomm/simpleactiongroup.h>

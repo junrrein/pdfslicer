@@ -22,6 +22,18 @@ else()
   set(DO_CLANG_TIDY "${CLANG_TIDY_EXE}" "-config=")
 endif()
 
+find_program(
+  IWYU_EXE
+  NAMES "iwyu"
+  DOC "Path to include-what-you-use executable"
+  )
+if(NOT IWYU_EXE)
+  message(STATUS "include-what-you-use not found.")
+else()
+  message(STATUS "include-what-you-use found: ${IWYU_EXE}")
+  set(DO_IWYU ${IWYU_EXE})
+endif()
+
 include_directories(${GTKMM_INCLUDE_DIRS})
 include_directories(${POPPLER_INCLUDE_DIRS})
 include_directories(${CAIROMM_INCLUDE_DIRS})

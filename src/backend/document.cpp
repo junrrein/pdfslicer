@@ -1,6 +1,5 @@
 #include "document.hpp"
 #include <glibmm/convert.h>
-#include <glibmm/fileutils.h>
 #include <glibmm/miscutils.h>
 #include <giomm/file.h>
 #include <PDFWriter.h>

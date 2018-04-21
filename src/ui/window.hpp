@@ -3,7 +3,6 @@
 
 #include "view.hpp"
 #include "previewwindow.hpp"
-#include "zoomlevel.hpp"
 #include "welcomescreen.hpp"
 #include "headerbar.hpp"
 #include <gtkmm/applicationwindow.h>

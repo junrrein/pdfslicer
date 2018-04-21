@@ -55,6 +55,10 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
 #	if(CLANG_TIDY_EXE)
 #	  set_target_properties(pdfslicer PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}")
 #	endif()
+
+#	if (IWYU_EXE)
+#		set_target_properties(pdfslicer PROPERTIES CXX_INCLUDE_WHAT_YOU_USE "${DO_IWYU}")
+#	endif ()
 endif()
 
 if (MINGW)
