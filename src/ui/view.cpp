@@ -2,6 +2,8 @@
 #include "viewchild.hpp"
 #include "previewwindow.hpp"
 #include <algorithm>
+#include <numeric>
+#include <iostream>
 
 namespace Slicer {
 
@@ -43,12 +45,14 @@ void View::setDocument(Document& document)
 void View::addActions()
 {
     m_removeSelectedAction = m_actionMap.add_action("remove-selected", sigc::mem_fun(*this, &View::removeSelectedPages));
+    m_removeUnselectedAction = m_actionMap.add_action("remove-unselected", sigc::mem_fun(*this, &View::removeUnselectedPages));
     m_removePreviousAction = m_actionMap.add_action("remove-previous", sigc::mem_fun(*this, &View::removePreviousPages));
     m_removeNextAction = m_actionMap.add_action("remove-next", sigc::mem_fun(*this, &View::removeNextPages));
     m_previewPageAction = m_actionMap.add_action("preview-selected", sigc::mem_fun(*this, &View::previewPage));
     m_cancelSelectionAction = m_actionMap.add_action("cancel-selection", sigc::mem_fun(*this, &View::onCancelSelection));
 
     m_removeSelectedAction->set_enabled(false);
+    m_removeUnselectedAction->set_enabled(false);
     m_removePreviousAction->set_enabled(false);
     m_removeNextAction->set_enabled(false);
     m_previewPageAction->set_enabled(false);
@@ -77,12 +81,14 @@ void View::manageActionsEnabledStates()
 
     if (numSelected == 0) {
         m_removeSelectedAction->set_enabled(false);
+        m_removeUnselectedAction->set_enabled(false);
         m_removePreviousAction->set_enabled(false);
         m_removeNextAction->set_enabled(false);
         m_cancelSelectionAction->set_enabled(false);
     }
     else {
         m_removeSelectedAction->set_enabled();
+        m_removeUnselectedAction->set_enabled();
         m_cancelSelectionAction->set_enabled();
     }
 
@@ -113,6 +119,41 @@ void View::manageActionsEnabledStates()
 void View::onCancelSelection()
 {
     unselect_all();
+}
+
+std::vector<unsigned int> View::getSelectedChildrenIndexes()
+{
+    std::vector<Gtk::FlowBoxChild*> children = get_selected_children();
+    std::vector<unsigned int> positions;
+    std::transform(children.begin(),
+                   children.end(),
+                   std::back_inserter(positions),
+                   [](Gtk::FlowBoxChild* child) {
+                       return child->get_index();
+                   });
+
+    return positions;
+}
+
+std::vector<unsigned int> View::getUnselectedChildrenIndexes()
+{
+    std::vector<unsigned int> selectedIndexes = getSelectedChildrenIndexes();
+
+    std::vector<unsigned int> unselectedIndexes(get_children().size());
+    std::iota(unselectedIndexes.begin(), unselectedIndexes.end(), 0);
+
+    auto newEndIt = std::remove_if(unselectedIndexes.begin(),
+                                   unselectedIndexes.end(),
+                                   [&](unsigned int position) {
+                                       return std::any_of(selectedIndexes.begin(),
+                                                          selectedIndexes.end(),
+                                                          [&](unsigned int selectedIndex) {
+                                                              return position == selectedIndex;
+                                                          });
+                                   });
+    unselectedIndexes.erase(newEndIt, unselectedIndexes.end());
+
+    return unselectedIndexes;
 }
 
 void View::waitForRenderCompletion()
@@ -148,17 +189,13 @@ void View::removeSelectedPages()
         m_document->removePage(index);
     }
     else {
-        std::vector<Gtk::FlowBoxChild*> children = get_selected_children();
-        std::vector<unsigned int> positions;
-        std::transform(children.begin(),
-                       children.end(),
-                       std::back_inserter(positions),
-                       [](Gtk::FlowBoxChild* child) {
-                           return child->get_index();
-                       });
-
-        m_document->removePages(positions);
+        m_document->removePages(getSelectedChildrenIndexes());
     }
+}
+
+void View::removeUnselectedPages()
+{
+    m_document->removePages(getUnselectedChildrenIndexes());
 }
 
 void View::removePreviousPages()

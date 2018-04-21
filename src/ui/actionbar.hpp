@@ -12,6 +12,7 @@ public:
 
 private:
     Gtk::Button m_buttonRemovePages;
+    Gtk::Button m_buttonRemoveUnselected;
     Gtk::Button m_buttonRemovePrevious;
     Gtk::Button m_buttonRemoveNext;
 

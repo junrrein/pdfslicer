@@ -9,6 +9,10 @@ ActionBar::ActionBar()
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePages.gobj()), "win.remove-selected"); // NOLINT
     pack_start(m_buttonRemovePages);
 
+    m_buttonRemoveUnselected.set_label("Remove unselected");
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemoveUnselected.gobj()), "win.remove-unselected"); // NOLINT
+    pack_start(m_buttonRemoveUnselected);
+
     m_buttonRemovePrevious.set_label("Remove previous");
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePrevious.gobj()), "win.remove-previous"); // NOLINT
     pack_start(m_buttonRemovePrevious);

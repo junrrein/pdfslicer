@@ -26,6 +26,7 @@ private:
     static const std::set<int> zoomLevels;
 
     Glib::RefPtr<Gio::SimpleAction> m_removeSelectedAction;
+    Glib::RefPtr<Gio::SimpleAction> m_removeUnselectedAction;
     Glib::RefPtr<Gio::SimpleAction> m_removePreviousAction;
     Glib::RefPtr<Gio::SimpleAction> m_removeNextAction;
     Glib::RefPtr<Gio::SimpleAction> m_previewPageAction;
@@ -34,6 +35,7 @@ private:
     void stopRendering();
     void startGeneratingThumbnails(int targetThumbnailSize);
     void removeSelectedPages();
+    void removeUnselectedPages();
     void removePreviousPages();
     void removeNextPages();
     void previewPage();
@@ -41,6 +43,8 @@ private:
     void setupSignalHandlers();
     void manageActionsEnabledStates();
     void onCancelSelection();
+    std::vector<unsigned int> getSelectedChildrenIndexes();
+    std::vector<unsigned int> getUnselectedChildrenIndexes();
 };
 }
 
