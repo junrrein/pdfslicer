@@ -1,8 +1,10 @@
 set (SLICER_BACKEND_SOURCES
-	backend/document.hpp
-	backend/document.cpp
+	backend/command.hpp
+	backend/command.cpp
 	backend/commandmanager.hpp
 	backend/commandmanager.cpp
+	backend/document.hpp
+	backend/document.cpp
 	backend/page.hpp
 	backend/page.cpp)
 
