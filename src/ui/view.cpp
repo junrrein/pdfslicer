@@ -23,7 +23,8 @@ View::View(Gio::ActionMap& actionMap)
 
 View::~View()
 {
-    m_pageRendererPool->stop();
+    if (m_pageRendererPool != nullptr)
+        m_pageRendererPool->stop();
 
     m_actionMap.remove_action("remove-selected");
     m_actionMap.remove_action("remove-previous");
