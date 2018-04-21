@@ -3,25 +3,30 @@
 
 namespace Slicer {
 
+const std::set<int> PreviewWindow::zoomLevels = {1000, 1400, 1800};
+
 PreviewWindow::PreviewWindow(Glib::RefPtr<Page> page)
     : m_page{std::move(page)}
-    , m_zoomLevel{{1000, 1400, 1800}}
+    , m_actionGroup{Gio::SimpleActionGroup::create()}
+    , m_zoomLevel{zoomLevels, *(m_actionGroup.operator->())}
 {
     set_title("Preview");
     set_size_request(400, 400);
     set_default_size(900, 600);
 
+    insert_action_group("preview", m_actionGroup);
+
     m_buttonZoomOut.set_image_from_icon_name("zoom-out-symbolic");
     m_buttonZoomOut.set_tooltip_text("Zoom out");
     m_buttonZoomOut.get_style_context()->add_class("flat");
-    m_buttonZoomOut.set_sensitive(false);
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonZoomOut.gobj()), "preview.zoom-out"); // NOLINT
     m_buttonZoomOut.set_margin_top(8);
     m_buttonZoomOut.set_margin_bottom(8);
     m_buttonZoomOut.set_margin_left(8);
     m_buttonZoomIn.set_image_from_icon_name("zoom-in-symbolic");
     m_buttonZoomIn.set_tooltip_text("Zoom in");
     m_buttonZoomIn.get_style_context()->add_class("flat");
-    m_buttonZoomIn.set_sensitive(true);
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonZoomIn.gobj()), "preview.zoom-in"); // NOLINT
     m_buttonZoomIn.set_margin_top(8);
     m_buttonZoomIn.set_margin_bottom(8);
     m_buttonZoomIn.set_margin_right(8);
@@ -38,24 +43,6 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page> page)
     m_overlay.add(m_scroller);
     m_overlay.add_overlay(m_boxZoom);
     add(m_overlay); // NOLINT
-
-    m_buttonZoomOut.signal_clicked().connect([this]() {
-        --m_zoomLevel;
-
-        m_buttonZoomIn.set_sensitive(true);
-
-        if (m_zoomLevel.currentLevel() == m_zoomLevel.minLevel())
-            m_buttonZoomOut.set_sensitive(false);
-    });
-
-    m_buttonZoomIn.signal_clicked().connect([this]() {
-        ++m_zoomLevel;
-
-        m_buttonZoomOut.set_sensitive(true);
-
-        if (m_zoomLevel.currentLevel() == m_zoomLevel.maxLevel())
-            m_buttonZoomIn.set_sensitive(false);
-    });
 
     m_zoomLevel.changed.connect([&](int level) {
         m_image.set(m_page->renderPage(level));
