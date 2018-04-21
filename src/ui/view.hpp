@@ -33,6 +33,8 @@ private:
     void removePreviousPages();
     void removeNextPages();
     void previewPage();
+    void addActions();
+    void setupSignalHandlers();
 };
 }
 

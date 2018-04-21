@@ -17,6 +17,23 @@ View::View(Slicer::Document& document, Gio::ActionMap& actionMap)
     set_selection_mode(Gtk::SELECTION_SINGLE);
     set_activate_on_single_click(false);
 
+    addActions();
+    generateThumbnails(m_zoomLevel.minLevel());
+    setupSignalHandlers();
+}
+
+View::~View()
+{
+    m_pageRendererPool->stop();
+
+    m_actionMap.remove_action("remove-selected");
+    m_actionMap.remove_action("remove-previous");
+    m_actionMap.remove_action("remove-next");
+    m_actionMap.remove_action("preview-selected");
+}
+
+void View::addActions()
+{
     m_removeSelectedAction = m_actionMap.add_action("remove-selected", sigc::mem_fun(*this, &View::removeSelectedPage));
     m_removePreviousAction = m_actionMap.add_action("remove-previous", sigc::mem_fun(*this, &View::removePreviousPages));
     m_removeNextAction = m_actionMap.add_action("remove-next", sigc::mem_fun(*this, &View::removeNextPages));
@@ -25,9 +42,10 @@ View::View(Slicer::Document& document, Gio::ActionMap& actionMap)
     m_removePreviousAction->set_enabled(false);
     m_removeNextAction->set_enabled(false);
     m_previewPageAction->set_enabled(false);
+}
 
-    generateThumbnails(m_zoomLevel.minLevel());
-
+void View::setupSignalHandlers()
+{
     m_zoomLevel.changed.connect(sigc::mem_fun(*this, &View::generateThumbnails));
 
     signal_selected_children_changed().connect([this]() {
@@ -60,16 +78,6 @@ View::View(Slicer::Document& document, Gio::ActionMap& actionMap)
     signal_child_activated().connect([this](Gtk::FlowBoxChild*) {
         m_previewPageAction->activate();
     });
-}
-
-View::~View()
-{
-    m_pageRendererPool->stop();
-
-    m_actionMap.remove_action("remove-selected");
-    m_actionMap.remove_action("remove-previous");
-    m_actionMap.remove_action("remove-next");
-    m_actionMap.remove_action("preview-selected");
 }
 
 void View::waitForRenderCompletion()
