@@ -3,13 +3,12 @@
 
 namespace Slicer {
 
-HeaderBar::HeaderBar(Gio::ActionGroup& group)
+HeaderBar::HeaderBar()
 {
     set_title("PDF Slicer");
     set_show_close_button();
 
     setupWidgets();
-    setupSignalHandlers(group);
 }
 
 void HeaderBar::setupWidgets()
@@ -23,37 +22,6 @@ void HeaderBar::setupWidgets()
     m_buttonSave.set_tooltip_text("Save as...");
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonSave.gobj()), "win.save-document"); // NOLINT
     pack_start(m_buttonSave);
-
-    m_buttonRemovePages.set_image_from_icon_name("edit-delete-symbolic");
-    m_buttonRemovePages.set_tooltip_text("Remove the selected page");
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePages.gobj()), "win.remove-selected"); // NOLINT
-    m_boxRemovePages.pack_start(m_buttonRemovePages);
-
-    m_buttonRemovePrevious.set_label("Remove previous pages");
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePrevious.gobj()), "win.remove-previous"); // NOLINT
-    m_buttonRemoveNext.set_label("Remove next pages");
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemoveNext.gobj()), "win.remove-next"); // NOLINT
-
-    m_boxMenuRemoveOptions.set_orientation(Gtk::ORIENTATION_VERTICAL);
-    m_boxMenuRemoveOptions.pack_start(m_buttonRemovePrevious);
-    m_boxMenuRemoveOptions.pack_start(m_buttonRemoveNext);
-    m_boxMenuRemoveOptions.set_margin_top(10);
-    m_boxMenuRemoveOptions.set_margin_bottom(10);
-    m_boxMenuRemoveOptions.set_margin_left(10);
-    m_boxMenuRemoveOptions.set_margin_right(10);
-
-    auto menuRemoveOptions = Gtk::manage(new Gtk::PopoverMenu);
-    menuRemoveOptions->add(m_boxMenuRemoveOptions);
-    menuRemoveOptions->show_all_children();
-
-    m_buttonRemoveOptions.set_tooltip_text("More removing options");
-    m_buttonRemoveOptions.get_style_context()->add_class("pepino");
-    m_buttonRemoveOptions.set_popover(*menuRemoveOptions);
-    m_buttonRemoveOptions.set_sensitive(false);
-    m_boxRemovePages.pack_start(m_buttonRemoveOptions);
-
-    m_boxRemovePages.get_style_context()->add_class("linked");
-    pack_start(m_boxRemovePages);
 
     m_buttonUndo.set_image_from_icon_name("edit-undo-symbolic");
     m_buttonUndo.set_tooltip_text("Undo");
@@ -83,22 +51,6 @@ void HeaderBar::setupWidgets()
     m_boxZoom.pack_start(m_buttonZoomIn);
     m_boxZoom.get_style_context()->add_class("linked");
     pack_end(m_boxZoom);
-}
-
-void HeaderBar::setupSignalHandlers(Gio::ActionGroup& group)
-{
-    auto buttonRemoveOptionsEnabler = [&](const Glib::ustring&, bool) {
-        const bool removePreviousEnabled = group.get_action_enabled("remove-previous");
-        const bool removeNextEnabled = group.get_action_enabled("remove-next");
-
-        if (removePreviousEnabled || removeNextEnabled)
-            m_buttonRemoveOptions.set_sensitive();
-        else
-            m_buttonRemoveOptions.set_sensitive(false);
-    };
-
-    group.signal_action_enabled_changed("remove-previous").connect(buttonRemoveOptionsEnabler);
-    group.signal_action_enabled_changed("remove-next").connect(buttonRemoveOptionsEnabler);
 }
 
 } // namespace Slicer

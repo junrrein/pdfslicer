@@ -9,6 +9,8 @@ set (SLICER_BACKEND_SOURCES
 set (SLICER_UI_SOURCES
 	ui/aboutdialog.hpp
 	ui/aboutdialog.cpp
+	ui/actionbar.hpp
+	ui/actionbar.cpp
 	ui/editor.hpp
 	ui/editor.cpp
 	ui/headerbar.hpp

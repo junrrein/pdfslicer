@@ -3,6 +3,7 @@
 
 #include "../backend/document.hpp"
 #include "view.hpp"
+#include "actionbar.hpp"
 #include <gtkmm/box.h>
 #include <giomm/actionmap.h>
 #include <gtkmm/scrolledwindow.h>
@@ -19,6 +20,7 @@ public:
 private:
     View m_view;
     Gtk::ScrolledWindow m_scroller;
+    ActionBar m_actionBar;
 };
 
 } // namespace Slicer

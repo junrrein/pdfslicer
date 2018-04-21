@@ -7,8 +7,7 @@
 namespace Slicer {
 
 AppWindow::AppWindow()
-    : m_headerBar{*this}
-    , m_editor{*this}
+    : m_editor{*this}
 {
     set_size_request(500, 500);
     set_default_size(800, 600);
