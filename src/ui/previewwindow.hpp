@@ -30,6 +30,10 @@ private:
     Gtk::Button m_buttonZoomIn;
     Gtk::Button m_buttonZoomOut;
     Gtk::Box m_boxZoom;
+
+    void setupWidgets();
+    void setupSignalHandlers();
+    void loadCustomCSS();
 };
 
 } // namespace Slicer

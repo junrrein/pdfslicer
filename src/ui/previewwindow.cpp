@@ -16,6 +16,15 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page> page)
 
     insert_action_group("preview", m_actionGroup);
 
+    setupWidgets();
+    setupSignalHandlers();
+    loadCustomCSS();
+
+    show_all_children();
+}
+
+void PreviewWindow::setupWidgets()
+{
     m_buttonZoomOut.set_image_from_icon_name("zoom-out-symbolic");
     m_buttonZoomOut.set_tooltip_text("Zoom out");
     m_buttonZoomOut.get_style_context()->add_class("flat");
@@ -43,11 +52,17 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page> page)
     m_overlay.add(m_scroller);
     m_overlay.add_overlay(m_boxZoom);
     add(m_overlay); // NOLINT
+}
 
+void PreviewWindow::setupSignalHandlers()
+{
     m_zoomLevel.changed.connect([&](int level) {
         m_image.set(m_page->renderPage(level));
     });
+}
 
+void PreviewWindow::loadCustomCSS()
+{
     auto screen = Gdk::Screen::get_default();
     auto provider = Gtk::CssProvider::create();
     provider->load_from_data(R"(
@@ -58,8 +73,6 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page> page)
     Gtk::StyleContext::add_provider_for_screen(screen,
                                                provider,
                                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-
-    show_all_children();
 }
 
 } // namespace Slicer
