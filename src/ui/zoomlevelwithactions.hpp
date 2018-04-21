@@ -2,7 +2,7 @@
 #define ZOOMLEVELWITHACTIONS_HPP
 
 #include "zoomlevel.hpp"
-#include <gtkmm/applicationwindow.h>
+#include <giomm/actionmap.h>
 #include <giomm/simpleaction.h>
 
 namespace Slicer {
@@ -10,12 +10,12 @@ namespace Slicer {
 class ZoomLevelWithActions : public ZoomLevel {
 public:
     ZoomLevelWithActions() = delete;
-    ZoomLevelWithActions(Gtk::ApplicationWindow& window,
-                         const std::set<int>& levels);
+    ZoomLevelWithActions(const std::set<int>& levels,
+                         Gio::ActionMap& actionMap);
     ~ZoomLevelWithActions();
 
 private:
-    Gtk::ApplicationWindow& m_window;
+    Gio::ActionMap& m_actionMap;
 
     Glib::RefPtr<Gio::SimpleAction> m_zoomInAction;
     Glib::RefPtr<Gio::SimpleAction> m_zoomOutAction;

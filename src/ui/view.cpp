@@ -6,11 +6,10 @@ namespace Slicer {
 
 const std::set<int> View::zoomLevels = {200, 300, 400};
 
-View::View(Gtk::ApplicationWindow& window,
-           Slicer::Document& document)
+View::View(Slicer::Document& document, Gio::ActionMap& actionMap)
     : m_document{document}
-    , m_window{window}
-    , m_zoomLevel{m_window, zoomLevels}
+    , m_actionMap{actionMap}
+    , m_zoomLevel{zoomLevels, m_actionMap}
 {
     set_column_spacing(10);
     set_row_spacing(20);
@@ -18,10 +17,10 @@ View::View(Gtk::ApplicationWindow& window,
     set_selection_mode(Gtk::SELECTION_SINGLE);
     set_activate_on_single_click(false);
 
-    m_removeSelectedAction = m_window.add_action("remove-selected", sigc::mem_fun(*this, &View::removeSelectedPage));
-    m_removePreviousAction = m_window.add_action("remove-previous", sigc::mem_fun(*this, &View::removePreviousPages));
-    m_removeNextAction = m_window.add_action("remove-next", sigc::mem_fun(*this, &View::removeNextPages));
-    m_previewPageAction = m_window.add_action("preview-selected", sigc::mem_fun(*this, &View::previewPage));
+    m_removeSelectedAction = m_actionMap.add_action("remove-selected", sigc::mem_fun(*this, &View::removeSelectedPage));
+    m_removePreviousAction = m_actionMap.add_action("remove-previous", sigc::mem_fun(*this, &View::removePreviousPages));
+    m_removeNextAction = m_actionMap.add_action("remove-next", sigc::mem_fun(*this, &View::removeNextPages));
+    m_previewPageAction = m_actionMap.add_action("preview-selected", sigc::mem_fun(*this, &View::previewPage));
     m_removeSelectedAction->set_enabled(false);
     m_removePreviousAction->set_enabled(false);
     m_removeNextAction->set_enabled(false);
@@ -67,10 +66,10 @@ View::~View()
 {
     m_pageRendererPool->stop();
 
-    m_window.remove_action("remove-selected");
-    m_window.remove_action("remove-previous");
-    m_window.remove_action("remove-next");
-    m_window.remove_action("preview-selected");
+    m_actionMap.remove_action("remove-selected");
+    m_actionMap.remove_action("remove-previous");
+    m_actionMap.remove_action("remove-next");
+    m_actionMap.remove_action("preview-selected");
 }
 
 void View::waitForRenderCompletion()
@@ -145,10 +144,6 @@ void View::previewPage()
     Glib::RefPtr<Slicer::Page> page
         = m_document.pages()->get_item(static_cast<unsigned>(pageNumber));
 
-    auto previewWindow = new Slicer::PreviewWindow{page};
-
-    previewWindow->set_modal();
-    previewWindow->set_transient_for(m_window);
-    previewWindow->show();
+    (new Slicer::PreviewWindow{page})->show();
 }
 }

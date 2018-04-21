@@ -2,13 +2,12 @@
 
 namespace Slicer {
 
-ZoomLevelWithActions::ZoomLevelWithActions(Gtk::ApplicationWindow& window,
-                                           const std::set<int>& levels)
+ZoomLevelWithActions::ZoomLevelWithActions(const std::set<int>& levels, Gio::ActionMap& actionMap)
     : ZoomLevel{levels}
-    , m_window{window}
+    , m_actionMap{actionMap}
 {
-    m_zoomInAction = m_window.add_action("zoom-in", sigc::mem_fun(*this, &ZoomLevelWithActions::onZoomInAction));
-    m_zoomOutAction = m_window.add_action("zoom-out", sigc::mem_fun(*this, &ZoomLevelWithActions::onZoomOutAction));
+    m_zoomInAction = m_actionMap.add_action("zoom-in", sigc::mem_fun(*this, &ZoomLevelWithActions::onZoomInAction));
+    m_zoomOutAction = m_actionMap.add_action("zoom-out", sigc::mem_fun(*this, &ZoomLevelWithActions::onZoomOutAction));
 
     m_zoomInAction->set_enabled();
     m_zoomOutAction->set_enabled(false);
@@ -16,8 +15,8 @@ ZoomLevelWithActions::ZoomLevelWithActions(Gtk::ApplicationWindow& window,
 
 ZoomLevelWithActions::~ZoomLevelWithActions()
 {
-    m_window.remove_action("zoom-in");
-    m_window.remove_action("zoom-out");
+    m_actionMap.remove_action("zoom-in");
+    m_actionMap.remove_action("zoom-out");
 }
 
 void ZoomLevelWithActions::onZoomInAction()

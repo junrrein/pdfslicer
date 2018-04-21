@@ -10,7 +10,7 @@ namespace Slicer {
 
 class View : public Gtk::FlowBox {
 public:
-    View(Gtk::ApplicationWindow& window, Document& document);
+    View(Document& document, Gio::ActionMap& actionMap);
     virtual ~View();
 
     void waitForRenderCompletion();
@@ -18,7 +18,7 @@ public:
 private:
     Slicer::Document& m_document;
     std::unique_ptr<ctpl::thread_pool> m_pageRendererPool;
-    Gtk::ApplicationWindow& m_window;
+    Gio::ActionMap& m_actionMap;
 
     ZoomLevelWithActions m_zoomLevel;
     static const std::set<int> zoomLevels;

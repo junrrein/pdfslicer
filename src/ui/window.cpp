@@ -127,7 +127,7 @@ void AppWindow::buildView()
     // Poppler doesn't like two threads rendering pages from the same PDF, so this
     // would crash the program.
     m_view.reset();
-    m_view = std::make_unique<Slicer::View>(*this, *m_document);
+    m_view = std::make_unique<Slicer::View>(*m_document, *this);
 
     m_scroller.add(*m_view);
     m_scroller.show_all_children();
