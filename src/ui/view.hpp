@@ -35,6 +35,7 @@ private:
     void previewPage();
     void addActions();
     void setupSignalHandlers();
+    void manageActionsEnabledStates();
 };
 }
 

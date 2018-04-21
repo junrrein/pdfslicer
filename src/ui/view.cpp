@@ -49,35 +49,44 @@ void View::setupSignalHandlers()
     m_zoomLevel.changed.connect(sigc::mem_fun(*this, &View::generateThumbnails));
 
     signal_selected_children_changed().connect([this]() {
-        const unsigned long numSelected = get_selected_children().size();
-
-        if (numSelected == 0)
-            m_removeSelectedAction->set_enabled(false);
-        else
-            m_removeSelectedAction->set_enabled();
-
-        if (numSelected == 1) {
-            m_previewPageAction->set_enabled();
-
-            const int index = get_selected_children().at(0)->get_index();
-            if (index == 0)
-                m_removePreviousAction->set_enabled(false);
-            else
-                m_removePreviousAction->set_enabled();
-
-            if (index == static_cast<int>(get_children().size()) - 1)
-                m_removeNextAction->set_enabled(false);
-            else
-                m_removeNextAction->set_enabled();
-        }
-        else {
-            m_previewPageAction->set_enabled(false);
-        }
+        manageActionsEnabledStates();
     });
 
     signal_child_activated().connect([this](Gtk::FlowBoxChild*) {
         m_previewPageAction->activate();
     });
+}
+
+void View::manageActionsEnabledStates()
+{
+    const unsigned long numSelected = get_selected_children().size();
+
+    if (numSelected == 0) {
+        m_removeSelectedAction->set_enabled(false);
+        m_removePreviousAction->set_enabled(false);
+        m_removeNextAction->set_enabled(false);
+    }
+    else {
+        m_removeSelectedAction->set_enabled();
+    }
+
+    if (numSelected == 1) {
+        m_previewPageAction->set_enabled();
+
+        const int index = get_selected_children().at(0)->get_index();
+        if (index == 0)
+            m_removePreviousAction->set_enabled(false);
+        else
+            m_removePreviousAction->set_enabled();
+
+        if (index == static_cast<int>(get_children().size()) - 1)
+            m_removeNextAction->set_enabled(false);
+        else
+            m_removeNextAction->set_enabled();
+    }
+    else {
+        m_previewPageAction->set_enabled(false);
+    }
 }
 
 void View::waitForRenderCompletion()
