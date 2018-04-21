@@ -59,6 +59,10 @@ void PreviewWindow::setupSignalHandlers()
     m_zoomLevel.changed.connect([&](int level) {
         m_image.set(m_page->renderPage(level));
     });
+
+    signal_hide().connect([this]() {
+        delete this;
+    });
 }
 
 void PreviewWindow::loadCustomCSS()
