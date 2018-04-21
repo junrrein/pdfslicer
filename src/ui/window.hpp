@@ -5,6 +5,7 @@
 #include "previewwindow.hpp"
 #include "welcomescreen.hpp"
 #include "headerbar.hpp"
+#include "editor.hpp"
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/button.h>
@@ -23,24 +24,17 @@ public:
     void openDocument(const Glib::RefPtr<Gio::File>& file);
 
 private:
-    // Model
-    std::unique_ptr<Slicer::Document> m_document;
+    std::unique_ptr<Document> m_document;
 
     HeaderBar m_headerBar;
     WelcomeScreen m_welcomeScreen;
-
-    // View
-    std::unique_ptr<Slicer::View> m_view;
-    Gtk::ScrolledWindow m_scroller;
+    Editor m_editor;
     Gtk::Overlay m_overlay;
 
     Gtk::Revealer m_revealerDone;
     Gtk::Box m_boxDone;
     Gtk::Label m_labelDone;
     Gtk::Button m_buttonCloseDone;
-
-    // Preview window
-    std::unique_ptr<Slicer::PreviewWindow> m_previewWindow;
 
     // Signals
     sigc::signal<void> m_signalSaved;
@@ -57,7 +51,6 @@ private:
     void setupWidgets();
     void setupSignalHandlers();
     void loadCustomCSS();
-    void buildView();
 
     // Callbacks
     void onSaveAction();

@@ -8,6 +8,7 @@ namespace Slicer {
 
 AppWindow::AppWindow()
     : m_headerBar{*this}
+    , m_editor{*this}
 {
     set_size_request(500, 500);
     set_default_size(800, 600);
@@ -22,11 +23,21 @@ AppWindow::AppWindow()
 
 void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
 {
-    m_document = std::make_unique<Slicer::Document>(file->get_path());
-    m_document->commandExecuted().connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
+    auto document = std::make_unique<Document>(file->get_path());
+    m_editor.setDocument(*document);
+    m_document = std::move(document);
+
+    if (!m_editor.is_ancestor(m_overlay)) {
+        m_overlay.remove();
+        m_overlay.add(m_editor);
+        show_all_children();
+    }
+
     m_headerBar.set_subtitle(file->get_basename());
+
     m_saveAction->set_enabled();
-    buildView();
+
+    m_document->commandExecuted().connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
 }
 
 void AppWindow::addActions()
@@ -43,8 +54,6 @@ void AppWindow::addActions()
 
 void AppWindow::setupWidgets()
 {
-    m_view = nullptr;
-
     set_titlebar(m_headerBar);
 
     m_labelDone.set_label("Saved!");
@@ -65,8 +74,7 @@ void AppWindow::setupWidgets()
     m_revealerDone.set_halign(Gtk::ALIGN_CENTER);
     m_revealerDone.set_valign(Gtk::ALIGN_START);
 
-    m_scroller.add(m_welcomeScreen);
-    m_overlay.add(m_scroller);
+    m_overlay.add(m_welcomeScreen);
     m_overlay.add_overlay(m_revealerDone);
 
     add(m_overlay); // NOLINT
@@ -116,23 +124,6 @@ void AppWindow::loadCustomCSS()
                                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
-void AppWindow::buildView()
-{
-    m_scroller.remove();
-
-    // It is necessary to invoke an empty reset() as a separate command.
-    // reset() erases the old object it owns as the last thing it does.
-    // So it may be the case that the new View starts rendering pages while the
-    // old one is still rendering pages.
-    // Poppler doesn't like two threads rendering pages from the same PDF, so this
-    // would crash the program.
-    m_view.reset();
-    m_view = std::make_unique<Slicer::View>(*m_document, *this);
-
-    m_scroller.add(*m_view);
-    m_scroller.show_all_children();
-}
-
 void AppWindow::onSaveAction()
 {
     Slicer::SaveFileDialog dialog{*this};
@@ -159,13 +150,13 @@ void AppWindow::onOpenAction()
 
 void AppWindow::onUndoAction()
 {
-    m_view->waitForRenderCompletion();
+    m_editor.waitForRenderCompletion();
     m_document->undoCommand();
 }
 
 void AppWindow::onRedoAction()
 {
-    m_view->waitForRenderCompletion();
+    m_editor.waitForRenderCompletion();
     m_document->redoCommand();
 }
 

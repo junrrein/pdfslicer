@@ -4,11 +4,11 @@
 
 namespace Slicer {
 
+const int View::numRendererThreads = 1; // Poppler can't handle more than one
 const std::set<int> View::zoomLevels = {200, 300, 400};
 
-View::View(Slicer::Document& document, Gio::ActionMap& actionMap)
-    : m_document{document}
-    , m_actionMap{actionMap}
+View::View(Gio::ActionMap& actionMap)
+    : m_actionMap{actionMap}
     , m_zoomLevel{zoomLevels, m_actionMap}
 {
     set_column_spacing(10);
@@ -18,7 +18,6 @@ View::View(Slicer::Document& document, Gio::ActionMap& actionMap)
     set_activate_on_single_click(false);
 
     addActions();
-    generateThumbnails(m_zoomLevel.minLevel());
     setupSignalHandlers();
 }
 
@@ -30,6 +29,13 @@ View::~View()
     m_actionMap.remove_action("remove-previous");
     m_actionMap.remove_action("remove-next");
     m_actionMap.remove_action("preview-selected");
+}
+
+void View::setDocument(Document& document)
+{
+    stopRendering();
+    m_document = &document;
+    startGeneratingThumbnails(m_zoomLevel.minLevel());
 }
 
 void View::addActions()
@@ -46,7 +52,10 @@ void View::addActions()
 
 void View::setupSignalHandlers()
 {
-    m_zoomLevel.changed.connect(sigc::mem_fun(*this, &View::generateThumbnails));
+    m_zoomLevel.changed.connect([this](int targetThumbnailSize) {
+        stopRendering();
+        startGeneratingThumbnails(targetThumbnailSize);
+    });
 
     signal_selected_children_changed().connect([this]() {
         manageActionsEnabledStates();
@@ -91,21 +100,23 @@ void View::manageActionsEnabledStates()
 
 void View::waitForRenderCompletion()
 {
-    m_pageRendererPool->stop(true);
+    if (m_pageRendererPool != nullptr)
+        m_pageRendererPool->stop(true);
 
-    // thread_pool.stop() makes the pool unusable for later use,
-    // so we need to create a new one.
-    m_pageRendererPool = std::make_unique<ctpl::thread_pool>(1);
+    m_pageRendererPool = std::make_unique<ctpl::thread_pool>(numRendererThreads);
 }
 
-void View::generateThumbnails(int targetThumbnailSize)
+void View::stopRendering()
 {
     if (m_pageRendererPool != nullptr)
         m_pageRendererPool->stop();
 
-    m_pageRendererPool = std::make_unique<ctpl::thread_pool>(1); // Only one thread - Poppler doesn't handle more
+    m_pageRendererPool = std::make_unique<ctpl::thread_pool>(numRendererThreads);
+}
 
-    bind_list_store(m_document.pages(), [this, targetThumbnailSize](const Glib::RefPtr<Page>& page) {
+void View::startGeneratingThumbnails(int targetThumbnailSize)
+{
+    bind_list_store(m_document->pages(), [this, targetThumbnailSize](const Glib::RefPtr<Page>& page) {
         return Gtk::manage(new Slicer::ViewChild{page,
                                                  targetThumbnailSize,
                                                  *m_pageRendererPool});
@@ -116,7 +127,7 @@ void View::removeSelectedPage()
 {
     Gtk::FlowBoxChild* child = get_selected_children().at(0);
     const int index = child->get_index();
-    m_document.removePage(index);
+    m_document->removePage(index);
 }
 
 void View::removePreviousPages()
@@ -130,7 +141,7 @@ void View::removePreviousPages()
 
     const int index = selected.at(0)->get_index();
 
-    m_document.removePageRange(0, index - 1);
+    m_document->removePageRange(0, index - 1);
 }
 
 void View::removeNextPages()
@@ -144,8 +155,8 @@ void View::removeNextPages()
 
     const int index = selected.at(0)->get_index();
 
-    m_document.removePageRange(index + 1,
-                               static_cast<int>(m_document.pages()->get_n_items()) - 1);
+    m_document->removePageRange(index + 1,
+                                static_cast<int>(m_document->pages()->get_n_items()) - 1);
 }
 
 void View::previewPage()
@@ -159,7 +170,7 @@ void View::previewPage()
     const int pageNumber = get_selected_children().at(0)->get_index();
 
     Glib::RefPtr<Slicer::Page> page
-        = m_document.pages()->get_item(static_cast<unsigned>(pageNumber));
+        = m_document->pages()->get_item(static_cast<unsigned>(pageNumber));
 
     (new Slicer::PreviewWindow{page})->show();
 }

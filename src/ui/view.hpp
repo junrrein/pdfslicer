@@ -10,14 +10,16 @@ namespace Slicer {
 
 class View : public Gtk::FlowBox {
 public:
-    View(Document& document, Gio::ActionMap& actionMap);
+    View(Gio::ActionMap& actionMap);
     virtual ~View();
 
+    void setDocument(Document& document);
     void waitForRenderCompletion();
 
 private:
-    Slicer::Document& m_document;
+    Document* m_document;
     std::unique_ptr<ctpl::thread_pool> m_pageRendererPool;
+    static const int numRendererThreads;
     Gio::ActionMap& m_actionMap;
 
     ZoomLevelWithActions m_zoomLevel;
@@ -28,7 +30,8 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_removeNextAction;
     Glib::RefPtr<Gio::SimpleAction> m_previewPageAction;
 
-    void generateThumbnails(int targetThumbnailSize);
+    void stopRendering();
+    void startGeneratingThumbnails(int targetThumbnailSize);
     void removeSelectedPage();
     void removePreviousPages();
     void removeNextPages();

@@ -9,6 +9,8 @@ set (SLICER_BACKEND_SOURCES
 set (SLICER_UI_SOURCES
 	ui/aboutdialog.hpp
 	ui/aboutdialog.cpp
+	ui/editor.hpp
+	ui/editor.cpp
 	ui/headerbar.hpp
 	ui/headerbar.cpp
 	ui/openfiledialog.hpp
