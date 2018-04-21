@@ -32,14 +32,14 @@ int ZoomLevel::minLevel() const
 
 int ZoomLevel::maxLevel() const
 {
-    return *(--m_levels.end());
+    return *std::prev(m_levels.end());
 }
 
 int ZoomLevel::operator++()
 {
     if (currentLevel() != maxLevel()) {
         auto it = m_levels.find(currentLevel());
-        m_currentLevel = *(++it);
+        m_currentLevel = *std::next(it);
         changed.emit(currentLevel());
     }
 
@@ -49,8 +49,8 @@ int ZoomLevel::operator++()
 int ZoomLevel::operator--()
 {
     if (currentLevel() != minLevel()) {
-        auto it = m_levels.find(m_currentLevel);
-        m_currentLevel = *(--it);
+        auto it = m_levels.find(currentLevel());
+        m_currentLevel = *std::prev(it);
         changed.emit(currentLevel());
     }
 
