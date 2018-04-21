@@ -1,6 +1,7 @@
 #include "view.hpp"
 #include "viewchild.hpp"
 #include "previewwindow.hpp"
+#include <algorithm>
 
 namespace Slicer {
 
@@ -14,7 +15,7 @@ View::View(Gio::ActionMap& actionMap)
     set_column_spacing(10);
     set_row_spacing(20);
 
-    set_selection_mode(Gtk::SELECTION_SINGLE);
+    set_selection_mode(Gtk::SELECTION_MULTIPLE);
     set_activate_on_single_click(false);
 
     addActions();
@@ -41,14 +42,17 @@ void View::setDocument(Document& document)
 
 void View::addActions()
 {
-    m_removeSelectedAction = m_actionMap.add_action("remove-selected", sigc::mem_fun(*this, &View::removeSelectedPage));
+    m_removeSelectedAction = m_actionMap.add_action("remove-selected", sigc::mem_fun(*this, &View::removeSelectedPages));
     m_removePreviousAction = m_actionMap.add_action("remove-previous", sigc::mem_fun(*this, &View::removePreviousPages));
     m_removeNextAction = m_actionMap.add_action("remove-next", sigc::mem_fun(*this, &View::removeNextPages));
     m_previewPageAction = m_actionMap.add_action("preview-selected", sigc::mem_fun(*this, &View::previewPage));
+    m_cancelSelectionAction = m_actionMap.add_action("cancel-selection", sigc::mem_fun(*this, &View::onCancelSelection));
+
     m_removeSelectedAction->set_enabled(false);
     m_removePreviousAction->set_enabled(false);
     m_removeNextAction->set_enabled(false);
     m_previewPageAction->set_enabled(false);
+    m_cancelSelectionAction->set_enabled(false);
 }
 
 void View::setupSignalHandlers()
@@ -75,9 +79,11 @@ void View::manageActionsEnabledStates()
         m_removeSelectedAction->set_enabled(false);
         m_removePreviousAction->set_enabled(false);
         m_removeNextAction->set_enabled(false);
+        m_cancelSelectionAction->set_enabled(false);
     }
     else {
         m_removeSelectedAction->set_enabled();
+        m_cancelSelectionAction->set_enabled();
     }
 
     if (numSelected == 1) {
@@ -97,6 +103,16 @@ void View::manageActionsEnabledStates()
     else {
         m_previewPageAction->set_enabled(false);
     }
+
+    if (numSelected > 1) {
+        m_removePreviousAction->set_enabled(false);
+        m_removeNextAction->set_enabled(false);
+    }
+}
+
+void View::onCancelSelection()
+{
+    unselect_all();
 }
 
 void View::waitForRenderCompletion()
@@ -124,11 +140,25 @@ void View::startGeneratingThumbnails(int targetThumbnailSize)
     });
 }
 
-void View::removeSelectedPage()
+void View::removeSelectedPages()
 {
-    Gtk::FlowBoxChild* child = get_selected_children().at(0);
-    const int index = child->get_index();
-    m_document->removePage(index);
+    if (get_selected_children().size() == 1) {
+        Gtk::FlowBoxChild* child = get_selected_children().at(0);
+        const int index = child->get_index();
+        m_document->removePage(index);
+    }
+    else {
+        std::vector<Gtk::FlowBoxChild*> children = get_selected_children();
+        std::vector<unsigned int> positions;
+        std::transform(children.begin(),
+                       children.end(),
+                       std::back_inserter(positions),
+                       [](Gtk::FlowBoxChild* child) {
+                           return child->get_index();
+                       });
+
+        m_document->removePages(positions);
+    }
 }
 
 void View::removePreviousPages()

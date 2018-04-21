@@ -29,16 +29,18 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_removePreviousAction;
     Glib::RefPtr<Gio::SimpleAction> m_removeNextAction;
     Glib::RefPtr<Gio::SimpleAction> m_previewPageAction;
+    Glib::RefPtr<Gio::SimpleAction> m_cancelSelectionAction;
 
     void stopRendering();
     void startGeneratingThumbnails(int targetThumbnailSize);
-    void removeSelectedPage();
+    void removeSelectedPages();
     void removePreviousPages();
     void removeNextPages();
     void previewPage();
     void addActions();
     void setupSignalHandlers();
     void manageActionsEnabledStates();
+    void onCancelSelection();
 };
 }
 

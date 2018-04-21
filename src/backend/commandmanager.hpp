@@ -28,7 +28,21 @@ public:
 private:
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
     Glib::RefPtr<Page> m_removedPage;
-    int m_position;
+};
+
+class RemovePagesCommand : public Command {
+public:
+    RemovePagesCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
+                       const std::vector<unsigned int>& listPositions);
+
+    void execute() override;
+    void undo() override;
+    void redo() override;
+
+private:
+    Glib::RefPtr<Gio::ListStore<Page>> m_pages;
+    const std::vector<unsigned int> m_listPositions;
+    std::vector<Glib::RefPtr<Page>> m_removedPages;
 };
 
 class RemovePageRangeCommand : public Command {

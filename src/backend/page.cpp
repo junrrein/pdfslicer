@@ -83,4 +83,18 @@ Glib::RefPtr<Gdk::Pixbuf> Page::renderPage(int targetSize) const
     return pixbuf;
 }
 
+int pageComparator::operator()(const Glib::RefPtr<const Page>& a,
+                               const Glib::RefPtr<const Page>& b)
+{
+    const int aPosition = a->number();
+    const int bPosition = b->number();
+
+    if (aPosition < bPosition)
+        return -1;
+    else if (aPosition == bPosition)
+        return 0;
+    else
+        return 1;
+}
+
 } // namespace Slicer

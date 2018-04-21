@@ -12,6 +12,7 @@ public:
 
     void saveDocument(const std::string& destinationPath) const;
     void removePage(int pageNumber);
+    void removePages(const std::vector<unsigned int>& positions);
     void removePageRange(int first, int last);
     void undoCommand() { m_commandManager.undo(); }
     void redoCommand() { m_commandManager.redo(); }

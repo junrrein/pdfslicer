@@ -14,6 +14,8 @@ private:
     Gtk::Button m_buttonRemovePages;
     Gtk::Button m_buttonRemovePrevious;
     Gtk::Button m_buttonRemoveNext;
+
+    Gtk::Button m_buttonCancelSelection;
 };
 
 } // namespace Slicer

@@ -21,6 +21,11 @@ private:
     PopplerPage* m_ppage;
 };
 
+struct pageComparator {
+    int operator()(const Glib::RefPtr<const Page>& a,
+                   const Glib::RefPtr<const Page>& b);
+};
+
 } // namespace Slicer
 
 #endif // PAGE_HPP

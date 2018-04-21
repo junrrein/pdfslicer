@@ -89,6 +89,12 @@ void Document::removePage(int pageNumber)
     m_commandManager.execute(command);
 }
 
+void Document::removePages(const std::vector<unsigned int>& positions)
+{
+    auto command = std::make_shared<RemovePagesCommand>(m_pages, positions);
+    m_commandManager.execute(command);
+}
+
 void Document::removePageRange(int first, int last)
 {
     auto command = std::make_shared<RemovePageRangeCommand>(m_pages, first, last);
