@@ -132,7 +132,6 @@ void AppWindow::onSaveAction()
     if (result == Gtk::RESPONSE_OK) {
         m_document->saveDocument(dialog.getSavePath());
         m_signalSaved.emit();
-        openDocument(Gio::File::create_for_path(dialog.getSavePath()));
     }
 }
 
