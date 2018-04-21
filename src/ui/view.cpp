@@ -183,6 +183,8 @@ void View::startGeneratingThumbnails(int targetThumbnailSize)
 
 void View::removeSelectedPages()
 {
+    waitForRenderCompletion();
+
     if (get_selected_children().size() == 1) {
         Gtk::FlowBoxChild* child = get_selected_children().at(0);
         const int index = child->get_index();
@@ -195,11 +197,15 @@ void View::removeSelectedPages()
 
 void View::removeUnselectedPages()
 {
+    waitForRenderCompletion();
+
     m_document->removePages(getUnselectedChildrenIndexes());
 }
 
 void View::removePreviousPages()
 {
+    waitForRenderCompletion();
+
     std::vector<Gtk::FlowBoxChild*> selected = get_selected_children();
 
     if (selected.size() != 1)
@@ -214,6 +220,8 @@ void View::removePreviousPages()
 
 void View::removeNextPages()
 {
+    waitForRenderCompletion();
+
     std::vector<Gtk::FlowBoxChild*> selected = get_selected_children();
 
     if (selected.size() != 1)
