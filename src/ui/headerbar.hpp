@@ -2,7 +2,7 @@
 #define HEADERBAR_HPP
 
 #include <gtkmm/headerbar.h>
-#include <gtkmm/applicationwindow.h>
+#include <giomm/actiongroup.h>
 #include <gtkmm/menubutton.h>
 #include <gtkmm/modelbutton.h>
 #include <gtkmm/box.h>
@@ -11,7 +11,7 @@ namespace Slicer {
 
 class HeaderBar : public Gtk::HeaderBar {
 public:
-    HeaderBar(Gtk::ApplicationWindow& window);
+    HeaderBar(Gio::ActionGroup& group);
 
 private:
     Gtk::Button m_buttonOpen;
@@ -28,6 +28,8 @@ private:
     Gtk::Button m_buttonZoomOut;
     Gtk::Button m_buttonZoomIn;
     Gtk::Box m_boxZoom;
+    void setupWidgets();
+    void setupSignalHandlers(Gio::ActionGroup& group);
 };
 
 } // namespace Slicer

@@ -3,11 +3,17 @@
 
 namespace Slicer {
 
-HeaderBar::HeaderBar(Gtk::ApplicationWindow& window)
+HeaderBar::HeaderBar(Gio::ActionGroup& group)
 {
     set_title("PDF Slicer");
     set_show_close_button();
 
+    setupWidgets();
+    setupSignalHandlers(group);
+}
+
+void HeaderBar::setupWidgets()
+{
     m_buttonOpen.set_image_from_icon_name("document-open-symbolic");
     m_buttonOpen.set_tooltip_text("Open document...");
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonOpen.gobj()), "win.open-document"); // NOLINT
@@ -77,10 +83,13 @@ HeaderBar::HeaderBar(Gtk::ApplicationWindow& window)
     m_boxZoom.pack_start(m_buttonZoomIn);
     m_boxZoom.get_style_context()->add_class("linked");
     pack_end(m_boxZoom);
+}
 
-    auto buttonRemoveEnabler = [&](const Glib::ustring&, bool) {
-        const bool removePreviousEnabled = window.get_action_enabled("remove-previous");
-        const bool removeNextEnabled = window.get_action_enabled("remove-next");
+void HeaderBar::setupSignalHandlers(Gio::ActionGroup& group)
+{
+    auto buttonRemoveOptionsEnabler = [&](const Glib::ustring&, bool) {
+        const bool removePreviousEnabled = group.get_action_enabled("remove-previous");
+        const bool removeNextEnabled = group.get_action_enabled("remove-next");
 
         if (removePreviousEnabled || removeNextEnabled)
             m_buttonRemoveOptions.set_sensitive();
@@ -88,8 +97,8 @@ HeaderBar::HeaderBar(Gtk::ApplicationWindow& window)
             m_buttonRemoveOptions.set_sensitive(false);
     };
 
-    window.signal_action_enabled_changed("remove-previous").connect(buttonRemoveEnabler);
-    window.signal_action_enabled_changed("remove-next").connect(buttonRemoveEnabler);
+    group.signal_action_enabled_changed("remove-previous").connect(buttonRemoveOptionsEnabler);
+    group.signal_action_enabled_changed("remove-next").connect(buttonRemoveOptionsEnabler);
 }
 
 } // namespace Slicer
