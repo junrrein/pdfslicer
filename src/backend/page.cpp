@@ -91,10 +91,11 @@ int pageComparator::operator()(const Glib::RefPtr<const Page>& a,
 
     if (aPosition < bPosition)
         return -1;
-    else if (aPosition == bPosition)
+
+    if (aPosition == bPosition)
         return 0;
-    else
-        return 1;
+
+    return 1;
 }
 
 } // namespace Slicer

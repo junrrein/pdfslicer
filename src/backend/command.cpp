@@ -25,9 +25,9 @@ void RemovePageCommand::redo()
 }
 
 RemovePagesCommand::RemovePagesCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
-                                       const std::vector<unsigned int>& listPositions)
+                                       std::vector<unsigned int> listPositions)
     : m_pages{std::move(pages)}
-    , m_listPositions{listPositions}
+    , m_listPositions{std::move(listPositions)}
 {
     for (auto position : m_listPositions) {
         auto page = m_pages->get_item(position);

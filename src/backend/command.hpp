@@ -32,7 +32,7 @@ private:
 class RemovePagesCommand : public Command {
 public:
     RemovePagesCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
-                       const std::vector<unsigned int>& listPositions);
+                       std::vector<unsigned int> listPositions);
 
     void execute() override;
     void undo() override;

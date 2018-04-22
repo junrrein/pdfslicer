@@ -11,7 +11,8 @@ const int View::numRendererThreads = 1; // Poppler can't handle more than one
 const std::set<int> View::zoomLevels = {200, 300, 400};
 
 View::View(Gio::ActionMap& actionMap)
-    : m_actionMap{actionMap}
+    : m_document{nullptr}
+    , m_actionMap{actionMap}
     , m_zoomLevel{zoomLevels, m_actionMap}
 {
     set_column_spacing(10);
