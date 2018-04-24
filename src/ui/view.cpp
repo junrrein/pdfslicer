@@ -2,9 +2,8 @@
 #include "viewchild.hpp"
 #include "previewwindow.hpp"
 #include <range/v3/all.hpp>
-#include <algorithm>
-#include <numeric>
-#include <functional>
+
+using namespace ranges;
 
 namespace Slicer {
 
@@ -126,9 +125,9 @@ void View::onCancelSelection()
 std::vector<unsigned int> View::getSelectedChildrenIndexes()
 {
     const auto children = get_selected_children();
-    const auto selectedIndexes = ranges::copy(
+    const auto selectedIndexes = copy(
         children
-        | ranges::view::transform(std::mem_fn(&Gtk::FlowBoxChild::get_index)));
+        | view::transform(std::mem_fn(&Gtk::FlowBoxChild::get_index)));
 
     return selectedIndexes;
 }
@@ -136,11 +135,9 @@ std::vector<unsigned int> View::getSelectedChildrenIndexes()
 std::vector<unsigned int> View::getUnselectedChildrenIndexes()
 {
     const auto selectedIndexes = getSelectedChildrenIndexes();
-    std::vector<unsigned int> unselectedIndexes;
-
-    ranges::set_difference(ranges::view::iota(0, get_children().size()),
-                           selectedIndexes,
-                           ranges::back_inserter(unselectedIndexes));
+    const std::vector<unsigned int> unselectedIndexes = copy(
+        view::set_difference(view::iota(0, get_children().size()),
+                             selectedIndexes));
 
     return unselectedIndexes;
 }
