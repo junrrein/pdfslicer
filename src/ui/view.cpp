@@ -3,7 +3,7 @@
 #include "previewwindow.hpp"
 #include <algorithm>
 #include <numeric>
-#include <iostream>
+#include <functional>
 
 namespace Slicer {
 
@@ -129,9 +129,7 @@ std::vector<unsigned int> View::getSelectedChildrenIndexes()
     std::transform(children.begin(),
                    children.end(),
                    std::back_inserter(positions),
-                   [](Gtk::FlowBoxChild* child) {
-                       return child->get_index();
-                   });
+                   std::mem_fn(&Gtk::FlowBoxChild::get_index));
 
     return positions;
 }
