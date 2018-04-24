@@ -125,9 +125,9 @@ void View::onCancelSelection()
 std::vector<unsigned int> View::getSelectedChildrenIndexes()
 {
     const auto children = get_selected_children();
-    const auto selectedIndexes = copy(
-        children
-        | view::transform(std::mem_fn(&Gtk::FlowBoxChild::get_index)));
+    const auto selectedIndexes = children
+                                 | view::transform(std::mem_fn(&Gtk::FlowBoxChild::get_index))
+                                 | to_<std::vector<unsigned int>>();
 
     return selectedIndexes;
 }
@@ -135,9 +135,9 @@ std::vector<unsigned int> View::getSelectedChildrenIndexes()
 std::vector<unsigned int> View::getUnselectedChildrenIndexes()
 {
     const auto selectedIndexes = getSelectedChildrenIndexes();
-    const std::vector<unsigned int> unselectedIndexes = copy(
-        view::set_difference(view::iota(0, get_children().size()),
-                             selectedIndexes));
+    const auto unselectedIndexes = view::set_difference(view::iota(0, get_children().size()),
+                                                        selectedIndexes)
+                                   | to_<std::vector<unsigned int>>();
 
     return unselectedIndexes;
 }
