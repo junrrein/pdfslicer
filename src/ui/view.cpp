@@ -137,20 +137,15 @@ std::vector<unsigned int> View::getSelectedChildrenIndexes()
 std::vector<unsigned int> View::getUnselectedChildrenIndexes()
 {
     std::vector<unsigned int> selectedIndexes = getSelectedChildrenIndexes();
+    std::vector<unsigned int> allIndexes(get_children().size());
+    std::iota(allIndexes.begin(), allIndexes.end(), 0);
+    std::vector<unsigned int> unselectedIndexes;
 
-    std::vector<unsigned int> unselectedIndexes(get_children().size());
-    std::iota(unselectedIndexes.begin(), unselectedIndexes.end(), 0);
-
-    auto newEndIt = std::remove_if(unselectedIndexes.begin(),
-                                   unselectedIndexes.end(),
-                                   [&](unsigned int position) {
-                                       return std::any_of(selectedIndexes.begin(),
-                                                          selectedIndexes.end(),
-                                                          [&](unsigned int selectedIndex) {
-                                                              return position == selectedIndex;
-                                                          });
-                                   });
-    unselectedIndexes.erase(newEndIt, unselectedIndexes.end());
+    std::set_difference(allIndexes.begin(),
+                        allIndexes.end(),
+                        selectedIndexes.begin(),
+                        selectedIndexes.end(),
+                        std::back_inserter(unselectedIndexes));
 
     return unselectedIndexes;
 }
