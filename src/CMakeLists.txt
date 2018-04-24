@@ -50,7 +50,8 @@ target_link_libraries(pdfslicer
     ${CAIROMM_LIBRARIES}
     ${POPPLER_LIBRARIES}
     PDFWriter
-	CTPL)
+	CTPL
+	range-v3)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
 	if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")

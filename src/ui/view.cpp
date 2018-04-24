@@ -1,6 +1,7 @@
 #include "view.hpp"
 #include "viewchild.hpp"
 #include "previewwindow.hpp"
+#include <range/v3/all.hpp>
 #include <algorithm>
 #include <numeric>
 #include <functional>
@@ -124,28 +125,22 @@ void View::onCancelSelection()
 
 std::vector<unsigned int> View::getSelectedChildrenIndexes()
 {
-    std::vector<Gtk::FlowBoxChild*> children = get_selected_children();
-    std::vector<unsigned int> positions;
-    std::transform(children.begin(),
-                   children.end(),
-                   std::back_inserter(positions),
-                   std::mem_fn(&Gtk::FlowBoxChild::get_index));
+    const auto children = get_selected_children();
+    const auto selectedIndexes = ranges::copy(
+        children
+        | ranges::view::transform(std::mem_fn(&Gtk::FlowBoxChild::get_index)));
 
-    return positions;
+    return selectedIndexes;
 }
 
 std::vector<unsigned int> View::getUnselectedChildrenIndexes()
 {
-    std::vector<unsigned int> selectedIndexes = getSelectedChildrenIndexes();
-    std::vector<unsigned int> allIndexes(get_children().size());
-    std::iota(allIndexes.begin(), allIndexes.end(), 0);
+    const auto selectedIndexes = getSelectedChildrenIndexes();
     std::vector<unsigned int> unselectedIndexes;
 
-    std::set_difference(allIndexes.begin(),
-                        allIndexes.end(),
-                        selectedIndexes.begin(),
-                        selectedIndexes.end(),
-                        std::back_inserter(unselectedIndexes));
+    ranges::set_difference(ranges::view::iota(0, get_children().size()),
+                           selectedIndexes,
+                           ranges::back_inserter(unselectedIndexes));
 
     return unselectedIndexes;
 }
