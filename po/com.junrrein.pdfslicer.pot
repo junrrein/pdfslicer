@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-25 19:01-0300\n"
+"POT-Creation-Date: 2018-04-25 19:18-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,7 +74,7 @@ msgid "Zoom in"
 msgstr ""
 
 #: ../src/ui/openfiledialog.cpp:8
-msgid "Open Document"
+msgid "Open document"
 msgstr ""
 
 #: ../src/ui/openfiledialog.cpp:14 ../src/ui/savefiledialog.cpp:17
@@ -90,7 +90,7 @@ msgid "Preview"
 msgstr ""
 
 #: ../src/ui/savefiledialog.cpp:9
-msgid "Save Document As"
+msgid "Save document as"
 msgstr ""
 
 #: ../src/ui/savefiledialog.cpp:13
