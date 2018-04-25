@@ -1,0 +1,14 @@
+#ifndef SLICER_CONFIG_HPP
+#define SLICER_CONFIG_HPP
+
+#include <string>
+
+namespace Slicer::config {
+	static const std::string APP_NAME = "PDF Slicer";
+	static const std::string PROGRAM_NAME = "@GETTEXT_PACKAGE@";
+	static const std::string GTXT_PACKAGE = "@GETTEXT_PACKAGE@";
+	static const std::string GNOME_LOCALE_DIR = "@GNOMELOCALEDIR@";
+	static const std::string VERSION = "@VERSION@";
+}
+
+#endif // SLICER_CONFIG_H

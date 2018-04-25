@@ -45,13 +45,19 @@ add_executable(pdfslicer
 	${SLICER_BACKEND_SOURCES}
 	${SLICER_UI_SOURCES})
 
+target_include_directories (pdfslicer SYSTEM PRIVATE
+	"${CMAKE_BINARY_DIR}"
+	"${CMAKE_SOURCE_DIR}/third-party/PDF-Writer/PDFWriter"
+	"${CMAKE_SOURCE_DIR}/third-party/CTPL"
+	"${CMAKE_SOURCE_DIR}/third-party/range-v3/include")
+
 target_link_libraries(pdfslicer
     ${GTKMM_LIBRARIES}
     ${CAIROMM_LIBRARIES}
     ${POPPLER_LIBRARIES}
+	${INTL_LIBRARY_DIRS}
     PDFWriter
-	CTPL
-	range-v3)
+	CTPL)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
 	if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")

@@ -1,5 +1,7 @@
 #include "application.hpp"
 #include "ui/aboutdialog.hpp"
+#include <gtkmm.h>
+#include <config.hpp>
 
 namespace Slicer {
 
@@ -9,8 +11,9 @@ Glib::RefPtr<Application> Application::create()
 }
 
 Application::Application()
-    : Gtk::Application{"com.junrrein.pdfslicer", Gio::APPLICATION_HANDLES_OPEN}
+    : Gtk::Application{config::PROGRAM_NAME, Gio::APPLICATION_HANDLES_OPEN}
 {
+    Glib::set_application_name(config::APP_NAME);
 }
 
 void Application::on_startup()
