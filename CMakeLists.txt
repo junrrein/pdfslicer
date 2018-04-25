@@ -52,6 +52,7 @@ add_subdirectory(third-party)
 
 include (InstallRequiredSystemLibraries)
 include (CPack)
+include (Uninstall)
 
 add_subdirectory(src)
 add_subdirectory(data)
