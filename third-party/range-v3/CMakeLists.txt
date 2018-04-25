@@ -137,10 +137,3 @@ write_basic_package_version_file(
   VERSION ${RANGE_V3_VERSION}
   COMPATIBILITY ExactVersion
 )
-
-install(TARGETS meta range-v3 EXPORT range-v3-targets DESTINATION lib)
-install(EXPORT range-v3-targets FILE range-v3-config.cmake DESTINATION lib/cmake/range-v3)
-install(FILES
-  ${CMAKE_CURRENT_BINARY_DIR}/range-v3-config-version.cmake
-  DESTINATION lib/cmake/range-v3)
-install(DIRECTORY include/ DESTINATION include FILES_MATCHING PATTERN "*.hpp")

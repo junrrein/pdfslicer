@@ -38,20 +38,20 @@ set (SLICER_UI_SOURCES
 	ui/zoomlevelwithactions.hpp
 	ui/zoomlevelwithactions.cpp)
 
-add_executable(pdfslicer
+add_executable(${CMAKE_PROJECT_NAME}
     main.cpp
 	application.hpp
 	application.cpp
 	${SLICER_BACKEND_SOURCES}
 	${SLICER_UI_SOURCES})
 
-target_include_directories (pdfslicer SYSTEM PRIVATE
+target_include_directories (${CMAKE_PROJECT_NAME} SYSTEM PRIVATE
 	"${CMAKE_BINARY_DIR}"
 	"${CMAKE_SOURCE_DIR}/third-party/PDF-Writer/PDFWriter"
 	"${CMAKE_SOURCE_DIR}/third-party/CTPL"
 	"${CMAKE_SOURCE_DIR}/third-party/range-v3/include")
 
-target_link_libraries(pdfslicer
+target_link_libraries(${CMAKE_PROJECT_NAME}
     ${GTKMM_LIBRARIES}
     ${CAIROMM_LIBRARIES}
     ${POPPLER_LIBRARIES}
@@ -61,16 +61,16 @@ target_link_libraries(pdfslicer
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
 	if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-		set_target_properties(pdfslicer PROPERTIES COMPILE_FLAGS
+		set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES COMPILE_FLAGS
 			"-Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wduplicated-branches -Wlogical-op")
 	endif()
 
 #	if(CLANG_TIDY_EXE)
-#	  set_target_properties(pdfslicer PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}")
+#	  set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}")
 #	endif()
 
 #	if (IWYU_EXE)
-#		set_target_properties(pdfslicer PROPERTIES CXX_INCLUDE_WHAT_YOU_USE "${DO_IWYU}")
+#		set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES CXX_INCLUDE_WHAT_YOU_USE "${DO_IWYU}")
 #	endif ()
 endif()
 
@@ -178,4 +178,7 @@ if (MINGW)
 	install (PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/pdfslicer.exe DESTINATION ./)
 	install (FILES ${SLICER_DLLS} DESTINATION ./)
 	install (DIRECTORY ${GTK_STUFF_DIR} DESTINATION ./)
+
+else () # Linux
+	install (TARGETS ${CMAKE_PROJECT_NAME} RUNTIME DESTINATION bin)
 endif()

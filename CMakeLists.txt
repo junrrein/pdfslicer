@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.9)
-project (com.junrrein.pdfslicer CXX)
+project (pdfslicer CXX)
 
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake-modules)
-set (GETTEXT_PACKAGE ${CMAKE_PROJECT_NAME})
+set (GETTEXT_PACKAGE "com.junrrein.pdfslicer")
 set (GNOMELOCALEDIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
 set (VERSION 0.9)
 configure_file (config.hpp.in ${CMAKE_BINARY_DIR}/config.hpp)
