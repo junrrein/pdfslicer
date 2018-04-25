@@ -2,6 +2,7 @@
 #include "openfiledialog.hpp"
 #include "savefiledialog.hpp"
 #include <glibmm/main.h>
+#include <glibmm/i18n.h>
 #include <gtkmm/cssprovider.h>
 
 namespace Slicer {
@@ -55,7 +56,7 @@ void AppWindow::setupWidgets()
 {
     set_titlebar(m_headerBar);
 
-    m_labelDone.set_label("Saved!");
+    m_labelDone.set_label(_("Saved!"));
     m_labelDone.set_margin_top(10);
     m_labelDone.set_margin_bottom(10);
     m_labelDone.set_margin_left(15);

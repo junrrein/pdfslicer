@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-25 19:18-0300\n"
+"POT-Creation-Date: 2018-04-25 20:15-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,4 +107,8 @@ msgstr ""
 
 #: ../src/ui/welcomescreen.cpp:12
 msgid "Open a document to start slicing!"
+msgstr ""
+
+#: ../src/ui/window.cpp:59
+msgid "Saved!"
 msgstr ""

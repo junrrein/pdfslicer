@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-25 19:18-0300\n"
+"POT-Creation-Date: 2018-04-25 20:15-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -104,3 +104,7 @@ msgstr "Documento PDF"
 #: ../src/ui/welcomescreen.cpp:12
 msgid "Open a document to start slicing!"
 msgstr "¡Abra un documento y empiece a rebanar!"
+
+#: ../src/ui/window.cpp:59
+msgid "Saved!"
+msgstr "Guardado!"
