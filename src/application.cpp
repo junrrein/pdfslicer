@@ -1,6 +1,7 @@
 #include "application.hpp"
 #include "ui/aboutdialog.hpp"
 #include <gtkmm.h>
+#include <glibmm/i18n.h>
 #include <config.hpp>
 
 namespace Slicer {
@@ -26,8 +27,8 @@ void Application::on_startup()
     add_action("quit", sigc::mem_fun(*this, &Application::onActionQuit));
 
     auto menu = Gio::Menu::create();
-    menu->append("About", "app.about");
-    menu->append("Quit", "app.quit");
+    menu->append(_("About"), "app.about");
+    menu->append(_("Quit"), "app.quit");
     set_app_menu(menu);
 }
 

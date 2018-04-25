@@ -1,5 +1,6 @@
 #include "previewwindow.hpp"
 #include <gtkmm/cssprovider.h>
+#include <glibmm/i18n.h>
 
 namespace Slicer {
 
@@ -10,7 +11,7 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page> page)
     , m_actionGroup{Gio::SimpleActionGroup::create()}
     , m_zoomLevel{zoomLevels, *(m_actionGroup.operator->())}
 {
-    set_title("Preview");
+    set_title(_("Preview"));
     set_size_request(400, 400);
     set_default_size(900, 600);
 
@@ -26,14 +27,14 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page> page)
 void PreviewWindow::setupWidgets()
 {
     m_buttonZoomOut.set_image_from_icon_name("zoom-out-symbolic");
-    m_buttonZoomOut.set_tooltip_text("Zoom out");
+    m_buttonZoomOut.set_tooltip_text(_("Zoom out"));
     m_buttonZoomOut.get_style_context()->add_class("flat");
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonZoomOut.gobj()), "preview.zoom-out"); // NOLINT
     m_buttonZoomOut.set_margin_top(8);
     m_buttonZoomOut.set_margin_bottom(8);
     m_buttonZoomOut.set_margin_left(8);
     m_buttonZoomIn.set_image_from_icon_name("zoom-in-symbolic");
-    m_buttonZoomIn.set_tooltip_text("Zoom in");
+    m_buttonZoomIn.set_tooltip_text(_("Zoom in"));
     m_buttonZoomIn.get_style_context()->add_class("flat");
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonZoomIn.gobj()), "preview.zoom-in"); // NOLINT
     m_buttonZoomIn.set_margin_top(8);

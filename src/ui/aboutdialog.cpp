@@ -1,4 +1,5 @@
 #include "aboutdialog.hpp"
+#include <config.hpp>
 
 namespace Slicer {
 
@@ -6,7 +7,7 @@ AboutDialog::AboutDialog(Gtk::Window& parent)
 {
     set_program_name("PDF Slicer");
     set_logo_icon_name("edit-cut-symbolic");
-    set_version("0.9");
+    set_version(config::VERSION);
     set_copyright("Copyright © 2017 Julián Unrrein");
     set_license_type(Gtk::LICENSE_GPL_3_0_ONLY);
 

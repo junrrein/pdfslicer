@@ -1,6 +1,5 @@
 #include "zoomlevel.hpp"
-
-#include <algorithm>
+#include <range/v3/algorithm.hpp>
 
 namespace Slicer {
 
@@ -16,7 +15,7 @@ ZoomLevel::ZoomLevel(const std::set<int>& levels)
     if (m_levels.empty())
         throw std::runtime_error("There has to be at least one zoom level");
 
-    if (std::any_of(m_levels.begin(), m_levels.end(), isNonPositive))
+    if (ranges::any_of(m_levels, isNonPositive))
         throw std::runtime_error("Zoom levels have to be greater than zero");
 }
 

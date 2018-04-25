@@ -1,4 +1,5 @@
 #include "welcomescreen.hpp"
+#include <glibmm/i18n.h>
 
 namespace Slicer {
 
@@ -8,7 +9,7 @@ WelcomeScreen::WelcomeScreen()
     m_icon.set_from_icon_name("edit-cut-symbolic", Gtk::ICON_SIZE_BUTTON);
     m_icon.set_pixel_size(256);
 
-    m_label.set_label("Open a document to start slicing!");
+    m_label.set_label(_("Open a document to start slicing!"));
     m_label.get_style_context()->add_class("dim-label");
     m_label.get_style_context()->add_class("welcome-label");
 

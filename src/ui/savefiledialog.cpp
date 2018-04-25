@@ -1,20 +1,21 @@
 #include "savefiledialog.hpp"
 #include "utils.hpp"
+#include <glibmm/i18n.h>
 
 namespace Slicer {
 
 SaveFileDialog::SaveFileDialog(Gtk::Window& parent)
     : Gtk::FileChooserDialog{parent,
-                             "Save Document As",
+                             _("Save Document As"),
                              Gtk::FILE_CHOOSER_ACTION_SAVE}
 {
 	set_transient_for(parent);
-	set_current_name("Untitled document");
+    set_current_name(_("Untitled document") + Glib::ustring{".pdf"});
 	set_filter(pdfFilter());
     set_do_overwrite_confirmation();
 
-	add_button("Cancel", Gtk::RESPONSE_CANCEL);
-	add_button("Save", Gtk::RESPONSE_OK);
+    add_button(_("Cancel"), Gtk::RESPONSE_CANCEL);
+    add_button(_("Save"), Gtk::RESPONSE_OK);
 }
 
 std::string SaveFileDialog::getSavePath() const

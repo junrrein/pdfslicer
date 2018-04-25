@@ -1,27 +1,28 @@
 #include "actionbar.hpp"
 #include <gtkmm/revealer.h>
+#include <glibmm/i18n.h>
 
 namespace Slicer {
 
 ActionBar::ActionBar()
 {
-    m_buttonRemovePages.set_label("Remove selected");
+    m_buttonRemovePages.set_label(_("Remove selected"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePages.gobj()), "win.remove-selected"); // NOLINT
     pack_start(m_buttonRemovePages);
 
-    m_buttonRemoveUnselected.set_label("Remove unselected");
+    m_buttonRemoveUnselected.set_label(_("Remove unselected"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemoveUnselected.gobj()), "win.remove-unselected"); // NOLINT
     pack_start(m_buttonRemoveUnselected);
 
-    m_buttonRemovePrevious.set_label("Remove previous");
+    m_buttonRemovePrevious.set_label(_("Remove previous"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePrevious.gobj()), "win.remove-previous"); // NOLINT
     pack_start(m_buttonRemovePrevious);
 
-    m_buttonRemoveNext.set_label("Remove next");
+    m_buttonRemoveNext.set_label(_("Remove next"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemoveNext.gobj()), "win.remove-next"); // NOLINT
     pack_start(m_buttonRemoveNext);
 
-    m_buttonCancelSelection.set_label("Cancel selection");
+    m_buttonCancelSelection.set_label(_("Cancel selection"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonCancelSelection.gobj()), "win.cancel-selection"); // NOLINT
     pack_end(m_buttonCancelSelection);
 
