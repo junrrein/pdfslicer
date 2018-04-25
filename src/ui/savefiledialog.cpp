@@ -6,7 +6,7 @@ namespace Slicer {
 
 SaveFileDialog::SaveFileDialog(Gtk::Window& parent)
     : Gtk::FileChooserDialog{parent,
-                             _("Save Document As"),
+                             _("Save document as"),
                              Gtk::FILE_CHOOSER_ACTION_SAVE}
 {
 	set_transient_for(parent);

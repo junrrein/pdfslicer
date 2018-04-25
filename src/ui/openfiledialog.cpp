@@ -5,7 +5,7 @@
 namespace Slicer {
 
 OpenFileDialog::OpenFileDialog(Gtk::Window& parent)
-    : Gtk::FileChooserDialog{parent, _("Open Document"), Gtk::FILE_CHOOSER_ACTION_OPEN}
+    : Gtk::FileChooserDialog{parent, _("Open document"), Gtk::FILE_CHOOSER_ACTION_OPEN}
 {
 	set_transient_for(parent);
 	set_select_multiple(false);
