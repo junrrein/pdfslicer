@@ -3,5 +3,5 @@ Type=Application
 Name=PDF Slicer
 Icon=edit-cut-symbolic
 StartupNotify=true
-Exec=${CMAKE_BINARY_DIR}/src/pdfslicer %U
+Exec=@CMAKE_INSTALL_PREFIX@/bin/@PROJECT_NAME@ %U
 Categories=GNOME;GTK;Utility
