@@ -14,6 +14,8 @@ public:
                          Gio::ActionMap& actionMap);
     ~ZoomLevelWithActions();
 
+    void enable();
+
 private:
     Gio::ActionMap& m_actionMap;
 

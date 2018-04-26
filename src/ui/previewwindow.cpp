@@ -57,6 +57,8 @@ void PreviewWindow::setupWidgets()
 
 void PreviewWindow::setupSignalHandlers()
 {
+    m_zoomLevel.enable();
+
     m_zoomLevel.changed.connect([&](int level) {
         m_image.set(m_page->renderPage(level));
     });

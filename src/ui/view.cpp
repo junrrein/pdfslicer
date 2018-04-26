@@ -39,7 +39,12 @@ View::~View()
 void View::setDocument(Document& document)
 {
     stopRendering();
+
+    if (m_document == nullptr)
+        m_zoomLevel.enable();
+
     m_document = &document;
+
     startGeneratingThumbnails(m_zoomLevel.minLevel());
 }
 

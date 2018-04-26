@@ -9,7 +9,7 @@ ZoomLevelWithActions::ZoomLevelWithActions(const std::set<int>& levels, Gio::Act
     m_zoomInAction = m_actionMap.add_action("zoom-in", sigc::mem_fun(*this, &ZoomLevelWithActions::onZoomInAction));
     m_zoomOutAction = m_actionMap.add_action("zoom-out", sigc::mem_fun(*this, &ZoomLevelWithActions::onZoomOutAction));
 
-    m_zoomInAction->set_enabled();
+    m_zoomInAction->set_enabled(false);
     m_zoomOutAction->set_enabled(false);
 }
 
@@ -17,6 +17,11 @@ ZoomLevelWithActions::~ZoomLevelWithActions()
 {
     m_actionMap.remove_action("zoom-in");
     m_actionMap.remove_action("zoom-out");
+}
+
+void ZoomLevelWithActions::enable()
+{
+    m_zoomInAction->set_enabled();
 }
 
 void ZoomLevelWithActions::onZoomInAction()
