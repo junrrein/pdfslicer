@@ -7,7 +7,7 @@ set (LANGUAGES_NEEDED aa ab ae af ak am an ar as ast av ay az ba be bg bh bi bm 
 
 macro (add_translations_directory NLS_PACKAGE)
     add_custom_target (i18n ALL COMMENT “Building i18n messages.”)
-    find_program (MSGFMT_EXECUTABLE msgfmt)
+	find_program (MSGFMT_EXECUTABLE msgfmt)
     foreach (LANGUAGE_NEEDED ${LANGUAGES_NEEDED})
         create_po_file (${LANGUAGE_NEEDED} ${CMAKE_CURRENT_SOURCE_DIR})
     endforeach (LANGUAGE_NEEDED ${LANGUAGES_NEEDED})
@@ -16,7 +16,8 @@ macro (add_translations_directory NLS_PACKAGE)
     foreach (PO_INPUT ${PO_FILES})
         get_filename_component (PO_INPUT_BASE ${PO_INPUT} NAME_WE)
         set (MO_OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${PO_INPUT_BASE}.mo)
-        add_custom_command (TARGET i18n COMMAND ${MSGFMT_EXECUTABLE} -o ${MO_OUTPUT} ${PO_INPUT})
+
+		add_custom_command (TARGET i18n COMMAND ${MSGFMT_EXECUTABLE} -o ${MO_OUTPUT} ${PO_INPUT})
 
         install (FILES ${MO_OUTPUT} DESTINATION
             share/locale/${PO_INPUT_BASE}/LC_MESSAGES
@@ -151,7 +152,7 @@ macro (add_translations_catalog NLS_PACKAGE)
         -o ${TEMPLATE}
         ${XGETTEXT_C_ARGS} --from-code=UTF-8)
 
-    set(EXTRA_XGETTEXT_COMMAND
+	set(EXTRA_XGETTEXT_COMMAND
         ${XGETTEXT_EXECUTABLE} -d extra
         -o ${EXTRA_TEMPLATE} --no-location --from-code=UTF-8)
 
@@ -217,9 +218,9 @@ macro (add_translations_catalog NLS_PACKAGE)
         set(CONTINUE_FLAG "-j")
     endforeach()
 
-    file (GLOB PO_FILES ${EXTRA_PO_DIR}/*.po)
-    foreach (PO_INPUT ${PO_FILES})
+	file (GLOB EXTRA_PO_FILES ${EXTRA_PO_DIR}/*.po)
+	foreach (PO_INPUT ${EXTRA_PO_FILES})
         get_filename_component (PO_INPUT_BASE ${PO_INPUT} NAME)
-        add_custom_command (TARGET po COMMAND WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} ${MSG_MERGE} --update ${PO_INPUT_BASE} ${EXTRA_TEMPLATE})
-    endforeach (PO_INPUT ${PO_FILES})
+		add_custom_command (TARGET po WORKING_DIRECTORY ${EXTRA_PO_DIR} COMMAND ${MSG_MERGE} --update ${PO_INPUT_BASE} ${EXTRA_TEMPLATE} --force-po)
+	endforeach (PO_INPUT ${EXTRA_PO_FILES})
 endmacro ()
