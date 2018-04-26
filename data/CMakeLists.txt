@@ -1,6 +1,9 @@
 include (Translations)
 
-configure_file_translation (pdfslicer.desktop.in
+configure_file (pdfslicer.desktop.in
+	${CMAKE_CURRENT_BINARY_DIR}/pdfslicer.desktop.in)
+
+configure_file_translation (${CMAKE_CURRENT_BINARY_DIR}/pdfslicer.desktop.in
 	${CMAKE_CURRENT_BINARY_DIR}/pdfslicer.desktop
 	${CMAKE_SOURCE_DIR}/po
 )
