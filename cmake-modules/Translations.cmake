@@ -1,8 +1,8 @@
 # Translations.cmake, CMake macros written for Marlin, feel free to re-use them
 include (CMakeParseArguments)
 # be sure that all languages are present Using all usual languages code from
-# https://www.gnu.org/software/gettext/manual/html_node/Language-Codes.html #Language-Codes Rare language codes should
-# be added on-demand.
+# https://www.gnu.org/software/gettext/manual/html_node/Language-Codes.html
+# #Language-Codes Rare language codes should be added on-demand.
 set (LANGUAGES_NEEDED
      aa
      ab
@@ -212,9 +212,14 @@ macro (add_translations_directory NLS_PACKAGE)
         get_filename_component (PO_INPUT_BASE ${PO_INPUT} NAME_WE)
         set (MO_OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${PO_INPUT_BASE}.mo)
 
-        add_custom_command (TARGET i18n-mo COMMAND ${MSGFMT_EXECUTABLE} -o ${MO_OUTPUT} ${PO_INPUT})
+        add_custom_command (TARGET i18n-mo
+                            COMMAND ${MSGFMT_EXECUTABLE} -o ${MO_OUTPUT}
+                                    ${PO_INPUT})
 
-        install (FILES ${MO_OUTPUT} DESTINATION share/locale/${PO_INPUT_BASE}/LC_MESSAGES RENAME ${NLS_PACKAGE}.mo)
+        install (FILES ${MO_OUTPUT}
+                       DESTINATION
+                       share/locale/${PO_INPUT_BASE}/LC_MESSAGES
+                 RENAME ${NLS_PACKAGE}.mo)
     endforeach (PO_INPUT ${PO_FILES})
 endmacro (add_translations_directory)
 
@@ -238,7 +243,11 @@ macro (create_po_file LANGUAGE_NEEDED DIRECTORY)
             "${LANGUAGE_NEEDED}"
             STREQUAL
             "ko")
-            file (APPEND ${FILE} "\"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\\n\"\n")
+            file (
+                APPEND
+                    ${FILE}
+                    "\"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\\n\"\n"
+            )
         elseif ("${LANGUAGE_NEEDED}"
                 STREQUAL
                 "en"
@@ -318,7 +327,8 @@ macro (create_po_file LANGUAGE_NEEDED DIRECTORY)
                 "${LANGUAGE_NEEDED}"
                 STREQUAL
                 "es")
-            file (APPEND ${FILE} "\"Plural-Forms: nplurals=2; plural=n != 1;\\n\"\n")
+            file (APPEND ${FILE}
+                         "\"Plural-Forms: nplurals=2; plural=n != 1;\\n\"\n")
         elseif ("${LANGUAGE_NEEDED}"
                 STREQUAL
                 "fr"
@@ -330,9 +340,14 @@ macro (create_po_file LANGUAGE_NEEDED DIRECTORY)
                 "${LANGUAGE_NEEDED}"
                 STREQUAL
                 "pt_BR")
-            file (APPEND ${FILE} "\"Plural-Forms: nplurals=2; plural=n>1;\\n\"\n")
+            file (APPEND ${FILE}
+                         "\"Plural-Forms: nplurals=2; plural=n>1;\\n\"\n")
         elseif ("${LANGUAGE_NEEDED}" STREQUAL "lv")
-            file (APPEND ${FILE} "\"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;\\n\"\n")
+            file (
+                APPEND
+                    ${FILE}
+                    "\"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;\\n\"\n"
+            )
         elseif ("${LANGUAGE_NEEDED}" STREQUAL "ro")
             file (
                 APPEND
@@ -369,8 +384,18 @@ macro (create_po_file LANGUAGE_NEEDED DIRECTORY)
                     ${FILE}
                     "\"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\\n\"\n"
             )
-        elseif ("${LANGUAGE_NEEDED}" STREQUAL "cs" OR "${LANGUAGE_NEEDED}" STREQUAL "sk")
-            file (APPEND ${FILE} "\"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\\n\"\n")
+        elseif ("${LANGUAGE_NEEDED}"
+                STREQUAL
+                "cs"
+                OR
+                "${LANGUAGE_NEEDED}"
+                STREQUAL
+                "sk")
+            file (
+                APPEND
+                    ${FILE}
+                    "\"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\\n\"\n"
+            )
         elseif ("${LANGUAGE_NEEDED}" STREQUAL "pl")
             file (
                 APPEND
@@ -413,11 +438,14 @@ macro (configure_file_translation SOURCE RESULT PO_DIR)
     add_custom_command (TARGET i18n-data
                         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
                         COMMAND ${INTLTOOL_MERGE_EXECUTABLE}
-                                --quiet ${INTLTOOL_FLAG} ${EXTRA_PO_DIR} ${SOURCE} ${RESULT})
+                                --quiet ${INTLTOOL_FLAG} ${EXTRA_PO_DIR}
+                                ${SOURCE} ${RESULT})
 endmacro ()
 
 macro (add_translations_catalog NLS_PACKAGE)
-    cmake_parse_arguments (ARGS "" "" "DESKTOP_FILES;APPDATA_FILES;SCHEMA_FILES" ${ARGN})
+    cmake_parse_arguments (
+        ARGS "" "" "DESKTOP_FILES;APPDATA_FILES;SCHEMA_FILES" ${ARGN}
+    )
     add_custom_target (pot COMMENT "Build translation catalogs (.pot files)")
     find_program (XGETTEXT_EXECUTABLE xgettext)
     find_program (INTLTOOL_EXTRACT_EXECUTABLE intltool-extract)
@@ -433,23 +461,36 @@ macro (add_translations_catalog NLS_PACKAGE)
     set (GLADE_SOURCE "")
 
     foreach (FILES_INPUT ${ARGN})
-        if ((${FILES_INPUT} MATCHES ${CMAKE_SOURCE_DIR}) OR (${FILES_INPUT} MATCHES ${CMAKE_BINARY_DIR}))
+        if ((
+            ${FILES_INPUT}
+            MATCHES
+            ${CMAKE_SOURCE_DIR}
+            )
+            OR
+            (
+            ${FILES_INPUT}
+            MATCHES
+            ${CMAKE_BINARY_DIR}
+            ))
             set (BASE_DIRECTORY ${FILES_INPUT})
         else ()
             set (BASE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${FILES_INPUT})
         endif ()
 
-        file (GLOB_RECURSE SOURCE_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/ ${BASE_DIRECTORY}/*.c)
+        file (GLOB_RECURSE SOURCE_FILES
+              RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/ ${BASE_DIRECTORY}/*.c)
         foreach (C_FILE ${SOURCE_FILES})
             set (C_SOURCE ${C_SOURCE} ${C_FILE})
         endforeach ()
 
-        file (GLOB_RECURSE SOURCE_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/ ${BASE_DIRECTORY}/*.cpp)
+        file (GLOB_RECURSE SOURCE_FILES
+              RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/ ${BASE_DIRECTORY}/*.cpp)
         foreach (CPP_FILE ${SOURCE_FILES})
             set (CPP_SOURCE ${CPP_SOURCE} ${CPP_FILE})
         endforeach ()
 
-        file (GLOB_RECURSE SOURCE_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/ ${BASE_DIRECTORY}/*.ui)
+        file (GLOB_RECURSE SOURCE_FILES
+              RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/ ${BASE_DIRECTORY}/*.ui)
         foreach (GLADE_FILE ${SOURCE_FILES})
             set (GLADE_SOURCE ${GLADE_SOURCE} ${GLADE_FILE})
         endforeach ()
@@ -472,9 +513,19 @@ macro (add_translations_catalog NLS_PACKAGE)
          ${XGETTEXT_C_ARGS}
          --from-code=UTF-8)
 
-    set (EXTRA_XGETTEXT_COMMAND ${XGETTEXT_EXECUTABLE} -d extra -o ${EXTRA_TEMPLATE} --no-location --from-code=UTF-8)
+    set (EXTRA_XGETTEXT_COMMAND
+         ${XGETTEXT_EXECUTABLE}
+         -d
+         extra
+         -o
+         ${EXTRA_TEMPLATE}
+         --no-location
+         --from-code=UTF-8)
 
-    set (INTLTOOL_EXTRACT_COMMAND ${INTLTOOL_EXTRACT_EXECUTABLE} --local --srcdir=/)
+    set (INTLTOOL_EXTRACT_COMMAND
+         ${INTLTOOL_EXTRACT_EXECUTABLE}
+         --local
+         --srcdir=/)
 
     set (CONTINUE_FLAG "")
 
@@ -495,7 +546,8 @@ macro (add_translations_catalog NLS_PACKAGE)
     if (NOT "${GLADE_SOURCE}" STREQUAL "")
         add_custom_command (TARGET pot
                             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-                            COMMAND ${BASE_XGETTEXT_COMMAND} ${CONTINUE_FLAG} -LGlade ${GLADE_SOURCE})
+                            COMMAND ${BASE_XGETTEXT_COMMAND} ${CONTINUE_FLAG}
+                                    -LGlade ${GLADE_SOURCE})
     endif ()
 
     # Then we have to update all the .po files
@@ -506,7 +558,9 @@ macro (add_translations_catalog NLS_PACKAGE)
         get_filename_component (PO_INPUT_BASE ${PO_INPUT} NAME)
         add_custom_command (TARGET po
                             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-                            COMMAND ${MSG_MERGE} --update ${PO_INPUT_BASE} ${TEMPLATE} --force-po)
+                            COMMAND ${MSG_MERGE}
+                                    --update ${PO_INPUT_BASE} ${TEMPLATE}
+                                    --force-po)
     endforeach (PO_INPUT ${PO_FILES})
 
     # We need to create the directory if one extra content exists.
@@ -542,12 +596,16 @@ macro (add_translations_catalog NLS_PACKAGE)
         get_filename_component (DESKTOP_SOURCE ${DESKTOP_SOURCE} ABSOLUTE)
         add_custom_command (TARGET pot
                             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-                            COMMAND ${INTLTOOL_EXTRACT_COMMAND} --type=gettext/keys ${DESKTOP_SOURCE})
+                            COMMAND ${INTLTOOL_EXTRACT_COMMAND}
+                                    --type=gettext/keys ${DESKTOP_SOURCE})
         get_filename_component (DESKTOP_SOURCE_NAME ${DESKTOP_SOURCE} NAME)
-        add_custom_command (TARGET pot
-                            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-                            COMMAND ${EXTRA_XGETTEXT_COMMAND} ${CONTINUE_FLAG} ${XGETTEXT_C_ARGS}
-                                    ${CMAKE_CURRENT_BINARY_DIR}/tmp/${DESKTOP_SOURCE_NAME}.h)
+        add_custom_command (
+            TARGET pot
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            COMMAND ${EXTRA_XGETTEXT_COMMAND} ${CONTINUE_FLAG}
+                    ${XGETTEXT_C_ARGS}
+                    ${CMAKE_CURRENT_BINARY_DIR}/tmp/${DESKTOP_SOURCE_NAME}.h
+        )
         set (CONTINUE_FLAG "-j")
     endforeach ()
 
@@ -555,12 +613,16 @@ macro (add_translations_catalog NLS_PACKAGE)
         get_filename_component (APPDATA_SOURCE ${APPDATA_SOURCE} ABSOLUTE)
         add_custom_command (TARGET pot
                             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-                            COMMAND ${INTLTOOL_EXTRACT_COMMAND} --type=gettext/xml ${APPDATA_SOURCE})
+                            COMMAND ${INTLTOOL_EXTRACT_COMMAND}
+                                    --type=gettext/xml ${APPDATA_SOURCE})
         get_filename_component (APPDATA_SOURCE_NAME ${APPDATA_SOURCE} NAME)
-        add_custom_command (TARGET pot
-                            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-                            COMMAND ${EXTRA_XGETTEXT_COMMAND} ${CONTINUE_FLAG} ${XGETTEXT_C_ARGS}
-                                    ${CMAKE_CURRENT_BINARY_DIR}/tmp/${APPDATA_SOURCE_NAME}.h)
+        add_custom_command (
+            TARGET pot
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            COMMAND ${EXTRA_XGETTEXT_COMMAND} ${CONTINUE_FLAG}
+                    ${XGETTEXT_C_ARGS}
+                    ${CMAKE_CURRENT_BINARY_DIR}/tmp/${APPDATA_SOURCE_NAME}.h
+        )
         set (CONTINUE_FLAG "-j")
     endforeach ()
 
@@ -568,12 +630,16 @@ macro (add_translations_catalog NLS_PACKAGE)
         get_filename_component (SCHEMA_SOURCE ${SCHEMA_SOURCE} ABSOLUTE)
         add_custom_command (TARGET pot
                             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-                            COMMAND ${INTLTOOL_EXTRACT_COMMAND} --type=gettext/schemas ${SCHEMA_SOURCE})
+                            COMMAND ${INTLTOOL_EXTRACT_COMMAND}
+                                    --type=gettext/schemas ${SCHEMA_SOURCE})
         get_filename_component (SCHEMA_SOURCE_NAME ${SCHEMA_SOURCE} NAME)
-        add_custom_command (TARGET pot
-                            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-                            COMMAND ${EXTRA_XGETTEXT_COMMAND} ${CONTINUE_FLAG} ${XGETTEXT_C_ARGS}
-                                    ${CMAKE_CURRENT_BINARY_DIR}/tmp/${SCHEMA_SOURCE_NAME}.h)
+        add_custom_command (
+            TARGET pot
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            COMMAND ${EXTRA_XGETTEXT_COMMAND} ${CONTINUE_FLAG}
+                    ${XGETTEXT_C_ARGS}
+                    ${CMAKE_CURRENT_BINARY_DIR}/tmp/${SCHEMA_SOURCE_NAME}.h
+        )
         set (CONTINUE_FLAG "-j")
     endforeach ()
 
@@ -582,6 +648,8 @@ macro (add_translations_catalog NLS_PACKAGE)
         get_filename_component (PO_INPUT_BASE ${PO_INPUT} NAME)
         add_custom_command (TARGET po
                             WORKING_DIRECTORY ${EXTRA_PO_DIR}
-                            COMMAND ${MSG_MERGE} --update ${PO_INPUT_BASE} ${EXTRA_TEMPLATE} --force-po)
+                            COMMAND ${MSG_MERGE}
+                                    --update ${PO_INPUT_BASE} ${EXTRA_TEMPLATE}
+                                    --force-po)
     endforeach (PO_INPUT ${EXTRA_PO_FILES})
 endmacro ()
