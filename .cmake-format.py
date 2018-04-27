@@ -1,11 +1,11 @@
 # How wide to allow formatted cmake files
-line_width = 120
+line_width = 80
 
 # How many spaces to tab for indent
 tab_size = 4
 
 # If arglists are longer than this, break them always
-max_subargs_per_line = 3
+max_subargs_per_line = 2
 
 # If true, separate flow control names from their parentheses with a space
 separate_ctrl_name_with_space = True
