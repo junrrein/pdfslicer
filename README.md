@@ -41,8 +41,9 @@ sudo xargs rm < install_manifest.txt
 
 # License
 
-PDF Slicer is released under the GNU GPLv3 license. A copy can be found
-at the LICENSE file.
+PDF Slicer can be used under the terms of the GNU GPL 3.0 license,
+or, at your option, any later version.
+A copy can be found at the LICENSE file.
 
 A number of third-party libraries are distributed as part of this source
 code repository. They are enumerated at the LICENSE-THIRD-PARTY file,
