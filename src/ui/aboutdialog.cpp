@@ -15,17 +15,20 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "aboutdialog.hpp"
+#include <glibmm/i18n.h>
 #include <config.hpp>
 
 namespace Slicer {
 
 AboutDialog::AboutDialog(Gtk::Window& parent)
 {
-    set_program_name("PDF Slicer");
+    set_program_name(config::APP_NAME);
+    set_comments(_("A simple application to extract pages of a PDF document"));
     set_logo_icon_name("edit-cut-symbolic");
     set_version(config::VERSION);
-    set_copyright("Copyright © 2017 Julián Unrrein");
-    set_license_type(Gtk::LICENSE_GPL_3_0_ONLY);
+    set_copyright("Copyright © 2017-2018 Julián Unrrein");
+    set_license_type(Gtk::LICENSE_GPL_3_0);
+    set_website("https://github.com/junrrein/pdfslicer");
 
     signal_hide().connect([this]() {
         delete this;
