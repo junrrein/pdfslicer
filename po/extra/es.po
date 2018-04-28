@@ -16,15 +16,17 @@ msgstr ""
 msgid "Extract pages from a PDF document"
 msgstr "Extraiga páginas de un documento PDF"
 
-#, fuzzy
 msgid "A simple tool to extract pages from a PDF document"
-msgstr "Extraiga páginas de un documento PDF"
+msgstr "Una herramienta sencilla para extraer páginas de un documento PDF"
 
 msgid ""
 "PDF Slicer is a simple application to trim pages from a PDF document. It "
 "lets you remove single pages or selections/ranges of pages, with full undo/"
 "redo support."
 msgstr ""
+"PDF Slicer es una aplicación sencilla para recortar páginas de un "
+"documento PDF. Le permite remover páginas sueltas o selecciones/rangos de "
+"páginas, con soporte completo para deshacer y repetir acciones."
 
 msgid "Initial release."
-msgstr ""
+msgstr "Lanzamiento inicial."
