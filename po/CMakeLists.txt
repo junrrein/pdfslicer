@@ -5,4 +5,6 @@ add_translations_catalog (${GETTEXT_PACKAGE}
                           ../src/backend
                           ../src/ui
                           DESKTOP_FILES
-                          ../data/pdfslicer.desktop.in)
+						  ../data/${APPLICATION_ID}.desktop.in
+						  APPDATA_FILES
+						  ../data/${APPLICATION_ID}.appdata.xml.in)
