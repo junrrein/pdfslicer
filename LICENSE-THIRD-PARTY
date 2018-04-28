@@ -1,0 +1,23 @@
+The following third-party libraries are distributed along with
+PDF Slicer:
+
+CTPL
+====
+Licensed under the Apache License, Version 2.0.
+A copy of the license text is available at third-party/CTPL/LICENSE.
+Distributed without modifications.
+
+PDF-Writer
+==========
+Licensed under the Apache License, Version 2.0.
+A copy of the license text is available at third-party/PDF-Writer/LICENSE.
+Distributed with the following modifications:
+	* Modified CMake build scripts to build using more extenal
+		dependencies instead of the included ones.
+	* Modified CMake build scripts to prevent installation of
+		include files and generated library files.
+
+range-v3
+========
+Licensed under the Boost Software License 1.0,
+A copy of the license text is available at third-party/range-v3/LICENSE.txt.
