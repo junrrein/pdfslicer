@@ -42,6 +42,7 @@ public:
 
 private:
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
+    const unsigned int m_position;
     Glib::RefPtr<Page> m_removedPage;
 };
 

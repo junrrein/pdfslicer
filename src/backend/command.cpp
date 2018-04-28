@@ -21,13 +21,14 @@ namespace Slicer {
 RemovePageCommand::RemovePageCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
                                      int position)
     : m_pages{std::move(pages)}
+    , m_position{static_cast<unsigned int>(position)}
+    , m_removedPage{m_pages->get_item(static_cast<unsigned>(m_position))}
 {
-    m_removedPage = m_pages->get_item(static_cast<unsigned>(position));
 }
 
 void RemovePageCommand::execute()
 {
-    m_pages->remove(static_cast<unsigned>(m_removedPage->number()));
+    m_pages->remove(m_position);
 }
 
 void RemovePageCommand::undo()
