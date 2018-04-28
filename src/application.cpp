@@ -28,7 +28,7 @@ Glib::RefPtr<Application> Application::create()
 }
 
 Application::Application()
-    : Gtk::Application{config::APPLICATION_ID, Gio::APPLICATION_HANDLES_OPEN}
+    : Gtk::Application(config::APPLICATION_ID, Gio::APPLICATION_HANDLES_OPEN)
 {
     Glib::set_application_name(config::APP_NAME);
 }
