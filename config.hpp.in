@@ -4,11 +4,12 @@
 #include <string>
 
 namespace Slicer::config {
-	static const std::string APP_NAME = "PDF Slicer";
-	static const std::string PROGRAM_NAME = "@GETTEXT_PACKAGE@";
-	static const std::string GTXT_PACKAGE = "@GETTEXT_PACKAGE@";
-	static const std::string GNOME_LOCALE_DIR = "@GNOMELOCALEDIR@";
-	static const std::string VERSION = "@VERSION@";
+
+static const std::string APP_NAME = "PDF Slicer";
+static const std::string APPLICATION_ID = "@APPLICATION_ID@";
+static const std::string GETEXT_PACKAGE = "@GETTEXT_PACKAGE@";
+static const std::string LOCALE_DIR = "@LOCALE_DIR@";
+static const std::string VERSION = "@VERSION@";
 }
 
 #endif // SLICER_CONFIG_H

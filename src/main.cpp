@@ -20,11 +20,11 @@
 
 int main(int num_args, char* args_array[])
 {
-    bindtextdomain(Slicer::config::GTXT_PACKAGE.c_str(),
-                   Slicer::config::GNOME_LOCALE_DIR.c_str());
-    bind_textdomain_codeset(Slicer::config::GTXT_PACKAGE.c_str(),
+    bindtextdomain(Slicer::config::GETEXT_PACKAGE.c_str(),
+                   Slicer::config::LOCALE_DIR.c_str());
+    bind_textdomain_codeset(Slicer::config::GETEXT_PACKAGE.c_str(),
                             "UTF-8");
-    textdomain(Slicer::config::GTXT_PACKAGE.c_str());
+    textdomain(Slicer::config::GETEXT_PACKAGE.c_str());
 
     auto app = Slicer::Application::create();
 
