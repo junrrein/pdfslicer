@@ -4,7 +4,7 @@ project (pdfslicer CXX)
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake-modules)
 set (GETTEXT_PACKAGE "com.junrrein.pdfslicer")
 set (GNOMELOCALEDIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
-set (VERSION 1.0)
+set (VERSION 1.0.1)
 configure_file (config.hpp.in ${CMAKE_BINARY_DIR}/config.hpp)
 
 add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
