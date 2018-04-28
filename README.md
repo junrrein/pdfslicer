@@ -1,3 +1,5 @@
+# About
+
 PDF Slicer is a simple app for extracting pages out of a PDF document
 as a single file.
 
@@ -37,7 +39,7 @@ sudo make install
 
 ```bash
 sudo xargs rm < install_manifest.txt
-```bash
+```
 
 # License
 
