@@ -38,19 +38,49 @@ void Application::on_startup()
     Gtk::Application::on_startup();
 
     Gtk::Window::set_default_icon_name("edit-cut-symbolic");
+    addActions();
+    setupAppMenu();
+    addAccels();
+}
 
+void Application::on_activate()
+{
+    createWindow()->present();
+}
+
+void Application::addActions()
+{
     add_action("about", sigc::mem_fun(*this, &Application::onActionAbout));
     add_action("quit", sigc::mem_fun(*this, &Application::onActionQuit));
+}
 
+void Application::setupAppMenu()
+{
     auto menu = Gio::Menu::create();
     menu->append(_("About"), "app.about");
     menu->append(_("Quit"), "app.quit");
     set_app_menu(menu);
 }
 
-void Application::on_activate()
+void Application::addAccels()
 {
-    createWindow()->present();
+    set_accel_for_action("win.open-document", "<Control>o");
+    set_accel_for_action("win.save-document", "<Control>s");
+    set_accel_for_action("win.undo", "<Control>z");
+    set_accel_for_action("win.redo", "<Control><Shift>z");
+    set_accel_for_action("win.remove-selected", "Delete");
+    set_accel_for_action("win.preview-selected", "KP_Space");
+    set_accel_for_action("win.cancel-selection", "Escape");
+    set_accels_for_action("win.zoom-in",
+                          {"<Control>plus", "<Control>KP_Add"});
+    set_accels_for_action("win.zoom-out",
+                          {"<Control>minus", "<Control>KP_Subtract"});
+
+    // FIXME: The following actions don't work
+    set_accels_for_action("preview.zoom-in",
+                          {"<Control>plus", "<Control>KP_Add"});
+    set_accels_for_action("preview.zoom-out",
+                          {"<Control>minus", "<Control>KP_Subtract"});
 }
 
 void Application::on_open(const Application::type_vec_files& files,
