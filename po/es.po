@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-28 01:18-0300\n"
+"POT-Creation-Date: 2018-04-28 04:12-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -13,11 +13,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: ../src/application.cpp:46
+#: ../src/application.cpp:60
 msgid "About"
 msgstr "Acerca de"
 
-#: ../src/application.cpp:47
+#: ../src/application.cpp:61
 msgid "Quit"
 msgstr "Salir"
 

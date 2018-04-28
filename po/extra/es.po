@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-26 03:21-0300\n"
+"POT-Creation-Date: 2018-04-28 04:12-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -15,3 +15,16 @@ msgstr ""
 
 msgid "Extract pages from a PDF document"
 msgstr "Extraiga páginas de un documento PDF"
+
+#, fuzzy
+msgid "A simple tool to extract pages from a PDF document"
+msgstr "Extraiga páginas de un documento PDF"
+
+msgid ""
+"PDF Slicer is a simple application to trim pages from a PDF document. It "
+"lets you remove single pages or selections/ranges of pages, with full undo/"
+"redo support."
+msgstr ""
+
+msgid "Initial release."
+msgstr ""
