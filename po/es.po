@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-25 20:15-0300\n"
+"POT-Creation-Date: 2018-04-28 01:18-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -13,98 +13,102 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: ../src/application.cpp:30
+#: ../src/application.cpp:46
 msgid "About"
 msgstr "Acerca de"
 
-#: ../src/application.cpp:31
+#: ../src/application.cpp:47
 msgid "Quit"
 msgstr "Salir"
 
-#: ../src/ui/actionbar.cpp:9
+#: ../src/ui/aboutdialog.cpp:26
+msgid "A simple application to extract pages of a PDF document"
+msgstr ""
+
+#: ../src/ui/actionbar.cpp:25
 msgid "Remove selected"
 msgstr "Remover seleccionadas"
 
-#: ../src/ui/actionbar.cpp:13
+#: ../src/ui/actionbar.cpp:29
 msgid "Remove unselected"
 msgstr "Remover no seleccionadas"
 
-#: ../src/ui/actionbar.cpp:17
+#: ../src/ui/actionbar.cpp:33
 msgid "Remove previous"
 msgstr "Remover anteriores"
 
-#: ../src/ui/actionbar.cpp:21
+#: ../src/ui/actionbar.cpp:37
 msgid "Remove next"
 msgstr "Remover siguientes"
 
-#: ../src/ui/actionbar.cpp:25
+#: ../src/ui/actionbar.cpp:41
 msgid "Cancel selection"
 msgstr "Cancelar selección"
 
-#: ../src/ui/headerbar.cpp:17
+#: ../src/ui/headerbar.cpp:33
 msgid "Open document…"
 msgstr "Abrir documento…"
 
-#: ../src/ui/headerbar.cpp:22
+#: ../src/ui/headerbar.cpp:38
 msgid "Save as…"
 msgstr "Guardar como…"
 
-#: ../src/ui/headerbar.cpp:27
+#: ../src/ui/headerbar.cpp:43
 msgid "Undo"
 msgstr "Deshacer"
 
-#: ../src/ui/headerbar.cpp:30
+#: ../src/ui/headerbar.cpp:46
 msgid "Redo"
 msgstr "Repetir"
 
-#: ../src/ui/headerbar.cpp:40
+#: ../src/ui/headerbar.cpp:56
 msgid "Preview the selected page"
 msgstr "Mostrar vista previa de la página seleccionada"
 
-#: ../src/ui/headerbar.cpp:45 ../src/ui/previewwindow.cpp:30
+#: ../src/ui/headerbar.cpp:61 ../src/ui/previewwindow.cpp:46
 msgid "Zoom out"
 msgstr "Reducir"
 
-#: ../src/ui/headerbar.cpp:48 ../src/ui/previewwindow.cpp:37
+#: ../src/ui/headerbar.cpp:64 ../src/ui/previewwindow.cpp:53
 msgid "Zoom in"
 msgstr "Ampliar"
 
-#: ../src/ui/openfiledialog.cpp:8
+#: ../src/ui/openfiledialog.cpp:24
 msgid "Open document"
 msgstr "Abrir documento"
 
-#: ../src/ui/openfiledialog.cpp:14 ../src/ui/savefiledialog.cpp:17
+#: ../src/ui/openfiledialog.cpp:30 ../src/ui/savefiledialog.cpp:33
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../src/ui/openfiledialog.cpp:15
+#: ../src/ui/openfiledialog.cpp:31
 msgid "Open"
 msgstr "Abrir"
 
-#: ../src/ui/previewwindow.cpp:14
+#: ../src/ui/previewwindow.cpp:30
 msgid "Preview"
 msgstr "Vista Previa"
 
-#: ../src/ui/savefiledialog.cpp:9
+#: ../src/ui/savefiledialog.cpp:25
 msgid "Save document as"
 msgstr "Guardar documento como"
 
-#: ../src/ui/savefiledialog.cpp:13
+#: ../src/ui/savefiledialog.cpp:29
 msgid "Untitled document"
 msgstr "Documento sin título"
 
-#: ../src/ui/savefiledialog.cpp:18
+#: ../src/ui/savefiledialog.cpp:34
 msgid "Save"
 msgstr "Guardar"
 
-#: ../src/ui/utils.cpp:7
+#: ../src/ui/utils.cpp:23
 msgid "PDF document"
 msgstr "Documento PDF"
 
-#: ../src/ui/welcomescreen.cpp:12
+#: ../src/ui/welcomescreen.cpp:28
 msgid "Open a document to start slicing!"
 msgstr "¡Abra un documento y empiece a rebanar!"
 
-#: ../src/ui/window.cpp:59
+#: ../src/ui/window.cpp:75
 msgid "Saved!"
 msgstr "Guardado!"
