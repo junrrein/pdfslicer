@@ -10,7 +10,7 @@ configure_file (config.hpp.in ${CMAKE_BINARY_DIR}/config.hpp)
 
 add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
 
-set (CMAKE_CXX_STANDARD 17)
+set (CMAKE_CXX_STANDARD 14)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package (Threads REQUIRED)
