@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2018 Julián Unrrein <junrrein@gmail.com> -->
+<component type="desktop">
+
+  <id>@APPLICATION_ID@.desktop</id>
+  <metadata_license>CC0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
+  <name>PDF Slicer</name>
+  <summary>A simple tool to extract pages from a PDF document</summary>
+
+  <description>
+    <p>
+	  PDF Slicer is a simple application to trim pages from a PDF document.
+	  It lets you remove single pages or selections/ranges of pages,
+	  with full undo/redo support.
+    </p>
+  </description>
+
+  <url type="homepage">https://github.com/junrrein/pdfslicer</url>
+  <url type="bugtracker">https://github.com/junrrein/pdfslicer/issues</url>
+
+  <kudos>
+    <kudo>AppMenu</kudo>
+    <kudo>ModernToolkit</kudo>
+  </kudos>
+
+  <update_contact>junrrein@gmail.com</update_contact>
+  <translation type="gettext">@GETTEXT_PACKAGE@</translation>
+
+  <releases>
+	<release version="1.0" date="2018-04-28">
+      <description>
+        <p>
+		  Initial release.
+        </p>
+      </description>
+    </release>
+  </releases>
+
+</component>
