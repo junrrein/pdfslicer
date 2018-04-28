@@ -23,7 +23,7 @@ msgstr "Salir"
 
 #: ../src/ui/aboutdialog.cpp:26
 msgid "A simple application to extract pages of a PDF document"
-msgstr ""
+msgstr "Una aplicación sencilla para extraer páginas de un documento PDF"
 
 #: ../src/ui/actionbar.cpp:25
 msgid "Remove selected"
@@ -111,4 +111,4 @@ msgstr "¡Abra un documento y empiece a rebanar!"
 
 #: ../src/ui/window.cpp:75
 msgid "Saved!"
-msgstr "Guardado!"
+msgstr "¡Guardado!"
