@@ -3,6 +3,8 @@ project (pdfslicer CXX)
 
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake-modules)
 set (APPLICATION_ID "com.junrrein.PDFSlicer")
+set (APPLICATION_NAME "PDF Slicer")
+set (APPLICATION_WEBSITE "https://github.com/junrrein/pdfslicer")
 set (GETTEXT_PACKAGE ${APPLICATION_ID})
 set (LOCALE_DIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
 set (VERSION 1.0.1)
@@ -46,9 +48,6 @@ include_directories (${POPPLER_INCLUDE_DIRS})
 include_directories (${CAIROMM_INCLUDE_DIRS})
 
 add_subdirectory (third-party)
-
-include (InstallRequiredSystemLibraries)
-include (CPack)
 
 add_subdirectory (src)
 add_subdirectory (data)
