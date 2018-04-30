@@ -10,8 +10,6 @@ set (LOCALE_DIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
 set (VERSION 1.0.1)
 configure_file (config.hpp.in ${CMAKE_BINARY_DIR}/config.hpp)
 
-add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
-
 set (CMAKE_CXX_STANDARD 14)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 

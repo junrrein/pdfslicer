@@ -44,6 +44,7 @@ add_executable (${CMAKE_PROJECT_NAME}
                 application.cpp
                 ${SLICER_BACKEND_SOURCES}
                 ${SLICER_UI_SOURCES})
+add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
 
 target_include_directories (
     ${CMAKE_PROJECT_NAME}
