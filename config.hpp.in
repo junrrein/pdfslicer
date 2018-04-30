@@ -5,8 +5,9 @@
 
 namespace Slicer::config {
 
-static const std::string APP_NAME = "PDF Slicer";
+static const std::string APPLICATION_NAME = "@APPLICATION_NAME@";
 static const std::string APPLICATION_ID = "@APPLICATION_ID@";
+static const std::string APPLICATION_WEBSITE = "@APPLICATION_WEBSITE@";
 static const std::string GETEXT_PACKAGE = "@GETTEXT_PACKAGE@";
 static const std::string LOCALE_DIR = "@LOCALE_DIR@";
 static const std::string VERSION = "@VERSION@";
