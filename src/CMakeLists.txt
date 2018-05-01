@@ -82,7 +82,9 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
 endif ()
 
 if (MINGW)
-	target_link_libraries (${PROJECT_NAME} "-mwindows")
+	if (CMAKE_BUILD_TYPE STREQUAL "Release")
+		target_link_libraries (${PROJECT_NAME} "-mwindows")
+	endif ()
 
 	set (CPACK_PACKAGE_NAME ${APPLICATION_NAME})
 	set (CPACK_PACKAGE_VENDOR "Julián Unrrein")
