@@ -16,9 +16,11 @@
 
 #include "application.hpp"
 #include <glibmm/i18n.h>
+#include <glibmm.h>
 #include <config.hpp>
 
 void setupLocalization();
+std::string getPathToLocaleDir();
 
 int main(int num_args, char* args_array[])
 {
@@ -32,8 +34,20 @@ int main(int num_args, char* args_array[])
 void setupLocalization()
 {
     bindtextdomain(Slicer::config::GETEXT_PACKAGE.c_str(),
-                   Slicer::config::LOCALE_DIR.c_str());
+                   getPathToLocaleDir().c_str());
     bind_textdomain_codeset(Slicer::config::GETEXT_PACKAGE.c_str(),
                             "UTF-8");
     textdomain(Slicer::config::GETEXT_PACKAGE.c_str());
+}
+
+std::string getPathToLocaleDir()
+{
+#ifdef __linux__
+    return Slicer::config::LOCALE_DIR;
+#else // We are in Windows
+    const std::string pathToShareDir = Glib::get_system_data_dirs().at(2);
+    const std::string pathToLocaleDir = pathToShareDir + +"\\locale\\";
+
+    return pathToLocaleDir;
+#endif
 }
