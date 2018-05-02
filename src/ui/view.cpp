@@ -19,8 +19,6 @@
 #include "previewwindow.hpp"
 #include <range/v3/all.hpp>
 
-using namespace ranges;
-
 namespace Slicer {
 
 const int View::numRendererThreads = 1; // Poppler can't handle more than one
@@ -145,20 +143,22 @@ void View::onCancelSelection()
 
 std::vector<unsigned int> View::getSelectedChildrenIndexes()
 {
-    const auto children = get_selected_children();
-    const auto selectedIndexes = children
-                                 | view::transform(std::mem_fn(&Gtk::FlowBoxChild::get_index))
-                                 | to_<std::vector<unsigned int>>();
+    const std::vector<Gtk::FlowBoxChild*> children = get_selected_children();
+    std::vector<unsigned int> selectedIndexes;
+    ranges::transform(children,
+                      ranges::back_inserter(selectedIndexes),
+                      std::mem_fn(&Gtk::FlowBoxChild::get_index));
 
     return selectedIndexes;
 }
 
 std::vector<unsigned int> View::getUnselectedChildrenIndexes()
 {
-    const auto selectedIndexes = getSelectedChildrenIndexes();
-    const auto unselectedIndexes = view::set_difference(view::iota(0, get_children().size()),
-                                                        selectedIndexes)
-                                   | to_<std::vector<unsigned int>>();
+    const std::vector<unsigned int> selectedIndexes = getSelectedChildrenIndexes();
+    std::vector<unsigned int> unselectedIndexes;
+    ranges::set_difference(ranges::view::iota(0, get_children().size()),
+                           selectedIndexes,
+                           ranges::back_inserter(unselectedIndexes));
 
     return unselectedIndexes;
 }
