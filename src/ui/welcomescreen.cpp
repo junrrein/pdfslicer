@@ -22,7 +22,7 @@ namespace Slicer {
 WelcomeScreen::WelcomeScreen()
     : Gtk::Box{Gtk::ORIENTATION_VERTICAL}
 {
-    m_icon.set_from_icon_name("edit-cut-symbolic", Gtk::ICON_SIZE_BUTTON);
+    m_icon.set_from_icon_name("pdfslicer-symbolic", Gtk::ICON_SIZE_BUTTON);
     m_icon.set_pixel_size(256);
 
     m_label.set_label(_("Open a document to start slicing!"));

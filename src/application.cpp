@@ -37,7 +37,7 @@ void Application::on_startup()
 {
     Gtk::Application::on_startup();
 
-    Gtk::Window::set_default_icon_name("edit-cut-symbolic");
+    Gtk::Window::set_default_icon_name("pdfslicer-symbolic");
     addActions();
     setupAppMenu();
     addAccels();

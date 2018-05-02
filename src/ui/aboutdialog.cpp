@@ -24,7 +24,7 @@ AboutDialog::AboutDialog(Gtk::Window& parent)
 {
     set_program_name(config::APPLICATION_NAME);
     set_comments(_("A simple application to extract pages of a PDF document"));
-    set_logo_icon_name("edit-cut-symbolic");
+    set_logo_icon_name("pdfslicer-symbolic");
     set_version(config::VERSION);
     set_copyright("Copyright © 2017-2018 Julián Unrrein");
     set_license_type(Gtk::LICENSE_GPL_3_0);
