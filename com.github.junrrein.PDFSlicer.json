@@ -1,5 +1,5 @@
 {
-	"app-id": "com.github.junrrein.PDFSlicer",
+    "app-id": "com.github.junrrein.PDFSlicer",
     "runtime": "org.gnome.Platform",
     "runtime-version": "3.28",
     "sdk": "org.gnome.Sdk",
@@ -7,16 +7,10 @@
     "finish-args": [
         "--share=ipc",
         "--socket=x11",
-		"--socket=wayland"
+        "--socket=wayland"
     ],
-    "build-options": {
-        "cflags": "-O2 -g",
-        "cxxflags": "-O2 -g",
-        "env": {
-            "V": "1"
-        }
-    },
     "cleanup": [
+        "/bin/mm-common-prepare",
         "/include",
         "/lib/*/include",
         "/lib/pkgconfig",
@@ -127,7 +121,9 @@
             "config-opts": ["-DCMAKE_BUILD_TYPE=Release"],
             "sources": [{
                 "type": "git",
-				"url": "https://github.com/junrrein/pdfslicer.git"
+                "url": "https://github.com/junrrein/pdfslicer.git",
+                "tag": "v1.0.4",
+                "commit": "6ce24ab8d3c2b20ca42d8b6f000151366487fac4"
             }]
         }
     ]
