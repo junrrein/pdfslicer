@@ -51,6 +51,8 @@ PDF Slicer can be used under the terms of the GNU GPL 3.0 license,
 or, at your option, any later version.
 A copy can be found at the LICENSE file.
 
+The application icon was made by [Freepik](http://www.freepik.com) from [flaticon.com](https://www.flaticon.com). It's licensed under the [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/) license.
+
 A number of third-party libraries are distributed as part of this source
 code repository. They are enumerated at the LICENSE-THIRD-PARTY file,
 along with details about the license they were relased under.

@@ -24,7 +24,7 @@ WelcomeScreen::WelcomeScreen()
     : Gtk::Box{Gtk::ORIENTATION_VERTICAL}
 {
     m_icon.set_from_icon_name(config::APPLICATION_ID, Gtk::ICON_SIZE_BUTTON);
-    m_icon.set_pixel_size(256);
+    m_icon.set_pixel_size(384);
 
     m_label.set_label(_("Open a document to start slicing!"));
     m_label.get_style_context()->add_class("dim-label");
