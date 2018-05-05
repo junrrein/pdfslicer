@@ -3,6 +3,10 @@
 PDF Slicer is a simple app for extracting pages out of a PDF document
 as a single file.
 
+![](docs/readme-screenshot-1.png)
+
+![](docs/readme-screenshot-2.png)
+
 # Building
 
 ## Fedora
