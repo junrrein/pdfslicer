@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=PDF Slicer
 _Comment=Extract pages from a PDF document
-Icon=pdfslicer-symbolic
+Icon=@APPLICATION_ID@
 Exec=@CMAKE_INSTALL_PREFIX@/bin/@PROJECT_NAME@ %U
 Categories=GNOME;GTK;Utility
 MimeType=application/pdf;

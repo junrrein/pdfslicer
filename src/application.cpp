@@ -37,7 +37,7 @@ void Application::on_startup()
 {
     Gtk::Application::on_startup();
 
-    Gtk::Window::set_default_icon_name("pdfslicer-symbolic");
+    Gtk::Window::set_default_icon_name(config::APPLICATION_ID);
     addActions();
     setupAppMenu();
     addAccels();
