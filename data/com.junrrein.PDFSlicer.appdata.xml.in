@@ -1,40 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2018 Julián Unrrein <junrrein@gmail.com> -->
 <component type="desktop">
-
-  <id>@APPLICATION_ID@.desktop</id>
-  <metadata_license>CC0</metadata_license>
-  <project_license>GPL-3.0+</project_license>
-  <name>PDF Slicer</name>
-  <_summary>A simple tool to extract pages from a PDF document</_summary>
-
-  <description>
-	<_p>
+	<id>@APPLICATION_ID@.desktop</id>
+	<metadata_license>CC0-1.0</metadata_license>
+	<project_license>GPL-3.0+</project_license>
+	<name>PDF Slicer</name>
+	<_summary>A simple tool to extract pages from a PDF document</_summary>
+	<description>
+		<_p>
 	  PDF Slicer is a simple application to trim pages from a PDF document.
 	  It lets you remove single pages or selections/ranges of pages,
 	  with full undo/redo support.
-	</_p>
-  </description>
-
-  <url type="homepage">https://github.com/junrrein/pdfslicer</url>
-  <url type="bugtracker">https://github.com/junrrein/pdfslicer/issues</url>
-
-  <kudos>
-    <kudo>AppMenu</kudo>
-    <kudo>ModernToolkit</kudo>
-  </kudos>
-
-  <update_contact>junrrein@gmail.com</update_contact>
-  <translation type="gettext">@GETTEXT_PACKAGE@</translation>
-
-  <releases>
-	<release version="1.0" date="2018-04-28">
-      <description>
-		<_p>
-		  Initial release.
-		</_p>
-      </description>
-    </release>
-  </releases>
-
+	  </_p>
+	</description>
+	<url type="homepage">https://github.com/junrrein/pdfslicer</url>
+	<url type="bugtracker">https://github.com/junrrein/pdfslicer/issues</url>
+	<update_contact>junrrein@gmail.com</update_contact>
+	<translation type="gettext">@GETTEXT_PACKAGE@</translation>
+	<releases>
+		<release version="1.0.2" date="2018-05-05">
+			<description>
+				<_p>Changed the application icon.</_p>
+			</description>
+		</release>
+		<release version="1.0.1" date="2018-05-05">
+			<description>
+				<_p>This release includes many bug fixes.</_p>
+				<_p>The Windows installer is now considered production-ready.</_p>
+			</description>
+		</release>
+		<release version="1.0" date="2018-04-28">
+			<description>
+				<_p>Initial release.</_p>
+			</description>
+		</release>
+	</releases>
+	<content_rating type="oars-1.1">
+		<content_attribute id="violence-cartoon">none</content_attribute>
+		<content_attribute id="violence-fantasy">none</content_attribute>
+		<content_attribute id="violence-realistic">none</content_attribute>
+		<content_attribute id="violence-bloodshed">none</content_attribute>
+		<content_attribute id="violence-sexual">none</content_attribute>
+		<content_attribute id="violence-desecration">none</content_attribute>
+		<content_attribute id="violence-slavery">none</content_attribute>
+		<content_attribute id="violence-worship">none</content_attribute>
+		<content_attribute id="drugs-alcohol">none</content_attribute>
+		<content_attribute id="drugs-narcotics">none</content_attribute>
+		<content_attribute id="drugs-tobacco">none</content_attribute>
+		<content_attribute id="sex-nudity">none</content_attribute>
+		<content_attribute id="sex-themes">none</content_attribute>
+		<content_attribute id="sex-homosexuality">none</content_attribute>
+		<content_attribute id="sex-prostitution">none</content_attribute>
+		<content_attribute id="sex-adultery">none</content_attribute>
+		<content_attribute id="sex-appearance">none</content_attribute>
+		<content_attribute id="language-profanity">none</content_attribute>
+		<content_attribute id="language-humor">none</content_attribute>
+		<content_attribute id="language-discrimination">none</content_attribute>
+		<content_attribute id="social-chat">none</content_attribute>
+		<content_attribute id="social-info">none</content_attribute>
+		<content_attribute id="social-audio">none</content_attribute>
+		<content_attribute id="social-location">none</content_attribute>
+		<content_attribute id="social-contacts">none</content_attribute>
+		<content_attribute id="money-purchasing">none</content_attribute>
+		<content_attribute id="money-gambling">none</content_attribute>
+	</content_rating>
 </component>
