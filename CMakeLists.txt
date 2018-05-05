@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.7)
 project (pdfslicer CXX)
 
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake-modules)
-set (APPLICATION_ID "com.junrrein.PDFSlicer")
+set (APPLICATION_ID "com.github.junrrein.PDFSlicer")
 set (APPLICATION_NAME "PDF Slicer")
 set (APPLICATION_WEBSITE "https://github.com/junrrein/pdfslicer")
 set (GETTEXT_PACKAGE ${APPLICATION_ID})

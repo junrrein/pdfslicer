@@ -1,5 +1,5 @@
 {
-    "app-id": "com.junrrein.PDFSlicer",
+	"app-id": "com.github.junrrein.PDFSlicer",
     "runtime": "org.gnome.Platform",
     "runtime-version": "3.28",
     "sdk": "org.gnome.Sdk",
