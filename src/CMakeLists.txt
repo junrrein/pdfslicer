@@ -82,6 +82,8 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
 endif ()
 
 if (MINGW)
+	target_sources (${CMAKE_PROJECT_NAME} PUBLIC pdfslicer.rc)
+
 	if (CMAKE_BUILD_TYPE STREQUAL "Release")
 		target_link_libraries (${PROJECT_NAME} "-mwindows")
 	endif ()

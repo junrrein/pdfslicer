@@ -1,3 +1,6 @@
+file (COPY pdfslicer.ico
+	DESTINATION ${CMAKE_BINARY_DIR})
+
 if (MINGW)
 	set (ICON_DIR_RELATIVE "share/icons/Adwaita")
 else ()
@@ -6,4 +9,3 @@ endif ()
 
 install (FILES pdfslicer-symbolic.svg
 		DESTINATION ${ICON_DIR_RELATIVE}/scalable/apps)
-
