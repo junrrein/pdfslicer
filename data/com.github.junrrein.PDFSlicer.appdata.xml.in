@@ -34,21 +34,22 @@
 		</release>
 		<release version="1.0.4" date="2018-05-05">
 			<description>
-				<_p>Update the AppStream metadata with missing release information for 1.0.3</_p>
+				<_p>Update the AppStream metadata with missing release information for 1.0.3.</_p>
 			</description>
 		</release>
 		<release version="1.0.3" date="2018-05-05">
 			<description>
+				<p>Minor bug fixes and changes:</p>
 				<ul>
-					<_li>Changed the application id.</_li>
+					<_li>Changed the application id</_li>
 					<_li>Switched to Gtk::FileChooserNative. This has 2 benefits:</_li>
 					<li>
 						<ul>
-							<_li>Native file dialogs are used on Windows.</_li>
-							<_li>It allows the application to cross the Flatpak sandbox boundary, without having permissions to read/write files on the filesystem.</_li>
+							<_li>Native file dialogs are used on Windows,</_li>
+							<_li>It allows the application to cross the Flatpak sandbox boundary, without having permissions to read/write files on the filesystem</_li>
 						</ul>
 					</li>
-					<_li>Improved the AppStream metadata.</_li>
+					<_li>Improved the AppStream metadata</_li>
 				</ul>
 			</description>
 		</release>
