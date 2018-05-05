@@ -146,7 +146,7 @@ void AppWindow::onSaveAction()
 
     const int result = dialog.run();
 
-    if (result == Gtk::RESPONSE_OK) {
+    if (result == GTK_RESPONSE_ACCEPT) {
         m_document->saveDocument(dialog.getSavePath());
         m_signalSaved.emit();
     }
@@ -158,7 +158,7 @@ void AppWindow::onOpenAction()
 
     const int result = dialog.run();
 
-    if (result == Gtk::RESPONSE_OK) {
+    if (result == GTK_RESPONSE_ACCEPT) {
         openDocument(dialog.get_file());
     }
 }
