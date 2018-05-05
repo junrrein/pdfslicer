@@ -26,10 +26,9 @@ OpenFileDialog::OpenFileDialog(Gtk::Window& parent)
                         GTK_FILE_CHOOSER_ACTION_OPEN,
                         _("Open"),
                         _("Cancel")}
-    , m_filter{pdfFilter()}
 {
 	set_select_multiple(false);
-    set_filter(m_filter);
+    add_filter(pdfFilter());
 }
 
 } // namespace Slicer

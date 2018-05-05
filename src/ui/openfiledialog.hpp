@@ -18,16 +18,12 @@
 #define OPENFILEDIALOG_H
 
 #include "filechoosernative.hpp"
-#include "utils.hpp"
 
 namespace Slicer {
 
 class OpenFileDialog : public FileChooserNative {
 public:
 	OpenFileDialog(Gtk::Window& parent);
-
-private:
-    Glib::RefPtr<Gtk::FileFilter> m_filter;
 };
 
 } // namespace Slicer

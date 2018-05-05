@@ -15,6 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "savefiledialog.hpp"
+#include "utils.hpp"
 #include <glibmm/i18n.h>
 
 namespace Slicer {
@@ -25,10 +26,9 @@ SaveFileDialog::SaveFileDialog(Gtk::Window& parent)
                         GTK_FILE_CHOOSER_ACTION_SAVE,
                         _("Save"),
                         _("Cancel")}
-    , m_filter{pdfFilter()}
 {
     set_current_name(_("Untitled document") + Glib::ustring{".pdf"});
-	set_filter(pdfFilter());
+    add_filter(pdfFilter());
     set_do_overwrite_confirmation(true);
 }
 
