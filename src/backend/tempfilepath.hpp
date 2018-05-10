@@ -1,5 +1,5 @@
 // PDF Slicer
-// Copyright (C) 2017-2018 Julián Unrrein
+// Copyright (C) 2018 Julián Unrrein
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,18 +14,28 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef SAVEFILEDIALOG_HPP
-#define SAVEFILEDIALOG_HPP
+#ifndef TEMPFILE_HPP
+#define TEMPFILE_HPP
 
-#include "filechoosernative.hpp"
+#include <giomm/file.h>
+#include <string>
 
 namespace Slicer {
 
-class SaveFileDialog : public FileChooserNative {
+class TempFilePath {
 public:
-	SaveFileDialog(Gtk::Window& parent);
+    TempFilePath();
+    ~TempFilePath();
+
+    const std::string& get() const;
+
+private:
+#ifdef __linux__
+    int m_fileHandle;
+#endif
+    std::string m_path;
 };
 
 } // namespace Slicer
 
-#endif // SAVEFILEDIALOG_HPP
+#endif // TEMPFILE_HPP
