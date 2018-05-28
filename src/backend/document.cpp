@@ -64,16 +64,15 @@ std::string getTempFilePath()
     return tempFilePath;
 }
 
-void makePDFCopy(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
-                 const std::string& sourcePath,
-                 const std::string& destinationPath)
+void Document::makePDFCopy(const std::string& sourcePath,
+                           const std::string& destinationPath) const
 {
     PDFWriter pdfWriter;
     pdfWriter.StartPDF(destinationPath, ePDFVersionMax);
     PDFDocumentCopyingContext* copyingContext = pdfWriter.CreatePDFCopyingContext(sourcePath);
 
-    for (unsigned int i = 0; i < pages->get_n_items(); ++i) {
-        Glib::RefPtr<Slicer::Page> page = pages->get_item(i);
+    for (unsigned int i = 0; i < m_pages->get_n_items(); ++i) {
+        Glib::RefPtr<Slicer::Page> page = m_pages->get_item(i);
 
         int width, height;
         std::tie(width, height) = page->size();
@@ -94,7 +93,7 @@ void Document::saveDocument(Glib::RefPtr<Gio::File> destinationFile) const
     const std::string tempFilePath = getTempFilePath();
     auto tempFile = Gio::File::create_for_path(tempFilePath);
 
-    makePDFCopy(m_pages, m_sourcePath, tempFilePath);
+    makePDFCopy(m_sourcePath, tempFilePath);
     tempFile->move(destinationFile, Gio::FILE_COPY_OVERWRITE);
 }
 
