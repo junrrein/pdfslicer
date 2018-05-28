@@ -147,7 +147,7 @@ void AppWindow::onSaveAction()
     const int result = dialog.run();
 
     if (result == GTK_RESPONSE_ACCEPT) {
-        m_document->saveDocument(dialog.getSavePath());
+        m_document->saveDocument(dialog.get_file());
         m_signalSaved.emit();
     }
 }

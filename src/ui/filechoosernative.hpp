@@ -36,7 +36,6 @@ public:
     void set_current_name(const Glib::ustring& name);
     void add_filter(Glib::RefPtr<Gtk::FileFilter> filter);
     void set_do_overwrite_confirmation(bool do_overwrite_confirmation);
-    std::string get_filename() const;
     Glib::RefPtr<Gio::File> get_file() const;
     gint run();
 

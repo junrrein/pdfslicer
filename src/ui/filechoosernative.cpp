@@ -60,11 +60,6 @@ void FileChooserNative::set_do_overwrite_confirmation(bool do_overwrite_confirma
                                                    do_overwrite_confirmation);
 }
 
-std::string FileChooserNative::get_filename() const
-{
-    return std::string{gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(m_fileChooser))};
-}
-
 Glib::RefPtr<Gio::File> FileChooserNative::get_file() const
 {
     return Glib::wrap(gtk_file_chooser_get_file(GTK_FILE_CHOOSER(m_fileChooser)));

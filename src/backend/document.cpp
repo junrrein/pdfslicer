@@ -89,15 +89,13 @@ void makePDFCopy(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
     delete copyingContext;
 }
 
-void Document::saveDocument(const std::string& destinationPath) const
+void Document::saveDocument(Glib::RefPtr<Gio::File> destinationFile) const
 {
     const std::string tempFilePath = getTempFilePath();
+    auto tempFile = Gio::File::create_for_path(tempFilePath);
 
     makePDFCopy(m_pages, m_sourcePath, tempFilePath);
-
-    auto oldFile = Gio::File::create_for_path(destinationPath);
-    auto newFile = Gio::File::create_for_path(tempFilePath);
-    newFile->move(oldFile, Gio::FILE_COPY_OVERWRITE);
+    tempFile->move(destinationFile, Gio::FILE_COPY_OVERWRITE);
 }
 
 void Document::removePage(int pageNumber)
