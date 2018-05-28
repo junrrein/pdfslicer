@@ -93,7 +93,7 @@ void Document::saveDocument(const std::string& destinationPath) const
 {
     const std::string tempFilePath = getTempFilePath();
 
-    makePDFCopy(m_pages, m_sourcePath, getTempFilePath());
+    makePDFCopy(m_pages, m_sourcePath, tempFilePath);
 
     auto oldFile = Gio::File::create_for_path(destinationPath);
     auto newFile = Gio::File::create_for_path(tempFilePath);
