@@ -18,7 +18,6 @@
 #define DOCUMENT_HPP
 
 #include "commandmanager.hpp"
-#include <giomm/file.h>
 
 namespace Slicer {
 
@@ -27,7 +26,7 @@ public:
     Document(std::string filePath);
     ~Document();
 
-    void saveDocument(Glib::RefPtr<Gio::File> destinationFile) const;
+    void saveDocument(const std::string& destinationPath) const;
     void removePage(int pageNumber);
     void removePages(const std::vector<unsigned int>& positions);
     void removePageRange(int first, int last);
@@ -45,9 +44,6 @@ private:
     std::string m_sourcePath;
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
     CommandManager m_commandManager;
-
-    void makePDFCopy(const std::string& sourcePath,
-                     const std::string& destinationPath) const;
 };
 }
 

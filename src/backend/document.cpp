@@ -15,8 +15,8 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "document.hpp"
-#include "tempfilepath.hpp"
 #include <glibmm/convert.h>
+#include <glibmm/miscutils.h>
 #include <giomm/file.h>
 #include <PDFWriter.h>
 #include <PDFPage.h>
@@ -54,14 +54,50 @@ Document::~Document()
     g_object_unref(m_popplerDocument);
 }
 
-void Document::saveDocument(Glib::RefPtr<Gio::File> destinationFile) const
+std::string getTempFilePath()
 {
-    TempFilePath tempFilePath;
-    auto tempFile = Gio::File::create_for_path(tempFilePath.get());
+    const std::string tempDirectory = Glib::get_tmp_dir();
+    const std::string tempFileName = "pdfslicer-temp.pdf";
+    const std::vector<std::string> pathParts = {tempDirectory, tempFileName};
+    const std::string tempFilePath = Glib::build_filename(pathParts);
 
-    makePDFCopy(m_sourcePath, tempFile->get_path());
+    return tempFilePath;
+}
 
-    tempFile->copy(destinationFile, Gio::FILE_COPY_OVERWRITE);
+void makePDFCopy(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
+                 const std::string& sourcePath,
+                 const std::string& destinationPath)
+{
+    PDFWriter pdfWriter;
+    pdfWriter.StartPDF(destinationPath, ePDFVersionMax);
+    PDFDocumentCopyingContext* copyingContext = pdfWriter.CreatePDFCopyingContext(sourcePath);
+
+    for (unsigned int i = 0; i < pages->get_n_items(); ++i) {
+        Glib::RefPtr<Slicer::Page> page = pages->get_item(i);
+
+        int width, height;
+        std::tie(width, height) = page->size();
+
+        auto pdfPage = new PDFPage{};
+        pdfPage->SetMediaBox(PDFRectangle(0, 0, width, height));
+
+        copyingContext->MergePDFPageToPage(pdfPage, static_cast<unsigned>(page->number()));
+        pdfWriter.WritePageAndRelease(pdfPage);
+    }
+
+    pdfWriter.EndPDF();
+    delete copyingContext;
+}
+
+void Document::saveDocument(const std::string& destinationPath) const
+{
+    const std::string tempFilePath = getTempFilePath();
+
+    makePDFCopy(m_pages, m_sourcePath, getTempFilePath());
+
+    auto oldFile = Gio::File::create_for_path(destinationPath);
+    auto newFile = Gio::File::create_for_path(tempFilePath);
+    newFile->move(oldFile, Gio::FILE_COPY_OVERWRITE);
 }
 
 void Document::removePage(int pageNumber)
@@ -80,29 +116,5 @@ void Document::removePageRange(int first, int last)
 {
     auto command = std::make_shared<RemovePageRangeCommand>(m_pages, first, last);
     m_commandManager.execute(command);
-}
-
-void Document::makePDFCopy(const std::string& sourcePath,
-                           const std::string& destinationPath) const
-{
-    PDFWriter pdfWriter;
-    pdfWriter.StartPDF(destinationPath, ePDFVersionMax);
-    PDFDocumentCopyingContext* copyingContext = pdfWriter.CreatePDFCopyingContext(sourcePath);
-
-    for (unsigned int i = 0; i < m_pages->get_n_items(); ++i) {
-        Glib::RefPtr<Slicer::Page> page = m_pages->get_item(i);
-
-        int width, height;
-        std::tie(width, height) = page->size();
-
-        auto pdfPage = new PDFPage{};
-        pdfPage->SetMediaBox(PDFRectangle(0, 0, width, height));
-
-        copyingContext->MergePDFPageToPage(pdfPage, static_cast<unsigned>(page->number()));
-        pdfWriter.WritePageAndRelease(pdfPage);
-    }
-
-    pdfWriter.EndPDF();
-    delete copyingContext;
 }
 }

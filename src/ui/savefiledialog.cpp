@@ -31,4 +31,16 @@ SaveFileDialog::SaveFileDialog(Gtk::Window& parent)
     add_filter(pdfFilter());
     set_do_overwrite_confirmation(true);
 }
+
+std::string SaveFileDialog::getSavePath() const
+{
+    std::string filePath = get_filename();
+	const Glib::ustring baseName = get_file()->get_basename();
+
+	if (baseName.find(".pdf") != baseName.size() - 4)
+		filePath += ".pdf";
+
+	return filePath;
+}
+
 } // namespace Slicer

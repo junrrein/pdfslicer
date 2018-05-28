@@ -24,6 +24,8 @@ namespace Slicer {
 class SaveFileDialog : public FileChooserNative {
 public:
 	SaveFileDialog(Gtk::Window& parent);
+
+	std::string getSavePath() const;
 };
 
 } // namespace Slicer

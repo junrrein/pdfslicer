@@ -6,9 +6,7 @@ set (SLICER_BACKEND_SOURCES
      backend/document.hpp
      backend/document.cpp
      backend/page.hpp
-	 backend/page.cpp
-	 backend/tempfilepath.hpp
-	 backend/tempfilepath.cpp)
+     backend/page.cpp)
 
 set (SLICER_UI_SOURCES
      ui/aboutdialog.hpp
