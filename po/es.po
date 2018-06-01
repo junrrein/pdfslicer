@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-28 04:12-0300\n"
+"POT-Creation-Date: 2018-06-01 16:50-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -73,17 +73,17 @@ msgstr "Reducir"
 msgid "Zoom in"
 msgstr "Ampliar"
 
-#: ../src/ui/openfiledialog.cpp:24
+#: ../src/ui/openfiledialog.cpp:25
 msgid "Open document"
 msgstr "Abrir documento"
 
-#: ../src/ui/openfiledialog.cpp:30 ../src/ui/savefiledialog.cpp:33
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: ../src/ui/openfiledialog.cpp:31
+#: ../src/ui/openfiledialog.cpp:27
 msgid "Open"
 msgstr "Abrir"
+
+#: ../src/ui/openfiledialog.cpp:28 ../src/ui/savefiledialog.cpp:28
+msgid "Cancel"
+msgstr "Cancelar"
 
 #: ../src/ui/previewwindow.cpp:30
 msgid "Preview"
@@ -93,22 +93,30 @@ msgstr "Vista Previa"
 msgid "Save document as"
 msgstr "Guardar documento como"
 
-#: ../src/ui/savefiledialog.cpp:29
-msgid "Untitled document"
-msgstr "Documento sin título"
-
-#: ../src/ui/savefiledialog.cpp:34
+#: ../src/ui/savefiledialog.cpp:27
 msgid "Save"
 msgstr "Guardar"
+
+#: ../src/ui/savefiledialog.cpp:30
+msgid "Untitled document"
+msgstr "Documento sin título"
 
 #: ../src/ui/utils.cpp:23
 msgid "PDF document"
 msgstr "Documento PDF"
 
-#: ../src/ui/welcomescreen.cpp:28
+#: ../src/ui/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
 msgstr "¡Abra un documento y empiece a rebanar!"
 
-#: ../src/ui/window.cpp:75
+#: ../src/ui/window.cpp:76
 msgid "Saved!"
 msgstr "¡Guardado!"
+
+#: ../src/ui/window.cpp:156
+msgid "The current document could not be saved"
+msgstr ""
+
+#: ../src/ui/window.cpp:178
+msgid "The selected file could not be opened"
+msgstr ""
