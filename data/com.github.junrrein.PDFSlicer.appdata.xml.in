@@ -27,6 +27,12 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.0.6" date="2018-06-01">
+			<description>
+				<_p>Show an error dialog when failing to load or save a document.</_p>
+				<_p>Minor other improvements.</_p>
+			</description>
+		</release>
 		<release version="1.0.5" date="2018-05-05">
 			<description>
 				<_p>Correct the AppStream metadata license information.</_p>
