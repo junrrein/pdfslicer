@@ -20,6 +20,7 @@
 #include <glibmm/main.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/cssprovider.h>
+#include <gtkmm/messagedialog.h>
 
 namespace Slicer {
 
@@ -146,10 +147,21 @@ void AppWindow::onSaveAction()
 
     const int result = dialog.run();
 
-    if (result == GTK_RESPONSE_ACCEPT) {
-        m_document->saveDocument(dialog.get_file());
-        m_signalSaved.emit();
-    }
+    if (result == GTK_RESPONSE_ACCEPT)
+        try {
+            m_document->saveDocument(dialog.get_file());
+            m_signalSaved.emit();
+        }
+        catch (...) {
+            Gtk::MessageDialog errorDialog{_("The current document could not be saved"),
+                                           false,
+                                           Gtk::MESSAGE_ERROR,
+                                           Gtk::BUTTONS_CLOSE,
+                                           true};
+            errorDialog.set_transient_for(*this);
+
+            errorDialog.run();
+        }
 }
 
 void AppWindow::onOpenAction()
@@ -158,9 +170,20 @@ void AppWindow::onOpenAction()
 
     const int result = dialog.run();
 
-    if (result == GTK_RESPONSE_ACCEPT) {
-        openDocument(dialog.get_file());
-    }
+    if (result == GTK_RESPONSE_ACCEPT)
+        try {
+            openDocument(dialog.get_file());
+        }
+        catch (...) {
+            Gtk::MessageDialog errorDialog{_("The selected file could not be opened"),
+                                           false,
+                                           Gtk::MESSAGE_ERROR,
+                                           Gtk::BUTTONS_CLOSE,
+                                           true};
+            errorDialog.set_transient_for(*this);
+
+            errorDialog.run();
+        }
 }
 
 void AppWindow::onUndoAction()
