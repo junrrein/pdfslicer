@@ -41,9 +41,10 @@ else ()
     set (DO_IWYU ${IWYU_EXE})
 endif ()
 
-include_directories (${GTKMM_INCLUDE_DIRS})
-include_directories (${POPPLER_INCLUDE_DIRS})
-include_directories (${CAIROMM_INCLUDE_DIRS})
+include_directories (SYSTEM
+    ${GTKMM_INCLUDE_DIRS}
+    ${POPPLER_INCLUDE_DIRS}
+    ${CAIROMM_INCLUDE_DIRS})
 
 add_subdirectory (third-party)
 
