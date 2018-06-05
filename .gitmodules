@@ -1,0 +1,3 @@
+[submodule "third-party/PDF-Writer"]
+	path = third-party/PDF-Writer
+	url = https://github.com/junrrein/PDF-Writer.git
