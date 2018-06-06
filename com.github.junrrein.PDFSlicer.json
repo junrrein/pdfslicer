@@ -154,14 +154,14 @@
             "name": "pdfslicer",
             "buildsystem": "cmake-ninja",
             "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release"
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DUSE_BUNDLED=FALSE",
+                "-DFLATPAK=TRUE"
             ],
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/junrrein/pdfslicer.git",
-                    "tag": "v1.0.4",
-                    "commit": "6ce24ab8d3c2b20ca42d8b6f000151366487fac4"
+                    "url": "/home/julian/Programacion/qtcreator-projects/pdfslicer"
                 }
             ]
         }
