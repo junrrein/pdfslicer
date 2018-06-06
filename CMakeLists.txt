@@ -19,7 +19,6 @@ pkg_check_modules (GTKMM gtkmm-3.0 REQUIRED)
 pkg_check_modules (POPPLER poppler-glib REQUIRED)
 find_package (Intl REQUIRED)
 find_package (Gettext REQUIRED)
-find_package (JPEG)
 
 find_program (CLANG_TIDY_EXE
               NAMES "clang-tidy"

@@ -71,8 +71,7 @@ target_link_libraries (${CMAKE_PROJECT_NAME}
                        ${POPPLER_LDFLAGS}
                        ${INTL_LIBRARY_DIRS}
                        PDFWriter
-                       CTPL
-                       ${JPEG_LIBRARIES})
+                       CTPL)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
