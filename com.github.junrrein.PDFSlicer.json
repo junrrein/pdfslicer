@@ -161,7 +161,7 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "/home/julian/Programacion/qtcreator-projects/pdfslicer"
+                    "url": "https://github.com/junrrein/pdfslicer.git"
                 }
             ]
         }
