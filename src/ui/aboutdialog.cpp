@@ -29,6 +29,10 @@ AboutDialog::AboutDialog(Gtk::Window& parent)
     set_copyright("Copyright © 2017-2018 Julián Unrrein");
     set_license_type(Gtk::LICENSE_GPL_3_0);
     set_website(config::APPLICATION_WEBSITE);
+    add_credit_section(_("Third-party libraries"),
+                       {"CTPL https://github.com/vit-vit/CTPL",
+                        "PDFWriter https://github.com/galkahana/PDF-Writer",
+                        "range-v3 https://github.com/ericniebler/range-v3"});
 
     signal_hide().connect([this]() {
         delete this;
