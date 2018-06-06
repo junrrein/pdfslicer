@@ -17,7 +17,6 @@ find_package (Threads REQUIRED)
 find_package (PkgConfig REQUIRED)
 pkg_check_modules (GTKMM gtkmm-3.0 REQUIRED)
 pkg_check_modules (POPPLER poppler-glib REQUIRED)
-pkg_check_modules (CAIROMM cairomm-1.0 REQUIRED)
 find_package (Intl REQUIRED)
 find_package (Gettext REQUIRED)
 
@@ -40,11 +39,6 @@ else ()
     message (STATUS "include-what-you-use found: ${IWYU_EXE}")
     set (DO_IWYU ${IWYU_EXE})
 endif ()
-
-include_directories (SYSTEM
-    ${GTKMM_INCLUDE_DIRS}
-    ${POPPLER_INCLUDE_DIRS}
-    ${CAIROMM_INCLUDE_DIRS})
 
 add_subdirectory (third-party)
 

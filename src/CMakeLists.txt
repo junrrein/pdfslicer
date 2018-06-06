@@ -49,19 +49,26 @@ add_executable (${CMAKE_PROJECT_NAME}
 add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
 
 target_include_directories (
-    ${CMAKE_PROJECT_NAME}
-    SYSTEM
-    PRIVATE
-    "${CMAKE_BINARY_DIR}"
-    "${CMAKE_SOURCE_DIR}/third-party/PDF-Writer/PDFWriter"
-    "${CMAKE_SOURCE_DIR}/third-party/CTPL"
-    "${CMAKE_SOURCE_DIR}/third-party/range-v3/include"
+    ${CMAKE_PROJECT_NAME} SYSTEM PRIVATE
+    ${CMAKE_BINARY_DIR}
+    ${CMAKE_SOURCE_DIR}/third-party/PDF-Writer/PDFWriter
+    ${CMAKE_SOURCE_DIR}/third-party/CTPL
+    ${CMAKE_SOURCE_DIR}/third-party/range-v3/include
 )
 
+if (MINGW)
+    target_include_directories (${CMAKE_PROJECT_NAME} PRIVATE
+        ${GTKMM_INCLUDE_DIRS}
+        ${POPPLER_INCLUDE_DIRS})
+else ()
+    target_include_directories (${CMAKE_PROJECT_NAME} SYSTEM PRIVATE
+        ${GTKMM_INCLUDE_DIRS}
+        ${POPPLER_INCLUDE_DIRS})
+endif ()
+
 target_link_libraries (${CMAKE_PROJECT_NAME}
-                       ${GTKMM_LIBRARIES}
-                       ${CAIROMM_LIBRARIES}
-                       ${POPPLER_LIBRARIES}
+                       ${GTKMM_LDFLAGS}
+                       ${POPPLER_LDFLAGS}
                        ${INTL_LIBRARY_DIRS}
                        PDFWriter
                        CTPL)
