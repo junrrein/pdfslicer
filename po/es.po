@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #: ../src/application.cpp:60
 msgid "About"
@@ -27,7 +27,7 @@ msgstr "Una aplicación sencilla para extraer páginas de un documento PDF"
 
 #: ../src/ui/aboutdialog.cpp:32
 msgid "Third-party libraries"
-msgstr ""
+msgstr "Bibliotecas de terceros"
 
 #: ../src/ui/actionbar.cpp:25
 msgid "Remove selected"
@@ -119,8 +119,8 @@ msgstr "¡Guardado!"
 
 #: ../src/ui/window.cpp:156
 msgid "The current document could not be saved"
-msgstr ""
+msgstr "El documento actual no pudo ser guardado"
 
 #: ../src/ui/window.cpp:178
 msgid "The selected file could not be opened"
-msgstr ""
+msgstr "No se pudo abrir el archivo seleccionado"
