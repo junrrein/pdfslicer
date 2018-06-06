@@ -1,3 +1,6 @@
 [submodule "third-party/PDF-Writer"]
 	path = third-party/PDF-Writer
 	url = https://github.com/junrrein/PDF-Writer.git
+[submodule "third-party/range-v3"]
+	path = third-party/range-v3
+	url = https://github.com/ericniebler/range-v3.git
