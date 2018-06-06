@@ -29,7 +29,7 @@ git clone https://github.com/junrrein/pdfslicer.git
 cd ..
 mkdir build-pdfslicer
 cd build-pdfslicer
-cmake ../pdfslicer/ -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+cmake ../pdfslicer/ -DCMAKE_BUILD_TYPE=Release
 make
 ```
 
