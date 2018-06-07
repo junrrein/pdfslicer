@@ -7,6 +7,16 @@ as a single file.
 
 ![](docs/readme-screenshot-2.png)
 
+# Installing
+
+# Linux
+
+PDF Slicer is currently being submitted to [Flathub](https://flathub.org). Stay tuned!
+
+# Windows
+
+You can download the installer from the [Releases page](https://github.com/junrrein/pdfslicer/releases/latest).
+
 # Building
 
 ## Fedora
@@ -43,6 +53,26 @@ sudo make install
 
 ```bash
 sudo xargs rm < install_manifest.txt
+```
+
+## Flatpak
+
+```bash
+flatpak remote-add --from gnome https://sdk.gnome.org/gnome.flatpakrepo
+flatpak install gnome org.gnome.Platform//3.28
+flatpak install gnome org.gnome.Sdk//3.28
+wget https://raw.githubusercontent.com/junrrein/pdfslicer/master/com.github.junrrein.PDFSlicer.json
+flatpak-builder --repo=pdfslicer-repo pdfslicer com.github.junrrein.PDFSlicer.json --force-clean
+flatpak --user remote-add --no-gpg-verify --if-not-exists pdfslicer-repo pdfslicer-repo
+flatpak --user install pdfslicer-repo com.github.junrrein.PDFSlicer
+```
+
+### Uninstall
+
+```bash
+flatpak --user uninstall com.github.junrrein.PDFSlicer
+flatpak --user remote-delete pdfslicer-repo
+rm -rf pdfslicer/ pdfslicer-repo/
 ```
 
 # License
