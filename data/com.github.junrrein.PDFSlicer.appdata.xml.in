@@ -27,6 +27,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+        <release version="1.0.8" date="2018-06-07">
+            <description>
+                <_p>Document: Change saving method. This fixes the result being wrong for some PDF files and results in a smaller file size.</_p>
+            </description>
+        </release>
         <release version="1.0.7" date="2018-06-07">
             <description>
                 <_p>Fix the Windows installer. Minor bug fixes and improvements.</_p>
