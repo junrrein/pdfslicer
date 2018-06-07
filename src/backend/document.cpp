@@ -67,25 +67,18 @@ std::string getTempFilePath()
 void Document::makePDFCopy(const std::string& sourcePath,
                            const std::string& destinationPath) const
 {
-    PDFWriter pdfWriter;
-    pdfWriter.StartPDF(destinationPath, ePDFVersionMax);
-    PDFDocumentCopyingContext* copyingContext = pdfWriter.CreatePDFCopyingContext(sourcePath);
+    PDFPageRange ranges{};
+    ranges.mType = PDFPageRange::eRangeTypeSpecific;
 
     for (unsigned int i = 0; i < m_pages->get_n_items(); ++i) {
-        Glib::RefPtr<Slicer::Page> page = m_pages->get_item(i);
-
-        int width, height;
-        std::tie(width, height) = page->size();
-
-        auto pdfPage = new PDFPage{};
-        pdfPage->SetMediaBox(PDFRectangle(0, 0, width, height));
-
-        copyingContext->MergePDFPageToPage(pdfPage, static_cast<unsigned>(page->number()));
-        pdfWriter.WritePageAndRelease(pdfPage);
+        const int pageNumer = m_pages->get_item(i)->number();
+        ranges.mSpecificRanges.push_back({pageNumer, pageNumer});
     }
 
+    PDFWriter pdfWriter;
+    pdfWriter.StartPDF(destinationPath, ePDFVersionMax);
+    pdfWriter.AppendPDFPagesFromPDF(sourcePath, ranges);
     pdfWriter.EndPDF();
-    delete copyingContext;
 }
 
 void Document::saveDocument(Glib::RefPtr<Gio::File> destinationFile) const
