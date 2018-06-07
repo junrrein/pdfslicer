@@ -75,6 +75,19 @@ flatpak --user remote-delete pdfslicer-repo
 rm -rf pdfslicer/ pdfslicer-repo/
 ```
 
+## Windows cross-compilation (Fedora only)
+
+```bash
+sudo dnf install mingw64-gcc-c++ mingw64-gtkmm30 mingw64-poppler-glib mingw64-librsvg2
+git clone --recursive https://github.com/junrrein/pdfslicer.git
+mkdir build-pdfslicer
+cd build-pdfslicer
+mingw64-cmake ../pdfslicer -DCMAKE_BUILD_TYPE=Release -DUSE_BUNDLED=OFF
+make package
+```
+
+This proccess will generate the installer inside the `build-pdfslicer` directory with name `PDF Slicer.exe`.
+
 # License
 
 PDF Slicer can be used under the terms of the GNU GPL 3.0 license,
