@@ -19,7 +19,9 @@
 
 #include "../backend/document.hpp"
 #include "zoomlevelwithactions.hpp"
+#include "viewchild.hpp"
 #include <gtkmm/flowbox.h>
+#include <glibmm/dispatcher.h>
 #include <ctpl_stl.h>
 
 namespace Slicer {
@@ -36,6 +38,10 @@ private:
     Document* m_document;
     std::unique_ptr<ctpl::thread_pool> m_pageRendererPool;
     static const int numRendererThreads;
+    // We don't need an asynchronous queue as long as we have only one renderer thread
+    std::queue<ViewChild*> m_childQueue;
+    Glib::Dispatcher m_thumbnailRendered;
+
     Gio::ActionMap& m_actionMap;
 
     ZoomLevelWithActions m_zoomLevel;

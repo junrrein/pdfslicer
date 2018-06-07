@@ -15,7 +15,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "view.hpp"
-#include "viewchild.hpp"
 #include "previewwindow.hpp"
 #include <range/v3/all.hpp>
 
@@ -93,6 +92,15 @@ void View::setupSignalHandlers()
     signal_child_activated().connect([this](Gtk::FlowBoxChild*) {
         m_previewPageAction->activate();
     });
+
+    m_thumbnailRendered.connect([this]() {
+        if (m_childQueue.empty())
+            return;
+
+        ViewChild* child = m_childQueue.front();
+        child->showPage();
+        m_childQueue.pop();
+    });
 }
 
 void View::manageActionsEnabledStates()
@@ -169,6 +177,7 @@ void View::waitForRenderCompletion()
         m_pageRendererPool->stop(true);
 
     m_pageRendererPool = std::make_unique<ctpl::thread_pool>(numRendererThreads);
+    m_childQueue = {};
 }
 
 void View::stopRendering()
@@ -177,14 +186,22 @@ void View::stopRendering()
         m_pageRendererPool->stop();
 
     m_pageRendererPool = std::make_unique<ctpl::thread_pool>(numRendererThreads);
+    m_childQueue = {};
 }
 
 void View::startGeneratingThumbnails(int targetThumbnailSize)
 {
     bind_list_store(m_document->pages(), [this, targetThumbnailSize](const Glib::RefPtr<Page>& page) {
-        return Gtk::manage(new Slicer::ViewChild{page,
-                                                 targetThumbnailSize,
-                                                 *m_pageRendererPool});
+        auto child = Gtk::manage(new Slicer::ViewChild{page,
+                                                       targetThumbnailSize});
+
+        m_pageRendererPool->push([this, child](int) {
+            m_childQueue.push(child);
+            child->renderPage();
+            m_thumbnailRendered.emit();
+        });
+
+        return child;
     });
 }
 

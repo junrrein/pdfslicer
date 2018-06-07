@@ -19,8 +19,7 @@
 namespace Slicer {
 
 ViewChild::ViewChild(Glib::RefPtr<Page> page,
-                     int targetSize,
-                     ctpl::thread_pool& threadPool)
+                     int targetSize)
     : m_page{std::move(page)}
     , m_targetSize{targetSize}
 {
@@ -32,15 +31,6 @@ ViewChild::ViewChild(Glib::RefPtr<Page> page,
     m_spinner.start();
     pack_start(m_spinner, true, false);
     show_all_children();
-
-    m_signalRendered.connect([this]() {
-        showPage();
-    });
-
-    threadPool.push([this](int) {
-        renderPage();
-        m_signalRendered.emit();
-    });
 }
 
 void ViewChild::renderPage()
