@@ -14,13 +14,13 @@ as a single file.
 1. Install dependencies
 
 ```bash
-sudo dnf install gtkmm30-devel poppler-glib-devel cairomm-devel intltool gettext
+sudo dnf install gtkmm30-devel poppler-glib-devel cairomm-devel libaesgm-devel intltool gettext
 ```
 
 2. Check out a copy of the source code
 
 ```bash
-git clone https://github.com/junrrein/pdfslicer.git
+git clone --recursive https://github.com/junrrein/pdfslicer.git
 ```
 
 3. Build the application
@@ -29,7 +29,7 @@ git clone https://github.com/junrrein/pdfslicer.git
 cd ..
 mkdir build-pdfslicer
 cd build-pdfslicer
-cmake ../pdfslicer/ -DCMAKE_BUILD_TYPE=Release
+cmake ../pdfslicer/ -DCMAKE_BUILD_TYPE=Release -DUSE_BUNDLED=FALSE
 make
 ```
 
