@@ -32,6 +32,7 @@ AboutDialog::AboutDialog(Gtk::Window& parent)
     add_credit_section(_("Third-party libraries"),
                        {"CTPL https://github.com/vit-vit/CTPL",
                         "PDFWriter https://github.com/galkahana/PDF-Writer",
+                        "Poppler https://poppler.freedesktop.org/",
                         "range-v3 https://github.com/ericniebler/range-v3"});
 
     signal_hide().connect([this]() {
