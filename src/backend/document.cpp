@@ -81,7 +81,7 @@ void Document::makePDFCopy(const std::string& sourcePath,
     pdfWriter.EndPDF();
 }
 
-void Document::saveDocument(Glib::RefPtr<Gio::File> destinationFile) const
+void Document::saveDocument(const Glib::RefPtr<Gio::File>& destinationFile) const
 {
     const std::string tempFilePath = getTempFilePath();
     auto tempFile = Gio::File::create_for_path(tempFilePath);

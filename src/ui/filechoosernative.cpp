@@ -38,31 +38,31 @@ FileChooserNative::~FileChooserNative()
 
 void FileChooserNative::set_select_multiple(bool select_multiple)
 {
-    gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(m_fileChooser),
-                                         select_multiple);
+    gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(m_fileChooser), //NOLINT
+                                         select_multiple);                //NOLINT
 }
 
 void FileChooserNative::set_current_name(const Glib::ustring& name)
 {
-    gtk_file_chooser_set_current_name(GTK_FILE_CHOOSER(m_fileChooser),
+    gtk_file_chooser_set_current_name(GTK_FILE_CHOOSER(m_fileChooser), //NOLINT
                                       name.c_str());
 }
 
-void FileChooserNative::add_filter(Glib::RefPtr<Gtk::FileFilter> filter)
+void FileChooserNative::add_filter(const Glib::RefPtr<Gtk::FileFilter>& filter)
 {
-    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(m_fileChooser),
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(m_fileChooser), //NOLINT
                                 filter->gobj());
 }
 
 void FileChooserNative::set_do_overwrite_confirmation(bool do_overwrite_confirmation)
 {
-    gtk_file_chooser_set_do_overwrite_confirmation(GTK_FILE_CHOOSER(m_fileChooser),
-                                                   do_overwrite_confirmation);
+    gtk_file_chooser_set_do_overwrite_confirmation(GTK_FILE_CHOOSER(m_fileChooser), //NOLINT
+                                                   do_overwrite_confirmation);      //NOLINT
 }
 
 Glib::RefPtr<Gio::File> FileChooserNative::get_file() const
 {
-    return Glib::wrap(gtk_file_chooser_get_file(GTK_FILE_CHOOSER(m_fileChooser)));
+    return Glib::wrap(gtk_file_chooser_get_file(GTK_FILE_CHOOSER(m_fileChooser))); //NOLINT
 }
 
 gint FileChooserNative::run()

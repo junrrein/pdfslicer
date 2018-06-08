@@ -192,7 +192,7 @@ void View::stopRendering()
 void View::startGeneratingThumbnails(int targetThumbnailSize)
 {
     bind_list_store(m_document->pages(), [this, targetThumbnailSize](const Glib::RefPtr<Page>& page) {
-        auto child = Gtk::manage(new Slicer::ViewChild{page,
+        auto child = Gtk::manage(new Slicer::ViewChild{page, //NOLINT
                                                        targetThumbnailSize});
 
         m_pageRendererPool->push([this, child](int) {

@@ -106,10 +106,10 @@ void Application::onActionQuit()
 
 AppWindow* Application::createWindow()
 {
-    auto window = new Slicer::AppWindow{};
+    auto window = new Slicer::AppWindow{}; //NOLINT
 
     window->signal_hide().connect([window]() {
-        delete window;
+        delete window; //NOLINT
     });
 
     add_window(*window);

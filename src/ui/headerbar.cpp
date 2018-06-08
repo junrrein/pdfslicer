@@ -46,7 +46,7 @@ void HeaderBar::setupWidgets()
     m_buttonRedo.set_tooltip_text(_("Redo"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRedo.gobj()), "win.redo"); // NOLINT
 
-    auto undoBox = Gtk::manage(new Gtk::Box);
+    auto undoBox = Gtk::manage(new Gtk::Box); //NOLINT
     undoBox->get_style_context()->add_class("linked");
     undoBox->pack_start(m_buttonUndo);
     undoBox->pack_start(m_buttonRedo);
