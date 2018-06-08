@@ -93,14 +93,13 @@ void View::setupSignalHandlers()
         m_previewPageAction->activate();
     });
 
-    Glib::signal_idle().connect([this]() {
-        while (!m_childQueue.empty()) {
-            ViewChild* child = m_childQueue.front();
-            child->showPage();
-            m_childQueue.pop();
-        }
+    m_thumbnailRendered.connect([this]() {
+        if (m_childQueue.empty())
+            return;
 
-        return true;
+        ViewChild* child = m_childQueue.front();
+        child->showPage();
+        m_childQueue.pop();
     });
 }
 
@@ -197,8 +196,9 @@ void View::startGeneratingThumbnails(int targetThumbnailSize)
                                                        targetThumbnailSize});
 
         m_pageRendererPool->push([this, child](int) {
-            child->renderPage();
             m_childQueue.push(child);
+            child->renderPage();
+            m_thumbnailRendered.emit();
         });
 
         return child;
