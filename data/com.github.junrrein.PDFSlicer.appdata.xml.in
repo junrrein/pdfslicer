@@ -27,62 +27,62 @@
 		</screenshot>
 	</screenshots>
 	<releases>
-        <release version="1.0.8" date="2018-06-07">
-            <description>
-                <_p>Change saving method. This fixes the result being wrong for some PDF files and results in a smaller file size.</_p>
-            </description>
-        </release>
-        <release version="1.0.7" date="2018-06-07">
-            <description>
-                <_p>Fix the Windows installer. Minor bug fixes and improvements.</_p>
-            </description>
-        </release>
+		<release version="1.0.8" date="2018-06-07">
+			<description>
+				<p>Change saving method. This fixes the result being wrong for some PDF files and results in a smaller file size.</p>
+			</description>
+		</release>
+		<release version="1.0.7" date="2018-06-07">
+			<description>
+				<p>Fix the Windows installer. Minor bug fixes and improvements.</p>
+			</description>
+		</release>
 		<release version="1.0.6" date="2018-06-01">
 			<description>
-				<_p>Show an error dialog when failing to load or save a document.</_p>
-				<_p>Minor other improvements.</_p>
+				<p>Show an error dialog when failing to load or save a document.</p>
+				<p>Minor other improvements.</p>
 			</description>
 		</release>
 		<release version="1.0.5" date="2018-05-05">
 			<description>
-				<_p>Correct the AppStream metadata license information.</_p>
+				<p>Correct the AppStream metadata license information.</p>
 			</description>
 		</release>
 		<release version="1.0.4" date="2018-05-05">
 			<description>
-				<_p>Update the AppStream metadata with missing release information for 1.0.3.</_p>
+				<p>Update the AppStream metadata with missing release information for 1.0.3.</p>
 			</description>
 		</release>
 		<release version="1.0.3" date="2018-05-05">
 			<description>
 				<p>Minor bug fixes and changes:</p>
 				<ul>
-					<_li>Changed the application id</_li>
-					<_li>Switched to Gtk::FileChooserNative. This has 2 benefits:</_li>
+					<li>Changed the application id</li>
+					<li>Switched to Gtk::FileChooserNative. This has 2 benefits:</li>
 					<li>
 						<ul>
-							<_li>Native file dialogs are used on Windows,</_li>
-							<_li>It allows the application to cross the Flatpak sandbox boundary, without having permissions to read/write files on the filesystem</_li>
+							<li>Native file dialogs are used on Windows,</li>
+							<li>It allows the application to cross the Flatpak sandbox boundary, without having permissions to read/write files on the filesystem</li>
 						</ul>
 					</li>
-					<_li>Improved the AppStream metadata</_li>
+					<li>Improved the AppStream metadata</li>
 				</ul>
 			</description>
 		</release>
 		<release version="1.0.2" date="2018-05-05">
 			<description>
-				<_p>Changed the application icon.</_p>
+				<p>Changed the application icon.</p>
 			</description>
 		</release>
 		<release version="1.0.1" date="2018-05-05">
 			<description>
-				<_p>This release includes many bug fixes.</_p>
-				<_p>The Windows installer is now considered production-ready.</_p>
+				<p>This release includes many bug fixes.</p>
+				<p>The Windows installer is now considered production-ready.</p>
 			</description>
 		</release>
 		<release version="1.0" date="2018-04-28">
 			<description>
-				<_p>Initial release.</_p>
+				<p>Initial release.</p>
 			</description>
 		</release>
 	</releases>
