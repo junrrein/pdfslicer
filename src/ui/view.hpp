@@ -38,9 +38,8 @@ private:
     Document* m_document;
     std::unique_ptr<ctpl::thread_pool> m_pageRendererPool;
     static const int numRendererThreads;
-    // We don't need an asynchronous queue as long as we have only one renderer thread
+    // FIXME: Investigate if we need an asynchronous queue
     std::queue<ViewChild*> m_childQueue;
-    Glib::Dispatcher m_thumbnailRendered;
 
     Gio::ActionMap& m_actionMap;
 
@@ -65,6 +64,7 @@ private:
     void setupSignalHandlers();
     void manageActionsEnabledStates();
     void onCancelSelection();
+    bool onIdle();
     std::vector<unsigned int> getSelectedChildrenIndexes();
     std::vector<unsigned int> getUnselectedChildrenIndexes();
 };
