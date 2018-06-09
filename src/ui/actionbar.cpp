@@ -15,24 +15,29 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "actionbar.hpp"
-#include <gtkmm/revealer.h>
+#include <gtkmm/box.h>
 #include <glibmm/i18n.h>
 
 namespace Slicer {
 
 ActionBar::ActionBar()
 {
+    auto removeBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL});
+    removeBox->get_style_context()->add_class("linked");
+
     m_buttonRemovePages.set_label(_("Remove selected"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePages.gobj()), "win.remove-selected"); // NOLINT
-    pack_start(m_buttonRemovePages);
+    removeBox->pack_start(m_buttonRemovePages);
 
     m_buttonRemovePrevious.set_label(_("Remove previous"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePrevious.gobj()), "win.remove-previous"); // NOLINT
-    pack_start(m_buttonRemovePrevious);
+    removeBox->pack_start(m_buttonRemovePrevious);
 
     m_buttonRemoveNext.set_label(_("Remove next"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemoveNext.gobj()), "win.remove-next"); // NOLINT
-    pack_start(m_buttonRemoveNext);
+    removeBox->pack_start(m_buttonRemoveNext);
+
+    pack_start(*removeBox);
 
     m_buttonCancelSelection.set_label(_("Cancel selection"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonCancelSelection.gobj()), "win.cancel-selection"); // NOLINT
