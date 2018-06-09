@@ -20,6 +20,7 @@
 #include <giomm/file.h>
 #include <PDFWriter.h>
 #include <PDFPage.h>
+#include <PDFPageInput.h>
 #include <PDFDocumentCopyingContext.h>
 
 namespace Slicer {
@@ -67,21 +68,25 @@ std::string getTempFilePath()
 void Document::makePDFCopy(const std::string& sourcePath,
                            const std::string& destinationPath) const
 {
+    InputFile sourceFile;
+    sourceFile.OpenFile(sourcePath);
+    PDFParser parser;
+    parser.StartPDFParsing(sourceFile.GetInputStream());
     PDFWriter pdfWriter;
     pdfWriter.StartPDF(destinationPath, ePDFVersionMax);
     PDFDocumentCopyingContext* copyingContext = pdfWriter.CreatePDFCopyingContext(sourcePath);
 
     for (unsigned int i = 0; i < m_pages->get_n_items(); ++i) {
-        Glib::RefPtr<Slicer::Page> page = m_pages->get_item(i);
+        const auto pageNumber = static_cast<unsigned int>(m_pages->get_item(i)->number());
 
-        int width, height;
-        std::tie(width, height) = page->size();
+        RefCountPtr<PDFDictionary> parsedPage = parser.ParsePage(pageNumber);
+        PDFPageInput input{&parser, parsedPage};
 
-        auto pdfPage = new PDFPage{};
-        pdfPage->SetMediaBox(PDFRectangle(0, 0, width, height));
+        auto outputPage = new PDFPage{};
+        outputPage->SetMediaBox(input.GetMediaBox());
+        copyingContext->MergePDFPageToPage(outputPage, pageNumber);
 
-        copyingContext->MergePDFPageToPage(pdfPage, static_cast<unsigned>(page->number()));
-        pdfWriter.WritePageAndRelease(pdfPage);
+        pdfWriter.WritePageAndRelease(outputPage);
     }
 
     pdfWriter.EndPDF();
