@@ -108,4 +108,52 @@ void RemovePageRangeCommand::redo()
     execute();
 }
 
+RotatePagesRightCommand::RotatePagesRightCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
+                                                 std::vector<unsigned int> pageNumbers)
+    : m_pages{std::move(pages)}
+    , m_pageNumbers{std::move(pageNumbers)}
+{
+}
+
+void RotatePagesRightCommand::execute()
+{
+    for (auto pageNumber : m_pageNumbers)
+        m_pages->get_item(pageNumber)->rotateRight();
+}
+
+void RotatePagesRightCommand::undo()
+{
+    for (auto pageNumber : m_pageNumbers)
+        m_pages->get_item(pageNumber)->rotateLeft();
+}
+
+void RotatePagesRightCommand::redo()
+{
+    execute();
+}
+
+RotatePagesLeftCommand::RotatePagesLeftCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
+                                               std::vector<unsigned int> pageNumbers)
+    : m_pages{std::move(pages)}
+    , m_pageNumbers{std::move(pageNumbers)}
+{
+}
+
+void RotatePagesLeftCommand::execute()
+{
+    for (auto pageNumber : m_pageNumbers)
+        m_pages->get_item(pageNumber)->rotateLeft();
+}
+
+void RotatePagesLeftCommand::undo()
+{
+    for (auto pageNumber : m_pageNumbers)
+        m_pages->get_item(pageNumber)->rotateRight();
+}
+
+void RotatePagesLeftCommand::redo()
+{
+    execute();
+}
+
 } // namespace Slicer

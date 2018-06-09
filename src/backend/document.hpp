@@ -31,6 +31,8 @@ public:
     void removePage(int pageNumber);
     void removePages(const std::vector<unsigned int>& positions);
     void removePageRange(int first, int last);
+    void rotatePagesRight(std::vector<unsigned int> pageNumbers);
+    void rotatePagesLeft(std::vector<unsigned int> pageNumbers);
     void undoCommand() { m_commandManager.undo(); }
     void redoCommand() { m_commandManager.redo(); }
 

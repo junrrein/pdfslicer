@@ -29,12 +29,18 @@ public:
     virtual ~Page();
 
     int number() const;
+    int rotation() const { return m_rotation; }
     std::pair<int, int> size() const;
     std::pair<int, int> scaledSize(int targetSize) const;
+
     Glib::RefPtr<Gdk::Pixbuf> renderPage(int targetSize) const;
+    void rotateRight() { m_rotation += 90; }
+    void rotateLeft() { m_rotation -= 90; }
 
 private:
     PopplerPage* m_ppage;
+
+    int m_rotation = 0;
 };
 
 struct pageComparator {

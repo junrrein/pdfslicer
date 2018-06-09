@@ -77,6 +77,34 @@ private:
     int m_first, m_last;
 };
 
+class RotatePagesRightCommand : public Command {
+public:
+    RotatePagesRightCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
+                            std::vector<unsigned int> pageNumbers);
+
+    void execute() override;
+    void undo() override;
+    void redo() override;
+
+private:
+    Glib::RefPtr<Gio::ListStore<Page>> m_pages;
+    std::vector<unsigned int> m_pageNumbers;
+};
+
+class RotatePagesLeftCommand : public Command {
+public:
+    RotatePagesLeftCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
+                           std::vector<unsigned int> pageNumbers);
+
+    void execute() override;
+    void undo() override;
+    void redo() override;
+
+private:
+    Glib::RefPtr<Gio::ListStore<Page>> m_pages;
+    std::vector<unsigned int> m_pageNumbers;
+};
+
 } // namespace Slicer
 
 #endif // COMMAND_HPP

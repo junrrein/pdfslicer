@@ -77,7 +77,8 @@ void Document::makePDFCopy(const std::string& sourcePath,
     PDFDocumentCopyingContext* copyingContext = pdfWriter.CreatePDFCopyingContext(sourcePath);
 
     for (unsigned int i = 0; i < m_pages->get_n_items(); ++i) {
-        const auto pageNumber = static_cast<unsigned int>(m_pages->get_item(i)->number());
+        const Glib::RefPtr<Page> slicerPage = m_pages->get_item(i);
+        const auto pageNumber = static_cast<unsigned int>(slicerPage->number());
 
         RefCountPtr<PDFDictionary> parsedPage = parser.ParsePage(pageNumber);
         PDFPageInput input{&parser, parsedPage};
@@ -85,6 +86,7 @@ void Document::makePDFCopy(const std::string& sourcePath,
         auto outputPage = new PDFPage{};
         outputPage->SetMediaBox(input.GetMediaBox());
         copyingContext->MergePDFPageToPage(outputPage, pageNumber);
+        outputPage->SetRotate(slicerPage->rotation());
 
         pdfWriter.WritePageAndRelease(outputPage);
     }
@@ -117,6 +119,18 @@ void Document::removePages(const std::vector<unsigned int>& positions)
 void Document::removePageRange(int first, int last)
 {
     auto command = std::make_shared<RemovePageRangeCommand>(m_pages, first, last);
+    m_commandManager.execute(command);
+}
+
+void Document::rotatePagesRight(std::vector<unsigned int> pageNumbers)
+{
+    auto command = std::make_shared<RotatePagesRightCommand>(m_pages, pageNumbers);
+    m_commandManager.execute(command);
+}
+
+void Document::rotatePagesLeft(std::vector<unsigned int> pageNumbers)
+{
+    auto command = std::make_shared<RotatePagesLeftCommand>(m_pages, pageNumbers);
     m_commandManager.execute(command);
 }
 }
