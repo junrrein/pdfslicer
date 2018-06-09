@@ -26,10 +26,6 @@ ActionBar::ActionBar()
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePages.gobj()), "win.remove-selected"); // NOLINT
     pack_start(m_buttonRemovePages);
 
-    m_buttonRemoveUnselected.set_label(_("Remove unselected"));
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemoveUnselected.gobj()), "win.remove-unselected"); // NOLINT
-    pack_start(m_buttonRemoveUnselected);
-
     m_buttonRemovePrevious.set_label(_("Remove previous"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePrevious.gobj()), "win.remove-previous"); // NOLINT
     pack_start(m_buttonRemovePrevious);
@@ -43,7 +39,7 @@ ActionBar::ActionBar()
     pack_end(m_buttonCancelSelection);
 
     // The following is to work around a bug with themes other than Adwaita.
-    // Without this, the ActionBar is too narrow and the buttons don't fit.
+    // Without this, the ActionBar is too narrow (vertically) and the buttons don't fit.
     set_size_request(-1, 45);
 }
 

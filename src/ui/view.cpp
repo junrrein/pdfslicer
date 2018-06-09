@@ -64,14 +64,12 @@ void View::setDocument(Document& document)
 void View::addActions()
 {
     m_removeSelectedAction = m_actionMap.add_action("remove-selected", sigc::mem_fun(*this, &View::removeSelectedPages));
-    m_removeUnselectedAction = m_actionMap.add_action("remove-unselected", sigc::mem_fun(*this, &View::removeUnselectedPages));
     m_removePreviousAction = m_actionMap.add_action("remove-previous", sigc::mem_fun(*this, &View::removePreviousPages));
     m_removeNextAction = m_actionMap.add_action("remove-next", sigc::mem_fun(*this, &View::removeNextPages));
     m_previewPageAction = m_actionMap.add_action("preview-selected", sigc::mem_fun(*this, &View::previewPage));
     m_cancelSelectionAction = m_actionMap.add_action("cancel-selection", sigc::mem_fun(*this, &View::onCancelSelection));
 
     m_removeSelectedAction->set_enabled(false);
-    m_removeUnselectedAction->set_enabled(false);
     m_removePreviousAction->set_enabled(false);
     m_removeNextAction->set_enabled(false);
     m_previewPageAction->set_enabled(false);
@@ -109,14 +107,12 @@ void View::manageActionsEnabledStates()
 
     if (numSelected == 0) {
         m_removeSelectedAction->set_enabled(false);
-        m_removeUnselectedAction->set_enabled(false);
         m_removePreviousAction->set_enabled(false);
         m_removeNextAction->set_enabled(false);
         m_cancelSelectionAction->set_enabled(false);
     }
     else {
         m_removeSelectedAction->set_enabled();
-        m_removeUnselectedAction->set_enabled();
         m_cancelSelectionAction->set_enabled();
     }
 
@@ -158,17 +154,6 @@ std::vector<unsigned int> View::getSelectedChildrenIndexes()
                       std::mem_fn(&Gtk::FlowBoxChild::get_index));
 
     return selectedIndexes;
-}
-
-std::vector<unsigned int> View::getUnselectedChildrenIndexes()
-{
-    const std::vector<unsigned int> selectedIndexes = getSelectedChildrenIndexes();
-    std::vector<unsigned int> unselectedIndexes;
-    ranges::set_difference(ranges::view::iota(0, get_children().size()),
-                           selectedIndexes,
-                           ranges::back_inserter(unselectedIndexes));
-
-    return unselectedIndexes;
 }
 
 void View::waitForRenderCompletion()
@@ -217,13 +202,6 @@ void View::removeSelectedPages()
     else {
         m_document->removePages(getSelectedChildrenIndexes());
     }
-}
-
-void View::removeUnselectedPages()
-{
-    waitForRenderCompletion();
-
-    m_document->removePages(getUnselectedChildrenIndexes());
 }
 
 void View::removePreviousPages()
