@@ -23,29 +23,41 @@
 
 namespace Slicer {
 
-struct PageSize {
-    int width;
-    int height;
-};
-
 class Page : public Glib::Object {
 public:
+    struct Size {
+        int width;
+        int height;
+    };
+
     Page(PopplerPage* ppage);
     virtual ~Page();
 
     int number() const;
-    int rotation() const { return m_rotation; }
-    PageSize size() const;
-    PageSize scaledSize(int targetSize) const;
+    int rotation() const { return m_rotation.degrees(); }
+    Size size() const;
+    Size rotatedSize() const;
+    Size scaledSize(int targetSize) const;
+    Size scaledRotatedSize(int targetSize) const;
 
     Glib::RefPtr<Gdk::Pixbuf> renderPage(int targetSize) const;
-    void rotateRight() { m_rotation += 90; }
-    void rotateLeft() { m_rotation -= 90; }
+    void rotateRight() { m_rotation.rotateRight(); }
+    void rotateLeft() { m_rotation.rotateLeft(); }
 
 private:
     PopplerPage* m_ppage;
 
-    int m_rotation = 0;
+    class Rotation {
+    public:
+        int degrees() const { return m_degrees; }
+        void rotateRight();
+        void rotateLeft();
+
+    private:
+        int m_degrees = 0;
+    };
+
+    Rotation m_rotation;
 };
 
 struct pageComparator {

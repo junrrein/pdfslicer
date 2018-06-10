@@ -23,7 +23,7 @@ ViewChild::ViewChild(Glib::RefPtr<Page> page,
     : m_page{std::move(page)}
     , m_targetSize{targetSize}
 {
-    const PageSize pageSize = m_page->scaledSize(m_targetSize);
+    const Page::Size pageSize = m_page->scaledSize(m_targetSize);
     set_size_request(pageSize.width, pageSize.height);
 
     m_spinner.set_size_request(38, 38);

@@ -16,6 +16,7 @@
 
 #include "page.hpp"
 #include <cairomm/context.h>
+#include <utility>
 
 namespace Slicer {
 
@@ -34,7 +35,7 @@ int Page::number() const
     return poppler_page_get_index(m_ppage);
 }
 
-PageSize Page::size() const
+Page::Size Page::size() const
 {
     double width = 0, height = 0;
     poppler_page_get_size(m_ppage, &width, &height);
@@ -42,61 +43,93 @@ PageSize Page::size() const
     return {static_cast<int>(width), static_cast<int>(height)};
 }
 
-PageSize Page::scaledSize(int targetSize) const
+Page::Size Page::rotatedSize() const
 {
-    const PageSize realSize = size();
-    PageSize scaledSize;
+    Size size = this->size();
 
-    if (realSize.height > realSize.width) {
+    if (std::abs((rotation() / 90) % 2) != 0)
+        std::swap(size.width, size.height);
+
+    return size;
+}
+
+Page::Size scaleSize(Page::Size sourceSize, int targetSize)
+{
+    Page::Size scaledSize;
+
+    if (sourceSize.height > sourceSize.width) {
         scaledSize.height = targetSize;
-        const double ratioFactor = static_cast<double>(realSize.width) / realSize.height;
+        const double ratioFactor = static_cast<double>(sourceSize.width) / sourceSize.height;
         scaledSize.width = static_cast<int>(floor(targetSize * ratioFactor));
     }
     else {
         scaledSize.width = targetSize;
-        const double ratioFactor = static_cast<double>(realSize.height) / realSize.width;
+        const double ratioFactor = static_cast<double>(sourceSize.height) / sourceSize.width;
         scaledSize.height = static_cast<int>(floor(targetSize * ratioFactor));
     }
 
     return scaledSize;
 }
 
+Page::Size Page::scaledSize(int targetSize) const
+{
+    return scaleSize(size(), targetSize);
+}
+
+Page::Size Page::scaledRotatedSize(int targetSize) const
+{
+    return scaleSize(rotatedSize(), targetSize);
+}
+
 Glib::RefPtr<Gdk::Pixbuf> Page::renderPage(int targetSize) const
 {
-    const PageSize scaledSize = this->scaledSize(targetSize);
+    const Size outputSize = scaledRotatedSize(targetSize);
     auto surface = Cairo::ImageSurface::create(Cairo::FORMAT_ARGB32,
-                                               scaledSize.width,
-                                               scaledSize.height);
+                                               outputSize.width,
+                                               outputSize.height);
     auto cr = Cairo::Context::create(surface);
 
     // Paint a white background
     cr->set_source_rgb(255, 255, 255);
-    cr->rectangle(0, 0, scaledSize.width, scaledSize.height);
+    cr->rectangle(0, 0, outputSize.width, outputSize.height);
     cr->fill();
+
+    cr->save();
+
+    // Rotate Context to render the page
+    if (rotation() == 90)
+        cr->translate(outputSize.width, 0);
+    else if (rotation() == 180)
+        cr->translate(outputSize.width, outputSize.height);
+    else if (rotation() == 270)
+        cr->translate(0, outputSize.height);
+
+    cr->rotate_degrees(rotation());
 
     // Scale Context to match the ImageSurface's area.
     // Otherwise the page would get rendered at (realWidth x realHeight).
-    const PageSize realSize = size();
-
+    const Size rotatedSize = this->rotatedSize();
     double scale;
-    if (realSize.width >= realSize.height)
-        scale = static_cast<double>(scaledSize.width) / realSize.width;
+
+    if (rotatedSize.width >= rotatedSize.height)
+        scale = static_cast<double>(outputSize.width) / rotatedSize.width;
     else
-        scale = static_cast<double>(scaledSize.height) / realSize.height;
+        scale = static_cast<double>(outputSize.height) / rotatedSize.height;
+
     cr->scale(scale, scale);
 
     // Render page
     poppler_page_render(m_ppage, cr->cobj());
 
-    // Scale back and paint a black outline
-    cr->scale(1 / scale, 1 / scale);
+    // Scale and/or rotate back and paint a black outline
+    cr->restore();
     cr->set_line_width(1);
     cr->set_source_rgb(0, 0, 0);
-    cr->rectangle(0, 0, scaledSize.width, scaledSize.height);
+    cr->rectangle(0, 0, outputSize.width, outputSize.height);
     cr->stroke();
 
     // Convert rendered page to a pixbuf
-    auto pixbuf = Gdk::Pixbuf::create(surface, 0, 0, scaledSize.width, scaledSize.height);
+    auto pixbuf = Gdk::Pixbuf::create(surface, 0, 0, outputSize.width, outputSize.height);
 
     return pixbuf;
 }
@@ -114,6 +147,22 @@ int pageComparator::operator()(const Glib::RefPtr<const Page>& a,
         return 0;
 
     return 1;
+}
+
+void Page::Rotation::rotateRight()
+{
+    if (m_degrees == 270)
+        m_degrees = 0;
+    else
+        m_degrees += 90;
+}
+
+void Page::Rotation::rotateLeft()
+{
+    if (m_degrees == 0)
+        m_degrees = 270;
+    else
+        m_degrees -= 90;
 }
 
 } // namespace Slicer
