@@ -23,6 +23,11 @@
 
 namespace Slicer {
 
+struct PageDimensions {
+    int width;
+    int height;
+};
+
 class Page : public Glib::Object {
 public:
     Page(PopplerPage* ppage);
@@ -30,8 +35,8 @@ public:
 
     int number() const;
     int rotation() const { return m_rotation; }
-    std::pair<int, int> size() const;
-    std::pair<int, int> scaledSize(int targetSize) const;
+    PageDimensions size() const;
+    PageDimensions scaledSize(int targetSize) const;
 
     Glib::RefPtr<Gdk::Pixbuf> renderPage(int targetSize) const;
     void rotateRight() { m_rotation += 90; }

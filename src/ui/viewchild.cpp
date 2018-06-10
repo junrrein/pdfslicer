@@ -23,9 +23,8 @@ ViewChild::ViewChild(Glib::RefPtr<Page> page,
     : m_page{std::move(page)}
     , m_targetSize{targetSize}
 {
-    int width, height;
-    std::tie(width, height) = m_page->scaledSize(m_targetSize);
-    set_size_request(width, height);
+    const PageDimensions dimensions = m_page->scaledSize(m_targetSize);
+    set_size_request(dimensions.width, dimensions.height);
 
     m_spinner.set_size_request(38, 38);
     m_spinner.start();
