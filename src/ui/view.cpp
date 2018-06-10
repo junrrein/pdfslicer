@@ -191,8 +191,8 @@ void View::startGeneratingThumbnails(int targetThumbnailSize)
                                                        targetThumbnailSize});
 
         m_pageRendererPool->push([this, child](int) {
-            m_childQueue.push(child);
             child->renderPage();
+            m_childQueue.push(child);
             m_thumbnailRendered.emit();
         });
 
