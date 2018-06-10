@@ -27,6 +27,8 @@ public:
     ActionBar();
 
 private:
+    Gtk::Button m_buttonRotateLeft;
+    Gtk::Button m_buttonRotateRight;
     Gtk::Button m_buttonRemovePages;
     Gtk::Button m_buttonRemovePrevious;
     Gtk::Button m_buttonRemoveNext;

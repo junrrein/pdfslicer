@@ -22,6 +22,19 @@ namespace Slicer {
 
 ActionBar::ActionBar()
 {
+    auto rotateBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL});
+    rotateBox->get_style_context()->add_class("linked");
+
+    m_buttonRotateLeft.set_image_from_icon_name("object-rotate-left-symbolic");
+    m_buttonRotateLeft.set_tooltip_text(_("Rotate left"));
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRotateLeft.gobj()), "win.rotate-left"); // NOLINT
+    rotateBox->pack_start(m_buttonRotateLeft);
+
+    m_buttonRotateRight.set_image_from_icon_name("object-rotate-right-symbolic");
+    m_buttonRotateRight.set_tooltip_text(_("Rotate right"));
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRotateRight.gobj()), "win.rotate-right"); // NOLINT
+    rotateBox->pack_start(m_buttonRotateRight);
+
     auto removeBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL});
     removeBox->get_style_context()->add_class("linked");
 
@@ -37,10 +50,11 @@ ActionBar::ActionBar()
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemoveNext.gobj()), "win.remove-next"); // NOLINT
     removeBox->pack_start(m_buttonRemoveNext);
 
-    pack_start(*removeBox);
-
     m_buttonCancelSelection.set_label(_("Cancel selection"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonCancelSelection.gobj()), "win.cancel-selection"); // NOLINT
+
+    pack_start(*rotateBox);
+    pack_start(*removeBox);
     pack_end(m_buttonCancelSelection);
 
     // The following is to work around a bug with themes other than Adwaita.

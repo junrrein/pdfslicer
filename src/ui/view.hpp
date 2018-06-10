@@ -50,6 +50,8 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_removeSelectedAction;
     Glib::RefPtr<Gio::SimpleAction> m_removePreviousAction;
     Glib::RefPtr<Gio::SimpleAction> m_removeNextAction;
+    Glib::RefPtr<Gio::SimpleAction> m_rotateRightAction;
+    Glib::RefPtr<Gio::SimpleAction> m_rotateLeftAction;
     Glib::RefPtr<Gio::SimpleAction> m_previewPageAction;
     Glib::RefPtr<Gio::SimpleAction> m_cancelSelectionAction;
 
@@ -58,6 +60,8 @@ private:
     void removeSelectedPages();
     void removePreviousPages();
     void removeNextPages();
+    void rotatePagesRight();
+    void rotatePagesLeft();
     void previewPage();
     void addActions();
     void setupSignalHandlers();
