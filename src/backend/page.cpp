@@ -34,7 +34,7 @@ int Page::number() const
     return poppler_page_get_index(m_ppage);
 }
 
-PageDimensions Page::size() const
+PageSize Page::size() const
 {
     double width = 0, height = 0;
     poppler_page_get_size(m_ppage, &width, &height);
@@ -42,47 +42,47 @@ PageDimensions Page::size() const
     return {static_cast<int>(width), static_cast<int>(height)};
 }
 
-PageDimensions Page::scaledSize(int targetSize) const
+PageSize Page::scaledSize(int targetSize) const
 {
-    const PageDimensions realDimensions = size();
-    PageDimensions scaledDimensions;
+    const PageSize realSize = size();
+    PageSize scaledSize;
 
-    if (realDimensions.height > realDimensions.width) {
-        scaledDimensions.height = targetSize;
-        const double ratioFactor = static_cast<double>(realDimensions.width) / realDimensions.height;
-        scaledDimensions.width = static_cast<int>(floor(targetSize * ratioFactor));
+    if (realSize.height > realSize.width) {
+        scaledSize.height = targetSize;
+        const double ratioFactor = static_cast<double>(realSize.width) / realSize.height;
+        scaledSize.width = static_cast<int>(floor(targetSize * ratioFactor));
     }
     else {
-        scaledDimensions.width = targetSize;
-        const double ratioFactor = static_cast<double>(realDimensions.height) / realDimensions.width;
-        scaledDimensions.height = static_cast<int>(floor(targetSize * ratioFactor));
+        scaledSize.width = targetSize;
+        const double ratioFactor = static_cast<double>(realSize.height) / realSize.width;
+        scaledSize.height = static_cast<int>(floor(targetSize * ratioFactor));
     }
 
-    return scaledDimensions;
+    return scaledSize;
 }
 
 Glib::RefPtr<Gdk::Pixbuf> Page::renderPage(int targetSize) const
 {
-    const PageDimensions scaledDimensions = scaledSize(targetSize);
+    const PageSize scaledSize = this->scaledSize(targetSize);
     auto surface = Cairo::ImageSurface::create(Cairo::FORMAT_ARGB32,
-                                               scaledDimensions.width,
-                                               scaledDimensions.height);
+                                               scaledSize.width,
+                                               scaledSize.height);
     auto cr = Cairo::Context::create(surface);
 
     // Paint a white background
     cr->set_source_rgb(255, 255, 255);
-    cr->rectangle(0, 0, scaledDimensions.width, scaledDimensions.height);
+    cr->rectangle(0, 0, scaledSize.width, scaledSize.height);
     cr->fill();
 
     // Scale Context to match the ImageSurface's area.
     // Otherwise the page would get rendered at (realWidth x realHeight).
-    const PageDimensions realDimensions = size();
+    const PageSize realSize = size();
 
     double scale;
-    if (realDimensions.width >= realDimensions.height)
-        scale = static_cast<double>(scaledDimensions.width) / realDimensions.width;
+    if (realSize.width >= realSize.height)
+        scale = static_cast<double>(scaledSize.width) / realSize.width;
     else
-        scale = static_cast<double>(scaledDimensions.height) / realDimensions.height;
+        scale = static_cast<double>(scaledSize.height) / realSize.height;
     cr->scale(scale, scale);
 
     // Render page
@@ -92,11 +92,11 @@ Glib::RefPtr<Gdk::Pixbuf> Page::renderPage(int targetSize) const
     cr->scale(1 / scale, 1 / scale);
     cr->set_line_width(1);
     cr->set_source_rgb(0, 0, 0);
-    cr->rectangle(0, 0, scaledDimensions.width, scaledDimensions.height);
+    cr->rectangle(0, 0, scaledSize.width, scaledSize.height);
     cr->stroke();
 
     // Convert rendered page to a pixbuf
-    auto pixbuf = Gdk::Pixbuf::create(surface, 0, 0, scaledDimensions.width, scaledDimensions.height);
+    auto pixbuf = Gdk::Pixbuf::create(surface, 0, 0, scaledSize.width, scaledSize.height);
 
     return pixbuf;
 }
