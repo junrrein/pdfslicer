@@ -32,6 +32,7 @@ public:
     virtual ~ViewChild() = default;
 
     void renderPage();
+    void showSpinner();
     void showPage();
 
 private:
@@ -39,6 +40,8 @@ private:
     const int m_targetSize;
     Gtk::Image m_thumbnail;
     Gtk::Spinner m_spinner;
+
+    bool isThumbnailVisible();
 };
 
 } // namespace Slicer

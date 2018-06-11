@@ -57,6 +57,8 @@ private:
 
     void stopRendering();
     void startGeneratingThumbnails(int targetThumbnailSize);
+    void renderChild(ViewChild* child);
+    void reRenderSelectedChildren();
     void removeSelectedPages();
     void removePreviousPages();
     void removeNextPages();

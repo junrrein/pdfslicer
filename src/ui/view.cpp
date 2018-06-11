@@ -189,14 +189,18 @@ void View::startGeneratingThumbnails(int targetThumbnailSize)
     bind_list_store(m_document->pages(), [this, targetThumbnailSize](const Glib::RefPtr<Page>& page) {
         auto child = Gtk::manage(new Slicer::ViewChild{page, //NOLINT
                                                        targetThumbnailSize});
-
-        m_pageRendererPool->push([this, child](int) {
-            child->renderPage();
-            m_childQueue.push(child);
-            m_thumbnailRendered.emit();
-        });
+        renderChild(child);
 
         return child;
+    });
+}
+
+void View::renderChild(ViewChild* child)
+{
+    m_pageRendererPool->push([this, child](int) {
+        child->renderPage();
+        m_childQueue.push(child);
+        m_thumbnailRendered.emit();
     });
 }
 
@@ -247,14 +251,27 @@ void View::removeNextPages()
                                 static_cast<int>(m_document->pages()->get_n_items()) - 1);
 }
 
+void View::reRenderSelectedChildren()
+{
+    for (Gtk::FlowBoxChild* flowBoxChild : get_selected_children()) {
+        Gtk::Widget* gtkChild = flowBoxChild->get_child();
+        auto child = dynamic_cast<ViewChild*>(gtkChild);
+
+        child->showSpinner();
+        renderChild(child);
+    }
+}
+
 void View::rotatePagesRight()
 {
     m_document->rotatePagesRight(getSelectedChildrenIndexes());
+    reRenderSelectedChildren();
 }
 
 void View::rotatePagesLeft()
 {
     m_document->rotatePagesLeft(getSelectedChildrenIndexes());
+    reRenderSelectedChildren();
 }
 
 void View::previewPage()

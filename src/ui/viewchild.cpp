@@ -29,7 +29,6 @@ ViewChild::ViewChild(Glib::RefPtr<Page> page,
     m_spinner.set_size_request(38, 38);
     m_spinner.start();
     pack_start(m_spinner, true, false);
-    show_all_children();
 }
 
 void ViewChild::renderPage()
@@ -38,12 +37,28 @@ void ViewChild::renderPage()
     m_thumbnail.set(pixbuf);
 }
 
+void ViewChild::showSpinner()
+{
+    if (!m_spinner.is_visible()) {
+        m_spinner.show();
+        m_spinner.start();
+        remove(m_thumbnail);
+    }
+}
+
 void ViewChild::showPage()
 {
-    m_spinner.stop();
-    pack_start(m_thumbnail);
-    m_thumbnail.show();
-    m_spinner.hide();
+    if (!isThumbnailVisible()) {
+        m_spinner.stop();
+        pack_start(m_thumbnail);
+        m_thumbnail.show();
+        m_spinner.hide();
+    }
+}
+
+bool ViewChild::isThumbnailVisible()
+{
+    return get_children().size() == 2;
 }
 
 } // namespace Slicer
