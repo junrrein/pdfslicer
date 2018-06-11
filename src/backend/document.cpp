@@ -25,8 +25,8 @@
 
 namespace Slicer {
 
-Document::Document(std::string filePath)
-    : m_sourcePath{std::move(filePath)}
+Document::Document(const std::string& filePath)
+    : m_sourcePath{filePath}
 {
     Glib::ustring uri = Glib::filename_to_uri(m_sourcePath);
 
@@ -65,6 +65,18 @@ std::string getTempFilePath()
     return tempFilePath;
 }
 
+void Document::saveDocument(const Glib::RefPtr<Gio::File>& destinationFile)
+{
+    const std::string tempFilePath = getTempFilePath();
+    auto tempFile = Gio::File::create_for_path(tempFilePath);
+
+    makePDFCopy(m_sourcePath, tempFilePath);
+    tempFile->move(destinationFile, Gio::FILE_COPY_OVERWRITE);
+
+    if (m_sourcePath == destinationFile->get_path())
+        reload();
+}
+
 void Document::makePDFCopy(const std::string& sourcePath,
                            const std::string& destinationPath) const
 {
@@ -86,7 +98,7 @@ void Document::makePDFCopy(const std::string& sourcePath,
         auto outputPage = new PDFPage{};
         outputPage->SetMediaBox(input.GetMediaBox());
         copyingContext->MergePDFPageToPage(outputPage, pageNumber);
-        outputPage->SetRotate(slicerPage->rotation());
+        outputPage->SetRotate(input.GetRotate() + slicerPage->rotation());
 
         pdfWriter.WritePageAndRelease(outputPage);
     }
@@ -95,13 +107,26 @@ void Document::makePDFCopy(const std::string& sourcePath,
     delete copyingContext;
 }
 
-void Document::saveDocument(const Glib::RefPtr<Gio::File>& destinationFile) const
+void Document::reload()
 {
-    const std::string tempFilePath = getTempFilePath();
-    auto tempFile = Gio::File::create_for_path(tempFilePath);
+    m_pages->remove_all();
+    g_object_unref(m_popplerDocument);
+    m_popplerDocument = nullptr;
+    Glib::ustring uri = Glib::filename_to_uri(m_sourcePath);
+    m_popplerDocument = poppler_document_new_from_file(uri.c_str(),
+                                                       nullptr,
+                                                       nullptr);
 
-    makePDFCopy(m_sourcePath, tempFilePath);
-    tempFile->move(destinationFile, Gio::FILE_COPY_OVERWRITE);
+    if (m_popplerDocument == nullptr)
+        throw std::runtime_error("Couldn't load file: " + m_sourcePath);
+
+    const int num_pages = poppler_document_get_n_pages(m_popplerDocument);
+
+    for (int i = 0; i < num_pages; ++i) {
+        PopplerPage* popplerPage = poppler_document_get_page(m_popplerDocument, i);
+        auto page = Glib::RefPtr<Page>{new Page{popplerPage}};
+        m_pages->append(page);
+    }
 }
 
 void Document::removePage(int pageNumber)

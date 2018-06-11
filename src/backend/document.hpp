@@ -24,10 +24,10 @@ namespace Slicer {
 
 class Document {
 public:
-    Document(std::string filePath);
+    Document(const std::string& filePath);
     ~Document();
 
-    void saveDocument(const Glib::RefPtr<Gio::File>& destinationFile) const;
+    void saveDocument(const Glib::RefPtr<Gio::File>& destinationFile);
     void removePage(int pageNumber);
     void removePages(const std::vector<unsigned int>& positions);
     void removePageRange(int first, int last);
@@ -51,6 +51,7 @@ private:
 
     void makePDFCopy(const std::string& sourcePath,
                      const std::string& destinationPath) const;
+    void reload();
 };
 }
 
