@@ -7,7 +7,7 @@ set (APPLICATION_NAME "PDF Slicer")
 set (APPLICATION_WEBSITE "https://github.com/junrrein/pdfslicer")
 set (GETTEXT_PACKAGE ${APPLICATION_ID})
 set (LOCALE_DIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
-set (VERSION 1.0.8)
+set (VERSION 1.1.0)
 configure_file (config.hpp.in ${CMAKE_BINARY_DIR}/config.hpp)
 
 set (CMAKE_CXX_STANDARD 14)
