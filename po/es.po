@@ -31,11 +31,11 @@ msgstr "Bibliotecas de terceros"
 
 #: ../src/ui/actionbar.cpp:29
 msgid "Rotate left"
-msgstr ""
+msgstr "Rotar hacia la izquierda"
 
 #: ../src/ui/actionbar.cpp:34
 msgid "Rotate right"
-msgstr ""
+msgstr "Rotar hacia la derecha"
 
 #: ../src/ui/actionbar.cpp:41
 msgid "Remove selected"
