@@ -18,9 +18,9 @@
 
 namespace Slicer {
 
-RemovePageCommand::RemovePageCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
+RemovePageCommand::RemovePageCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
                                      int position)
-    : m_pages{std::move(pages)}
+    : m_pages{pages}
     , m_position{static_cast<unsigned int>(position)}
     , m_removedPage{m_pages->get_item(static_cast<unsigned>(m_position))}
 {
@@ -41,10 +41,10 @@ void RemovePageCommand::redo()
     execute();
 }
 
-RemovePagesCommand::RemovePagesCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
-                                       std::vector<unsigned int> listPositions)
-    : m_pages{std::move(pages)}
-    , m_listPositions{std::move(listPositions)}
+RemovePagesCommand::RemovePagesCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
+                                       const std::vector<unsigned int>& listPositions)
+    : m_pages{pages}
+    , m_listPositions{listPositions}
 {
     for (auto position : m_listPositions) {
         auto page = m_pages->get_item(position);
@@ -76,10 +76,10 @@ void RemovePagesCommand::redo()
     execute();
 }
 
-RemovePageRangeCommand::RemovePageRangeCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
+RemovePageRangeCommand::RemovePageRangeCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
                                                int first,
                                                int last)
-    : m_pages{std::move(pages)}
+    : m_pages{pages}
     , m_first{first}
     , m_last{last}
 {
@@ -108,10 +108,10 @@ void RemovePageRangeCommand::redo()
     execute();
 }
 
-RotatePagesRightCommand::RotatePagesRightCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
-                                                 std::vector<unsigned int> pageNumbers)
-    : m_pages{std::move(pages)}
-    , m_pageNumbers{std::move(pageNumbers)}
+RotatePagesRightCommand::RotatePagesRightCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
+                                                 const std::vector<unsigned int>& pageNumbers)
+    : m_pages{pages}
+    , m_pageNumbers{pageNumbers}
 {
 }
 
@@ -132,10 +132,10 @@ void RotatePagesRightCommand::redo()
     execute();
 }
 
-RotatePagesLeftCommand::RotatePagesLeftCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
-                                               std::vector<unsigned int> pageNumbers)
-    : m_pages{std::move(pages)}
-    , m_pageNumbers{std::move(pageNumbers)}
+RotatePagesLeftCommand::RotatePagesLeftCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
+                                               const std::vector<unsigned int>& pageNumbers)
+    : m_pages{pages}
+    , m_pageNumbers{pageNumbers}
 {
 }
 

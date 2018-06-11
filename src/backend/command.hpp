@@ -33,7 +33,7 @@ public:
 
 class RemovePageCommand : public Command {
 public:
-    RemovePageCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
+    RemovePageCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
                       int position);
 
     void execute() override;
@@ -48,8 +48,8 @@ private:
 
 class RemovePagesCommand : public Command {
 public:
-    RemovePagesCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
-                       std::vector<unsigned int> listPositions);
+    RemovePagesCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
+                       const std::vector<unsigned int>& listPositions);
 
     void execute() override;
     void undo() override;
@@ -63,7 +63,7 @@ private:
 
 class RemovePageRangeCommand : public Command {
 public:
-    RemovePageRangeCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
+    RemovePageRangeCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
                            int first,
                            int last);
 
@@ -79,8 +79,8 @@ private:
 
 class RotatePagesRightCommand : public Command {
 public:
-    RotatePagesRightCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
-                            std::vector<unsigned int> pageNumbers);
+    RotatePagesRightCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
+                            const std::vector<unsigned int>& pageNumbers);
 
     void execute() override;
     void undo() override;
@@ -93,8 +93,8 @@ private:
 
 class RotatePagesLeftCommand : public Command {
 public:
-    RotatePagesLeftCommand(Glib::RefPtr<Gio::ListStore<Page>> pages,
-                           std::vector<unsigned int> pageNumbers);
+    RotatePagesLeftCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
+                           const std::vector<unsigned int>& pageNumbers);
 
     void execute() override;
     void undo() override;
