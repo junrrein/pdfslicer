@@ -184,6 +184,9 @@ void AppWindow::onOpenAction()
 
             errorDialog.run();
         }
+
+    m_undoAction->set_enabled(false);
+    m_redoAction->set_enabled(false);
 }
 
 void AppWindow::onUndoAction()
