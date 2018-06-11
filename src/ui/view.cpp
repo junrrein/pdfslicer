@@ -197,6 +197,8 @@ void View::startGeneratingThumbnails(int targetThumbnailSize)
 
 void View::renderChild(ViewChild* child)
 {
+    child->showSpinner();
+
     m_pageRendererPool->push([this, child](int) {
         child->renderPage();
         m_childQueue.push(child);
@@ -257,7 +259,6 @@ void View::reRenderSelectedChildren()
         Gtk::Widget* gtkChild = flowBoxChild->get_child();
         auto child = dynamic_cast<ViewChild*>(gtkChild);
 
-        child->showSpinner();
         renderChild(child);
     }
 }
