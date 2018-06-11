@@ -111,7 +111,7 @@ msgstr "Documento PDF"
 
 #: ../src/ui/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "¡Abra un documento y empiece a rebanar!"
+msgstr "Abra un documento ¡y empiece a rebanar!"
 
 #: ../src/ui/window.cpp:76
 msgid "Saved!"
