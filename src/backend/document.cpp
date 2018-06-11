@@ -122,15 +122,15 @@ void Document::removePageRange(int first, int last)
     m_commandManager.execute(command);
 }
 
-void Document::rotatePagesRight(std::vector<unsigned int> pageNumbers)
+void Document::rotatePagesRight(const std::vector<unsigned int>& pageNumbers)
 {
-    auto command = std::make_shared<RotatePagesRightCommand>(m_pages, pageNumbers);
+    auto command = std::make_shared<RotatePagesRightCommand>(m_pages, pageNumbers, pagesRotated);
     m_commandManager.execute(command);
 }
 
-void Document::rotatePagesLeft(std::vector<unsigned int> pageNumbers)
+void Document::rotatePagesLeft(const std::vector<unsigned int>& pageNumbers)
 {
-    auto command = std::make_shared<RotatePagesLeftCommand>(m_pages, pageNumbers);
+    auto command = std::make_shared<RotatePagesLeftCommand>(m_pages, pageNumbers, pagesRotated);
     m_commandManager.execute(command);
 }
 }

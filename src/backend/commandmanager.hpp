@@ -35,13 +35,11 @@ public:
     bool canUndo() const;
     bool canRedo() const;
 
-    sigc::signal<void>& commandExecuted() { return m_commandExecuted; }
+    sigc::signal<void> commandExecuted;
 
 private:
     CommandStack m_undoStack;
     CommandStack m_redoStack;
-
-    sigc::signal<void> m_commandExecuted;
 };
 }
 #endif // COMMANDMANAGER_HPP

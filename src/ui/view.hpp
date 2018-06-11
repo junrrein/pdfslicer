@@ -58,7 +58,6 @@ private:
     void stopRendering();
     void startGeneratingThumbnails(int targetThumbnailSize);
     void renderChild(ViewChild* child);
-    void reRenderSelectedChildren();
     void removeSelectedPages();
     void removePreviousPages();
     void removeNextPages();
@@ -70,6 +69,9 @@ private:
     void manageActionsEnabledStates();
     void onCancelSelection();
     std::vector<unsigned int> getSelectedChildrenIndexes();
+
+    void onPagesRotated(const std::vector<unsigned int> pageNumbers);
+    sigc::connection m_pagesRotatedConnection;
 };
 }
 

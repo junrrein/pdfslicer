@@ -31,8 +31,8 @@ public:
     void removePage(int pageNumber);
     void removePages(const std::vector<unsigned int>& positions);
     void removePageRange(int first, int last);
-    void rotatePagesRight(std::vector<unsigned int> pageNumbers);
-    void rotatePagesLeft(std::vector<unsigned int> pageNumbers);
+    void rotatePagesRight(const std::vector<unsigned int>& pageNumbers);
+    void rotatePagesLeft(const std::vector<unsigned int>& pageNumbers);
     void undoCommand() { m_commandManager.undo(); }
     void redoCommand() { m_commandManager.redo(); }
 
@@ -40,7 +40,8 @@ public:
     bool canRedo() const { return m_commandManager.canRedo(); }
     const Glib::RefPtr<Gio::ListStore<Page>>& pages() const { return m_pages; }
 
-    sigc::signal<void>& commandExecuted() { return m_commandManager.commandExecuted(); }
+    sigc::signal<void>& commandExecuted() { return m_commandManager.commandExecuted; }
+    sigc::signal<void, std::vector<unsigned int>> pagesRotated;
 
 private:
     PopplerDocument* m_popplerDocument;

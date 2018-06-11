@@ -34,7 +34,7 @@ void CommandManager::execute(const std::shared_ptr<Command>& command)
     command->execute();
     m_undoStack.push(command);
 
-    m_commandExecuted.emit();
+    commandExecuted.emit();
 }
 
 void CommandManager::undo()
@@ -43,7 +43,7 @@ void CommandManager::undo()
     m_redoStack.push(m_undoStack.top());
     m_undoStack.pop();
 
-    m_commandExecuted.emit();
+    commandExecuted.emit();
 }
 
 void CommandManager::redo()
@@ -52,6 +52,6 @@ void CommandManager::redo()
     m_undoStack.push(m_redoStack.top());
     m_redoStack.pop();
 
-    m_commandExecuted.emit();
+    commandExecuted.emit();
 }
 }

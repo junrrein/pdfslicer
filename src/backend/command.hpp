@@ -80,7 +80,8 @@ private:
 class RotatePagesRightCommand : public Command {
 public:
     RotatePagesRightCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
-                            const std::vector<unsigned int>& pageNumbers);
+                            const std::vector<unsigned int>& pageNumbers,
+                            sigc::signal<void, std::vector<unsigned int>>& pagesRotated);
 
     void execute() override;
     void undo() override;
@@ -89,12 +90,14 @@ public:
 private:
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
     std::vector<unsigned int> m_pageNumbers;
+    sigc::signal<void, std::vector<unsigned int>>& m_pagesRotated;
 };
 
 class RotatePagesLeftCommand : public Command {
 public:
     RotatePagesLeftCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
-                           const std::vector<unsigned int>& pageNumbers);
+                           const std::vector<unsigned int>& pageNumbers,
+                           sigc::signal<void, std::vector<unsigned int>>& pagesRotated);
 
     void execute() override;
     void undo() override;
@@ -103,6 +106,7 @@ public:
 private:
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
     std::vector<unsigned int> m_pageNumbers;
+    sigc::signal<void, std::vector<unsigned int>>& m_pagesRotated;
 };
 
 } // namespace Slicer

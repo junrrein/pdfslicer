@@ -40,8 +40,10 @@ View::View(Gio::ActionMap& actionMap)
 
 View::~View()
 {
-    if (m_pageRendererPool != nullptr)
+    if (m_pageRendererPool != nullptr) {
         m_pageRendererPool->stop();
+        m_pagesRotatedConnection.disconnect();
+    }
 
     m_actionMap.remove_action("remove-selected");
     m_actionMap.remove_action("remove-previous");
@@ -57,10 +59,12 @@ void View::setDocument(Document& document)
 
     if (m_document == nullptr)
         m_zoomLevel.enable();
+    else
+        m_pagesRotatedConnection.disconnect();
 
     m_document = &document;
-
     startGeneratingThumbnails(m_zoomLevel.minLevel());
+    m_pagesRotatedConnection = m_document->pagesRotated.connect(sigc::mem_fun(*this, &View::onPagesRotated));
 }
 
 void View::addActions()
@@ -166,6 +170,15 @@ std::vector<unsigned int> View::getSelectedChildrenIndexes()
     return selectedIndexes;
 }
 
+void View::onPagesRotated(const std::vector<unsigned int> pageNumbers)
+{
+    for (unsigned int pageNumber : pageNumbers) {
+        Gtk::FlowBoxChild* fwChild = get_child_at_index(static_cast<int>(pageNumber));
+        auto child = dynamic_cast<ViewChild*>(fwChild->get_child());
+        renderChild(child);
+    }
+}
+
 void View::waitForRenderCompletion()
 {
     if (m_pageRendererPool != nullptr)
@@ -253,26 +266,14 @@ void View::removeNextPages()
                                 static_cast<int>(m_document->pages()->get_n_items()) - 1);
 }
 
-void View::reRenderSelectedChildren()
-{
-    for (Gtk::FlowBoxChild* flowBoxChild : get_selected_children()) {
-        Gtk::Widget* gtkChild = flowBoxChild->get_child();
-        auto child = dynamic_cast<ViewChild*>(gtkChild);
-
-        renderChild(child);
-    }
-}
-
 void View::rotatePagesRight()
 {
     m_document->rotatePagesRight(getSelectedChildrenIndexes());
-    reRenderSelectedChildren();
 }
 
 void View::rotatePagesLeft()
 {
     m_document->rotatePagesLeft(getSelectedChildrenIndexes());
-    reRenderSelectedChildren();
 }
 
 void View::previewPage()

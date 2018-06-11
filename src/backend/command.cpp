@@ -109,9 +109,11 @@ void RemovePageRangeCommand::redo()
 }
 
 RotatePagesRightCommand::RotatePagesRightCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
-                                                 const std::vector<unsigned int>& pageNumbers)
+                                                 const std::vector<unsigned int>& pageNumbers,
+                                                 sigc::signal<void, std::vector<unsigned int>>& pagesRotated)
     : m_pages{pages}
     , m_pageNumbers{pageNumbers}
+    , m_pagesRotated{pagesRotated}
 {
 }
 
@@ -119,12 +121,16 @@ void RotatePagesRightCommand::execute()
 {
     for (auto pageNumber : m_pageNumbers)
         m_pages->get_item(pageNumber)->rotateRight();
+
+    m_pagesRotated.emit(m_pageNumbers);
 }
 
 void RotatePagesRightCommand::undo()
 {
     for (auto pageNumber : m_pageNumbers)
         m_pages->get_item(pageNumber)->rotateLeft();
+
+    m_pagesRotated.emit(m_pageNumbers);
 }
 
 void RotatePagesRightCommand::redo()
@@ -133,9 +139,11 @@ void RotatePagesRightCommand::redo()
 }
 
 RotatePagesLeftCommand::RotatePagesLeftCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
-                                               const std::vector<unsigned int>& pageNumbers)
+                                               const std::vector<unsigned int>& pageNumbers,
+                                               sigc::signal<void, std::vector<unsigned int>>& pagesRotated)
     : m_pages{pages}
     , m_pageNumbers{pageNumbers}
+    , m_pagesRotated{pagesRotated}
 {
 }
 
@@ -143,12 +151,16 @@ void RotatePagesLeftCommand::execute()
 {
     for (auto pageNumber : m_pageNumbers)
         m_pages->get_item(pageNumber)->rotateLeft();
+
+    m_pagesRotated.emit(m_pageNumbers);
 }
 
 void RotatePagesLeftCommand::undo()
 {
     for (auto pageNumber : m_pageNumbers)
         m_pages->get_item(pageNumber)->rotateRight();
+
+    m_pagesRotated.emit(m_pageNumbers);
 }
 
 void RotatePagesLeftCommand::redo()
