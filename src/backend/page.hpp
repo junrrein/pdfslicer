@@ -34,30 +34,19 @@ public:
     virtual ~Page();
 
     int number() const;
-    int rotation() const { return m_rotation.degrees(); }
+    int rotation() const { return m_rotation; }
     Size size() const;
     Size rotatedSize() const;
     Size scaledSize(int targetSize) const;
     Size scaledRotatedSize(int targetSize) const;
 
     Glib::RefPtr<Gdk::Pixbuf> renderPage(int targetSize) const;
-    void rotateRight() { m_rotation.rotateRight(); }
-    void rotateLeft() { m_rotation.rotateLeft(); }
+    void rotateRight();
+    void rotateLeft();
 
 private:
     PopplerPage* m_ppage;
-
-    class Rotation {
-    public:
-        int degrees() const { return m_degrees; }
-        void rotateRight();
-        void rotateLeft();
-
-    private:
-        int m_degrees = 0;
-    };
-
-    Rotation m_rotation;
+    int m_rotation = 0;
 };
 
 struct pageComparator {

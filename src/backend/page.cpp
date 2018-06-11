@@ -47,7 +47,7 @@ Page::Size Page::rotatedSize() const
 {
     Size size = this->size();
 
-    if (std::abs((rotation() / 90) % 2) != 0)
+    if (std::abs((m_rotation / 90) % 2) != 0)
         std::swap(size.width, size.height);
 
     return size;
@@ -97,14 +97,14 @@ Glib::RefPtr<Gdk::Pixbuf> Page::renderPage(int targetSize) const
     cr->save();
 
     // Rotate Context to render the page
-    if (rotation() == 90)
+    if (m_rotation == 90)
         cr->translate(outputSize.width, 0);
-    else if (rotation() == 180)
+    else if (m_rotation == 180)
         cr->translate(outputSize.width, outputSize.height);
-    else if (rotation() == 270)
+    else if (m_rotation == 270)
         cr->translate(0, outputSize.height);
 
-    cr->rotate_degrees(rotation());
+    cr->rotate_degrees(m_rotation);
 
     // Scale Context to match the ImageSurface's area.
     // Otherwise the page would get rendered at (realWidth x realHeight).
@@ -149,20 +149,20 @@ int pageComparator::operator()(const Glib::RefPtr<const Page>& a,
     return 1;
 }
 
-void Page::Rotation::rotateRight()
+void Page::rotateRight()
 {
-    if (m_degrees == 270)
-        m_degrees = 0;
+    if (m_rotation == 270)
+        m_rotation = 0;
     else
-        m_degrees += 90;
+        m_rotation += 90;
 }
 
-void Page::Rotation::rotateLeft()
+void Page::rotateLeft()
 {
-    if (m_degrees == 0)
-        m_degrees = 270;
+    if (m_rotation == 0)
+        m_rotation = 270;
     else
-        m_degrees -= 90;
+        m_rotation -= 90;
 }
 
 } // namespace Slicer
