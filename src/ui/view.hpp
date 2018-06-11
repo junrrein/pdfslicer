@@ -48,6 +48,7 @@ private:
     static const std::set<int> zoomLevels;
 
     Glib::RefPtr<Gio::SimpleAction> m_removeSelectedAction;
+    Glib::RefPtr<Gio::SimpleAction> m_removeUnselectedAction;
     Glib::RefPtr<Gio::SimpleAction> m_removePreviousAction;
     Glib::RefPtr<Gio::SimpleAction> m_removeNextAction;
     Glib::RefPtr<Gio::SimpleAction> m_rotateRightAction;
@@ -59,6 +60,7 @@ private:
     void startGeneratingThumbnails(int targetThumbnailSize);
     void renderChild(ViewChild* child);
     void removeSelectedPages();
+    void removeUnselectedPages();
     void removePreviousPages();
     void removeNextPages();
     void rotatePagesRight();
@@ -69,6 +71,7 @@ private:
     void manageActionsEnabledStates();
     void onCancelSelection();
     std::vector<unsigned int> getSelectedChildrenIndexes();
+    std::vector<unsigned int> getUnselectedChildrenIndexes();
 
     void onPagesRotated(const std::vector<unsigned int> pageNumbers);
     sigc::connection m_pagesRotatedConnection;
