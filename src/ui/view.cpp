@@ -40,8 +40,8 @@ View::View(Gio::ActionMap& actionMap)
 
 View::~View()
 {
-    if (m_pageRendererPool != nullptr) {
-        m_pageRendererPool->stop();
+    if (m_backgroundThread != nullptr) {
+        m_backgroundThread->stop();
         m_pagesRotatedConnection.disconnect();
     }
 
@@ -196,8 +196,8 @@ void View::onPagesRotated(const std::vector<unsigned int> pageNumbers)
 
 void View::waitForRenderCompletion()
 {
-    if (m_pageRendererPool != nullptr)
-        m_pageRendererPool->stop(true);
+    if (m_backgroundThread != nullptr)
+        m_backgroundThread->stop(true);
 
     while (!m_childQueue.empty()) {
         ViewChild* child = m_childQueue.front();
@@ -205,15 +205,15 @@ void View::waitForRenderCompletion()
         m_childQueue.pop();
     }
 
-    m_pageRendererPool = std::make_unique<ctpl::thread_pool>(numRendererThreads);
+    m_backgroundThread = std::make_unique<ctpl::thread_pool>(numRendererThreads);
 }
 
 void View::stopRendering()
 {
-    if (m_pageRendererPool != nullptr)
-        m_pageRendererPool->stop();
+    if (m_backgroundThread != nullptr)
+        m_backgroundThread->stop();
 
-    m_pageRendererPool = std::make_unique<ctpl::thread_pool>(numRendererThreads);
+    m_backgroundThread = std::make_unique<ctpl::thread_pool>(numRendererThreads);
     m_childQueue = {};
 }
 
@@ -232,7 +232,7 @@ void View::renderChild(ViewChild* child)
 {
     child->showSpinner();
 
-    m_pageRendererPool->push([this, child](int) {
+    m_backgroundThread->push([this, child](int) {
         child->renderPage();
         m_childQueue.push(child);
         m_thumbnailRendered.emit();

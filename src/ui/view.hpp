@@ -36,7 +36,7 @@ public:
 
 private:
     Document* m_document;
-    std::unique_ptr<ctpl::thread_pool> m_pageRendererPool;
+    std::unique_ptr<ctpl::thread_pool> m_backgroundThread;
     static const int numRendererThreads;
     // We don't need an asynchronous queue as long as we have only one renderer thread
     std::queue<ViewChild*> m_childQueue;
