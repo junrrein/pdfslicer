@@ -199,8 +199,13 @@ void View::waitForRenderCompletion()
     if (m_pageRendererPool != nullptr)
         m_pageRendererPool->stop(true);
 
+    while (!m_childQueue.empty()) {
+        ViewChild* child = m_childQueue.front();
+        child->showPage();
+        m_childQueue.pop();
+    }
+
     m_pageRendererPool = std::make_unique<ctpl::thread_pool>(numRendererThreads);
-    m_childQueue = {};
 }
 
 void View::stopRendering()
