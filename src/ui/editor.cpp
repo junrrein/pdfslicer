@@ -20,7 +20,7 @@ namespace Slicer {
 
 Editor::Editor(Gio::ActionMap& actionMap)
     : Gtk::Box{Gtk::ORIENTATION_VERTICAL}
-    , m_view{actionMap}
+    , m_view{actionMap, m_actionBar}
 {
     m_scroller.add(m_view);
     pack_start(m_scroller);

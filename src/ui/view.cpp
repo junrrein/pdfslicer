@@ -23,10 +23,12 @@ namespace Slicer {
 const int View::numRendererThreads = 1; // Poppler can't handle more than one
 const std::set<int> View::zoomLevels = {200, 300, 400};
 
-View::View(Gio::ActionMap& actionMap)
+View::View(Gio::ActionMap& actionMap,
+           ActionBar& actionBar)
     : m_document{nullptr}
     , m_actionMap{actionMap}
     , m_zoomLevel{zoomLevels, m_actionMap}
+    , m_actionBar{actionBar}
 {
     set_column_spacing(10);
     set_row_spacing(20);
@@ -63,6 +65,11 @@ void View::setDocument(Document& document)
         m_pagesRotatedConnection.disconnect();
 
     m_document = &document;
+
+    m_document->commandExecuted().connect([this]() {
+        m_actionBar.set_sensitive(true);
+    });
+
     startGeneratingThumbnails(m_zoomLevel.minLevel());
     m_pagesRotatedConnection = m_document->pagesRotated.connect(sigc::mem_fun(*this, &View::onPagesRotated));
 }
@@ -110,6 +117,14 @@ void View::setupSignalHandlers()
         ViewChild* child = m_childQueue.front();
         child->showPage();
         m_childQueue.pop();
+    });
+
+    m_executeCommand.connect([this]() {
+        if (m_commandToExecute == nullptr)
+            throw std::runtime_error("No command to execute");
+
+        m_commandToExecute();
+        m_commandToExecute = nullptr;
     });
 }
 
@@ -241,56 +256,59 @@ void View::renderChild(ViewChild* child)
 
 void View::removeSelectedPages()
 {
-    waitForRenderCompletion();
+    m_actionBar.set_sensitive(false);
+    const std::vector<unsigned int> indexes = getSelectedChildrenIndexes();
 
-    if (get_selected_children().size() == 1) {
-        Gtk::FlowBoxChild* child = get_selected_children().at(0);
-        const int index = child->get_index();
-        m_document->removePage(index);
-    }
-    else {
-        m_document->removePages(getSelectedChildrenIndexes());
-    }
+    m_backgroundThread->push([this, indexes](int) {
+        m_commandToExecute = [this, indexes]() {
+            m_document->removePages(indexes);
+        };
+
+        m_executeCommand.emit();
+    });
 }
 
 void View::removeUnselectedPages()
 {
-    waitForRenderCompletion();
+    m_actionBar.set_sensitive(false);
+    const std::vector<unsigned int> indexes = getUnselectedChildrenIndexes();
 
-    m_document->removePages(getUnselectedChildrenIndexes());
+    m_backgroundThread->push([this, indexes](int) {
+        m_commandToExecute = [this, indexes]() {
+            m_document->removePages(getUnselectedChildrenIndexes());
+        };
+
+        m_executeCommand.emit();
+    });
 }
 
 void View::removePreviousPages()
 {
-    waitForRenderCompletion();
+    m_actionBar.set_sensitive(false);
+    const int index = get_selected_children().at(0)->get_index();
 
-    std::vector<Gtk::FlowBoxChild*> selected = get_selected_children();
+    m_backgroundThread->push([this, index](int) {
+        m_commandToExecute = [this, index]() {
+            m_document->removePageRange(0, index - 1);
+        };
 
-    if (selected.size() != 1)
-        throw std::runtime_error(
-            "Tried to remove previous pages with more "
-            "than one page selected. This should never happen!");
-
-    const int index = selected.at(0)->get_index();
-
-    m_document->removePageRange(0, index - 1);
+        m_executeCommand.emit();
+    });
 }
 
 void View::removeNextPages()
 {
-    waitForRenderCompletion();
+    m_actionBar.set_sensitive(false);
+    const int index = get_selected_children().at(0)->get_index();
 
-    std::vector<Gtk::FlowBoxChild*> selected = get_selected_children();
+    m_backgroundThread->push([this, index](int) {
+        m_commandToExecute = [this, index]() {
+            m_document->removePageRange(index + 1,
+                                        static_cast<int>(m_document->pages()->get_n_items()) - 1);
+        };
 
-    if (selected.size() != 1)
-        throw std::runtime_error(
-            "Tried to remove next pages with more "
-            "than one page selected. This should never happen!");
-
-    const int index = selected.at(0)->get_index();
-
-    m_document->removePageRange(index + 1,
-                                static_cast<int>(m_document->pages()->get_n_items()) - 1);
+        m_executeCommand.emit();
+    });
 }
 
 void View::rotatePagesRight()

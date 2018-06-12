@@ -18,17 +18,19 @@
 #define SLICERVIEW_HPP
 
 #include "../backend/document.hpp"
-#include "zoomlevelwithactions.hpp"
+#include "actionbar.hpp"
 #include "viewchild.hpp"
+#include "zoomlevelwithactions.hpp"
 #include <gtkmm/flowbox.h>
 #include <glibmm/dispatcher.h>
 #include <ctpl_stl.h>
+#include <functional>
 
 namespace Slicer {
 
 class View : public Gtk::FlowBox {
 public:
-    View(Gio::ActionMap& actionMap);
+    View(Gio::ActionMap& actionMap, ActionBar& actionbar);
     virtual ~View();
 
     void setDocument(Document& document);
@@ -42,10 +44,15 @@ private:
     std::queue<ViewChild*> m_childQueue;
     Glib::Dispatcher m_thumbnailRendered;
 
+    std::function<void()> m_commandToExecute = nullptr;
+    Glib::Dispatcher m_executeCommand;
+
     Gio::ActionMap& m_actionMap;
 
     ZoomLevelWithActions m_zoomLevel;
     static const std::set<int> zoomLevels;
+
+    ActionBar& m_actionBar;
 
     Glib::RefPtr<Gio::SimpleAction> m_removeSelectedAction;
     Glib::RefPtr<Gio::SimpleAction> m_removeUnselectedAction;
