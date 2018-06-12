@@ -54,4 +54,12 @@ void CommandManager::redo()
 
     commandExecuted.emit();
 }
+
+void CommandManager::reset()
+{
+    m_undoStack = {};
+    m_redoStack = {};
+
+    commandExecuted.emit();
+}
 }

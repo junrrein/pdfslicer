@@ -73,6 +73,10 @@ void Document::saveDocument(const Glib::RefPtr<Gio::File>& destinationFile)
     makePDFCopy(m_sourcePath, tempFilePath);
     tempFile->move(destinationFile, Gio::FILE_COPY_OVERWRITE);
 
+    // FIXME: No need to do this once PDFWriter gets support for
+    // in-memory documents.
+    // TODO: Maybe save the file to a temporary place when opening?
+    // And use that temporary file as the source later
     if (m_sourcePath == destinationFile->get_path())
         reload();
 }
@@ -131,6 +135,8 @@ void Document::reload()
         auto page = Glib::RefPtr<Page>{new Page{popplerPage}};
         m_pages->append(page);
     }
+
+    m_commandManager.reset();
 }
 
 void Document::removePage(int pageNumber)
