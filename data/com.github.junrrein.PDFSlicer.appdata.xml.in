@@ -27,6 +27,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.1.1" date="2018-06-12">
+			<description>
+				<p>Update application information/documentation to inform about the new rotation feature.</p>
+			</description>
+		</release>
 		<release version="1.1.0" date="2018-06-12">
 			<description>
 				<p>Add the ability to rotate pages and fix a bug where some documents where saved with weird margins.</p>
