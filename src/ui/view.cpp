@@ -256,59 +256,53 @@ void View::renderChild(ViewChild* child)
 
 void View::removeSelectedPages()
 {
-    m_actionBar.set_sensitive(false);
     const std::vector<unsigned int> indexes = getSelectedChildrenIndexes();
 
-    m_backgroundThread->push([this, indexes](int) {
-        m_commandToExecute = [this, indexes]() {
-            m_document->removePages(indexes);
-        };
-
-        m_executeCommand.emit();
+    queuePageRemoval([=]() {
+        m_document->removePages(indexes);
     });
 }
 
 void View::removeUnselectedPages()
 {
-    m_actionBar.set_sensitive(false);
     const std::vector<unsigned int> indexes = getUnselectedChildrenIndexes();
 
-    m_backgroundThread->push([this, indexes](int) {
-        m_commandToExecute = [this, indexes]() {
-            m_document->removePages(getUnselectedChildrenIndexes());
-        };
-
-        m_executeCommand.emit();
+    queuePageRemoval([=]() {
+        m_document->removePages(getUnselectedChildrenIndexes());
     });
 }
 
 void View::removePreviousPages()
 {
-    m_actionBar.set_sensitive(false);
     const int index = get_selected_children().at(0)->get_index();
 
-    m_backgroundThread->push([this, index](int) {
-        m_commandToExecute = [this, index]() {
-            m_document->removePageRange(0, index - 1);
-        };
-
-        m_executeCommand.emit();
+    queuePageRemoval([=]() {
+        m_document->removePageRange(0, index - 1);
     });
 }
 
 void View::removeNextPages()
 {
-    m_actionBar.set_sensitive(false);
     const int index = get_selected_children().at(0)->get_index();
 
-    m_backgroundThread->push([this, index](int) {
-        m_commandToExecute = [this, index]() {
-            m_document->removePageRange(index + 1,
-                                        static_cast<int>(m_document->pages()->get_n_items()) - 1);
-        };
+    queuePageRemoval([=]() {
+        m_document->removePageRange(index + 1,
+                                    static_cast<int>(m_document->pages()->get_n_items()) - 1);
+    });
+}
 
+void View::queuePageRemoval(const std::function<void()>& command)
+{
+    if (m_commandToExecute != nullptr)
+        throw std::runtime_error("There already exists a queued command");
+
+    m_commandToExecute = command;
+
+    m_backgroundThread->push([this](int) {
         m_executeCommand.emit();
     });
+
+    m_actionBar.set_sensitive(false);
 }
 
 void View::rotatePagesRight()

@@ -70,6 +70,7 @@ private:
     void removeUnselectedPages();
     void removePreviousPages();
     void removeNextPages();
+    void queuePageRemoval(const std::function<void()>& command);
     void rotatePagesRight();
     void rotatePagesLeft();
     void previewPage();
