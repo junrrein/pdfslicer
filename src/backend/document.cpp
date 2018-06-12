@@ -93,13 +93,17 @@ void Document::makePDFCopy(const std::string& sourcePath,
         const auto pageNumber = static_cast<unsigned int>(slicerPage->number());
 
         RefCountPtr<PDFDictionary> parsedPage = parser.ParsePage(pageNumber);
-        PDFPageInput input{&parser, parsedPage};
+        PDFPageInput inputPage{&parser, parsedPage};
 
         auto outputPage = new PDFPage{};
-        outputPage->SetMediaBox(input.GetMediaBox());
-        copyingContext->MergePDFPageToPage(outputPage, pageNumber);
-        outputPage->SetRotate(input.GetRotate() + slicerPage->rotation());
+        outputPage->SetArtBox(inputPage.GetArtBox());
+        outputPage->SetBleedBox(inputPage.GetBleedBox());
+        outputPage->SetCropBox(inputPage.GetCropBox());
+        outputPage->SetMediaBox(inputPage.GetMediaBox());
+        outputPage->SetRotate(inputPage.GetRotate() + slicerPage->rotation());
+        outputPage->SetTrimBox(inputPage.GetTrimBox());
 
+        copyingContext->MergePDFPageToPage(outputPage, pageNumber);
         pdfWriter.WritePageAndRelease(outputPage);
     }
 
