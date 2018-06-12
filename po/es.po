@@ -22,9 +22,8 @@ msgid "Quit"
 msgstr "Salir"
 
 #: ../src/ui/aboutdialog.cpp:26
-#, fuzzy
 msgid "A simple application to extract and rotate pages of a PDF document"
-msgstr "Una aplicación sencilla para extraer páginas de un documento PDF"
+msgstr "Una aplicación sencilla para extraer y rotar páginas de un documento PDF"
 
 #: ../src/ui/aboutdialog.cpp:32
 msgid "Third-party libraries"
@@ -32,7 +31,7 @@ msgstr "Bibliotecas de terceros"
 
 #: ../src/ui/aboutdialog.cpp:37
 msgid "Application icon"
-msgstr ""
+msgstr "Icono de aplicación"
 
 #: ../src/ui/actionbar.cpp:29
 msgid "Rotate left"

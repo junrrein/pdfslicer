@@ -11,25 +11,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 
-#, fuzzy
 msgid "Extract and rotate pages of a PDF document"
-msgstr "Una herramienta sencilla para extraer páginas de un documento PDF"
+msgstr "Extraiga y rote páginas de un documento PDF"
 
-#, fuzzy
 msgid "A simple tool to extract and rotate pages of a PDF document"
-msgstr "Una herramienta sencilla para extraer páginas de un documento PDF"
+msgstr ""
+"Una herramienta sencilla para extraer y rotar páginas de un documento PDF"
 
-#, fuzzy
 msgid ""
 "PDF Slicer is a simple application to extract and rotate pages of a PDF "
 "document. The operations can be performed on single pages or on selections/"
 "ranges of pages, and it has full undo/redo support."
 msgstr ""
-"PDF Slicer es una aplicación sencilla para recortar páginas de un documento "
-"PDF. Le permite remover páginas sueltas o selecciones/rangos de páginas, con "
-"soporte completo para deshacer y repetir acciones."
+"PDF Slicer es una aplicación sencilla para extraer y rotar páginas de un "
+"documento PDF. Las operaciones pueden ser aplicadas a páginas sueltas o "
+"selecciones/rangos de páginas, con soporte completo para deshacer y repetir "
+"operaciones."
 
 #~ msgid "Extract pages from a PDF document"
 #~ msgstr "Extraiga páginas de un documento PDF"
