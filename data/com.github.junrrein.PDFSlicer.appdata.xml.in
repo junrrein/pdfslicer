@@ -6,12 +6,12 @@
 	<project_license>GPL-3.0-or-later</project_license>
 	<name>PDF Slicer</name>
 	<launchable>@APPLICATION_ID@.desktop</launchable>
-	<_summary>A simple tool to extract pages from a PDF document</_summary>
+	<_summary>A simple tool to extract and rotate pages of a PDF document</_summary>
 	<description>
 		<_p>
-		PDF Slicer is a simple application to trim pages from a PDF document.
-		It lets you remove single pages or selections/ranges of pages,
-		with full undo/redo support.
+		PDF Slicer is a simple application to extract and rotate pages of a PDF document.
+		The operations can be performed on single pages or on selections/ranges of pages,
+		and it has full undo/redo support.
 	  	</_p>
 	</description>
 	<url type="homepage">https://github.com/junrrein/pdfslicer</url>

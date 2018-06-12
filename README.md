@@ -1,7 +1,7 @@
 # About
 
-PDF Slicer is a simple app for extracting pages out of a PDF document
-as a single file.
+PDF Slicer is a simple application for extracting and rotating pages of a PDF document,
+with full undo/redo support.
 
 ![](docs/readme-screenshot-1.png)
 
