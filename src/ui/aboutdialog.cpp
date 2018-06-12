@@ -34,6 +34,8 @@ AboutDialog::AboutDialog(Gtk::Window& parent)
                         "PDFWriter https://github.com/galkahana/PDF-Writer",
                         "Poppler https://poppler.freedesktop.org/",
                         "range-v3 https://github.com/ericniebler/range-v3"});
+    add_credit_section(_("Application icon"),
+                       {"Freepik http://www.freepik.com"});
 
     signal_hide().connect([this]() {
         delete this;
