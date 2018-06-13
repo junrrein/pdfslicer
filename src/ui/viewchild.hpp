@@ -27,7 +27,7 @@ namespace Slicer {
 
 class ViewChild : public Gtk::Box {
 public:
-    ViewChild(Glib::RefPtr<Page> page,
+    ViewChild(const Glib::RefPtr<Page>& page,
               int targetSize);
     virtual ~ViewChild() = default;
 

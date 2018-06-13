@@ -18,17 +18,19 @@
 
 namespace Slicer {
 
-ViewChild::ViewChild(Glib::RefPtr<Page> page,
+ViewChild::ViewChild(const Glib::RefPtr<Page>& page,
                      int targetSize)
-    : m_page{std::move(page)}
+    : m_page{page}
     , m_targetSize{targetSize}
 {
-    const Page::Size pageSize = m_page->scaledSize(m_targetSize);
+    const Page::Size pageSize = m_page->scaledRotatedSize(m_targetSize);
     set_size_request(pageSize.width, pageSize.height);
 
     m_spinner.set_size_request(38, 38);
     m_spinner.start();
     pack_start(m_spinner, true, false);
+
+    show_all();
 }
 
 void ViewChild::renderPage()

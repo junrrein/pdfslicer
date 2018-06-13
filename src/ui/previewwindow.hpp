@@ -19,6 +19,7 @@
 
 #include "../backend/page.hpp"
 #include "../application/backgroundthread.hpp"
+#include "viewchild.hpp"
 #include "zoomlevelwithactions.hpp"
 #include <glibmm/dispatcher.h>
 #include <gtkmm/window.h>
@@ -33,19 +34,19 @@ namespace Slicer {
 
 class PreviewWindow : public Gtk::Window {
 public:
-    PreviewWindow(Glib::RefPtr<Page> page, BackgroundThread& backgroundThread);
+    PreviewWindow(const Glib::RefPtr<Page>& page,
+                  BackgroundThread& backgroundThread);
     virtual ~PreviewWindow() = default;
 
 private:
-    Glib::RefPtr<Page> m_page;
+    const Glib::RefPtr<Page> m_page;
     BackgroundThread& m_backgroundThread;
     Glib::Dispatcher m_pageRenderedDispatcher;
     Glib::RefPtr<Gio::SimpleActionGroup> m_actionGroup;
     ZoomLevelWithActions m_zoomLevel;
     static const std::set<int> zoomLevels;
 
-    Glib::RefPtr<Gdk::Pixbuf> m_pixbuf;
-    Gtk::Image m_image;
+    std::unique_ptr<ViewChild> m_pageWidget;
     Gtk::ScrolledWindow m_scroller;
     Gtk::Overlay m_overlay;
     Gtk::Button m_buttonZoomIn;
@@ -55,7 +56,7 @@ private:
     void setupWidgets();
     void setupSignalHandlers();
     void loadCustomCSS();
-    void renderPage(int targetSize);
+    void renderPage();
 };
 
 } // namespace Slicer
