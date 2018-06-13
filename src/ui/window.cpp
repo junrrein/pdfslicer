@@ -122,6 +122,9 @@ void AppWindow::setupSignalHandlers()
     m_commandSlot.commandQueuedSignal.connect([this]() {
         m_undoAction->set_enabled(false);
         m_redoAction->set_enabled(false);
+
+        auto cursor = Gdk::Cursor::create(get_display(), "progress");
+        get_window()->set_cursor(cursor);
     });
 }
 
@@ -221,5 +224,7 @@ void AppWindow::onCommandExecuted()
         m_redoAction->set_enabled();
     else
         m_redoAction->set_enabled(false);
+
+    get_window()->set_cursor();
 }
 }
