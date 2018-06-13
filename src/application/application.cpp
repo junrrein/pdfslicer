@@ -15,7 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "application.hpp"
-#include "ui/aboutdialog.hpp"
+#include "../ui/aboutdialog.hpp"
 #include <gtkmm.h>
 #include <glibmm/i18n.h>
 #include <config.hpp>

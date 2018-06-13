@@ -1,3 +1,7 @@
+set (SLICER_APPLICATION_SOURCES
+	application/application.hpp
+	application/application.cpp)
+
 set (SLICER_BACKEND_SOURCES
      backend/command.hpp
      backend/command.cpp
@@ -42,8 +46,7 @@ set (SLICER_UI_SOURCES
 
 add_executable (${CMAKE_PROJECT_NAME}
                 main.cpp
-                application.hpp
-                application.cpp
+				${SLICER_APPLICATION_SOURCES}
                 ${SLICER_BACKEND_SOURCES}
                 ${SLICER_UI_SOURCES})
 add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
