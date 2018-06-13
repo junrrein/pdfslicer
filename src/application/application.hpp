@@ -17,6 +17,8 @@
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
 
+#include "backgroundthread.hpp"
+#include "commandslot.hpp"
 #include "../ui/window.hpp"
 #include <gtkmm/application.h>
 
@@ -28,8 +30,10 @@ public:
     virtual ~Application() override = default;
 
 private:
-    Application();
+    BackgroundThread m_backgroundThread;
+    CommandSlot m_commandSlot;
 
+    Application();
     AppWindow* createWindow();
 
     void on_startup() override;

@@ -24,8 +24,10 @@
 
 namespace Slicer {
 
-AppWindow::AppWindow()
-    : m_editor{*this}
+AppWindow::AppWindow(BackgroundThread& backgroundThread, CommandSlot& commandSlot)
+    : m_backgroundThread{backgroundThread}
+    , m_commandSlot{commandSlot}
+    , m_editor{*this, m_backgroundThread, m_commandSlot}
 {
     set_size_request(500, 500);
     set_default_size(800, 600);
@@ -116,6 +118,11 @@ void AppWindow::setupSignalHandlers()
         },
                                                            5000);
     });
+
+    m_commandSlot.commandQueuedSignal.connect([this]() {
+        m_undoAction->set_enabled(false);
+        m_redoAction->set_enabled(false);
+    });
 }
 
 void AppWindow::loadCustomCSS()
@@ -191,14 +198,16 @@ void AppWindow::onOpenAction()
 
 void AppWindow::onUndoAction()
 {
-    m_editor.waitForRenderCompletion();
-    m_document->undoCommand();
+    m_commandSlot.queueCommand([this]() {
+        m_document->undoCommand();
+    });
 }
 
 void AppWindow::onRedoAction()
 {
-    m_editor.waitForRenderCompletion();
-    m_document->redoCommand();
+    m_commandSlot.queueCommand([this]() {
+        m_document->redoCommand();
+    });
 }
 
 void AppWindow::onCommandExecuted()

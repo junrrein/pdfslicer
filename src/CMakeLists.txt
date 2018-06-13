@@ -1,6 +1,10 @@
 set (SLICER_APPLICATION_SOURCES
 	application/application.hpp
-	application/application.cpp)
+	application/application.cpp
+	application/backgroundthread.hpp
+	application/backgroundthread.cpp
+	application/commandslot.hpp
+	application/commandslot.cpp)
 
 set (SLICER_BACKEND_SOURCES
      backend/command.hpp

@@ -22,8 +22,9 @@ namespace Slicer {
 
 const std::set<int> PreviewWindow::zoomLevels = {1000, 1400, 1800};
 
-PreviewWindow::PreviewWindow(Glib::RefPtr<Page> page)
+PreviewWindow::PreviewWindow(Glib::RefPtr<Page> page, BackgroundThread& backgroundThread)
     : m_page{std::move(page)}
+    , m_backgroundThread{backgroundThread}
     , m_actionGroup{Gio::SimpleActionGroup::create()}
     , m_zoomLevel{zoomLevels, *(m_actionGroup.operator->())}
 {
@@ -36,6 +37,7 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page> page)
     setupWidgets();
     setupSignalHandlers();
     loadCustomCSS();
+    renderPage(m_zoomLevel.currentLevel());
 
     show_all_children();
 }
@@ -64,7 +66,6 @@ void PreviewWindow::setupWidgets()
     m_boxZoom.set_margin_bottom(15);
     m_boxZoom.set_margin_right(15);
 
-    m_image.set(m_page->renderPage(m_zoomLevel.currentLevel()));
     m_scroller.add(m_image);
     m_overlay.add(m_scroller);
     m_overlay.add_overlay(m_boxZoom);
@@ -75,12 +76,16 @@ void PreviewWindow::setupSignalHandlers()
 {
     m_zoomLevel.enable();
 
-    m_zoomLevel.changed.connect([&](int level) {
-        m_image.set(m_page->renderPage(level));
+    m_zoomLevel.changed.connect([this](int level) {
+        renderPage(level);
     });
 
     signal_hide().connect([this]() {
         delete this;
+    });
+
+    m_pageRenderedDispatcher.connect([this]() {
+        m_image.set(m_pixbuf);
     });
 }
 
@@ -96,6 +101,14 @@ void PreviewWindow::loadCustomCSS()
     Gtk::StyleContext::add_provider_for_screen(screen,
                                                provider,
                                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+}
+
+void PreviewWindow::renderPage(int targetSize)
+{
+    m_backgroundThread.push([this, targetSize]() {
+        m_pixbuf = m_page->renderPage(targetSize);
+        m_pageRenderedDispatcher.emit();
+    });
 }
 
 } // namespace Slicer

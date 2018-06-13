@@ -29,6 +29,7 @@ Glib::RefPtr<Application> Application::create()
 
 Application::Application()
     : Gtk::Application(config::APPLICATION_ID, Gio::APPLICATION_HANDLES_OPEN)
+    , m_commandSlot{m_backgroundThread}
 {
     Glib::set_application_name(config::APPLICATION_NAME);
 }
@@ -106,7 +107,8 @@ void Application::onActionQuit()
 
 AppWindow* Application::createWindow()
 {
-    auto window = new Slicer::AppWindow{}; //NOLINT
+    auto window = new Slicer::AppWindow{m_backgroundThread,
+                                        m_commandSlot}; //NOLINT
 
     window->signal_hide().connect([window]() {
         delete window; //NOLINT

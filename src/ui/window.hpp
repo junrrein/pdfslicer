@@ -17,6 +17,8 @@
 #ifndef SLICERWINDOW_HPP
 #define SLICERWINDOW_HPP
 
+#include "../application/backgroundthread.hpp"
+#include "../application/commandslot.hpp"
 #include "view.hpp"
 #include "previewwindow.hpp"
 #include "welcomescreen.hpp"
@@ -34,13 +36,15 @@ namespace Slicer {
 
 class AppWindow : public Gtk::ApplicationWindow {
 public:
-    AppWindow();
+    AppWindow(BackgroundThread& bacgkroundThread, CommandSlot& commandSlot);
     virtual ~AppWindow() = default;
 
     void openDocument(const Glib::RefPtr<Gio::File>& file);
 
 private:
     std::unique_ptr<Document> m_document;
+    BackgroundThread& m_backgroundThread;
+    CommandSlot& m_commandSlot;
 
     HeaderBar m_headerBar;
     WelcomeScreen m_welcomeScreen;

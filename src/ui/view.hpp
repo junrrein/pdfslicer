@@ -18,6 +18,8 @@
 #define SLICERVIEW_HPP
 
 #include "../backend/document.hpp"
+#include "../application/backgroundthread.hpp"
+#include "../application/commandslot.hpp"
 #include "actionbar.hpp"
 #include "viewchild.hpp"
 #include "zoomlevelwithactions.hpp"
@@ -30,7 +32,10 @@ namespace Slicer {
 
 class View : public Gtk::FlowBox {
 public:
-    View(Gio::ActionMap& actionMap, ActionBar& actionbar);
+    View(Gio::ActionMap& actionMap,
+         ActionBar& actionbar,
+         BackgroundThread& backgroundThread,
+         CommandSlot& commandSlot);
     virtual ~View();
 
     void setDocument(Document& document);
@@ -38,14 +43,11 @@ public:
 
 private:
     Document* m_document;
-    std::unique_ptr<ctpl::thread_pool> m_backgroundThread;
-    static const int numRendererThreads;
+    BackgroundThread& m_backgroundThread;
+    CommandSlot& m_commandSlot;
     // We don't need an asynchronous queue as long as we have only one renderer thread
     std::queue<ViewChild*> m_childQueue;
     Glib::Dispatcher m_thumbnailRendered;
-
-    std::function<void()> m_commandToExecute = nullptr;
-    Glib::Dispatcher m_executeCommand;
 
     Gio::ActionMap& m_actionMap;
 

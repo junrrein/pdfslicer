@@ -28,10 +28,11 @@ namespace Slicer {
 
 class Editor : public Gtk::Box {
 public:
-    Editor(Gio::ActionMap& actionMap);
+    Editor(Gio::ActionMap& actionMap,
+           BackgroundThread& backgroundThread,
+           CommandSlot& commandSlot);
 
     void setDocument(Document& document);
-    void waitForRenderCompletion();
 
 private:
     View m_view;

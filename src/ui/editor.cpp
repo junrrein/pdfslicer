@@ -18,9 +18,11 @@
 
 namespace Slicer {
 
-Editor::Editor(Gio::ActionMap& actionMap)
+Editor::Editor(Gio::ActionMap& actionMap,
+               BackgroundThread& backgroundThread,
+               CommandSlot& commandSlot)
     : Gtk::Box{Gtk::ORIENTATION_VERTICAL}
-    , m_view{actionMap, m_actionBar}
+    , m_view{actionMap, m_actionBar, backgroundThread, commandSlot}
 {
     m_scroller.add(m_view);
     pack_start(m_scroller);
@@ -30,11 +32,6 @@ Editor::Editor(Gio::ActionMap& actionMap)
 void Editor::setDocument(Document& document)
 {
     m_view.setDocument(document);
-}
-
-void Editor::waitForRenderCompletion()
-{
-    m_view.waitForRenderCompletion();
 }
 
 } // namespace Slicer

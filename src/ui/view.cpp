@@ -20,12 +20,15 @@
 
 namespace Slicer {
 
-const int View::numRendererThreads = 1; // Poppler can't handle more than one
 const std::set<int> View::zoomLevels = {200, 300, 400};
 
 View::View(Gio::ActionMap& actionMap,
-           ActionBar& actionBar)
+           ActionBar& actionBar,
+           BackgroundThread& backgroundThread,
+           CommandSlot& commandSlot)
     : m_document{nullptr}
+    , m_backgroundThread{backgroundThread}
+    , m_commandSlot{commandSlot}
     , m_actionMap{actionMap}
     , m_zoomLevel{zoomLevels, m_actionMap}
     , m_actionBar{actionBar}
@@ -42,10 +45,9 @@ View::View(Gio::ActionMap& actionMap,
 
 View::~View()
 {
-    if (m_backgroundThread != nullptr) {
-        m_backgroundThread->stop();
-        m_pagesRotatedConnection.disconnect();
-    }
+    m_backgroundThread.killRemainingTasks();
+    m_childQueue = {};
+    m_pagesRotatedConnection.disconnect();
 
     m_actionMap.remove_action("remove-selected");
     m_actionMap.remove_action("remove-previous");
@@ -119,12 +121,8 @@ void View::setupSignalHandlers()
         m_childQueue.pop();
     });
 
-    m_executeCommand.connect([this]() {
-        if (m_commandToExecute == nullptr)
-            throw std::runtime_error("No command to execute");
-
-        m_commandToExecute();
-        m_commandToExecute = nullptr;
+    m_commandSlot.commandQueuedSignal.connect([this]() {
+        m_actionBar.set_sensitive(false);
     });
 }
 
@@ -209,26 +207,9 @@ void View::onPagesRotated(const std::vector<unsigned int> pageNumbers)
     }
 }
 
-void View::waitForRenderCompletion()
-{
-    if (m_backgroundThread != nullptr)
-        m_backgroundThread->stop(true);
-
-    while (!m_childQueue.empty()) {
-        ViewChild* child = m_childQueue.front();
-        child->showPage();
-        m_childQueue.pop();
-    }
-
-    m_backgroundThread = std::make_unique<ctpl::thread_pool>(numRendererThreads);
-}
-
 void View::stopRendering()
 {
-    if (m_backgroundThread != nullptr)
-        m_backgroundThread->stop();
-
-    m_backgroundThread = std::make_unique<ctpl::thread_pool>(numRendererThreads);
+    m_backgroundThread.killRemainingTasks();
     m_childQueue = {};
 }
 
@@ -247,7 +228,7 @@ void View::renderChild(ViewChild* child)
 {
     child->showSpinner();
 
-    m_backgroundThread->push([this, child](int) {
+    m_backgroundThread.push([this, child]() {
         child->renderPage();
         m_childQueue.push(child);
         m_thumbnailRendered.emit();
@@ -293,16 +274,7 @@ void View::removeNextPages()
 
 void View::queuePageRemoval(const std::function<void()>& command)
 {
-    if (m_commandToExecute != nullptr)
-        throw std::runtime_error("There already exists a queued command");
-
-    m_commandToExecute = command;
-
-    m_backgroundThread->push([this](int) {
-        m_executeCommand.emit();
-    });
-
-    m_actionBar.set_sensitive(false);
+    m_commandSlot.queueCommand(command);
 }
 
 void View::rotatePagesRight()
@@ -317,17 +289,11 @@ void View::rotatePagesLeft()
 
 void View::previewPage()
 {
-    // We need to wait till the thumbnails finish rendering
-    // before rendering a big preview, to prevent crashes.
-    // Poppler isn't designed for rendering many pages of
-    // the same document in different threads.
-    waitForRenderCompletion();
-
     const int pageNumber = get_selected_children().at(0)->get_index();
 
     Glib::RefPtr<Slicer::Page> page
         = m_document->pages()->get_item(static_cast<unsigned>(pageNumber));
 
-    (new Slicer::PreviewWindow{page})->show();
+    (new Slicer::PreviewWindow{page, m_backgroundThread})->show();
 }
 }
