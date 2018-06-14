@@ -70,6 +70,7 @@ void View::setDocument(Document& document)
 
     m_document->commandExecuted().connect([this]() {
         m_actionBar.set_sensitive(true);
+        m_zoomLevel.enable();
     });
 
     startGeneratingThumbnails(m_zoomLevel.minLevel());
@@ -123,6 +124,7 @@ void View::setupSignalHandlers()
 
     m_commandSlot.commandQueuedSignal.connect([this]() {
         m_actionBar.set_sensitive(false);
+        m_zoomLevel.disable();
     });
 }
 
