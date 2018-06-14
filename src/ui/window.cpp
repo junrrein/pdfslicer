@@ -151,6 +151,7 @@ void AppWindow::loadCustomCSS()
                                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
+// FIXME:: We need to make this not freeze the UI too
 void AppWindow::onSaveAction()
 {
     Slicer::SaveFileDialog dialog{*this};
