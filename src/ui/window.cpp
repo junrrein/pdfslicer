@@ -121,10 +121,14 @@ void AppWindow::setupSignalHandlers()
 
     m_savedDispatcher.connect([this]() {
         m_savingRevealer.saved();
+        m_openAction->set_enabled();
+        m_saveAction->set_enabled();
     });
 
     m_savingFailedDispatcher.connect([this]() {
         m_savingRevealer.set_reveal_child(false);
+        m_openAction->set_enabled();
+        m_saveAction->set_enabled();
 
         Gtk::MessageDialog errorDialog{_("The current document could not be saved"),
                                        false,
@@ -170,6 +174,8 @@ void AppWindow::onSaveAction()
     if (result == GTK_RESPONSE_ACCEPT) {
         Glib::RefPtr<Gio::File> file = dialog.get_file();
         m_savingRevealer.saving();
+        m_openAction->set_enabled(false);
+        m_saveAction->set_enabled(false);
 
         std::thread thread{[this, file]() {
             try {
