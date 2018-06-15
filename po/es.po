@@ -23,8 +23,7 @@ msgstr "Salir"
 
 #: ../src/ui/aboutdialog.cpp:26
 msgid "A simple application to extract and rotate pages of a PDF document"
-msgstr ""
-"Una aplicación sencilla para extraer y rotar páginas de un documento PDF"
+msgstr "Una aplicación sencilla para extraer y rotar páginas de un documento PDF"
 
 #: ../src/ui/aboutdialog.cpp:32
 msgid "Third-party libraries"
@@ -128,7 +127,7 @@ msgstr "Documento sin título"
 
 #: ../src/ui/savingrevealer.cpp:10
 msgid "Saving…"
-msgstr ""
+msgstr "Guardando…"
 
 #: ../src/ui/savingrevealer.cpp:17
 msgid "Saved!"
