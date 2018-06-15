@@ -23,9 +23,6 @@
 #include "pagewidget.hpp"
 #include "zoomlevelwithactions.hpp"
 #include <gtkmm/flowbox.h>
-#include <glibmm/dispatcher.h>
-#include <ctpl_stl.h>
-#include <functional>
 
 namespace Slicer {
 

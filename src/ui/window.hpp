@@ -18,17 +18,18 @@
 #define SLICERWINDOW_HPP
 
 #include "../application/backgroundthread.hpp"
-#include "previewwindow.hpp"
-#include "welcomescreen.hpp"
-#include "headerbar.hpp"
 #include "documentrenderer.hpp"
+#include "headerbar.hpp"
+#include "previewwindow.hpp"
+#include "savingrevealer.hpp"
+#include "welcomescreen.hpp"
 #include <gtkmm/applicationwindow.h>
-#include <gtkmm/scrolledwindow.h>
+#include <gtkmm/box.h>
 #include <gtkmm/button.h>
+#include <gtkmm/label.h>
 #include <gtkmm/overlay.h>
 #include <gtkmm/revealer.h>
-#include <gtkmm/label.h>
-#include <gtkmm/box.h>
+#include <gtkmm/scrolledwindow.h>
 #include <gtkmm/stack.h>
 
 namespace Slicer {
@@ -56,14 +57,9 @@ private:
     ZoomLevelWithActions m_zoomLevel;
     static const std::set<int> zoomLevels;
 
-    Gtk::Revealer m_revealerDone;
-    Gtk::Box m_boxDone;
-    Gtk::Label m_labelDone;
-    Gtk::Button m_buttonCloseDone;
-
-    // Signals
-    sigc::signal<void> m_signalSaved;
-    sigc::connection m_connectionSaved;
+    SavingRevealer m_savingRevealer;
+    Glib::Dispatcher m_savedDispatcher;
+    Glib::Dispatcher m_savingFailedDispatcher;
 
     // Actions
     Glib::RefPtr<Gio::SimpleAction> m_openAction;

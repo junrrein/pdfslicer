@@ -5,6 +5,7 @@
 #include "view.hpp"
 #include "../backend/document.hpp"
 #include "../application/backgroundthread.hpp"
+#include <glibmm/dispatcher.h>
 
 namespace Slicer {
 

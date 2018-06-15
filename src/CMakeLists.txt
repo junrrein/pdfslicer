@@ -33,6 +33,8 @@ set (SLICER_UI_SOURCES
      ui/previewwindow.cpp
      ui/savefiledialog.hpp
      ui/savefiledialog.cpp
+	 ui/savingrevealer.hpp
+	 ui/savingrevealer.cpp
      ui/utils.hpp
      ui/utils.cpp
      ui/view.hpp

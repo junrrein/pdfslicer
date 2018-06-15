@@ -90,24 +90,6 @@ void AppWindow::setupWidgets()
 {
     set_titlebar(m_headerBar);
 
-    m_labelDone.set_label(_("Saved!"));
-    m_labelDone.set_margin_top(10);
-    m_labelDone.set_margin_bottom(10);
-    m_labelDone.set_margin_left(15);
-    m_labelDone.set_margin_right(7);
-    m_buttonCloseDone.set_image_from_icon_name("window-close-symbolic");
-    m_buttonCloseDone.get_style_context()->add_class("flat");
-    m_buttonCloseDone.set_margin_top(5);
-    m_buttonCloseDone.set_margin_bottom(5);
-    m_buttonCloseDone.set_margin_right(5);
-    m_boxDone.pack_start(m_labelDone, true, true);
-    m_boxDone.pack_start(m_buttonCloseDone, false, false);
-    m_boxDone.get_style_context()->add_class("osd");
-    m_boxDone.set_size_request(1, 35);
-    m_revealerDone.add(m_boxDone);
-    m_revealerDone.set_halign(Gtk::ALIGN_CENTER);
-    m_revealerDone.set_valign(Gtk::ALIGN_START);
-
     m_scroller.add(m_view);
     auto editorBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_VERTICAL});
     editorBox->pack_start(m_scroller);
@@ -117,7 +99,7 @@ void AppWindow::setupWidgets()
     m_stack.add(*editorBox, "editor");
 
     m_overlay.add(m_stack);
-    m_overlay.add_overlay(m_revealerDone);
+    m_overlay.add_overlay(m_savingRevealer);
 
     add(m_overlay); // NOLINT
     show_all_children();
@@ -125,24 +107,6 @@ void AppWindow::setupWidgets()
 
 void AppWindow::setupSignalHandlers()
 {
-    m_buttonCloseDone.signal_clicked().connect([this]() {
-        m_revealerDone.set_reveal_child(false);
-    });
-
-    m_signalSaved.connect([this]() {
-        // Stop any previous hiding animation started
-        if (m_connectionSaved.connected())
-            m_connectionSaved.disconnect();
-
-        // Show notification and automatically hide it later
-        m_revealerDone.set_reveal_child(true);
-        m_connectionSaved = Glib::signal_timeout().connect([this]() {
-            m_revealerDone.set_reveal_child(false);
-            return false;
-        },
-                                                           5000);
-    });
-
     m_view.signal_selected_children_changed().connect([this]() {
         onSelectedPagesChanged();
     });
@@ -153,6 +117,21 @@ void AppWindow::setupSignalHandlers()
 
     m_zoomLevel.changed.connect([this](int targetSize) {
         m_renderer.setDocument(*m_document, targetSize);
+    });
+
+    m_savedDispatcher.connect([this]() {
+        m_savingRevealer.saved();
+    });
+
+    m_savingFailedDispatcher.connect([this]() {
+        Gtk::MessageDialog errorDialog{_("The current document could not be saved"),
+                                       false,
+                                       Gtk::MESSAGE_ERROR,
+                                       Gtk::BUTTONS_CLOSE,
+                                       true};
+        errorDialog.set_transient_for(*this);
+
+        errorDialog.run();
     });
 }
 
@@ -186,21 +165,21 @@ void AppWindow::onSaveAction()
 
     const int result = dialog.run();
 
-    if (result == GTK_RESPONSE_ACCEPT)
-        try {
-            m_document->saveDocument(dialog.get_file());
-            m_signalSaved.emit();
-        }
-        catch (...) {
-            Gtk::MessageDialog errorDialog{_("The current document could not be saved"),
-                                           false,
-                                           Gtk::MESSAGE_ERROR,
-                                           Gtk::BUTTONS_CLOSE,
-                                           true};
-            errorDialog.set_transient_for(*this);
+    if (result == GTK_RESPONSE_ACCEPT) {
+        Glib::RefPtr<Gio::File> file = dialog.get_file();
 
-            errorDialog.run();
-        }
+        std::thread thread{[this, file]() {
+            try {
+                m_document->saveDocument(file);
+                m_savedDispatcher.emit();
+            }
+            catch (...) {
+                m_savingFailedDispatcher.emit();
+            }
+        }};
+
+        thread.detach();
+    }
 }
 
 void AppWindow::onOpenAction()

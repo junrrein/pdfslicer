@@ -15,7 +15,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "view.hpp"
-#include "previewwindow.hpp"
 #include <range/v3/all.hpp>
 
 namespace Slicer {
