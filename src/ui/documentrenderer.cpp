@@ -14,6 +14,8 @@ DocumentRenderer::~DocumentRenderer()
 {
     for (sigc::connection& connection : m_documentConnections)
         connection.disconnect();
+
+    m_backgroundThread.killRemainingTasks();
 }
 
 void DocumentRenderer::setDocument(Document& document, int targetWidgetSize)

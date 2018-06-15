@@ -5,10 +5,10 @@
 
 namespace Slicer {
 
-class BackgroundThread
-{
+class BackgroundThread {
 public:
     BackgroundThread();
+    ~BackgroundThread();
 
 	void push(const std::function<void()>& task);
 	void killRemainingTasks();

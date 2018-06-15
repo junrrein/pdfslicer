@@ -6,7 +6,12 @@ static const int numThreads = 1;
 
 BackgroundThread::BackgroundThread()
 {
-	m_threadPool = std::make_unique<ctpl::thread_pool>(numThreads);
+    m_threadPool = std::make_unique<ctpl::thread_pool>(numThreads);
+}
+
+BackgroundThread::~BackgroundThread()
+{
+    m_threadPool->stop(false);
 }
 
 void BackgroundThread::push(const std::function<void()>& task)
