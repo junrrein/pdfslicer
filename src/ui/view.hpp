@@ -31,37 +31,9 @@ namespace Slicer {
 
 class View : public Gtk::FlowBox {
 public:
-    View(Gio::ActionMap& actionMap, BackgroundThread& backgroundThread);
-    virtual ~View();
+    View();
 
-    void setDocument(Document& document);
-    void waitForRenderCompletion();
-
-private:
-    Document* m_document;
-    Gio::ActionMap& m_actionMap;
-    BackgroundThread& m_backgroundThread;
-
-    Glib::RefPtr<Gio::SimpleAction> m_removeSelectedAction;
-    Glib::RefPtr<Gio::SimpleAction> m_removeUnselectedAction;
-    Glib::RefPtr<Gio::SimpleAction> m_removePreviousAction;
-    Glib::RefPtr<Gio::SimpleAction> m_removeNextAction;
-    Glib::RefPtr<Gio::SimpleAction> m_rotateRightAction;
-    Glib::RefPtr<Gio::SimpleAction> m_rotateLeftAction;
-    Glib::RefPtr<Gio::SimpleAction> m_previewPageAction;
-    Glib::RefPtr<Gio::SimpleAction> m_cancelSelectionAction;
-
-    void removeSelectedPages();
-    void removeUnselectedPages();
-    void removePreviousPages();
-    void removeNextPages();
-    void rotatePagesRight();
-    void rotatePagesLeft();
-    void previewPage();
-    void addActions();
-    void setupSignalHandlers();
-    void manageActionsEnabledStates();
-    void onCancelSelection();
+    int getSelectedChildIndex();
     std::vector<unsigned int> getSelectedChildrenIndexes();
     std::vector<unsigned int> getUnselectedChildrenIndexes();
 };

@@ -70,6 +70,14 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_saveAction;
     Glib::RefPtr<Gio::SimpleAction> m_undoAction;
     Glib::RefPtr<Gio::SimpleAction> m_redoAction;
+    Glib::RefPtr<Gio::SimpleAction> m_removeSelectedAction;
+    Glib::RefPtr<Gio::SimpleAction> m_removeUnselectedAction;
+    Glib::RefPtr<Gio::SimpleAction> m_removePreviousAction;
+    Glib::RefPtr<Gio::SimpleAction> m_removeNextAction;
+    Glib::RefPtr<Gio::SimpleAction> m_rotateRightAction;
+    Glib::RefPtr<Gio::SimpleAction> m_rotateLeftAction;
+    Glib::RefPtr<Gio::SimpleAction> m_previewPageAction;
+    Glib::RefPtr<Gio::SimpleAction> m_cancelSelectionAction;
 
     // Functions
     void addActions();
@@ -82,6 +90,15 @@ private:
     void onOpenAction();
     void onUndoAction();
     void onRedoAction();
+    void onRemoveSelectedPages();
+    void onRemoveUnselectedPages();
+    void onRemovePreviousPages();
+    void onRemoveNextPages();
+    void onRotatePagesRight();
+    void onRotatePagesLeft();
+    void onPreviewPage();
+    void onCancelSelection();
+    void onSelectedPagesChanged();
     void onCommandExecuted();
 };
 }

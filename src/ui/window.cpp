@@ -28,7 +28,6 @@ const std::set<int> AppWindow::zoomLevels = {200, 300, 400};
 
 AppWindow::AppWindow(BackgroundThread& backgroundThread)
     : m_backgroundThread{backgroundThread}
-    , m_view{*this, m_backgroundThread}
     , m_renderer{m_view, m_backgroundThread}
     , m_zoomLevel{zoomLevels, *this}
 {
@@ -46,7 +45,6 @@ AppWindow::AppWindow(BackgroundThread& backgroundThread)
 void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
 {
     auto document = std::make_unique<Document>(file->get_path());
-    m_view.setDocument(*document);
     m_renderer.setDocument(*document, m_zoomLevel.currentLevel());
     m_document = std::move(document);
 
@@ -66,10 +64,26 @@ void AppWindow::addActions()
     m_saveAction = add_action("save-document", sigc::mem_fun(*this, &AppWindow::onSaveAction));
     m_undoAction = add_action("undo", sigc::mem_fun(*this, &AppWindow::onUndoAction));
     m_redoAction = add_action("redo", sigc::mem_fun(*this, &AppWindow::onRedoAction));
+    m_removeSelectedAction = add_action("remove-selected", sigc::mem_fun(*this, &AppWindow::onRemoveSelectedPages));
+    m_removeUnselectedAction = add_action("remove-unselected", sigc::mem_fun(*this, &AppWindow::onRemoveUnselectedPages));
+    m_removePreviousAction = add_action("remove-previous", sigc::mem_fun(*this, &AppWindow::onRemovePreviousPages));
+    m_removeNextAction = add_action("remove-next", sigc::mem_fun(*this, &AppWindow::onRemoveNextPages));
+    m_rotateRightAction = add_action("rotate-right", sigc::mem_fun(*this, &AppWindow::onRotatePagesRight));
+    m_rotateLeftAction = add_action("rotate-left", sigc::mem_fun(*this, &AppWindow::onRotatePagesLeft));
+    m_previewPageAction = add_action("preview-selected", sigc::mem_fun(*this, &AppWindow::onPreviewPage));
+    m_cancelSelectionAction = add_action("cancel-selection", sigc::mem_fun(*this, &AppWindow::onCancelSelection));
 
     m_saveAction->set_enabled(false);
     m_undoAction->set_enabled(false);
     m_redoAction->set_enabled(false);
+    m_removeSelectedAction->set_enabled(false);
+    m_removeUnselectedAction->set_enabled(false);
+    m_removePreviousAction->set_enabled(false);
+    m_removeNextAction->set_enabled(false);
+    m_rotateRightAction->set_enabled(false);
+    m_rotateLeftAction->set_enabled(false);
+    m_previewPageAction->set_enabled(false);
+    m_cancelSelectionAction->set_enabled(false);
 }
 
 void AppWindow::setupWidgets()
@@ -127,6 +141,14 @@ void AppWindow::setupSignalHandlers()
             return false;
         },
                                                            5000);
+    });
+
+    m_view.signal_selected_children_changed().connect([this]() {
+        onSelectedPagesChanged();
+    });
+
+    m_view.signal_child_activated().connect([this](Gtk::FlowBoxChild*) {
+        m_previewPageAction->activate();
     });
 
     m_zoomLevel.changed.connect([this](int targetSize) {
@@ -215,6 +237,97 @@ void AppWindow::onRedoAction()
 {
 
     m_document->redoCommand();
+}
+
+void AppWindow::onRemoveSelectedPages()
+{
+    m_document->removePages(m_view.getSelectedChildrenIndexes());
+}
+
+void AppWindow::onRemoveUnselectedPages()
+{
+    m_document->removePages(m_view.getUnselectedChildrenIndexes());
+}
+
+void AppWindow::onRemovePreviousPages()
+{
+    m_document->removePageRange(0, m_view.getSelectedChildIndex() - 1);
+}
+
+void AppWindow::onRemoveNextPages()
+{
+    m_document->removePageRange(m_view.getSelectedChildIndex() + 1,
+                                static_cast<int>(m_document->pages()->get_n_items()) - 1);
+}
+
+void AppWindow::onRotatePagesRight()
+{
+    m_document->rotatePagesRight(m_view.getSelectedChildrenIndexes());
+}
+
+void AppWindow::onRotatePagesLeft()
+{
+    m_document->rotatePagesLeft(m_view.getSelectedChildrenIndexes());
+}
+
+void AppWindow::onPreviewPage()
+{
+    const int pageNumber = m_view.getSelectedChildIndex();
+
+    Glib::RefPtr<Slicer::Page> page
+        = m_document->pages()->get_item(static_cast<unsigned>(pageNumber));
+
+    (new Slicer::PreviewWindow{page, m_backgroundThread})->show();
+}
+
+void AppWindow::onCancelSelection()
+{
+    m_view.unselect_all();
+}
+
+void AppWindow::onSelectedPagesChanged()
+{
+    const unsigned long numSelected = m_view.get_selected_children().size();
+
+    if (numSelected == 0) {
+        m_removeSelectedAction->set_enabled(false);
+        m_removeUnselectedAction->set_enabled(false);
+        m_removePreviousAction->set_enabled(false);
+        m_removeNextAction->set_enabled(false);
+        m_rotateRightAction->set_enabled(false);
+        m_rotateLeftAction->set_enabled(false);
+        m_cancelSelectionAction->set_enabled(false);
+    }
+    else {
+        m_removeSelectedAction->set_enabled();
+        m_rotateRightAction->set_enabled();
+        m_rotateLeftAction->set_enabled();
+        m_removeUnselectedAction->set_enabled();
+        m_cancelSelectionAction->set_enabled();
+    }
+
+    if (numSelected == 1) {
+        m_previewPageAction->set_enabled();
+
+        const int index = m_view.getSelectedChildIndex();
+        if (index == 0)
+            m_removePreviousAction->set_enabled(false);
+        else
+            m_removePreviousAction->set_enabled();
+
+        if (index == static_cast<int>(get_children().size()) - 1)
+            m_removeNextAction->set_enabled(false);
+        else
+            m_removeNextAction->set_enabled();
+    }
+    else {
+        m_previewPageAction->set_enabled(false);
+    }
+
+    if (numSelected > 1) {
+        m_removePreviousAction->set_enabled(false);
+        m_removeNextAction->set_enabled(false);
+    }
 }
 
 void AppWindow::onCommandExecuted()
