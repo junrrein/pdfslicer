@@ -17,8 +17,7 @@
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
 
-#include "backgroundthread.hpp"
-#include "../ui/window.hpp"
+#include "../ui/appwindow.hpp"
 #include <gtkmm/application.h>
 
 namespace Slicer {

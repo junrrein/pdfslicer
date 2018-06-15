@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#include "window.hpp"
+#include "appwindow.hpp"
 #include "openfiledialog.hpp"
 #include "savefiledialog.hpp"
 #include <glibmm/main.h>

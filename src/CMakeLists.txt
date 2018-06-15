@@ -19,6 +19,8 @@ set (SLICER_UI_SOURCES
      ui/aboutdialog.cpp
      ui/actionbar.hpp
      ui/actionbar.cpp
+	 ui/appwindow.hpp
+	 ui/appwindow.cpp
 	 ui/documentrenderer.hpp
 	 ui/documentrenderer.cpp
 	 ui/filechoosernative.hpp
@@ -41,8 +43,6 @@ set (SLICER_UI_SOURCES
      ui/view.cpp
      ui/welcomescreen.hpp
      ui/welcomescreen.cpp
-     ui/window.hpp
-     ui/window.cpp
      ui/zoomlevel.hpp
      ui/zoomlevel.cpp
      ui/zoomlevelwithactions.hpp
