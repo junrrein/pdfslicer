@@ -121,14 +121,12 @@ void AppWindow::setupSignalHandlers()
 
     m_savedDispatcher.connect([this]() {
         m_savingRevealer.saved();
-        m_openAction->set_enabled();
-        m_saveAction->set_enabled();
+        enableEditingActions();
     });
 
     m_savingFailedDispatcher.connect([this]() {
         m_savingRevealer.set_reveal_child(false);
-        m_openAction->set_enabled();
-        m_saveAction->set_enabled();
+        enableEditingActions();
 
         Gtk::MessageDialog errorDialog{_("The current document could not be saved"),
                                        false,
@@ -164,7 +162,29 @@ void AppWindow::loadCustomCSS()
                                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
-// FIXME:: We need to make this not freeze the UI too
+void AppWindow::disableEditingActions()
+{
+    m_openAction->set_enabled(false);
+    m_saveAction->set_enabled(false);
+    m_undoAction->set_enabled(false);
+    m_redoAction->set_enabled(false);
+    m_removeSelectedAction->set_enabled(false);
+    m_removeUnselectedAction->set_enabled(false);
+    m_removePreviousAction->set_enabled(false);
+    m_removeNextAction->set_enabled(false);
+    m_rotateRightAction->set_enabled(false);
+    m_rotateLeftAction->set_enabled(false);
+    m_cancelSelectionAction->set_enabled(false);
+}
+
+void AppWindow::enableEditingActions()
+{
+    m_openAction->set_enabled();
+    m_saveAction->set_enabled();
+    onSelectedPagesChanged();
+    onCommandExecuted();
+}
+
 void AppWindow::onSaveAction()
 {
     Slicer::SaveFileDialog dialog{*this};
@@ -174,8 +194,7 @@ void AppWindow::onSaveAction()
     if (result == GTK_RESPONSE_ACCEPT) {
         Glib::RefPtr<Gio::File> file = dialog.get_file();
         m_savingRevealer.saving();
-        m_openAction->set_enabled(false);
-        m_saveAction->set_enabled(false);
+        disableEditingActions();
 
         std::thread thread{[this, file]() {
             try {

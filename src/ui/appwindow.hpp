@@ -80,6 +80,8 @@ private:
     void setupWidgets();
     void setupSignalHandlers();
     void loadCustomCSS();
+    void disableEditingActions();
+    void enableEditingActions();
 
     // Callbacks
     void onSaveAction();
