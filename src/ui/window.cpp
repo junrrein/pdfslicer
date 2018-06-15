@@ -315,7 +315,8 @@ void AppWindow::onSelectedPagesChanged()
         else
             m_removePreviousAction->set_enabled();
 
-        if (index == static_cast<int>(get_children().size()) - 1)
+        const int numPages = static_cast<int>(m_view.get_children().size());
+        if (index == numPages - 1)
             m_removeNextAction->set_enabled(false);
         else
             m_removeNextAction->set_enabled();
