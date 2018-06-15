@@ -4,8 +4,10 @@
 #include <glibmm/dispatcher.h>
 #include <gtkmm/box.h>
 #include <gtkmm/button.h>
+#include <gtkmm/image.h>
 #include <gtkmm/label.h>
 #include <gtkmm/revealer.h>
+#include <gtkmm/spinner.h>
 
 namespace Slicer {
 
@@ -17,9 +19,12 @@ public:
     void saved();
 
 private:
+    Gtk::Box m_boxSaving;
+    Gtk::Label m_labelSaving;
+    Gtk::Spinner m_spinner;
     Gtk::Box m_boxDone;
     Gtk::Label m_labelDone;
-    Gtk::Button m_buttonCloseDone;
+    Gtk::Image m_iconDone;
 
     sigc::connection m_connectionSaved;
 };
