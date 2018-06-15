@@ -20,13 +20,10 @@
 
 namespace Slicer {
 
-const int View::numRendererThreads = 1; // Poppler can't handle more than one
-const std::set<int> View::zoomLevels = {200, 300, 400};
-
-View::View(Gio::ActionMap& actionMap)
+View::View(Gio::ActionMap& actionMap, BackgroundThread& backgroundThread)
     : m_document{nullptr}
     , m_actionMap{actionMap}
-    , m_zoomLevel{zoomLevels, m_actionMap}
+    , m_backgroundThread{backgroundThread}
 {
     set_column_spacing(10);
     set_row_spacing(20);
@@ -40,11 +37,6 @@ View::View(Gio::ActionMap& actionMap)
 
 View::~View()
 {
-    if (m_pageRendererPool != nullptr) {
-        m_pageRendererPool->stop();
-        m_pagesRotatedConnection.disconnect();
-    }
-
     m_actionMap.remove_action("remove-selected");
     m_actionMap.remove_action("remove-previous");
     m_actionMap.remove_action("remove-next");
@@ -55,16 +47,7 @@ View::~View()
 
 void View::setDocument(Document& document)
 {
-    stopRendering();
-
-    if (m_document == nullptr)
-        m_zoomLevel.enable();
-    else
-        m_pagesRotatedConnection.disconnect();
-
     m_document = &document;
-    startGeneratingThumbnails(m_zoomLevel.minLevel());
-    m_pagesRotatedConnection = m_document->pagesRotated.connect(sigc::mem_fun(*this, &View::onPagesRotated));
 }
 
 void View::addActions()
@@ -90,26 +73,12 @@ void View::addActions()
 
 void View::setupSignalHandlers()
 {
-    m_zoomLevel.changed.connect([this](int targetThumbnailSize) {
-        stopRendering();
-        startGeneratingThumbnails(targetThumbnailSize);
-    });
-
     signal_selected_children_changed().connect([this]() {
         manageActionsEnabledStates();
     });
 
     signal_child_activated().connect([this](Gtk::FlowBoxChild*) {
         m_previewPageAction->activate();
-    });
-
-    m_thumbnailRendered.connect([this]() {
-        if (m_childQueue.empty())
-            return;
-
-        ViewChild* child = m_childQueue.front();
-        child->showPage();
-        m_childQueue.pop();
     });
 }
 
@@ -185,110 +154,25 @@ std::vector<unsigned int> View::getUnselectedChildrenIndexes()
     return unselectedIndexes;
 }
 
-void View::onPagesRotated(const std::vector<unsigned int> pageNumbers)
-{
-    for (unsigned int pageNumber : pageNumbers) {
-        Gtk::FlowBoxChild* fwChild = get_child_at_index(static_cast<int>(pageNumber));
-        auto child = dynamic_cast<ViewChild*>(fwChild->get_child());
-        renderChild(child);
-    }
-}
-
-void View::waitForRenderCompletion()
-{
-    if (m_pageRendererPool != nullptr)
-        m_pageRendererPool->stop(true);
-
-    while (!m_childQueue.empty()) {
-        ViewChild* child = m_childQueue.front();
-        child->showPage();
-        m_childQueue.pop();
-    }
-
-    m_pageRendererPool = std::make_unique<ctpl::thread_pool>(numRendererThreads);
-}
-
-void View::stopRendering()
-{
-    if (m_pageRendererPool != nullptr)
-        m_pageRendererPool->stop();
-
-    m_pageRendererPool = std::make_unique<ctpl::thread_pool>(numRendererThreads);
-    m_childQueue = {};
-}
-
-void View::startGeneratingThumbnails(int targetThumbnailSize)
-{
-    bind_list_store(m_document->pages(), [this, targetThumbnailSize](const Glib::RefPtr<Page>& page) {
-        auto child = Gtk::manage(new Slicer::ViewChild{page, //NOLINT
-                                                       targetThumbnailSize});
-        renderChild(child);
-
-        return child;
-    });
-}
-
-void View::renderChild(ViewChild* child)
-{
-    child->showSpinner();
-
-    m_pageRendererPool->push([this, child](int) {
-        child->renderPage();
-        m_childQueue.push(child);
-        m_thumbnailRendered.emit();
-    });
-}
-
 void View::removeSelectedPages()
 {
-    waitForRenderCompletion();
-
-    if (get_selected_children().size() == 1) {
-        Gtk::FlowBoxChild* child = get_selected_children().at(0);
-        const int index = child->get_index();
-        m_document->removePage(index);
-    }
-    else {
-        m_document->removePages(getSelectedChildrenIndexes());
-    }
+    m_document->removePages(getSelectedChildrenIndexes());
 }
 
 void View::removeUnselectedPages()
 {
-    waitForRenderCompletion();
-
     m_document->removePages(getUnselectedChildrenIndexes());
 }
 
 void View::removePreviousPages()
 {
-    waitForRenderCompletion();
-
-    std::vector<Gtk::FlowBoxChild*> selected = get_selected_children();
-
-    if (selected.size() != 1)
-        throw std::runtime_error(
-            "Tried to remove previous pages with more "
-            "than one page selected. This should never happen!");
-
-    const int index = selected.at(0)->get_index();
-
+    const int index = get_selected_children().at(0)->get_index();
     m_document->removePageRange(0, index - 1);
 }
 
 void View::removeNextPages()
 {
-    waitForRenderCompletion();
-
-    std::vector<Gtk::FlowBoxChild*> selected = get_selected_children();
-
-    if (selected.size() != 1)
-        throw std::runtime_error(
-            "Tried to remove next pages with more "
-            "than one page selected. This should never happen!");
-
-    const int index = selected.at(0)->get_index();
-
+    const int index = get_selected_children().at(0)->get_index();
     m_document->removePageRange(index + 1,
                                 static_cast<int>(m_document->pages()->get_n_items()) - 1);
 }
@@ -305,17 +189,11 @@ void View::rotatePagesLeft()
 
 void View::previewPage()
 {
-    // We need to wait till the thumbnails finish rendering
-    // before rendering a big preview, to prevent crashes.
-    // Poppler isn't designed for rendering many pages of
-    // the same document in different threads.
-    waitForRenderCompletion();
-
     const int pageNumber = get_selected_children().at(0)->get_index();
 
     Glib::RefPtr<Slicer::Page> page
         = m_document->pages()->get_item(static_cast<unsigned>(pageNumber));
 
-    (new Slicer::PreviewWindow{page})->show();
+    (new Slicer::PreviewWindow{page, m_backgroundThread})->show();
 }
 }

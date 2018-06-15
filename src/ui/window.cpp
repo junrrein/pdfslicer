@@ -24,8 +24,13 @@
 
 namespace Slicer {
 
-AppWindow::AppWindow()
-    : m_editor{*this}
+const std::set<int> AppWindow::zoomLevels = {200, 300, 400};
+
+AppWindow::AppWindow(BackgroundThread& backgroundThread)
+    : m_backgroundThread{backgroundThread}
+    , m_view{*this, m_backgroundThread}
+    , m_renderer{m_view, m_backgroundThread}
+    , m_zoomLevel{zoomLevels, *this}
 {
     set_size_request(500, 500);
     set_default_size(800, 600);
@@ -41,18 +46,16 @@ AppWindow::AppWindow()
 void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
 {
     auto document = std::make_unique<Document>(file->get_path());
-    m_editor.setDocument(*document);
+    m_view.setDocument(*document);
+    m_renderer.setDocument(*document, m_zoomLevel.currentLevel());
     m_document = std::move(document);
 
-    if (!m_editor.is_ancestor(m_overlay)) {
-        m_overlay.remove();
-        m_overlay.add(m_editor);
-        show_all_children();
-    }
+    m_stack.set_visible_child("editor");
 
     m_headerBar.set_subtitle(file->get_basename());
 
     m_saveAction->set_enabled();
+    m_zoomLevel.enable();
 
     m_document->commandExecuted().connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
 }
@@ -91,10 +94,19 @@ void AppWindow::setupWidgets()
     m_revealerDone.set_halign(Gtk::ALIGN_CENTER);
     m_revealerDone.set_valign(Gtk::ALIGN_START);
 
-    m_overlay.add(m_welcomeScreen);
+    m_scroller.add(m_view);
+    auto editorBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_VERTICAL});
+    editorBox->pack_start(m_scroller);
+    editorBox->pack_start(m_actionBar, Gtk::PACK_SHRINK);
+
+    m_stack.add(m_welcomeScreen, "welcome");
+    m_stack.add(*editorBox, "editor");
+
+    m_overlay.add(m_stack);
     m_overlay.add_overlay(m_revealerDone);
 
     add(m_overlay); // NOLINT
+    show_all_children();
 }
 
 void AppWindow::setupSignalHandlers()
@@ -115,6 +127,10 @@ void AppWindow::setupSignalHandlers()
             return false;
         },
                                                            5000);
+    });
+
+    m_zoomLevel.changed.connect([this](int targetSize) {
+        m_renderer.setDocument(*m_document, targetSize);
     });
 }
 
@@ -141,6 +157,7 @@ void AppWindow::loadCustomCSS()
                                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
+// FIXME:: We need to make this not freeze the UI too
 void AppWindow::onSaveAction()
 {
     Slicer::SaveFileDialog dialog{*this};
@@ -191,13 +208,12 @@ void AppWindow::onOpenAction()
 
 void AppWindow::onUndoAction()
 {
-    m_editor.waitForRenderCompletion();
     m_document->undoCommand();
 }
 
 void AppWindow::onRedoAction()
 {
-    m_editor.waitForRenderCompletion();
+
     m_document->redoCommand();
 }
 

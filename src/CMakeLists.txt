@@ -1,3 +1,9 @@
+set (SLICER_APPLICATION_SOURCES
+	application/application.hpp
+	application/application.cpp
+	application/backgroundthread.hpp
+	application/backgroundthread.cpp)
+
 set (SLICER_BACKEND_SOURCES
      backend/command.hpp
      backend/command.cpp
@@ -13,14 +19,16 @@ set (SLICER_UI_SOURCES
      ui/aboutdialog.cpp
      ui/actionbar.hpp
      ui/actionbar.cpp
-     ui/editor.hpp
-     ui/editor.cpp
+	 ui/documentrenderer.hpp
+	 ui/documentrenderer.cpp
 	 ui/filechoosernative.hpp
 	 ui/filechoosernative.cpp
      ui/headerbar.hpp
      ui/headerbar.cpp
      ui/openfiledialog.hpp
      ui/openfiledialog.cpp
+	 ui/pagewidget.hpp
+	 ui/pagewidget.cpp
      ui/previewwindow.hpp
      ui/previewwindow.cpp
      ui/savefiledialog.hpp
@@ -29,8 +37,6 @@ set (SLICER_UI_SOURCES
      ui/utils.cpp
      ui/view.hpp
      ui/view.cpp
-     ui/viewchild.hpp
-     ui/viewchild.cpp
      ui/welcomescreen.hpp
      ui/welcomescreen.cpp
      ui/window.hpp
@@ -42,8 +48,7 @@ set (SLICER_UI_SOURCES
 
 add_executable (${CMAKE_PROJECT_NAME}
                 main.cpp
-                application.hpp
-                application.cpp
+				${SLICER_APPLICATION_SOURCES}
                 ${SLICER_BACKEND_SOURCES}
                 ${SLICER_UI_SOURCES})
 add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")

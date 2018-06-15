@@ -17,11 +17,11 @@
 #ifndef SLICERWINDOW_HPP
 #define SLICERWINDOW_HPP
 
-#include "view.hpp"
+#include "../application/backgroundthread.hpp"
 #include "previewwindow.hpp"
 #include "welcomescreen.hpp"
 #include "headerbar.hpp"
-#include "editor.hpp"
+#include "documentrenderer.hpp"
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/button.h>
@@ -29,23 +29,32 @@
 #include <gtkmm/revealer.h>
 #include <gtkmm/label.h>
 #include <gtkmm/box.h>
+#include <gtkmm/stack.h>
 
 namespace Slicer {
 
 class AppWindow : public Gtk::ApplicationWindow {
 public:
-    AppWindow();
+    AppWindow(BackgroundThread& bacgkroundThread);
     virtual ~AppWindow() = default;
 
     void openDocument(const Glib::RefPtr<Gio::File>& file);
 
 private:
     std::unique_ptr<Document> m_document;
+    BackgroundThread& m_backgroundThread;
 
     HeaderBar m_headerBar;
-    WelcomeScreen m_welcomeScreen;
-    Editor m_editor;
     Gtk::Overlay m_overlay;
+    Gtk::Stack m_stack;
+    WelcomeScreen m_welcomeScreen;
+    Gtk::ScrolledWindow m_scroller;
+    View m_view;
+    DocumentRenderer m_renderer;
+    ActionBar m_actionBar;
+
+    ZoomLevelWithActions m_zoomLevel;
+    static const std::set<int> zoomLevels;
 
     Gtk::Revealer m_revealerDone;
     Gtk::Box m_boxDone;

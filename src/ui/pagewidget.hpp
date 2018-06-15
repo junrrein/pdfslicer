@@ -14,31 +14,36 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef EDITOR_HPP
-#define EDITOR_HPP
+#ifndef VIEWCHILD_HPP
+#define VIEWCHILD_HPP
 
-#include "../backend/document.hpp"
-#include "view.hpp"
-#include "actionbar.hpp"
+#include "../backend/page.hpp"
+#include <ctpl_stl.h>
 #include <gtkmm/box.h>
-#include <giomm/actionmap.h>
-#include <gtkmm/scrolledwindow.h>
+#include <gtkmm/image.h>
+#include <gtkmm/spinner.h>
 
 namespace Slicer {
 
-class Editor : public Gtk::Box {
+class PageWidget : public Gtk::Box {
 public:
-    Editor(Gio::ActionMap& actionMap);
+    PageWidget(const Glib::RefPtr<Page>& page,
+              int targetSize);
+    virtual ~PageWidget() = default;
 
-    void setDocument(Document& document);
-    void waitForRenderCompletion();
+    void renderPage();
+    void showSpinner();
+    void showPage();
 
 private:
-    View m_view;
-    Gtk::ScrolledWindow m_scroller;
-    ActionBar m_actionBar;
+    const Glib::RefPtr<Slicer::Page> m_page;
+    const int m_targetSize;
+    Gtk::Image m_thumbnail;
+    Gtk::Spinner m_spinner;
+
+    bool isThumbnailVisible();
 };
 
 } // namespace Slicer
 
-#endif // EDITOR_HPP
+#endif // VIEWCHILD_HPP

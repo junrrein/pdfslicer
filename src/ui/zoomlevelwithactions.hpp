@@ -31,6 +31,7 @@ public:
     ~ZoomLevelWithActions();
 
     void enable();
+    void disable();
 
 private:
     Gio::ActionMap& m_actionMap;

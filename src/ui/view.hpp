@@ -18,17 +18,20 @@
 #define SLICERVIEW_HPP
 
 #include "../backend/document.hpp"
+#include "../application/backgroundthread.hpp"
+#include "actionbar.hpp"
+#include "pagewidget.hpp"
 #include "zoomlevelwithactions.hpp"
-#include "viewchild.hpp"
 #include <gtkmm/flowbox.h>
 #include <glibmm/dispatcher.h>
 #include <ctpl_stl.h>
+#include <functional>
 
 namespace Slicer {
 
 class View : public Gtk::FlowBox {
 public:
-    View(Gio::ActionMap& actionMap);
+    View(Gio::ActionMap& actionMap, BackgroundThread& backgroundThread);
     virtual ~View();
 
     void setDocument(Document& document);
@@ -36,16 +39,8 @@ public:
 
 private:
     Document* m_document;
-    std::unique_ptr<ctpl::thread_pool> m_pageRendererPool;
-    static const int numRendererThreads;
-    // We don't need an asynchronous queue as long as we have only one renderer thread
-    std::queue<ViewChild*> m_childQueue;
-    Glib::Dispatcher m_thumbnailRendered;
-
     Gio::ActionMap& m_actionMap;
-
-    ZoomLevelWithActions m_zoomLevel;
-    static const std::set<int> zoomLevels;
+    BackgroundThread& m_backgroundThread;
 
     Glib::RefPtr<Gio::SimpleAction> m_removeSelectedAction;
     Glib::RefPtr<Gio::SimpleAction> m_removeUnselectedAction;
@@ -56,9 +51,6 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_previewPageAction;
     Glib::RefPtr<Gio::SimpleAction> m_cancelSelectionAction;
 
-    void stopRendering();
-    void startGeneratingThumbnails(int targetThumbnailSize);
-    void renderChild(ViewChild* child);
     void removeSelectedPages();
     void removeUnselectedPages();
     void removePreviousPages();
@@ -72,9 +64,6 @@ private:
     void onCancelSelection();
     std::vector<unsigned int> getSelectedChildrenIndexes();
     std::vector<unsigned int> getUnselectedChildrenIndexes();
-
-    void onPagesRotated(const std::vector<unsigned int> pageNumbers);
-    sigc::connection m_pagesRotatedConnection;
 };
 }
 

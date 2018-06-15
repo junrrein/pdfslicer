@@ -14,36 +14,38 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef VIEWCHILD_HPP
-#define VIEWCHILD_HPP
+#ifndef APPLICATION_HPP
+#define APPLICATION_HPP
 
-#include "../backend/page.hpp"
-#include <ctpl_stl.h>
-#include <gtkmm/box.h>
-#include <gtkmm/image.h>
-#include <gtkmm/spinner.h>
+#include "backgroundthread.hpp"
+#include "../ui/window.hpp"
+#include <gtkmm/application.h>
 
 namespace Slicer {
 
-class ViewChild : public Gtk::Box {
+class Application : public Gtk::Application {
 public:
-    ViewChild(Glib::RefPtr<Page> page,
-              int targetSize);
-    virtual ~ViewChild() = default;
-
-    void renderPage();
-    void showSpinner();
-    void showPage();
+    static Glib::RefPtr<Application> create();
+    virtual ~Application() override = default;
 
 private:
-    const Glib::RefPtr<Slicer::Page> m_page;
-    const int m_targetSize;
-    Gtk::Image m_thumbnail;
-    Gtk::Spinner m_spinner;
+    BackgroundThread m_backgroundThread;
 
-    bool isThumbnailVisible();
+    Application();
+    AppWindow* createWindow();
+
+    void on_startup() override;
+    void on_activate() override;
+    void on_open(const Gio::Application::type_vec_files& files,
+                 const Glib::ustring& hint) override;
+
+    void addActions();
+    void setupAppMenu();
+    void addAccels();
+    void onActionAbout();
+    void onActionQuit();
 };
 
 } // namespace Slicer
 
-#endif // VIEWCHILD_HPP
+#endif // APPLICATION_HPP

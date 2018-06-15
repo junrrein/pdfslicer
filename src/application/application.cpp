@@ -15,7 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "application.hpp"
-#include "ui/aboutdialog.hpp"
+#include "../ui/aboutdialog.hpp"
 #include <gtkmm.h>
 #include <glibmm/i18n.h>
 #include <config.hpp>
@@ -106,7 +106,7 @@ void Application::onActionQuit()
 
 AppWindow* Application::createWindow()
 {
-    auto window = new Slicer::AppWindow{}; //NOLINT
+    auto window = new Slicer::AppWindow{m_backgroundThread}; //NOLINT
 
     window->signal_hide().connect([window]() {
         delete window; //NOLINT

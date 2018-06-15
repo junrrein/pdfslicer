@@ -22,10 +22,12 @@ namespace Slicer {
 
 const std::set<int> PreviewWindow::zoomLevels = {1000, 1400, 1800};
 
-PreviewWindow::PreviewWindow(Glib::RefPtr<Page> page)
-    : m_page{std::move(page)}
+PreviewWindow::PreviewWindow(const Glib::RefPtr<Page>& page, BackgroundThread& backgroundThread)
+    : m_page{page}
+    , m_backgroundThread{backgroundThread}
     , m_actionGroup{Gio::SimpleActionGroup::create()}
     , m_zoomLevel{zoomLevels, *(m_actionGroup.operator->())}
+    , m_pageWidget{std::make_unique<PageWidget>(m_page, m_zoomLevel.currentLevel())}
 {
     set_title(_("Preview"));
     set_size_request(400, 400);
@@ -36,6 +38,7 @@ PreviewWindow::PreviewWindow(Glib::RefPtr<Page> page)
     setupWidgets();
     setupSignalHandlers();
     loadCustomCSS();
+    renderPage();
 
     show_all_children();
 }
@@ -64,8 +67,7 @@ void PreviewWindow::setupWidgets()
     m_boxZoom.set_margin_bottom(15);
     m_boxZoom.set_margin_right(15);
 
-    m_image.set(m_page->renderPage(m_zoomLevel.currentLevel()));
-    m_scroller.add(m_image);
+    m_scroller.add(*m_pageWidget);
     m_overlay.add(m_scroller);
     m_overlay.add_overlay(m_boxZoom);
     add(m_overlay); // NOLINT
@@ -75,8 +77,15 @@ void PreviewWindow::setupSignalHandlers()
 {
     m_zoomLevel.enable();
 
-    m_zoomLevel.changed.connect([&](int level) {
-        m_image.set(m_page->renderPage(level));
+    m_zoomLevel.changed.connect([this](int level) {
+        m_scroller.remove();
+        m_pageWidget = std::make_unique<PageWidget>(m_page, level);
+        m_scroller.add(*m_pageWidget);
+        renderPage();
+    });
+
+    m_pageRenderedDispatcher.connect([this]() {
+        m_pageWidget->showPage();
     });
 
     signal_hide().connect([this]() {
@@ -96,6 +105,14 @@ void PreviewWindow::loadCustomCSS()
     Gtk::StyleContext::add_provider_for_screen(screen,
                                                provider,
                                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+}
+
+void PreviewWindow::renderPage()
+{
+    m_backgroundThread.push([this]() {
+        m_pageWidget->renderPage();
+        m_pageRenderedDispatcher.emit();
+    });
 }
 
 } // namespace Slicer

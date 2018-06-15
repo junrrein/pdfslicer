@@ -37,7 +37,21 @@ ZoomLevelWithActions::~ZoomLevelWithActions()
 
 void ZoomLevelWithActions::enable()
 {
-    m_zoomInAction->set_enabled();
+    if (currentLevel() == maxLevel())
+        m_zoomInAction->set_enabled(false);
+    else
+        m_zoomInAction->set_enabled();
+
+    if (currentLevel() == minLevel())
+        m_zoomOutAction->set_enabled(false);
+    else
+        m_zoomOutAction->set_enabled();
+}
+
+void ZoomLevelWithActions::disable()
+{
+    m_zoomInAction->set_enabled(false);
+    m_zoomOutAction->set_enabled(false);
 }
 
 void ZoomLevelWithActions::onZoomInAction()
