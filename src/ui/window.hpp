@@ -53,6 +53,9 @@ private:
     DocumentRenderer m_renderer;
     ActionBar m_actionBar;
 
+    ZoomLevelWithActions m_zoomLevel;
+    static const std::set<int> zoomLevels;
+
     Gtk::Revealer m_revealerDone;
     Gtk::Box m_boxDone;
     Gtk::Label m_labelDone;

@@ -20,16 +20,10 @@
 
 namespace Slicer {
 
-const std::set<int> View::zoomLevels = {200, 300, 400};
-
-View::View(Gio::ActionMap& actionMap,
-           ActionBar& actionBar,
-           BackgroundThread& backgroundThread)
+View::View(Gio::ActionMap& actionMap, BackgroundThread& backgroundThread)
     : m_document{nullptr}
-    , m_backgroundThread{backgroundThread}
     , m_actionMap{actionMap}
-    , m_zoomLevel{zoomLevels, m_actionMap}
-    , m_actionBar{actionBar}
+    , m_backgroundThread{backgroundThread}
 {
     set_column_spacing(10);
     set_row_spacing(20);
@@ -53,15 +47,7 @@ View::~View()
 
 void View::setDocument(Document& document)
 {
-    if (m_document == nullptr)
-        m_zoomLevel.enable();
-
     m_document = &document;
-
-    m_document->commandExecuted().connect([this]() {
-        m_actionBar.set_sensitive(true);
-        m_zoomLevel.enable();
-    });
 }
 
 void View::addActions()

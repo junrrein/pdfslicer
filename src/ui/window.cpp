@@ -24,10 +24,13 @@
 
 namespace Slicer {
 
+const std::set<int> AppWindow::zoomLevels = {200, 300, 400};
+
 AppWindow::AppWindow(BackgroundThread& backgroundThread)
     : m_backgroundThread{backgroundThread}
-    , m_view{*this, m_actionBar, m_backgroundThread}
+    , m_view{*this, m_backgroundThread}
     , m_renderer{m_view, m_backgroundThread}
+    , m_zoomLevel{zoomLevels, *this}
 {
     set_size_request(500, 500);
     set_default_size(800, 600);
@@ -44,7 +47,7 @@ void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
 {
     auto document = std::make_unique<Document>(file->get_path());
     m_view.setDocument(*document);
-    m_renderer.setDocument(*document, 200);
+    m_renderer.setDocument(*document, m_zoomLevel.currentLevel());
     m_document = std::move(document);
 
     m_stack.set_visible_child("editor");
@@ -52,6 +55,7 @@ void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
     m_headerBar.set_subtitle(file->get_basename());
 
     m_saveAction->set_enabled();
+    m_zoomLevel.enable();
 
     m_document->commandExecuted().connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
 }
@@ -123,6 +127,10 @@ void AppWindow::setupSignalHandlers()
             return false;
         },
                                                            5000);
+    });
+
+    m_zoomLevel.changed.connect([this](int targetSize) {
+        m_renderer.setDocument(*m_document, targetSize);
     });
 }
 

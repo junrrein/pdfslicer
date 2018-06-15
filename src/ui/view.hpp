@@ -31,9 +31,7 @@ namespace Slicer {
 
 class View : public Gtk::FlowBox {
 public:
-    View(Gio::ActionMap& actionMap,
-         ActionBar& actionbar,
-         BackgroundThread& backgroundThread);
+    View(Gio::ActionMap& actionMap, BackgroundThread& backgroundThread);
     virtual ~View();
 
     void setDocument(Document& document);
@@ -41,13 +39,8 @@ public:
 
 private:
     Document* m_document;
-    BackgroundThread& m_backgroundThread;
     Gio::ActionMap& m_actionMap;
-
-    ZoomLevelWithActions m_zoomLevel;
-    static const std::set<int> zoomLevels;
-
-    ActionBar& m_actionBar;
+    BackgroundThread& m_backgroundThread;
 
     Glib::RefPtr<Gio::SimpleAction> m_removeSelectedAction;
     Glib::RefPtr<Gio::SimpleAction> m_removeUnselectedAction;
