@@ -24,6 +24,8 @@ void DocumentRenderer::setDocument(Document& document, int targetWidgetSize)
     for (Gtk::Widget* child : m_view.get_children())
         m_view.remove(*child);
 
+    m_pageWidgets = {};
+
     for (sigc::connection& connection : m_documentConnections)
         connection.disconnect();
 
