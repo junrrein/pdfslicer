@@ -19,7 +19,7 @@
 
 #include "../backend/page.hpp"
 #include "../application/backgroundthread.hpp"
-#include "viewchild.hpp"
+#include "pagewidget.hpp"
 #include "zoomlevelwithactions.hpp"
 #include <glibmm/dispatcher.h>
 #include <gtkmm/window.h>
@@ -46,7 +46,7 @@ private:
     ZoomLevelWithActions m_zoomLevel;
     static const std::set<int> zoomLevels;
 
-    std::unique_ptr<ViewChild> m_pageWidget;
+    std::unique_ptr<PageWidget> m_pageWidget;
     Gtk::ScrolledWindow m_scroller;
     Gtk::Overlay m_overlay;
     Gtk::Button m_buttonZoomIn;

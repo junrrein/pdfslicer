@@ -18,7 +18,6 @@
 #define APPLICATION_HPP
 
 #include "backgroundthread.hpp"
-#include "commandslot.hpp"
 #include "../ui/window.hpp"
 #include <gtkmm/application.h>
 
@@ -31,7 +30,6 @@ public:
 
 private:
     BackgroundThread m_backgroundThread;
-    CommandSlot m_commandSlot;
 
     Application();
     AppWindow* createWindow();

@@ -24,10 +24,10 @@
 
 namespace Slicer {
 
-AppWindow::AppWindow(BackgroundThread& backgroundThread, CommandSlot& commandSlot)
+AppWindow::AppWindow(BackgroundThread& backgroundThread)
     : m_backgroundThread{backgroundThread}
-    , m_commandSlot{commandSlot}
-    , m_editor{*this, m_backgroundThread, m_commandSlot}
+    , m_view{*this, m_actionBar, m_backgroundThread}
+    , m_renderer{m_view, m_backgroundThread}
 {
     set_size_request(500, 500);
     set_default_size(800, 600);
@@ -43,14 +43,11 @@ AppWindow::AppWindow(BackgroundThread& backgroundThread, CommandSlot& commandSlo
 void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
 {
     auto document = std::make_unique<Document>(file->get_path());
-    m_editor.setDocument(*document);
+    m_view.setDocument(*document);
+    m_renderer.setDocument(*document, 200);
     m_document = std::move(document);
 
-    if (!m_editor.is_ancestor(m_overlay)) {
-        m_overlay.remove();
-        m_overlay.add(m_editor);
-        show_all_children();
-    }
+    m_stack.set_visible_child("editor");
 
     m_headerBar.set_subtitle(file->get_basename());
 
@@ -93,10 +90,19 @@ void AppWindow::setupWidgets()
     m_revealerDone.set_halign(Gtk::ALIGN_CENTER);
     m_revealerDone.set_valign(Gtk::ALIGN_START);
 
-    m_overlay.add(m_welcomeScreen);
+    m_scroller.add(m_view);
+    auto editorBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_VERTICAL});
+    editorBox->pack_start(m_scroller);
+    editorBox->pack_start(m_actionBar, Gtk::PACK_SHRINK);
+
+    m_stack.add(m_welcomeScreen, "welcome");
+    m_stack.add(*editorBox, "editor");
+
+    m_overlay.add(m_stack);
     m_overlay.add_overlay(m_revealerDone);
 
     add(m_overlay); // NOLINT
+    show_all_children();
 }
 
 void AppWindow::setupSignalHandlers()
@@ -117,14 +123,6 @@ void AppWindow::setupSignalHandlers()
             return false;
         },
                                                            5000);
-    });
-
-    m_commandSlot.commandQueuedSignal.connect([this]() {
-        m_undoAction->set_enabled(false);
-        m_redoAction->set_enabled(false);
-
-        auto cursor = Gdk::Cursor::create(get_display(), "progress");
-        get_window()->set_cursor(cursor);
     });
 }
 
@@ -202,16 +200,13 @@ void AppWindow::onOpenAction()
 
 void AppWindow::onUndoAction()
 {
-    m_commandSlot.queueCommand([this]() {
-        m_document->undoCommand();
-    });
+    m_document->undoCommand();
 }
 
 void AppWindow::onRedoAction()
 {
-    m_commandSlot.queueCommand([this]() {
-        m_document->redoCommand();
-    });
+
+    m_document->redoCommand();
 }
 
 void AppWindow::onCommandExecuted()
@@ -225,7 +220,5 @@ void AppWindow::onCommandExecuted()
         m_redoAction->set_enabled();
     else
         m_redoAction->set_enabled(false);
-
-    get_window()->set_cursor();
 }
 }

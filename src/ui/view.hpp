@@ -19,9 +19,8 @@
 
 #include "../backend/document.hpp"
 #include "../application/backgroundthread.hpp"
-#include "../application/commandslot.hpp"
 #include "actionbar.hpp"
-#include "viewchild.hpp"
+#include "pagewidget.hpp"
 #include "zoomlevelwithactions.hpp"
 #include <gtkmm/flowbox.h>
 #include <glibmm/dispatcher.h>
@@ -34,8 +33,7 @@ class View : public Gtk::FlowBox {
 public:
     View(Gio::ActionMap& actionMap,
          ActionBar& actionbar,
-         BackgroundThread& backgroundThread,
-         CommandSlot& commandSlot);
+         BackgroundThread& backgroundThread);
     virtual ~View();
 
     void setDocument(Document& document);
@@ -44,11 +42,6 @@ public:
 private:
     Document* m_document;
     BackgroundThread& m_backgroundThread;
-    CommandSlot& m_commandSlot;
-    // We don't need an asynchronous queue as long as we have only one renderer thread
-    std::queue<ViewChild*> m_childQueue;
-    Glib::Dispatcher m_thumbnailRendered;
-
     Gio::ActionMap& m_actionMap;
 
     ZoomLevelWithActions m_zoomLevel;
@@ -65,14 +58,10 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_previewPageAction;
     Glib::RefPtr<Gio::SimpleAction> m_cancelSelectionAction;
 
-    void stopRendering();
-    void startGeneratingThumbnails(int targetThumbnailSize);
-    void renderChild(ViewChild* child);
     void removeSelectedPages();
     void removeUnselectedPages();
     void removePreviousPages();
     void removeNextPages();
-    void queuePageRemoval(const std::function<void()>& command);
     void rotatePagesRight();
     void rotatePagesLeft();
     void previewPage();
@@ -82,9 +71,6 @@ private:
     void onCancelSelection();
     std::vector<unsigned int> getSelectedChildrenIndexes();
     std::vector<unsigned int> getUnselectedChildrenIndexes();
-
-    void onPagesRotated(const std::vector<unsigned int> pageNumbers);
-    sigc::connection m_pagesRotatedConnection;
 };
 }
 

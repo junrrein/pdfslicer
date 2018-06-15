@@ -14,11 +14,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#include "viewchild.hpp"
+#include "pagewidget.hpp"
 
 namespace Slicer {
 
-ViewChild::ViewChild(const Glib::RefPtr<Page>& page,
+PageWidget::PageWidget(const Glib::RefPtr<Page>& page,
                      int targetSize)
     : m_page{page}
     , m_targetSize{targetSize}
@@ -33,13 +33,13 @@ ViewChild::ViewChild(const Glib::RefPtr<Page>& page,
     show_all();
 }
 
-void ViewChild::renderPage()
+void PageWidget::renderPage()
 {
     Glib::RefPtr<Gdk::Pixbuf> pixbuf = m_page->renderPage(m_targetSize);
     m_thumbnail.set(pixbuf);
 }
 
-void ViewChild::showSpinner()
+void PageWidget::showSpinner()
 {
     if (!m_spinner.is_visible()) {
         m_spinner.show();
@@ -48,7 +48,7 @@ void ViewChild::showSpinner()
     }
 }
 
-void ViewChild::showPage()
+void PageWidget::showPage()
 {
     if (!isThumbnailVisible()) {
         m_spinner.stop();
@@ -58,7 +58,7 @@ void ViewChild::showPage()
     }
 }
 
-bool ViewChild::isThumbnailVisible()
+bool PageWidget::isThumbnailVisible()
 {
     return get_children().size() == 2;
 }

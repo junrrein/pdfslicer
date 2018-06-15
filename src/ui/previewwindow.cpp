@@ -27,7 +27,7 @@ PreviewWindow::PreviewWindow(const Glib::RefPtr<Page>& page, BackgroundThread& b
     , m_backgroundThread{backgroundThread}
     , m_actionGroup{Gio::SimpleActionGroup::create()}
     , m_zoomLevel{zoomLevels, *(m_actionGroup.operator->())}
-    , m_pageWidget{std::make_unique<ViewChild>(m_page, m_zoomLevel.currentLevel())}
+    , m_pageWidget{std::make_unique<PageWidget>(m_page, m_zoomLevel.currentLevel())}
 {
     set_title(_("Preview"));
     set_size_request(400, 400);
@@ -79,7 +79,7 @@ void PreviewWindow::setupSignalHandlers()
 
     m_zoomLevel.changed.connect([this](int level) {
         m_scroller.remove();
-        m_pageWidget = std::make_unique<ViewChild>(m_page, level);
+        m_pageWidget = std::make_unique<PageWidget>(m_page, level);
         m_scroller.add(*m_pageWidget);
         renderPage();
     });

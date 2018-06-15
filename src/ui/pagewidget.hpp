@@ -25,11 +25,11 @@
 
 namespace Slicer {
 
-class ViewChild : public Gtk::Box {
+class PageWidget : public Gtk::Box {
 public:
-    ViewChild(const Glib::RefPtr<Page>& page,
+    PageWidget(const Glib::RefPtr<Page>& page,
               int targetSize);
-    virtual ~ViewChild() = default;
+    virtual ~PageWidget() = default;
 
     void renderPage();
     void showSpinner();

@@ -24,11 +24,9 @@ const std::set<int> View::zoomLevels = {200, 300, 400};
 
 View::View(Gio::ActionMap& actionMap,
            ActionBar& actionBar,
-           BackgroundThread& backgroundThread,
-           CommandSlot& commandSlot)
+           BackgroundThread& backgroundThread)
     : m_document{nullptr}
     , m_backgroundThread{backgroundThread}
-    , m_commandSlot{commandSlot}
     , m_actionMap{actionMap}
     , m_zoomLevel{zoomLevels, m_actionMap}
     , m_actionBar{actionBar}
@@ -45,10 +43,6 @@ View::View(Gio::ActionMap& actionMap,
 
 View::~View()
 {
-    m_backgroundThread.killRemainingTasks();
-    m_childQueue = {};
-    m_pagesRotatedConnection.disconnect();
-
     m_actionMap.remove_action("remove-selected");
     m_actionMap.remove_action("remove-previous");
     m_actionMap.remove_action("remove-next");
@@ -59,12 +53,8 @@ View::~View()
 
 void View::setDocument(Document& document)
 {
-    stopRendering();
-
     if (m_document == nullptr)
         m_zoomLevel.enable();
-    else
-        m_pagesRotatedConnection.disconnect();
 
     m_document = &document;
 
@@ -72,9 +62,6 @@ void View::setDocument(Document& document)
         m_actionBar.set_sensitive(true);
         m_zoomLevel.enable();
     });
-
-    startGeneratingThumbnails(m_zoomLevel.minLevel());
-    m_pagesRotatedConnection = m_document->pagesRotated.connect(sigc::mem_fun(*this, &View::onPagesRotated));
 }
 
 void View::addActions()
@@ -100,31 +87,12 @@ void View::addActions()
 
 void View::setupSignalHandlers()
 {
-    m_zoomLevel.changed.connect([this](int targetThumbnailSize) {
-        stopRendering();
-        startGeneratingThumbnails(targetThumbnailSize);
-    });
-
     signal_selected_children_changed().connect([this]() {
         manageActionsEnabledStates();
     });
 
     signal_child_activated().connect([this](Gtk::FlowBoxChild*) {
         m_previewPageAction->activate();
-    });
-
-    m_thumbnailRendered.connect([this]() {
-        if (m_childQueue.empty())
-            return;
-
-        ViewChild* child = m_childQueue.front();
-        child->showPage();
-        m_childQueue.pop();
-    });
-
-    m_commandSlot.commandQueuedSignal.connect([this]() {
-        m_actionBar.set_sensitive(false);
-        m_zoomLevel.disable();
     });
 }
 
@@ -200,83 +168,27 @@ std::vector<unsigned int> View::getUnselectedChildrenIndexes()
     return unselectedIndexes;
 }
 
-void View::onPagesRotated(const std::vector<unsigned int> pageNumbers)
-{
-    for (unsigned int pageNumber : pageNumbers) {
-        Gtk::FlowBoxChild* fwChild = get_child_at_index(static_cast<int>(pageNumber));
-        auto child = dynamic_cast<ViewChild*>(fwChild->get_child());
-        renderChild(child);
-    }
-}
-
-void View::stopRendering()
-{
-    m_backgroundThread.killRemainingTasks();
-    m_childQueue = {};
-}
-
-void View::startGeneratingThumbnails(int targetThumbnailSize)
-{
-    bind_list_store(m_document->pages(), [this, targetThumbnailSize](const Glib::RefPtr<Page>& page) {
-        auto child = Gtk::manage(new Slicer::ViewChild{page, //NOLINT
-                                                       targetThumbnailSize});
-        renderChild(child);
-
-        return child;
-    });
-}
-
-void View::renderChild(ViewChild* child)
-{
-    child->showSpinner();
-
-    m_backgroundThread.push([this, child]() {
-        child->renderPage();
-        m_childQueue.push(child);
-        m_thumbnailRendered.emit();
-    });
-}
-
 void View::removeSelectedPages()
 {
-    const std::vector<unsigned int> indexes = getSelectedChildrenIndexes();
-
-    queuePageRemoval([=]() {
-        m_document->removePages(indexes);
-    });
+    m_document->removePages(getSelectedChildrenIndexes());
 }
 
 void View::removeUnselectedPages()
 {
-    const std::vector<unsigned int> indexes = getUnselectedChildrenIndexes();
-
-    queuePageRemoval([=]() {
-        m_document->removePages(getUnselectedChildrenIndexes());
-    });
+    m_document->removePages(getUnselectedChildrenIndexes());
 }
 
 void View::removePreviousPages()
 {
     const int index = get_selected_children().at(0)->get_index();
-
-    queuePageRemoval([=]() {
-        m_document->removePageRange(0, index - 1);
-    });
+    m_document->removePageRange(0, index - 1);
 }
 
 void View::removeNextPages()
 {
     const int index = get_selected_children().at(0)->get_index();
-
-    queuePageRemoval([=]() {
-        m_document->removePageRange(index + 1,
-                                    static_cast<int>(m_document->pages()->get_n_items()) - 1);
-    });
-}
-
-void View::queuePageRemoval(const std::function<void()>& command)
-{
-    m_commandSlot.queueCommand(command);
+    m_document->removePageRange(index + 1,
+                                static_cast<int>(m_document->pages()->get_n_items()) - 1);
 }
 
 void View::rotatePagesRight()

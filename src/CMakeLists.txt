@@ -2,9 +2,7 @@ set (SLICER_APPLICATION_SOURCES
 	application/application.hpp
 	application/application.cpp
 	application/backgroundthread.hpp
-	application/backgroundthread.cpp
-	application/commandslot.hpp
-	application/commandslot.cpp)
+	application/backgroundthread.cpp)
 
 set (SLICER_BACKEND_SOURCES
      backend/command.hpp
@@ -21,14 +19,16 @@ set (SLICER_UI_SOURCES
      ui/aboutdialog.cpp
      ui/actionbar.hpp
      ui/actionbar.cpp
-     ui/editor.hpp
-     ui/editor.cpp
+	 ui/documentrenderer.hpp
+	 ui/documentrenderer.cpp
 	 ui/filechoosernative.hpp
 	 ui/filechoosernative.cpp
      ui/headerbar.hpp
      ui/headerbar.cpp
      ui/openfiledialog.hpp
      ui/openfiledialog.cpp
+	 ui/pagewidget.hpp
+	 ui/pagewidget.cpp
      ui/previewwindow.hpp
      ui/previewwindow.cpp
      ui/savefiledialog.hpp
@@ -37,8 +37,6 @@ set (SLICER_UI_SOURCES
      ui/utils.cpp
      ui/view.hpp
      ui/view.cpp
-     ui/viewchild.hpp
-     ui/viewchild.cpp
      ui/welcomescreen.hpp
      ui/welcomescreen.cpp
      ui/window.hpp
