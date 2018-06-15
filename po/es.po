@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-12 18:16-0300\n"
+"POT-Creation-Date: 2018-06-15 19:57-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -13,17 +13,18 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 2.0.7\n"
 
-#: ../src/application.cpp:60
+#: ../src/application/application.cpp:60
 msgid "About"
 msgstr "Acerca de"
 
-#: ../src/application.cpp:61
+#: ../src/application/application.cpp:61
 msgid "Quit"
 msgstr "Salir"
 
 #: ../src/ui/aboutdialog.cpp:26
 msgid "A simple application to extract and rotate pages of a PDF document"
-msgstr "Una aplicación sencilla para extraer y rotar páginas de un documento PDF"
+msgstr ""
+"Una aplicación sencilla para extraer y rotar páginas de un documento PDF"
 
 #: ../src/ui/aboutdialog.cpp:32
 msgid "Third-party libraries"
@@ -61,6 +62,14 @@ msgstr "Remover siguientes"
 msgid "Cancel selection"
 msgstr "Cancelar selección"
 
+#: ../src/ui/appwindow.cpp:131
+msgid "The current document could not be saved"
+msgstr "El documento actual no pudo ser guardado"
+
+#: ../src/ui/appwindow.cpp:224
+msgid "The selected file could not be opened"
+msgstr "No se pudo abrir el archivo seleccionado"
+
 #: ../src/ui/headerbar.cpp:33
 msgid "Open document…"
 msgstr "Abrir documento…"
@@ -81,11 +90,11 @@ msgstr "Repetir"
 msgid "Preview the selected page"
 msgstr "Mostrar vista previa de la página seleccionada"
 
-#: ../src/ui/headerbar.cpp:61 ../src/ui/previewwindow.cpp:46
+#: ../src/ui/headerbar.cpp:61 ../src/ui/previewwindow.cpp:49
 msgid "Zoom out"
 msgstr "Reducir"
 
-#: ../src/ui/headerbar.cpp:64 ../src/ui/previewwindow.cpp:53
+#: ../src/ui/headerbar.cpp:64 ../src/ui/previewwindow.cpp:56
 msgid "Zoom in"
 msgstr "Ampliar"
 
@@ -101,7 +110,7 @@ msgstr "Abrir"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../src/ui/previewwindow.cpp:30
+#: ../src/ui/previewwindow.cpp:32
 msgid "Preview"
 msgstr "Vista Previa"
 
@@ -117,6 +126,14 @@ msgstr "Guardar"
 msgid "Untitled document"
 msgstr "Documento sin título"
 
+#: ../src/ui/savingrevealer.cpp:10
+msgid "Saving…"
+msgstr ""
+
+#: ../src/ui/savingrevealer.cpp:17
+msgid "Saved!"
+msgstr "¡Guardado!"
+
 #: ../src/ui/utils.cpp:23
 msgid "PDF document"
 msgstr "Documento PDF"
@@ -124,15 +141,3 @@ msgstr "Documento PDF"
 #: ../src/ui/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
 msgstr "Abra un documento ¡y empiece a rebanar!"
-
-#: ../src/ui/window.cpp:76
-msgid "Saved!"
-msgstr "¡Guardado!"
-
-#: ../src/ui/window.cpp:156
-msgid "The current document could not be saved"
-msgstr "El documento actual no pudo ser guardado"
-
-#: ../src/ui/window.cpp:178
-msgid "The selected file could not be opened"
-msgstr "No se pudo abrir el archivo seleccionado"
