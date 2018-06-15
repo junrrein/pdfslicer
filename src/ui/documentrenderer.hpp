@@ -27,10 +27,10 @@ private:
     std::vector<sigc::connection> m_documentConnections;
     PageWidgetQueue m_toRenderQueue;
     PageWidgetQueue m_renderedQueue;
-    sigc::connection m_signalIdleConnection;
+    Glib::Dispatcher m_dispatcher;
     BackgroundThread& m_backgroundThread;
 
-    bool onSignalIdle();
+    void onDispatcherCalled();
     void onModelItemsChanged(guint position, guint removed, guint added);
     void onModelPagesRotated(const std::vector<unsigned int>& positions);
 };

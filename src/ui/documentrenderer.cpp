@@ -7,14 +7,11 @@ DocumentRenderer::DocumentRenderer(View& view, BackgroundThread& backgroundThrea
     : m_view{view}
     , m_backgroundThread{backgroundThread}
 {
-    m_signalIdleConnection
-        = Glib::signal_idle().connect(sigc::mem_fun(*this, &DocumentRenderer::onSignalIdle));
+    m_dispatcher.connect(sigc::mem_fun(*this, &DocumentRenderer::onDispatcherCalled));
 }
 
 DocumentRenderer::~DocumentRenderer()
 {
-    m_signalIdleConnection.disconnect();
-
     for (sigc::connection& connection : m_documentConnections)
         connection.disconnect();
 }
@@ -38,6 +35,7 @@ void DocumentRenderer::setDocument(Document& document, int targetWidgetSize)
         m_pageWidgets.push_back(pageWidget);
         m_view.insert(*m_pageWidgets.back().get(), -1);
         m_toRenderQueue.push(pageWidget);
+        m_dispatcher.emit();
     }
 
     m_documentConnections.push_back(
@@ -46,7 +44,7 @@ void DocumentRenderer::setDocument(Document& document, int targetWidgetSize)
         m_document->pagesRotated.connect(sigc::mem_fun(*this, &DocumentRenderer::onModelPagesRotated)));
 }
 
-bool DocumentRenderer::onSignalIdle()
+void DocumentRenderer::onDispatcherCalled()
 {
     while (!m_renderedQueue.empty()) {
         std::shared_ptr<PageWidget> pageWidget = m_renderedQueue.front().lock();
@@ -67,13 +65,12 @@ bool DocumentRenderer::onSignalIdle()
             if (pageWidget != nullptr) {
                 pageWidget->renderPage();
                 m_renderedQueue.push(pageWidget);
+                m_dispatcher.emit();
             }
         });
 
         m_toRenderQueue.pop();
     }
-
-    return true;
 }
 
 void DocumentRenderer::onModelItemsChanged(guint position, guint removed, guint added)
@@ -93,6 +90,7 @@ void DocumentRenderer::onModelItemsChanged(guint position, guint removed, guint 
         it = m_pageWidgets.insert(it, pageWidget);
         m_view.insert(*pageWidget, static_cast<int>(position + i));
         m_toRenderQueue.push(pageWidget);
+        m_dispatcher.emit();
     }
 }
 
@@ -104,6 +102,7 @@ void DocumentRenderer::onModelPagesRotated(const std::vector<unsigned int>& posi
 
         (*it)->showSpinner();
         m_toRenderQueue.push(*it);
+        m_dispatcher.emit();
     }
 }
 
