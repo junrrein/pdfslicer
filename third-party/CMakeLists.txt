@@ -1,4 +1,5 @@
 add_subdirectory (CTPL)
+add_subdirectory (ConcurrentQueue)
 add_subdirectory (PDF-Writer)
 
 set (RANGE_V3_TESTS OFF)
