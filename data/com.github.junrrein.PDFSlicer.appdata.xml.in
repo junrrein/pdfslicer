@@ -12,7 +12,7 @@
 		PDF Slicer is a simple application to extract and rotate pages of a PDF document.
 		The operations can be performed on single pages or on selections/ranges of pages,
 		and it has full undo/redo support.
-	  	</_p>
+		</_p>
 	</description>
 	<url type="homepage">https://github.com/junrrein/pdfslicer</url>
 	<url type="bugtracker">https://github.com/junrrein/pdfslicer/issues</url>
@@ -27,6 +27,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.2.1" date="2018-06-16">
+			<description>
+				<p>Use a concurrent queue to prevent a data race.</p>
+			</description>
+		</release>
 		<release version="1.2.0" date="2018-06-15">
 			<description>
 				<p>The user interface no longer freezes when doing page removal operations, undoing/redoing actions, or saving a document.</p>
