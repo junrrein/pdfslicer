@@ -23,7 +23,7 @@ void DocumentRenderer::setDocument(Document& document, int targetWidgetSize)
     for (Gtk::Widget* child : m_view.get_children())
         m_view.remove(*child);
 
-    m_pageWidgets = {};
+    m_pageWidgetList = {};
 
     for (sigc::connection& connection : m_documentConnections)
         connection.disconnect();
@@ -34,8 +34,8 @@ void DocumentRenderer::setDocument(Document& document, int targetWidgetSize)
     for (unsigned int i = 0; i < m_document->pages()->get_n_items(); ++i) {
         auto page = m_document->pages()->get_item(i);
         auto pageWidget = std::make_shared<PageWidget>(page, m_pageWidgetSize);
-        m_pageWidgets.push_back(pageWidget);
-        m_view.insert(*m_pageWidgets.back().get(), -1);
+        m_pageWidgetList.push_back(pageWidget);
+        m_view.insert(*m_pageWidgetList.back().get(), -1);
         m_toRenderQueue.push(pageWidget);
         m_dispatcher.emit();
     }
@@ -48,14 +48,16 @@ void DocumentRenderer::setDocument(Document& document, int targetWidgetSize)
 
 void DocumentRenderer::onDispatcherCalled()
 {
-    while (!m_renderedQueue.empty()) {
-        std::shared_ptr<PageWidget> pageWidget = m_renderedQueue.front().lock();
+    {
+        std::weak_ptr<PageWidget> weakWidget;
 
-        if (pageWidget != nullptr) {
-            pageWidget->showPage();
+        while (m_renderedQueue.try_dequeue(weakWidget)) {
+            std::shared_ptr<PageWidget> pageWidget = weakWidget.lock();
+
+            if (pageWidget != nullptr) {
+                pageWidget->showPage();
+            }
         }
-
-        m_renderedQueue.pop();
     }
 
     while (!m_toRenderQueue.empty()) {
@@ -66,7 +68,7 @@ void DocumentRenderer::onDispatcherCalled()
 
             if (pageWidget != nullptr) {
                 pageWidget->renderPage();
-                m_renderedQueue.push(pageWidget);
+                m_renderedQueue.enqueue(pageWidget);
                 m_dispatcher.emit();
             }
         });
@@ -77,19 +79,19 @@ void DocumentRenderer::onDispatcherCalled()
 
 void DocumentRenderer::onModelItemsChanged(guint position, guint removed, guint added)
 {
-    auto it = m_pageWidgets.begin();
+    auto it = m_pageWidgetList.begin();
     std::advance(it, position);
 
     for (; removed != 0; --removed) {
         m_view.remove(*m_view.get_child_at_index(static_cast<int>(position)));
-        it = m_pageWidgets.erase(it);
+        it = m_pageWidgetList.erase(it);
     }
 
     for (guint i = 0; i != added; ++i) {
         auto page = m_document->pages()->get_item(position + i);
         auto pageWidget = std::make_shared<PageWidget>(page, m_pageWidgetSize);
 
-        it = m_pageWidgets.insert(it, pageWidget);
+        it = m_pageWidgetList.insert(it, pageWidget);
         m_view.insert(*pageWidget, static_cast<int>(position + i));
         m_toRenderQueue.push(pageWidget);
         m_dispatcher.emit();
@@ -99,7 +101,7 @@ void DocumentRenderer::onModelItemsChanged(guint position, guint removed, guint 
 void DocumentRenderer::onModelPagesRotated(const std::vector<unsigned int>& positions)
 {
     for (unsigned int position : positions) {
-        auto it = m_pageWidgets.begin();
+        auto it = m_pageWidgetList.begin();
         std::advance(it, position);
 
         (*it)->showSpinner();
