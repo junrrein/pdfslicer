@@ -27,6 +27,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.2.2" date="2018-06-17">
+			<description>
+				<p>Replace the ConcurrentQueue library with std::queue + std::mutex.</p>
+			</description>
+		</release>
 		<release version="1.2.1" date="2018-06-16">
 			<description>
 				<p>Use a concurrent queue to prevent a data race.</p>
