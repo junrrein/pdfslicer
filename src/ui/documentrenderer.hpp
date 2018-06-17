@@ -6,11 +6,13 @@
 #include "../backend/document.hpp"
 #include "../application/backgroundthread.hpp"
 #include <glibmm/dispatcher.h>
-#include <concurrentqueue.h>
 
 namespace Slicer {
 
 class DocumentRenderer {
+
+    using PageWidgetList = std::list<std::shared_ptr<PageWidget>>;
+    using PageWidgetQueue = std::queue<std::weak_ptr<PageWidget>>;
 
 public:
     DocumentRenderer(View& view, BackgroundThread& backgroundThread);
@@ -19,13 +21,14 @@ public:
     void setDocument(Document& document, int targetWidgetSize);
 
 private:
-    std::list<std::shared_ptr<PageWidget>> m_pageWidgetList;
+    PageWidgetList m_pageWidgets;
     int m_pageWidgetSize;
     View& m_view;
     Document* m_document = nullptr;
     std::vector<sigc::connection> m_documentConnections;
-    std::queue<std::weak_ptr<PageWidget>> m_toRenderQueue;
-    moodycamel::ConcurrentQueue<std::weak_ptr<PageWidget>> m_renderedQueue;
+    PageWidgetQueue m_toRenderQueue;
+    PageWidgetQueue m_renderedQueue;
+    std::mutex m_renderedQueueMutex;
     Glib::Dispatcher m_dispatcher;
     BackgroundThread& m_backgroundThread;
 

@@ -30,8 +30,7 @@ AboutDialog::AboutDialog(Gtk::Window& parent)
     set_license_type(Gtk::LICENSE_GPL_3_0);
     set_website(config::APPLICATION_WEBSITE);
     add_credit_section(_("Third-party libraries"),
-                       {"moodycamel::ConcurrentQueue https://github.com/cameron314/concurrentqueue",
-                        "CTPL https://github.com/vit-vit/CTPL",
+                       {"CTPL https://github.com/vit-vit/CTPL",
                         "PDFWriter https://github.com/galkahana/PDF-Writer",
                         "Poppler https://poppler.freedesktop.org/",
                         "range-v3 https://github.com/ericniebler/range-v3"});
