@@ -61,7 +61,6 @@ target_include_directories (
     ${CMAKE_SOURCE_DIR}/third-party/PDF-Writer/PDFWriter
     ${CMAKE_SOURCE_DIR}/third-party/CTPL
     ${CMAKE_SOURCE_DIR}/third-party/range-v3/include
-	${CMAKE_SOURCE_DIR}/third-party/ConcurrentQueue
 )
 
 if (MINGW)
@@ -79,8 +78,7 @@ target_link_libraries (${CMAKE_PROJECT_NAME}
                        ${POPPLER_LDFLAGS}
                        ${INTL_LIBRARY_DIRS}
                        PDFWriter
-					   CTPL
-					   ConcurrentQueue)
+                       CTPL)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")

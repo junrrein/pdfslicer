@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-16 18:43-0300\n"
+"POT-Creation-Date: 2018-06-15 19:57-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -23,14 +23,13 @@ msgstr "Salir"
 
 #: ../src/ui/aboutdialog.cpp:26
 msgid "A simple application to extract and rotate pages of a PDF document"
-msgstr ""
-"Una aplicación sencilla para extraer y rotar páginas de un documento PDF"
+msgstr "Una aplicación sencilla para extraer y rotar páginas de un documento PDF"
 
 #: ../src/ui/aboutdialog.cpp:32
 msgid "Third-party libraries"
 msgstr "Bibliotecas de terceros"
 
-#: ../src/ui/aboutdialog.cpp:38
+#: ../src/ui/aboutdialog.cpp:37
 msgid "Application icon"
 msgstr "Icono de aplicación"
 
