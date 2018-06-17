@@ -28,6 +28,7 @@ private:
     std::vector<sigc::connection> m_documentConnections;
     PageWidgetQueue m_toRenderQueue;
     PageWidgetQueue m_renderedQueue;
+    std::mutex m_renderedQueueMutex;
     Glib::Dispatcher m_dispatcher;
     BackgroundThread& m_backgroundThread;
 

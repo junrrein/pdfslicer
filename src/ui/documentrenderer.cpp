@@ -48,14 +48,17 @@ void DocumentRenderer::setDocument(Document& document, int targetWidgetSize)
 
 void DocumentRenderer::onDispatcherCalled()
 {
-    while (!m_renderedQueue.empty()) {
-        std::shared_ptr<PageWidget> pageWidget = m_renderedQueue.front().lock();
+    {
+        std::lock_guard<std::mutex> lock{m_renderedQueueMutex};
 
-        if (pageWidget != nullptr) {
-            pageWidget->showPage();
+        while (!m_renderedQueue.empty()) {
+            std::shared_ptr<PageWidget> pageWidget = m_renderedQueue.front().lock();
+            m_renderedQueue.pop();
+
+            if (pageWidget != nullptr) {
+                pageWidget->showPage();
+            }
         }
-
-        m_renderedQueue.pop();
     }
 
     while (!m_toRenderQueue.empty()) {
@@ -66,6 +69,7 @@ void DocumentRenderer::onDispatcherCalled()
 
             if (pageWidget != nullptr) {
                 pageWidget->renderPage();
+                std::lock_guard<std::mutex> lock{m_renderedQueueMutex};
                 m_renderedQueue.push(pageWidget);
                 m_dispatcher.emit();
             }
