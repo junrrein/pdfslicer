@@ -37,12 +37,16 @@ namespace Slicer {
 class AppWindow : public Gtk::ApplicationWindow {
 public:
     AppWindow(BackgroundThread& bacgkroundThread);
-    virtual ~AppWindow() = default;
+    virtual ~AppWindow() override = default;
 
     void openDocument(const Glib::RefPtr<Gio::File>& file);
 
+protected:
+    virtual bool on_delete_event(GdkEventAny*) override;
+
 private:
     std::unique_ptr<Document> m_document;
+    std::atomic<bool> m_isSavingDocument{false};
     BackgroundThread& m_backgroundThread;
 
     HeaderBar m_headerBar;

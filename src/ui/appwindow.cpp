@@ -58,6 +58,16 @@ void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
     m_document->commandExecuted().connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
 }
 
+bool AppWindow::on_delete_event(GdkEventAny*)
+{
+    // TODO: Right now, when we are saving a document and the user
+    // tries to close the window, the app does nothing. It doesn't
+    // react at all.
+    // Maybe we should tell the user visually that his request to
+    // close the window was purposefully ignored.
+    return m_isSavingDocument;
+}
+
 void AppWindow::addActions()
 {
     m_openAction = add_action("open-document", sigc::mem_fun(*this, &AppWindow::onOpenAction));
@@ -195,6 +205,7 @@ void AppWindow::onSaveAction()
         Glib::RefPtr<Gio::File> file = dialog.get_file();
         m_savingRevealer.saving();
         disableEditingActions();
+        m_isSavingDocument = true;
 
         std::thread thread{[this, file]() {
             try {
@@ -204,6 +215,8 @@ void AppWindow::onSaveAction()
             catch (...) {
                 m_savingFailedDispatcher.emit();
             }
+
+            m_isSavingDocument = false;
         }};
 
         thread.detach();
