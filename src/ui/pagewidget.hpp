@@ -20,7 +20,6 @@
 #include "../backend/page.hpp"
 #include <ctpl_stl.h>
 #include <gtkmm/box.h>
-#include <gtkmm/checkbutton.h>
 #include <gtkmm/image.h>
 #include <gtkmm/overlay.h>
 #include <gtkmm/spinner.h>
@@ -44,9 +43,10 @@ private:
     Gtk::Spinner m_spinner;
     Gtk::Overlay m_overlay;
     Gtk::Image m_thumbnail;
-    Gtk::CheckButton m_checkButton;
+    Gtk::Image m_check;
 
     bool isThumbnailVisible();
+    Cairo::RefPtr<Cairo::ImageSurface> renderCheck();
 };
 
 } // namespace Slicer
