@@ -20,7 +20,9 @@
 #include "../backend/page.hpp"
 #include <ctpl_stl.h>
 #include <gtkmm/box.h>
+#include <gtkmm/checkbutton.h>
 #include <gtkmm/image.h>
+#include <gtkmm/overlay.h>
 #include <gtkmm/spinner.h>
 
 namespace Slicer {
@@ -28,7 +30,7 @@ namespace Slicer {
 class PageWidget : public Gtk::Box {
 public:
     PageWidget(const Glib::RefPtr<Page>& page,
-              int targetSize);
+               int targetSize);
     virtual ~PageWidget() = default;
 
     void renderPage();
@@ -38,8 +40,11 @@ public:
 private:
     const Glib::RefPtr<Slicer::Page> m_page;
     const int m_targetSize;
-    Gtk::Image m_thumbnail;
+
     Gtk::Spinner m_spinner;
+    Gtk::Overlay m_overlay;
+    Gtk::Image m_thumbnail;
+    Gtk::CheckButton m_checkButton;
 
     bool isThumbnailVisible();
 };

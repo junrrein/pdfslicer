@@ -19,7 +19,7 @@
 namespace Slicer {
 
 PageWidget::PageWidget(const Glib::RefPtr<Page>& page,
-                     int targetSize)
+                       int targetSize)
     : m_page{page}
     , m_targetSize{targetSize}
 {
@@ -29,6 +29,13 @@ PageWidget::PageWidget(const Glib::RefPtr<Page>& page,
     m_spinner.set_size_request(38, 38);
     m_spinner.start();
     pack_start(m_spinner, true, false);
+
+    m_checkButton.set_halign(Gtk::ALIGN_END);
+    m_checkButton.set_valign(Gtk::ALIGN_END);
+    m_checkButton.set_margin_bottom(10);
+    m_checkButton.set_margin_right(10);
+    m_overlay.add(m_thumbnail);
+    m_overlay.add_overlay(m_checkButton);
 
     show_all();
 }
@@ -44,7 +51,7 @@ void PageWidget::showSpinner()
     if (!m_spinner.is_visible()) {
         m_spinner.show();
         m_spinner.start();
-        remove(m_thumbnail);
+        remove(m_overlay);
     }
 }
 
@@ -52,8 +59,8 @@ void PageWidget::showPage()
 {
     if (!isThumbnailVisible()) {
         m_spinner.stop();
-        pack_start(m_thumbnail);
-        m_thumbnail.show();
+        pack_start(m_overlay);
+        m_overlay.show_all();
         m_spinner.hide();
     }
 }
