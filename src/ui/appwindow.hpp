@@ -20,7 +20,6 @@
 #include "../application/backgroundthread.hpp"
 #include "documentrenderer.hpp"
 #include "headerbar.hpp"
-#include "previewwindow.hpp"
 #include "savingrevealer.hpp"
 #include "welcomescreen.hpp"
 #include <gtkmm/applicationwindow.h>
@@ -76,7 +75,6 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_removeNextAction;
     Glib::RefPtr<Gio::SimpleAction> m_rotateRightAction;
     Glib::RefPtr<Gio::SimpleAction> m_rotateLeftAction;
-    Glib::RefPtr<Gio::SimpleAction> m_previewPageAction;
     Glib::RefPtr<Gio::SimpleAction> m_cancelSelectionAction;
 
     // Functions
@@ -98,7 +96,6 @@ private:
     void onRemoveNextPages();
     void onRotatePagesRight();
     void onRotatePagesLeft();
-    void onPreviewPage();
     void onCancelSelection();
     void onSelectedPagesChanged();
     void onCommandExecuted();

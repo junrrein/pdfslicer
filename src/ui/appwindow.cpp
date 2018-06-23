@@ -80,7 +80,6 @@ void AppWindow::addActions()
     m_removeNextAction = add_action("remove-next", sigc::mem_fun(*this, &AppWindow::onRemoveNextPages));
     m_rotateRightAction = add_action("rotate-right", sigc::mem_fun(*this, &AppWindow::onRotatePagesRight));
     m_rotateLeftAction = add_action("rotate-left", sigc::mem_fun(*this, &AppWindow::onRotatePagesLeft));
-    m_previewPageAction = add_action("preview-selected", sigc::mem_fun(*this, &AppWindow::onPreviewPage));
     m_cancelSelectionAction = add_action("cancel-selection", sigc::mem_fun(*this, &AppWindow::onCancelSelection));
 
     m_saveAction->set_enabled(false);
@@ -92,7 +91,6 @@ void AppWindow::addActions()
     m_removeNextAction->set_enabled(false);
     m_rotateRightAction->set_enabled(false);
     m_rotateLeftAction->set_enabled(false);
-    m_previewPageAction->set_enabled(false);
     m_cancelSelectionAction->set_enabled(false);
 }
 
@@ -119,10 +117,6 @@ void AppWindow::setupSignalHandlers()
 {
     m_view.signal_selected_children_changed().connect([this]() {
         onSelectedPagesChanged();
-    });
-
-    m_view.signal_child_activated().connect([this](Gtk::FlowBoxChild*) {
-        m_previewPageAction->activate();
     });
 
     m_zoomLevel.changed.connect([this](int targetSize) {
@@ -290,16 +284,6 @@ void AppWindow::onRotatePagesLeft()
     m_document->rotatePagesLeft(m_view.getSelectedChildrenIndexes());
 }
 
-void AppWindow::onPreviewPage()
-{
-    const int pageNumber = m_view.getSelectedChildIndex();
-
-    Glib::RefPtr<Slicer::Page> page
-        = m_document->pages()->get_item(static_cast<unsigned>(pageNumber));
-
-    (new Slicer::PreviewWindow{page, m_backgroundThread})->show();
-}
-
 void AppWindow::onCancelSelection()
 {
     m_view.unselect_all();
@@ -327,8 +311,6 @@ void AppWindow::onSelectedPagesChanged()
     }
 
     if (numSelected == 1) {
-        m_previewPageAction->set_enabled();
-
         const int index = m_view.getSelectedChildIndex();
         if (index == 0)
             m_removePreviousAction->set_enabled(false);
@@ -340,9 +322,6 @@ void AppWindow::onSelectedPagesChanged()
             m_removeNextAction->set_enabled(false);
         else
             m_removeNextAction->set_enabled();
-    }
-    else {
-        m_previewPageAction->set_enabled(false);
     }
 
     if (numSelected > 1) {
