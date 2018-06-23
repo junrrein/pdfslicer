@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-15 19:57-0300\n"
+"POT-Creation-Date: 2018-06-23 11:30-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -23,7 +23,8 @@ msgstr "Salir"
 
 #: ../src/ui/aboutdialog.cpp:26
 msgid "A simple application to extract and rotate pages of a PDF document"
-msgstr "Una aplicación sencilla para extraer y rotar páginas de un documento PDF"
+msgstr ""
+"Una aplicación sencilla para extraer y rotar páginas de un documento PDF"
 
 #: ../src/ui/aboutdialog.cpp:32
 msgid "Third-party libraries"
@@ -61,11 +62,11 @@ msgstr "Remover siguientes"
 msgid "Cancel selection"
 msgstr "Cancelar selección"
 
-#: ../src/ui/appwindow.cpp:131
+#: ../src/ui/appwindow.cpp:141
 msgid "The current document could not be saved"
 msgstr "El documento actual no pudo ser guardado"
 
-#: ../src/ui/appwindow.cpp:224
+#: ../src/ui/appwindow.cpp:237
 msgid "The selected file could not be opened"
 msgstr "No se pudo abrir el archivo seleccionado"
 
