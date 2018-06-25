@@ -30,11 +30,11 @@ PageWidget::PageWidget(const Glib::RefPtr<Page>& page,
     m_spinner.start();
     pack_start(m_spinner, true, false);
 
-    m_check.set(renderCheck());
     m_check.set_halign(Gtk::ALIGN_END);
     m_check.set_valign(Gtk::ALIGN_END);
     m_check.set_margin_bottom(10);
     m_check.set_margin_right(10);
+    renderCheck(CheckState::unchecked);
 
     m_overlay.set_halign(Gtk::ALIGN_CENTER);
     m_overlay.set_valign(Gtk::ALIGN_CENTER);
@@ -73,7 +73,7 @@ bool PageWidget::isThumbnailVisible()
     return get_children().size() == 2;
 }
 
-Cairo::RefPtr<Cairo::ImageSurface> PageWidget::renderCheck()
+void PageWidget::renderCheck(CheckState checkState)
 {
     const int checkSize = 36;
 
@@ -85,11 +85,14 @@ Cairo::RefPtr<Cairo::ImageSurface> PageWidget::renderCheck()
 
     styleContext->context_save();
     styleContext->add_class(GTK_STYLE_CLASS_CHECK);
-    styleContext->set_state(Gtk::STATE_FLAG_CHECKED);
+
+    if (checkState == CheckState::checked)
+        styleContext->set_state(Gtk::STATE_FLAG_CHECKED);
+
     styleContext->render_check(cr, 0, 0, checkSize, checkSize);
     styleContext->context_restore();
 
-    return surface;
+    m_check.set(surface);
 }
 
 } // namespace Slicer

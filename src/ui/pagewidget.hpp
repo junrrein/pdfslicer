@@ -32,7 +32,13 @@ public:
                int targetSize);
     virtual ~PageWidget() = default;
 
+    enum class CheckState {
+        checked,
+        unchecked
+    };
+
     void renderPage();
+    void renderCheck(CheckState checkState);
     void showSpinner();
     void showPage();
 
@@ -46,7 +52,6 @@ private:
     Gtk::Image m_check;
 
     bool isThumbnailVisible();
-    Cairo::RefPtr<Cairo::ImageSurface> renderCheck();
 };
 
 } // namespace Slicer
