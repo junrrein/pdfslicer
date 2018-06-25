@@ -24,8 +24,7 @@ View::View()
     set_column_spacing(10);
     set_row_spacing(20);
 
-    set_selection_mode(Gtk::SELECTION_MULTIPLE);
-    set_activate_on_single_click(false);
+    set_selection_mode(Gtk::SELECTION_NONE);
 }
 
 std::vector<unsigned int> View::getSelectedChildrenIndexes()

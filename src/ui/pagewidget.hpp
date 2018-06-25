@@ -20,38 +20,43 @@
 #include "../backend/page.hpp"
 #include <ctpl_stl.h>
 #include <gtkmm/box.h>
+#include <gtkmm/eventbox.h>
 #include <gtkmm/image.h>
 #include <gtkmm/overlay.h>
 #include <gtkmm/spinner.h>
 
 namespace Slicer {
 
-class PageWidget : public Gtk::Box {
+class PageWidget : public Gtk::EventBox {
 public:
     PageWidget(const Glib::RefPtr<Page>& page,
                int targetSize);
     virtual ~PageWidget() = default;
 
-    enum class CheckState {
-        checked,
-        unchecked
-    };
-
     void renderPage();
-    void renderCheck(CheckState checkState);
     void showSpinner();
     void showPage();
+    void setChecked(bool checked);
+    bool getChecked() const { return m_isChecked; }
+
+    sigc::signal<void, PageWidget*> activated;
 
 private:
     const Glib::RefPtr<Slicer::Page> m_page;
     const int m_targetSize;
+    bool m_isChecked = false;
 
+    Gtk::Box m_contentBox;
     Gtk::Spinner m_spinner;
     Gtk::Overlay m_overlay;
     Gtk::Image m_thumbnail;
     Gtk::Image m_check;
 
+    void setupWidgets();
     bool isThumbnailVisible();
+    void renderCheck();
+
+    bool onMouseReleaseEvent(GdkEventButton* eventButton);
 };
 
 } // namespace Slicer

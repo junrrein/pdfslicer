@@ -23,23 +23,34 @@ PageWidget::PageWidget(const Glib::RefPtr<Page>& page,
     : m_page{page}
     , m_targetSize{targetSize}
 {
+    set_events(Gdk::EventMask::BUTTON_RELEASE_MASK);
+
+    setupWidgets();
+
+    signal_button_release_event().connect(sigc::mem_fun(*this, &PageWidget::onMouseReleaseEvent));
+}
+
+void PageWidget::setupWidgets()
+{
     const Page::Size pageSize = m_page->scaledRotatedSize(m_targetSize);
     set_size_request(pageSize.width, pageSize.height);
 
     m_spinner.set_size_request(38, 38);
     m_spinner.start();
-    pack_start(m_spinner, true, false);
+    m_contentBox.pack_start(m_spinner, true, false);
 
     m_check.set_halign(Gtk::ALIGN_END);
     m_check.set_valign(Gtk::ALIGN_END);
     m_check.set_margin_bottom(10);
     m_check.set_margin_right(10);
-    renderCheck(CheckState::unchecked);
+    renderCheck();
 
     m_overlay.set_halign(Gtk::ALIGN_CENTER);
     m_overlay.set_valign(Gtk::ALIGN_CENTER);
     m_overlay.add(m_thumbnail);
     m_overlay.add_overlay(m_check);
+
+    add(m_contentBox);
 
     show_all();
 }
@@ -54,7 +65,7 @@ void PageWidget::showSpinner()
     if (!m_spinner.is_visible()) {
         m_spinner.show();
         m_spinner.start();
-        remove(m_overlay);
+        m_contentBox.remove(m_overlay);
     }
 }
 
@@ -62,10 +73,16 @@ void PageWidget::showPage()
 {
     if (!isThumbnailVisible()) {
         m_spinner.stop();
-        pack_start(m_overlay, Gtk::PACK_SHRINK);
+        m_contentBox.pack_start(m_overlay, Gtk::PACK_SHRINK);
         m_overlay.show_all();
         m_spinner.hide();
     }
+}
+
+void PageWidget::setChecked(bool checked)
+{
+    m_isChecked = checked;
+    renderCheck();
 }
 
 bool PageWidget::isThumbnailVisible()
@@ -73,7 +90,7 @@ bool PageWidget::isThumbnailVisible()
     return get_children().size() == 2;
 }
 
-void PageWidget::renderCheck(CheckState checkState)
+void PageWidget::renderCheck()
 {
     const int checkSize = 36;
 
@@ -86,13 +103,23 @@ void PageWidget::renderCheck(CheckState checkState)
     styleContext->context_save();
     styleContext->add_class(GTK_STYLE_CLASS_CHECK);
 
-    if (checkState == CheckState::checked)
+    if (m_isChecked)
         styleContext->set_state(Gtk::STATE_FLAG_CHECKED);
 
     styleContext->render_check(cr, 0, 0, checkSize, checkSize);
     styleContext->context_restore();
 
     m_check.set(surface);
+}
+
+bool PageWidget::onMouseReleaseEvent(GdkEventButton* eventButton)
+{
+    if (eventButton->button == 1) { // left-click
+        this->setChecked(!this->getChecked());
+        activated.emit(this);
+    }
+
+    return false;
 }
 
 } // namespace Slicer
