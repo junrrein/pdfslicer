@@ -21,8 +21,6 @@ set (SLICER_UI_SOURCES
      ui/actionbar.cpp
 	 ui/appwindow.hpp
 	 ui/appwindow.cpp
-	 ui/documentrenderer.hpp
-	 ui/documentrenderer.cpp
 	 ui/filechoosernative.hpp
 	 ui/filechoosernative.cpp
      ui/headerbar.hpp

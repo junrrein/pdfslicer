@@ -20,14 +20,13 @@
 #include "../backend/page.hpp"
 #include <ctpl_stl.h>
 #include <gtkmm/box.h>
-#include <gtkmm/eventbox.h>
 #include <gtkmm/image.h>
 #include <gtkmm/overlay.h>
 #include <gtkmm/spinner.h>
 
 namespace Slicer {
 
-class PageWidget : public Gtk::EventBox {
+class PageWidget : public Gtk::Box {
 public:
     PageWidget(const Glib::RefPtr<Page>& page,
                int targetSize);
@@ -39,14 +38,11 @@ public:
     void setChecked(bool checked);
     bool getChecked() const { return m_isChecked; }
 
-    sigc::signal<void, PageWidget*> activated;
-
 private:
     const Glib::RefPtr<Slicer::Page> m_page;
     const int m_targetSize;
     bool m_isChecked = false;
 
-    Gtk::Box m_contentBox;
     Gtk::Spinner m_spinner;
     Gtk::Overlay m_overlay;
     Gtk::Image m_thumbnail;
@@ -55,8 +51,6 @@ private:
     void setupWidgets();
     bool isThumbnailVisible();
     void renderCheck();
-
-    bool onMouseReleaseEvent(GdkEventButton* eventButton);
 };
 
 } // namespace Slicer

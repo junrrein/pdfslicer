@@ -18,10 +18,12 @@
 #define SLICERWINDOW_HPP
 
 #include "../application/backgroundthread.hpp"
-#include "documentrenderer.hpp"
+#include "actionbar.hpp"
 #include "headerbar.hpp"
 #include "savingrevealer.hpp"
+#include "view.hpp"
 #include "welcomescreen.hpp"
+#include "zoomlevelwithactions.hpp"
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/box.h>
 #include <gtkmm/button.h>
@@ -54,7 +56,6 @@ private:
     WelcomeScreen m_welcomeScreen;
     Gtk::ScrolledWindow m_scroller;
     View m_view;
-    DocumentRenderer m_renderer;
     ActionBar m_actionBar;
 
     ZoomLevelWithActions m_zoomLevel;

@@ -28,7 +28,7 @@ const std::set<int> AppWindow::zoomLevels = {200, 300, 400};
 
 AppWindow::AppWindow(BackgroundThread& backgroundThread)
     : m_backgroundThread{backgroundThread}
-    , m_renderer{m_view, m_backgroundThread}
+    , m_view{m_backgroundThread}
     , m_zoomLevel{zoomLevels, *this}
 {
     set_size_request(500, 500);
@@ -45,7 +45,7 @@ AppWindow::AppWindow(BackgroundThread& backgroundThread)
 void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
 {
     auto document = std::make_unique<Document>(file->get_path());
-    m_renderer.setDocument(*document, m_zoomLevel.currentLevel());
+    m_view.setDocument(*document, m_zoomLevel.currentLevel());
     m_document = std::move(document);
 
     m_stack.set_visible_child("editor");
@@ -115,12 +115,12 @@ void AppWindow::setupWidgets()
 
 void AppWindow::setupSignalHandlers()
 {
-    m_view.signal_selected_children_changed().connect([this]() {
+    m_view.selectedPagesChanged.connect([this]() {
         onSelectedPagesChanged();
     });
 
     m_zoomLevel.changed.connect([this](int targetSize) {
-        m_renderer.setDocument(*m_document, targetSize);
+        m_view.setDocument(*m_document, targetSize);
     });
 
     m_savedDispatcher.connect([this]() {
@@ -286,12 +286,12 @@ void AppWindow::onRotatePagesLeft()
 
 void AppWindow::onCancelSelection()
 {
-    m_view.unselect_all();
+    m_view.clearSelection();
 }
 
 void AppWindow::onSelectedPagesChanged()
 {
-    const unsigned long numSelected = m_view.get_selected_children().size();
+    const unsigned long numSelected = m_view.getSelectedChildrenIndexes().size();
 
     if (numSelected == 0) {
         m_removeSelectedAction->set_enabled(false);

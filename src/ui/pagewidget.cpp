@@ -23,21 +23,12 @@ PageWidget::PageWidget(const Glib::RefPtr<Page>& page,
     : m_page{page}
     , m_targetSize{targetSize}
 {
-    set_events(Gdk::EventMask::BUTTON_RELEASE_MASK);
-
-    setupWidgets();
-
-    signal_button_release_event().connect(sigc::mem_fun(*this, &PageWidget::onMouseReleaseEvent));
-}
-
-void PageWidget::setupWidgets()
-{
     const Page::Size pageSize = m_page->scaledRotatedSize(m_targetSize);
     set_size_request(pageSize.width, pageSize.height);
 
     m_spinner.set_size_request(38, 38);
     m_spinner.start();
-    m_contentBox.pack_start(m_spinner, true, false);
+    pack_start(m_spinner, true, false);
 
     m_check.set_halign(Gtk::ALIGN_END);
     m_check.set_valign(Gtk::ALIGN_END);
@@ -49,8 +40,6 @@ void PageWidget::setupWidgets()
     m_overlay.set_valign(Gtk::ALIGN_CENTER);
     m_overlay.add(m_thumbnail);
     m_overlay.add_overlay(m_check);
-
-    add(m_contentBox);
 
     show_all();
 }
@@ -65,7 +54,7 @@ void PageWidget::showSpinner()
     if (!m_spinner.is_visible()) {
         m_spinner.show();
         m_spinner.start();
-        m_contentBox.remove(m_overlay);
+        remove(m_overlay);
     }
 }
 
@@ -73,7 +62,7 @@ void PageWidget::showPage()
 {
     if (!isThumbnailVisible()) {
         m_spinner.stop();
-        m_contentBox.pack_start(m_overlay, Gtk::PACK_SHRINK);
+        pack_start(m_overlay, Gtk::PACK_SHRINK);
         m_overlay.show_all();
         m_spinner.hide();
     }
@@ -81,8 +70,10 @@ void PageWidget::showPage()
 
 void PageWidget::setChecked(bool checked)
 {
-    m_isChecked = checked;
-    renderCheck();
+    if (m_isChecked != checked) {
+        m_isChecked = checked;
+        renderCheck();
+    }
 }
 
 bool PageWidget::isThumbnailVisible()
@@ -110,16 +101,6 @@ void PageWidget::renderCheck()
     styleContext->context_restore();
 
     m_check.set(surface);
-}
-
-bool PageWidget::onMouseReleaseEvent(GdkEventButton* eventButton)
-{
-    if (eventButton->button == 1) { // left-click
-        this->setChecked(!this->getChecked());
-        activated.emit(this);
-    }
-
-    return false;
 }
 
 } // namespace Slicer
