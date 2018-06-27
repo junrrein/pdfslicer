@@ -28,20 +28,29 @@ PageWidget::PageWidget(const Glib::RefPtr<Page>& page,
 
     m_spinner.set_size_request(38, 38);
     m_spinner.start();
-    pack_start(m_spinner, true, false);
+    m_contentBox.pack_start(m_spinner, true, false);
 
     m_check.set_halign(Gtk::ALIGN_END);
     m_check.set_valign(Gtk::ALIGN_END);
     m_check.set_margin_bottom(10);
     m_check.set_margin_right(10);
-    renderCheck();
 
     m_overlay.set_halign(Gtk::ALIGN_CENTER);
     m_overlay.set_valign(Gtk::ALIGN_CENTER);
     m_overlay.add(m_thumbnail);
     m_overlay.add_overlay(m_check);
 
+    add(m_contentBox);
+
     show_all();
+
+    m_check.signal_clicked().connect([this]() {
+        // FIXME: This should be made so that the mouse event
+        // passes through without handling it.
+        // Using m_check.activate() doesn't work, since GtkCheckButton
+        // also emits signal_clicked when activated.
+        m_check.set_active(m_isChecked);
+    });
 }
 
 void PageWidget::renderPage()
@@ -54,7 +63,7 @@ void PageWidget::showSpinner()
     if (!m_spinner.is_visible()) {
         m_spinner.show();
         m_spinner.start();
-        remove(m_overlay);
+        m_contentBox.remove(m_overlay);
     }
 }
 
@@ -62,7 +71,7 @@ void PageWidget::showPage()
 {
     if (!isThumbnailVisible()) {
         m_spinner.stop();
-        pack_start(m_overlay, Gtk::PACK_SHRINK);
+        m_contentBox.pack_start(m_overlay, Gtk::PACK_SHRINK);
         m_overlay.show_all();
         m_spinner.hide();
     }
@@ -72,35 +81,13 @@ void PageWidget::setChecked(bool checked)
 {
     if (m_isChecked != checked) {
         m_isChecked = checked;
-        renderCheck();
+        m_check.set_active(m_isChecked);
     }
 }
 
 bool PageWidget::isThumbnailVisible()
 {
     return get_children().size() == 2;
-}
-
-void PageWidget::renderCheck()
-{
-    const int checkSize = 36;
-
-    Cairo::RefPtr<Cairo::ImageSurface> surface = Cairo::ImageSurface::create(Cairo::FORMAT_ARGB32,
-                                                                             checkSize,
-                                                                             checkSize);
-    Cairo::RefPtr<Cairo::Context> cr = Cairo::Context::create(surface);
-    Glib::RefPtr<Gtk::StyleContext> styleContext = get_style_context();
-
-    styleContext->context_save();
-    styleContext->add_class(GTK_STYLE_CLASS_CHECK);
-
-    if (m_isChecked)
-        styleContext->set_state(Gtk::STATE_FLAG_CHECKED);
-
-    styleContext->render_check(cr, 0, 0, checkSize, checkSize);
-    styleContext->context_restore();
-
-    m_check.set(surface);
 }
 
 } // namespace Slicer

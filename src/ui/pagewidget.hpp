@@ -20,13 +20,15 @@
 #include "../backend/page.hpp"
 #include <ctpl_stl.h>
 #include <gtkmm/box.h>
+#include <gtkmm/checkbutton.h>
+#include <gtkmm/flowboxchild.h>
 #include <gtkmm/image.h>
 #include <gtkmm/overlay.h>
 #include <gtkmm/spinner.h>
 
 namespace Slicer {
 
-class PageWidget : public Gtk::Box {
+class PageWidget : public Gtk::FlowBoxChild {
 public:
     PageWidget(const Glib::RefPtr<Page>& page,
                int targetSize);
@@ -43,14 +45,14 @@ private:
     const int m_targetSize;
     bool m_isChecked = false;
 
+    Gtk::Box m_contentBox;
     Gtk::Spinner m_spinner;
     Gtk::Overlay m_overlay;
     Gtk::Image m_thumbnail;
-    Gtk::Image m_check;
+    Gtk::CheckButton m_check;
 
     void setupWidgets();
     bool isThumbnailVisible();
-    void renderCheck();
 };
 
 } // namespace Slicer

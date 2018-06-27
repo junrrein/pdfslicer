@@ -29,7 +29,7 @@ View::View(BackgroundThread& backgroundThread)
     m_dispatcher.connect(sigc::mem_fun(*this, &View::onDispatcherCalled));
 
     signal_child_activated().connect([this](Gtk::FlowBoxChild* widget) {
-        auto pageWidget = dynamic_cast<PageWidget*>(widget->get_child());
+        auto pageWidget = dynamic_cast<PageWidget*>(widget);
         pageWidget->setChecked(!pageWidget->getChecked());
         selectedPagesChanged.emit();
     });
@@ -76,7 +76,7 @@ void View::clearSelection()
 {
     for (Gtk::Widget* child : get_children()) {
         auto fwchild = dynamic_cast<Gtk::FlowBoxChild*>(child);
-        auto pageWidget = dynamic_cast<PageWidget*>(fwchild->get_child());
+        auto pageWidget = dynamic_cast<PageWidget*>(fwchild);
         pageWidget->setChecked(false);
     }
 
@@ -99,7 +99,7 @@ std::vector<unsigned int> View::getSelectedChildrenIndexes() const
 
     std::vector<unsigned int> result;
     for (const Gtk::FlowBoxChild* fwchild : children) {
-        auto pageWidget = dynamic_cast<const PageWidget*>(fwchild->get_child());
+        auto pageWidget = dynamic_cast<const PageWidget*>(fwchild);
 
         if (pageWidget->getChecked())
             result.push_back(static_cast<unsigned int>(fwchild->get_index()));
