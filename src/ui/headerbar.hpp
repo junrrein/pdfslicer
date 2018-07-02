@@ -20,7 +20,6 @@
 #include <gtkmm/headerbar.h>
 #include <giomm/actiongroup.h>
 #include <gtkmm/menubutton.h>
-#include <gtkmm/modelbutton.h>
 #include <gtkmm/box.h>
 
 namespace Slicer {
@@ -38,6 +37,7 @@ private:
     Gtk::Button m_buttonZoomOut;
     Gtk::Button m_buttonZoomIn;
     Gtk::Box m_boxZoom;
+    Gtk::MenuButton m_buttonAppMenu;
 
     void setupWidgets();
 };

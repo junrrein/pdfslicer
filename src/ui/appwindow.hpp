@@ -66,6 +66,7 @@ private:
     Glib::Dispatcher m_savingFailedDispatcher;
 
     // Actions
+    Glib::RefPtr<Gio::SimpleAction> m_aboutAction;
     Glib::RefPtr<Gio::SimpleAction> m_openAction;
     Glib::RefPtr<Gio::SimpleAction> m_saveAction;
     Glib::RefPtr<Gio::SimpleAction> m_undoAction;
@@ -88,6 +89,7 @@ private:
     void enableEditingActions();
 
     // Callbacks
+    void onAboutAction();
     void onSaveAction();
     void onOpenAction();
     void onUndoAction();

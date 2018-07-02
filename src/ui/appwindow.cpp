@@ -15,6 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "appwindow.hpp"
+#include "aboutdialog.hpp"
 #include "openfiledialog.hpp"
 #include "savefiledialog.hpp"
 #include <glibmm/main.h>
@@ -70,6 +71,7 @@ bool AppWindow::on_delete_event(GdkEventAny*)
 
 void AppWindow::addActions()
 {
+    m_aboutAction = add_action("about", sigc::mem_fun(*this, &AppWindow::onAboutAction));
     m_openAction = add_action("open-document", sigc::mem_fun(*this, &AppWindow::onOpenAction));
     m_saveAction = add_action("save-document", sigc::mem_fun(*this, &AppWindow::onSaveAction));
     m_undoAction = add_action("undo", sigc::mem_fun(*this, &AppWindow::onUndoAction));
@@ -193,6 +195,11 @@ void AppWindow::enableEditingActions()
     m_saveAction->set_enabled();
     onSelectedPagesChanged();
     onCommandExecuted();
+}
+
+void AppWindow::onAboutAction()
+{
+    (new Slicer::AboutDialog{*this})->present();
 }
 
 void AppWindow::onSaveAction()
