@@ -1,7 +1,9 @@
 cmake_minimum_required (VERSION 3.7)
-project (pdfslicer CXX)
+project (pdfslicer CXX C)
 
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake-modules)
+include (GResource)
+
 set (APPLICATION_ID "com.github.junrrein.PDFSlicer")
 set (APPLICATION_NAME "PDF Slicer")
 set (APPLICATION_WEBSITE "https://github.com/junrrein/pdfslicer")
@@ -41,7 +43,6 @@ else ()
 endif ()
 
 add_subdirectory (third-party)
-
 add_subdirectory (src)
 add_subdirectory (data)
 add_subdirectory (po)

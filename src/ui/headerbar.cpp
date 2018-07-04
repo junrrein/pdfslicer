@@ -54,6 +54,7 @@ void HeaderBar::setupWidgets()
     pack_start(*undoBox);
 
     Glib::RefPtr<Gio::Menu> menu = Gio::Menu::create();
+    menu->append(_("Keyboard shortcuts"), "win.shortcuts");
     menu->append(_("About"), "win.about");
     m_buttonAppMenu.set_image_from_icon_name("open-menu-symbolic");
     m_buttonAppMenu.set_menu_model(menu);

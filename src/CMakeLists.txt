@@ -48,11 +48,15 @@ set (SLICER_UI_SOURCES
      ui/zoomlevelwithactions.hpp
      ui/zoomlevelwithactions.cpp)
 
+gresource (${CMAKE_SOURCE_DIR}/ui pdfslicer.gresource.xml
+	 ${CMAKE_CURRENT_BINARY_DIR} GLIB_RESOURCE_FILE)
+
 add_executable (${CMAKE_PROJECT_NAME}
                 main.cpp
 				${SLICER_APPLICATION_SOURCES}
                 ${SLICER_BACKEND_SOURCES}
-                ${SLICER_UI_SOURCES})
+				${SLICER_UI_SOURCES}
+				${GLIB_RESOURCE_FILE})
 add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
 
 target_include_directories (

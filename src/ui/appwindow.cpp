@@ -35,6 +35,7 @@ AppWindow::AppWindow(BackgroundThread& backgroundThread)
     set_size_request(500, 500);
     set_default_size(800, 600);
 
+    loadWidgets();
     addActions();
     setupWidgets();
     setupSignalHandlers();
@@ -69,9 +70,19 @@ bool AppWindow::on_delete_event(GdkEventAny*)
     return m_isSavingDocument;
 }
 
+void AppWindow::loadWidgets()
+{
+    Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_resource("/pdfslicer/shortcuts.ui");
+    Gtk::ShortcutsWindow* shortcutsWindow;
+    builder->get_widget("shortcuts-pdfslicer", shortcutsWindow);
+
+    shortcutsWindow->set_transient_for(*this);
+
+    m_shortcutsWindow.reset(shortcutsWindow);
+}
+
 void AppWindow::addActions()
 {
-    m_aboutAction = add_action("about", sigc::mem_fun(*this, &AppWindow::onAboutAction));
     m_openAction = add_action("open-document", sigc::mem_fun(*this, &AppWindow::onOpenAction));
     m_saveAction = add_action("save-document", sigc::mem_fun(*this, &AppWindow::onSaveAction));
     m_undoAction = add_action("undo", sigc::mem_fun(*this, &AppWindow::onUndoAction));
@@ -84,6 +95,8 @@ void AppWindow::addActions()
     m_rotateLeftAction = add_action("rotate-left", sigc::mem_fun(*this, &AppWindow::onRotatePagesLeft));
     m_previewPageAction = add_action("preview-selected", sigc::mem_fun(*this, &AppWindow::onPreviewPage));
     m_cancelSelectionAction = add_action("cancel-selection", sigc::mem_fun(*this, &AppWindow::onCancelSelection));
+    m_shortcutsAction = add_action("shortcuts", sigc::mem_fun(*this, &AppWindow::onShortcutsAction));
+    m_aboutAction = add_action("about", sigc::mem_fun(*this, &AppWindow::onAboutAction));
 
     m_saveAction->set_enabled(false);
     m_undoAction->set_enabled(false);
@@ -200,6 +213,12 @@ void AppWindow::enableEditingActions()
 void AppWindow::onAboutAction()
 {
     (new Slicer::AboutDialog{*this})->present();
+}
+
+void AppWindow::onShortcutsAction()
+{
+    m_shortcutsWindow->present();
+    m_shortcutsWindow->show_all_children();
 }
 
 void AppWindow::onSaveAction()
