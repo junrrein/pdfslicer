@@ -27,6 +27,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.3.0" date="2018-07-05">
+			<description>
+				<p>Implement the "selection mode" UI pattern from the Gnome HIG. Move the external AppMenu to an in-window AppMenu.</p>
+			</description>
+		</release>
 		<release version="1.2.3" date="2018-06-23">
 			<description>
 				<p>Inhibit closing a window while we are saving a document.</p>
