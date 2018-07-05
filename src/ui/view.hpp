@@ -35,6 +35,7 @@ public:
     virtual ~View();
 
     void setDocument(Document& document, int targetWidgetSize);
+    void changePageSize(int targetWidgetSize);
     void clearSelection();
 
     int getSelectedChildIndex() const;

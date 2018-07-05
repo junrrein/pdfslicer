@@ -27,6 +27,14 @@ PageWidget::PageWidget(const Glib::RefPtr<Page>& page,
     setupSignalHandlers();
 }
 
+void PageWidget::changeSize(int targetSize)
+{
+    m_targetSize = targetSize;
+
+    const Page::Size pageSize = m_page->scaledRotatedSize(m_targetSize);
+    set_size_request(pageSize.width, pageSize.height);
+}
+
 void PageWidget::setupWidgets()
 {
     const Page::Size pageSize = m_page->scaledRotatedSize(m_targetSize);
@@ -108,7 +116,7 @@ void PageWidget::setChecked(bool checked)
 
 bool PageWidget::isThumbnailVisible()
 {
-    return get_children().size() == 2;
+    return m_overlayEventBox.get_parent() != nullptr;
 }
 
 } // namespace Slicer

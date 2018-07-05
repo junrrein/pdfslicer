@@ -35,6 +35,7 @@ public:
                int targetSize);
     virtual ~PageWidget() = default;
 
+    void changeSize(int targetSize);
     void renderPage();
     void showSpinner();
     void showPage();
@@ -46,7 +47,7 @@ public:
 
 private:
     const Glib::RefPtr<Slicer::Page> m_page;
-    const int m_targetSize;
+    int m_targetSize;
     bool m_isChecked = false;
 
     Gtk::Box m_contentBox;

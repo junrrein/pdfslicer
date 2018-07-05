@@ -135,7 +135,7 @@ void AppWindow::setupSignalHandlers()
     });
 
     m_zoomLevel.changed.connect([this](int targetSize) {
-        m_view.setDocument(*m_document, targetSize);
+        m_view.changePageSize(targetSize);
     });
 
     m_savedDispatcher.connect([this]() {

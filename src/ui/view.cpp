@@ -76,6 +76,16 @@ void View::setDocument(Document& document, int targetWidgetSize)
     selectedPagesChanged.emit();
 }
 
+void View::changePageSize(int targetWidgetSize)
+{
+    for (auto pageWidget : m_pageWidgets) {
+        pageWidget->changeSize(targetWidgetSize);
+        pageWidget->showSpinner();
+        m_toRenderQueue.push(pageWidget);
+        m_dispatcher.emit();
+    }
+}
+
 void View::clearSelection()
 {
     for (Gtk::Widget* child : get_children()) {
