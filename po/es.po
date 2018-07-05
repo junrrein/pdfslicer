@@ -11,12 +11,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.8\n"
 
 #: ../src/ui/aboutdialog.cpp:26
 msgid "A simple application to extract and rotate pages of a PDF document"
-msgstr ""
-"Una aplicación sencilla para extraer y rotar páginas de un documento PDF"
+msgstr "Una aplicación sencilla para extraer y rotar páginas de un documento PDF"
 
 #: ../src/ui/aboutdialog.cpp:32
 msgid "Third-party libraries"
@@ -80,7 +79,7 @@ msgstr "Repetir"
 
 #: ../src/ui/headerbar.cpp:57
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "Atajos de teclado"
 
 #: ../src/ui/headerbar.cpp:58
 msgid "About"
@@ -137,45 +136,39 @@ msgstr "Abra un documento ¡y empiece a rebanar!"
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: ../data/ui/shortcuts.ui:16
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Open document"
 msgstr "Abrir documento"
 
 #: ../data/ui/shortcuts.ui:22
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr "Guardar documento como"
+msgstr "Guardar documento"
 
 #: ../data/ui/shortcuts.ui:28
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr "Ampliar"
+msgstr "Ampliar zoom"
 
 #: ../data/ui/shortcuts.ui:34
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr "Reducir"
+msgstr "Disminuir zoom"
 
 #: ../data/ui/shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Document edition"
-msgstr ""
+msgstr "Edición de documentos"
 
 #: ../data/ui/shortcuts.ui:45
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr "Remover seleccionadas"
+msgstr "Remover páginas seleccionadas"
 
 #: ../data/ui/shortcuts.ui:51
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Cancel selection"
 msgstr "Cancelar selección"
@@ -183,12 +176,12 @@ msgstr "Cancelar selección"
 #: ../data/ui/shortcuts.ui:57
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr ""
+msgstr "Deshacer el último comando"
 
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Redo last undone command"
-msgstr ""
+msgstr "Rehacer el último comando deshecho"
 
 #~ msgid "Quit"
 #~ msgstr "Salir"
