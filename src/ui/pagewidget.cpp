@@ -56,12 +56,15 @@ void PageWidget::setupWidgets()
 
 void PageWidget::setupSignalHandlers()
 {
-    m_check.signal_clicked().connect([this]() {
-        // FIXME: This should be made so that the mouse event
-        // passes through without handling it.
-        // Using m_check.activate() doesn't work, since GtkCheckButton
-        // also emits signal_clicked when activated.
-        m_check.set_active(m_isChecked);
+    m_overlayEventBox.signal_button_release_event().connect([this](GdkEventButton* eventButton) {
+        if (eventButton->button == 1) {
+            setChecked(!getChecked());
+            selectedChanged.emit();
+
+            return true;
+        }
+
+        return false;
     });
 }
 

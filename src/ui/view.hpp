@@ -54,6 +54,8 @@ private:
     Glib::Dispatcher m_dispatcher;
     BackgroundThread& m_backgroundThread;
 
+    std::shared_ptr<PageWidget> createPageWidget(const Glib::RefPtr<Page>& page);
+
     void onDispatcherCalled();
     void onModelItemsChanged(guint position, guint removed, guint added);
     void onModelPagesRotated(const std::vector<unsigned int>& positions);

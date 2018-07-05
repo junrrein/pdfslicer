@@ -41,6 +41,8 @@ public:
     void setChecked(bool checked);
     bool getChecked() const { return m_isChecked; }
 
+    sigc::signal<void> selectedChanged;
+
 private:
     const Glib::RefPtr<Slicer::Page> m_page;
     const int m_targetSize;

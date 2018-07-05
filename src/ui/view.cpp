@@ -27,12 +27,6 @@ View::View(BackgroundThread& backgroundThread)
     set_selection_mode(Gtk::SELECTION_NONE);
 
     m_dispatcher.connect(sigc::mem_fun(*this, &View::onDispatcherCalled));
-
-    signal_child_activated().connect([this](Gtk::FlowBoxChild* widget) {
-        auto pageWidget = dynamic_cast<PageWidget*>(widget);
-        pageWidget->setChecked(!pageWidget->getChecked());
-        selectedPagesChanged.emit();
-    });
 }
 
 View::~View()
@@ -41,6 +35,17 @@ View::~View()
         connection.disconnect();
 
     m_backgroundThread.killRemainingTasks();
+}
+
+std::shared_ptr<PageWidget> View::createPageWidget(const Glib::RefPtr<Page>& page)
+{
+    auto pageWidget = std::make_shared<PageWidget>(page, m_pageWidgetSize);
+
+    pageWidget->selectedChanged.connect([this]() {
+        selectedPagesChanged.emit();
+    });
+
+    return pageWidget;
 }
 
 void View::setDocument(Document& document, int targetWidgetSize)
@@ -58,7 +63,7 @@ void View::setDocument(Document& document, int targetWidgetSize)
 
     for (unsigned int i = 0; i < m_document->pages()->get_n_items(); ++i) {
         auto page = m_document->pages()->get_item(i);
-        auto pageWidget = std::make_shared<PageWidget>(page, m_pageWidgetSize);
+        std::shared_ptr<PageWidget> pageWidget = createPageWidget(page);
         m_pageWidgets.push_back(pageWidget);
         insert(*m_pageWidgets.back().get(), -1);
         m_toRenderQueue.push(pageWidget);
@@ -163,7 +168,7 @@ void View::onModelItemsChanged(guint position, guint removed, guint added)
 
     for (guint i = 0; i != added; ++i) {
         auto page = m_document->pages()->get_item(position + i);
-        auto pageWidget = std::make_shared<PageWidget>(page, m_pageWidgetSize);
+        std::shared_ptr<PageWidget> pageWidget = createPageWidget(page);
 
         it = m_pageWidgets.insert(it, pageWidget);
         insert(*pageWidget, static_cast<int>(position + i));
