@@ -9,58 +9,58 @@
 				<property name="visible">1</property>
 				<child>
 					<object class="GtkShortcutsGroup">
-						<property name="title" translatable="yes">General</property>
+						<property name="title" translatable="yes" context="shortcut window">General</property>
 						<child>
 							<object class="GtkShortcutsShortcut">
 								<property name="accelerator">&lt;ctrl&gt;O</property>
-								<property name="title" translatable="yes">Open document</property>
+								<property name="title" translatable="yes" context="shortcut window">Open document</property>
 							</object>
 						</child>
 						<child>
 							<object class="GtkShortcutsShortcut">
 								<property name="accelerator">&lt;ctrl&gt;S</property>
-								<property name="title" translatable="yes">Save document</property>
+								<property name="title" translatable="yes" context="shortcut window">Save document</property>
 							</object>
 						</child>
 						<child>
 							<object class="GtkShortcutsShortcut">
 								<property name="accelerator">&lt;ctrl&gt;plus</property>
-								<property name="title" translatable="yes">Zoom in</property>
+								<property name="title" translatable="yes" context="shortcut window">Zoom in</property>
 							</object>
 						</child>
 						<child>
 							<object class="GtkShortcutsShortcut">
 								<property name="accelerator">&lt;ctrl&gt;minus</property>
-								<property name="title" translatable="yes">Zoom out</property>
+								<property name="title" translatable="yes" context="shortcut window">Zoom out</property>
 							</object>
 						</child>
 					</object>
 				</child>
 				<child>
 					<object class="GtkShortcutsGroup">
-						<property name="title" translatable="yes">Document edition</property>
+						<property name="title" translatable="yes" context="shortcut window">Document edition</property>
 						<child>
 							<object class="GtkShortcutsShortcut">
 								<property name="accelerator">Delete</property>
-								<property name="title" translatable="yes">Remove selected pages</property>
+								<property name="title" translatable="yes" context="shortcut window">Remove selected pages</property>
 							</object>
 						</child>
 						<child>
 							<object class="GtkShortcutsShortcut">
 								<property name="accelerator">Escape</property>
-								<property name="title" translatable="yes">Cancel selection</property>
+								<property name="title" translatable="yes" context="shortcut window">Cancel selection</property>
 							</object>
 						</child>
 						<child>
 							<object class="GtkShortcutsShortcut">
 								<property name="accelerator">&lt;ctrl&gt;Z</property>
-								<property name="title" translatable="yes">Undo last command</property>
+								<property name="title" translatable="yes" context="shortcut window">Undo last command</property>
 							</object>
 						</child>
 						<child>
 							<object class="GtkShortcutsShortcut">
 								<property name="accelerator">&lt;shift&gt;&lt;ctrl&gt;Z</property>
-								<property name="title" translatable="yes">Redo last undone command</property>
+								<property name="title" translatable="yes" context="shortcut window">Redo last undone command</property>
 							</object>
 						</child>
 					</object>

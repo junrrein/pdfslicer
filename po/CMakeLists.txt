@@ -4,6 +4,7 @@ add_translations_catalog (${GETTEXT_PACKAGE}
                           ../src
                           ../src/backend
                           ../src/ui
+						  ../data/ui
                           DESKTOP_FILES
 						  ../data/${APPLICATION_ID}.desktop.in
 						  APPDATA_FILES
