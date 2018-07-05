@@ -72,7 +72,7 @@ bool AppWindow::on_delete_event(GdkEventAny*)
 
 void AppWindow::loadWidgets()
 {
-    Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_resource("/pdfslicer/shortcuts.ui");
+    Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_resource("/pdfslicer/ui/shortcuts.ui");
     Gtk::ShortcutsWindow* shortcutsWindow;
     builder->get_widget("shortcuts-pdfslicer", shortcutsWindow);
 

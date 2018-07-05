@@ -12,6 +12,8 @@ set (LOCALE_DIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
 set (VERSION 1.2.4)
 configure_file (config.hpp.in ${CMAKE_BINARY_DIR}/config.hpp)
 
+set (SOURCE_DATA_DIR ${CMAKE_SOURCE_DIR}/data)
+
 set (CMAKE_CXX_STANDARD 14)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
