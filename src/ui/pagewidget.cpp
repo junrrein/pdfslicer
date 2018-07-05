@@ -23,8 +23,16 @@ PageWidget::PageWidget(const Glib::RefPtr<Page>& page,
     : m_page{page}
     , m_targetSize{targetSize}
 {
+    setupWidgets();
+    setupSignalHandlers();
+}
+
+void PageWidget::setupWidgets()
+{
     const Page::Size pageSize = m_page->scaledRotatedSize(m_targetSize);
     set_size_request(pageSize.width, pageSize.height);
+    set_valign(Gtk::ALIGN_CENTER);
+    set_halign(Gtk::ALIGN_CENTER);
 
     m_spinner.set_size_request(38, 38);
     m_spinner.start();
@@ -39,11 +47,15 @@ PageWidget::PageWidget(const Glib::RefPtr<Page>& page,
     m_overlay.set_valign(Gtk::ALIGN_CENTER);
     m_overlay.add(m_thumbnail);
     m_overlay.add_overlay(m_check);
+    m_overlayEventBox.add(m_overlay);
 
     add(m_contentBox);
 
     show_all();
+}
 
+void PageWidget::setupSignalHandlers()
+{
     m_check.signal_clicked().connect([this]() {
         // FIXME: This should be made so that the mouse event
         // passes through without handling it.
@@ -63,7 +75,7 @@ void PageWidget::showSpinner()
     if (!m_spinner.is_visible()) {
         m_spinner.show();
         m_spinner.start();
-        m_contentBox.remove(m_overlay);
+        m_contentBox.remove(m_overlayEventBox);
     }
 }
 
@@ -71,8 +83,8 @@ void PageWidget::showPage()
 {
     if (!isThumbnailVisible()) {
         m_spinner.stop();
-        m_contentBox.pack_start(m_overlay, Gtk::PACK_SHRINK);
-        m_overlay.show_all();
+        m_contentBox.pack_start(m_overlayEventBox, Gtk::PACK_SHRINK);
+        m_overlayEventBox.show_all();
         m_spinner.hide();
     }
 }

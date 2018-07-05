@@ -21,6 +21,7 @@
 #include <ctpl_stl.h>
 #include <gtkmm/box.h>
 #include <gtkmm/checkbutton.h>
+#include <gtkmm/eventbox.h>
 #include <gtkmm/flowboxchild.h>
 #include <gtkmm/image.h>
 #include <gtkmm/overlay.h>
@@ -47,12 +48,15 @@ private:
 
     Gtk::Box m_contentBox;
     Gtk::Spinner m_spinner;
+
+    Gtk::EventBox m_overlayEventBox;
     Gtk::Overlay m_overlay;
     Gtk::Image m_thumbnail;
     Gtk::CheckButton m_check;
 
     void setupWidgets();
     bool isThumbnailVisible();
+    void setupSignalHandlers();
 };
 
 } // namespace Slicer
