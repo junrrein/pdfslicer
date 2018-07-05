@@ -151,7 +151,7 @@ msgstr "Guardar documento"
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr "Ampliar zoom"
+msgstr "Aumentar zoom"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
