@@ -58,8 +58,14 @@ void PageWidget::setupSignalHandlers()
 {
     m_overlayEventBox.signal_button_release_event().connect([this](GdkEventButton* eventButton) {
         if (eventButton->button == 1) {
-            setChecked(!getChecked());
-            selectedChanged.emit();
+            if (eventButton->state & GDK_SHIFT_MASK) {
+                setChecked(true);
+                shiftSelected.emit(this);
+            }
+            else {
+                setChecked(!getChecked());
+                selectedChanged.emit(this);
+            }
 
             return true;
         }

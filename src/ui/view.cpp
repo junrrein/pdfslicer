@@ -41,9 +41,8 @@ std::shared_ptr<PageWidget> View::createPageWidget(const Glib::RefPtr<Page>& pag
 {
     auto pageWidget = std::make_shared<PageWidget>(page, m_pageWidgetSize);
 
-    pageWidget->selectedChanged.connect([this]() {
-        selectedPagesChanged.emit();
-    });
+    pageWidget->selectedChanged.connect(sigc::mem_fun(*this, &View::onPageSelection));
+    pageWidget->shiftSelected.connect(sigc::mem_fun(*this, &View::onShiftSelection));
 
     return pageWidget;
 }
@@ -189,5 +188,39 @@ void View::onModelPagesRotated(const std::vector<unsigned int>& positions)
         m_toRenderQueue.push(*it);
         m_dispatcher.emit();
     }
+}
+
+void View::onPageSelection(PageWidget* pageWidget)
+{
+    if (pageWidget->getChecked())
+        m_lastPageSelected = pageWidget;
+    else
+        m_lastPageSelected = nullptr;
+
+    selectedPagesChanged.emit();
+}
+
+void View::onShiftSelection(PageWidget* pageWidget)
+{
+    if (m_lastPageSelected == nullptr) {
+        m_lastPageSelected = pageWidget;
+    }
+    else {
+        int first = m_lastPageSelected->get_index();
+        int last = pageWidget->get_index();
+
+        if (first > last)
+            std::swap(first, last);
+
+        auto it = m_pageWidgets.begin();
+        std::advance(it, first);
+
+        for (int i = first; i != last; ++i) {
+            it->get()->setChecked(true);
+            std::advance(it, 1);
+        }
+    }
+
+    selectedPagesChanged.emit();
 }
 }
