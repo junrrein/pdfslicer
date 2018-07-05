@@ -21,8 +21,6 @@ set (SLICER_UI_SOURCES
      ui/actionbar.cpp
 	 ui/appwindow.hpp
 	 ui/appwindow.cpp
-	 ui/documentrenderer.hpp
-	 ui/documentrenderer.cpp
 	 ui/filechoosernative.hpp
 	 ui/filechoosernative.cpp
      ui/headerbar.hpp
@@ -31,8 +29,6 @@ set (SLICER_UI_SOURCES
      ui/openfiledialog.cpp
 	 ui/pagewidget.hpp
 	 ui/pagewidget.cpp
-     ui/previewwindow.hpp
-     ui/previewwindow.cpp
      ui/savefiledialog.hpp
      ui/savefiledialog.cpp
 	 ui/savingrevealer.hpp

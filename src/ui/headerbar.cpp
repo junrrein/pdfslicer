@@ -60,11 +60,6 @@ void HeaderBar::setupWidgets()
     m_buttonAppMenu.set_menu_model(menu);
     pack_end(m_buttonAppMenu);
 
-    m_buttonPreviewPage.set_image_from_icon_name("document-print-preview-symbolic");
-    m_buttonPreviewPage.set_tooltip_text(_("Preview the selected page"));
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonPreviewPage.gobj()), "win.preview-selected"); // NOLINT
-    pack_end(m_buttonPreviewPage);
-
     m_buttonZoomOut.set_image_from_icon_name("zoom-out-symbolic");
     m_buttonZoomOut.set_tooltip_text(_("Zoom out"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonZoomOut.gobj()), "win.zoom-out"); // NOLINT

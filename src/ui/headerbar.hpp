@@ -33,7 +33,6 @@ private:
     Gtk::Button m_buttonSave;
     Gtk::Button m_buttonUndo;
     Gtk::Button m_buttonRedo;
-    Gtk::Button m_buttonPreviewPage;
     Gtk::Button m_buttonZoomOut;
     Gtk::Button m_buttonZoomIn;
     Gtk::Box m_boxZoom;

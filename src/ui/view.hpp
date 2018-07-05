@@ -19,20 +19,50 @@
 
 #include "../backend/document.hpp"
 #include "../application/backgroundthread.hpp"
-#include "actionbar.hpp"
 #include "pagewidget.hpp"
-#include "zoomlevelwithactions.hpp"
+#include <glibmm/dispatcher.h>
 #include <gtkmm/flowbox.h>
 
 namespace Slicer {
 
 class View : public Gtk::FlowBox {
-public:
-    View();
 
-    int getSelectedChildIndex();
-    std::vector<unsigned int> getSelectedChildrenIndexes();
-    std::vector<unsigned int> getUnselectedChildrenIndexes();
+    using PageWidgetList = std::list<std::shared_ptr<PageWidget>>;
+    using PageWidgetQueue = std::queue<std::weak_ptr<PageWidget>>;
+
+public:
+    View(BackgroundThread& backgroundThread);
+    virtual ~View();
+
+    void setDocument(Document& document, int targetWidgetSize);
+    void clearSelection();
+
+    int getSelectedChildIndex() const;
+    std::vector<unsigned int> getSelectedChildrenIndexes() const;
+    std::vector<unsigned int> getUnselectedChildrenIndexes() const;
+
+    sigc::signal<void> selectedPagesChanged;
+
+private:
+    PageWidgetList m_pageWidgets;
+    int m_pageWidgetSize;
+    Document* m_document = nullptr;
+    std::vector<sigc::connection> m_documentConnections;
+    PageWidgetQueue m_toRenderQueue;
+    PageWidgetQueue m_renderedQueue;
+    std::mutex m_renderedQueueMutex;
+    Glib::Dispatcher m_dispatcher;
+    BackgroundThread& m_backgroundThread;
+
+    PageWidget* m_lastPageSelected = nullptr;
+
+    std::shared_ptr<PageWidget> createPageWidget(const Glib::RefPtr<Page>& page);
+
+    void onDispatcherCalled();
+    void onModelItemsChanged(guint position, guint removed, guint added);
+    void onModelPagesRotated(const std::vector<unsigned int>& positions);
+    void onPageSelection(PageWidget* pageWidget);
+    void onShiftSelection(PageWidget* pageWidget);
 };
 }
 

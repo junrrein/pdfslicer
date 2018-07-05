@@ -18,11 +18,12 @@
 #define SLICERWINDOW_HPP
 
 #include "../application/backgroundthread.hpp"
-#include "documentrenderer.hpp"
+#include "actionbar.hpp"
 #include "headerbar.hpp"
-#include "previewwindow.hpp"
 #include "savingrevealer.hpp"
+#include "view.hpp"
 #include "welcomescreen.hpp"
+#include "zoomlevelwithactions.hpp"
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/box.h>
 #include <gtkmm/button.h>
@@ -55,7 +56,6 @@ private:
     WelcomeScreen m_welcomeScreen;
     Gtk::ScrolledWindow m_scroller;
     View m_view;
-    DocumentRenderer m_renderer;
     ActionBar m_actionBar;
 
     ZoomLevelWithActions m_zoomLevel;
@@ -78,7 +78,6 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_removeNextAction;
     Glib::RefPtr<Gio::SimpleAction> m_rotateRightAction;
     Glib::RefPtr<Gio::SimpleAction> m_rotateLeftAction;
-    Glib::RefPtr<Gio::SimpleAction> m_previewPageAction;
     Glib::RefPtr<Gio::SimpleAction> m_cancelSelectionAction;
     Glib::RefPtr<Gio::SimpleAction> m_shortcutsAction;
     Glib::RefPtr<Gio::SimpleAction> m_aboutAction;
@@ -103,7 +102,6 @@ private:
     void onRemoveNextPages();
     void onRotatePagesRight();
     void onRotatePagesLeft();
-    void onPreviewPage();
     void onCancelSelection();
     void onAboutAction();
     void onShortcutsAction();
