@@ -38,11 +38,7 @@ private:
     void on_open(const Gio::Application::type_vec_files& files,
                  const Glib::ustring& hint) override;
 
-    void addActions();
-    void setupAppMenu();
     void addAccels();
-    void onActionAbout();
-    void onActionQuit();
 };
 
 } // namespace Slicer

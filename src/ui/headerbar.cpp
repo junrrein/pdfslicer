@@ -16,6 +16,7 @@
 
 #include "headerbar.hpp"
 #include <glibmm/i18n.h>
+#include <giomm/menu.h>
 
 namespace Slicer {
 
@@ -51,6 +52,13 @@ void HeaderBar::setupWidgets()
     undoBox->pack_start(m_buttonUndo);
     undoBox->pack_start(m_buttonRedo);
     pack_start(*undoBox);
+
+    Glib::RefPtr<Gio::Menu> menu = Gio::Menu::create();
+    menu->append(_("Keyboard shortcuts"), "win.shortcuts");
+    menu->append(_("About"), "win.about");
+    m_buttonAppMenu.set_image_from_icon_name("open-menu-symbolic");
+    m_buttonAppMenu.set_menu_model(menu);
+    pack_end(m_buttonAppMenu);
 
     m_buttonZoomOut.set_image_from_icon_name("zoom-out-symbolic");
     m_buttonZoomOut.set_tooltip_text(_("Zoom out"));

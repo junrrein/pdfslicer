@@ -65,6 +65,8 @@ private:
     Glib::Dispatcher m_savedDispatcher;
     Glib::Dispatcher m_savingFailedDispatcher;
 
+    std::unique_ptr<Gtk::ShortcutsWindow> m_shortcutsWindow;
+
     // Actions
     Glib::RefPtr<Gio::SimpleAction> m_openAction;
     Glib::RefPtr<Gio::SimpleAction> m_saveAction;
@@ -77,8 +79,11 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_rotateRightAction;
     Glib::RefPtr<Gio::SimpleAction> m_rotateLeftAction;
     Glib::RefPtr<Gio::SimpleAction> m_cancelSelectionAction;
+    Glib::RefPtr<Gio::SimpleAction> m_shortcutsAction;
+    Glib::RefPtr<Gio::SimpleAction> m_aboutAction;
 
     // Functions
+    void loadWidgets();
     void addActions();
     void setupWidgets();
     void setupSignalHandlers();
@@ -98,6 +103,8 @@ private:
     void onRotatePagesRight();
     void onRotatePagesLeft();
     void onCancelSelection();
+    void onAboutAction();
+    void onShortcutsAction();
     void onSelectedPagesChanged();
     void onCommandExecuted();
 };

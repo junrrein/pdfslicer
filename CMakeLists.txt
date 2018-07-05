@@ -1,7 +1,9 @@
 cmake_minimum_required (VERSION 3.7)
-project (pdfslicer CXX)
+project (pdfslicer CXX C)
 
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake-modules)
+include (GResource)
+
 set (APPLICATION_ID "com.github.junrrein.PDFSlicer")
 set (APPLICATION_NAME "PDF Slicer")
 set (APPLICATION_WEBSITE "https://github.com/junrrein/pdfslicer")
@@ -9,6 +11,8 @@ set (GETTEXT_PACKAGE ${APPLICATION_ID})
 set (LOCALE_DIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
 set (VERSION 1.2.4)
 configure_file (config.hpp.in ${CMAKE_BINARY_DIR}/config.hpp)
+
+set (SOURCE_DATA_DIR ${CMAKE_SOURCE_DIR}/data)
 
 set (CMAKE_CXX_STANDARD 14)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -41,7 +45,6 @@ else ()
 endif ()
 
 add_subdirectory (third-party)
-
 add_subdirectory (src)
 add_subdirectory (data)
 add_subdirectory (po)

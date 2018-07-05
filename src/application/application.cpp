@@ -15,7 +15,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "application.hpp"
-#include "../ui/aboutdialog.hpp"
 #include <gtkmm.h>
 #include <glibmm/i18n.h>
 #include <config.hpp>
@@ -38,28 +37,12 @@ void Application::on_startup()
     Gtk::Application::on_startup();
 
     Gtk::Window::set_default_icon_name(config::APPLICATION_ID);
-    addActions();
-    setupAppMenu();
     addAccels();
 }
 
 void Application::on_activate()
 {
     createWindow()->present();
-}
-
-void Application::addActions()
-{
-    add_action("about", sigc::mem_fun(*this, &Application::onActionAbout));
-    add_action("quit", sigc::mem_fun(*this, &Application::onActionQuit));
-}
-
-void Application::setupAppMenu()
-{
-    auto menu = Gio::Menu::create();
-    menu->append(_("About"), "app.about");
-    menu->append(_("Quit"), "app.quit");
-    set_app_menu(menu);
 }
 
 void Application::addAccels()
@@ -91,17 +74,6 @@ void Application::on_open(const Application::type_vec_files& files,
         window->openDocument(file);
         window->present();
     }
-}
-
-void Application::onActionAbout()
-{
-    new Slicer::AboutDialog{*get_active_window()};
-}
-
-void Application::onActionQuit()
-{
-    for (Gtk::Window* window : get_windows())
-        window->hide();
 }
 
 AppWindow* Application::createWindow()

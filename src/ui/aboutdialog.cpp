@@ -43,7 +43,6 @@ AboutDialog::AboutDialog(Gtk::Window& parent)
 
     set_transient_for(parent);
     set_modal();
-    present();
 }
 
 } // namespace Slicer
