@@ -104,20 +104,21 @@ int View::getSelectedChildIndex() const
 
 std::vector<unsigned int> View::getSelectedChildrenIndexes() const
 {
-    std::vector<const Gtk::FlowBoxChild*> children;
-    ranges::transform(get_children(),
-                      ranges::back_inserter(children),
-                      [](const Gtk::Widget* child) {
-                          return dynamic_cast<const Gtk::FlowBoxChild*>(child);
-                      });
+    using namespace ranges;
 
-    std::vector<unsigned int> result;
-    for (const Gtk::FlowBoxChild* fwchild : children) {
-        auto pageWidget = dynamic_cast<const PageWidget*>(fwchild);
+    const std::vector<const Gtk::Widget*> children = get_children();
 
-        if (pageWidget->getChecked())
-            result.push_back(static_cast<unsigned int>(fwchild->get_index()));
-    }
+    const std::vector<unsigned int> result
+        = children
+          | view::transform([](const Gtk::Widget* child) {
+                return dynamic_cast<const PageWidget*>(child);
+            })
+          | view::filter([](const PageWidget* pageWidget) {
+                return pageWidget->getChecked();
+            })
+          | view::transform([](const PageWidget* pageWidget) {
+                return static_cast<unsigned int>(pageWidget->get_index());
+            });
 
     return result;
 }
