@@ -88,11 +88,8 @@ void View::changePageSize(int targetWidgetSize)
 
 void View::clearSelection()
 {
-    for (Gtk::Widget* child : get_children()) {
-        auto fwchild = dynamic_cast<Gtk::FlowBoxChild*>(child);
-        auto pageWidget = dynamic_cast<PageWidget*>(fwchild);
-        pageWidget->setChecked(false);
-    }
+    for (Gtk::Widget* child : get_children())
+        dynamic_cast<PageWidget*>(child)->setChecked(false);
 
     selectedPagesChanged.emit();
 }
