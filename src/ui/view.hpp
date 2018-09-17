@@ -50,6 +50,7 @@ private:
     Document* m_document = nullptr;
     std::vector<sigc::connection> m_documentConnections;
     PageWidgetQueue m_toRenderQueue;
+    std::mutex m_toRenderQueueMutex;
     PageWidgetQueue m_renderedQueue;
     std::mutex m_renderedQueueMutex;
     Glib::Dispatcher m_dispatcher;
@@ -66,6 +67,7 @@ private:
     void onShiftSelection(PageWidget* pageWidget);
     void displayRenderedPages();
     void renderQueuedPages();
+    void killQueuedPages();
 };
 }
 

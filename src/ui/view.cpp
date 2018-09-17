@@ -78,6 +78,10 @@ void View::setDocument(Document& document, int targetWidgetSize)
 
 void View::changePageSize(int targetWidgetSize)
 {
+    killQueuedPages();
+
+    std::lock_guard<std::mutex> lock(m_toRenderQueueMutex);
+
     for (auto pageWidget : m_pageWidgets) {
         pageWidget->changeSize(targetWidgetSize);
         pageWidget->showSpinner();
@@ -146,6 +150,8 @@ void View::displayRenderedPages()
 
 void View::renderQueuedPages()
 {
+    std::lock_guard<std::mutex> lock1(m_toRenderQueueMutex);
+
     while (!m_toRenderQueue.empty()) {
         std::weak_ptr<PageWidget> weakWidget = m_toRenderQueue.front();
 
@@ -154,7 +160,7 @@ void View::renderQueuedPages()
 
             if (pageWidget != nullptr) {
                 pageWidget->renderPage();
-                std::lock_guard<std::mutex> lock{m_renderedQueueMutex};
+                std::lock_guard<std::mutex> lock2{m_renderedQueueMutex};
                 m_renderedQueue.push(pageWidget);
                 m_dispatcher.emit();
             }
@@ -162,6 +168,20 @@ void View::renderQueuedPages()
 
         m_toRenderQueue.pop();
     }
+}
+
+void View::killQueuedPages()
+{
+    m_backgroundThread.killRemainingTasks();
+
+    std::lock_guard<std::mutex> lock1(m_toRenderQueueMutex);
+    std::lock_guard<std::mutex> lock2(m_renderedQueueMutex);
+
+    while (!m_toRenderQueue.empty())
+        m_toRenderQueue.pop();
+
+    while (!m_renderedQueue.empty())
+        m_renderedQueue.pop();
 }
 
 void View::onDispatcherCalled()
