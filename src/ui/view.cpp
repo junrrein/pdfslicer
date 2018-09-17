@@ -130,21 +130,22 @@ std::vector<unsigned int> View::getUnselectedChildrenIndexes() const
     return unselectedIndexes;
 }
 
-void View::onDispatcherCalled()
+void View::displayRenderedPages()
 {
-    {
-        std::lock_guard<std::mutex> lock{m_renderedQueueMutex};
+    std::lock_guard<std::mutex> lock{m_renderedQueueMutex};
 
-        while (!m_renderedQueue.empty()) {
-            std::shared_ptr<PageWidget> pageWidget = m_renderedQueue.front().lock();
-            m_renderedQueue.pop();
+    while (!m_renderedQueue.empty()) {
+        std::shared_ptr<PageWidget> pageWidget = m_renderedQueue.front().lock();
+        m_renderedQueue.pop();
 
-            if (pageWidget != nullptr) {
-                pageWidget->showPage();
-            }
+        if (pageWidget != nullptr) {
+            pageWidget->showPage();
         }
     }
+}
 
+void View::renderQueuedPages()
+{
     while (!m_toRenderQueue.empty()) {
         std::weak_ptr<PageWidget> weakWidget = m_toRenderQueue.front();
 
@@ -161,6 +162,12 @@ void View::onDispatcherCalled()
 
         m_toRenderQueue.pop();
     }
+}
+
+void View::onDispatcherCalled()
+{
+    displayRenderedPages();
+    renderQueuedPages();
 }
 
 void View::onModelItemsChanged(guint position, guint removed, guint added)
