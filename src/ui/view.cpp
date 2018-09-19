@@ -49,6 +49,8 @@ std::shared_ptr<PageWidget> View::createPageWidget(const Glib::RefPtr<Page>& pag
 
 void View::setDocument(Document& document, int targetWidgetSize)
 {
+    killQueuedPages();
+
     for (Gtk::Widget* child : get_children())
         remove(*child);
 
