@@ -179,11 +179,8 @@ void View::killQueuedPages()
     std::lock_guard<std::mutex> lock1(m_toRenderQueueMutex);
     std::lock_guard<std::mutex> lock2(m_renderedQueueMutex);
 
-    while (!m_toRenderQueue.empty())
-        m_toRenderQueue.pop();
-
-    while (!m_renderedQueue.empty())
-        m_renderedQueue.pop();
+    m_toRenderQueue = {};
+    m_renderedQueue = {};
 }
 
 void View::onDispatcherCalled()
