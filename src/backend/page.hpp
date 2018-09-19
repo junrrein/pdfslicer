@@ -45,6 +45,8 @@ public:
     void rotateLeft();
 
 private:
+    // TODO: Replace the following pointer with std::unique_ptr.
+    // Careful: we need to use g_object_unref to destroy the pointed-to object.
     PopplerPage* m_ppage;
     int m_rotation = 0;
 };
