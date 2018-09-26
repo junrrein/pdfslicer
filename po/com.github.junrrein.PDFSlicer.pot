@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-24 20:53-0300\n"
+"POT-Creation-Date: 2018-09-26 20:35-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,18 +38,22 @@ msgid "Rotate right"
 msgstr ""
 
 #: ../src/ui/actionbar.cpp:41
+msgctxt "plural (pages)"
 msgid "Remove selected"
 msgstr ""
 
 #: ../src/ui/actionbar.cpp:45
+msgctxt "plural (pages)"
 msgid "Remove unselected"
 msgstr ""
 
 #: ../src/ui/actionbar.cpp:49
+msgctxt "plural (pages)"
 msgid "Remove previous"
 msgstr ""
 
 #: ../src/ui/actionbar.cpp:53
+msgctxt "plural (pages)"
 msgid "Remove next"
 msgstr ""
 
@@ -164,7 +168,7 @@ msgstr ""
 
 #: ../data/ui/shortcuts.ui:41
 msgctxt "shortcut window"
-msgid "Document edition"
+msgid "Document editing"
 msgstr ""
 
 #: ../data/ui/shortcuts.ui:45
