@@ -38,7 +38,7 @@
 				</child>
 				<child>
 					<object class="GtkShortcutsGroup">
-						<property name="title" translatable="yes" context="shortcut window">Document edition</property>
+						<property name="title" translatable="yes" context="shortcut window">Document editing</property>
 						<child>
 							<object class="GtkShortcutsShortcut">
 								<property name="accelerator">Delete</property>
