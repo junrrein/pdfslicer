@@ -38,19 +38,19 @@ ActionBar::ActionBar()
     auto removeBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL});
     removeBox->get_style_context()->add_class("linked");
 
-    m_buttonRemovePages.set_label(_("Remove selected"));
+    m_buttonRemovePages.set_label(C_("plural (pages)", "Remove selected"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePages.gobj()), "win.remove-selected"); // NOLINT
     removeBox->pack_start(m_buttonRemovePages);
 
-    m_buttonRemoveUnselected.set_label(_("Remove unselected"));
+    m_buttonRemoveUnselected.set_label(C_("plural (pages)", "Remove unselected"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemoveUnselected.gobj()), "win.remove-unselected"); // NOLINT
     removeBox->pack_start(m_buttonRemoveUnselected);
 
-    m_buttonRemovePrevious.set_label(_("Remove previous"));
+    m_buttonRemovePrevious.set_label(C_("plural (pages)", "Remove previous"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePrevious.gobj()), "win.remove-previous"); // NOLINT
     removeBox->pack_start(m_buttonRemovePrevious);
 
-    m_buttonRemoveNext.set_label(_("Remove next"));
+    m_buttonRemoveNext.set_label(C_("plural (pages)", "Remove next"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemoveNext.gobj()), "win.remove-next"); // NOLINT
     removeBox->pack_start(m_buttonRemoveNext);
 
