@@ -35,7 +35,7 @@ namespace Slicer {
 class PreviewWindow : public Gtk::Window {
 public:
 	PreviewWindow(const Glib::RefPtr<Page>& page,
-				  BackgroundThread& backgroundThread);
+                  BackgroundThread& backgroundThread);
 	virtual ~PreviewWindow() = default;
 
 private:
@@ -46,7 +46,7 @@ private:
 	ZoomLevelWithActions m_zoomLevel;
 	static const std::set<int> zoomLevels;
 
-	std::unique_ptr<PageWidget> m_pageWidget;
+    PageWidget m_pageWidget;
 	Gtk::ScrolledWindow m_scroller;
 	Gtk::Overlay m_overlay;
 	Gtk::Button m_buttonZoomIn;
