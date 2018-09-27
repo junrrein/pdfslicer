@@ -43,7 +43,7 @@ public:
               SettingsManager& settingsManager);
     virtual ~AppWindow() override;
 
-    void openDocument(const Glib::RefPtr<Gio::File>& file);
+    void setDocument(std::unique_ptr<Document> document);
 
 protected:
     virtual bool on_delete_event(GdkEventAny*) override;

@@ -15,6 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "application.hpp"
+#include "../backend/document.hpp"
 #include <gtkmm.h>
 #include <glibmm/i18n.h>
 #include <config.hpp>
@@ -71,7 +72,7 @@ void Application::on_open(const Application::type_vec_files& files,
 {
     for (const Glib::RefPtr<Gio::File>& file : files) {
         AppWindow* window = createWindow();
-        window->openDocument(file);
+        window->setDocument(std::make_unique<Document>(file));
         window->present();
     }
 }

@@ -25,17 +25,15 @@
 
 namespace Slicer {
 
-Document::Document(const std::string& filePath)
-    : m_sourcePath{filePath}
+Document::Document(const Glib::RefPtr<Gio::File>& sourceFile)
+    : m_sourceFile{sourceFile}
 {
-    Glib::ustring uri = Glib::filename_to_uri(m_sourcePath);
-
-    m_popplerDocument = poppler_document_new_from_file(uri.c_str(),
+    m_popplerDocument = poppler_document_new_from_file(m_sourceFile->get_uri().c_str(),
                                                        nullptr,
                                                        nullptr);
 
     if (m_popplerDocument == nullptr)
-        throw std::runtime_error("Couldn't load file: " + m_sourcePath);
+        throw std::runtime_error("Couldn't load file: " + m_sourceFile->get_path());
 
     const int num_pages = poppler_document_get_n_pages(m_popplerDocument);
     if (num_pages == 0)
@@ -70,14 +68,14 @@ void Document::saveDocument(const Glib::RefPtr<Gio::File>& destinationFile)
     const std::string tempFilePath = getTempFilePath();
     auto tempFile = Gio::File::create_for_path(tempFilePath);
 
-    makePDFCopy(m_sourcePath, tempFilePath);
+    makePDFCopy(m_sourceFile->get_path(), tempFilePath);
     tempFile->move(destinationFile, Gio::FILE_COPY_OVERWRITE);
 
     // FIXME: No need to do this once PDFWriter gets support for
     // in-memory documents.
     // TODO: Maybe save the file to a temporary place when opening?
     // And use that temporary file as the source later
-    if (m_sourcePath == destinationFile->get_path())
+    if (m_sourceFile->get_path() == destinationFile->get_path())
         reload();
 }
 
@@ -119,13 +117,12 @@ void Document::reload()
     m_pages->remove_all();
     g_object_unref(m_popplerDocument);
     m_popplerDocument = nullptr;
-    Glib::ustring uri = Glib::filename_to_uri(m_sourcePath);
-    m_popplerDocument = poppler_document_new_from_file(uri.c_str(),
+    m_popplerDocument = poppler_document_new_from_file(m_sourceFile->get_uri().c_str(),
                                                        nullptr,
                                                        nullptr);
 
     if (m_popplerDocument == nullptr)
-        throw std::runtime_error("Couldn't load file: " + m_sourcePath);
+        throw std::runtime_error("Couldn't load file: " + m_sourceFile->get_path());
 
     const int num_pages = poppler_document_get_n_pages(m_popplerDocument);
 

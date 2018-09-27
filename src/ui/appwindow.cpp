@@ -52,15 +52,14 @@ AppWindow::~AppWindow()
     saveWindowState();
 }
 
-void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
+void AppWindow::setDocument(std::unique_ptr<Document> document)
 {
-    auto document = std::make_unique<Document>(file->get_path());
     m_view.setDocument(*document, m_zoomLevel.currentLevel());
     m_document = std::move(document);
 
     m_stack.set_visible_child("editor");
 
-    m_headerBar.set_subtitle(file->get_basename());
+    m_headerBar.set_subtitle(m_document->basename());
 
     m_saveAction->set_enabled();
     m_zoomLevel.enable();
@@ -277,7 +276,7 @@ void AppWindow::onOpenAction()
 
     if (result == GTK_RESPONSE_ACCEPT)
         try {
-            openDocument(dialog.get_file());
+            setDocument(std::make_unique<Document>(dialog.get_file()));
         }
         catch (...) {
             Gtk::MessageDialog errorDialog{_("The selected file could not be opened"),
