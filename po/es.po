@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 20:35-0300\n"
+"POT-Creation-Date: 2018-09-26 21:02-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -36,28 +36,24 @@ msgstr "Rotar hacia la derecha"
 
 #: ../src/ui/actionbar.cpp:41
 #, fuzzy
-#| msgid "Remove selected"
 msgctxt "plural (pages)"
 msgid "Remove selected"
 msgstr "Remover seleccionadas"
 
 #: ../src/ui/actionbar.cpp:45
 #, fuzzy
-#| msgid "Remove unselected"
 msgctxt "plural (pages)"
 msgid "Remove unselected"
 msgstr "Remover no seleccionadas"
 
 #: ../src/ui/actionbar.cpp:49
 #, fuzzy
-#| msgid "Remove previous"
 msgctxt "plural (pages)"
 msgid "Remove previous"
 msgstr "Remover anteriores"
 
 #: ../src/ui/actionbar.cpp:53
 #, fuzzy
-#| msgid "Remove next"
 msgctxt "plural (pages)"
 msgid "Remove next"
 msgstr "Remover siguientes"
@@ -173,8 +169,6 @@ msgstr "Disminuir zoom"
 
 #: ../data/ui/shortcuts.ui:41
 #, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Document edition"
 msgctxt "shortcut window"
 msgid "Document editing"
 msgstr "Edición de documentos"

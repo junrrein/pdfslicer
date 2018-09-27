@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 20:35-0300\n"
+"POT-Creation-Date: 2018-09-26 21:02-0300\n"
 "PO-Revision-Date: 2018-09-25 12:44+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
@@ -42,7 +42,6 @@ msgstr "Roter til høyre"
 
 #: ../src/ui/actionbar.cpp:41
 #, fuzzy
-#| msgid "Remove selected"
 msgctxt "plural (pages)"
 msgid "Remove selected"
 msgstr "Fjern valgte"
@@ -55,14 +54,12 @@ msgstr "Fjern uvalgte"
 
 #: ../src/ui/actionbar.cpp:49
 #, fuzzy
-#| msgid "Remove previous"
 msgctxt "plural (pages)"
 msgid "Remove previous"
 msgstr "Fjern forrige"
 
 #: ../src/ui/actionbar.cpp:53
 #, fuzzy
-#| msgid "Remove next"
 msgctxt "plural (pages)"
 msgid "Remove next"
 msgstr "Fjern neste"
