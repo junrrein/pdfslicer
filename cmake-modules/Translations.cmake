@@ -3,7 +3,7 @@ include (CMakeParseArguments)
 # be sure that all languages are present Using all usual languages code from
 # https://www.gnu.org/software/gettext/manual/html_node/Language-Codes.html
 # #Language-Codes Rare language codes should be added on-demand.
-set (LANGUAGES_NEEDED es)
+set (LANGUAGES_NEEDED es nb_NO)
 
 macro (add_translations_directory NLS_PACKAGE)
     add_custom_target (i18n-mo ALL COMMENT "Build i18n messages (.mo files)")
