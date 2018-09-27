@@ -21,14 +21,14 @@ namespace Slicer {
 
 PageWidget::PageWidget(const Glib::RefPtr<Page>& page,
                        int targetSize,
-                       bool isInteractive)
+                       Interactivity interactivity)
     : m_page{page}
     , m_targetSize{targetSize}
-    , m_isInteractive{isInteractive}
+    , m_interactivity{interactivity}
 {
     setupWidgets();
 
-    if (m_isInteractive)
+    if (m_interactivity == Interactivity::Yes)
         setupSignalHandlers();
 }
 
@@ -47,7 +47,7 @@ void PageWidget::setupWidgets()
     set_valign(Gtk::ALIGN_CENTER);
     set_halign(Gtk::ALIGN_CENTER);
 
-    if (m_isInteractive) {
+    if (m_interactivity == Interactivity::Yes) {
         m_spinner.set_size_request(38, 38);
         m_spinner.start();
         m_contentBox.pack_start(m_spinner, true, false);

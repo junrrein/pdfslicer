@@ -27,7 +27,7 @@ PreviewWindow::PreviewWindow(const Glib::RefPtr<Page>& page, BackgroundThread& b
     , m_backgroundThread{backgroundThread}
     , m_actionGroup{Gio::SimpleActionGroup::create()}
     , m_zoomLevel{zoomLevels, *(m_actionGroup.operator->())}
-    , m_pageWidget{m_page, m_zoomLevel.currentLevel(), false}
+    , m_pageWidget{m_page, m_zoomLevel.currentLevel(), Interactivity::No}
 {
 	set_title(_("Preview"));
 	set_size_request(400, 400);
