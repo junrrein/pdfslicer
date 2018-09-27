@@ -25,6 +25,7 @@
 #include <gtkmm/flowboxchild.h>
 #include <gtkmm/image.h>
 #include <gtkmm/overlay.h>
+#include <gtkmm/revealer.h>
 #include <gtkmm/spinner.h>
 
 namespace Slicer {
@@ -57,6 +58,8 @@ private:
     Gtk::Overlay m_overlay;
     Gtk::Image m_thumbnail;
     Gtk::CheckButton m_check;
+    Gtk::Button m_previewButton;
+    Gtk::Revealer m_previewButtonRevealer;
 
     void setupWidgets();
     bool isThumbnailVisible();
