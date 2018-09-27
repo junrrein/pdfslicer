@@ -65,6 +65,7 @@ private:
     void onModelPagesRotated(const std::vector<unsigned int>& positions);
     void onPageSelection(PageWidget* pageWidget);
     void onShiftSelection(PageWidget* pageWidget);
+    void onPreviewRequested(const Glib::RefPtr<Page>& page);
     void displayRenderedPages();
     void renderQueuedPages();
     void killQueuedPages();

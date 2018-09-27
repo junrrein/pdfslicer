@@ -45,9 +45,10 @@ public:
 
     sigc::signal<void, PageWidget*> selectedChanged;
     sigc::signal<void, PageWidget*> shiftSelected;
+    sigc::signal<void, const Glib::RefPtr<Page>&> previewRequested;
 
 private:
-    const Glib::RefPtr<Slicer::Page> m_page;
+    const Glib::RefPtr<Page> m_page;
     int m_targetSize;
     bool m_isChecked = false;
 

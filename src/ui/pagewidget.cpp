@@ -115,6 +115,10 @@ void PageWidget::setupSignalHandlers()
 
         return false;
     });
+
+    m_previewButton.signal_clicked().connect([this]() {
+        previewRequested.emit(m_page);
+    });
 }
 
 void PageWidget::renderPage()
