@@ -33,7 +33,8 @@ namespace Slicer {
 class PageWidget : public Gtk::FlowBoxChild {
 public:
     PageWidget(const Glib::RefPtr<Page>& page,
-               int targetSize);
+               int targetSize,
+               bool isInteractive = true);
     virtual ~PageWidget() = default;
 
     void changeSize(int targetSize);
@@ -50,6 +51,7 @@ public:
 private:
     const Glib::RefPtr<Page> m_page;
     int m_targetSize;
+    const bool m_isInteractive;
     bool m_isChecked = false;
 
     Gtk::Box m_contentBox;
