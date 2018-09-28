@@ -60,7 +60,7 @@
 						<child>
 							<object class="GtkShortcutsShortcut">
 								<property name="accelerator">&lt;shift&gt;&lt;ctrl&gt;Z</property>
-								<property name="title" translatable="yes" context="shortcut window">Redo last undone command</property>
+								<property name="title" translatable="yes" context="shortcut window">Redo undone command</property>
 							</object>
 						</child>
 					</object>
