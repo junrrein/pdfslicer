@@ -5,7 +5,7 @@
 	<schema path="/com/github/junrrein/pdfslicer/" id="com.github.junrrein.PDFSlicer">
 
 		<key name='is-maximized' type='b'>
-			<default>true</default>
+			<default>false</default>
 			<summary>True if the window is maximized</summary>
 		</key>
 
