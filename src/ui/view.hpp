@@ -19,7 +19,7 @@
 
 #include "../backend/document.hpp"
 #include "../application/backgroundthread.hpp"
-#include "pagewidget.hpp"
+#include "interactivepagewidget.hpp"
 #include <glibmm/dispatcher.h>
 #include <gtkmm/flowbox.h>
 
@@ -27,8 +27,8 @@ namespace Slicer {
 
 class View : public Gtk::FlowBox {
 
-    using PageWidgetList = std::list<std::shared_ptr<PageWidget>>;
-    using PageWidgetQueue = std::queue<std::weak_ptr<PageWidget>>;
+    using PageWidgetList = std::list<std::shared_ptr<InteractivePageWidget>>;
+    using PageWidgetQueue = std::queue<std::weak_ptr<InteractivePageWidget>>;
 
 public:
     View(BackgroundThread& backgroundThread);
@@ -56,15 +56,16 @@ private:
     Glib::Dispatcher m_dispatcher;
     BackgroundThread& m_backgroundThread;
 
-    PageWidget* m_lastPageSelected = nullptr;
+    InteractivePageWidget* m_lastPageSelected = nullptr;
 
-    std::shared_ptr<PageWidget> createPageWidget(const Glib::RefPtr<Page>& page);
+    std::shared_ptr<InteractivePageWidget> createPageWidget(const Glib::RefPtr<Page>& page);
 
     void onDispatcherCalled();
     void onModelItemsChanged(guint position, guint removed, guint added);
     void onModelPagesRotated(const std::vector<unsigned int>& positions);
-    void onPageSelection(PageWidget* pageWidget);
-    void onShiftSelection(PageWidget* pageWidget);
+    void onPageSelection(InteractivePageWidget* pageWidget);
+    void onShiftSelection(InteractivePageWidget* pageWidget);
+    void onPreviewRequested(const Glib::RefPtr<Page>& page);
     void displayRenderedPages();
     void renderQueuedPages();
     void killQueuedPages();

@@ -20,7 +20,6 @@
 #include "../backend/page.hpp"
 #include <ctpl_stl.h>
 #include <gtkmm/box.h>
-#include <gtkmm/checkbutton.h>
 #include <gtkmm/eventbox.h>
 #include <gtkmm/flowboxchild.h>
 #include <gtkmm/image.h>
@@ -39,28 +38,22 @@ public:
     void renderPage();
     void showSpinner();
     void showPage();
-    void setChecked(bool checked);
-    bool getChecked() const { return m_isChecked; }
 
-    sigc::signal<void, PageWidget*> selectedChanged;
-    sigc::signal<void, PageWidget*> shiftSelected;
-
-private:
-    const Glib::RefPtr<Slicer::Page> m_page;
-    int m_targetSize;
-    bool m_isChecked = false;
-
-    Gtk::Box m_contentBox;
-    Gtk::Spinner m_spinner;
+protected:
+    const Glib::RefPtr<Page> m_page;
 
     Gtk::EventBox m_overlayEventBox;
     Gtk::Overlay m_overlay;
+
+private:
+    int m_targetSize;
+
+    Gtk::Box m_contentBox;
+    Gtk::Spinner m_spinner;
     Gtk::Image m_thumbnail;
-    Gtk::CheckButton m_check;
 
     void setupWidgets();
     bool isThumbnailVisible();
-    void setupSignalHandlers();
 };
 
 } // namespace Slicer

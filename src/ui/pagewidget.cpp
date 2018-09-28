@@ -15,6 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "pagewidget.hpp"
+#include <iostream>
 
 namespace Slicer {
 
@@ -24,7 +25,6 @@ PageWidget::PageWidget(const Glib::RefPtr<Page>& page,
     , m_targetSize{targetSize}
 {
     setupWidgets();
-    setupSignalHandlers();
 }
 
 void PageWidget::changeSize(int targetSize)
@@ -46,40 +46,14 @@ void PageWidget::setupWidgets()
     m_spinner.start();
     m_contentBox.pack_start(m_spinner, true, false);
 
-    m_check.set_halign(Gtk::ALIGN_END);
-    m_check.set_valign(Gtk::ALIGN_END);
-    m_check.set_margin_bottom(10);
-    m_check.set_margin_right(10);
-
     m_overlay.set_halign(Gtk::ALIGN_CENTER);
     m_overlay.set_valign(Gtk::ALIGN_CENTER);
     m_overlay.add(m_thumbnail);
-    m_overlay.add_overlay(m_check);
     m_overlayEventBox.add(m_overlay);
 
     add(m_contentBox);
 
     show_all();
-}
-
-void PageWidget::setupSignalHandlers()
-{
-    m_overlayEventBox.signal_button_release_event().connect([this](GdkEventButton* eventButton) {
-        if (eventButton->button == 1) {
-            if (eventButton->state & GDK_SHIFT_MASK) {
-                setChecked(true);
-                shiftSelected.emit(this);
-            }
-            else {
-                setChecked(!getChecked());
-                selectedChanged.emit(this);
-            }
-
-            return true;
-        }
-
-        return false;
-    });
 }
 
 void PageWidget::renderPage()
@@ -103,14 +77,6 @@ void PageWidget::showPage()
         m_contentBox.pack_start(m_overlayEventBox, Gtk::PACK_SHRINK);
         m_overlayEventBox.show_all();
         m_spinner.hide();
-    }
-}
-
-void PageWidget::setChecked(bool checked)
-{
-    if (m_isChecked != checked) {
-        m_isChecked = checked;
-        m_check.set_active(m_isChecked);
     }
 }
 
