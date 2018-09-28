@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2018-09-26 21:02-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-28 15:01-0300\n"
 "PO-Revision-Date: 2018-09-28 01:33+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -92,11 +92,11 @@ msgstr "Atajos de teclado"
 msgid "About"
 msgstr "Acerca de"
 
-#: ../src/ui/headerbar.cpp:64
+#: ../src/ui/headerbar.cpp:64 ../src/ui/previewwindow.cpp:49
 msgid "Zoom out"
 msgstr "Reducir"
 
-#: ../src/ui/headerbar.cpp:67
+#: ../src/ui/headerbar.cpp:67 ../src/ui/previewwindow.cpp:56
 msgid "Zoom in"
 msgstr "Ampliar"
 
@@ -111,6 +111,10 @@ msgstr "Abrir"
 #: ../src/ui/openfiledialog.cpp:28 ../src/ui/savefiledialog.cpp:28
 msgid "Cancel"
 msgstr "Cancelar"
+
+#: ../src/ui/previewwindow.cpp:32
+msgid "Preview"
+msgstr "Vista Previa"
 
 #: ../src/ui/savefiledialog.cpp:25
 msgid "Save document as"
@@ -195,6 +199,3 @@ msgstr "Rehacer el último comando deshecho"
 
 #~ msgid "Preview the selected page"
 #~ msgstr "Mostrar vista previa de la página seleccionada"
-
-#~ msgid "Preview"
-#~ msgstr "Vista Previa"
