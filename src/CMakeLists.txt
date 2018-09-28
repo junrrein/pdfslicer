@@ -25,6 +25,8 @@ set (SLICER_UI_SOURCES
 	 ui/filechoosernative.cpp
      ui/headerbar.hpp
      ui/headerbar.cpp
+	 ui/interactivepagewidget.hpp
+	 ui/interactivepagewidget.cpp
      ui/openfiledialog.hpp
      ui/openfiledialog.cpp
 	 ui/pagewidget.hpp

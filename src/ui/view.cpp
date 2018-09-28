@@ -38,9 +38,9 @@ View::~View()
     m_backgroundThread.killRemainingTasks();
 }
 
-std::shared_ptr<PageWidget> View::createPageWidget(const Glib::RefPtr<Page>& page)
+std::shared_ptr<InteractivePageWidget> View::createPageWidget(const Glib::RefPtr<Page>& page)
 {
-    auto pageWidget = std::make_shared<PageWidget>(page, m_pageWidgetSize);
+    auto pageWidget = std::make_shared<InteractivePageWidget>(page, m_pageWidgetSize);
 
     pageWidget->selectedChanged.connect(sigc::mem_fun(*this, &View::onPageSelection));
     pageWidget->shiftSelected.connect(sigc::mem_fun(*this, &View::onShiftSelection));
@@ -66,7 +66,7 @@ void View::setDocument(Document& document, int targetWidgetSize)
 
     for (unsigned int i = 0; i < m_document->pages()->get_n_items(); ++i) {
         auto page = m_document->pages()->get_item(i);
-        std::shared_ptr<PageWidget> pageWidget = createPageWidget(page);
+        std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
         m_pageWidgets.push_back(pageWidget);
         insert(*m_pageWidgets.back().get(), -1);
         m_toRenderQueue.push(pageWidget);
@@ -97,7 +97,7 @@ void View::changePageSize(int targetWidgetSize)
 void View::clearSelection()
 {
     for (Gtk::Widget* child : get_children())
-        dynamic_cast<PageWidget*>(child)->setChecked(false);
+        dynamic_cast<InteractivePageWidget*>(child)->setChecked(false);
 
     selectedPagesChanged.emit();
 }
@@ -116,12 +116,12 @@ std::vector<unsigned int> View::getSelectedChildrenIndexes() const
     const std::vector<unsigned int> result
         = children
           | view::transform([](const Gtk::Widget* child) {
-                return dynamic_cast<const PageWidget*>(child);
+                return dynamic_cast<const InteractivePageWidget*>(child);
             })
-          | view::filter([](const PageWidget* pageWidget) {
+          | view::filter([](const InteractivePageWidget* pageWidget) {
                 return pageWidget->getChecked();
             })
-          | view::transform([](const PageWidget* pageWidget) {
+          | view::transform([](const InteractivePageWidget* pageWidget) {
                 return static_cast<unsigned int>(pageWidget->get_index());
             });
 
@@ -157,10 +157,10 @@ void View::renderQueuedPages()
     std::lock_guard<std::mutex> lock1(m_toRenderQueueMutex);
 
     while (!m_toRenderQueue.empty()) {
-        std::weak_ptr<PageWidget> weakWidget = m_toRenderQueue.front();
+        std::weak_ptr<InteractivePageWidget> weakWidget = m_toRenderQueue.front();
 
         m_backgroundThread.push([this, weakWidget]() {
-            std::shared_ptr<PageWidget> pageWidget = weakWidget.lock();
+            std::shared_ptr<InteractivePageWidget> pageWidget = weakWidget.lock();
 
             if (pageWidget != nullptr) {
                 pageWidget->renderPage();
@@ -203,7 +203,7 @@ void View::onModelItemsChanged(guint position, guint removed, guint added)
 
     for (guint i = 0; i != added; ++i) {
         auto page = m_document->pages()->get_item(position + i);
-        std::shared_ptr<PageWidget> pageWidget = createPageWidget(page);
+        std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
 
         it = m_pageWidgets.insert(it, pageWidget);
         insert(*pageWidget, static_cast<int>(position + i));
@@ -226,7 +226,7 @@ void View::onModelPagesRotated(const std::vector<unsigned int>& positions)
     }
 }
 
-void View::onPageSelection(PageWidget* pageWidget)
+void View::onPageSelection(InteractivePageWidget* pageWidget)
 {
     if (pageWidget->getChecked())
         m_lastPageSelected = pageWidget;
@@ -236,7 +236,7 @@ void View::onPageSelection(PageWidget* pageWidget)
     selectedPagesChanged.emit();
 }
 
-void View::onShiftSelection(PageWidget* pageWidget)
+void View::onShiftSelection(InteractivePageWidget* pageWidget)
 {
     if (m_lastPageSelected == nullptr) {
         m_lastPageSelected = pageWidget;

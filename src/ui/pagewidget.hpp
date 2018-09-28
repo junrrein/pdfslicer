@@ -20,58 +20,40 @@
 #include "../backend/page.hpp"
 #include <ctpl_stl.h>
 #include <gtkmm/box.h>
-#include <gtkmm/checkbutton.h>
 #include <gtkmm/eventbox.h>
 #include <gtkmm/flowboxchild.h>
 #include <gtkmm/image.h>
 #include <gtkmm/overlay.h>
-#include <gtkmm/revealer.h>
 #include <gtkmm/spinner.h>
 
 namespace Slicer {
 
-enum class Interactivity {
-    Yes,
-    No
-};
-
 class PageWidget : public Gtk::FlowBoxChild {
 public:
     PageWidget(const Glib::RefPtr<Page>& page,
-               int targetSize,
-               Interactivity interactivity = Interactivity::Yes);
+               int targetSize);
     virtual ~PageWidget() = default;
 
     void changeSize(int targetSize);
     void renderPage();
     void showSpinner();
     void showPage();
-    void setChecked(bool checked);
-    bool getChecked() const { return m_isChecked; }
 
-    sigc::signal<void, PageWidget*> selectedChanged;
-    sigc::signal<void, PageWidget*> shiftSelected;
-    sigc::signal<void, const Glib::RefPtr<Page>&> previewRequested;
-
-private:
+protected:
     const Glib::RefPtr<Page> m_page;
-    int m_targetSize;
-    const Interactivity m_interactivity;
-    bool m_isChecked = false;
-
-    Gtk::Box m_contentBox;
-    Gtk::Spinner m_spinner;
 
     Gtk::EventBox m_overlayEventBox;
     Gtk::Overlay m_overlay;
+
+private:
+    int m_targetSize;
+
+    Gtk::Box m_contentBox;
+    Gtk::Spinner m_spinner;
     Gtk::Image m_thumbnail;
-    Gtk::CheckButton m_check;
-    Gtk::Button m_previewButton;
-    Gtk::Revealer m_previewButtonRevealer;
 
     void setupWidgets();
     bool isThumbnailVisible();
-    void setupSignalHandlers();
 };
 
 } // namespace Slicer

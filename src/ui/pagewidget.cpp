@@ -20,16 +20,11 @@
 namespace Slicer {
 
 PageWidget::PageWidget(const Glib::RefPtr<Page>& page,
-                       int targetSize,
-                       Interactivity interactivity)
+                       int targetSize)
     : m_page{page}
     , m_targetSize{targetSize}
-    , m_interactivity{interactivity}
 {
     setupWidgets();
-
-    if (m_interactivity == Interactivity::Yes)
-        setupSignalHandlers();
 }
 
 void PageWidget::changeSize(int targetSize)
@@ -47,27 +42,9 @@ void PageWidget::setupWidgets()
     set_valign(Gtk::ALIGN_CENTER);
     set_halign(Gtk::ALIGN_CENTER);
 
-    if (m_interactivity == Interactivity::Yes) {
-        m_spinner.set_size_request(38, 38);
-        m_spinner.start();
-        m_contentBox.pack_start(m_spinner, true, false);
-
-        m_check.set_halign(Gtk::ALIGN_END);
-        m_check.set_valign(Gtk::ALIGN_END);
-        m_check.set_margin_bottom(10);
-        m_check.set_margin_right(10);
-
-        m_previewButton.set_image_from_icon_name("document-print-preview-symbolic");
-        m_previewButtonRevealer.add(m_previewButton);
-        m_previewButtonRevealer.set_transition_type(Gtk::REVEALER_TRANSITION_TYPE_CROSSFADE);
-        m_previewButtonRevealer.set_halign(Gtk::ALIGN_END);
-        m_previewButtonRevealer.set_valign(Gtk::ALIGN_START);
-        m_previewButtonRevealer.set_margin_top(10);
-        m_previewButtonRevealer.set_margin_right(10);
-
-        m_overlay.add_overlay(m_check);
-        m_overlay.add_overlay(m_previewButtonRevealer);
-    }
+    m_spinner.set_size_request(38, 38);
+    m_spinner.start();
+    m_contentBox.pack_start(m_spinner, true, false);
 
     m_overlay.set_halign(Gtk::ALIGN_CENTER);
     m_overlay.set_valign(Gtk::ALIGN_CENTER);
@@ -77,55 +54,6 @@ void PageWidget::setupWidgets()
     add(m_contentBox);
 
     show_all();
-}
-
-void PageWidget::setupSignalHandlers()
-{
-    m_overlayEventBox.signal_button_release_event().connect([this](GdkEventButton* eventButton) {
-        if (eventButton->button == 1) {
-            if (eventButton->state & GDK_SHIFT_MASK) {
-                setChecked(true);
-                shiftSelected.emit(this);
-            }
-            else {
-                setChecked(!getChecked());
-                selectedChanged.emit(this);
-            }
-
-            return true;
-        }
-
-        return false;
-    });
-
-    m_overlayEventBox.signal_enter_notify_event().connect([this](GdkEventCrossing*) {
-        m_previewButtonRevealer.set_reveal_child(true);
-
-        return false;
-    });
-
-    m_overlayEventBox.signal_leave_notify_event().connect([this](GdkEventCrossing*) {
-        m_previewButtonRevealer.set_reveal_child(false);
-
-        return false;
-    });
-
-    m_previewButton.signal_enter_notify_event().connect([this](GdkEventCrossing*) {
-        m_previewButtonRevealer.set_reveal_child(true);
-
-        return false;
-    });
-
-    m_previewButton.signal_button_release_event().connect([](GdkEventButton* eventButton) {
-        if (eventButton->button == 1)
-            return true;
-
-        return false;
-    });
-
-    m_previewButton.signal_clicked().connect([this]() {
-        previewRequested.emit(m_page);
-    });
 }
 
 void PageWidget::renderPage()
@@ -149,14 +77,6 @@ void PageWidget::showPage()
         m_contentBox.pack_start(m_overlayEventBox, Gtk::PACK_SHRINK);
         m_overlayEventBox.show_all();
         m_spinner.hide();
-    }
-}
-
-void PageWidget::setChecked(bool checked)
-{
-    if (m_isChecked != checked) {
-        m_isChecked = checked;
-        m_check.set_active(m_isChecked);
     }
 }
 
