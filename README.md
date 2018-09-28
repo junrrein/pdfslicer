@@ -1,17 +1,23 @@
-# About
+<a href="https://hosted.weblate.org/engage/pdf-slicer/?utm_source=widget">
+<img src="https://hosted.weblate.org/widgets/pdf-slicer/-/svg-badge.svg" alt="Translation state" />
+</a>
 
-PDF Slicer is a simple application for extracting and rotating pages of a PDF document,
-with full undo/redo support.
+# PDF Slicer
+
+This is a simple application for extracting and rotating pages of a PDF document,
+with undo/redo support.
 
 ![](docs/readme-screenshot-1.png)
 
 ![](docs/readme-screenshot-2.png)
 
+![](docs/readme-screenshot-3.png)
+
 # Installing
 
 # Linux
 
-PDF Slicer is currently being submitted to [Flathub](https://flathub.org). Stay tuned!
+PDF Slicer is currently being submitted to [Flathub](https://flathub.org). [Stay tuned](https://github.com/junrrein/pdfslicer/issues/2)!
 
 # Windows
 
