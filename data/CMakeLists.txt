@@ -22,3 +22,6 @@ if (NOT MINGW)
 				  DESTINATION
 				  share/metainfo)
 endif ()
+
+include (GSettings)
+add_schema (${APPLICATION_ID}.gschema.xml)
