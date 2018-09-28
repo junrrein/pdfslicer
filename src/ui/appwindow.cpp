@@ -22,6 +22,7 @@
 #include <glibmm/i18n.h>
 #include <gtkmm/cssprovider.h>
 #include <gtkmm/messagedialog.h>
+#include <config.hpp>
 
 namespace Slicer {
 
@@ -29,12 +30,13 @@ const std::set<int> AppWindow::zoomLevels = {200, 300, 400};
 
 AppWindow::AppWindow(BackgroundThread& backgroundThread)
     : m_backgroundThread{backgroundThread}
+    , m_settings{Gio::Settings::create(config::APPLICATION_ID)}
     , m_view{m_backgroundThread}
     , m_zoomLevel{zoomLevels, *this}
 {
     set_size_request(500, 500);
-    set_default_size(800, 600);
 
+    loadWindowState();
     loadWidgets();
     addActions();
     setupWidgets();
@@ -42,6 +44,11 @@ AppWindow::AppWindow(BackgroundThread& backgroundThread)
     loadCustomCSS();
 
     show_all_children();
+}
+
+AppWindow::~AppWindow()
+{
+    saveWindowState();
 }
 
 void AppWindow::openDocument(const Glib::RefPtr<Gio::File>& file)
@@ -68,6 +75,22 @@ bool AppWindow::on_delete_event(GdkEventAny*)
     // Maybe we should tell the user visually that his request to
     // close the window was purposefully ignored.
     return m_isSavingDocument;
+}
+
+void AppWindow::loadWindowState()
+{
+    set_default_size(m_settings->get_int("window-width"),
+                     m_settings->get_int("window-height"));
+
+    if (m_settings->get_boolean("is-maximized"))
+        maximize();
+}
+
+void AppWindow::saveWindowState()
+{
+    m_settings->set_int("window-width", m_windowState.width);
+    m_settings->set_int("window-height", m_windowState.height);
+    m_settings->set_boolean("is-maximized", m_windowState.isMaximized);
 }
 
 void AppWindow::loadWidgets()
@@ -156,6 +179,9 @@ void AppWindow::setupSignalHandlers()
 
         errorDialog.run();
     });
+
+    signal_size_allocate().connect(sigc::mem_fun(*this, &AppWindow::onSizeAllocate));
+    signal_window_state_event().connect(sigc::mem_fun(*this, &AppWindow::onWindowStateEvent));
 }
 
 void AppWindow::loadCustomCSS()
@@ -367,5 +393,18 @@ void AppWindow::onCommandExecuted()
         m_redoAction->set_enabled();
     else
         m_redoAction->set_enabled(false);
+}
+
+void AppWindow::onSizeAllocate(Gtk::Allocation&)
+{
+    if (!is_maximized())
+        get_size(m_windowState.width, m_windowState.height);
+}
+
+bool AppWindow::onWindowStateEvent(GdkEventWindowState* state)
+{
+    m_windowState.isMaximized = (state->new_window_state & GDK_WINDOW_STATE_MAXIMIZED) != 0;
+
+    return false;
 }
 }

@@ -32,13 +32,14 @@
 #include <gtkmm/revealer.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/stack.h>
+#include <giomm/settings.h>
 
 namespace Slicer {
 
 class AppWindow : public Gtk::ApplicationWindow {
 public:
     AppWindow(BackgroundThread& bacgkroundThread);
-    virtual ~AppWindow() override = default;
+    virtual ~AppWindow() override;
 
     void openDocument(const Glib::RefPtr<Gio::File>& file);
 
@@ -49,6 +50,13 @@ private:
     std::unique_ptr<Document> m_document;
     std::atomic<bool> m_isSavingDocument{false};
     BackgroundThread& m_backgroundThread;
+
+    Glib::RefPtr<Gio::Settings> m_settings;
+    struct {
+        int width;
+        int height;
+        bool isMaximized;
+    } m_windowState;
 
     HeaderBar m_headerBar;
     Gtk::Overlay m_overlay;
@@ -83,6 +91,8 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_aboutAction;
 
     // Functions
+    void loadWindowState();
+    void saveWindowState();
     void loadWidgets();
     void addActions();
     void setupWidgets();
@@ -107,6 +117,8 @@ private:
     void onShortcutsAction();
     void onSelectedPagesChanged();
     void onCommandExecuted();
+    void onSizeAllocate(Gtk::Allocation&);
+    bool onWindowStateEvent(GdkEventWindowState* state);
 };
 }
 
