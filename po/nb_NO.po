@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-28 15:01-0300\n"
+"POT-Creation-Date: 2018-09-28 15:07-0300\n"
 "PO-Revision-Date: 2018-09-28 04:35+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
@@ -197,6 +197,7 @@ msgid "Undo last command"
 msgstr "Angre siste kommando"
 
 #: ../data/ui/shortcuts.ui:63
+#, fuzzy
 msgctxt "shortcut window"
-msgid "Redo last undone command"
+msgid "Redo undone command"
 msgstr "Gjenta siste (angrede) kommando"
