@@ -2,9 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2018-09-28 15:07-0300\n"
-"PO-Revision-Date: 2018-09-28 01:33+0000\n"
+"PO-Revision-Date: 2018-09-28 18:39+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/es/>\n"
@@ -190,10 +190,9 @@ msgid "Undo last command"
 msgstr "Deshacer el último comando"
 
 #: ../data/ui/shortcuts.ui:63
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr "Rehacer el último comando deshecho"
+msgstr "Rehacer comando deshecho"
 
 #~ msgid "Quit"
 #~ msgstr "Salir"
