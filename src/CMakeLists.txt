@@ -48,6 +48,7 @@ set (SLICER_UI_SOURCES
      ui/zoomlevelwithactions.hpp
      ui/zoomlevelwithactions.cpp)
 
+include (GResource)
 gresource (${SOURCE_DATA_DIR} pdfslicer.gresource.xml
 	 ${CMAKE_CURRENT_BINARY_DIR} GLIB_RESOURCE_FILE)
 
