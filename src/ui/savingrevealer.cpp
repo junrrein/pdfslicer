@@ -5,7 +5,7 @@ namespace Slicer {
 
 SavingRevealer::SavingRevealer()
 {
-    auto parentBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL});
+    auto parentBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL}); // NOLINT
 
     m_labelSaving.set_label(_("Saving…"));
     m_boxSaving.pack_start(m_labelSaving, Gtk::PACK_EXPAND_WIDGET);

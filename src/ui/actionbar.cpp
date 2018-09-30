@@ -22,7 +22,7 @@ namespace Slicer {
 
 ActionBar::ActionBar()
 {
-    auto rotateBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL});
+    auto rotateBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL}); // NOLINT
     rotateBox->get_style_context()->add_class("linked");
 
     m_buttonRotateLeft.set_image_from_icon_name("object-rotate-left-symbolic");
@@ -35,7 +35,7 @@ ActionBar::ActionBar()
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRotateRight.gobj()), "win.rotate-right"); // NOLINT
     rotateBox->pack_start(m_buttonRotateRight);
 
-    auto removeBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL});
+    auto removeBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL}); // NOLINT
     removeBox->get_style_context()->add_class("linked");
 
     m_buttonRemovePages.set_label(C_("plural (pages)", "Remove selected"));

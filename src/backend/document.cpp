@@ -90,7 +90,7 @@ void Document::makePDFCopy(const std::string& sourcePath,
     parser.StartPDFParsing(sourceFile.GetInputStream());
     PDFWriter pdfWriter;
     pdfWriter.StartPDF(destinationPath, ePDFVersionMax);
-    PDFDocumentCopyingContext* copyingContext = pdfWriter.CreatePDFCopyingContext(sourcePath);
+    std::unique_ptr<PDFDocumentCopyingContext> copyingContext{pdfWriter.CreatePDFCopyingContext(sourcePath)};
 
     for (unsigned int i = 0; i < m_pages->get_n_items(); ++i) {
         const Glib::RefPtr<Page> slicerPage = m_pages->get_item(i);
@@ -98,21 +98,20 @@ void Document::makePDFCopy(const std::string& sourcePath,
 
         RefCountPtr<PDFDictionary> parsedPage = parser.ParsePage(pageNumber);
         PDFPageInput inputPage{&parser, parsedPage};
+        PDFPage outputPage;
 
-        auto outputPage = new PDFPage{};
-        outputPage->SetArtBox(inputPage.GetArtBox());
-        outputPage->SetBleedBox(inputPage.GetBleedBox());
-        outputPage->SetCropBox(inputPage.GetCropBox());
-        outputPage->SetMediaBox(inputPage.GetMediaBox());
-        outputPage->SetRotate(inputPage.GetRotate() + slicerPage->rotation());
-        outputPage->SetTrimBox(inputPage.GetTrimBox());
+        outputPage.SetArtBox(inputPage.GetArtBox());
+        outputPage.SetBleedBox(inputPage.GetBleedBox());
+        outputPage.SetCropBox(inputPage.GetCropBox());
+        outputPage.SetMediaBox(inputPage.GetMediaBox());
+        outputPage.SetRotate(inputPage.GetRotate() + slicerPage->rotation());
+        outputPage.SetTrimBox(inputPage.GetTrimBox());
 
-        copyingContext->MergePDFPageToPage(outputPage, pageNumber);
-        pdfWriter.WritePageAndRelease(outputPage);
+        copyingContext->MergePDFPageToPage(&outputPage, pageNumber);
+        pdfWriter.WritePage(&outputPage);
     }
 
     pdfWriter.EndPDF();
-    delete copyingContext;
 }
 
 void Document::reload()

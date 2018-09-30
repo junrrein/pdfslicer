@@ -41,7 +41,7 @@ void InteractivePageWidget::setupSignalHandlers()
 {
     m_overlayEventBox.signal_button_release_event().connect([this](GdkEventButton* eventButton) {
         if (eventButton->button == 1) {
-            if (eventButton->state & GDK_SHIFT_MASK) {
+            if ((eventButton->state & GDK_SHIFT_MASK) != 0) {
                 setChecked(true);
                 shiftSelected.emit(this);
             }
@@ -75,10 +75,8 @@ void InteractivePageWidget::setupSignalHandlers()
     });
 
     m_previewButton.signal_button_release_event().connect([](GdkEventButton* eventButton) {
-        if (eventButton->button == 1)
-            return true;
-
-        return false;
+        // If the event was a left click, don't propagate the event further
+        return eventButton->button == 1;
     });
 
     m_previewButton.signal_clicked().connect([this]() {

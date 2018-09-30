@@ -46,7 +46,7 @@ public:
 
 private:
     PageWidgetList m_pageWidgets;
-    int m_pageWidgetSize;
+    int m_pageWidgetSize = 0;
     Document* m_document = nullptr;
     std::vector<sigc::connection> m_documentConnections;
     PageWidgetQueue m_toRenderQueue;

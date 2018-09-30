@@ -55,7 +55,7 @@ Page::Size Page::rotatedSize() const
 
 Page::Size scaleSize(Page::Size sourceSize, int targetSize)
 {
-    Page::Size scaledSize;
+    Page::Size scaledSize{};
 
     if (sourceSize.height > sourceSize.width) {
         scaledSize.height = targetSize;

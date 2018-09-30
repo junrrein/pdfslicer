@@ -31,6 +31,7 @@ const std::set<int> AppWindow::zoomLevels = {200, 300, 400};
 AppWindow::AppWindow(BackgroundThread& backgroundThread)
     : m_backgroundThread{backgroundThread}
     , m_settings{Gio::Settings::create(config::APPLICATION_ID)}
+    , m_windowState{}
     , m_view{m_backgroundThread}
     , m_zoomLevel{zoomLevels, *this}
 {
@@ -79,10 +80,13 @@ bool AppWindow::on_delete_event(GdkEventAny*)
 
 void AppWindow::loadWindowState()
 {
-    set_default_size(m_settings->get_int("window-width"),
-                     m_settings->get_int("window-height"));
+    m_windowState.width = m_settings->get_int("window-width");
+    m_windowState.height = m_settings->get_int("window-height");
+    m_windowState.isMaximized = m_settings->get_boolean("is-maximized");
 
-    if (m_settings->get_boolean("is-maximized"))
+    set_default_size(m_windowState.width, m_windowState.height);
+
+    if (m_windowState.isMaximized)
         maximize();
 }
 
@@ -137,7 +141,7 @@ void AppWindow::setupWidgets()
     set_titlebar(m_headerBar);
 
     m_scroller.add(m_view);
-    auto editorBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_VERTICAL});
+    auto editorBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_VERTICAL}); // NOLINT
     editorBox->pack_start(m_scroller);
     editorBox->pack_start(m_actionBar, Gtk::PACK_SHRINK);
 

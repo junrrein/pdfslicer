@@ -73,9 +73,9 @@ void View::setDocument(Document& document, int targetWidgetSize)
         m_dispatcher.emit();
     }
 
-    m_documentConnections.push_back(
+    m_documentConnections.emplace_back(
         m_document->pages()->signal_items_changed().connect(sigc::mem_fun(*this, &View::onModelItemsChanged)));
-    m_documentConnections.push_back(
+    m_documentConnections.emplace_back(
         m_document->pagesRotated.connect(sigc::mem_fun(*this, &View::onModelPagesRotated)));
     selectedPagesChanged.emit();
 }
@@ -86,7 +86,7 @@ void View::changePageSize(int targetWidgetSize)
 
     std::lock_guard<std::mutex> lock(m_toRenderQueueMutex);
 
-    for (auto pageWidget : m_pageWidgets) {
+    for (const auto& pageWidget : m_pageWidgets) {
         pageWidget->changeSize(targetWidgetSize);
         pageWidget->showSpinner();
         m_toRenderQueue.push(pageWidget);

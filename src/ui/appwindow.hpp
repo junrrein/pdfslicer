@@ -38,7 +38,7 @@ namespace Slicer {
 
 class AppWindow : public Gtk::ApplicationWindow {
 public:
-    AppWindow(BackgroundThread& bacgkroundThread);
+    AppWindow(BackgroundThread& backgroundThread);
     virtual ~AppWindow() override;
 
     void openDocument(const Glib::RefPtr<Gio::File>& file);
