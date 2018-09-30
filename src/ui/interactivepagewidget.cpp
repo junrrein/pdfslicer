@@ -4,7 +4,7 @@ namespace Slicer {
 
 InteractivePageWidget::InteractivePageWidget(const Glib::RefPtr<Page>& page,
                                              int targetSize)
-    : PageWidget{page, targetSize}
+    : PageWidget(page, targetSize)
 {
     setupInteractiveWidgets();
     setupSignalHandlers();
