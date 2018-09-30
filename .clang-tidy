@@ -1,5 +1,5 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*,bugprone-*,cppcoreguidelines-*,misc-*,modernize-*,performance-*,readability-*,-readability-braces-around-statements,-clang-diagnostic-unused-command-line-argument,-clang-diagnostic-unknown-warning-option'
+Checks:          'clang-diagnostic-*,clang-analyzer-*,bugprone-*,cppcoreguidelines-*,misc-*,modernize-*,-modernize-pass-by-value,performance-*,readability-*,-readability-braces-around-statements,-readability-named-parameter,-clang-diagnostic-unused-command-line-argument,-clang-diagnostic-unknown-warning-option'
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
 AnalyzeTemporaryDtors: false
