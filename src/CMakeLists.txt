@@ -95,8 +95,9 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
         )
     endif ()
 
-    # if (CLANG_TIDY_EXE) set_target_properties (${CMAKE_PROJECT_NAME}
-    # PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}") endif ()
+#	 if (CLANG_TIDY_EXE)
+#		 set_target_properties (${CMAKE_PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}")
+#	 endif ()
 endif ()
 
 if (MINGW)
