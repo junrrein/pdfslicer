@@ -28,9 +28,9 @@ namespace Slicer {
 
 const std::set<int> AppWindow::zoomLevels = {200, 300, 400};
 
-AppWindow::AppWindow(BackgroundThread& backgroundThread)
+AppWindow::AppWindow(BackgroundThread& backgroundThread, SettingsManager& settingsManager)
     : m_backgroundThread{backgroundThread}
-    , m_settings{Gio::Settings::create(config::APPLICATION_ID)}
+    , m_settingsManager{settingsManager}
     , m_windowState{}
     , m_view{m_backgroundThread}
     , m_zoomLevel{zoomLevels, *this}
@@ -80,9 +80,7 @@ bool AppWindow::on_delete_event(GdkEventAny*)
 
 void AppWindow::loadWindowState()
 {
-    m_windowState.width = m_settings->get_int("window-width");
-    m_windowState.height = m_settings->get_int("window-height");
-    m_windowState.isMaximized = m_settings->get_boolean("is-maximized");
+    m_windowState = m_settingsManager.loadWindowState();
 
     set_default_size(m_windowState.width, m_windowState.height);
 
@@ -92,9 +90,7 @@ void AppWindow::loadWindowState()
 
 void AppWindow::saveWindowState()
 {
-    m_settings->set_int("window-width", m_windowState.width);
-    m_settings->set_int("window-height", m_windowState.height);
-    m_settings->set_boolean("is-maximized", m_windowState.isMaximized);
+    m_settingsManager.saveWindowState(m_windowState);
 }
 
 void AppWindow::loadWidgets()

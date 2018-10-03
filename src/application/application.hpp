@@ -29,6 +29,7 @@ public:
 
 private:
     BackgroundThread m_backgroundThread;
+    SettingsManager m_settingsManager;
 
     Application();
     AppWindow* createWindow();

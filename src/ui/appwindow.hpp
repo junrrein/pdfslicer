@@ -18,6 +18,7 @@
 #define SLICERWINDOW_HPP
 
 #include "../application/backgroundthread.hpp"
+#include "../application/settingsmanager.hpp"
 #include "actionbar.hpp"
 #include "headerbar.hpp"
 #include "savingrevealer.hpp"
@@ -38,7 +39,8 @@ namespace Slicer {
 
 class AppWindow : public Gtk::ApplicationWindow {
 public:
-    AppWindow(BackgroundThread& backgroundThread);
+    AppWindow(BackgroundThread& backgroundThread,
+              SettingsManager& settingsManager);
     virtual ~AppWindow() override;
 
     void openDocument(const Glib::RefPtr<Gio::File>& file);
@@ -51,12 +53,8 @@ private:
     std::atomic<bool> m_isSavingDocument{false};
     BackgroundThread& m_backgroundThread;
 
-    Glib::RefPtr<Gio::Settings> m_settings;
-    struct {
-        int width;
-        int height;
-        bool isMaximized;
-    } m_windowState;
+    SettingsManager& m_settingsManager;
+    WindowState m_windowState;
 
     HeaderBar m_headerBar;
     Gtk::Overlay m_overlay;
