@@ -21,7 +21,6 @@ public:
 
 private:
     Glib::KeyFile m_keyFile;
-    bool wasSuccessfullyLoaded = false;
 
     void loadConfigFile();
     void saveConfigFile();

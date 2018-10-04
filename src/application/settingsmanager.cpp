@@ -3,9 +3,19 @@
 #include <glibmm/miscutils.h>
 #include <config.hpp>
 
-static const std::string windowStateGroup = "window-state";
-
 namespace Slicer {
+
+namespace window_state {
+    static const std::string groupName = "window-state";
+
+    static const struct {
+        std::string width = "width";
+        std::string height = "height";
+        std::string isMaximized = "is-maximized";
+    } keys;
+
+    static const WindowState defaultWindowState = {800, 600, false};
+}
 
 SettingsManager::SettingsManager()
 {
@@ -19,30 +29,31 @@ SettingsManager::~SettingsManager()
 
 WindowState SettingsManager::loadWindowState()
 {
-    if (!wasSuccessfullyLoaded)
-        return {800, 600, false};
-
     WindowState result;
 
-    result.width = m_keyFile.get_integer(windowStateGroup, "window-width");
-    result.height = m_keyFile.get_integer(windowStateGroup, "window-height");
-    result.isMaximized = m_keyFile.get_boolean(windowStateGroup, "is-maximized");
+    try {
+        result.width = m_keyFile.get_integer(window_state::groupName, window_state::keys.width);
+        result.height = m_keyFile.get_integer(window_state::groupName, window_state::keys.height);
+        result.isMaximized = m_keyFile.get_boolean(window_state::groupName, window_state::keys.isMaximized);
+    }
+    catch (...) {
+        result = window_state::defaultWindowState;
+    }
 
     return result;
 }
 
 void SettingsManager::saveWindowState(const WindowState& windowState)
 {
-    m_keyFile.set_integer(windowStateGroup, "window-width", windowState.width);
-    m_keyFile.set_integer(windowStateGroup, "window-height", windowState.height);
-    m_keyFile.set_boolean(windowStateGroup, "is-maximized", windowState.isMaximized);
+    m_keyFile.set_integer(window_state::groupName, window_state::keys.width, windowState.width);
+    m_keyFile.set_integer(window_state::groupName, window_state::keys.height, windowState.height);
+    m_keyFile.set_boolean(window_state::groupName, window_state::keys.isMaximized, windowState.isMaximized);
 }
 
 void SettingsManager::loadConfigFile()
 {
     try {
         m_keyFile.load_from_file(getSettingsFilePath());
-        wasSuccessfullyLoaded = true;
     }
     catch (...) {
     }
@@ -52,10 +63,14 @@ void SettingsManager::saveConfigFile()
 {
     Glib::RefPtr<Gio::File> settingsDirectory = Gio::File::create_for_path(getSettingsParentPath());
 
-    if (!settingsDirectory->query_exists())
-        settingsDirectory->make_directory_with_parents();
+    try {
+        if (!settingsDirectory->query_exists())
+            settingsDirectory->make_directory_with_parents();
 
-    m_keyFile.save_to_file(getSettingsFilePath());
+        m_keyFile.save_to_file(getSettingsFilePath());
+    }
+    catch (...) {
+    }
 }
 
 std::string SettingsManager::getSettingsParentPath() const
