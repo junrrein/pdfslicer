@@ -116,13 +116,7 @@ install (FILES ${GDK_SVGLOADER_DLL} DESTINATION ${GDK_PIXBUFLOADERS_RELDIR})
 
 set (GDK_QUERY_LOADERS_EXE
      "${FEDORA_MINGW_BINPATH}/gdk-pixbuf-query-loaders.exe")
-set (GLIB_COMPILE_SCHEMAS_EXE
-     "${FEDORA_MINGW_BINPATH}/glib-compile-schemas.exe")
-set (GSETTINGS_COMPILE OFF)
-install (FILES ${GDK_QUERY_LOADERS_EXE}
-               ${GLIB_COMPILE_SCHEMAS_EXE}
-               DESTINATION
-               bin)
+install (FILES ${GDK_QUERY_LOADERS_EXE} DESTINATION bin)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     set (GDB_EXE "${FEDORA_MINGW_BINPATH}/gdb.exe")
@@ -144,11 +138,8 @@ set (CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL TRUE)
 set (CPACK_NSIS_URL_INFO_ABOUT ${APPLICATION_WEBSITE})
 set (CPACK_NSIS_MUI_FINISHPAGE_RUN ${CMAKE_PROJECT_NAME})
 set (CPACK_NSIS_MUI_ICON ${CMAKE_BINARY_DIR}/pdfslicer.ico)
-set (
-    CPACK_NSIS_EXTRA_INSTALL_COMMANDS
-    "ExecWait '\"$INSTDIR\\bin\\gdk-pixbuf-query-loaders\" --update-cache'\n
-	 ExecWait '\"$INSTDIR\\bin\\glib-compile-schemas\" \"$INSTDIR\\share\\glib-2.0\\schemas\"'"
-)
+set (CPACK_NSIS_EXTRA_INSTALL_COMMANDS
+     "ExecWait '\"$INSTDIR\\bin\\gdk-pixbuf-query-loaders\" --update-cache'")
 set (CPACK_NSIS_EXTRA_UNINSTALL_COMMANDS "RMDir /r \"$INSTDIR\"")
 
 include (CPackComponent)
