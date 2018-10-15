@@ -29,8 +29,6 @@ Document::Document(const Glib::RefPtr<Gio::File>& sourceFile)
         throw std::runtime_error("Couldn't load file: " + m_sourceFile->get_path());
 
     const int num_pages = poppler_document_get_n_pages(m_popplerDocument);
-    if (num_pages == 0)
-        throw std::runtime_error("The file has zero pages");
 
     m_pages = Gio::ListStore<Page>::create();
 
