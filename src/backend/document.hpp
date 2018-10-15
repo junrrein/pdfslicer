@@ -49,6 +49,7 @@ private:
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
     CommandManager m_commandManager;
 
+    void loadDocument();
     void reload();
 
     friend class DocumentSaver;

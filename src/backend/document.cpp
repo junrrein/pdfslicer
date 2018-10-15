@@ -20,51 +20,14 @@ namespace Slicer {
 
 Document::Document(const Glib::RefPtr<Gio::File>& sourceFile)
     : m_sourceFile{sourceFile}
+    , m_pages{Gio::ListStore<Page>::create()}
 {
-    m_popplerDocument = poppler_document_new_from_file(m_sourceFile->get_uri().c_str(),
-                                                       nullptr,
-                                                       nullptr);
-
-    if (m_popplerDocument == nullptr)
-        throw std::runtime_error("Couldn't load file: " + m_sourceFile->get_path());
-
-    const int num_pages = poppler_document_get_n_pages(m_popplerDocument);
-
-    m_pages = Gio::ListStore<Page>::create();
-
-    for (int i = 0; i < num_pages; ++i) {
-        PopplerPage* popplerPage = poppler_document_get_page(m_popplerDocument, i);
-        auto page = Glib::RefPtr<Page>{new Page{popplerPage}};
-        m_pages->append(page);
-    }
+    loadDocument();
 }
 
 Document::~Document()
 {
     g_object_unref(m_popplerDocument);
-}
-
-void Document::reload()
-{
-    m_pages->remove_all();
-    g_object_unref(m_popplerDocument);
-    m_popplerDocument = nullptr;
-    m_popplerDocument = poppler_document_new_from_file(m_sourceFile->get_uri().c_str(),
-                                                       nullptr,
-                                                       nullptr);
-
-    if (m_popplerDocument == nullptr)
-        throw std::runtime_error("Couldn't load file: " + m_sourceFile->get_path());
-
-    const int num_pages = poppler_document_get_n_pages(m_popplerDocument);
-
-    for (int i = 0; i < num_pages; ++i) {
-        PopplerPage* popplerPage = poppler_document_get_page(m_popplerDocument, i);
-        auto page = Glib::RefPtr<Page>{new Page{popplerPage}};
-        m_pages->append(page);
-    }
-
-    m_commandManager.reset();
 }
 
 void Document::removePage(int pageNumber)
@@ -95,5 +58,34 @@ void Document::rotatePagesLeft(const std::vector<unsigned int>& pageNumbers)
 {
     auto command = std::make_shared<RotatePagesLeftCommand>(m_pages, pageNumbers, pagesRotated);
     m_commandManager.execute(command);
+}
+
+void Document::loadDocument()
+{
+    m_popplerDocument = poppler_document_new_from_file(m_sourceFile->get_uri().c_str(),
+                                                       nullptr,
+                                                       nullptr);
+
+    if (m_popplerDocument == nullptr)
+        throw std::runtime_error("Couldn't load file: " + m_sourceFile->get_path());
+
+    const int num_pages = poppler_document_get_n_pages(m_popplerDocument);
+
+    for (int i = 0; i < num_pages; ++i) {
+        PopplerPage* popplerPage = poppler_document_get_page(m_popplerDocument, i);
+        auto page = Glib::RefPtr<Page>{new Page{popplerPage}};
+        m_pages->append(page);
+    }
+}
+
+void Document::reload()
+{
+    m_pages->remove_all();
+    g_object_unref(m_popplerDocument);
+    m_popplerDocument = nullptr;
+
+    loadDocument();
+
+    m_commandManager.reset();
 }
 }
