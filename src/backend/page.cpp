@@ -21,24 +21,19 @@
 namespace Slicer {
 
 Page::Page(PopplerPage* ppage)
-    : m_ppage{ppage}
+    : m_ppage{ppage, &g_object_unref}
 {
-}
-
-Page::~Page()
-{
-    g_object_unref(m_ppage);
 }
 
 int Page::number() const
 {
-    return poppler_page_get_index(m_ppage);
+    return poppler_page_get_index(m_ppage.get());
 }
 
 Page::Size Page::size() const
 {
     double width = 0, height = 0;
-    poppler_page_get_size(m_ppage, &width, &height);
+    poppler_page_get_size(m_ppage.get(), &width, &height);
 
     return {static_cast<int>(width), static_cast<int>(height)};
 }
@@ -119,7 +114,7 @@ Glib::RefPtr<Gdk::Pixbuf> Page::renderPage(int targetSize) const
     cr->scale(scale, scale);
 
     // Render page
-    poppler_page_render(m_ppage, cr->cobj());
+    poppler_page_render(m_ppage.get(), cr->cobj());
 
     // Scale and/or rotate back and paint a black outline
     cr->restore();
