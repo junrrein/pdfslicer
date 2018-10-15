@@ -25,7 +25,6 @@ namespace Slicer {
 class Document {
 public:
     Document(const Glib::RefPtr<Gio::File>& sourceFile);
-    ~Document();
 
     void removePage(int pageNumber);
     void removePages(const std::vector<unsigned int>& positions);
@@ -44,7 +43,7 @@ public:
     sigc::signal<void, std::vector<unsigned int>> pagesRotated;
 
 private:
-    PopplerDocument* m_popplerDocument;
+    std::unique_ptr<PopplerDocument, decltype(&g_object_unref)> m_popplerDocument;
     Glib::RefPtr<Gio::File> m_sourceFile;
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
     CommandManager m_commandManager;

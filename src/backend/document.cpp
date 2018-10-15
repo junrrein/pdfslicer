@@ -19,15 +19,11 @@
 namespace Slicer {
 
 Document::Document(const Glib::RefPtr<Gio::File>& sourceFile)
-    : m_sourceFile{sourceFile}
+    : m_popplerDocument{nullptr, &g_object_unref}
+    , m_sourceFile{sourceFile}
     , m_pages{Gio::ListStore<Page>::create()}
 {
     loadDocument();
-}
-
-Document::~Document()
-{
-    g_object_unref(m_popplerDocument);
 }
 
 void Document::removePage(int pageNumber)
@@ -62,17 +58,17 @@ void Document::rotatePagesLeft(const std::vector<unsigned int>& pageNumbers)
 
 void Document::loadDocument()
 {
-    m_popplerDocument = poppler_document_new_from_file(m_sourceFile->get_uri().c_str(),
-                                                       nullptr,
-                                                       nullptr);
+    m_popplerDocument.reset(poppler_document_new_from_file(m_sourceFile->get_uri().c_str(),
+                                                           nullptr,
+                                                           nullptr));
 
     if (m_popplerDocument == nullptr)
         throw std::runtime_error("Couldn't load file: " + m_sourceFile->get_path());
 
-    const int num_pages = poppler_document_get_n_pages(m_popplerDocument);
+    const int num_pages = poppler_document_get_n_pages(m_popplerDocument.get());
 
     for (int i = 0; i < num_pages; ++i) {
-        PopplerPage* popplerPage = poppler_document_get_page(m_popplerDocument, i);
+        PopplerPage* popplerPage = poppler_document_get_page(m_popplerDocument.get(), i);
         auto page = Glib::RefPtr<Page>{new Page{popplerPage}};
         m_pages->append(page);
     }
@@ -81,11 +77,7 @@ void Document::loadDocument()
 void Document::reload()
 {
     m_pages->remove_all();
-    g_object_unref(m_popplerDocument);
-    m_popplerDocument = nullptr;
-
     loadDocument();
-
     m_commandManager.reset();
 }
 }
