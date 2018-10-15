@@ -13,6 +13,8 @@ set (SLICER_BACKEND_SOURCES
      backend/commandmanager.cpp
      backend/document.hpp
      backend/document.cpp
+	 backend/documentsaver.hpp
+	 backend/documentsaver.cpp
      backend/page.hpp
      backend/page.cpp)
 

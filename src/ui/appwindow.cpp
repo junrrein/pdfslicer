@@ -18,6 +18,7 @@
 #include "aboutdialog.hpp"
 #include "openfiledialog.hpp"
 #include "savefiledialog.hpp"
+#include "../backend/documentsaver.hpp"
 #include <glibmm/main.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/cssprovider.h>
@@ -254,7 +255,7 @@ void AppWindow::onSaveAction()
 
         std::thread thread{[this, file]() {
             try {
-                m_document->saveDocument(file);
+                DocumentSaver{*m_document}.saveDocument(file);
                 m_savedDispatcher.emit();
             }
             catch (...) {

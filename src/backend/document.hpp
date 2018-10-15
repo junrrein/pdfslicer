@@ -27,7 +27,6 @@ public:
     Document(const Glib::RefPtr<Gio::File>& sourceFile);
     ~Document();
 
-    void saveDocument(const Glib::RefPtr<Gio::File>& destinationFile);
     void removePage(int pageNumber);
     void removePages(const std::vector<unsigned int>& positions);
     void removePageRange(int first, int last);
@@ -50,9 +49,9 @@ private:
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
     CommandManager m_commandManager;
 
-    void makePDFCopy(const std::string& sourcePath,
-                     const std::string& destinationPath) const;
     void reload();
+
+    friend class DocumentSaver;
 };
 }
 
