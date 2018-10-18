@@ -39,13 +39,14 @@ public:
     Size scaledSize(int targetSize) const;
     Size scaledRotatedSize(int targetSize) const;
 
-    Glib::RefPtr<Gdk::Pixbuf> renderPage(int targetSize) const;
     void rotateRight();
     void rotateLeft();
 
 private:
     std::unique_ptr<PopplerPage, decltype(&g_object_unref)> m_ppage;
     int m_rotation = 0;
+
+    friend class PageRenderer; // For access to m_ppage
 };
 
 struct pageComparator {

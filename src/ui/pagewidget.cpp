@@ -15,7 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "pagewidget.hpp"
-#include <iostream>
+#include "../backend/pagerenderer.hpp"
 
 namespace Slicer {
 
@@ -58,7 +58,7 @@ void PageWidget::setupWidgets()
 
 void PageWidget::renderPage()
 {
-    m_thumbnail.set(m_page->renderPage(m_targetSize));
+    m_thumbnail.set(PageRenderer{*m_page.operator->()}.render(m_targetSize));
 }
 
 void PageWidget::showSpinner()

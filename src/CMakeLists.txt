@@ -16,7 +16,9 @@ set (SLICER_BACKEND_SOURCES
 	 backend/documentsaver.hpp
 	 backend/documentsaver.cpp
      backend/page.hpp
-     backend/page.cpp)
+	 backend/page.cpp
+	 backend/pagerenderer.hpp
+	 backend/pagerenderer.cpp)
 
 set (SLICER_UI_SOURCES
      ui/aboutdialog.hpp
