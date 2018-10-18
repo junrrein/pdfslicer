@@ -17,14 +17,14 @@ void DocumentSaver::saveDocument(const Glib::RefPtr<Gio::File>& destinationFile)
     const std::string tempFilePath = getTempFilePath();
     auto tempFile = Gio::File::create_for_path(tempFilePath);
 
-    makePDFCopy(m_document.m_sourceFile->get_path(), tempFilePath);
+    makePDFCopy(m_document.filePath(), tempFilePath);
     tempFile->move(destinationFile, Gio::FILE_COPY_OVERWRITE);
 
     // FIXME: No need to do this once PDFWriter gets support for
     // in-memory documents.
     // TODO: Maybe save the file to a temporary place when opening?
     // And use that temporary file as the source later
-    if (m_document.m_sourceFile->get_path() == destinationFile->get_path())
+    if (m_document.filePath() == destinationFile->get_path())
         m_document.reload();
 }
 

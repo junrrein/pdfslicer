@@ -33,11 +33,13 @@ public:
     void rotatePagesLeft(const std::vector<unsigned int>& pageNumbers);
     void undoCommand() { m_commandManager.undo(); }
     void redoCommand() { m_commandManager.redo(); }
+    void reload();
 
     bool canUndo() const { return m_commandManager.canUndo(); }
     bool canRedo() const { return m_commandManager.canRedo(); }
     const Glib::RefPtr<Gio::ListStore<Page>>& pages() const { return m_pages; }
     std::string basename() const { return m_sourceFile->get_basename(); }
+    std::string filePath() const { return m_sourceFile->get_path(); }
 
     sigc::signal<void>& commandExecuted() { return m_commandManager.commandExecuted; }
     sigc::signal<void, std::vector<unsigned int>> pagesRotated;
@@ -49,9 +51,6 @@ private:
     CommandManager m_commandManager;
 
     void loadDocument();
-    void reload();
-
-    friend class DocumentSaver;
 };
 }
 
