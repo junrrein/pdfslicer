@@ -14,6 +14,14 @@ void BackgroundThread::pushBack(const std::function<void()>& task)
     m_threadpool->push(task);
 }
 
+void BackgroundThread::pushFront(const std::function<void()>& task)
+{
+    std::thread{[this, task]() {
+        m_threadpool->apply_for(1, task);
+    }}
+        .detach();
+}
+
 void BackgroundThread::killRemainingTasks()
 {
     m_threadpool->stop();

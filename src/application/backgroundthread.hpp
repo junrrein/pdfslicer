@@ -10,6 +10,7 @@ public:
     BackgroundThread();
 
     void pushBack(const std::function<void()>& task);
+    void pushFront(const std::function<void()>& task);
     void killRemainingTasks();
 
 private:
