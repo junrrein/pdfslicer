@@ -71,6 +71,7 @@ target_include_directories (
     ${CMAKE_BINARY_DIR}
     ${CMAKE_SOURCE_DIR}/third-party/PDF-Writer/PDFWriter
 	${CMAKE_SOURCE_DIR}/third-party/adda25-threadpool
+	${CMAKE_SOURCE_DIR}/third-party/stduuid
     ${CMAKE_SOURCE_DIR}/third-party/range-v3/include
 )
 
@@ -89,7 +90,8 @@ target_link_libraries (${CMAKE_PROJECT_NAME}
                        ${POPPLER_LDFLAGS}
                        ${INTL_LIBRARY_DIRS}
                        PDFWriter
-					   ThreadPool)
+					   ThreadPool
+					   stduuid)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")

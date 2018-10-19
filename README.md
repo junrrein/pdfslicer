@@ -30,7 +30,7 @@ You can download the installer from the [Releases page](https://github.com/junrr
 1. Install dependencies
 
 ```bash
-sudo dnf install gtkmm30-devel poppler-glib-devel cairomm-devel libaesgm-devel intltool gettext
+sudo dnf install gtkmm30-devel poppler-glib-devel cairomm-devel libaesgm-devel uuid-devel intltool gettext
 ```
 
 2. Check out a copy of the source code

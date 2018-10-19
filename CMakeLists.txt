@@ -13,7 +13,7 @@ configure_file (config.hpp.in ${CMAKE_BINARY_DIR}/config.hpp)
 
 set (SOURCE_DATA_DIR ${CMAKE_SOURCE_DIR}/data)
 
-set (CMAKE_CXX_STANDARD 14)
+set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package (Threads REQUIRED)
@@ -22,6 +22,10 @@ pkg_check_modules (GTKMM gtkmm-3.0 REQUIRED)
 pkg_check_modules (POPPLER poppler-glib REQUIRED)
 find_package (Intl REQUIRED)
 find_package (Gettext REQUIRED)
+
+if (NOT WIN32)
+	pkg_check_modules (ossp-uuid uuid REQUIRED)
+endif ()
 
 find_program (CLANG_TIDY_EXE
               NAMES "clang-tidy"
