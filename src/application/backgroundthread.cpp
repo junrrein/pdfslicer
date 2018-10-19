@@ -9,7 +9,7 @@ BackgroundThread::BackgroundThread()
     m_threadpool = std::make_unique<astp::ThreadPool>(numThreads);
 }
 
-void BackgroundThread::push(const std::function<void()>& task)
+void BackgroundThread::pushBack(const std::function<void()>& task)
 {
     m_threadpool->push([task]() {
 		task();

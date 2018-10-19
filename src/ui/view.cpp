@@ -159,7 +159,7 @@ void View::renderQueuedPages()
     while (!m_toRenderQueue.empty()) {
         std::weak_ptr<InteractivePageWidget> weakWidget = m_toRenderQueue.front();
 
-        m_backgroundThread.push([this, weakWidget]() {
+        m_backgroundThread.pushBack([this, weakWidget]() {
             std::shared_ptr<InteractivePageWidget> pageWidget = weakWidget.lock();
 
             if (pageWidget != nullptr) {

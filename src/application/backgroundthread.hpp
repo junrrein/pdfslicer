@@ -9,8 +9,8 @@ class BackgroundThread {
 public:
     BackgroundThread();
 
-	void push(const std::function<void()>& task);
-	void killRemainingTasks();
+    void pushBack(const std::function<void()>& task);
+    void killRemainingTasks();
 
 private:
     std::unique_ptr<astp::ThreadPool> m_threadpool;
