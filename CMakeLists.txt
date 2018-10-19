@@ -23,10 +23,6 @@ pkg_check_modules (POPPLER poppler-glib REQUIRED)
 find_package (Intl REQUIRED)
 find_package (Gettext REQUIRED)
 
-if (NOT WIN32)
-	pkg_check_modules (ossp-uuid uuid REQUIRED)
-endif ()
-
 find_program (CLANG_TIDY_EXE
               NAMES "clang-tidy"
               DOC "Path to clang-tidy executable")
