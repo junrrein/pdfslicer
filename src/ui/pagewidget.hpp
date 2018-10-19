@@ -18,7 +18,6 @@
 #define VIEWCHILD_HPP
 
 #include "../backend/page.hpp"
-#include <ctpl_stl.h>
 #include <gtkmm/box.h>
 #include <gtkmm/eventbox.h>
 #include <gtkmm/flowboxchild.h>

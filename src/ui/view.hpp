@@ -20,6 +20,7 @@
 #include "../backend/document.hpp"
 #include "../application/backgroundthread.hpp"
 #include "interactivepagewidget.hpp"
+#include <queue>
 #include <glibmm/dispatcher.h>
 #include <gtkmm/flowbox.h>
 

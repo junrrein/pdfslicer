@@ -1,20 +1,19 @@
 #ifndef BACKGROUNDTHREAD_HPP
 #define BACKGROUNDTHREAD_HPP
 
-#include <ctpl_stl.h>
+#include <threadpool.hpp>
 
 namespace Slicer {
 
 class BackgroundThread {
 public:
     BackgroundThread();
-    ~BackgroundThread();
 
 	void push(const std::function<void()>& task);
 	void killRemainingTasks();
 
 private:
-	std::unique_ptr<ctpl::thread_pool> m_threadPool;
+    std::unique_ptr<astp::ThreadPool> m_threadpool;
 };
 
 } // namespace Slicer

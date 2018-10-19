@@ -1,4 +1,4 @@
-add_subdirectory (CTPL)
+add_subdirectory (adda25-threadpool)
 add_subdirectory (PDF-Writer)
 
 set (RANGE_V3_TESTS OFF)

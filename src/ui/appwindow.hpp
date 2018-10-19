@@ -17,7 +17,6 @@
 #ifndef SLICERWINDOW_HPP
 #define SLICERWINDOW_HPP
 
-#include "../application/backgroundthread.hpp"
 #include "../application/settingsmanager.hpp"
 #include "actionbar.hpp"
 #include "headerbar.hpp"
