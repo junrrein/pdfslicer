@@ -15,6 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "document.hpp"
+#include "tempfile.hpp"
 
 namespace Slicer {
 
@@ -58,12 +59,21 @@ void Document::rotatePagesLeft(const std::vector<unsigned int>& pageNumbers)
 
 void Document::loadDocument()
 {
+    PopplerDocument* document = poppler_document_new_from_file(m_sourceFile->get_uri().c_str(),
+                                                               nullptr,
+                                                               nullptr);
+
+    if (document == nullptr)
+        throw std::runtime_error("Couldn't load file: " + m_sourceFile->get_path());
+
+    m_basename = m_sourceFile->get_basename();
+    Glib::RefPtr<Gio::File> tempFile = generateTempFile();
+    m_sourceFile->copy(tempFile, Gio::FILE_COPY_OVERWRITE);
+    m_sourceFile = tempFile;
+
     m_popplerDocument.reset(poppler_document_new_from_file(m_sourceFile->get_uri().c_str(),
                                                            nullptr,
                                                            nullptr));
-
-    if (m_popplerDocument == nullptr)
-        throw std::runtime_error("Couldn't load file: " + m_sourceFile->get_path());
 
     const int num_pages = poppler_document_get_n_pages(m_popplerDocument.get());
 
@@ -72,12 +82,5 @@ void Document::loadDocument()
         auto page = Glib::RefPtr<Page>{new Page{popplerPage}};
         m_pages->append(page);
     }
-}
-
-void Document::reload()
-{
-    m_pages->remove_all();
-    loadDocument();
-    m_commandManager.reset();
 }
 }
