@@ -18,7 +18,9 @@ set (SLICER_BACKEND_SOURCES
      backend/page.hpp
 	 backend/page.cpp
 	 backend/pagerenderer.hpp
-	 backend/pagerenderer.cpp)
+	 backend/pagerenderer.cpp
+	 backend/tempfile.hpp
+	 backend/tempfile.cpp)
 
 set (SLICER_UI_SOURCES
      ui/aboutdialog.hpp

@@ -14,9 +14,7 @@ public:
 private:
     Document& m_document;
 
-    std::string getTempFilePath() const;
-    void makePDFCopy(const std::string& sourcePath,
-                     const std::string& destinationPath) const;
+    void writePdfFile(const Glib::RefPtr<Gio::File>& destinationFile) const;
 };
 
 } // namespace Slicer

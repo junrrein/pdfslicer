@@ -1,5 +1,5 @@
 #include "documentsaver.hpp"
-#include <glibmm/miscutils.h>
+#include "tempfile.hpp"
 #include <PDFWriter.h>
 #include <PDFPage.h>
 #include <PDFPageInput.h>
@@ -14,10 +14,8 @@ DocumentSaver::DocumentSaver(Document& document)
 
 void DocumentSaver::saveDocument(const Glib::RefPtr<Gio::File>& destinationFile)
 {
-    const std::string tempFilePath = getTempFilePath();
-    auto tempFile = Gio::File::create_for_path(tempFilePath);
-
-    makePDFCopy(m_document.filePath(), tempFilePath);
+    Glib::RefPtr<Gio::File> tempFile = generateTempFile();
+    writePdfFile(tempFile);
     tempFile->move(destinationFile, Gio::FILE_COPY_OVERWRITE);
 
     // FIXME: No need to do this once PDFWriter gets support for
@@ -28,26 +26,15 @@ void DocumentSaver::saveDocument(const Glib::RefPtr<Gio::File>& destinationFile)
         m_document.reload();
 }
 
-std::string DocumentSaver::getTempFilePath() const
-{
-    const std::string tempDirectory = Glib::get_tmp_dir();
-    const std::string tempFileName = "pdfslicer-temp.pdf";
-    const std::vector<std::string> pathParts = {tempDirectory, tempFileName};
-    const std::string tempFilePath = Glib::build_filename(pathParts);
-
-    return tempFilePath;
-}
-
-void DocumentSaver::makePDFCopy(const std::string& sourcePath,
-                                const std::string& destinationPath) const
+void DocumentSaver::writePdfFile(const Glib::RefPtr<Gio::File>& destinationFile) const
 {
     InputFile sourceFile;
-    sourceFile.OpenFile(sourcePath);
+    sourceFile.OpenFile(m_document.filePath());
     PDFParser parser;
     parser.StartPDFParsing(sourceFile.GetInputStream());
     PDFWriter pdfWriter;
-    pdfWriter.StartPDF(destinationPath, ePDFVersionMax);
-    std::unique_ptr<PDFDocumentCopyingContext> copyingContext{pdfWriter.CreatePDFCopyingContext(sourcePath)};
+    pdfWriter.StartPDF(destinationFile->get_path(), ePDFVersionMax);
+    std::unique_ptr<PDFDocumentCopyingContext> copyingContext{pdfWriter.CreatePDFCopyingContext(m_document.filePath())};
 
     for (unsigned int i = 0; i < m_document.pages()->get_n_items(); ++i) {
         const Glib::RefPtr<Page> slicerPage = m_document.pages()->get_item(i);
