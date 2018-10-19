@@ -108,7 +108,7 @@ void PreviewWindow::loadCustomCSS()
 
 void PreviewWindow::renderPage()
 {
-    m_backgroundThread.pushBack([this]() {
+    m_backgroundThread.pushFront([this]() {
         m_pageWidget.renderPage();
 		m_pageRenderedDispatcher.emit();
 	});
