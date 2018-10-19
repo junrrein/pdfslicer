@@ -11,9 +11,7 @@ BackgroundThread::BackgroundThread()
 
 void BackgroundThread::pushBack(const std::function<void()>& task)
 {
-    m_threadpool->push([task]() {
-		task();
-	});
+    m_threadpool->push(task);
 }
 
 void BackgroundThread::killRemainingTasks()
