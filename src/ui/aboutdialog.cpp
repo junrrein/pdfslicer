@@ -30,10 +30,12 @@ AboutDialog::AboutDialog(Gtk::Window& parent)
     set_license_type(Gtk::LICENSE_GPL_3_0);
     set_website(config::APPLICATION_WEBSITE);
     add_credit_section(_("Third-party libraries"),
-                       {"CTPL https://github.com/vit-vit/CTPL",
+                       {"GSL https://github.com/Microsoft/GSL",
                         "PDFWriter https://github.com/galkahana/PDF-Writer",
                         "Poppler https://poppler.freedesktop.org/",
-                        "range-v3 https://github.com/ericniebler/range-v3"});
+                        "range-v3 https://github.com/ericniebler/range-v3",
+                        "stduuid https://github.com/mariusbancila/stduuid",
+                        "ThreadPool https://github.com/adda25/ThreadPool"});
     add_credit_section(_("Application icon"),
                        {"Freepik http://www.freepik.com"});
 
