@@ -29,18 +29,18 @@ SettingsManager::~SettingsManager()
 
 WindowState SettingsManager::loadWindowState()
 {
-    WindowState result;
-
     try {
+        WindowState result;
+
         result.width = m_keyFile.get_integer(window_state::groupName, window_state::keys.width);
         result.height = m_keyFile.get_integer(window_state::groupName, window_state::keys.height);
         result.isMaximized = m_keyFile.get_boolean(window_state::groupName, window_state::keys.isMaximized);
+
+        return result;
     }
     catch (...) {
-        result = window_state::defaultWindowState;
+        return window_state::defaultWindowState;
     }
-
-    return result;
 }
 
 void SettingsManager::saveWindowState(const WindowState& windowState)
@@ -61,9 +61,9 @@ void SettingsManager::loadConfigFile()
 
 void SettingsManager::saveConfigFile()
 {
-    Glib::RefPtr<Gio::File> settingsDirectory = Gio::File::create_for_path(getSettingsParentPath());
-
     try {
+        auto settingsDirectory = Gio::File::create_for_path(getSettingsParentPath());
+
         if (!settingsDirectory->query_exists())
             settingsDirectory->make_directory_with_parents();
 
