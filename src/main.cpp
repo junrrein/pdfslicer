@@ -27,10 +27,10 @@ int main(int num_args, char* args_array[])
 {
     using namespace Slicer;
 
-    LoggerInstance loggerInstance = Logger::setupLogger();
-    Logger::logInfo("Logging to file: " + Logger::getPathToLogFile());
-
+    Logger::setupLogger();
     setupLocalization();
+
+    Logger::logInfo("Logging to file: " + Logger::getPathToLogFile());
 
     auto app = Application::create();
 
