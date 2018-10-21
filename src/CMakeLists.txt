@@ -1,47 +1,45 @@
 add_subdirectory (backend)
 add_subdirectory (logger)
 
-set (SLICER_APPLICATION_SOURCES
+set (APPLICATION_SOURCES
 	application/application.hpp
 	application/application.cpp
 	application/backgroundthread.hpp
 	application/backgroundthread.cpp
 	application/settingsmanager.hpp
-	application/settingsmanager.cpp)
-
-set (SLICER_UI_SOURCES
-     ui/aboutdialog.hpp
-     ui/aboutdialog.cpp
-     ui/actionbar.hpp
-     ui/actionbar.cpp
-	 ui/appwindow.hpp
-	 ui/appwindow.cpp
-	 ui/filechoosernative.hpp
-	 ui/filechoosernative.cpp
-     ui/headerbar.hpp
-     ui/headerbar.cpp
-	 ui/interactivepagewidget.hpp
-	 ui/interactivepagewidget.cpp
-     ui/openfiledialog.hpp
-     ui/openfiledialog.cpp
-	 ui/pagewidget.hpp
-	 ui/pagewidget.cpp
-	 ui/previewwindow.hpp
-	 ui/previewwindow.cpp
-     ui/savefiledialog.hpp
-     ui/savefiledialog.cpp
-	 ui/savingrevealer.hpp
-	 ui/savingrevealer.cpp
-     ui/utils.hpp
-     ui/utils.cpp
-     ui/view.hpp
-     ui/view.cpp
-     ui/welcomescreen.hpp
-     ui/welcomescreen.cpp
-     ui/zoomlevel.hpp
-     ui/zoomlevel.cpp
-     ui/zoomlevelwithactions.hpp
-     ui/zoomlevelwithactions.cpp)
+	application/settingsmanager.cpp
+	application/aboutdialog.hpp
+	application/aboutdialog.cpp
+	application/actionbar.hpp
+	application/actionbar.cpp
+	application/appwindow.hpp
+	application/appwindow.cpp
+	application/filechoosernative.hpp
+	application/filechoosernative.cpp
+	application/headerbar.hpp
+	application/headerbar.cpp
+	application/interactivepagewidget.hpp
+	application/interactivepagewidget.cpp
+	application/openfiledialog.hpp
+	application/openfiledialog.cpp
+	application/pagewidget.hpp
+	application/pagewidget.cpp
+	application/previewwindow.hpp
+	application/previewwindow.cpp
+	application/savefiledialog.hpp
+	application/savefiledialog.cpp
+	application/savingrevealer.hpp
+	application/savingrevealer.cpp
+	application/utils.hpp
+	application/utils.cpp
+	application/view.hpp
+	application/view.cpp
+	application/welcomescreen.hpp
+	application/welcomescreen.cpp
+	application/zoomlevel.hpp
+	application/zoomlevel.cpp
+	application/zoomlevelwithactions.hpp
+	application/zoomlevelwithactions.cpp)
 
 include (GResource)
 gresource (${SOURCE_DATA_DIR} pdfslicer.gresource.xml
@@ -49,9 +47,7 @@ gresource (${SOURCE_DATA_DIR} pdfslicer.gresource.xml
 
 add_executable (${CMAKE_PROJECT_NAME}
 				main.cpp
-				${SLICER_APPLICATION_SOURCES}
-                ${SLICER_BACKEND_SOURCES}
-				${SLICER_UI_SOURCES}
+				${APPLICATION_SOURCES}
 				${GLIB_RESOURCE_FILE})
 add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
 
