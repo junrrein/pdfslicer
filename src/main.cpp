@@ -15,7 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "application/application.hpp"
-#include "logger.hpp"
+#include <logger.hpp>
 #include <glibmm/i18n.h>
 #include <glibmm/miscutils.h>
 #include <config.hpp>

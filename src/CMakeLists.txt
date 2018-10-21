@@ -1,3 +1,6 @@
+add_subdirectory (backend)
+add_subdirectory (logger)
+
 set (SLICER_APPLICATION_SOURCES
 	application/application.hpp
 	application/application.cpp
@@ -5,8 +8,6 @@ set (SLICER_APPLICATION_SOURCES
 	application/backgroundthread.cpp
 	application/settingsmanager.hpp
 	application/settingsmanager.cpp)
-
-add_subdirectory (backend)
 
 set (SLICER_UI_SOURCES
      ui/aboutdialog.hpp
@@ -48,8 +49,6 @@ gresource (${SOURCE_DATA_DIR} pdfslicer.gresource.xml
 
 add_executable (${CMAKE_PROJECT_NAME}
 				main.cpp
-				logger.hpp
-				logger.cpp
 				${SLICER_APPLICATION_SOURCES}
                 ${SLICER_BACKEND_SOURCES}
 				${SLICER_UI_SOURCES}
@@ -63,6 +62,7 @@ target_include_directories (
 	${CMAKE_SOURCE_DIR}/third-party/spdlog/include
     ${CMAKE_SOURCE_DIR}/third-party/range-v3/include
 	${CMAKE_CURRENT_SOURCE_DIR}/backend
+	${CMAKE_CURRENT_SOURCE_DIR}/logger
 )
 
 if (MINGW)
@@ -79,7 +79,8 @@ target_link_libraries (${CMAKE_PROJECT_NAME}
                        ${GTKMM_LDFLAGS}
                        ${INTL_LIBRARY_DIRS}
 					   ThreadPool
-					   backend)
+					   backend
+					   logger)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
