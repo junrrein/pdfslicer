@@ -16,7 +16,7 @@
 
 #include "application/application.hpp"
 #include <glibmm/i18n.h>
-#include <glibmm.h>
+#include <glibmm/miscutils.h>
 #include <config.hpp>
 
 void setupLocalization();
