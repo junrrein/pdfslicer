@@ -75,7 +75,7 @@ void SettingsManager::saveConfigFile()
 
 std::string SettingsManager::getSettingsParentPath() const
 {
-    return Glib::build_filename(std::vector<std::string>{Glib::get_user_cache_dir(),
+    return Glib::build_filename(std::vector<std::string>{Glib::get_user_config_dir(),
                                                          config::APPLICATION_ID});
 }
 
