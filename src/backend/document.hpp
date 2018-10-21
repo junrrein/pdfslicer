@@ -44,7 +44,9 @@ public:
     sigc::signal<void, std::vector<unsigned int>> pagesRotated;
 
 private:
-    std::unique_ptr<PopplerDocument, decltype(&g_object_unref)> m_popplerDocument;
+    using PopplerDocumentPointer = std::unique_ptr<PopplerDocument, decltype(&g_object_unref)>;
+
+    PopplerDocumentPointer m_popplerDocument;
     Glib::RefPtr<Gio::File> m_sourceFile;
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
     CommandManager m_commandManager;

@@ -59,14 +59,14 @@ void Document::rotatePagesLeft(const std::vector<unsigned int>& pageNumbers)
 
 void Document::loadDocument()
 {
-    PopplerDocument* document = poppler_document_new_from_file(m_sourceFile->get_uri().c_str(),
-                                                               nullptr,
-                                                               nullptr);
+    PopplerDocumentPointer tempDocument = {poppler_document_new_from_file(m_sourceFile->get_uri().c_str(),
+                                                                          nullptr,
+                                                                          nullptr),
+                                           &g_object_unref};
 
-    if (document == nullptr)
+    if (tempDocument == nullptr)
         throw std::runtime_error("Couldn't load file: " + m_sourceFile->get_path());
 
-    g_object_unref(document);
     m_basename = m_sourceFile->get_basename();
     Glib::RefPtr<Gio::File> tempFile = generateTempFile();
     m_sourceFile->copy(tempFile, Gio::FILE_COPY_OVERWRITE);
