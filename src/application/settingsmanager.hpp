@@ -25,8 +25,8 @@ private:
     void loadConfigFile();
     void saveConfigFile();
 
-    std::string getSettingsParentPath() const;
-    std::string getSettingsFilePath() const;
+    static std::string getSettingsParentPath();
+    static std::string getSettingsFilePath();
 };
 
 } // namespace Slicer

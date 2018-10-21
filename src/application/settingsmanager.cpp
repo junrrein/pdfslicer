@@ -73,13 +73,13 @@ void SettingsManager::saveConfigFile()
     }
 }
 
-std::string SettingsManager::getSettingsParentPath() const
+std::string SettingsManager::getSettingsParentPath()
 {
     return Glib::build_filename(Glib::get_user_config_dir(),
                                 config::APPLICATION_ID);
 }
 
-std::string SettingsManager::getSettingsFilePath() const
+std::string SettingsManager::getSettingsFilePath()
 {
     return Glib::build_filename(getSettingsParentPath(),
                                 "settings.ini");
