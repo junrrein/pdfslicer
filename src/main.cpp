@@ -15,6 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "application/application.hpp"
+#include "logger.hpp"
 #include <glibmm/i18n.h>
 #include <glibmm/miscutils.h>
 #include <config.hpp>
@@ -24,9 +25,14 @@ std::string getPathToLocaleDir();
 
 int main(int num_args, char* args_array[])
 {
+    using namespace Slicer;
+
+    LoggerInstance loggerInstance = Logger::setupLogger();
+    Logger::logInfo("Logging to file: " + Logger::getPathToLogFile());
+
     setupLocalization();
 
-    auto app = Slicer::Application::create();
+    auto app = Application::create();
 
     return app->run(num_args, args_array);
 }

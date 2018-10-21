@@ -61,7 +61,9 @@ gresource (${SOURCE_DATA_DIR} pdfslicer.gresource.xml
 	 ${CMAKE_CURRENT_BINARY_DIR} GLIB_RESOURCE_FILE)
 
 add_executable (${CMAKE_PROJECT_NAME}
-                main.cpp
+				main.cpp
+				logger.hpp
+				logger.cpp
 				${SLICER_APPLICATION_SOURCES}
                 ${SLICER_BACKEND_SOURCES}
 				${SLICER_UI_SOURCES}
