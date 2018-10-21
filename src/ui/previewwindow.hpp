@@ -17,8 +17,8 @@
 #ifndef PREVIEWWINDOW_HPP
 #define PREVIEWWINDOW_HPP
 
-#include "../backend/page.hpp"
 #include "../application/backgroundthread.hpp"
+#include <page.hpp>
 #include "pagewidget.hpp"
 #include "zoomlevelwithactions.hpp"
 #include <glibmm/dispatcher.h>

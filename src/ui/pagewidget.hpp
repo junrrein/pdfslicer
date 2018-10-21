@@ -17,7 +17,7 @@
 #ifndef VIEWCHILD_HPP
 #define VIEWCHILD_HPP
 
-#include "../backend/page.hpp"
+#include <page.hpp>
 #include <gtkmm/box.h>
 #include <gtkmm/eventbox.h>
 #include <gtkmm/flowboxchild.h>

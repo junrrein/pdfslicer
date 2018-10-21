@@ -6,21 +6,7 @@ set (SLICER_APPLICATION_SOURCES
 	application/settingsmanager.hpp
 	application/settingsmanager.cpp)
 
-set (SLICER_BACKEND_SOURCES
-     backend/command.hpp
-     backend/command.cpp
-     backend/commandmanager.hpp
-     backend/commandmanager.cpp
-     backend/document.hpp
-     backend/document.cpp
-	 backend/documentsaver.hpp
-	 backend/documentsaver.cpp
-     backend/page.hpp
-	 backend/page.cpp
-	 backend/pagerenderer.hpp
-	 backend/pagerenderer.cpp
-	 backend/tempfile.hpp
-	 backend/tempfile.cpp)
+add_subdirectory (backend)
 
 set (SLICER_UI_SOURCES
      ui/aboutdialog.hpp
@@ -73,39 +59,31 @@ add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
 target_include_directories (
     ${CMAKE_PROJECT_NAME} SYSTEM PRIVATE
     ${CMAKE_BINARY_DIR}
-    ${CMAKE_SOURCE_DIR}/third-party/PDF-Writer/PDFWriter
 	${CMAKE_SOURCE_DIR}/third-party/adda25-threadpool
-	${CMAKE_SOURCE_DIR}/third-party/stduuid
 	${CMAKE_SOURCE_DIR}/third-party/spdlog/include
     ${CMAKE_SOURCE_DIR}/third-party/range-v3/include
+	${CMAKE_CURRENT_SOURCE_DIR}/backend
 )
 
 if (MINGW)
     target_include_directories (${CMAKE_PROJECT_NAME} PRIVATE
-        ${GTKMM_INCLUDE_DIRS}
-        ${POPPLER_INCLUDE_DIRS})
+		${GTKMM_INCLUDE_DIRS}
+		${POPPLER_INCLUDE_DIRS})
 else ()
     target_include_directories (${CMAKE_PROJECT_NAME} SYSTEM PRIVATE
-        ${GTKMM_INCLUDE_DIRS}
-        ${POPPLER_INCLUDE_DIRS})
+		${GTKMM_INCLUDE_DIRS}
+		${POPPLER_INCLUDE_DIRS})
 endif ()
 
 target_link_libraries (${CMAKE_PROJECT_NAME}
                        ${GTKMM_LDFLAGS}
-                       ${POPPLER_LDFLAGS}
                        ${INTL_LIBRARY_DIRS}
-                       PDFWriter
 					   ThreadPool
-					   stduuid)
+					   backend)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-        set_target_properties (
-            ${CMAKE_PROJECT_NAME}
-            PROPERTIES
-                COMPILE_FLAGS
-                "-Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wduplicated-branches -Wlogical-op"
-        )
+        set_target_properties (${CMAKE_PROJECT_NAME} PROPERTIES COMPILE_FLAGS ${GNU_COMPILE_FLAGS})
     endif ()
 
 #	 if (CLANG_TIDY_EXE)

@@ -18,7 +18,7 @@
 #include "aboutdialog.hpp"
 #include "openfiledialog.hpp"
 #include "savefiledialog.hpp"
-#include "../backend/documentsaver.hpp"
+#include <documentsaver.hpp>
 #include <glibmm/main.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/cssprovider.h>

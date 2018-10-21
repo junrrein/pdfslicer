@@ -33,6 +33,8 @@ else ()
     set (DO_CLANG_TIDY "${CLANG_TIDY_EXE}" "-config=")
 endif ()
 
+set (GNU_COMPILE_FLAGS "-Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wduplicated-branches -Wlogical-op")
+
 add_subdirectory (third-party)
 add_subdirectory (src)
 add_subdirectory (data)

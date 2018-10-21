@@ -15,7 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "pagewidget.hpp"
-#include "../backend/pagerenderer.hpp"
+#include <pagerenderer.hpp>
 
 namespace Slicer {
 

@@ -17,7 +17,7 @@
 #ifndef SLICERVIEW_HPP
 #define SLICERVIEW_HPP
 
-#include "../backend/document.hpp"
+#include <document.hpp>
 #include "../application/backgroundthread.hpp"
 #include "interactivepagewidget.hpp"
 #include <queue>
