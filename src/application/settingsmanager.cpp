@@ -75,14 +75,14 @@ void SettingsManager::saveConfigFile()
 
 std::string SettingsManager::getSettingsParentPath() const
 {
-    return Glib::build_filename(std::vector<std::string>{Glib::get_user_config_dir(),
-                                                         config::APPLICATION_ID});
+    return Glib::build_filename(Glib::get_user_config_dir(),
+                                config::APPLICATION_ID);
 }
 
 std::string SettingsManager::getSettingsFilePath() const
 {
-    return Glib::build_filename(std::vector<std::string>{getSettingsParentPath(),
-                                                         "settings.ini"});
+    return Glib::build_filename(getSettingsParentPath(),
+                                "settings.ini");
 }
 
 } // namespace Slicer
