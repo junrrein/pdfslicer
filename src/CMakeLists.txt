@@ -74,7 +74,7 @@ target_include_directories (
     ${CMAKE_SOURCE_DIR}/third-party/PDF-Writer/PDFWriter
 	${CMAKE_SOURCE_DIR}/third-party/adda25-threadpool
 	${CMAKE_SOURCE_DIR}/third-party/stduuid
-	${CMAKE_SOURCE_DIR}/third-party/spdlog
+	${CMAKE_SOURCE_DIR}/third-party/spdlog/include
     ${CMAKE_SOURCE_DIR}/third-party/range-v3/include
 )
 
