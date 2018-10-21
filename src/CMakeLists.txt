@@ -59,7 +59,6 @@ target_include_directories (
     ${CMAKE_PROJECT_NAME} SYSTEM PRIVATE
     ${CMAKE_BINARY_DIR}
 	${CMAKE_SOURCE_DIR}/third-party/adda25-threadpool
-	${CMAKE_SOURCE_DIR}/third-party/spdlog/include
     ${CMAKE_SOURCE_DIR}/third-party/range-v3/include
 	${CMAKE_CURRENT_SOURCE_DIR}/backend
 	${CMAKE_CURRENT_SOURCE_DIR}/logger

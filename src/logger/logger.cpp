@@ -1,10 +1,12 @@
 #include "logger.hpp"
 #include <glibmm/miscutils.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/sinks/basic_file_sink.h>
 #include <config.hpp>
 
 namespace Slicer::Logger {
 
-Slicer::LoggerInstance setupLogger()
+void setupLogger()
 {
     auto consoleSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
     auto fileSink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(getPathToLogFile(), true);
@@ -12,8 +14,6 @@ Slicer::LoggerInstance setupLogger()
                                                    spdlog::sinks_init_list{consoleSink, fileSink});
 
     spdlog::register_logger(logger);
-
-    return {consoleSink, fileSink, logger};
 }
 
 std::string getPathToLogFile()
