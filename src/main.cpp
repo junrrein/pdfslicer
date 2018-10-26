@@ -17,6 +17,7 @@
 #include "application/application.hpp"
 #include <logger.hpp>
 #include <config.hpp>
+#include <gtkmm/main.h>
 
 using namespace Slicer;
 

@@ -2,6 +2,7 @@
 #include <glibmm/i18n.h>
 #include <giomm/file.h>
 #include <glibmm/miscutils.h>
+#include <gtkmm/main.h>
 #include <iostream>
 
 namespace Slicer::config {
@@ -36,6 +37,8 @@ std::string getConfigDirPath()
 void createConfigDirIfNotExistent()
 {
     try {
+        Gtk::Main::init_gtkmm_internals();
+
         auto settingsDirectory = Gio::File::create_for_path(getConfigDirPath());
 
         if (!settingsDirectory->query_exists())
