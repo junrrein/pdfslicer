@@ -17,7 +17,7 @@
 #include "logger.hpp"
 #include <glibmm/miscutils.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
-#include <spdlog/sinks/basic_file_sink.h>
+#include <spdlog/sinks/rotating_file_sink.h>
 #include <config.hpp>
 #include <iostream>
 
@@ -25,9 +25,14 @@ namespace Slicer::Logger {
 
 void setupLogger()
 {
+    static const int logFileSize = 1024 * 1024 * 2; // 2 MB
+    static const int numberOfLogFiles = 3;
+
     try {
         auto consoleSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-        auto fileSink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(getPathToLogFile(), true);
+        auto fileSink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(getPathToLogFile(),
+                                                                               logFileSize,
+                                                                               numberOfLogFiles);
         auto logger = std::make_shared<spdlog::logger>("default",
                                                        spdlog::sinks_init_list{consoleSink, fileSink});
 
