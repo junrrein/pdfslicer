@@ -34,6 +34,7 @@ AboutDialog::AboutDialog(Gtk::Window& parent)
                         "PDFWriter https://github.com/galkahana/PDF-Writer",
                         "Poppler https://poppler.freedesktop.org/",
                         "range-v3 https://github.com/ericniebler/range-v3",
+                        "spdlog https://github.com/gabime/spdlog",
                         "stduuid https://github.com/mariusbancila/stduuid",
                         "ThreadPool https://github.com/adda25/ThreadPool"});
     add_credit_section(_("Application icon"),
