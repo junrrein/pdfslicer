@@ -255,7 +255,7 @@ void AppWindow::onSaveAction()
 
         std::thread thread{[this, file]() {
             try {
-                DocumentSaver{*m_document}.saveDocument(file);
+                DocumentSaver{*m_document}.save(file);
                 m_savedDispatcher.emit();
             }
             catch (...) {

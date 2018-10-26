@@ -9,12 +9,12 @@ class DocumentSaver {
 public:
     DocumentSaver(Document& document);
 
-    void saveDocument(const Glib::RefPtr<Gio::File>& destinationFile);
+    void save(const Glib::RefPtr<Gio::File>& destinationFile);
 
 private:
     Document& m_document;
 
-    void writePdfFile(const Glib::RefPtr<Gio::File>& destinationFile) const;
+    void persist(const Glib::RefPtr<Gio::File>& destinationFile) const;
 };
 
 } // namespace Slicer

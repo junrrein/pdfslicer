@@ -12,14 +12,14 @@ DocumentSaver::DocumentSaver(Document& document)
 {
 }
 
-void DocumentSaver::saveDocument(const Glib::RefPtr<Gio::File>& destinationFile)
+void DocumentSaver::save(const Glib::RefPtr<Gio::File>& destinationFile)
 {
     Glib::RefPtr<Gio::File> tempFile = generateTempFile();
-    writePdfFile(tempFile);
+    persist(tempFile);
     tempFile->move(destinationFile, Gio::FILE_COPY_OVERWRITE);
 }
 
-void DocumentSaver::writePdfFile(const Glib::RefPtr<Gio::File>& destinationFile) const
+void DocumentSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile) const
 {
     InputFile sourceFile;
     sourceFile.OpenFile(m_document.filePath());
