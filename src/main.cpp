@@ -23,6 +23,7 @@ using namespace Slicer;
 int main(int num_args, char* args_array[])
 {
     config::setupLocalization();
+    config::createConfigDirIfNotExistent();
     Logger::setupLogger();
 
     Logger::logInfo("Welcome to PDF Slicer");

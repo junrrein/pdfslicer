@@ -25,9 +25,7 @@ void setupLogger()
 
 std::string getPathToLogFile()
 {
-    return Glib::build_filename(std::vector<std::string>{Glib::get_user_config_dir(),
-                                                         Slicer::config::APPLICATION_ID,
-                                                         "log.txt"});
+    return Glib::build_filename(config::getConfigDirPath(), "log.txt");
 }
 
 void logInfo(std::string str)

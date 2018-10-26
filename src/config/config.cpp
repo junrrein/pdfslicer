@@ -1,6 +1,8 @@
 #include "config.hpp"
 #include <glibmm/i18n.h>
+#include <giomm/file.h>
 #include <glibmm/miscutils.h>
+#include <iostream>
 
 namespace Slicer::config {
 
@@ -23,5 +25,25 @@ void setupLocalization()
     bind_textdomain_codeset(GETEXT_PACKAGE.c_str(),
                             "UTF-8");
     textdomain(GETEXT_PACKAGE.c_str());
+}
+
+std::string getConfigDirPath()
+{
+    return Glib::build_filename(Glib::get_user_config_dir(),
+                                APPLICATION_ID);
+}
+
+void createConfigDirIfNotExistent()
+{
+    try {
+        auto settingsDirectory = Gio::File::create_for_path(getConfigDirPath());
+
+        if (!settingsDirectory->query_exists())
+            settingsDirectory->make_directory_with_parents();
+    }
+    catch (...) {
+        std::cerr << "Couldn't create the config dir at path: " << '\n'
+                  << getConfigDirPath() << std::endl;
+    }
 }
 }
