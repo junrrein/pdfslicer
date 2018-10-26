@@ -1,3 +1,4 @@
 CMakeLists.txt.user
 *.mo
 *~
+src/config/config.hpp
