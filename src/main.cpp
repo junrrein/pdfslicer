@@ -16,19 +16,14 @@
 
 #include "application/application.hpp"
 #include <logger.hpp>
-#include <glibmm/i18n.h>
-#include <glibmm/miscutils.h>
 #include <config.hpp>
-
-void setupLocalization();
-std::string getPathToLocaleDir();
 
 using namespace Slicer;
 
 int main(int num_args, char* args_array[])
 {
+    config::setupLocalization();
     Logger::setupLogger();
-    setupLocalization();
 
     Logger::logInfo("Welcome to PDF Slicer");
     Logger::logInfo("Logging to file: " + Logger::getPathToLogFile());
@@ -36,25 +31,4 @@ int main(int num_args, char* args_array[])
     auto app = Application::create();
 
     return app->run(num_args, args_array);
-}
-
-void setupLocalization()
-{
-    bindtextdomain(config::GETEXT_PACKAGE.c_str(),
-                   getPathToLocaleDir().c_str());
-    bind_textdomain_codeset(config::GETEXT_PACKAGE.c_str(),
-                            "UTF-8");
-    textdomain(config::GETEXT_PACKAGE.c_str());
-}
-
-std::string getPathToLocaleDir()
-{
-#ifdef __linux__
-    return Slicer::config::LINUX_LOCALE_DIR;
-#else // We are in Windows
-    const std::string pathToShareDir = Glib::get_system_data_dirs().at(2);
-    const std::string pathToLocaleDir = pathToShareDir + +"\\locale\\";
-
-    return pathToLocaleDir;
-#endif
 }

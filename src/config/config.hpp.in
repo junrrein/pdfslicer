@@ -11,6 +11,8 @@ static const std::string APPLICATION_WEBSITE = "@APPLICATION_WEBSITE@";
 static const std::string GETEXT_PACKAGE = "@GETTEXT_PACKAGE@";
 static const std::string LINUX_LOCALE_DIR = "@LINUX_LOCALE_DIR@";
 static const std::string VERSION = "@VERSION@";
+
+void setupLocalization();
 }
 
 #endif // SLICER_CONFIG_H
