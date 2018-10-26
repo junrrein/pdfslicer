@@ -3,17 +3,24 @@
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/sinks/basic_file_sink.h>
 #include <config.hpp>
+#include <iostream>
 
 namespace Slicer::Logger {
 
 void setupLogger()
 {
-    auto consoleSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-    auto fileSink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(getPathToLogFile(), true);
-    auto logger = std::make_shared<spdlog::logger>("default",
-                                                   spdlog::sinks_init_list{consoleSink, fileSink});
+    try {
+        auto consoleSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+        auto fileSink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(getPathToLogFile(), true);
+        auto logger = std::make_shared<spdlog::logger>("default",
+                                                       spdlog::sinks_init_list{consoleSink, fileSink});
 
-    spdlog::register_logger(logger);
+        spdlog::register_logger(logger);
+    }
+    catch (const spdlog::spdlog_ex& e) {
+        std::cerr << "Couldn't initialize logger with error:" << '\n'
+                  << e.what() << std::endl;
+    }
 }
 
 std::string getPathToLogFile()
@@ -25,16 +32,19 @@ std::string getPathToLogFile()
 
 void logInfo(std::string str)
 {
-    spdlog::get("default")->info(str);
+    if (auto logger = spdlog::get("default"); logger != nullptr)
+        logger->info(str);
 }
 
 void logWarning(std::string str)
 {
-    spdlog::get("default")->warn(str);
+    if (auto logger = spdlog::get("default"); logger != nullptr)
+        logger->warn(str);
 }
 
 void logError(std::string str)
 {
-    spdlog::get("default")->error(str);
+    if (auto logger = spdlog::get("default"); logger != nullptr)
+        logger->error(str);
 }
 }
