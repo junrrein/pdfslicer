@@ -45,9 +45,13 @@ WindowState SettingsManager::loadWindowState()
 
 void SettingsManager::saveWindowState(const WindowState& windowState)
 {
-    m_keyFile.set_integer(window_state::groupName, window_state::keys.width, windowState.width);
-    m_keyFile.set_integer(window_state::groupName, window_state::keys.height, windowState.height);
-    m_keyFile.set_boolean(window_state::groupName, window_state::keys.isMaximized, windowState.isMaximized);
+    try {
+        m_keyFile.set_integer(window_state::groupName, window_state::keys.width, windowState.width);
+        m_keyFile.set_integer(window_state::groupName, window_state::keys.height, windowState.height);
+        m_keyFile.set_boolean(window_state::groupName, window_state::keys.isMaximized, windowState.isMaximized);
+    }
+    catch (...) {
+    }
 }
 
 void SettingsManager::loadConfigFile()
@@ -62,26 +66,15 @@ void SettingsManager::loadConfigFile()
 void SettingsManager::saveConfigFile()
 {
     try {
-        auto settingsDirectory = Gio::File::create_for_path(getSettingsParentPath());
-
-        if (!settingsDirectory->query_exists())
-            settingsDirectory->make_directory_with_parents();
-
         m_keyFile.save_to_file(getSettingsFilePath());
     }
     catch (...) {
     }
 }
 
-std::string SettingsManager::getSettingsParentPath()
-{
-    return Glib::build_filename(Glib::get_user_config_dir(),
-                                config::APPLICATION_ID);
-}
-
 std::string SettingsManager::getSettingsFilePath()
 {
-    return Glib::build_filename(getSettingsParentPath(),
+    return Glib::build_filename(config::getConfigDirPath(),
                                 "settings.ini");
 }
 

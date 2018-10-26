@@ -25,7 +25,6 @@ private:
     void loadConfigFile();
     void saveConfigFile();
 
-    static std::string getSettingsParentPath();
     static std::string getSettingsFilePath();
 };
 
