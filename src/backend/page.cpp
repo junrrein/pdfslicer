@@ -19,9 +19,15 @@
 
 namespace Slicer {
 
-Page::Page(PopplerPage* ppage)
-    : m_ppage{ppage, &g_object_unref}
+Page::Page(PopplerDocument* document, int pageNumber)
+    : m_ppage{nullptr, &g_object_unref}
 {
+    PopplerPage* ppage = poppler_document_get_page(document, pageNumber);
+
+    if (ppage == nullptr)
+        throw std::runtime_error("Couldn't load page with number: " + std::to_string(pageNumber));
+
+    m_ppage.reset(ppage);
 }
 
 int Page::number() const

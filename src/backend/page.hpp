@@ -30,7 +30,7 @@ public:
         int height;
     };
 
-    Page(PopplerPage* ppage);
+    Page(PopplerDocument* document, int pageNumber);
 
     int number() const;
     int rotation() const { return m_rotation; }

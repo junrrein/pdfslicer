@@ -79,8 +79,7 @@ void Document::loadDocument()
     const int num_pages = poppler_document_get_n_pages(m_popplerDocument.get());
 
     for (int i = 0; i < num_pages; ++i) {
-        PopplerPage* popplerPage = poppler_document_get_page(m_popplerDocument.get(), i);
-        auto page = Glib::RefPtr<Page>{new Page{popplerPage}};
+        auto page = Glib::RefPtr<Page>{new Page{m_popplerDocument.get(), i}};
         m_pages->append(page);
     }
 }
