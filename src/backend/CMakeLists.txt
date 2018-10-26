@@ -33,6 +33,7 @@ else ()
 endif ()
 
 target_link_libraries (backend
+					   config
 					   ${GTKMM_LDFLAGS}
 					   ${POPPLER_LDFLAGS}
 					   PDFWriter
