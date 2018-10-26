@@ -24,6 +24,7 @@
 #include <gtkmm/cssprovider.h>
 #include <gtkmm/messagedialog.h>
 #include <config.hpp>
+#include <logger.hpp>
 
 namespace Slicer {
 
@@ -259,6 +260,8 @@ void AppWindow::onSaveAction()
                 m_savedDispatcher.emit();
             }
             catch (...) {
+                Logger::logError("Saving the document failed");
+                Logger::logError("The destination file was: " + file->get_path());
                 m_savingFailedDispatcher.emit();
             }
 
@@ -275,20 +278,25 @@ void AppWindow::onOpenAction()
 
     const int result = dialog.run();
 
-    if (result == GTK_RESPONSE_ACCEPT)
+    if (result == GTK_RESPONSE_ACCEPT) {
+        Glib::RefPtr<Gio::File> file = dialog.get_file();
+
         try {
-            setDocument(std::make_unique<Document>(dialog.get_file()));
+            setDocument(std::make_unique<Document>(file));
         }
         catch (...) {
+            Logger::logError("The file couldn't be opened");
+            Logger::logError("Filepath: " + file->get_path());
+
             Gtk::MessageDialog errorDialog{_("The selected file could not be opened"),
                                            false,
                                            Gtk::MESSAGE_ERROR,
                                            Gtk::BUTTONS_CLOSE,
                                            true};
             errorDialog.set_transient_for(*this);
-
             errorDialog.run();
         }
+    }
 
     m_undoAction->set_enabled(false);
     m_redoAction->set_enabled(false);

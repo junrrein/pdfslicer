@@ -18,6 +18,7 @@
 #include <giomm/file.h>
 #include <glibmm/miscutils.h>
 #include <config.hpp>
+#include <logger.hpp>
 
 namespace Slicer {
 
@@ -54,7 +55,9 @@ WindowState SettingsManager::loadWindowState()
 
         return result;
     }
-    catch (...) {
+    catch (const Glib::Error& e) {
+        Logger::logWarning("Error while loading window state: " + e.what());
+
         return window_state::defaultWindowState;
     }
 }
@@ -66,7 +69,8 @@ void SettingsManager::saveWindowState(const WindowState& windowState)
         m_keyFile.set_integer(window_state::groupName, window_state::keys.height, windowState.height);
         m_keyFile.set_boolean(window_state::groupName, window_state::keys.isMaximized, windowState.isMaximized);
     }
-    catch (...) {
+    catch (const Glib::Error& e) {
+        Logger::logWarning("Error while writing window state: " + e.what());
     }
 }
 
@@ -75,7 +79,8 @@ void SettingsManager::loadConfigFile()
     try {
         m_keyFile.load_from_file(getSettingsFilePath());
     }
-    catch (...) {
+    catch (const Glib::Error& e) {
+        Logger::logWarning("Error while loading config file: " + e.what());
     }
 }
 
@@ -84,7 +89,8 @@ void SettingsManager::saveConfigFile()
     try {
         m_keyFile.save_to_file(getSettingsFilePath());
     }
-    catch (...) {
+    catch (const Glib::Error& e) {
+        Logger::logWarning("Error while saving config file: " + e.what());
     }
 }
 
