@@ -23,10 +23,10 @@
 void setupLocalization();
 std::string getPathToLocaleDir();
 
+using namespace Slicer;
+
 int main(int num_args, char* args_array[])
 {
-    using namespace Slicer;
-
     Logger::setupLogger();
     setupLocalization();
 
@@ -40,17 +40,17 @@ int main(int num_args, char* args_array[])
 
 void setupLocalization()
 {
-    bindtextdomain(Slicer::config::GETEXT_PACKAGE.c_str(),
+    bindtextdomain(config::GETEXT_PACKAGE.c_str(),
                    getPathToLocaleDir().c_str());
-    bind_textdomain_codeset(Slicer::config::GETEXT_PACKAGE.c_str(),
+    bind_textdomain_codeset(config::GETEXT_PACKAGE.c_str(),
                             "UTF-8");
-    textdomain(Slicer::config::GETEXT_PACKAGE.c_str());
+    textdomain(config::GETEXT_PACKAGE.c_str());
 }
 
 std::string getPathToLocaleDir()
 {
 #ifdef __linux__
-    return Slicer::config::LOCALE_DIR;
+    return Slicer::config::LINUX_LOCALE_DIR;
 #else // We are in Windows
     const std::string pathToShareDir = Glib::get_system_data_dirs().at(2);
     const std::string pathToLocaleDir = pathToShareDir + +"\\locale\\";
