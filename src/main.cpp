@@ -30,6 +30,7 @@ int main(int num_args, char* args_array[])
     Logger::setupLogger();
     setupLocalization();
 
+    Logger::logInfo("Welcome to PDF Slicer");
     Logger::logInfo("Logging to file: " + Logger::getPathToLogFile());
 
     auto app = Application::create();
