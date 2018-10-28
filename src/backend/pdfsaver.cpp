@@ -14,7 +14,7 @@ PdfSaver::PdfSaver(Document& document)
 
 void PdfSaver::save(const Glib::RefPtr<Gio::File>& destinationFile)
 {
-    Glib::RefPtr<Gio::File> tempFile = generateTempFile();
+    Glib::RefPtr<Gio::File> tempFile = TempFile::generate();
     persist(tempFile);
     tempFile->move(destinationFile, Gio::FILE_COPY_OVERWRITE);
 }

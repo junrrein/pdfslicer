@@ -68,7 +68,7 @@ void Document::loadDocument()
         throw std::runtime_error("Couldn't load file: " + m_sourceFile->get_path());
 
     m_basename = m_sourceFile->get_basename();
-    Glib::RefPtr<Gio::File> tempFile = generateTempFile();
+    Glib::RefPtr<Gio::File> tempFile = TempFile::generate();
     m_sourceFile->copy(tempFile, Gio::FILE_COPY_OVERWRITE);
     m_sourceFile = tempFile;
 

@@ -18,9 +18,9 @@
 #include <glibmm/miscutils.h>
 #include <uuid.h>
 
-namespace Slicer {
+namespace Slicer::TempFile {
 
-Glib::RefPtr<Gio::File> generateTempFile()
+Glib::RefPtr<Gio::File> generate()
 {
     const std::string path = Glib::build_filename(Glib::get_tmp_dir(),
                                                   uuids::to_string(uuids::uuid_system_generator{}()));

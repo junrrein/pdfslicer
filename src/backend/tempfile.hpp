@@ -19,9 +19,9 @@
 
 #include <giomm/file.h>
 
-namespace Slicer {
+namespace Slicer::TempFile {
 
-Glib::RefPtr<Gio::File> generateTempFile();
+Glib::RefPtr<Gio::File> generate();
 }
 
 #endif // TEMPFILE_HPP
