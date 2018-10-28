@@ -36,10 +36,10 @@ set (GNU_COMPILE_FLAGS "-Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wdu
 
 add_subdirectory (third-party)
 add_subdirectory (src)
+add_subdirectory (tests)
 add_subdirectory (data)
 add_subdirectory (po)
 
-# Windows installer
 if (MINGW)
 	include (WindowsInstaller)
 endif ()
