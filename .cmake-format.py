@@ -1,5 +1,5 @@
 # How wide to allow formatted cmake files
-line_width = 80
+line_width = 120
 
 # How many spaces to tab for indent
 tab_size = 4
