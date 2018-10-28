@@ -19,16 +19,17 @@ add_library (backend STATIC ${SOURCES})
 target_include_directories (backend PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_include_directories (
-	backend SYSTEM PUBLIC
+	backend SYSTEM PRIVATE
 	${CMAKE_SOURCE_DIR}/third-party/PDF-Writer/PDFWriter
 )
 
-target_link_libraries (backend
-					   config
-					   PDFWriter
-					   stduuid
-					   PkgConfig::GTKMM
-					   PkgConfig::POPPLER)
+target_link_libraries_system (backend
+	config
+	stduuid
+	PkgConfig::GTKMM
+	PkgConfig::POPPLER)
+
+target_link_libraries (backend PDFWriter)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")

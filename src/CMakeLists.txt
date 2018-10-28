@@ -2,7 +2,6 @@ add_subdirectory (config)
 add_subdirectory (backend)
 add_subdirectory (logger)
 
-
 set (APPLICATION_SOURCES
 	application/application.hpp
 	application/application.cpp
@@ -53,14 +52,14 @@ add_executable (${CMAKE_PROJECT_NAME}
 				${GLIB_RESOURCE_FILE})
 add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
 
-target_link_libraries (${CMAKE_PROJECT_NAME}
-					   config
-					   backend
-					   logger
-					   ThreadPool
-					   range-v3
-					   PkgConfig::GTKMM
-					   PkgConfig::POPPLER)
+target_link_libraries_system (${CMAKE_PROJECT_NAME}
+	config
+	backend
+	logger
+	ThreadPool
+	range-v3
+	PkgConfig::GTKMM
+	PkgConfig::POPPLER)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")

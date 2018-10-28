@@ -4,7 +4,7 @@ set (SOURCES
 
 add_executable (tests ${SOURCES})
 
-target_link_libraries (tests
+target_link_libraries_system (tests
 	backend
 	Catch2)
 
