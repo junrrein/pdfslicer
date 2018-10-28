@@ -4,9 +4,11 @@ set (SOURCES
 
 add_library (logger STATIC ${SOURCES})
 
+target_include_directories (logger PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
 target_include_directories (
-	logger SYSTEM PRIVATE
-	${SLICER_CONFIG_INCLUDE_DIR}
+	logger SYSTEM PUBLIC
+	config
 	${CMAKE_SOURCE_DIR}/third-party/spdlog/include
 )
 

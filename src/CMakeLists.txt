@@ -2,6 +2,7 @@ add_subdirectory (config)
 add_subdirectory (backend)
 add_subdirectory (logger)
 
+
 set (APPLICATION_SOURCES
 	application/application.hpp
 	application/application.cpp
@@ -54,11 +55,11 @@ add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
 
 target_include_directories (
     ${CMAKE_PROJECT_NAME} SYSTEM PRIVATE
-	${SLICER_CONFIG_INCLUDE_DIR}
+	config
+	backend
+	logger
 	${CMAKE_SOURCE_DIR}/third-party/adda25-threadpool
     ${CMAKE_SOURCE_DIR}/third-party/range-v3/include
-	${CMAKE_CURRENT_SOURCE_DIR}/backend
-	${CMAKE_CURRENT_SOURCE_DIR}/logger
 )
 
 if (MINGW)
@@ -73,11 +74,11 @@ endif ()
 
 target_link_libraries (${CMAKE_PROJECT_NAME}
 					   config
-                       ${GTKMM_LDFLAGS}
-                       ${INTL_LIBRARY_DIRS}
-					   ThreadPool
 					   backend
-					   logger)
+					   logger
+					   ThreadPool
+                       ${GTKMM_LDFLAGS}
+					   ${INTL_LIBRARY_DIRS})
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
