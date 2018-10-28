@@ -1,6 +1,7 @@
 add_subdirectory (adda25-threadpool)
-add_subdirectory (PDF-Writer)
+add_subdirectory (catch2)
 add_subdirectory (GSL)
+add_subdirectory (PDF-Writer)
 add_subdirectory (stduuid)
 
 set (RANGE_V3_TESTS OFF)
