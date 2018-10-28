@@ -5,10 +5,10 @@ set (SOURCES
 	 commandmanager.cpp
 	 document.hpp
 	 document.cpp
-	 documentsaver.hpp
-	 documentsaver.cpp
 	 page.hpp
 	 page.cpp
+	 pdfsaver.hpp
+	 pdfsaver.cpp
 	 pagerenderer.hpp
 	 pagerenderer.cpp
 	 tempfile.hpp

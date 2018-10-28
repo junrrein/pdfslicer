@@ -1,4 +1,4 @@
-#include "documentsaver.hpp"
+#include "pdfsaver.hpp"
 #include "tempfile.hpp"
 #include <PDFWriter.h>
 #include <PDFPage.h>
@@ -7,19 +7,19 @@
 
 namespace Slicer {
 
-DocumentSaver::DocumentSaver(Document& document)
+PdfSaver::PdfSaver(Document& document)
     : m_document{document}
 {
 }
 
-void DocumentSaver::save(const Glib::RefPtr<Gio::File>& destinationFile)
+void PdfSaver::save(const Glib::RefPtr<Gio::File>& destinationFile)
 {
     Glib::RefPtr<Gio::File> tempFile = generateTempFile();
     persist(tempFile);
     tempFile->move(destinationFile, Gio::FILE_COPY_OVERWRITE);
 }
 
-void DocumentSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile) const
+void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile) const
 {
     InputFile sourceFile;
     sourceFile.OpenFile(m_document.filePath());

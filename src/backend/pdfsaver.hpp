@@ -1,13 +1,13 @@
-#ifndef DOCUMENTSAVER_HPP
-#define DOCUMENTSAVER_HPP
+#ifndef PDFSAVER_HPP
+#define PDFSAVER_HPP
 
 #include "document.hpp"
 
 namespace Slicer {
 
-class DocumentSaver {
+class PdfSaver {
 public:
-    DocumentSaver(Document& document);
+    PdfSaver(Document& document);
 
     void save(const Glib::RefPtr<Gio::File>& destinationFile);
 
@@ -19,4 +19,4 @@ private:
 
 } // namespace Slicer
 
-#endif // DOCUMENTSAVER_HPP
+#endif // PDFSAVER_HPP
