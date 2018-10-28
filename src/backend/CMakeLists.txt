@@ -21,7 +21,6 @@ target_include_directories (backend PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories (
 	backend SYSTEM PUBLIC
 	${CMAKE_SOURCE_DIR}/third-party/PDF-Writer/PDFWriter
-	${CMAKE_SOURCE_DIR}/third-party/stduuid
 )
 
 if (MINGW)
@@ -36,10 +35,10 @@ endif ()
 
 target_link_libraries (backend
 					   config
-					   ${GTKMM_LDFLAGS}
-					   ${POPPLER_LDFLAGS}
 					   PDFWriter
-					   stduuid)
+					   stduuid
+					   ${GTKMM_LDFLAGS}
+					   ${POPPLER_LDFLAGS})
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
