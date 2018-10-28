@@ -6,7 +6,7 @@
 
 using namespace Slicer;
 
-SCENARIO("Generated temporary files should be unique and isolated")
+SCENARIO("Generated temporary files should be unique and isolated from the system")
 {
     GIVEN("A normal application session")
     {
