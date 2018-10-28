@@ -2,10 +2,11 @@
 #include <tempfile.hpp>
 #include <config.hpp>
 #include <gtkmm/main.h>
+#include <uuid.h>
 
 using namespace Slicer;
 
-SCENARIO("Temporary file names shouldn't already exist in the filesystem")
+SCENARIO("Generated temporary files should be unique and isolated")
 {
     GIVEN("A normal application session")
     {
@@ -19,19 +20,11 @@ SCENARIO("Temporary file names shouldn't already exist in the filesystem")
             {
                 REQUIRE(!tempFile->query_exists());
             }
-        }
-    }
-}
 
-SCENARIO("Temporary file names should be contained in an application-specific directory")
-{
-    GIVEN("A normal application session")
-    {
-        Gtk::Main::init_gtkmm_internals();
-
-        WHEN("A temporary file name is generated")
-        {
-            Glib::RefPtr<Gio::File> tempFile = TempFile::generate();
+            THEN("The name of the temporary file should be a valid UUID")
+            {
+                REQUIRE_NOTHROW(uuids::uuid::from_string(tempFile->get_basename()));
+            }
 
             THEN("The parent directory should be our application's ID")
             {
