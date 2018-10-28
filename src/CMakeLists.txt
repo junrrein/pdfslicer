@@ -53,24 +53,14 @@ add_executable (${CMAKE_PROJECT_NAME}
 				${GLIB_RESOURCE_FILE})
 add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
 
-if (MINGW)
-    target_include_directories (${CMAKE_PROJECT_NAME} PRIVATE
-		${GTKMM_INCLUDE_DIRS}
-		${POPPLER_INCLUDE_DIRS})
-else ()
-    target_include_directories (${CMAKE_PROJECT_NAME} SYSTEM PRIVATE
-		${GTKMM_INCLUDE_DIRS}
-		${POPPLER_INCLUDE_DIRS})
-endif ()
-
 target_link_libraries (${CMAKE_PROJECT_NAME}
 					   config
 					   backend
 					   logger
 					   ThreadPool
 					   range-v3
-                       ${GTKMM_LDFLAGS}
-					   ${INTL_LIBRARY_DIRS})
+					   PkgConfig::GTKMM
+					   PkgConfig::POPPLER)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")

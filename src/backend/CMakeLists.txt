@@ -23,22 +23,12 @@ target_include_directories (
 	${CMAKE_SOURCE_DIR}/third-party/PDF-Writer/PDFWriter
 )
 
-if (MINGW)
-	target_include_directories (backend PRIVATE
-		${GTKMM_INCLUDE_DIRS}
-		${POPPLER_INCLUDE_DIRS})
-else ()
-	target_include_directories (backend SYSTEM PRIVATE
-		${GTKMM_INCLUDE_DIRS}
-		${POPPLER_INCLUDE_DIRS})
-endif ()
-
 target_link_libraries (backend
 					   config
 					   PDFWriter
 					   stduuid
-					   ${GTKMM_LDFLAGS}
-					   ${POPPLER_LDFLAGS})
+					   PkgConfig::GTKMM
+					   PkgConfig::POPPLER)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
