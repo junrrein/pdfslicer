@@ -97,6 +97,8 @@ private:
     void loadCustomCSS();
     void disableEditingActions();
     void enableEditingActions();
+    void trySaveDocument(Glib::RefPtr<Gio::File> file);
+    void tryOpenDocument(Glib::RefPtr<Gio::File> file);
 
     // Callbacks
     void onSaveAction();

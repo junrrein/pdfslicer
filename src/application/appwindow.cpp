@@ -248,28 +248,31 @@ void AppWindow::onSaveAction()
 
     const int result = dialog.run();
 
-    if (result == GTK_RESPONSE_ACCEPT) {
-        Glib::RefPtr<Gio::File> file = dialog.get_file();
-        m_savingRevealer.saving();
-        disableEditingActions();
-        m_isSavingDocument = true;
+    if (result == GTK_RESPONSE_ACCEPT)
+        trySaveDocument(dialog.get_file());
+}
 
-        std::thread thread{[this, file]() {
-            try {
-                PdfSaver{*m_document}.save(file);
-                m_savedDispatcher.emit();
-            }
-            catch (...) {
-                Logger::logError("Saving the document failed");
-                Logger::logError("The destination file was: " + file->get_path());
-                m_savingFailedDispatcher.emit();
-            }
+void AppWindow::trySaveDocument(Glib::RefPtr<Gio::File> file)
+{
+    m_savingRevealer.saving();
+    disableEditingActions();
+    m_isSavingDocument = true;
 
-            m_isSavingDocument = false;
-        }};
+    std::thread thread{[this, file]() {
+        try {
+            PdfSaver{*m_document}.save(file);
+            m_savedDispatcher.emit();
+        }
+        catch (...) {
+            Logger::logError("Saving the document failed");
+            Logger::logError("The destination file was: " + file->get_path());
+            m_savingFailedDispatcher.emit();
+        }
 
-        thread.detach();
-    }
+        m_isSavingDocument = false;
+    }};
+
+    thread.detach();
 }
 
 void AppWindow::onOpenAction()
@@ -278,28 +281,30 @@ void AppWindow::onOpenAction()
 
     const int result = dialog.run();
 
-    if (result == GTK_RESPONSE_ACCEPT) {
-        Glib::RefPtr<Gio::File> file = dialog.get_file();
+    if (result == GTK_RESPONSE_ACCEPT)
+        tryOpenDocument(dialog.get_file());
+}
 
-        try {
-            setDocument(std::make_unique<Document>(file));
-        }
-        catch (...) {
-            Logger::logError("The file couldn't be opened");
-            Logger::logError("Filepath: " + file->get_path());
-
-            Gtk::MessageDialog errorDialog{_("The selected file could not be opened"),
-                                           false,
-                                           Gtk::MESSAGE_ERROR,
-                                           Gtk::BUTTONS_CLOSE,
-                                           true};
-            errorDialog.set_transient_for(*this);
-            errorDialog.run();
-        }
+void AppWindow::tryOpenDocument(Glib::RefPtr<Gio::File> file)
+{
+    try {
+        m_undoAction->set_enabled(false);
+        m_redoAction->set_enabled(false);
+        auto document = std::make_unique<Document>(file);
+        setDocument(std::move(document));
     }
+    catch (...) {
+        Logger::logError("The file couldn't be opened");
+        Logger::logError("Filepath: " + file->get_path());
 
-    m_undoAction->set_enabled(false);
-    m_redoAction->set_enabled(false);
+        Gtk::MessageDialog errorDialog{_("The selected file could not be opened"),
+                                       false,
+                                       Gtk::MESSAGE_ERROR,
+                                       Gtk::BUTTONS_CLOSE,
+                                       true};
+        errorDialog.set_transient_for(*this);
+        errorDialog.run();
+    }
 }
 
 void AppWindow::onUndoAction()
