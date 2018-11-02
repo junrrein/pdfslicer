@@ -16,11 +16,6 @@ SCENARIO("Generated temporary files should be unique and isolated from the syste
         {
             Glib::RefPtr<Gio::File> tempFile = TempFile::generate();
 
-            THEN("A file with that name in that path souldn't already exist")
-            {
-                REQUIRE(!tempFile->query_exists());
-            }
-
             THEN("The name of the temporary file should be a valid UUID")
             {
                 REQUIRE_NOTHROW(uuids::uuid::from_string(tempFile->get_basename()));
