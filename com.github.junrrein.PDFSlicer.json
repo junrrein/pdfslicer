@@ -162,7 +162,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/junrrein/pdfslicer.git"
+                    "url": "https://github.com/junrrein/pdfslicer.git",
+                    "disable-fsckobjects": true
                 }
             ]
         }
