@@ -1,42 +1,11 @@
 set (SOURCES
-	 command.hpp
-	 command.cpp
-	 commandmanager.hpp
-	 commandmanager.cpp
-	 document.hpp
-	 document.cpp
-	 page.hpp
-	 page.cpp
-	 pdfsaver.hpp
-	 pdfsaver.cpp
-	 pagerenderer.hpp
-	 pagerenderer.cpp
-	 tempfile.hpp
-	 tempfile.cpp)
+	 ${CMAKE_CURRENT_SOURCE_DIR}/command.cpp
+	 ${CMAKE_CURRENT_SOURCE_DIR}/commandmanager.cpp
+	 ${CMAKE_CURRENT_SOURCE_DIR}/document.cpp
+	 ${CMAKE_CURRENT_SOURCE_DIR}/page.cpp
+	 ${CMAKE_CURRENT_SOURCE_DIR}/pdfsaver.cpp
+	 ${CMAKE_CURRENT_SOURCE_DIR}/pagerenderer.cpp
+	 ${CMAKE_CURRENT_SOURCE_DIR}/tempfile.cpp)
 
-add_library (backend STATIC ${SOURCES})
-
-target_include_directories (backend PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
-target_include_directories (
-	backend SYSTEM PRIVATE
-	${CMAKE_SOURCE_DIR}/third-party/PDF-Writer/PDFWriter
-)
-
-target_link_libraries_system (backend
-	config
-	stduuid
-	PkgConfig::GTKMM
-	PkgConfig::POPPLER)
-
-target_link_libraries (backend PDFWriter)
-
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-   if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-	   set_target_properties (backend PROPERTIES COMPILE_FLAGS ${GNU_COMPILE_FLAGS})
-   endif ()
-
-#	 if (CLANG_TIDY_EXE)
-#		 set_target_properties (backend PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}")
-#	 endif ()
-endif ()
+target_sources (${CMAKE_PROJECT_NAME} PUBLIC ${SOURCES})
+target_include_directories (${CMAKE_PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
