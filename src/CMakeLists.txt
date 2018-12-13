@@ -50,7 +50,7 @@ add_executable (${CMAKE_PROJECT_NAME}
 				main.cpp
 				${APPLICATION_SOURCES}
 				${GLIB_RESOURCE_FILE})
-add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
+add_compile_definitions ("GETTEXT_PACKAGE=${GETTEXT_PACKAGE}")
 
 target_link_libraries_system (${CMAKE_PROJECT_NAME}
 	config
