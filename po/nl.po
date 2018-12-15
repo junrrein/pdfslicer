@@ -1,0 +1,199 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Heimen Stoffels <vistausss@outlook.com>, 2018.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-28 15:07-0300\n"
+"PO-Revision-Date: 2018-11-26 18:08+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
+"translations/nl/>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.3-dev\n"
+
+#: ../src/ui/aboutdialog.cpp:26
+msgid "A simple application to extract and rotate pages of a PDF document"
+msgstr ""
+"Een eenvoudige applicatie om pagina's van een PDF-document te extraheren en "
+"draaien"
+
+#: ../src/ui/aboutdialog.cpp:32
+msgid "Third-party libraries"
+msgstr "Externe bibliotheken"
+
+#: ../src/ui/aboutdialog.cpp:37
+msgid "Application icon"
+msgstr "Applicatiepictogram"
+
+#: ../src/ui/actionbar.cpp:29
+msgid "Rotate left"
+msgstr "Naar links draaien"
+
+#: ../src/ui/actionbar.cpp:34
+msgid "Rotate right"
+msgstr "Naar rechts draaien"
+
+#: ../src/ui/actionbar.cpp:41
+msgctxt "plural (pages)"
+msgid "Remove selected"
+msgstr "Selectie verwijderen"
+
+#: ../src/ui/actionbar.cpp:45
+msgctxt "plural (pages)"
+msgid "Remove unselected"
+msgstr "Niet-geselecteerde items verwijderen"
+
+#: ../src/ui/actionbar.cpp:49
+msgctxt "plural (pages)"
+msgid "Remove previous"
+msgstr "Vorige verwijderen"
+
+#: ../src/ui/actionbar.cpp:53
+msgctxt "plural (pages)"
+msgid "Remove next"
+msgstr "Volgende verwijderen"
+
+#: ../src/ui/actionbar.cpp:57
+msgid "Cancel selection"
+msgstr "Selectie annuleren"
+
+#: ../src/ui/appwindow.cpp:150
+msgid "The current document could not be saved"
+msgstr "Het huidige document kan niet worden opgeslagen"
+
+#: ../src/ui/appwindow.cpp:257
+msgid "The selected file could not be opened"
+msgstr "Het geselecteerde bestand kan niet worden geopend"
+
+#: ../src/ui/headerbar.cpp:34
+msgid "Open document…"
+msgstr "Document openen…"
+
+#: ../src/ui/headerbar.cpp:39
+msgid "Save as…"
+msgstr "Opslaan als…"
+
+#: ../src/ui/headerbar.cpp:44
+msgid "Undo"
+msgstr "Ongedaan maken"
+
+#: ../src/ui/headerbar.cpp:47
+msgid "Redo"
+msgstr "Opnieuw"
+
+#: ../src/ui/headerbar.cpp:57
+msgid "Keyboard shortcuts"
+msgstr "Sneltoetsen"
+
+#: ../src/ui/headerbar.cpp:58
+msgid "About"
+msgstr "Over"
+
+#: ../src/ui/headerbar.cpp:64 ../src/ui/previewwindow.cpp:49
+msgid "Zoom out"
+msgstr "Uitzoomen"
+
+#: ../src/ui/headerbar.cpp:67 ../src/ui/previewwindow.cpp:56
+msgid "Zoom in"
+msgstr "Inzoomen"
+
+#: ../src/ui/openfiledialog.cpp:25
+msgid "Open document"
+msgstr "Document openen"
+
+#: ../src/ui/openfiledialog.cpp:27
+msgid "Open"
+msgstr "Openen"
+
+#: ../src/ui/openfiledialog.cpp:28 ../src/ui/savefiledialog.cpp:28
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: ../src/ui/previewwindow.cpp:32
+msgid "Preview"
+msgstr "Voorbeeld"
+
+#: ../src/ui/savefiledialog.cpp:25
+msgid "Save document as"
+msgstr "Document opslaan als"
+
+#: ../src/ui/savefiledialog.cpp:27
+msgid "Save"
+msgstr "Opslaan"
+
+#: ../src/ui/savefiledialog.cpp:30
+msgid "Untitled document"
+msgstr "Naamloos document"
+
+#: ../src/ui/savingrevealer.cpp:10
+msgid "Saving…"
+msgstr "Bezig met opslaan…"
+
+#: ../src/ui/savingrevealer.cpp:17
+msgid "Saved!"
+msgstr "Opgeslagen!"
+
+#: ../src/ui/utils.cpp:23
+msgid "PDF document"
+msgstr "PDF-document"
+
+#: ../src/ui/welcomescreen.cpp:29
+msgid "Open a document to start slicing!"
+msgstr "Open een document om te beginnen met hakken!"
+
+#: ../data/ui/shortcuts.ui:12
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Algemeen"
+
+#: ../data/ui/shortcuts.ui:16
+msgctxt "shortcut window"
+msgid "Open document"
+msgstr "Document openen"
+
+#: ../data/ui/shortcuts.ui:22
+msgctxt "shortcut window"
+msgid "Save document"
+msgstr "Document opslaan"
+
+#: ../data/ui/shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "Inzoomen"
+
+#: ../data/ui/shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "Uitzoomen"
+
+#: ../data/ui/shortcuts.ui:41
+msgctxt "shortcut window"
+msgid "Document editing"
+msgstr "Documentbewerking"
+
+#: ../data/ui/shortcuts.ui:45
+msgctxt "shortcut window"
+msgid "Remove selected pages"
+msgstr "Geselecteerde pagina's verwijderen"
+
+#: ../data/ui/shortcuts.ui:51
+msgctxt "shortcut window"
+msgid "Cancel selection"
+msgstr "Selectie annuleren"
+
+#: ../data/ui/shortcuts.ui:57
+msgctxt "shortcut window"
+msgid "Undo last command"
+msgstr "Vorige opdracht ongedaan maken"
+
+#: ../data/ui/shortcuts.ui:63
+msgctxt "shortcut window"
+msgid "Redo undone command"
+msgstr "Opdracht opnieuw uitvoeren"
