@@ -6,25 +6,26 @@ static const int numThreads = 1;
 
 BackgroundThread::BackgroundThread()
 {
-    m_threadPool = std::make_unique<ctpl::thread_pool>(numThreads);
+    m_threadpool = std::make_unique<astp::ThreadPool>(numThreads);
 }
 
-BackgroundThread::~BackgroundThread()
+void BackgroundThread::pushBack(const std::function<void()>& task)
 {
-    m_threadPool->stop(false);
+    m_threadpool->push(task);
 }
 
-void BackgroundThread::push(const std::function<void()>& task)
+void BackgroundThread::pushFront(const std::function<void()>& task)
 {
-	m_threadPool->push([task](int) {
-		task();
-	});
+    std::thread{[this, task]() {
+        m_threadpool->apply_for(1, task);
+    }}
+        .detach();
 }
 
 void BackgroundThread::killRemainingTasks()
 {
-	m_threadPool->stop(false);
-	m_threadPool = std::make_unique<ctpl::thread_pool>(numThreads);
+    m_threadpool->stop();
+    m_threadpool = std::make_unique<astp::ThreadPool>(numThreads);
 }
 
 } // namespace Slicer

@@ -4,3 +4,6 @@
 [submodule "third-party/range-v3"]
 	path = third-party/range-v3
 	url = https://github.com/ericniebler/range-v3.git
+[submodule "third-party/GSL"]
+	path = third-party/GSL
+	url = https://github.com/Microsoft/GSL.git

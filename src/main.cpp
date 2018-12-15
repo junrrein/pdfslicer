@@ -15,39 +15,22 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "application/application.hpp"
-#include <glibmm/i18n.h>
-#include <glibmm.h>
+#include <logger.hpp>
 #include <config.hpp>
+#include <gtkmm/main.h>
 
-void setupLocalization();
-std::string getPathToLocaleDir();
+using namespace Slicer;
 
 int main(int num_args, char* args_array[])
 {
-    setupLocalization();
+    config::setupLocalization();
+    config::createConfigDirIfNotExistent();
+    Logger::setupLogger();
 
-    auto app = Slicer::Application::create();
+    Logger::logInfo("Welcome to PDF Slicer");
+    Logger::logInfo("Logging to file: " + Logger::getPathToLogFile());
+
+    auto app = Application::create();
 
     return app->run(num_args, args_array);
-}
-
-void setupLocalization()
-{
-    bindtextdomain(Slicer::config::GETEXT_PACKAGE.c_str(),
-                   getPathToLocaleDir().c_str());
-    bind_textdomain_codeset(Slicer::config::GETEXT_PACKAGE.c_str(),
-                            "UTF-8");
-    textdomain(Slicer::config::GETEXT_PACKAGE.c_str());
-}
-
-std::string getPathToLocaleDir()
-{
-#ifdef __linux__
-    return Slicer::config::LOCALE_DIR;
-#else // We are in Windows
-    const std::string pathToShareDir = Glib::get_system_data_dirs().at(2);
-    const std::string pathToLocaleDir = pathToShareDir + +"\\locale\\";
-
-    return pathToLocaleDir;
-#endif
 }

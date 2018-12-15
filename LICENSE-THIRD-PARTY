@@ -1,11 +1,17 @@
 The following third-party libraries are distributed along with
 PDF Slicer:
 
-CTPL
-====
-Licensed under the Apache License, Version 2.0.
-A copy of the license text is available at third-party/CTPL/LICENSE.
-Distributed without modifications.
+ThreadPool
+==========
+Copyright (c) 2016 Amedeo Setti
+Licensed under the MIT License.
+A copy of the license text is available at third-party/adda25-threadpool/LICENSE.txt.
+
+GSL
+===
+Copyright (c) 2015 Microsoft Corporation.
+Licensed under the MIT License.
+A copy of the license text is available at third-party/GSL/LICENSE.
 
 PDF-Writer
 ==========
@@ -21,3 +27,15 @@ range-v3
 ========
 Licensed under the Boost Software License 1.0,
 A copy of the license text is available at third-party/range-v3/LICENSE.txt.
+
+spdlog
+======
+Copyright (c) 2016 Gabi Melman.
+Licensed under the MIT License.
+A copy of the license text is available at third-party/spdlog/LICENSE.
+
+stduuid
+=======
+Copyright (c) 2017 Marius Bancila.
+Licensed under the MIT License.
+A copy of the license text is available at third-party/stduuid/LICENSE.

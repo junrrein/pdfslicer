@@ -15,6 +15,7 @@ KeepEmptyLinesAtTheStartOfBlocks: 'true'
 PointerAlignment: Left
 SortIncludes: 'false'
 SpaceAfterCStyleCast: 'true'
+SpaceBeforeCpp11BracedList: 'false'
 SpacesBeforeTrailingComments: '1'
 TabWidth: '4'
 UseTab: ForIndentation

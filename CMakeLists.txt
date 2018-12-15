@@ -7,19 +7,18 @@ set (APPLICATION_ID "com.github.junrrein.PDFSlicer")
 set (APPLICATION_NAME "PDF Slicer")
 set (APPLICATION_WEBSITE "https://github.com/junrrein/pdfslicer")
 set (GETTEXT_PACKAGE ${APPLICATION_ID})
-set (LOCALE_DIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
-set (VERSION 1.3.2)
-configure_file (config.hpp.in ${CMAKE_BINARY_DIR}/config.hpp)
+set (LINUX_LOCALE_DIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
+set (VERSION 1.4.0)
 
 set (SOURCE_DATA_DIR ${CMAKE_SOURCE_DIR}/data)
 
-set (CMAKE_CXX_STANDARD 14)
+set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package (Threads REQUIRED)
 find_package (PkgConfig REQUIRED)
-pkg_check_modules (GTKMM gtkmm-3.0 REQUIRED)
-pkg_check_modules (POPPLER poppler-glib REQUIRED)
+pkg_check_modules (GTKMM gtkmm-3.0 IMPORTED_TARGET REQUIRED)
+pkg_check_modules (POPPLER poppler-glib IMPORTED_TARGET REQUIRED)
 find_package (Intl REQUIRED)
 find_package (Gettext REQUIRED)
 
@@ -33,22 +32,15 @@ else ()
     set (DO_CLANG_TIDY "${CLANG_TIDY_EXE}" "-config=")
 endif ()
 
-find_program (IWYU_EXE
-              NAMES "iwyu"
-              DOC "Path to include-what-you-use executable")
-if (NOT IWYU_EXE)
-    message (STATUS "include-what-you-use not found.")
-else ()
-    message (STATUS "include-what-you-use found: ${IWYU_EXE}")
-    set (DO_IWYU ${IWYU_EXE})
-endif ()
+set (GNU_COMPILE_FLAGS "-Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wduplicated-branches -Wlogical-op")
 
+include (Utils)
 add_subdirectory (third-party)
 add_subdirectory (src)
+add_subdirectory (tests)
 add_subdirectory (data)
 add_subdirectory (po)
 
-# Windows installer
 if (MINGW)
 	include (WindowsInstaller)
 endif ()

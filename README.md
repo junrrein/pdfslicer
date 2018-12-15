@@ -17,7 +17,7 @@ with undo/redo support.
 
 # Linux
 
-PDF Slicer is currently being submitted to [Flathub](https://flathub.org). [Stay tuned](https://github.com/junrrein/pdfslicer/issues/2)!
+You can install PDF Slicer using Flatpak. [Get it from Flathub](https://flathub.org/apps/details/com.github.junrrein.PDFSlicer).
 
 # Windows
 
@@ -30,7 +30,7 @@ You can download the installer from the [Releases page](https://github.com/junrr
 1. Install dependencies
 
 ```bash
-sudo dnf install gtkmm30-devel poppler-glib-devel cairomm-devel libaesgm-devel intltool gettext
+sudo dnf install gtkmm30-devel poppler-glib-devel cairomm-devel libaesgm-devel uuid-devel intltool gettext
 ```
 
 2. Check out a copy of the source code
