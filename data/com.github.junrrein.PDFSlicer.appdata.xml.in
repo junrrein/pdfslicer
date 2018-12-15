@@ -25,6 +25,9 @@
 		<screenshot>
 			<image>https://github.com/junrrein/pdfslicer/raw/master/docs/readme-screenshot-2.png</image>
 		</screenshot>
+		<screenshot>
+			<image>https://github.com/junrrein/pdfslicer/raw/master/docs/readme-screenshot-3.png</image>
+		</screenshot>
 	</screenshots>
 	<releases>
 		<release version="1.4.0" date="2018-12-15">
