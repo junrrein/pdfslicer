@@ -17,7 +17,7 @@ with undo/redo support.
 
 # Linux
 
-PDF Slicer is currently being submitted to [Flathub](https://flathub.org). [Stay tuned](https://github.com/junrrein/pdfslicer/issues/2)!
+You can install PDF Slicer using Flatpak. [Get it from Flathub](https://flathub.org/apps/details/com.github.junrrein.PDFSlicer).
 
 # Windows
 
