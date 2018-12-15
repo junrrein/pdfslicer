@@ -1,8 +1,8 @@
-file (COPY pdfslicer.ico
-	DESTINATION ${CMAKE_BINARY_DIR})
-
 if (MINGW)
 	set (ICON_DIR_RELATIVE "share/icons/Adwaita")
+
+	file (COPY pdfslicer.ico DESTINATION ${CMAKE_BINARY_DIR})
+	file (COPY pdfslicer.ico DESTINATION ${CMAKE_BINARY_DIR}/src)
 else ()
 	set (ICON_DIR_RELATIVE "share/icons/hicolor")
 endif ()
