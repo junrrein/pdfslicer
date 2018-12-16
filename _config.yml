@@ -1,1 +1,3 @@
 theme: jekyll-theme-cayman
+title: PFD Slicer
+description: A simple application to extract and rotate pages of a PDF document
