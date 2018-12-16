@@ -14,7 +14,7 @@
 		and it has full undo/redo support.
 		</_p>
 	</description>
-	<url type="homepage">https://github.com/junrrein/pdfslicer</url>
+	<url type="homepage">https://junrrein.github.io/pdfslicer/</url>
 	<url type="bugtracker">https://github.com/junrrein/pdfslicer/issues</url>
 	<update_contact>junrrein@gmail.com</update_contact>
 	<translation type="gettext">@GETTEXT_PACKAGE@</translation>
