@@ -5,7 +5,7 @@ list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake-modules)
 
 set (APPLICATION_ID "com.github.junrrein.PDFSlicer")
 set (APPLICATION_NAME "PDF Slicer")
-set (APPLICATION_WEBSITE "https://github.com/junrrein/pdfslicer")
+set (APPLICATION_WEBSITE "https://junrrein.github.io/pdfslicer/")
 set (GETTEXT_PACKAGE ${APPLICATION_ID})
 set (LINUX_LOCALE_DIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
 set (VERSION 1.4.1)
