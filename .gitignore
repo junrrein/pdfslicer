@@ -2,3 +2,7 @@ CMakeLists.txt.user
 *.mo
 *~
 src/backend/config.hpp
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
