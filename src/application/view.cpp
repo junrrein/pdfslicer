@@ -24,7 +24,7 @@ View::View(BackgroundThread& backgroundThread)
     : m_backgroundThread{backgroundThread}
 {
     set_column_spacing(10);
-    set_row_spacing(20);
+    set_row_spacing(5);
     set_selection_mode(Gtk::SELECTION_NONE);
 
     m_dispatcher.connect(sigc::mem_fun(*this, &View::onDispatcherCalled));
