@@ -43,15 +43,19 @@ void PageWidget::setupWidgets()
     set_halign(Gtk::ALIGN_CENTER);
 
     m_spinner.set_size_request(38, 38);
+    m_spinner.set_hexpand();
+    m_spinner.set_vexpand();
+    m_spinner.set_halign(Gtk::ALIGN_CENTER);
+    m_spinner.set_valign(Gtk::ALIGN_CENTER);
     m_spinner.start();
-    m_contentBox.pack_start(m_spinner, true, false);
+    m_contentGrid.attach(m_spinner, 1, 1, 1, 1);
 
     m_overlay.set_halign(Gtk::ALIGN_CENTER);
     m_overlay.set_valign(Gtk::ALIGN_CENTER);
     m_overlay.add(m_thumbnail);
     m_overlayEventBox.add(m_overlay);
 
-    add(m_contentBox);
+    add(m_contentGrid);
 
     show_all();
 }
@@ -66,7 +70,7 @@ void PageWidget::showSpinner()
     if (!m_spinner.is_visible()) {
         m_spinner.show();
         m_spinner.start();
-        m_contentBox.remove(m_overlayEventBox);
+        m_contentGrid.remove(m_overlayEventBox);
     }
 }
 
@@ -74,7 +78,7 @@ void PageWidget::showPage()
 {
     if (!isThumbnailVisible()) {
         m_spinner.stop();
-        m_contentBox.pack_start(m_overlayEventBox, Gtk::PACK_SHRINK);
+        m_contentGrid.attach(m_overlayEventBox, 1, 2, 1, 1);
         m_overlayEventBox.show_all();
         m_spinner.hide();
     }

@@ -23,6 +23,7 @@ InteractivePageWidget::InteractivePageWidget(const Glib::RefPtr<Page>& page,
     : PageWidget(page, targetSize)
 {
     setupInteractiveWidgets();
+    setupLabel(page->number() + 1);
     setupSignalHandlers();
 }
 
@@ -51,6 +52,15 @@ void InteractivePageWidget::setupInteractiveWidgets()
 
     m_overlay.add_overlay(m_check);
     m_overlay.add_overlay(m_previewButtonRevealer);
+}
+
+void InteractivePageWidget::setupLabel(int pageNumber)
+{
+    m_pageNumberLabel.set_label("Page " + std::to_string(pageNumber));
+    m_pageNumberLabel.set_margin_top(5);
+    m_pageNumberLabel.set_visible();
+
+    m_contentGrid.attach(m_pageNumberLabel, 1, 3, 1, 1);
 }
 
 void InteractivePageWidget::setupSignalHandlers()
