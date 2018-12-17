@@ -15,6 +15,10 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "interactivepagewidget.hpp"
+#include <glibmm/i18n.h>
+#include <fmt/format.h>
+
+using namespace fmt::literals;
 
 namespace Slicer {
 
@@ -56,7 +60,7 @@ void InteractivePageWidget::setupInteractiveWidgets()
 
 void InteractivePageWidget::setupLabel(int pageNumber)
 {
-    m_pageNumberLabel.set_label("Page " + std::to_string(pageNumber));
+    m_pageNumberLabel.set_label(fmt::format(_("Page {pageNumber}"), "pageNumber"_a = pageNumber));
     m_pageNumberLabel.set_margin_top(5);
     m_pageNumberLabel.set_visible();
 
