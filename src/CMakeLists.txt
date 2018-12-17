@@ -13,6 +13,7 @@ add_subdirectory (logger)
 add_compile_definitions ("GETTEXT_PACKAGE=${GETTEXT_PACKAGE}")
 
 target_link_libraries_system (${CMAKE_PROJECT_NAME}
+	fmt
 	range-v3
 	spdlog
 	ThreadPool)
