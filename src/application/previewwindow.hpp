@@ -53,6 +53,7 @@ private:
 	Gtk::Button m_buttonZoomOut;
 	Gtk::Box m_boxZoom;
 
+    void setTitle();
 	void setupWidgets();
 	void setupSignalHandlers();
 	void loadCustomCSS();
