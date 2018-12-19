@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-28 15:07-0300\n"
+"POT-Creation-Date: 2018-12-19 17:46-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,131 +17,133 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/ui/aboutdialog.cpp:26
+#: ../src/application/aboutdialog.cpp:26
 msgid "A simple application to extract and rotate pages of a PDF document"
 msgstr ""
 
-#: ../src/ui/aboutdialog.cpp:32
+#: ../src/application/aboutdialog.cpp:32
 msgid "Third-party libraries"
 msgstr ""
 
-#: ../src/ui/aboutdialog.cpp:37
+#: ../src/application/aboutdialog.cpp:40
 msgid "Application icon"
 msgstr ""
 
-#: ../src/ui/actionbar.cpp:29
+#: ../src/application/actionbar.cpp:29
 msgid "Rotate left"
 msgstr ""
 
-#: ../src/ui/actionbar.cpp:34
+#: ../src/application/actionbar.cpp:34
 msgid "Rotate right"
 msgstr ""
 
-#: ../src/ui/actionbar.cpp:41
+#: ../src/application/actionbar.cpp:41
 msgctxt "plural (pages)"
 msgid "Remove selected"
 msgstr ""
 
-#: ../src/ui/actionbar.cpp:45
+#: ../src/application/actionbar.cpp:45
 msgctxt "plural (pages)"
 msgid "Remove unselected"
 msgstr ""
 
-#: ../src/ui/actionbar.cpp:49
+#: ../src/application/actionbar.cpp:49
 msgctxt "plural (pages)"
 msgid "Remove previous"
 msgstr ""
 
-#: ../src/ui/actionbar.cpp:53
+#: ../src/application/actionbar.cpp:53
 msgctxt "plural (pages)"
 msgid "Remove next"
 msgstr ""
 
-#: ../src/ui/actionbar.cpp:57
+#: ../src/application/actionbar.cpp:57
 msgid "Cancel selection"
 msgstr ""
 
-#: ../src/ui/appwindow.cpp:150
+#: ../src/application/appwindow.cpp:174
 msgid "The current document could not be saved"
 msgstr ""
 
-#: ../src/ui/appwindow.cpp:257
+#: ../src/application/appwindow.cpp:300
 msgid "The selected file could not be opened"
 msgstr ""
 
-#: ../src/ui/headerbar.cpp:34
+#: ../src/application/headerbar.cpp:34
 msgid "Open document…"
 msgstr ""
 
-#: ../src/ui/headerbar.cpp:39
+#: ../src/application/headerbar.cpp:39
 msgid "Save as…"
 msgstr ""
 
-#: ../src/ui/headerbar.cpp:44
+#: ../src/application/headerbar.cpp:44
 msgid "Undo"
 msgstr ""
 
-#: ../src/ui/headerbar.cpp:47
+#: ../src/application/headerbar.cpp:47
 msgid "Redo"
 msgstr ""
 
-#: ../src/ui/headerbar.cpp:57
+#: ../src/application/headerbar.cpp:57
 msgid "Keyboard shortcuts"
 msgstr ""
 
-#: ../src/ui/headerbar.cpp:58
+#: ../src/application/headerbar.cpp:58
 msgid "About"
 msgstr ""
 
-#: ../src/ui/headerbar.cpp:64 ../src/ui/previewwindow.cpp:49
+#: ../src/application/headerbar.cpp:64 ../src/application/previewwindow.cpp:57
 msgid "Zoom out"
 msgstr ""
 
-#: ../src/ui/headerbar.cpp:67 ../src/ui/previewwindow.cpp:56
+#: ../src/application/headerbar.cpp:67 ../src/application/previewwindow.cpp:64
 msgid "Zoom in"
 msgstr ""
 
-#: ../src/ui/openfiledialog.cpp:25
+#: ../src/application/interactivepagewidget.cpp:63
+#: ../src/application/previewwindow.cpp:51
+msgid "Page {pageNumber}"
+msgstr ""
+
+#: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
 msgstr ""
 
-#: ../src/ui/openfiledialog.cpp:27
+#: ../src/application/openfiledialog.cpp:27
 msgid "Open"
 msgstr ""
 
-#: ../src/ui/openfiledialog.cpp:28 ../src/ui/savefiledialog.cpp:28
+#: ../src/application/openfiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:28
 msgid "Cancel"
 msgstr ""
 
-#: ../src/ui/previewwindow.cpp:32
-msgid "Preview"
-msgstr ""
-
-#: ../src/ui/savefiledialog.cpp:25
+#: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
 msgstr ""
 
-#: ../src/ui/savefiledialog.cpp:27
+#: ../src/application/savefiledialog.cpp:27
 msgid "Save"
 msgstr ""
 
-#: ../src/ui/savefiledialog.cpp:30
+#: ../src/application/savefiledialog.cpp:30
 msgid "Untitled document"
 msgstr ""
 
-#: ../src/ui/savingrevealer.cpp:10
+#: ../src/application/savingrevealer.cpp:26
 msgid "Saving…"
 msgstr ""
 
-#: ../src/ui/savingrevealer.cpp:17
+#: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
 msgstr ""
 
-#: ../src/ui/utils.cpp:23
+#: ../src/application/utils.cpp:23
 msgid "PDF document"
 msgstr ""
 
-#: ../src/ui/welcomescreen.cpp:29
+#: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
 msgstr ""
 
