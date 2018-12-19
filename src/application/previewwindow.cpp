@@ -17,6 +17,9 @@
 #include "previewwindow.hpp"
 #include <gtkmm/cssprovider.h>
 #include <glibmm/i18n.h>
+#include <fmt/format.h>
+
+using namespace fmt::literals;
 
 namespace Slicer {
 
@@ -29,18 +32,23 @@ PreviewWindow::PreviewWindow(const Glib::RefPtr<Page>& page, BackgroundThread& b
     , m_zoomLevel{zoomLevels, *(m_actionGroup.operator->())}
     , m_pageWidget{m_page, m_zoomLevel.currentLevel()}
 {
-	set_title(_("Preview"));
 	set_size_request(400, 400);
 	set_default_size(900, 600);
 
 	insert_action_group("preview", m_actionGroup);
 
+    setTitle();
 	setupWidgets();
 	setupSignalHandlers();
 	loadCustomCSS();
 	renderPage();
 
 	show_all_children();
+}
+
+void PreviewWindow::setTitle()
+{
+    set_title(fmt::format(_("Page {pageNumber}"), "pageNumber"_a = m_page->number() + 1));
 }
 
 void PreviewWindow::setupWidgets()
