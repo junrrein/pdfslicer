@@ -5,18 +5,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2018-12-19 17:46-0300\n"
-"PO-Revision-Date: 2018-09-28 20:27+0000\n"
+"PO-Revision-Date: 2018-12-22 12:09+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
-"slicer/translations/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"pdf-slicer/translations/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.2-dev\n"
+"X-Generator: Weblate 3.4-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid "A simple application to extract and rotate pages of a PDF document"
@@ -110,7 +110,7 @@ msgstr "Forstørr"
 #: ../src/application/interactivepagewidget.cpp:63
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
-msgstr ""
+msgstr "Side {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
