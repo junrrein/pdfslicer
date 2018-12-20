@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2018-12-19 17:46-0300\n"
-"PO-Revision-Date: 2018-11-26 18:08+0000\n"
+"PO-Revision-Date: 2018-12-22 12:09+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/nl/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.3-dev\n"
+"X-Generator: Weblate 3.4-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid "A simple application to extract and rotate pages of a PDF document"
@@ -107,7 +107,7 @@ msgstr "Inzoomen"
 #: ../src/application/interactivepagewidget.cpp:63
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
-msgstr ""
+msgstr "Pagina {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
