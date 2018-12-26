@@ -18,7 +18,7 @@
 #define VIEWCHILD_HPP
 
 #include <page.hpp>
-#include <gtkmm/grid.h>
+#include <gtkmm/box.h>
 #include <gtkmm/eventbox.h>
 #include <gtkmm/flowboxchild.h>
 #include <gtkmm/image.h>
@@ -41,13 +41,14 @@ public:
 protected:
     const Glib::RefPtr<Page> m_page;
 
-    Gtk::Grid m_contentGrid;
+    Gtk::Box m_outerBox;
     Gtk::EventBox m_overlayEventBox;
     Gtk::Overlay m_overlay;
 
 private:
     int m_targetSize;
 
+    Gtk::Box m_contentBox;
     Gtk::Spinner m_spinner;
     Gtk::Image m_thumbnail;
 

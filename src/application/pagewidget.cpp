@@ -38,7 +38,7 @@ void PageWidget::changeSize(int targetSize)
 void PageWidget::setupWidgets()
 {
     const Page::Size pageSize = m_page->scaledRotatedSize(m_targetSize);
-    set_size_request(pageSize.width, pageSize.height);
+    m_contentBox.set_size_request(pageSize.width, pageSize.height);
     set_valign(Gtk::ALIGN_CENTER);
     set_halign(Gtk::ALIGN_CENTER);
 
@@ -48,14 +48,16 @@ void PageWidget::setupWidgets()
     m_spinner.set_halign(Gtk::ALIGN_CENTER);
     m_spinner.set_valign(Gtk::ALIGN_CENTER);
     m_spinner.start();
-    m_contentGrid.attach(m_spinner, 1, 1, 1, 1);
+    m_contentBox.pack_start(m_spinner, false, true);
 
     m_overlay.set_halign(Gtk::ALIGN_CENTER);
     m_overlay.set_valign(Gtk::ALIGN_CENTER);
     m_overlay.add(m_thumbnail);
     m_overlayEventBox.add(m_overlay);
 
-    add(m_contentGrid);
+    m_outerBox.set_orientation(Gtk::ORIENTATION_VERTICAL);
+    m_outerBox.pack_start(m_contentBox);
+    add(m_outerBox);
 
     show_all();
 }
@@ -70,7 +72,7 @@ void PageWidget::showSpinner()
     if (!m_spinner.is_visible()) {
         m_spinner.show();
         m_spinner.start();
-        m_contentGrid.remove(m_overlayEventBox);
+        m_contentBox.remove(m_overlayEventBox);
     }
 }
 
@@ -78,7 +80,7 @@ void PageWidget::showPage()
 {
     if (!isThumbnailVisible()) {
         m_spinner.stop();
-        m_contentGrid.attach(m_overlayEventBox, 1, 2, 1, 1);
+        m_contentBox.pack_start(m_overlayEventBox);
         m_overlayEventBox.show_all();
         m_spinner.hide();
     }
