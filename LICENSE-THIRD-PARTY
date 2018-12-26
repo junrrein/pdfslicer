@@ -1,5 +1,4 @@
-The following third-party libraries are distributed along with
-PDF Slicer:
+The following third-party libraries are distributed along with PDF Slicer:
 
 ThreadPool
 ==========
@@ -39,3 +38,9 @@ stduuid
 Copyright (c) 2017 Marius Bancila.
 Licensed under the MIT License.
 A copy of the license text is available at third-party/stduuid/LICENSE.
+
+fmtlib
+======
+Copyright (c) 2012 - 2016, Victor Zverovich
+Licensed under the BSD 2-Clause License.
+A copy of the license text is available at third-party/fmtlib/LICENSE.rst
