@@ -44,3 +44,8 @@ fmtlib
 Copyright (c) 2012 - 2016, Victor Zverovich
 Licensed under the BSD 2-Clause License.
 A copy of the license text is available at third-party/fmtlib/LICENSE.rst
+
+Catch2
+======
+License under the Boost Software License 1.0.
+A copy of the license text is available at third-party/catch2/LICENSE.txt
