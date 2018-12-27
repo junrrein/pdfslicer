@@ -30,6 +30,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.4.3" date="2018-12-27">
+			<description>
+				<p>Fix thumbnail sizing.</p>
+			</description>
+		</release>
 		<release version="1.4.2" date="2018-12-24">
 			<description>
 				<p>Fix Windows build.</p>
