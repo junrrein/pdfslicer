@@ -17,6 +17,7 @@
 	<url type="homepage">@APPLICATION_WEBSITE@</url>
 	<url type="bugtracker">https://github.com/junrrein/pdfslicer/issues</url>
 	<url type="translate">https://hosted.weblate.org/projects/pdf-slicer/</url>
+	<developer_name>Julián Unrrein</developer_name>
 	<update_contact>junrrein@gmail.com</update_contact>
 	<translation type="gettext">@GETTEXT_PACKAGE@</translation>
 	<screenshots>
