@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2018-12-19 17:46-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-05 20:00-0300\n"
 "PO-Revision-Date: 2019-01-05 23:01+0000\n"
 "Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Third-party libraries"
 msgstr "Bibliotheken von Drittanbietern"
 
-#: ../src/application/aboutdialog.cpp:40
+#: ../src/application/aboutdialog.cpp:42
 msgid "Application icon"
 msgstr "Anwendungssymbol"
 
