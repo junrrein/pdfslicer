@@ -1,205 +1,200 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Ettore Atalan <atalanttore@googlemail.com>, 2018.
-# Johannes Keyser <johanneskeyser@posteo.de>, 2019.
+# André Marcelo Alvarenga <andrealvarenga@gmx.net>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-05 20:00-0300\n"
 "PO-Revision-Date: 2019-01-05 23:01+0000\n"
-"Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
-"translations/de/>\n"
-"Language: de\n"
+"Last-Translator: André Marcelo Alvarenga <andrealvarenga@gmx.net>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/pdf-"
+"slicer/translations/pt_BR/>\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 3.4-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid "A simple application to extract and rotate pages of a PDF document"
 msgstr ""
-"Eine einfache Anwendung zum Extrahieren und Drehen von Seiten eines PDF-"
-"Dokuments"
+"Um aplicativo simples para extrair e girar páginas de um documento em PDF"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Third-party libraries"
-msgstr "Bibliotheken von Drittanbietern"
+msgstr "Bibliotecas de terceiros"
 
 #: ../src/application/aboutdialog.cpp:42
 msgid "Application icon"
-msgstr "Anwendungssymbol"
+msgstr "Ícone do aplicativo"
 
 #: ../src/application/actionbar.cpp:29
 msgid "Rotate left"
-msgstr "Nach links drehen"
+msgstr "Girar para a esquerda"
 
 #: ../src/application/actionbar.cpp:34
 msgid "Rotate right"
-msgstr "Nach rechts drehen"
+msgstr "Girar para a direita"
 
 #: ../src/application/actionbar.cpp:41
 msgctxt "plural (pages)"
 msgid "Remove selected"
-msgstr "Ausgewähltes entfernen"
+msgstr "Remover selecionado"
 
 #: ../src/application/actionbar.cpp:45
 msgctxt "plural (pages)"
 msgid "Remove unselected"
-msgstr "Nicht ausgewähltes entfernen"
+msgstr "Remover desmarcado"
 
 #: ../src/application/actionbar.cpp:49
 msgctxt "plural (pages)"
 msgid "Remove previous"
-msgstr "Vorheriges entfernen"
+msgstr "Remover anterior"
 
 #: ../src/application/actionbar.cpp:53
 msgctxt "plural (pages)"
 msgid "Remove next"
-msgstr "Nächstes entfernen"
+msgstr "Remover próximo"
 
 #: ../src/application/actionbar.cpp:57
 msgid "Cancel selection"
-msgstr "Auswahl abbrechen"
+msgstr "Cancelar seleção"
 
 #: ../src/application/appwindow.cpp:174
 msgid "The current document could not be saved"
-msgstr "Das aktuelle Dokument konnte nicht gespeichert werden"
+msgstr "O documento atual não pôde ser salvo"
 
 #: ../src/application/appwindow.cpp:300
 msgid "The selected file could not be opened"
-msgstr "Die ausgewählte Datei konnte nicht geöffnet werden"
+msgstr "O arquivo selecionado não pôde ser aberto"
 
 #: ../src/application/headerbar.cpp:34
 msgid "Open document…"
-msgstr "Dokument öffnen…"
+msgstr "Abrir documento…"
 
 #: ../src/application/headerbar.cpp:39
 msgid "Save as…"
-msgstr "Speichern unter…"
+msgstr "Salvar como…"
 
 #: ../src/application/headerbar.cpp:44
 msgid "Undo"
-msgstr "Rückgängig"
+msgstr "Desfazer"
 
 #: ../src/application/headerbar.cpp:47
 msgid "Redo"
-msgstr "Wiederherstellen"
+msgstr "Refazer"
 
 #: ../src/application/headerbar.cpp:57
 msgid "Keyboard shortcuts"
-msgstr "Tastenkombinationen"
+msgstr "Atalhos de teclado"
 
 #: ../src/application/headerbar.cpp:58
 msgid "About"
-msgstr "Über"
+msgstr "Sobre"
 
 #: ../src/application/headerbar.cpp:64 ../src/application/previewwindow.cpp:57
 msgid "Zoom out"
-msgstr "Herauszoomen"
+msgstr "Reduzir"
 
 #: ../src/application/headerbar.cpp:67 ../src/application/previewwindow.cpp:64
 msgid "Zoom in"
-msgstr "Hineinzoomen"
+msgstr "Ampliar"
 
 #: ../src/application/interactivepagewidget.cpp:63
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
-msgstr "Seite {pageNumber}"
+msgstr "Página {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
-msgstr "Dokument öffnen"
+msgstr "Abrir documento"
 
 #: ../src/application/openfiledialog.cpp:27
 msgid "Open"
-msgstr "Öffnen"
+msgstr "Abrir"
 
 #: ../src/application/openfiledialog.cpp:28
 #: ../src/application/savefiledialog.cpp:28
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "Cancelar"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr "Dokument speichern unter"
+msgstr "Salvar documento como"
 
 #: ../src/application/savefiledialog.cpp:27
 msgid "Save"
-msgstr "Speichern"
+msgstr "Salvar"
 
 #: ../src/application/savefiledialog.cpp:30
 msgid "Untitled document"
-msgstr "Unbenanntes Dokument"
+msgstr "Documento sem título"
 
 #: ../src/application/savingrevealer.cpp:26
 msgid "Saving…"
-msgstr "Wird gespeichert…"
+msgstr "Salvando…"
 
 #: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
-msgstr "Gespeichert!"
+msgstr "Salvo!"
 
 #: ../src/application/utils.cpp:23
 msgid "PDF document"
-msgstr "PDF-Dokument"
+msgstr "Documento em PDF"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "Öffnen Sie ein Dokument, um mit dem Zuschneiden zu beginnen!"
+msgstr "Abra um documento para começar a cortar!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Allgemein"
+msgstr "Geral"
 
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr "Dokument öffnen"
+msgstr "Abrir documento"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr "Dokument speichern"
+msgstr "Salvar documento"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr "Hineinzoomen"
+msgstr "Ampliar"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr "Herauszoomen"
+msgstr "Reduzir"
 
 #: ../data/ui/shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Document editing"
-msgstr "Dokumentenbearbeitung"
+msgstr "Edição do documento"
 
 #: ../data/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr "Ausgewählte Seiten entfernen"
+msgstr "Remover páginas selecionadas"
 
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr "Auswahl aufheben"
+msgstr "Cancelar seleção"
 
 #: ../data/ui/shortcuts.ui:57
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr "Letzten Befehl rückgängig machen"
+msgstr "Desfazer o último comando"
 
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr "Wiederherstellen"
-
-#~ msgid "Preview"
-#~ msgstr "Vorschau"
+msgstr "Refaz o comando desfeito"
