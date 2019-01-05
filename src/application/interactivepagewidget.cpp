@@ -64,7 +64,7 @@ void InteractivePageWidget::setupLabel(int pageNumber)
     m_pageNumberLabel.set_margin_top(5);
     m_pageNumberLabel.set_visible();
 
-    m_contentGrid.attach(m_pageNumberLabel, 1, 3, 1, 1);
+    m_outerBox.pack_start(m_pageNumberLabel, false, true);
 }
 
 void InteractivePageWidget::setupSignalHandlers()

@@ -16,6 +16,8 @@
 	</description>
 	<url type="homepage">@APPLICATION_WEBSITE@</url>
 	<url type="bugtracker">https://github.com/junrrein/pdfslicer/issues</url>
+	<url type="translate">https://hosted.weblate.org/projects/pdf-slicer/</url>
+	<developer_name>Julián Unrrein</developer_name>
 	<update_contact>junrrein@gmail.com</update_contact>
 	<translation type="gettext">@GETTEXT_PACKAGE@</translation>
 	<screenshots>
@@ -30,6 +32,21 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.4.3" date="2018-12-27">
+			<description>
+				<p>Fix thumbnail sizing.</p>
+			</description>
+		</release>
+		<release version="1.4.2" date="2018-12-24">
+			<description>
+				<p>Fix Windows build.</p>
+			</description>
+		</release>
+		<release version="1.4.1" date="2018-12-24">
+			<description>
+				<p>Add a "page number" label to thumbnails and big previews.</p>
+			</description>
+		</release>
 		<release version="1.4.0" date="2018-12-15">
 			<description>
 				<p>Re-add the preview page function (used to get a big view of an individual page). Save and restore window state on window close and open, respectively. Add Dutch and German translations.</p>
