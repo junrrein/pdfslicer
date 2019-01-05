@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Ettore Atalan <atalanttore@googlemail.com>, 2018.
+# Johannes Keyser <johanneskeyser@posteo.de>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2018-12-19 17:46-0300\n"
-"PO-Revision-Date: 2018-12-02 02:09+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"PO-Revision-Date: 2019-01-05 23:01+0000\n"
+"Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/de/>\n"
 "Language: de\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.3\n"
+"X-Generator: Weblate 3.4-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid "A simple application to extract and rotate pages of a PDF document"
@@ -107,7 +108,7 @@ msgstr "Hineinzoomen"
 #: ../src/application/interactivepagewidget.cpp:63
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
-msgstr ""
+msgstr "Seite {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
@@ -198,7 +199,7 @@ msgstr "Letzten Befehl rückgängig machen"
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr ""
+msgstr "Wiederherstellen"
 
 #~ msgid "Preview"
 #~ msgstr "Vorschau"

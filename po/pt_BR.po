@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2018-12-19 17:46-0300\n"
-"PO-Revision-Date: 2019-01-05 21:00+0000\n"
+"PO-Revision-Date: 2019-01-05 23:01+0000\n"
 "Last-Translator: André Marcelo Alvarenga <andrealvarenga@gmx.net>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "pdf-slicer/translations/pt_BR/>\n"
@@ -21,8 +21,7 @@ msgstr ""
 #: ../src/application/aboutdialog.cpp:26
 msgid "A simple application to extract and rotate pages of a PDF document"
 msgstr ""
-"Um aplicativo simples para extrair e rotacionar páginas de um documento em "
-"PDF"
+"Um aplicativo simples para extrair e girar páginas de um documento em PDF"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Third-party libraries"
@@ -34,11 +33,11 @@ msgstr "Ícone do aplicativo"
 
 #: ../src/application/actionbar.cpp:29
 msgid "Rotate left"
-msgstr "Rotacionar para a esquerda"
+msgstr "Girar para a esquerda"
 
 #: ../src/application/actionbar.cpp:34
 msgid "Rotate right"
-msgstr "Rotacionar para a direita"
+msgstr "Girar para a direita"
 
 #: ../src/application/actionbar.cpp:41
 msgctxt "plural (pages)"
