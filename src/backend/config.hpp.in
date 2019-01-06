@@ -30,7 +30,8 @@ static const std::string VERSION = "@VERSION@";
 
 void setupLocalization();
 std::string getConfigDirPath();
-void createConfigDirIfNotExistent();
+std::string getTempDirPath();
+void createSlicerDirsIfNotExistent();
 }
 
 #endif // SLICER_CONFIG_H
