@@ -36,9 +36,11 @@ public:
 
     bool canUndo() const { return m_commandManager.canUndo(); }
     bool canRedo() const { return m_commandManager.canRedo(); }
-    const Glib::RefPtr<Gio::ListStore<Page>>& pages() const { return m_pages; }
-    std::string basename() const { return m_basename; }
-    std::string filePath() const { return m_sourceFile->get_path(); }
+    Glib::RefPtr<const Page> getPage(int index) const;
+    const Glib::RefPtr<Gio::ListStore<Page>>& pages() const;
+    std::string basename() const;
+    std::string filePath() const;
+    int numberOfPages() const;
 
     sigc::signal<void>& commandExecuted() { return m_commandManager.commandExecuted; }
     sigc::signal<void, std::vector<unsigned int>> pagesRotated;

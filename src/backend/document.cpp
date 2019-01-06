@@ -57,6 +57,31 @@ void Document::rotatePagesLeft(const std::vector<unsigned int>& pageNumbers)
     m_commandManager.execute(command);
 }
 
+Glib::RefPtr<const Page> Document::getPage(int index) const
+{
+    return m_pages->get_item(static_cast<unsigned>(index));
+}
+
+const Glib::RefPtr<Gio::ListStore<Page>>& Document::pages() const
+{
+    return m_pages;
+}
+
+std::string Document::basename() const
+{
+    return m_basename;
+}
+
+std::string Document::filePath() const
+{
+    return m_sourceFile->get_path();
+}
+
+int Slicer::Document::numberOfPages() const
+{
+    return static_cast<int>(m_pages->get_n_items());
+}
+
 void Document::loadDocument()
 {
     PopplerDocumentPointer tempDocument = {poppler_document_new_from_file(m_sourceFile->get_uri().c_str(),
