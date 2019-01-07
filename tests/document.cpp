@@ -147,3 +147,85 @@ SCENARIO("Removing a single page from different places of a document")
         }
     }
 }
+
+SCENARIO("Removing 2 adjoint pages from different places of a document")
+{
+    GIVEN("A multipage PDF document with 15 pages")
+    {
+        auto multipagePdfFile = Gio::File::create_for_path(multipagePdfPath);
+        Document doc{multipagePdfFile};
+        REQUIRE(doc.numberOfPages() == 15);
+
+        WHEN("The first 2 pages are removed")
+        {
+            doc.removePageRange(0, 1);
+
+            THEN("The document should have 13 pages")
+            REQUIRE(doc.numberOfPages() == 13);
+
+            THEN("The first page of the document should be the 3rd page of the file")
+            REQUIRE(doc.getPage(0)->number() == 2);
+
+            WHEN("The command is undone")
+            {
+                doc.undoCommand();
+
+                THEN("The document should have 15 pages")
+                REQUIRE(doc.numberOfPages() == 15);
+
+                THEN("The first page of the document should be the first page of the file")
+                REQUIRE(doc.getPage(0)->number() == 0);
+            }
+        }
+
+        WHEN("The last 2 pages are removed")
+        {
+            doc.removePageRange(13, 14);
+
+            THEN("The document should have 13 pages")
+            REQUIRE(doc.numberOfPages() == 13);
+
+            THEN("The last page of the document should be the 13th page of the file")
+            REQUIRE(doc.getPage(12)->number() == 12);
+
+            WHEN("The command is undone")
+            {
+                doc.undoCommand();
+
+                THEN("The document should have 15 pages")
+                REQUIRE(doc.numberOfPages() == 15);
+
+                THEN("The last page of the document should be the last page of the file")
+                REQUIRE(doc.getPage(14)->number() == 14);
+            }
+        }
+
+        WHEN("The 8th and 9th pages are removed")
+        {
+            doc.removePageRange(7, 8);
+
+            THEN("The document should have 13 pages")
+            REQUIRE(doc.numberOfPages() == 13);
+
+            THEN("The new 8th and 9th pages should be the 10th and 11th, respectively")
+            {
+                REQUIRE(doc.getPage(7)->number() == 9);
+                REQUIRE(doc.getPage(8)->number() == 10);
+            }
+
+            WHEN("The command is undone")
+            {
+                doc.undoCommand();
+
+                THEN("The document should have 15 pages")
+                REQUIRE(doc.numberOfPages() == 15);
+
+                THEN("The 8th and 9th pages of the document should be the corresponding pages of the files")
+                {
+                    REQUIRE(doc.getPage(7)->number() == 7);
+                    REQUIRE(doc.getPage(8)->number() == 8);
+                }
+            }
+        }
+    }
+}
