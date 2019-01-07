@@ -32,6 +32,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.4.5" date="2019-01-07">
+			<description>
+				<p>Fix bug where removed page ranges were re-inserted in the wrong order.</p>
+			</description>
+		</release>
 		<release version="1.4.4" date="2019-01-05">
 			<description>
 				<p>Add Portuguese translation. Update German translation.</p>
