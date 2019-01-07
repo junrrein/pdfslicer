@@ -1,5 +1,6 @@
 set (SOURCES
 	main.cpp
+	command.cpp
 	document.cpp
 	tempfile.cpp)
 

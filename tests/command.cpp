@@ -1,6 +1,6 @@
 #include <catch.hpp>
 
-#include <document.hpp>
+#include <command.hpp>
 #include <giomm/file.h>
 #include <glibmm/miscutils.h>
 
@@ -9,7 +9,7 @@ using namespace Slicer;
 static const std::string multipagePdfPath
     = Glib::build_filename(Glib::get_current_dir(), "multipage.pdf");
 
-SCENARIO("Removing a single page from different places of a document")
+SCENARIO("Removing a single page from different places of a document using the Command abstraction")
 {
     GIVEN("A multipage document with 15 pages")
     {
@@ -19,7 +19,8 @@ SCENARIO("Removing a single page from different places of a document")
 
         WHEN("The first page is removed")
         {
-            auto removedPage = doc.removePage(0);
+            RemovePageCommand removePageCommand(doc, 0);
+            removePageCommand.execute();
 
             THEN("The first page of the document should be the second page of the file")
             REQUIRE(doc.getPage(0)->fileIndex() == 1);
@@ -29,7 +30,7 @@ SCENARIO("Removing a single page from different places of a document")
 
             WHEN("The remove command is undone")
             {
-                doc.insertPage(removedPage);
+                removePageCommand.undo();
 
                 THEN("The first page of the document should be the first page of the file")
                 REQUIRE(doc.getPage(0)->fileIndex() == 0);
@@ -40,7 +41,8 @@ SCENARIO("Removing a single page from different places of a document")
 
             WHEN("The new first page is removed")
             {
-                auto secondRemovedPage = doc.removePage(0);
+                RemovePageCommand removeSecondPageCommand{doc, 0};
+                removeSecondPageCommand.execute();
 
                 THEN("The first page of the document should be the third page of the file")
                 REQUIRE(doc.getPage(0)->fileIndex() == 2);
@@ -50,7 +52,7 @@ SCENARIO("Removing a single page from different places of a document")
 
                 WHEN("The second remove command is undone")
                 {
-                    doc.insertPage(secondRemovedPage);
+                    removeSecondPageCommand.undo();
 
                     THEN("The first page of the document should be the second page of the file")
                     REQUIRE(doc.getPage(0)->fileIndex() == 1);
@@ -60,7 +62,7 @@ SCENARIO("Removing a single page from different places of a document")
 
                     WHEN("The first remove command is undone")
                     {
-                        doc.insertPage(removedPage);
+                        removePageCommand.undo();
 
                         THEN("The first page of the document should be the first page of the file")
                         REQUIRE(doc.getPage(0)->fileIndex() == 0);
@@ -74,7 +76,8 @@ SCENARIO("Removing a single page from different places of a document")
 
         WHEN("The last page is removed")
         {
-            auto removedPage = doc.removePage(14);
+            RemovePageCommand removePageCommand{doc, 14};
+            removePageCommand.execute();
 
             THEN("The document should have 14 pages")
             REQUIRE(doc.numberOfPages() == 14);
@@ -84,7 +87,7 @@ SCENARIO("Removing a single page from different places of a document")
 
             WHEN("The remove command is undone")
             {
-                doc.insertPage(removedPage);
+                removePageCommand.undo();
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
@@ -96,7 +99,8 @@ SCENARIO("Removing a single page from different places of a document")
 
         WHEN("The 8th page is removed")
         {
-            auto removedPage = doc.removePage(7);
+            RemovePageCommand removePageCommand{doc, 7};
+            removePageCommand.execute();
 
             THEN("The document should have 14 pages")
             REQUIRE(doc.numberOfPages() == 14);
@@ -109,7 +113,7 @@ SCENARIO("Removing a single page from different places of a document")
 
             WHEN("The remove command is undone")
             {
-                doc.insertPage(removedPage);
+                removePageCommand.undo();
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
@@ -125,7 +129,7 @@ SCENARIO("Removing a single page from different places of a document")
     }
 }
 
-SCENARIO("Removing a 2-page range from different places of a document")
+SCENARIO("Removing a 2-page range from different places of a document using the Command abstraction")
 {
     GIVEN("A multipage PDF document with 15 pages")
     {
@@ -135,8 +139,8 @@ SCENARIO("Removing a 2-page range from different places of a document")
 
         WHEN("The first 2 pages are removed")
         {
-            const int positionFirst = 0;
-            auto removedPageRange = doc.removePageRange(positionFirst, 1);
+            RemovePageRangeCommand removePageRangeCommand{doc, 0, 1};
+            removePageRangeCommand.execute();
 
             THEN("The document should have 13 pages")
             REQUIRE(doc.numberOfPages() == 13);
@@ -146,7 +150,7 @@ SCENARIO("Removing a 2-page range from different places of a document")
 
             WHEN("The command is undone")
             {
-                doc.insertPageRange(removedPageRange, positionFirst);
+                removePageRangeCommand.undo();
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
@@ -158,8 +162,8 @@ SCENARIO("Removing a 2-page range from different places of a document")
 
         WHEN("The last 2 pages are removed")
         {
-            const int positionFirst = 13;
-            auto removedPageRange = doc.removePageRange(positionFirst, 14);
+            RemovePageRangeCommand removePageRangeCommand{doc, 13, 14};
+            removePageRangeCommand.execute();
 
             THEN("The document should have 13 pages")
             REQUIRE(doc.numberOfPages() == 13);
@@ -169,7 +173,7 @@ SCENARIO("Removing a 2-page range from different places of a document")
 
             WHEN("The command is undone")
             {
-                doc.insertPageRange(removedPageRange, positionFirst);
+                removePageRangeCommand.undo();
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
@@ -181,8 +185,8 @@ SCENARIO("Removing a 2-page range from different places of a document")
 
         WHEN("The 8th and 9th pages are removed")
         {
-            const int positionFirst = 7;
-            auto removedPageRange = doc.removePageRange(positionFirst, 8);
+            RemovePageRangeCommand removePageRangeCommand{doc, 7, 8};
+            removePageRangeCommand.execute();
 
             THEN("The document should have 13 pages")
             REQUIRE(doc.numberOfPages() == 13);
@@ -195,7 +199,7 @@ SCENARIO("Removing a 2-page range from different places of a document")
 
             WHEN("The command is undone")
             {
-                doc.insertPageRange(removedPageRange, positionFirst);
+                removePageRangeCommand.undo();
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
@@ -210,7 +214,7 @@ SCENARIO("Removing a 2-page range from different places of a document")
     }
 }
 
-SCENARIO("Removing 2 disjoint pages from different places of a document")
+SCENARIO("Removing 2 disjoint pages from different places of a document using the Command abstraction")
 {
     GIVEN("A multipage PDF document with 15 pages")
     {
@@ -220,7 +224,8 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 
         WHEN("The 1st and 3rd pages are removed")
         {
-            auto removedPages = doc.removePages({0, 2});
+            RemovePagesCommand removePagesCommand{doc, {0, 2}};
+            removePagesCommand.execute();
 
             THEN("The document should have 13 pages")
             REQUIRE(doc.numberOfPages() == 13);
@@ -233,7 +238,7 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 
             WHEN("The command is undone")
             {
-                doc.insertPages(removedPages);
+                removePagesCommand.undo();
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
@@ -249,7 +254,8 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 
         WHEN("The 13th and 15th pages are removed")
         {
-            auto removedPages = doc.removePages({12, 14});
+            RemovePagesCommand removePagesCommand{doc, {12, 14}};
+            removePagesCommand.execute();
 
             THEN("The document should have 13 pages")
             REQUIRE(doc.numberOfPages() == 13);
@@ -262,7 +268,7 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 
             WHEN("The command is undone")
             {
-                doc.insertPages(removedPages);
+                removePagesCommand.undo();
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
@@ -278,7 +284,8 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 
         WHEN("The 8th and 10th pages are removed")
         {
-            auto removedPages = doc.removePages({7, 9});
+            RemovePagesCommand removePagesCommand{doc, {7, 9}};
+            removePagesCommand.execute();
 
             THEN("The document should have 13 pages")
             REQUIRE(doc.numberOfPages() == 13);
@@ -291,7 +298,7 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 
             WHEN("The command is undone")
             {
-                doc.insertPages(removedPages);
+                removePagesCommand.undo();
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);

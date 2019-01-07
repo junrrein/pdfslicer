@@ -24,6 +24,7 @@
 #include "view.hpp"
 #include "welcomescreen.hpp"
 #include "zoomlevelwithactions.hpp"
+#include <commandmanager.hpp>
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/box.h>
 #include <gtkmm/button.h>

@@ -17,8 +17,9 @@
 #ifndef DOCUMENT_HPP
 #define DOCUMENT_HPP
 
-#include "commandmanager.hpp"
+#include "page.hpp"
 #include <giomm/file.h>
+#include <giomm/liststore.h>
 
 namespace Slicer {
 
