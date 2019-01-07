@@ -1,7 +1,7 @@
 set (SOURCES
 	main.cpp
-	backend.command.cpp
-	backend.tempfile.cpp)
+	backend.tempfile.cpp
+	document.cpp)
 
 add_executable (pdfslicer_tests ${SOURCES})
 target_link_libraries_system (pdfslicer_tests Catch2)
