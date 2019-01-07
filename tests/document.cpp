@@ -37,6 +37,61 @@ SCENARIO("Removing a single page from different places of a document")
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
+
+                WHEN("The undone command is redone")
+                {
+                    doc.redoCommand();
+
+                    THEN("The first page of the document should be the second page of the file")
+                    REQUIRE(doc.getPage(0)->number() == 1);
+
+                    THEN("The document should have 14 pages")
+                    REQUIRE(doc.numberOfPages() == 14);
+
+                    WHEN("The redone command is undone")
+                    {
+                        doc.undoCommand();
+
+                        THEN("The first page of the document should be the first page of the file")
+                        REQUIRE(doc.getPage(0)->number() == 0);
+
+                        THEN("The document should have 15 pages")
+                        REQUIRE(doc.numberOfPages() == 15);
+                    }
+                }
+            }
+
+            WHEN("The new first page is removed")
+            {
+                doc.removePage(0);
+
+                THEN("The first page of the document should be the third page of the file")
+                REQUIRE(doc.getPage(0)->number() == 2);
+
+                THEN("The document should have 13 pages")
+                REQUIRE(doc.numberOfPages() == 13);
+
+                WHEN("The second remove command is undone")
+                {
+                    doc.undoCommand();
+
+                    THEN("The first page of the document should be the second page of the file")
+                    REQUIRE(doc.getPage(0)->number() == 1);
+
+                    THEN("The document should have 14 pages")
+                    REQUIRE(doc.numberOfPages() == 14);
+
+                    WHEN("The first remove command is undone")
+                    {
+                        doc.undoCommand();
+
+                        THEN("The first page of the document should be the first page of the file")
+                        REQUIRE(doc.getPage(0)->number() == 0);
+
+                        THEN("The document should have 15 pages")
+                        REQUIRE(doc.numberOfPages() == 15);
+                    }
+                }
             }
         }
 
