@@ -65,9 +65,7 @@ std::vector<Glib::RefPtr<Page>> Document::removePageRange(unsigned int first, un
         removedPages.push_back(m_pages->get_item(i));
 
     const unsigned int nElem = last - first + 1;
-    m_pages->splice(static_cast<unsigned>(first),
-                    static_cast<unsigned>(nElem),
-                    {});
+    m_pages->splice(first, nElem, {});
 
     return removedPages;
 }
