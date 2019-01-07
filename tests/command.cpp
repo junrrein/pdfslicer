@@ -313,3 +313,47 @@ SCENARIO("Removing 2 disjoint pages from different places of a document using th
         }
     }
 }
+
+SCENARIO("Remove all pages of a document before a certain one using RemovePageRangeCommand")
+{
+    GIVEN("A multipage PDF document with 15 pages")
+    {
+        auto multipagePdfFile = Gio::File::create_for_path(multipagePdfPath);
+        Document doc{multipagePdfFile};
+        REQUIRE(doc.numberOfPages() == 15);
+
+        WHEN("All pages before the 4th are removed")
+        {
+            RemovePageRangeCommand command{doc, 0, 2};
+            command.execute();
+
+            THEN("The document should have 12 pages")
+            REQUIRE(doc.numberOfPages() == 12);
+
+            THEN("The first page of the document should be the 4th page of the file")
+            REQUIRE(doc.getPage(0)->fileIndex() == 3);
+
+            WHEN("The command is undone")
+            {
+                command.undo();
+
+                THEN("The document should have 15 pages")
+                REQUIRE(doc.numberOfPages() == 15);
+
+                THEN("The first page of the document should be the first page of the file")
+                REQUIRE(doc.getPage(0)->fileIndex() == 0);
+
+                WHEN("The command is redone")
+                {
+                    command.redo();
+
+                    THEN("The document should have 12 pages")
+                    REQUIRE(doc.numberOfPages() == 12);
+
+                    THEN("The first page of the document should be the 4th page of the file")
+                    REQUIRE(doc.getPage(0)->fileIndex() == 3);
+                }
+            }
+        }
+    }
+}
