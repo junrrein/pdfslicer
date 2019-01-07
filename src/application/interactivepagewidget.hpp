@@ -27,7 +27,7 @@ namespace Slicer {
 class InteractivePageWidget : public Slicer::PageWidget {
 
 public:
-    InteractivePageWidget(const Glib::RefPtr<Page>& page,
+    InteractivePageWidget(const Glib::RefPtr<const Page>& page,
                           int targetSize);
     virtual ~InteractivePageWidget() = default;
 
@@ -36,7 +36,7 @@ public:
 
     sigc::signal<void, InteractivePageWidget*> selectedChanged;
     sigc::signal<void, InteractivePageWidget*> shiftSelected;
-    sigc::signal<void, const Glib::RefPtr<Page>&> previewRequested;
+    sigc::signal<void, Glib::RefPtr<const Page>> previewRequested;
 
 private:
     bool m_isChecked = false;

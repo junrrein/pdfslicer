@@ -25,7 +25,7 @@ namespace Slicer {
 
 const std::set<int> PreviewWindow::zoomLevels = {1000, 1400, 1800};
 
-PreviewWindow::PreviewWindow(const Glib::RefPtr<Page>& page, BackgroundThread& backgroundThread)
+PreviewWindow::PreviewWindow(const Glib::RefPtr<const Page>& page, BackgroundThread& backgroundThread)
     : m_page{page}
     , m_backgroundThread{backgroundThread}
     , m_actionGroup{Gio::SimpleActionGroup::create()}

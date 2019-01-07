@@ -29,7 +29,7 @@ namespace Slicer {
 
 class PageWidget : public Gtk::FlowBoxChild {
 public:
-    PageWidget(const Glib::RefPtr<Page>& page,
+    PageWidget(const Glib::RefPtr<const Page>& page,
                int targetSize);
     virtual ~PageWidget() = default;
 
@@ -39,7 +39,7 @@ public:
     void showPage();
 
 protected:
-    const Glib::RefPtr<Page> m_page;
+    Glib::RefPtr<const Page> m_page;
 
     Gtk::Box m_outerBox;
     Gtk::EventBox m_overlayEventBox;

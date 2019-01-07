@@ -22,7 +22,7 @@ using namespace fmt::literals;
 
 namespace Slicer {
 
-InteractivePageWidget::InteractivePageWidget(const Glib::RefPtr<Page>& page,
+InteractivePageWidget::InteractivePageWidget(const Glib::RefPtr<const Page>& page,
                                              int targetSize)
     : PageWidget(page, targetSize)
 {
