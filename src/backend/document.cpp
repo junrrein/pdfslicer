@@ -122,9 +122,9 @@ std::string Document::filePath() const
     return m_sourceFile->get_path();
 }
 
-int Slicer::Document::numberOfPages() const
+unsigned int Slicer::Document::numberOfPages() const
 {
-    return static_cast<int>(m_pages->get_n_items());
+    return m_pages->get_n_items();
 }
 
 void Document::loadDocument()
