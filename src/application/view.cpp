@@ -102,9 +102,9 @@ void View::clearSelection()
     selectedPagesChanged.emit();
 }
 
-int View::getSelectedChildIndex() const
+unsigned int View::getSelectedChildIndex() const
 {
-    return static_cast<int>(getSelectedChildrenIndexes().front());
+    return getSelectedChildrenIndexes().front();
 }
 
 std::vector<unsigned int> View::getSelectedChildrenIndexes() const

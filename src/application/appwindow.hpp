@@ -54,6 +54,7 @@ private:
 
     SettingsManager& m_settingsManager;
     WindowState m_windowState;
+    CommandManager m_commandManager;
 
     HeaderBar m_headerBar;
     Gtk::Overlay m_overlay;

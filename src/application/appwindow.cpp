@@ -66,7 +66,7 @@ void AppWindow::setDocument(std::unique_ptr<Document> document)
     m_saveAction->set_enabled();
     m_zoomLevel.enable();
 
-    m_document->commandExecuted().connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
+    m_commandManager.commandExecuted.connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
 }
 
 bool AppWindow::on_delete_event(GdkEventAny*)
@@ -309,13 +309,13 @@ void AppWindow::tryOpenDocument(Glib::RefPtr<Gio::File> file)
 
 void AppWindow::onUndoAction()
 {
-    m_document->undoCommand();
+    m_commandManager.undo();
 }
 
 void AppWindow::onRedoAction()
 {
 
-    m_document->redoCommand();
+    m_commandManager.redo();
 }
 
 void AppWindow::onRemoveSelectedPages()
@@ -336,7 +336,7 @@ void AppWindow::onRemovePreviousPages()
 void AppWindow::onRemoveNextPages()
 {
     m_document->removePageRange(m_view.getSelectedChildIndex() + 1,
-                                static_cast<int>(m_document->pages()->get_n_items()) - 1);
+                                m_document->pages()->get_n_items() - 1);
 }
 
 void AppWindow::onRotatePagesRight()
@@ -397,12 +397,12 @@ void AppWindow::onSelectedPagesChanged()
 
 void AppWindow::onCommandExecuted()
 {
-    if (m_document->canUndo())
+    if (m_commandManager.canUndo())
         m_undoAction->set_enabled();
     else
         m_undoAction->set_enabled(false);
 
-    if (m_document->canRedo())
+    if (m_commandManager.canRedo())
         m_redoAction->set_enabled();
     else
         m_redoAction->set_enabled(false);

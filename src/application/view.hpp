@@ -39,7 +39,7 @@ public:
     void changePageSize(int targetWidgetSize);
     void clearSelection();
 
-    int getSelectedChildIndex() const;
+    unsigned int getSelectedChildIndex() const;
     std::vector<unsigned int> getSelectedChildrenIndexes() const;
     std::vector<unsigned int> getUnselectedChildrenIndexes() const;
 
