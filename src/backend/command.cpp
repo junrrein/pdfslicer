@@ -83,9 +83,7 @@ RemovePageRangeCommand::RemovePageRangeCommand(const Glib::RefPtr<Gio::ListStore
     , m_first{first}
     , m_last{last}
 {
-    // Store pages in reversed order, since Gio::ListStore::splice()
-    // inserts them in reversed order.
-    for (int i = last; i >= first; --i)
+    for (int i = first; i <= last; ++i)
         m_removedPages.push_back(m_pages->get_item(static_cast<unsigned>(i)));
 }
 
