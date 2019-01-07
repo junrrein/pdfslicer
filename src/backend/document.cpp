@@ -72,6 +72,22 @@ std::vector<Glib::RefPtr<Page>> Document::removePageRange(unsigned int first, un
     return removedPages;
 }
 
+void Document::insertPage(const Glib::RefPtr<Page>& page)
+{
+    m_pages->insert_sorted(page, pageComparator{});
+}
+
+void Document::insertPages(const std::vector<Glib::RefPtr<Page>>& pages)
+{
+    for (const auto& page : pages)
+        m_pages->insert_sorted(page, pageComparator{});
+}
+
+void Document::insertPageRange(const std::vector<Glib::RefPtr<Page>>& pages, unsigned int position)
+{
+    m_pages->splice(position, 0, pages);
+}
+
 void Document::rotatePagesRight(const std::vector<unsigned int>& pageNumbers)
 {
     for (unsigned int pageNumber : pageNumbers)

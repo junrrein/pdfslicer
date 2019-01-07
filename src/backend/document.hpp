@@ -29,6 +29,11 @@ public:
     Glib::RefPtr<Page> removePage(unsigned int position);
     std::vector<Glib::RefPtr<Page>> removePages(const std::vector<unsigned int>& positions);
     std::vector<Glib::RefPtr<Page>> removePageRange(unsigned int first, unsigned int last);
+
+    void insertPage(const Glib::RefPtr<Page>& page);
+    void insertPages(const std::vector<Glib::RefPtr<Page>>& pages);
+    void insertPageRange(const std::vector<Glib::RefPtr<Page>>& pages, unsigned int position);
+
     void rotatePagesRight(const std::vector<unsigned int>& pageNumbers);
     void rotatePagesLeft(const std::vector<unsigned int>& pageNumbers);
 
