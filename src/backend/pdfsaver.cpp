@@ -31,7 +31,7 @@ void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile) const
 
     for (unsigned int i = 0; i < m_document.pages()->get_n_items(); ++i) {
         const Glib::RefPtr<Page> slicerPage = m_document.pages()->get_item(i);
-        const auto pageNumber = static_cast<unsigned int>(slicerPage->number());
+        const auto pageNumber = static_cast<unsigned int>(slicerPage->fileIndex());
 
         RefCountPtr<PDFDictionary> parsedPage = parser.ParsePage(pageNumber);
         PDFPageInput inputPage{&parser, parsedPage};

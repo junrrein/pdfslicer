@@ -23,7 +23,7 @@ SCENARIO("Removing a single page from different places of a document")
             doc.removePage(0);
 
             THEN("The first page of the document should be the second page of the file")
-            REQUIRE(doc.getPage(0)->number() == 1);
+            REQUIRE(doc.getPage(0)->fileIndex() == 1);
 
             THEN("The document should have 14 pages")
             REQUIRE(doc.numberOfPages() == 14);
@@ -33,7 +33,7 @@ SCENARIO("Removing a single page from different places of a document")
                 doc.undoCommand();
 
                 THEN("The first page of the document should be the first page of the file")
-                REQUIRE(doc.getPage(0)->number() == 0);
+                REQUIRE(doc.getPage(0)->fileIndex() == 0);
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
@@ -43,7 +43,7 @@ SCENARIO("Removing a single page from different places of a document")
                     doc.redoCommand();
 
                     THEN("The first page of the document should be the second page of the file")
-                    REQUIRE(doc.getPage(0)->number() == 1);
+                    REQUIRE(doc.getPage(0)->fileIndex() == 1);
 
                     THEN("The document should have 14 pages")
                     REQUIRE(doc.numberOfPages() == 14);
@@ -53,7 +53,7 @@ SCENARIO("Removing a single page from different places of a document")
                         doc.undoCommand();
 
                         THEN("The first page of the document should be the first page of the file")
-                        REQUIRE(doc.getPage(0)->number() == 0);
+                        REQUIRE(doc.getPage(0)->fileIndex() == 0);
 
                         THEN("The document should have 15 pages")
                         REQUIRE(doc.numberOfPages() == 15);
@@ -66,7 +66,7 @@ SCENARIO("Removing a single page from different places of a document")
                 doc.removePage(0);
 
                 THEN("The first page of the document should be the third page of the file")
-                REQUIRE(doc.getPage(0)->number() == 2);
+                REQUIRE(doc.getPage(0)->fileIndex() == 2);
 
                 THEN("The document should have 13 pages")
                 REQUIRE(doc.numberOfPages() == 13);
@@ -76,7 +76,7 @@ SCENARIO("Removing a single page from different places of a document")
                     doc.undoCommand();
 
                     THEN("The first page of the document should be the second page of the file")
-                    REQUIRE(doc.getPage(0)->number() == 1);
+                    REQUIRE(doc.getPage(0)->fileIndex() == 1);
 
                     THEN("The document should have 14 pages")
                     REQUIRE(doc.numberOfPages() == 14);
@@ -86,7 +86,7 @@ SCENARIO("Removing a single page from different places of a document")
                         doc.undoCommand();
 
                         THEN("The first page of the document should be the first page of the file")
-                        REQUIRE(doc.getPage(0)->number() == 0);
+                        REQUIRE(doc.getPage(0)->fileIndex() == 0);
 
                         THEN("The document should have 15 pages")
                         REQUIRE(doc.numberOfPages() == 15);
@@ -103,7 +103,7 @@ SCENARIO("Removing a single page from different places of a document")
             REQUIRE(doc.numberOfPages() == 14);
 
             THEN("The 14th page of the document should be the 14th page of the file")
-            REQUIRE(doc.getPage(13)->number() == 13);
+            REQUIRE(doc.getPage(13)->fileIndex() == 13);
 
             WHEN("The remove command is undone")
             {
@@ -113,7 +113,7 @@ SCENARIO("Removing a single page from different places of a document")
                 REQUIRE(doc.numberOfPages() == 15);
 
                 THEN("The 15th page of the document should be the 15th page of the file")
-                REQUIRE(doc.getPage(14)->number() == 14);
+                REQUIRE(doc.getPage(14)->fileIndex() == 14);
             }
         }
 
@@ -126,8 +126,8 @@ SCENARIO("Removing a single page from different places of a document")
 
             THEN("The 7th and 8th pages of the document should be the 7th and 9th pages of the file, respectively")
             {
-                REQUIRE(doc.getPage(6)->number() == 6);
-                REQUIRE(doc.getPage(7)->number() == 8);
+                REQUIRE(doc.getPage(6)->fileIndex() == 6);
+                REQUIRE(doc.getPage(7)->fileIndex() == 8);
             }
 
             WHEN("The remove command is undone")
@@ -139,9 +139,9 @@ SCENARIO("Removing a single page from different places of a document")
 
                 THEN("The 7th, 8th and 9th pages of the document should be the corresponding pages of the file")
                 {
-                    REQUIRE(doc.getPage(6)->number() == 6);
-                    REQUIRE(doc.getPage(7)->number() == 7);
-                    REQUIRE(doc.getPage(8)->number() == 8);
+                    REQUIRE(doc.getPage(6)->fileIndex() == 6);
+                    REQUIRE(doc.getPage(7)->fileIndex() == 7);
+                    REQUIRE(doc.getPage(8)->fileIndex() == 8);
                 }
             }
         }
@@ -164,7 +164,7 @@ SCENARIO("Removing 2 adjoint pages from different places of a document")
             REQUIRE(doc.numberOfPages() == 13);
 
             THEN("The first page of the document should be the 3rd page of the file")
-            REQUIRE(doc.getPage(0)->number() == 2);
+            REQUIRE(doc.getPage(0)->fileIndex() == 2);
 
             WHEN("The command is undone")
             {
@@ -174,7 +174,7 @@ SCENARIO("Removing 2 adjoint pages from different places of a document")
                 REQUIRE(doc.numberOfPages() == 15);
 
                 THEN("The first page of the document should be the first page of the file")
-                REQUIRE(doc.getPage(0)->number() == 0);
+                REQUIRE(doc.getPage(0)->fileIndex() == 0);
             }
         }
 
@@ -186,7 +186,7 @@ SCENARIO("Removing 2 adjoint pages from different places of a document")
             REQUIRE(doc.numberOfPages() == 13);
 
             THEN("The last page of the document should be the 13th page of the file")
-            REQUIRE(doc.getPage(12)->number() == 12);
+            REQUIRE(doc.getPage(12)->fileIndex() == 12);
 
             WHEN("The command is undone")
             {
@@ -196,7 +196,7 @@ SCENARIO("Removing 2 adjoint pages from different places of a document")
                 REQUIRE(doc.numberOfPages() == 15);
 
                 THEN("The last page of the document should be the last page of the file")
-                REQUIRE(doc.getPage(14)->number() == 14);
+                REQUIRE(doc.getPage(14)->fileIndex() == 14);
             }
         }
 
@@ -209,8 +209,8 @@ SCENARIO("Removing 2 adjoint pages from different places of a document")
 
             THEN("The new 8th and 9th pages should be the 10th and 11th, respectively")
             {
-                REQUIRE(doc.getPage(7)->number() == 9);
-                REQUIRE(doc.getPage(8)->number() == 10);
+                REQUIRE(doc.getPage(7)->fileIndex() == 9);
+                REQUIRE(doc.getPage(8)->fileIndex() == 10);
             }
 
             WHEN("The command is undone")
@@ -222,8 +222,8 @@ SCENARIO("Removing 2 adjoint pages from different places of a document")
 
                 THEN("The 8th and 9th pages of the document should be the corresponding pages of the files")
                 {
-                    REQUIRE(doc.getPage(7)->number() == 7);
-                    REQUIRE(doc.getPage(8)->number() == 8);
+                    REQUIRE(doc.getPage(7)->fileIndex() == 7);
+                    REQUIRE(doc.getPage(8)->fileIndex() == 8);
                 }
             }
         }
@@ -247,8 +247,8 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 
             THEN("The 1st and 2nd pages of the document should be the 2nd and 4th pages of the file, respectively")
             {
-                REQUIRE(doc.getPage(0)->number() == 1);
-                REQUIRE(doc.getPage(1)->number() == 3);
+                REQUIRE(doc.getPage(0)->fileIndex() == 1);
+                REQUIRE(doc.getPage(1)->fileIndex() == 3);
             }
 
             WHEN("The command is undone")
@@ -260,9 +260,9 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 
                 THEN("The 1st, 2nd and 3rd pages of the document should be the corresponding pages of the file")
                 {
-                    REQUIRE(doc.getPage(0)->number() == 0);
-                    REQUIRE(doc.getPage(1)->number() == 1);
-                    REQUIRE(doc.getPage(2)->number() == 2);
+                    REQUIRE(doc.getPage(0)->fileIndex() == 0);
+                    REQUIRE(doc.getPage(1)->fileIndex() == 1);
+                    REQUIRE(doc.getPage(2)->fileIndex() == 2);
                 }
             }
         }
@@ -276,8 +276,8 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 
             THEN("The 12th and 13th pages of the document should be the 12th and 14th pages of the file")
             {
-                REQUIRE(doc.getPage(11)->number() == 11);
-                REQUIRE(doc.getPage(12)->number() == 13);
+                REQUIRE(doc.getPage(11)->fileIndex() == 11);
+                REQUIRE(doc.getPage(12)->fileIndex() == 13);
             }
 
             WHEN("The command is undone")
@@ -289,9 +289,9 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 
                 THEN("The 13th, 14th and 15th pages of the document should be the corresponding pages of the file")
                 {
-                    REQUIRE(doc.getPage(12)->number() == 12);
-                    REQUIRE(doc.getPage(13)->number() == 13);
-                    REQUIRE(doc.getPage(14)->number() == 14);
+                    REQUIRE(doc.getPage(12)->fileIndex() == 12);
+                    REQUIRE(doc.getPage(13)->fileIndex() == 13);
+                    REQUIRE(doc.getPage(14)->fileIndex() == 14);
                 }
             }
         }
@@ -305,8 +305,8 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 
             THEN("The 8th and 9th pages of the document should now be the 9th and 11th pages of the file, respectively")
             {
-                REQUIRE(doc.getPage(7)->number() == 8);
-                REQUIRE(doc.getPage(8)->number() == 10);
+                REQUIRE(doc.getPage(7)->fileIndex() == 8);
+                REQUIRE(doc.getPage(8)->fileIndex() == 10);
             }
 
             WHEN("The command is undone")
@@ -318,9 +318,9 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 
                 THEN("The 8th, 9th and 10th pages of the document should be the corresponding pages of the file")
                 {
-                    REQUIRE(doc.getPage(7)->number() == 7);
-                    REQUIRE(doc.getPage(8)->number() == 8);
-                    REQUIRE(doc.getPage(9)->number() == 9);
+                    REQUIRE(doc.getPage(7)->fileIndex() == 7);
+                    REQUIRE(doc.getPage(8)->fileIndex() == 8);
+                    REQUIRE(doc.getPage(9)->fileIndex() == 9);
                 }
             }
         }

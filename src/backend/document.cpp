@@ -27,39 +27,70 @@ Document::Document(const Glib::RefPtr<Gio::File>& sourceFile)
     loadDocument();
 }
 
-void Document::removePage(int pageNumber)
+Glib::RefPtr<Page> Document::removePage(unsigned int pageNumber)
 {
-    auto command = std::make_shared<RemovePageCommand>(m_pages, pageNumber);
-    m_commandManager.execute(command);
+    Glib::RefPtr<Page> removedPage = getPage(pageNumber);
+    m_pages->remove(pageNumber);
+
+    return removedPage;
 }
 
-void Document::removePages(const std::vector<unsigned int>& positions)
+std::vector<Glib::RefPtr<Page>> Document::removePages(const std::vector<unsigned int>& positions)
 {
-    auto command = std::make_shared<RemovePagesCommand>(m_pages, positions);
-    m_commandManager.execute(command);
+    std::vector<Glib::RefPtr<Page>> removedPages;
+
+    for (unsigned int position : positions) {
+        auto page = m_pages->get_item(position);
+        removedPages.push_back(page);
+    }
+
+    // Removing disjoint pages is complicated.
+    // The list positions are the positions in the list of the pages we
+    // want to remove.
+    // The problem is that, everytime a page is removed, all positions are invalidated.
+    // After each page removal, the remaining positions must be decremented by one.
+    for (unsigned int i = 0; i < positions.size(); ++i) {
+        const unsigned int actualPosition = positions.at(i) - i;
+        m_pages->remove(actualPosition);
+    }
+
+    return removedPages;
 }
 
-void Document::removePageRange(int first, int last)
+std::vector<Glib::RefPtr<Page>> Document::removePageRange(unsigned int first, unsigned int last)
 {
-    auto command = std::make_shared<RemovePageRangeCommand>(m_pages, first, last);
-    m_commandManager.execute(command);
+    std::vector<Glib::RefPtr<Page>> removedPages;
+
+    for (unsigned int i = first; i <= last; ++i)
+        removedPages.push_back(m_pages->get_item(i));
+
+    const unsigned int nElem = last - first + 1;
+    m_pages->splice(static_cast<unsigned>(first),
+                    static_cast<unsigned>(nElem),
+                    {});
+
+    return removedPages;
 }
 
 void Document::rotatePagesRight(const std::vector<unsigned int>& pageNumbers)
 {
-    auto command = std::make_shared<RotatePagesRightCommand>(m_pages, pageNumbers, pagesRotated);
-    m_commandManager.execute(command);
+    for (unsigned int pageNumber : pageNumbers)
+        m_pages->get_item(pageNumber)->rotateRight();
+
+    pagesRotated.emit(pageNumbers);
 }
 
 void Document::rotatePagesLeft(const std::vector<unsigned int>& pageNumbers)
 {
-    auto command = std::make_shared<RotatePagesLeftCommand>(m_pages, pageNumbers, pagesRotated);
-    m_commandManager.execute(command);
+    for (unsigned int pageNumber : pageNumbers)
+        m_pages->get_item(pageNumber)->rotateLeft();
+
+    pagesRotated.emit(pageNumbers);
 }
 
-Glib::RefPtr<const Page> Document::getPage(int index) const
+Glib::RefPtr<const Page> Document::getPage(unsigned int index) const
 {
-    return m_pages->get_item(static_cast<unsigned>(index));
+    return m_pages->get_item(index);
 }
 
 const Glib::RefPtr<Gio::ListStore<Page>>& Document::pages() const

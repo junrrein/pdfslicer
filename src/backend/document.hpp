@@ -26,23 +26,18 @@ class Document {
 public:
     Document(const Glib::RefPtr<Gio::File>& sourceFile);
 
-    void removePage(int pageNumber);
-    void removePages(const std::vector<unsigned int>& positions);
-    void removePageRange(int first, int last);
+    Glib::RefPtr<Page> removePage(unsigned int pageNumber);
+    std::vector<Glib::RefPtr<Page>> removePages(const std::vector<unsigned int>& positions);
+    std::vector<Glib::RefPtr<Page>> removePageRange(unsigned int first, unsigned int last);
     void rotatePagesRight(const std::vector<unsigned int>& pageNumbers);
     void rotatePagesLeft(const std::vector<unsigned int>& pageNumbers);
-    void undoCommand() { m_commandManager.undo(); }
-    void redoCommand() { m_commandManager.redo(); }
 
-    bool canUndo() const { return m_commandManager.canUndo(); }
-    bool canRedo() const { return m_commandManager.canRedo(); }
-    Glib::RefPtr<const Page> getPage(int index) const;
+    Glib::RefPtr<const Page> getPage(unsigned int index) const;
     const Glib::RefPtr<Gio::ListStore<Page>>& pages() const;
     std::string basename() const;
     std::string filePath() const;
     int numberOfPages() const;
 
-    sigc::signal<void>& commandExecuted() { return m_commandManager.commandExecuted; }
     sigc::signal<void, std::vector<unsigned int>> pagesRotated;
 
 private:
@@ -51,7 +46,6 @@ private:
     PopplerDocumentPointer m_popplerDocument;
     Glib::RefPtr<Gio::File> m_sourceFile;
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
-    CommandManager m_commandManager;
     std::string m_basename;
 
     void loadDocument();

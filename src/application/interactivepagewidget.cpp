@@ -27,7 +27,7 @@ InteractivePageWidget::InteractivePageWidget(const Glib::RefPtr<Page>& page,
     : PageWidget(page, targetSize)
 {
     setupInteractiveWidgets();
-    setupLabel(page->number() + 1);
+    setupLabel(page->fileIndex() + 1);
     setupSignalHandlers();
 }
 

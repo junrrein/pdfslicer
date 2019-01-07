@@ -28,11 +28,12 @@ Page::Page(PopplerDocument* document, int pageNumber)
         throw std::runtime_error("Couldn't load page with number: " + std::to_string(pageNumber));
 
     m_ppage.reset(ppage);
+    m_fileIndex = poppler_page_get_index(m_ppage.get());
 }
 
-int Page::number() const
+int Page::fileIndex() const
 {
-    return poppler_page_get_index(m_ppage.get());
+    return m_fileIndex;
 }
 
 Page::Size Page::size() const
@@ -100,8 +101,8 @@ void Page::rotateLeft()
 int pageComparator::operator()(const Glib::RefPtr<const Page>& a,
                                const Glib::RefPtr<const Page>& b)
 {
-    const int aPosition = a->number();
-    const int bPosition = b->number();
+    const int aPosition = a->fileIndex();
+    const int bPosition = b->fileIndex();
 
     if (aPosition < bPosition)
         return -1;

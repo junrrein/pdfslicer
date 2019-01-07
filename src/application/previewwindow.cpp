@@ -48,7 +48,7 @@ PreviewWindow::PreviewWindow(const Glib::RefPtr<Page>& page, BackgroundThread& b
 
 void PreviewWindow::setTitle()
 {
-    set_title(fmt::format(_("Page {pageNumber}"), "pageNumber"_a = m_page->number() + 1));
+    set_title(fmt::format(_("Page {pageNumber}"), "pageNumber"_a = m_page->fileIndex() + 1));
 }
 
 void PreviewWindow::setupWidgets()
