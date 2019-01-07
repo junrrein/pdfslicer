@@ -4,7 +4,6 @@
 #include <document.hpp>
 #include <giomm/file.h>
 #include <glibmm/miscutils.h>
-#include <gtkmm/main.h>
 
 using namespace Slicer;
 
@@ -15,7 +14,6 @@ SCENARIO("Removing a single page from different places of a document")
 {
     GIVEN("A multipage document with 15 pages")
     {
-        Gtk::Main::init_gtkmm_internals();
         auto multipagePdfFile = Gio::File::create_for_path(multipagePdfPath);
         Document doc{multipagePdfFile};
         REQUIRE(doc.numberOfPages() == 15);
