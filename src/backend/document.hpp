@@ -26,7 +26,7 @@ class Document {
 public:
     Document(const Glib::RefPtr<Gio::File>& sourceFile);
 
-    Glib::RefPtr<Page> removePage(unsigned int pageNumber);
+    Glib::RefPtr<Page> removePage(unsigned int position);
     std::vector<Glib::RefPtr<Page>> removePages(const std::vector<unsigned int>& positions);
     std::vector<Glib::RefPtr<Page>> removePageRange(unsigned int first, unsigned int last);
     void rotatePagesRight(const std::vector<unsigned int>& pageNumbers);

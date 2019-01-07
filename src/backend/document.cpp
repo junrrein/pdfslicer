@@ -27,10 +27,10 @@ Document::Document(const Glib::RefPtr<Gio::File>& sourceFile)
     loadDocument();
 }
 
-Glib::RefPtr<Page> Document::removePage(unsigned int pageNumber)
+Glib::RefPtr<Page> Document::removePage(unsigned int position)
 {
-    Glib::RefPtr<Page> removedPage = getPage(pageNumber);
-    m_pages->remove(pageNumber);
+    Glib::RefPtr<Page> removedPage = m_pages->get_item(position);
+    m_pages->remove(position);
 
     return removedPage;
 }
