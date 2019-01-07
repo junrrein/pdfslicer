@@ -37,7 +37,7 @@ void RemovePageCommand::undo()
 
 void RemovePageCommand::redo()
 {
-    execute();
+    m_document.removePage(m_position);
 }
 
 RemovePagesCommand::RemovePagesCommand(Document& document,
@@ -59,7 +59,7 @@ void RemovePagesCommand::undo()
 
 void RemovePagesCommand::redo()
 {
-    execute();
+    m_document.removePages(m_listPositions);
 }
 
 RemovePageRangeCommand::RemovePageRangeCommand(Document& document,
@@ -83,7 +83,7 @@ void RemovePageRangeCommand::undo()
 
 void RemovePageRangeCommand::redo()
 {
-    execute();
+    m_document.removePageRange(m_first, m_last);
 }
 
 RotatePagesRightCommand::RotatePagesRightCommand(Document& document,
