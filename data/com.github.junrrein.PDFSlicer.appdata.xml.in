@@ -32,6 +32,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.4.6" date="2019-01-09">
+			<description>
+				<p>Fix bug where redoing a page range removal would remove more pages than expected.</p>
+			</description>
+		</release>
 		<release version="1.4.5" date="2019-01-07">
 			<description>
 				<p>Fix bug where removed page ranges were re-inserted in the wrong order.</p>
