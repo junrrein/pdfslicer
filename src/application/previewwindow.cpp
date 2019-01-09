@@ -25,7 +25,7 @@ namespace Slicer {
 
 const std::set<int> PreviewWindow::zoomLevels = {1000, 1400, 1800};
 
-PreviewWindow::PreviewWindow(const Glib::RefPtr<Page>& page, BackgroundThread& backgroundThread)
+PreviewWindow::PreviewWindow(const Glib::RefPtr<const Page>& page, BackgroundThread& backgroundThread)
     : m_page{page}
     , m_backgroundThread{backgroundThread}
     , m_actionGroup{Gio::SimpleActionGroup::create()}
@@ -48,7 +48,7 @@ PreviewWindow::PreviewWindow(const Glib::RefPtr<Page>& page, BackgroundThread& b
 
 void PreviewWindow::setTitle()
 {
-    set_title(fmt::format(_("Page {pageNumber}"), "pageNumber"_a = m_page->number() + 1));
+    set_title(fmt::format(_("Page {pageNumber}"), "pageNumber"_a = m_page->fileIndex() + 1));
 }
 
 void PreviewWindow::setupWidgets()

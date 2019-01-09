@@ -50,19 +50,30 @@ std::string getConfigDirPath()
                                 APPLICATION_ID);
 }
 
-void createConfigDirIfNotExistent()
+std::string getTempDirPath()
+{
+    return Glib::build_filename(Glib::get_tmp_dir(),
+                                APPLICATION_ID);
+}
+
+void createSlicerDirsIfNotExistent()
 {
     try {
         Gtk::Main::init_gtkmm_internals();
 
         auto settingsDirectory = Gio::File::create_for_path(getConfigDirPath());
+        auto tempDirectory = Gio::File::create_for_path(getTempDirPath());
 
         if (!settingsDirectory->query_exists())
             settingsDirectory->make_directory_with_parents();
+
+        if (!tempDirectory->query_exists())
+            tempDirectory->make_directory_with_parents();
     }
-    catch (...) {
-        std::cerr << "Couldn't create the config dir at path: " << '\n'
-                  << getConfigDirPath() << std::endl;
+    catch (const Glib::Error& e) {
+        std::cerr << "Couldn't create config dir or temp dir with error: " << '\n'
+                  << e.what() << std::endl;
     }
 }
+
 }

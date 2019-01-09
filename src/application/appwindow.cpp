@@ -66,7 +66,7 @@ void AppWindow::setDocument(std::unique_ptr<Document> document)
     m_saveAction->set_enabled();
     m_zoomLevel.enable();
 
-    m_document->commandExecuted().connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
+    m_commandManager.commandExecuted.connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
 }
 
 bool AppWindow::on_delete_event(GdkEventAny*)
@@ -309,43 +309,50 @@ void AppWindow::tryOpenDocument(Glib::RefPtr<Gio::File> file)
 
 void AppWindow::onUndoAction()
 {
-    m_document->undoCommand();
+    m_commandManager.undo();
 }
 
 void AppWindow::onRedoAction()
 {
 
-    m_document->redoCommand();
+    m_commandManager.redo();
 }
 
 void AppWindow::onRemoveSelectedPages()
 {
-    m_document->removePages(m_view.getSelectedChildrenIndexes());
+    auto command = std::make_shared<RemovePagesCommand>(*m_document, m_view.getSelectedChildrenIndexes());
+    m_commandManager.execute(command);
 }
 
 void AppWindow::onRemoveUnselectedPages()
 {
-    m_document->removePages(m_view.getUnselectedChildrenIndexes());
+    auto command = std::make_shared<RemovePagesCommand>(*m_document, m_view.getUnselectedChildrenIndexes());
+    m_commandManager.execute(command);
 }
 
 void AppWindow::onRemovePreviousPages()
 {
-    m_document->removePageRange(0, m_view.getSelectedChildIndex() - 1);
+    auto command = std::make_shared<RemovePageRangeCommand>(*m_document, 0, m_view.getSelectedChildIndex() - 1);
+    m_commandManager.execute(command);
 }
 
 void AppWindow::onRemoveNextPages()
 {
-    m_document->removePageRange(m_view.getSelectedChildIndex() + 1,
-                                static_cast<int>(m_document->pages()->get_n_items()) - 1);
+    auto command = std::make_shared<RemovePageRangeCommand>(*m_document,
+                                                            m_view.getSelectedChildIndex() + 1,
+                                                            m_document->numberOfPages() - 1);
+    m_commandManager.execute(command);
 }
 
 void AppWindow::onRotatePagesRight()
 {
-    m_document->rotatePagesRight(m_view.getSelectedChildrenIndexes());
+    auto command = std::make_shared<RotatePagesRightCommand>(*m_document, m_view.getSelectedChildrenIndexes());
+    m_commandManager.execute(command);
 }
 
 void AppWindow::onRotatePagesLeft()
 {
+    auto command = std::make_shared<RotatePagesLeftCommand>(*m_document, m_view.getSelectedChildrenIndexes());
     m_document->rotatePagesLeft(m_view.getSelectedChildrenIndexes());
 }
 
@@ -376,13 +383,13 @@ void AppWindow::onSelectedPagesChanged()
     }
 
     if (numSelected == 1) {
-        const int index = m_view.getSelectedChildIndex();
+        const unsigned int index = m_view.getSelectedChildIndex();
         if (index == 0)
             m_removePreviousAction->set_enabled(false);
         else
             m_removePreviousAction->set_enabled();
 
-        const int numPages = static_cast<int>(m_view.get_children().size());
+        const unsigned long numPages = m_view.get_children().size();
         if (index == numPages - 1)
             m_removeNextAction->set_enabled(false);
         else
@@ -397,12 +404,12 @@ void AppWindow::onSelectedPagesChanged()
 
 void AppWindow::onCommandExecuted()
 {
-    if (m_document->canUndo())
+    if (m_commandManager.canUndo())
         m_undoAction->set_enabled();
     else
         m_undoAction->set_enabled(false);
 
-    if (m_document->canRedo())
+    if (m_commandManager.canRedo())
         m_redoAction->set_enabled();
     else
         m_redoAction->set_enabled(false);

@@ -17,8 +17,7 @@
 #ifndef COMMAND_HPP
 #define COMMAND_HPP
 
-#include "page.hpp"
-#include <giomm/liststore.h>
+#include "document.hpp"
 
 namespace Slicer {
 
@@ -33,22 +32,22 @@ public:
 
 class RemovePageCommand : public Command {
 public:
-    RemovePageCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
-                      int position);
+    RemovePageCommand(Document& document,
+                      unsigned int position);
 
     void execute() override;
     void undo() override;
     void redo() override;
 
 private:
-    Glib::RefPtr<Gio::ListStore<Page>> m_pages;
+    Document& m_document;
     const unsigned int m_position;
     Glib::RefPtr<Page> m_removedPage;
 };
 
 class RemovePagesCommand : public Command {
 public:
-    RemovePagesCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
+    RemovePagesCommand(Document& document,
                        const std::vector<unsigned int>& listPositions);
 
     void execute() override;
@@ -56,57 +55,53 @@ public:
     void redo() override;
 
 private:
-    Glib::RefPtr<Gio::ListStore<Page>> m_pages;
+    Document& m_document;
     const std::vector<unsigned int> m_listPositions;
     std::vector<Glib::RefPtr<Page>> m_removedPages;
 };
 
 class RemovePageRangeCommand : public Command {
 public:
-    RemovePageRangeCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
-                           int first,
-                           int last);
+    RemovePageRangeCommand(Document& document,
+                           unsigned int first,
+                           unsigned int last);
 
     void execute() override;
     void undo() override;
     void redo() override;
 
 private:
-    Glib::RefPtr<Gio::ListStore<Page>> m_pages;
+    Document& m_document;
     std::vector<Glib::RefPtr<Page>> m_removedPages;
-    int m_first, m_last;
+    const unsigned int m_first, m_last;
 };
 
 class RotatePagesRightCommand : public Command {
 public:
-    RotatePagesRightCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
-                            const std::vector<unsigned int>& pageNumbers,
-                            sigc::signal<void, std::vector<unsigned int>>& pagesRotated);
+    RotatePagesRightCommand(Document& document,
+                            const std::vector<unsigned int>& pageNumbers);
 
     void execute() override;
     void undo() override;
     void redo() override;
 
 private:
-    Glib::RefPtr<Gio::ListStore<Page>> m_pages;
-    std::vector<unsigned int> m_pageNumbers;
-    sigc::signal<void, std::vector<unsigned int>>& m_pagesRotated;
+    Document& m_document;
+    const std::vector<unsigned int> m_pageNumbers;
 };
 
 class RotatePagesLeftCommand : public Command {
 public:
-    RotatePagesLeftCommand(const Glib::RefPtr<Gio::ListStore<Page>>& pages,
-                           const std::vector<unsigned int>& pageNumbers,
-                           sigc::signal<void, std::vector<unsigned int>>& pagesRotated);
+    RotatePagesLeftCommand(Document& document,
+                           const std::vector<unsigned int>& pageNumbers);
 
     void execute() override;
     void undo() override;
     void redo() override;
 
 private:
-    Glib::RefPtr<Gio::ListStore<Page>> m_pages;
-    std::vector<unsigned int> m_pageNumbers;
-    sigc::signal<void, std::vector<unsigned int>>& m_pagesRotated;
+    Document& m_document;
+    const std::vector<unsigned int> m_pageNumbers;
 };
 
 } // namespace Slicer

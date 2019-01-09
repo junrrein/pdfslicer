@@ -19,7 +19,7 @@
 
 namespace Slicer {
 
-PageWidget::PageWidget(const Glib::RefPtr<Page>& page,
+PageWidget::PageWidget(const Glib::RefPtr<const Page>& page,
                        int targetSize)
     : m_page{page}
     , m_targetSize{targetSize}

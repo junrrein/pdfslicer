@@ -32,7 +32,7 @@ public:
 
     Page(PopplerDocument* document, int pageNumber);
 
-    int number() const;
+    int fileIndex() const;
     int rotation() const { return m_rotation; }
     Size size() const;
     Size rotatedSize() const;
@@ -45,6 +45,7 @@ public:
 private:
     std::unique_ptr<PopplerPage, decltype(&g_object_unref)> m_ppage;
     int m_rotation = 0;
+    int m_fileIndex;
 
     friend class PageRenderer; // For access to m_ppage
 };

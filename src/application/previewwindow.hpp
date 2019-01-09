@@ -34,12 +34,12 @@ namespace Slicer {
 
 class PreviewWindow : public Gtk::Window {
 public:
-	PreviewWindow(const Glib::RefPtr<Page>& page,
+    PreviewWindow(const Glib::RefPtr<const Page>& page,
                   BackgroundThread& backgroundThread);
 	virtual ~PreviewWindow() = default;
 
 private:
-	const Glib::RefPtr<Page> m_page;
+    Glib::RefPtr<const Page> m_page;
 	BackgroundThread& m_backgroundThread;
 	Glib::Dispatcher m_pageRenderedDispatcher;
 	Glib::RefPtr<Gio::SimpleActionGroup> m_actionGroup;

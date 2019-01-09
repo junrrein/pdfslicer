@@ -39,7 +39,7 @@ public:
     void changePageSize(int targetWidgetSize);
     void clearSelection();
 
-    int getSelectedChildIndex() const;
+    unsigned int getSelectedChildIndex() const;
     std::vector<unsigned int> getSelectedChildrenIndexes() const;
     std::vector<unsigned int> getUnselectedChildrenIndexes() const;
 
@@ -59,14 +59,14 @@ private:
 
     InteractivePageWidget* m_lastPageSelected = nullptr;
 
-    std::shared_ptr<InteractivePageWidget> createPageWidget(const Glib::RefPtr<Page>& page);
+    std::shared_ptr<InteractivePageWidget> createPageWidget(const Glib::RefPtr<const Page>& page);
 
     void onDispatcherCalled();
     void onModelItemsChanged(guint position, guint removed, guint added);
     void onModelPagesRotated(const std::vector<unsigned int>& positions);
     void onPageSelection(InteractivePageWidget* pageWidget);
     void onShiftSelection(InteractivePageWidget* pageWidget);
-    void onPreviewRequested(const Glib::RefPtr<Page>& page);
+    void onPreviewRequested(const Glib::RefPtr<const Page>& page);
     void displayRenderedPages();
     void renderQueuedPages();
     void killQueuedPages();

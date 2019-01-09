@@ -17,8 +17,9 @@
 #ifndef DOCUMENT_HPP
 #define DOCUMENT_HPP
 
-#include "commandmanager.hpp"
+#include "page.hpp"
 #include <giomm/file.h>
+#include <giomm/liststore.h>
 
 namespace Slicer {
 
@@ -26,21 +27,23 @@ class Document {
 public:
     Document(const Glib::RefPtr<Gio::File>& sourceFile);
 
-    void removePage(int pageNumber);
-    void removePages(const std::vector<unsigned int>& positions);
-    void removePageRange(int first, int last);
+    Glib::RefPtr<Page> removePage(unsigned int position);
+    std::vector<Glib::RefPtr<Page>> removePages(const std::vector<unsigned int>& positions);
+    std::vector<Glib::RefPtr<Page>> removePageRange(unsigned int first, unsigned int last);
+
+    void insertPage(const Glib::RefPtr<Page>& page);
+    void insertPages(const std::vector<Glib::RefPtr<Page>>& pages);
+    void insertPageRange(const std::vector<Glib::RefPtr<Page>>& pages, unsigned int position);
+
     void rotatePagesRight(const std::vector<unsigned int>& pageNumbers);
     void rotatePagesLeft(const std::vector<unsigned int>& pageNumbers);
-    void undoCommand() { m_commandManager.undo(); }
-    void redoCommand() { m_commandManager.redo(); }
 
-    bool canUndo() const { return m_commandManager.canUndo(); }
-    bool canRedo() const { return m_commandManager.canRedo(); }
-    const Glib::RefPtr<Gio::ListStore<Page>>& pages() const { return m_pages; }
-    std::string basename() const { return m_basename; }
-    std::string filePath() const { return m_sourceFile->get_path(); }
+    Glib::RefPtr<const Page> getPage(unsigned int index) const;
+    const Glib::RefPtr<Gio::ListStore<Page>>& pages() const;
+    std::string basename() const;
+    std::string filePath() const;
+    unsigned int numberOfPages() const;
 
-    sigc::signal<void>& commandExecuted() { return m_commandManager.commandExecuted; }
     sigc::signal<void, std::vector<unsigned int>> pagesRotated;
 
 private:
@@ -49,7 +52,6 @@ private:
     PopplerDocumentPointer m_popplerDocument;
     Glib::RefPtr<Gio::File> m_sourceFile;
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
-    CommandManager m_commandManager;
     std::string m_basename;
 
     void loadDocument();

@@ -15,6 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "tempfile.hpp"
+#include <config.hpp>
 #include <glibmm/miscutils.h>
 #include <uuid.h>
 
@@ -22,7 +23,7 @@ namespace Slicer::TempFile {
 
 Glib::RefPtr<Gio::File> generate()
 {
-    const std::string path = Glib::build_filename(Glib::get_tmp_dir(),
+    const std::string path = Glib::build_filename(Slicer::config::getTempDirPath(),
                                                   uuids::to_string(uuids::uuid_system_generator{}()));
 
     return Gio::File::create_for_path(path);

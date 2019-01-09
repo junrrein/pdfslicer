@@ -24,6 +24,7 @@
 #include "view.hpp"
 #include "welcomescreen.hpp"
 #include "zoomlevelwithactions.hpp"
+#include <commandmanager.hpp>
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/box.h>
 #include <gtkmm/button.h>
@@ -54,6 +55,7 @@ private:
 
     SettingsManager& m_settingsManager;
     WindowState m_windowState;
+    CommandManager m_commandManager;
 
     HeaderBar m_headerBar;
     Gtk::Overlay m_overlay;

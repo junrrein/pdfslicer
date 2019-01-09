@@ -38,7 +38,7 @@ View::~View()
     m_backgroundThread.killRemainingTasks();
 }
 
-std::shared_ptr<InteractivePageWidget> View::createPageWidget(const Glib::RefPtr<Page>& page)
+std::shared_ptr<InteractivePageWidget> View::createPageWidget(const Glib::RefPtr<const Page>& page)
 {
     auto pageWidget = std::make_shared<InteractivePageWidget>(page, m_pageWidgetSize);
 
@@ -64,8 +64,8 @@ void View::setDocument(Document& document, int targetWidgetSize)
     m_document = &document;
     m_pageWidgetSize = targetWidgetSize;
 
-    for (unsigned int i = 0; i < m_document->pages()->get_n_items(); ++i) {
-        auto page = m_document->pages()->get_item(i);
+    for (unsigned int i = 0; i < m_document->numberOfPages(); ++i) {
+        auto page = m_document->getPage(i);
         std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
         m_pageWidgets.push_back(pageWidget);
         insert(*m_pageWidgets.back().get(), -1);
@@ -102,9 +102,9 @@ void View::clearSelection()
     selectedPagesChanged.emit();
 }
 
-int View::getSelectedChildIndex() const
+unsigned int View::getSelectedChildIndex() const
 {
-    return static_cast<int>(getSelectedChildrenIndexes().front());
+    return getSelectedChildrenIndexes().front();
 }
 
 std::vector<unsigned int> View::getSelectedChildrenIndexes() const
@@ -197,12 +197,12 @@ void View::onModelItemsChanged(guint position, guint removed, guint added)
     std::advance(it, position);
 
     for (; removed != 0; --removed) {
-        remove(*get_child_at_index(static_cast<int>(position)));
+        remove(*(*it));
         it = m_pageWidgets.erase(it);
     }
 
     for (guint i = 0; i != added; ++i) {
-        auto page = m_document->pages()->get_item(position + i);
+        auto page = m_document->getPage(position + i);
         std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
 
         it = m_pageWidgets.insert(it, pageWidget);
@@ -260,7 +260,7 @@ void View::onShiftSelection(InteractivePageWidget* pageWidget)
     selectedPagesChanged.emit();
 }
 
-void View::onPreviewRequested(const Glib::RefPtr<Page>& page)
+void View::onPreviewRequested(const Glib::RefPtr<const Page>& page)
 {
     (new PreviewWindow{page, m_backgroundThread})->show();
 }
