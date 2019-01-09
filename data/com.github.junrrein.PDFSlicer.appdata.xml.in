@@ -34,7 +34,7 @@
 	<releases>
 		<release version="1.4.6" date="2019-01-09">
 			<description>
-				<p>Fix bug where redoing a page range removal would remove more pages than expected.</p>
+				<p>Fix bug where redoing a page range removal would remove more pages than expected. Add French translation.</p>
 			</description>
 		</release>
 		<release version="1.4.5" date="2019-01-07">
