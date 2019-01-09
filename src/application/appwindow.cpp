@@ -252,7 +252,7 @@ void AppWindow::onSaveAction()
         trySaveDocument(dialog.get_file());
 }
 
-void AppWindow::trySaveDocument(Glib::RefPtr<Gio::File> file)
+void AppWindow::trySaveDocument(const Glib::RefPtr<Gio::File>& file)
 {
     m_savingRevealer.saving();
     disableEditingActions();
