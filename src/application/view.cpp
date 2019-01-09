@@ -197,7 +197,7 @@ void View::onModelItemsChanged(guint position, guint removed, guint added)
     std::advance(it, position);
 
     for (; removed != 0; --removed) {
-        remove(*get_child_at_index(static_cast<int>(position)));
+        remove(*(*it));
         it = m_pageWidgets.erase(it);
     }
 
