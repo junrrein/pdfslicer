@@ -29,11 +29,17 @@ Page::Page(PopplerDocument* document, int pageNumber)
 
     m_ppage.reset(ppage);
     m_fileIndex = poppler_page_get_index(m_ppage.get());
+    m_documentIndex = m_fileIndex;
 }
 
 int Page::fileIndex() const
 {
     return m_fileIndex;
+}
+
+int Page::getDocumentIndex() const
+{
+    return m_documentIndex;
 }
 
 Page::Size Page::size() const
@@ -82,6 +88,13 @@ Page::Size Page::scaledRotatedSize(int targetSize) const
     return scaleSize(rotatedSize(), targetSize);
 }
 
+void Page::setDocumentIndex(int newIndex)
+{
+    m_documentIndex = newIndex;
+
+    indexChanged.emit();
+}
+
 void Page::rotateRight()
 {
     if (m_rotation == 270)
@@ -100,8 +113,8 @@ void Page::rotateLeft()
 
 int Page::sortFunction(const Page& a, const Page& b)
 {
-    const int aPosition = a.fileIndex();
-    const int bPosition = b.fileIndex();
+    const int aPosition = a.getDocumentIndex();
+    const int bPosition = b.getDocumentIndex();
 
     if (aPosition < bPosition)
         return -1;
