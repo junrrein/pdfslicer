@@ -222,6 +222,8 @@ void AppWindow::disableEditingActions()
     m_removeNextAction->set_enabled(false);
     m_rotateRightAction->set_enabled(false);
     m_rotateLeftAction->set_enabled(false);
+    m_moveLeftAction->set_enabled(false);
+    m_moveRightAction->set_enabled(false);
     m_cancelSelectionAction->set_enabled(false);
 }
 
@@ -379,7 +381,9 @@ void AppWindow::onCancelSelection()
 
 void AppWindow::onSelectedPagesChanged()
 {
-    const unsigned long numSelected = m_view.getSelectedChildrenIndexes().size();
+    const std::vector<unsigned int> indexSelected = m_view.getSelectedChildrenIndexes();
+    const unsigned long numSelected = indexSelected.size();
+    const unsigned int numPages = m_document->numberOfPages();
 
     if (numSelected == 0) {
         m_removeSelectedAction->set_enabled(false);
@@ -388,25 +392,35 @@ void AppWindow::onSelectedPagesChanged()
         m_removeNextAction->set_enabled(false);
         m_rotateRightAction->set_enabled(false);
         m_rotateLeftAction->set_enabled(false);
+        m_moveLeftAction->set_enabled(false);
+        m_moveRightAction->set_enabled(false);
         m_cancelSelectionAction->set_enabled(false);
     }
     else {
         m_removeSelectedAction->set_enabled();
+        m_removeUnselectedAction->set_enabled();
         m_rotateRightAction->set_enabled();
         m_rotateLeftAction->set_enabled();
-        m_removeUnselectedAction->set_enabled();
         m_cancelSelectionAction->set_enabled();
+
+        if (indexSelected.front() == 0)
+            m_moveLeftAction->set_enabled(false);
+        else
+            m_moveLeftAction->set_enabled();
+
+        if (indexSelected.back() == numPages - 1)
+            m_moveRightAction->set_enabled(false);
+        else
+            m_moveRightAction->set_enabled();
     }
 
     if (numSelected == 1) {
-        const unsigned int index = m_view.getSelectedChildIndex();
-        if (index == 0)
+        if (indexSelected.front() == 0)
             m_removePreviousAction->set_enabled(false);
         else
             m_removePreviousAction->set_enabled();
 
-        const unsigned long numPages = m_view.get_children().size();
-        if (index == numPages - 1)
+        if (indexSelected.front() == numPages - 1)
             m_removeNextAction->set_enabled(false);
         else
             m_removeNextAction->set_enabled();
