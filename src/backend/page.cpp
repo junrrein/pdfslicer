@@ -28,16 +28,16 @@ Page::Page(PopplerDocument* document, int pageNumber)
         throw std::runtime_error("Couldn't load page with number: " + std::to_string(pageNumber));
 
     m_ppage.reset(ppage);
-    m_fileIndex = poppler_page_get_index(m_ppage.get());
+    m_fileIndex = static_cast<unsigned>(poppler_page_get_index(m_ppage.get()));
     m_documentIndex = m_fileIndex;
 }
 
-int Page::fileIndex() const
+unsigned int Page::fileIndex() const
 {
     return m_fileIndex;
 }
 
-int Page::getDocumentIndex() const
+unsigned int Page::getDocumentIndex() const
 {
     return m_documentIndex;
 }
@@ -88,7 +88,7 @@ Page::Size Page::scaledRotatedSize(int targetSize) const
     return scaleSize(rotatedSize(), targetSize);
 }
 
-void Page::setDocumentIndex(int newIndex)
+void Page::setDocumentIndex(unsigned int newIndex)
 {
     m_documentIndex = newIndex;
 
@@ -113,8 +113,8 @@ void Page::rotateLeft()
 
 int Page::sortFunction(const Page& a, const Page& b)
 {
-    const int aPosition = a.getDocumentIndex();
-    const int bPosition = b.getDocumentIndex();
+    const unsigned int aPosition = a.getDocumentIndex();
+    const unsigned int bPosition = b.getDocumentIndex();
 
     if (aPosition < bPosition)
         return -1;
