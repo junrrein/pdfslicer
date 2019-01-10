@@ -41,6 +41,8 @@ public:
     Size scaledRotatedSize(int targetSize) const;
 
     void setDocumentIndex(unsigned int newIndex);
+    void incrementDocumentIndex();
+    void decrementDocumentIndex();
     void rotateRight();
     void rotateLeft();
 
