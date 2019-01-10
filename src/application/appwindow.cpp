@@ -117,6 +117,8 @@ void AppWindow::addActions()
     m_removeNextAction = add_action("remove-next", sigc::mem_fun(*this, &AppWindow::onRemoveNextPages));
     m_rotateRightAction = add_action("rotate-right", sigc::mem_fun(*this, &AppWindow::onRotatePagesRight));
     m_rotateLeftAction = add_action("rotate-left", sigc::mem_fun(*this, &AppWindow::onRotatePagesLeft));
+    m_moveLeftAction = add_action("move-left", sigc::mem_fun(*this, &AppWindow::onMovePagesLeft));
+    m_moveRightAction = add_action("move-right", sigc::mem_fun(*this, &AppWindow::onMovePagesRight));
     m_cancelSelectionAction = add_action("cancel-selection", sigc::mem_fun(*this, &AppWindow::onCancelSelection));
     m_shortcutsAction = add_action("shortcuts", sigc::mem_fun(*this, &AppWindow::onShortcutsAction));
     m_aboutAction = add_action("about", sigc::mem_fun(*this, &AppWindow::onAboutAction));
@@ -353,6 +355,20 @@ void AppWindow::onRotatePagesRight()
 void AppWindow::onRotatePagesLeft()
 {
     auto command = std::make_shared<RotatePagesLeftCommand>(*m_document, m_view.getSelectedChildrenIndexes());
+    m_commandManager.execute(command);
+}
+
+void AppWindow::onMovePagesLeft()
+{
+    const unsigned int indexToMove = m_view.getSelectedChildIndex();
+    auto command = std::make_shared<MovePageCommand>(*m_document, indexToMove, indexToMove - 1);
+    m_commandManager.execute(command);
+}
+
+void AppWindow::onMovePagesRight()
+{
+    const unsigned int indexToMove = m_view.getSelectedChildIndex();
+    auto command = std::make_shared<MovePageCommand>(*m_document, indexToMove, indexToMove + 1);
     m_commandManager.execute(command);
 }
 
