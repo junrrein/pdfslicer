@@ -26,6 +26,7 @@ View::View(BackgroundThread& backgroundThread)
     set_column_spacing(10);
     set_row_spacing(5);
     set_selection_mode(Gtk::SELECTION_NONE);
+    set_sort_func(&sortFunction);
 
     m_dispatcher.connect(sigc::mem_fun(*this, &View::onDispatcherCalled));
 }
@@ -68,7 +69,7 @@ void View::setDocument(Document& document, int targetWidgetSize)
         auto page = m_document->getPage(i);
         std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
         m_pageWidgets.push_back(pageWidget);
-        insert(*m_pageWidgets.back().get(), -1);
+        add(*m_pageWidgets.back());
         m_toRenderQueue.push(pageWidget);
         m_dispatcher.emit();
     }
@@ -136,6 +137,14 @@ std::vector<unsigned int> View::getUnselectedChildrenIndexes() const
                            ranges::back_inserter(unselectedIndexes));
 
     return unselectedIndexes;
+}
+
+int View::sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b)
+{
+    auto widgetA = dynamic_cast<InteractivePageWidget*>(a);
+    auto widgetB = dynamic_cast<InteractivePageWidget*>(b);
+
+    return InteractivePageWidget::sortFunction(*widgetA, *widgetB);
 }
 
 void View::displayRenderedPages()
@@ -206,7 +215,8 @@ void View::onModelItemsChanged(guint position, guint removed, guint added)
         std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
 
         it = m_pageWidgets.insert(it, pageWidget);
-        insert(*pageWidget, static_cast<int>(position + i));
+        ++it;
+        add(*pageWidget);
         m_toRenderQueue.push(pageWidget);
         m_dispatcher.emit();
     }

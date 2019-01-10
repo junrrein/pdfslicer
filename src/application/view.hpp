@@ -45,6 +45,8 @@ public:
 
     sigc::signal<void> selectedPagesChanged;
 
+    static int sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b);
+
 private:
     PageWidgetList m_pageWidgets;
     int m_pageWidgetSize = 0;
