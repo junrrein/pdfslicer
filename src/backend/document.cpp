@@ -57,6 +57,9 @@ std::vector<Glib::RefPtr<Page>> Document::removePages(const std::vector<unsigned
         m_pages->remove(actualPosition);
     }
 
+    for (unsigned int i = indexes.front(); i < numberOfPages(); ++i)
+        m_pages->get_item(i)->setDocumentIndex(i);
+
     return removedPages;
 }
 
@@ -84,7 +87,7 @@ void Document::insertPage(const Glib::RefPtr<Page>& page)
 void Document::insertPages(const std::vector<Glib::RefPtr<Page>>& pages)
 {
     for (const auto& page : pages)
-        m_pages->insert_sorted(page, pageComparator{});
+        insertPage(page);
 }
 
 void Document::insertPageRange(const std::vector<Glib::RefPtr<Page>>& pages, unsigned int position)
