@@ -27,19 +27,22 @@ Document::Document(const Glib::RefPtr<Gio::File>& sourceFile)
     loadDocument();
 }
 
-Glib::RefPtr<Page> Document::removePage(unsigned int position)
+Glib::RefPtr<Page> Document::removePage(unsigned int index)
 {
-    Glib::RefPtr<Page> removedPage = m_pages->get_item(position);
-    m_pages->remove(position);
+    Glib::RefPtr<Page> removedPage = m_pages->get_item(index);
+    m_pages->remove(index);
+
+    for (unsigned int i = index; i < numberOfPages(); ++i)
+        m_pages->get_item(i)->decrementDocumentIndex();
 
     return removedPage;
 }
 
-std::vector<Glib::RefPtr<Page>> Document::removePages(const std::vector<unsigned int>& positions)
+std::vector<Glib::RefPtr<Page>> Document::removePages(const std::vector<unsigned int>& indexes)
 {
     std::vector<Glib::RefPtr<Page>> removedPages;
 
-    for (unsigned int position : positions) {
+    for (unsigned int position : indexes) {
         auto page = m_pages->get_item(position);
         removedPages.push_back(page);
     }
@@ -49,8 +52,8 @@ std::vector<Glib::RefPtr<Page>> Document::removePages(const std::vector<unsigned
     // want to remove.
     // The problem is that, everytime a page is removed, all positions are invalidated.
     // After each page removal, the remaining positions must be decremented by one.
-    for (unsigned int i = 0; i < positions.size(); ++i) {
-        const unsigned int actualPosition = positions.at(i) - i;
+    for (unsigned int i = 0; i < indexes.size(); ++i) {
+        const unsigned int actualPosition = indexes.at(i) - i;
         m_pages->remove(actualPosition);
     }
 
@@ -72,6 +75,9 @@ std::vector<Glib::RefPtr<Page>> Document::removePageRange(unsigned int first, un
 
 void Document::insertPage(const Glib::RefPtr<Page>& page)
 {
+    for (unsigned int i = page->getDocumentIndex(); i < numberOfPages(); ++i)
+        m_pages->get_item(i)->incrementDocumentIndex();
+
     m_pages->insert_sorted(page, pageComparator{});
 }
 

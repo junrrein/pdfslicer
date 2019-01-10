@@ -27,8 +27,8 @@ class Document {
 public:
     Document(const Glib::RefPtr<Gio::File>& sourceFile);
 
-    Glib::RefPtr<Page> removePage(unsigned int position);
-    std::vector<Glib::RefPtr<Page>> removePages(const std::vector<unsigned int>& positions);
+    Glib::RefPtr<Page> removePage(unsigned int index);
+    std::vector<Glib::RefPtr<Page>> removePages(const std::vector<unsigned int>& indexes);
     std::vector<Glib::RefPtr<Page>> removePageRange(unsigned int first, unsigned int last);
 
     void insertPage(const Glib::RefPtr<Page>& page);
