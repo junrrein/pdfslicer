@@ -372,6 +372,78 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
     }
 }
 
+SCENARIO("Moving 1 page across different places of a document")
+{
+    GIVEN("A multipage PDF document with 15 pages")
+    {
+        auto multipagePdfFile = Gio::File::create_for_path(multipagePdfPath);
+        Document doc{multipagePdfFile};
+        REQUIRE(doc.numberOfPages() == 15);
+
+        WHEN("The first page is moved to the 8th place")
+        {
+            doc.movePage(0, 7);
+
+            THEN("The 8th page of the document should be the 1st page of the file")
+            REQUIRE(doc.getPage(7)->fileIndex() == 0);
+
+            THEN("The 7th page of the document should be the 8th page of the file")
+            REQUIRE(doc.getPage(6)->fileIndex() == 7);
+
+            THEN("The 9th page of the document should be the 9th page of the file")
+            REQUIRE(doc.getPage(8)->fileIndex() == 8);
+
+            THEN("The first page of the document should be the second page of the file")
+            REQUIRE(doc.getPage(0)->fileIndex() == 1);
+        }
+
+        WHEN("The last page is moved to the 8th place")
+        {
+            doc.movePage(14, 7);
+
+            THEN("The 8th page of the document should be the 15th page of the file")
+            REQUIRE(doc.getPage(7)->fileIndex() == 14);
+
+            THEN("The 9th page of the document should be the 8th page of the file")
+            REQUIRE(doc.getPage(8)->fileIndex() == 7);
+
+            THEN("The last page of the document should be the 14th page of the file")
+            REQUIRE(doc.getPage(14)->fileIndex() == 13);
+        }
+
+        WHEN("The 8th page is moved to the 1st place")
+        {
+            doc.movePage(7, 0);
+
+            THEN("The first page of the document should be the 8th page of the file")
+            REQUIRE(doc.getPage(0)->fileIndex() == 7);
+
+            THEN("The second page of the document should be the first page of the file")
+            REQUIRE(doc.getPage(1)->fileIndex() == 0);
+
+            THEN("The 8th page of the document should be the 7th page of the file")
+            REQUIRE(doc.getPage(7)->fileIndex() == 6);
+
+            THEN("The 9th page of the document should be the 9th page of the file")
+            REQUIRE(doc.getPage(8)->fileIndex() == 8);
+        }
+
+        WHEN("The 8th page is moved to the last place")
+        {
+            doc.movePage(7, 14);
+
+            THEN("The 15th page of the document should be the 8th page of the file")
+            REQUIRE(doc.getPage(14)->fileIndex() == 7);
+
+            THEN("The 14th page of the document should be the last page of the file")
+            REQUIRE(doc.getPage(13)->fileIndex() == 14);
+
+            THEN("The 8th page of the document should be the 9th page of the file")
+            REQUIRE(doc.getPage(7)->fileIndex() == 8);
+        }
+    }
+}
+
 unsigned int maxIndex(const Document& doc)
 {
     return doc.getPage(doc.numberOfPages() - 1)->getDocumentIndex();
