@@ -214,8 +214,7 @@ void View::onModelItemsChanged(guint position, guint removed, guint added)
         auto page = m_document->getPage(position + i);
         std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
 
-        it = m_pageWidgets.insert(it, pageWidget);
-        ++it;
+        m_pageWidgets.insert(it, pageWidget);
         add(*pageWidget);
         m_toRenderQueue.push(pageWidget);
         m_dispatcher.emit();
