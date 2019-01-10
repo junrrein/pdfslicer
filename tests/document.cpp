@@ -9,6 +9,8 @@ using namespace Slicer;
 static const std::string multipagePdfPath
     = Glib::build_filename(Glib::get_current_dir(), "multipage.pdf");
 
+unsigned int maxIndex(const Document& doc);
+
 SCENARIO("Removing a single page from different places of a document")
 {
     GIVEN("A multipage document with 15 pages")
@@ -27,6 +29,9 @@ SCENARIO("Removing a single page from different places of a document")
             THEN("The document should have 14 pages")
             REQUIRE(doc.numberOfPages() == 14);
 
+            THEN("The max document index should be lower")
+            REQUIRE(maxIndex(doc) == 13);
+
             WHEN("The remove command is undone")
             {
                 doc.insertPage(removedPage);
@@ -36,6 +41,9 @@ SCENARIO("Removing a single page from different places of a document")
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
+
+                THEN("The max index should be the original")
+                REQUIRE(maxIndex(doc) == 14);
             }
 
             WHEN("The new first page is removed")
@@ -48,6 +56,9 @@ SCENARIO("Removing a single page from different places of a document")
                 THEN("The document should have 13 pages")
                 REQUIRE(doc.numberOfPages() == 13);
 
+                THEN("The max document index should be even lower")
+                REQUIRE(maxIndex(doc) == 12);
+
                 WHEN("The second remove command is undone")
                 {
                     doc.insertPage(secondRemovedPage);
@@ -58,6 +69,9 @@ SCENARIO("Removing a single page from different places of a document")
                     THEN("The document should have 14 pages")
                     REQUIRE(doc.numberOfPages() == 14);
 
+                    THEN("The max document index should be higher lower")
+                    REQUIRE(maxIndex(doc) == 13);
+
                     WHEN("The first remove command is undone")
                     {
                         doc.insertPage(removedPage);
@@ -67,6 +81,9 @@ SCENARIO("Removing a single page from different places of a document")
 
                         THEN("The document should have 15 pages")
                         REQUIRE(doc.numberOfPages() == 15);
+
+                        THEN("The max index should be the original")
+                        REQUIRE(maxIndex(doc) == 14);
                     }
                 }
             }
@@ -79,6 +96,9 @@ SCENARIO("Removing a single page from different places of a document")
             THEN("The document should have 14 pages")
             REQUIRE(doc.numberOfPages() == 14);
 
+            THEN("The max document index should be lower")
+            REQUIRE(maxIndex(doc) == 13);
+
             THEN("The 14th page of the document should be the 14th page of the file")
             REQUIRE(doc.getPage(13)->fileIndex() == 13);
 
@@ -88,6 +108,9 @@ SCENARIO("Removing a single page from different places of a document")
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
+
+                THEN("The max document index should be the original")
+                REQUIRE(maxIndex(doc) == 14);
 
                 THEN("The 15th page of the document should be the 15th page of the file")
                 REQUIRE(doc.getPage(14)->fileIndex() == 14);
@@ -101,6 +124,9 @@ SCENARIO("Removing a single page from different places of a document")
             THEN("The document should have 14 pages")
             REQUIRE(doc.numberOfPages() == 14);
 
+            THEN("The max document index should be lower")
+            REQUIRE(maxIndex(doc) == 13);
+
             THEN("The 7th and 8th pages of the document should be the 7th and 9th pages of the file, respectively")
             {
                 REQUIRE(doc.getPage(6)->fileIndex() == 6);
@@ -113,6 +139,9 @@ SCENARIO("Removing a single page from different places of a document")
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
+
+                THEN("The max document index should be the original")
+                REQUIRE(maxIndex(doc) == 14);
 
                 THEN("The 7th, 8th and 9th pages of the document should be the corresponding pages of the file")
                 {
@@ -305,4 +334,9 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
             }
         }
     }
+}
+
+unsigned int maxIndex(const Document& doc)
+{
+    return doc.getPage(doc.numberOfPages() - 1)->getDocumentIndex();
 }
