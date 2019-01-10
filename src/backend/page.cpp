@@ -112,10 +112,16 @@ int Page::sortFunction(const Page& a, const Page& b)
     return 1;
 }
 
+int Page::sortFunction(const Glib::RefPtr<const Page>& a,
+                       const Glib::RefPtr<const Page>& b)
+{
+    return sortFunction(*(a.operator->()), *(b.operator->()));
+}
+
 int pageComparator::operator()(const Glib::RefPtr<const Page>& a,
                                const Glib::RefPtr<const Page>& b)
 {
-    return Page::sortFunction(*(a.operator->()), *(b.operator->()));
+    return Page::sortFunction(a, b);
 }
 
 } // namespace Slicer

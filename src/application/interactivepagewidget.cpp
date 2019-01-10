@@ -39,9 +39,10 @@ void InteractivePageWidget::setChecked(bool checked)
     }
 }
 
-int InteractivePageWidget::sortFunction(const InteractivePageWidget& a, const InteractivePageWidget& b)
+int InteractivePageWidget::sortFunction(const InteractivePageWidget& a,
+                                        const InteractivePageWidget& b)
 {
-    return Page::sortFunction(*(a.m_page.operator->()), *(b.m_page.operator->()));
+    return Page::sortFunction(a.m_page, b.m_page);
 }
 
 void InteractivePageWidget::setupInteractiveWidgets()

@@ -43,6 +43,8 @@ public:
     void rotateLeft();
 
     static int sortFunction(const Page& a, const Page& b);
+    static int sortFunction(const Glib::RefPtr<const Page>& a,
+                            const Glib::RefPtr<const Page>& b);
 
 private:
     std::unique_ptr<PopplerPage, decltype(&g_object_unref)> m_ppage;
