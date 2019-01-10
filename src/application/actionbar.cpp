@@ -36,6 +36,19 @@ ActionBar::ActionBar()
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRotateRight.gobj()), "win.rotate-right"); // NOLINT
     rotateBox->pack_start(m_buttonRotateRight);
 
+    auto moveBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL}); // NOLINT
+    moveBox->get_style_context()->add_class("linked");
+
+    m_buttonMoveLeft.set_image_from_icon_name("object-rotate-left-symbolic");
+    m_buttonMoveLeft.set_tooltip_text(_("Move left"));
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonMoveLeft.gobj()), "win.move-left"); //NOLINT
+    moveBox->pack_start(m_buttonMoveLeft);
+
+    m_buttonMoveRight.set_image_from_icon_name("object-rotate-right-symbolic");
+    m_buttonMoveRight.set_tooltip_text(_("Move right"));
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonMoveRight.gobj()), "win.move-right"); //NOLINT
+    moveBox->pack_start(m_buttonMoveRight);
+
     auto removeBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL}); // NOLINT
     removeBox->get_style_context()->add_class("linked");
 
@@ -57,6 +70,7 @@ ActionBar::ActionBar()
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonCancelSelection.gobj()), "win.cancel-selection"); // NOLINT
 
     pack_start(*rotateBox);
+    pack_start(*moveBox);
     pack_start(*removeBox);
     pack_end(m_buttonCancelSelection);
 

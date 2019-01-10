@@ -31,6 +31,9 @@ private:
     Gtk::Button m_buttonRotateLeft;
     Gtk::Button m_buttonRotateRight;
 
+    Gtk::Button m_buttonMoveLeft;
+    Gtk::Button m_buttonMoveRight;
+
     Gtk::Button m_buttonRemovePages;
     Gtk::MenuButton m_buttonRemovePagesMore;
 
