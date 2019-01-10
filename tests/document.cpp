@@ -254,6 +254,9 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
             THEN("The document should have 13 pages")
             REQUIRE(doc.numberOfPages() == 13);
 
+            THEN("The max document index should be lower")
+            REQUIRE(maxIndex(doc) == 12);
+
             THEN("The 1st and 2nd pages of the document should be the 2nd and 4th pages of the file, respectively")
             {
                 REQUIRE(doc.getPage(0)->fileIndex() == 1);
@@ -266,6 +269,9 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
+
+                THEN("The max document index should be the original")
+                REQUIRE(maxIndex(doc) == 14);
 
                 THEN("The 1st, 2nd and 3rd pages of the document should be the corresponding pages of the file")
                 {
@@ -283,6 +289,9 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
             THEN("The document should have 13 pages")
             REQUIRE(doc.numberOfPages() == 13);
 
+            THEN("The max document index should be lower")
+            REQUIRE(maxIndex(doc) == 12);
+
             THEN("The 12th and 13th pages of the document should be the 12th and 14th pages of the file")
             {
                 REQUIRE(doc.getPage(11)->fileIndex() == 11);
@@ -295,6 +304,9 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
+
+                THEN("The max document index should be the original")
+                REQUIRE(maxIndex(doc) == 14);
 
                 THEN("The 13th, 14th and 15th pages of the document should be the corresponding pages of the file")
                 {
@@ -312,6 +324,9 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
             THEN("The document should have 13 pages")
             REQUIRE(doc.numberOfPages() == 13);
 
+            THEN("The max document index should be lower")
+            REQUIRE(maxIndex(doc) == 12);
+
             THEN("The 8th and 9th pages of the document should now be the 9th and 11th pages of the file, respectively")
             {
                 REQUIRE(doc.getPage(7)->fileIndex() == 8);
@@ -324,6 +339,9 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
+
+                THEN("The max document index should be the original")
+                REQUIRE(maxIndex(doc) == 14);
 
                 THEN("The 8th, 9th and 10th pages of the document should be the corresponding pages of the file")
                 {
