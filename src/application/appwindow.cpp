@@ -353,7 +353,7 @@ void AppWindow::onRotatePagesRight()
 void AppWindow::onRotatePagesLeft()
 {
     auto command = std::make_shared<RotatePagesLeftCommand>(*m_document, m_view.getSelectedChildrenIndexes());
-    m_document->rotatePagesLeft(m_view.getSelectedChildrenIndexes());
+    m_commandManager.execute(command);
 }
 
 void AppWindow::onCancelSelection()
