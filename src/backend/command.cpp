@@ -130,4 +130,28 @@ void RotatePagesLeftCommand::redo()
     execute();
 }
 
+MovePageCommand::MovePageCommand(Document& document,
+                                 unsigned int indexToMove,
+                                 unsigned int indexDestination)
+    : m_document{document}
+    , m_indexToMove{indexToMove}
+    , m_indexDestination{indexDestination}
+{
+}
+
+void MovePageCommand::execute()
+{
+    m_document.movePage(m_indexToMove, m_indexDestination);
+}
+
+void MovePageCommand::undo()
+{
+    m_document.movePage(m_indexDestination, m_indexToMove);
+}
+
+void MovePageCommand::redo()
+{
+    execute();
+}
+
 } // namespace Slicer

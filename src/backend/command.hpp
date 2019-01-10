@@ -104,6 +104,22 @@ private:
     const std::vector<unsigned int> m_pageNumbers;
 };
 
+class MovePageCommand : public Command {
+public:
+    MovePageCommand(Document& document,
+                    unsigned int indexToMove,
+                    unsigned int indexDestination);
+
+    void execute() override;
+    void undo() override;
+    void redo() override;
+
+private:
+    Document& m_document;
+    const unsigned int m_indexToMove;
+    const unsigned int m_indexDestination;
+};
+
 } // namespace Slicer
 
 #endif // COMMAND_HPP

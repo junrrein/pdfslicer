@@ -9,6 +9,8 @@ using namespace Slicer;
 static const std::string multipagePdfPath
     = Glib::build_filename(Glib::get_current_dir(), "multipage.pdf");
 
+bool areIndexesMonoIncreasing(const Document& doc);
+
 SCENARIO("Removing a single page from different places of a document using the Command abstraction")
 {
     GIVEN("A multipage document with 15 pages")
@@ -356,4 +358,121 @@ SCENARIO("Remove all pages of a document before a certain one using RemovePageRa
             }
         }
     }
+}
+
+SCENARIO("Moving 1 page across different places of a document using the Command abstraction")
+{
+    GIVEN("A multipage PDF document with 15 pages")
+    {
+        auto multipagePdfFile = Gio::File::create_for_path(multipagePdfPath);
+        Document doc{multipagePdfFile};
+        REQUIRE(doc.numberOfPages() == 15);
+
+        WHEN("The first page is moved to the 8th place")
+        {
+            MovePageCommand command{doc, 0, 7};
+            command.execute();
+
+            THEN("The 8th page of the document should be the 1st page of the file")
+            REQUIRE(doc.getPage(7)->fileIndex() == 0);
+
+            THEN("The 7th page of the document should be the 8th page of the file")
+            REQUIRE(doc.getPage(6)->fileIndex() == 7);
+
+            THEN("The 9th page of the document should be the 9th page of the file")
+            REQUIRE(doc.getPage(8)->fileIndex() == 8);
+
+            THEN("The first page of the document should be the second page of the file")
+            REQUIRE(doc.getPage(0)->fileIndex() == 1);
+
+            WHEN("The command is undone")
+            {
+                command.undo();
+
+                THEN("Indexes should start from 0 and be monotonically increasing")
+                REQUIRE(areIndexesMonoIncreasing(doc));
+            }
+        }
+
+        WHEN("The last page is moved to the 8th place")
+        {
+            MovePageCommand command{doc, 14, 7};
+            command.execute();
+
+            THEN("The 8th page of the document should be the 15th page of the file")
+            REQUIRE(doc.getPage(7)->fileIndex() == 14);
+
+            THEN("The 9th page of the document should be the 8th page of the file")
+            REQUIRE(doc.getPage(8)->fileIndex() == 7);
+
+            THEN("The last page of the document should be the 14th page of the file")
+            REQUIRE(doc.getPage(14)->fileIndex() == 13);
+
+            WHEN("The command is undone")
+            {
+                command.undo();
+
+                THEN("Indexes should start from 0 and be monotonically increasing")
+                REQUIRE(areIndexesMonoIncreasing(doc));
+            }
+        }
+
+        WHEN("The 8th page is moved to the 1st place")
+        {
+            MovePageCommand command{doc, 7, 0};
+            command.execute();
+
+            THEN("The first page of the document should be the 8th page of the file")
+            REQUIRE(doc.getPage(0)->fileIndex() == 7);
+
+            THEN("The second page of the document should be the first page of the file")
+            REQUIRE(doc.getPage(1)->fileIndex() == 0);
+
+            THEN("The 8th page of the document should be the 7th page of the file")
+            REQUIRE(doc.getPage(7)->fileIndex() == 6);
+
+            THEN("The 9th page of the document should be the 9th page of the file")
+            REQUIRE(doc.getPage(8)->fileIndex() == 8);
+
+            WHEN("The command is undone")
+            {
+                command.undo();
+
+                THEN("Indexes should start from 0 and be monotonically increasing")
+                REQUIRE(areIndexesMonoIncreasing(doc));
+            }
+        }
+
+        WHEN("The 8th page is moved to the last place")
+        {
+            MovePageCommand command{doc, 7, 14};
+            command.execute();
+
+            THEN("The 15th page of the document should be the 8th page of the file")
+            REQUIRE(doc.getPage(14)->fileIndex() == 7);
+
+            THEN("The 14th page of the document should be the last page of the file")
+            REQUIRE(doc.getPage(13)->fileIndex() == 14);
+
+            THEN("The 8th page of the document should be the 9th page of the file")
+            REQUIRE(doc.getPage(7)->fileIndex() == 8);
+
+            WHEN("The command is undone")
+            {
+                command.undo();
+
+                THEN("Indexes should start from 0 and be monotonically increasing")
+                REQUIRE(areIndexesMonoIncreasing(doc));
+            }
+        }
+    }
+}
+
+bool areIndexesMonoIncreasing(const Document& doc)
+{
+    for (unsigned int i = 0; i < doc.numberOfPages(); ++i)
+        if (doc.getPage(i)->getDocumentIndex() != i)
+            return false;
+
+    return true;
 }
