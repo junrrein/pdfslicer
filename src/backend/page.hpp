@@ -42,6 +42,8 @@ public:
     void rotateRight();
     void rotateLeft();
 
+    static int sortFunction(const Page& a, const Page& b);
+
 private:
     std::unique_ptr<PopplerPage, decltype(&g_object_unref)> m_ppage;
     int m_rotation = 0;

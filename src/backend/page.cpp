@@ -98,11 +98,10 @@ void Page::rotateLeft()
         m_rotation -= 90;
 }
 
-int pageComparator::operator()(const Glib::RefPtr<const Page>& a,
-                               const Glib::RefPtr<const Page>& b)
+int Page::sortFunction(const Page& a, const Page& b)
 {
-    const int aPosition = a->fileIndex();
-    const int bPosition = b->fileIndex();
+    const int aPosition = a.fileIndex();
+    const int bPosition = b.fileIndex();
 
     if (aPosition < bPosition)
         return -1;
@@ -111,6 +110,12 @@ int pageComparator::operator()(const Glib::RefPtr<const Page>& a,
         return 0;
 
     return 1;
+}
+
+int pageComparator::operator()(const Glib::RefPtr<const Page>& a,
+                               const Glib::RefPtr<const Page>& b)
+{
+    return Page::sortFunction(*(a.operator->()), *(b.operator->()));
 }
 
 } // namespace Slicer
