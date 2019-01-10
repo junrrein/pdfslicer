@@ -101,6 +101,13 @@ void Document::insertPageRange(const std::vector<Glib::RefPtr<Page>>& pages, uns
     m_pages->splice(position, 0, pages);
 }
 
+void Document::movePage(unsigned int indexToMove, unsigned int indexDestination)
+{
+    Glib::RefPtr<Page> pageToMove = removePage(indexToMove);
+    pageToMove->setDocumentIndex(indexDestination);
+    insertPage(pageToMove);
+}
+
 void Document::rotatePagesRight(const std::vector<unsigned int>& pageNumbers)
 {
     for (unsigned int pageNumber : pageNumbers)
