@@ -73,6 +73,9 @@ std::vector<Glib::RefPtr<Page>> Document::removePageRange(unsigned int first, un
     const unsigned int nElem = last - first + 1;
     m_pages->splice(first, nElem, {});
 
+    for (unsigned int i = first; i < numberOfPages(); ++i)
+        m_pages->get_item(i)->setDocumentIndex(i);
+
     return removedPages;
 }
 
@@ -92,6 +95,9 @@ void Document::insertPages(const std::vector<Glib::RefPtr<Page>>& pages)
 
 void Document::insertPageRange(const std::vector<Glib::RefPtr<Page>>& pages, unsigned int position)
 {
+    for (unsigned int i = position; i < numberOfPages(); ++i)
+        m_pages->get_item(i)->setDocumentIndex(i + static_cast<unsigned>(pages.size()));
+
     m_pages->splice(position, 0, pages);
 }
 
