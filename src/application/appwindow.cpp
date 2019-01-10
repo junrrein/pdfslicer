@@ -132,6 +132,8 @@ void AppWindow::addActions()
     m_removeNextAction->set_enabled(false);
     m_rotateRightAction->set_enabled(false);
     m_rotateLeftAction->set_enabled(false);
+    m_moveLeftAction->set_enabled(false);
+    m_moveRightAction->set_enabled(false);
     m_cancelSelectionAction->set_enabled(false);
 }
 
@@ -383,7 +385,7 @@ void AppWindow::onSelectedPagesChanged()
 {
     const std::vector<unsigned int> indexSelected = m_view.getSelectedChildrenIndexes();
     const unsigned long numSelected = indexSelected.size();
-    const unsigned int numPages = m_document->numberOfPages();
+    const unsigned long numPages = m_view.get_children().size();
 
     if (numSelected == 0) {
         m_removeSelectedAction->set_enabled(false);
