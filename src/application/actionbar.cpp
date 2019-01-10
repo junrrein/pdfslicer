@@ -16,6 +16,7 @@
 
 #include "actionbar.hpp"
 #include <gtkmm/box.h>
+#include <giomm/menu.h>
 #include <glibmm/i18n.h>
 
 namespace Slicer {
@@ -38,21 +39,19 @@ ActionBar::ActionBar()
     auto removeBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL}); // NOLINT
     removeBox->get_style_context()->add_class("linked");
 
-    m_buttonRemovePages.set_label(C_("plural (pages)", "Remove selected"));
+    m_buttonRemovePages.set_image_from_icon_name("user-trash-symbolic");
+    m_buttonRemovePages.set_tooltip_text(C_("plural (pages)", "Remove selected"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePages.gobj()), "win.remove-selected"); // NOLINT
     removeBox->pack_start(m_buttonRemovePages);
 
-    m_buttonRemoveUnselected.set_label(C_("plural (pages)", "Remove unselected"));
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemoveUnselected.gobj()), "win.remove-unselected"); // NOLINT
-    removeBox->pack_start(m_buttonRemoveUnselected);
-
-    m_buttonRemovePrevious.set_label(C_("plural (pages)", "Remove previous"));
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePrevious.gobj()), "win.remove-previous"); // NOLINT
-    removeBox->pack_start(m_buttonRemovePrevious);
-
-    m_buttonRemoveNext.set_label(C_("plural (pages)", "Remove next"));
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemoveNext.gobj()), "win.remove-next"); // NOLINT
-    removeBox->pack_start(m_buttonRemoveNext);
+    Glib::RefPtr<Gio::Menu> menu = Gio::Menu::create();
+    menu->append(C_("plural (pages)", "Remove unselected"), "win.remove-unselected");
+    menu->append(C_("plural (pages)", "Remove previous"), "win.remove-previous");
+    menu->append(C_("plural (pages)", "Remove next"), "win.remove-next");
+    m_buttonRemovePagesMore.set_image_from_icon_name("open-menu-symbolic");
+    m_buttonRemovePagesMore.set_tooltip_text(_("More page removing operations…"));
+    m_buttonRemovePagesMore.set_menu_model(menu);
+    removeBox->pack_start(m_buttonRemovePagesMore);
 
     m_buttonCancelSelection.set_label(_("Cancel selection"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonCancelSelection.gobj()), "win.cancel-selection"); // NOLINT

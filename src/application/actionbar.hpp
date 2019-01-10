@@ -19,6 +19,7 @@
 
 #include <gtkmm/actionbar.h>
 #include <gtkmm/button.h>
+#include <gtkmm/menubutton.h>
 
 namespace Slicer {
 
@@ -29,10 +30,9 @@ public:
 private:
     Gtk::Button m_buttonRotateLeft;
     Gtk::Button m_buttonRotateRight;
+
     Gtk::Button m_buttonRemovePages;
-    Gtk::Button m_buttonRemoveUnselected;
-    Gtk::Button m_buttonRemovePrevious;
-    Gtk::Button m_buttonRemoveNext;
+    Gtk::MenuButton m_buttonRemovePagesMore;
 
     Gtk::Button m_buttonCancelSelection;
 };
