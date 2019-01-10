@@ -170,6 +170,9 @@ SCENARIO("Removing a 2-page range from different places of a document")
             THEN("The document should have 13 pages")
             REQUIRE(doc.numberOfPages() == 13);
 
+            THEN("The max document index should be lower")
+            REQUIRE(maxIndex(doc) == 12);
+
             THEN("The first page of the document should be the 3rd page of the file")
             REQUIRE(doc.getPage(0)->fileIndex() == 2);
 
@@ -179,6 +182,9 @@ SCENARIO("Removing a 2-page range from different places of a document")
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
+
+                THEN("The max document index should be the original")
+                REQUIRE(maxIndex(doc) == 14);
 
                 THEN("The first page of the document should be the first page of the file")
                 REQUIRE(doc.getPage(0)->fileIndex() == 0);
@@ -193,6 +199,9 @@ SCENARIO("Removing a 2-page range from different places of a document")
             THEN("The document should have 13 pages")
             REQUIRE(doc.numberOfPages() == 13);
 
+            THEN("The max document index should be lower")
+            REQUIRE(maxIndex(doc) == 12);
+
             THEN("The last page of the document should be the 13th page of the file")
             REQUIRE(doc.getPage(12)->fileIndex() == 12);
 
@@ -202,6 +211,9 @@ SCENARIO("Removing a 2-page range from different places of a document")
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
+
+                THEN("The max document index should be the original")
+                REQUIRE(maxIndex(doc) == 14);
 
                 THEN("The last page of the document should be the last page of the file")
                 REQUIRE(doc.getPage(14)->fileIndex() == 14);
@@ -216,6 +228,9 @@ SCENARIO("Removing a 2-page range from different places of a document")
             THEN("The document should have 13 pages")
             REQUIRE(doc.numberOfPages() == 13);
 
+            THEN("The max document index should be lower")
+            REQUIRE(maxIndex(doc) == 12);
+
             THEN("The new 8th and 9th pages should be the 10th and 11th, respectively")
             {
                 REQUIRE(doc.getPage(7)->fileIndex() == 9);
@@ -228,6 +243,9 @@ SCENARIO("Removing a 2-page range from different places of a document")
 
                 THEN("The document should have 15 pages")
                 REQUIRE(doc.numberOfPages() == 15);
+
+                THEN("The max document index should be original")
+                REQUIRE(maxIndex(doc) == 14);
 
                 THEN("The 8th and 9th pages of the document should be the corresponding pages of the files")
                 {
