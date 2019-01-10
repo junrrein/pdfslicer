@@ -33,7 +33,7 @@ Glib::RefPtr<Page> Document::removePage(unsigned int index)
     m_pages->remove(index);
 
     for (unsigned int i = index; i < numberOfPages(); ++i)
-        m_pages->get_item(i)->decrementDocumentIndex();
+        m_pages->get_item(i)->setDocumentIndex(i);
 
     return removedPage;
 }
@@ -76,7 +76,7 @@ std::vector<Glib::RefPtr<Page>> Document::removePageRange(unsigned int first, un
 void Document::insertPage(const Glib::RefPtr<Page>& page)
 {
     for (unsigned int i = page->getDocumentIndex(); i < numberOfPages(); ++i)
-        m_pages->get_item(i)->incrementDocumentIndex();
+        m_pages->get_item(i)->setDocumentIndex(i + 1);
 
     m_pages->insert_sorted(page, pageComparator{});
 }
