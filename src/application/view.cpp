@@ -20,6 +20,8 @@
 
 namespace Slicer {
 
+namespace rsv = ranges::view;
+
 View::View(BackgroundThread& backgroundThread)
     : m_backgroundThread{backgroundThread}
 {
@@ -79,9 +81,7 @@ void View::setDocument(Document& document, int targetWidgetSize)
     m_documentConnections.emplace_back(
         m_document->pagesRotated.connect(sigc::mem_fun(*this, &View::onModelPagesRotated)));
     m_documentConnections.emplace_back(
-        m_document->beforePagesReordered.connect(sigc::mem_fun(*this, &View::onModelBeforePagesReordered)));
-    m_documentConnections.emplace_back(
-        m_document->afterPagesReordered.connect(sigc::mem_fun(*this, &View::onModelAfterPagesReordered)));
+        m_document->pagesReordered.connect(sigc::mem_fun(*this, &View::onModelPagesReordered)));
     selectedPagesChanged.emit();
 }
 
@@ -114,19 +114,17 @@ unsigned int View::getSelectedChildIndex() const
 
 std::vector<unsigned int> View::getSelectedChildrenIndexes() const
 {
-    using namespace ranges;
-
     const std::vector<const Gtk::Widget*> children = get_children();
 
     const std::vector<unsigned int> result
         = children
-          | view::transform([](const Gtk::Widget* child) {
+          | rsv::transform([](const Gtk::Widget* child) {
                 return dynamic_cast<const InteractivePageWidget*>(child);
             })
-          | view::filter([](const InteractivePageWidget* pageWidget) {
+          | rsv::filter([](const InteractivePageWidget* pageWidget) {
                 return pageWidget->getChecked();
             })
-          | view::transform([](const InteractivePageWidget* pageWidget) {
+          | rsv::transform([](const InteractivePageWidget* pageWidget) {
                 return static_cast<unsigned int>(pageWidget->get_index());
             });
 
@@ -198,15 +196,6 @@ void View::killQueuedPages()
     m_renderedQueue = {};
 }
 
-void View::saveSelection()
-{
-    m_savedSelection = getSelectedChildrenIndexes();
-}
-
-void View::restoreSelection()
-{
-}
-
 void View::onDispatcherCalled()
 {
     displayRenderedPages();
@@ -248,14 +237,19 @@ void View::onModelPagesRotated(const std::vector<unsigned int>& positions)
     }
 }
 
-void View::onModelBeforePagesReordered()
+void View::onModelPagesReordered(const std::vector<unsigned int>& positions)
 {
-    saveSelection();
-}
+    for (auto [i, pageWidget] : rsv::enumerate(m_pageWidgets)) {
+        for (unsigned int position : positions) {
+            if (i == position) {
+                pageWidget->setChecked(true);
 
-void View::onModelAfterPagesReordered()
-{
-    restoreSelection();
+                break;
+            }
+        }
+    }
+
+    selectedPagesChanged.emit();
 }
 
 void View::onPageSelection(InteractivePageWidget* pageWidget)
