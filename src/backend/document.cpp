@@ -103,9 +103,13 @@ void Document::insertPageRange(const std::vector<Glib::RefPtr<Page>>& pages, uns
 
 void Document::movePage(unsigned int indexToMove, unsigned int indexDestination)
 {
+    beforePagesReordered.emit();
+
     Glib::RefPtr<Page> pageToMove = removePage(indexToMove);
     pageToMove->setDocumentIndex(indexDestination);
     insertPage(pageToMove);
+
+    afterPagesReordered.emit();
 }
 
 void Document::rotatePagesRight(const std::vector<unsigned int>& pageNumbers)
