@@ -47,8 +47,7 @@ public:
     unsigned int numberOfPages() const;
 
     sigc::signal<void, std::vector<unsigned int>> pagesRotated;
-    sigc::signal<void> beforePagesReordered;
-    sigc::signal<void> afterPagesReordered;
+    sigc::signal<void, std::vector<unsigned int>> pagesReordered;
 
 private:
     using PopplerDocumentPointer = std::unique_ptr<PopplerDocument, decltype(&g_object_unref)>;
