@@ -78,6 +78,10 @@ void View::setDocument(Document& document, int targetWidgetSize)
         m_document->pages()->signal_items_changed().connect(sigc::mem_fun(*this, &View::onModelItemsChanged)));
     m_documentConnections.emplace_back(
         m_document->pagesRotated.connect(sigc::mem_fun(*this, &View::onModelPagesRotated)));
+    m_documentConnections.emplace_back(
+        m_document->beforePagesReordered.connect(sigc::mem_fun(*this, &View::onModelBeforePagesReordered)));
+    m_documentConnections.emplace_back(
+        m_document->afterPagesReordered.connect(sigc::mem_fun(*this, &View::onModelAfterPagesReordered)));
     selectedPagesChanged.emit();
 }
 
@@ -97,8 +101,8 @@ void View::changePageSize(int targetWidgetSize)
 
 void View::clearSelection()
 {
-    for (Gtk::Widget* child : get_children())
-        dynamic_cast<InteractivePageWidget*>(child)->setChecked(false);
+    for (auto& widget : m_pageWidgets)
+        widget->setChecked(false);
 
     selectedPagesChanged.emit();
 }
@@ -194,6 +198,15 @@ void View::killQueuedPages()
     m_renderedQueue = {};
 }
 
+void View::saveSelection()
+{
+    m_savedSelection = getSelectedChildrenIndexes();
+}
+
+void View::restoreSelection()
+{
+}
+
 void View::onDispatcherCalled()
 {
     displayRenderedPages();
@@ -233,6 +246,16 @@ void View::onModelPagesRotated(const std::vector<unsigned int>& positions)
         m_toRenderQueue.push(*it);
         m_dispatcher.emit();
     }
+}
+
+void View::onModelBeforePagesReordered()
+{
+    saveSelection();
+}
+
+void View::onModelAfterPagesReordered()
+{
+    restoreSelection();
 }
 
 void View::onPageSelection(InteractivePageWidget* pageWidget)
