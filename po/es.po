@@ -1,10 +1,10 @@
-# Julián Unrrein <junrrein@gmail.com>, 2018.
+# Julián Unrrein <junrrein@gmail.com>, 2018, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-01-12 20:25-0300\n"
-"PO-Revision-Date: 2018-12-22 12:09+0000\n"
+"PO-Revision-Date: 2019-01-15 10:20+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/es/>\n"
@@ -30,7 +30,7 @@ msgstr "Icono de aplicación"
 
 #: ../src/application/aboutdialog.cpp:44
 msgid "\"Move Left\" and \"Move Right\" icons"
-msgstr ""
+msgstr "Iconos \"Mover a la Izquierda\" y \"Mover a la Derecha\""
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
@@ -41,14 +41,12 @@ msgid "Rotate right"
 msgstr "Rotar hacia la derecha"
 
 #: ../src/application/actionbar.cpp:43
-#, fuzzy
 msgid "Move left"
-msgstr "Rotar hacia la izquierda"
+msgstr "Mover a la izquierda"
 
 #: ../src/application/actionbar.cpp:48
-#, fuzzy
 msgid "Move right"
-msgstr "Rotar hacia la derecha"
+msgstr "Mover a la derecha"
 
 #: ../src/application/actionbar.cpp:56
 msgctxt "plural (pages)"
@@ -72,7 +70,7 @@ msgstr "Remover siguientes"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr ""
+msgstr "Más operaciones para remover páginas…"
 
 #: ../src/application/actionbar.cpp:69
 msgid "Cancel selection"
