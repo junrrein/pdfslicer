@@ -28,12 +28,18 @@ Page::Page(PopplerDocument* document, int pageNumber)
         throw std::runtime_error("Couldn't load page with number: " + std::to_string(pageNumber));
 
     m_ppage.reset(ppage);
-    m_fileIndex = poppler_page_get_index(m_ppage.get());
+    m_fileIndex = static_cast<unsigned>(poppler_page_get_index(m_ppage.get()));
+    m_documentIndex = m_fileIndex;
 }
 
-int Page::fileIndex() const
+unsigned int Page::fileIndex() const
 {
     return m_fileIndex;
+}
+
+unsigned int Page::getDocumentIndex() const
+{
+    return m_documentIndex;
 }
 
 Page::Size Page::size() const
@@ -82,6 +88,23 @@ Page::Size Page::scaledRotatedSize(int targetSize) const
     return scaleSize(rotatedSize(), targetSize);
 }
 
+void Page::setDocumentIndex(unsigned int newIndex)
+{
+    m_documentIndex = newIndex;
+
+    indexChanged.emit();
+}
+
+void Page::incrementDocumentIndex()
+{
+    setDocumentIndex(getDocumentIndex() + 1);
+}
+
+void Page::decrementDocumentIndex()
+{
+    setDocumentIndex(getDocumentIndex() - 1);
+}
+
 void Page::rotateRight()
 {
     if (m_rotation == 270)
@@ -98,11 +121,10 @@ void Page::rotateLeft()
         m_rotation -= 90;
 }
 
-int pageComparator::operator()(const Glib::RefPtr<const Page>& a,
-                               const Glib::RefPtr<const Page>& b)
+int Page::sortFunction(const Page& a, const Page& b)
 {
-    const int aPosition = a->fileIndex();
-    const int bPosition = b->fileIndex();
+    const unsigned int aPosition = a.getDocumentIndex();
+    const unsigned int bPosition = b.getDocumentIndex();
 
     if (aPosition < bPosition)
         return -1;
@@ -111,6 +133,18 @@ int pageComparator::operator()(const Glib::RefPtr<const Page>& a,
         return 0;
 
     return 1;
+}
+
+int Page::sortFunction(const Glib::RefPtr<const Page>& a,
+                       const Glib::RefPtr<const Page>& b)
+{
+    return sortFunction(*(a.operator->()), *(b.operator->()));
+}
+
+int pageComparator::operator()(const Glib::RefPtr<const Page>& a,
+                               const Glib::RefPtr<const Page>& b)
+{
+    return Page::sortFunction(a, b);
 }
 
 } // namespace Slicer

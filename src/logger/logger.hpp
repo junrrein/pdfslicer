@@ -24,9 +24,9 @@ namespace Slicer {
 namespace Logger {
 
     void setupLogger();
-    void logInfo(std::string str);
-    void logWarning(std::string str);
-    void logError(std::string str);
+    void logInfo(const std::string& str);
+    void logWarning(const std::string& str);
+    void logError(const std::string& str);
 
     std::string getPathToLogFile();
 }

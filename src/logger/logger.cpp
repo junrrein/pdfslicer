@@ -49,19 +49,19 @@ std::string getPathToLogFile()
     return Glib::build_filename(config::getConfigDirPath(), "log.txt");
 }
 
-void logInfo(std::string str)
+void logInfo(const std::string& str)
 {
     if (auto logger = spdlog::get("default"); logger != nullptr)
         logger->info(str);
 }
 
-void logWarning(std::string str)
+void logWarning(const std::string& str)
 {
     if (auto logger = spdlog::get("default"); logger != nullptr)
         logger->warn(str);
 }
 
-void logError(std::string str)
+void logError(const std::string& str)
 {
     if (auto logger = spdlog::get("default"); logger != nullptr)
         logger->error(str);

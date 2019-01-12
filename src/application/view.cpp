@@ -20,12 +20,15 @@
 
 namespace Slicer {
 
+namespace rsv = ranges::view;
+
 View::View(BackgroundThread& backgroundThread)
     : m_backgroundThread{backgroundThread}
 {
     set_column_spacing(10);
     set_row_spacing(5);
     set_selection_mode(Gtk::SELECTION_NONE);
+    set_sort_func(&sortFunction);
 
     m_dispatcher.connect(sigc::mem_fun(*this, &View::onDispatcherCalled));
 }
@@ -68,7 +71,7 @@ void View::setDocument(Document& document, int targetWidgetSize)
         auto page = m_document->getPage(i);
         std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
         m_pageWidgets.push_back(pageWidget);
-        insert(*m_pageWidgets.back().get(), -1);
+        add(*m_pageWidgets.back());
         m_toRenderQueue.push(pageWidget);
         m_dispatcher.emit();
     }
@@ -77,6 +80,8 @@ void View::setDocument(Document& document, int targetWidgetSize)
         m_document->pages()->signal_items_changed().connect(sigc::mem_fun(*this, &View::onModelItemsChanged)));
     m_documentConnections.emplace_back(
         m_document->pagesRotated.connect(sigc::mem_fun(*this, &View::onModelPagesRotated)));
+    m_documentConnections.emplace_back(
+        m_document->pagesReordered.connect(sigc::mem_fun(*this, &View::onModelPagesReordered)));
     selectedPagesChanged.emit();
 }
 
@@ -96,8 +101,8 @@ void View::changePageSize(int targetWidgetSize)
 
 void View::clearSelection()
 {
-    for (Gtk::Widget* child : get_children())
-        dynamic_cast<InteractivePageWidget*>(child)->setChecked(false);
+    for (auto& widget : m_pageWidgets)
+        widget->setChecked(false);
 
     selectedPagesChanged.emit();
 }
@@ -109,19 +114,17 @@ unsigned int View::getSelectedChildIndex() const
 
 std::vector<unsigned int> View::getSelectedChildrenIndexes() const
 {
-    using namespace ranges;
-
     const std::vector<const Gtk::Widget*> children = get_children();
 
     const std::vector<unsigned int> result
         = children
-          | view::transform([](const Gtk::Widget* child) {
+          | rsv::transform([](const Gtk::Widget* child) {
                 return dynamic_cast<const InteractivePageWidget*>(child);
             })
-          | view::filter([](const InteractivePageWidget* pageWidget) {
+          | rsv::filter([](const InteractivePageWidget* pageWidget) {
                 return pageWidget->getChecked();
             })
-          | view::transform([](const InteractivePageWidget* pageWidget) {
+          | rsv::transform([](const InteractivePageWidget* pageWidget) {
                 return static_cast<unsigned int>(pageWidget->get_index());
             });
 
@@ -136,6 +139,14 @@ std::vector<unsigned int> View::getUnselectedChildrenIndexes() const
                            ranges::back_inserter(unselectedIndexes));
 
     return unselectedIndexes;
+}
+
+int View::sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b)
+{
+    auto widgetA = dynamic_cast<InteractivePageWidget*>(a);
+    auto widgetB = dynamic_cast<InteractivePageWidget*>(b);
+
+    return InteractivePageWidget::sortFunction(*widgetA, *widgetB);
 }
 
 void View::displayRenderedPages()
@@ -205,8 +216,8 @@ void View::onModelItemsChanged(guint position, guint removed, guint added)
         auto page = m_document->getPage(position + i);
         std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
 
-        it = m_pageWidgets.insert(it, pageWidget);
-        insert(*pageWidget, static_cast<int>(position + i));
+        m_pageWidgets.insert(it, pageWidget);
+        add(*pageWidget);
         m_toRenderQueue.push(pageWidget);
         m_dispatcher.emit();
     }
@@ -224,6 +235,21 @@ void View::onModelPagesRotated(const std::vector<unsigned int>& positions)
         m_toRenderQueue.push(*it);
         m_dispatcher.emit();
     }
+}
+
+void View::onModelPagesReordered(const std::vector<unsigned int>& positions)
+{
+    for (auto [i, pageWidget] : rsv::enumerate(m_pageWidgets)) {
+        for (unsigned int position : positions) {
+            if (i == position) {
+                pageWidget->setChecked(true);
+
+                break;
+            }
+        }
+    }
+
+    selectedPagesChanged.emit();
 }
 
 void View::onPageSelection(InteractivePageWidget* pageWidget)

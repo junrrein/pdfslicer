@@ -117,6 +117,8 @@ void AppWindow::addActions()
     m_removeNextAction = add_action("remove-next", sigc::mem_fun(*this, &AppWindow::onRemoveNextPages));
     m_rotateRightAction = add_action("rotate-right", sigc::mem_fun(*this, &AppWindow::onRotatePagesRight));
     m_rotateLeftAction = add_action("rotate-left", sigc::mem_fun(*this, &AppWindow::onRotatePagesLeft));
+    m_moveLeftAction = add_action("move-left", sigc::mem_fun(*this, &AppWindow::onMovePagesLeft));
+    m_moveRightAction = add_action("move-right", sigc::mem_fun(*this, &AppWindow::onMovePagesRight));
     m_cancelSelectionAction = add_action("cancel-selection", sigc::mem_fun(*this, &AppWindow::onCancelSelection));
     m_shortcutsAction = add_action("shortcuts", sigc::mem_fun(*this, &AppWindow::onShortcutsAction));
     m_aboutAction = add_action("about", sigc::mem_fun(*this, &AppWindow::onAboutAction));
@@ -130,6 +132,8 @@ void AppWindow::addActions()
     m_removeNextAction->set_enabled(false);
     m_rotateRightAction->set_enabled(false);
     m_rotateLeftAction->set_enabled(false);
+    m_moveLeftAction->set_enabled(false);
+    m_moveRightAction->set_enabled(false);
     m_cancelSelectionAction->set_enabled(false);
 }
 
@@ -220,6 +224,8 @@ void AppWindow::disableEditingActions()
     m_removeNextAction->set_enabled(false);
     m_rotateRightAction->set_enabled(false);
     m_rotateLeftAction->set_enabled(false);
+    m_moveLeftAction->set_enabled(false);
+    m_moveRightAction->set_enabled(false);
     m_cancelSelectionAction->set_enabled(false);
 }
 
@@ -252,7 +258,7 @@ void AppWindow::onSaveAction()
         trySaveDocument(dialog.get_file());
 }
 
-void AppWindow::trySaveDocument(Glib::RefPtr<Gio::File> file)
+void AppWindow::trySaveDocument(const Glib::RefPtr<Gio::File>& file)
 {
     m_savingRevealer.saving();
     disableEditingActions();
@@ -353,7 +359,45 @@ void AppWindow::onRotatePagesRight()
 void AppWindow::onRotatePagesLeft()
 {
     auto command = std::make_shared<RotatePagesLeftCommand>(*m_document, m_view.getSelectedChildrenIndexes());
-    m_document->rotatePagesLeft(m_view.getSelectedChildrenIndexes());
+    m_commandManager.execute(command);
+}
+
+void AppWindow::onMovePagesLeft()
+{
+    const std::vector<unsigned int> indexToMove = m_view.getSelectedChildrenIndexes();
+
+    std::shared_ptr<Command> command;
+
+    if (indexToMove.size() == 1)
+        command = std::make_shared<MovePageCommand>(*m_document,
+                                                    indexToMove.front(),
+                                                    indexToMove.front() - 1);
+    else
+        command = std::make_shared<MovePageRangeCommand>(*m_document,
+                                                         indexToMove.front(),
+                                                         indexToMove.back(),
+                                                         indexToMove.front() - 1);
+
+    m_commandManager.execute(command);
+}
+
+void AppWindow::onMovePagesRight()
+{
+    const std::vector<unsigned int> indexToMove = m_view.getSelectedChildrenIndexes();
+
+    std::shared_ptr<Command> command;
+
+    if (indexToMove.size() == 1)
+        command = std::make_shared<MovePageCommand>(*m_document,
+                                                    indexToMove.front(),
+                                                    indexToMove.front() + 1);
+    else
+        command = std::make_shared<MovePageRangeCommand>(*m_document,
+                                                         indexToMove.front(),
+                                                         indexToMove.back(),
+                                                         indexToMove.front() + 1);
+
+    m_commandManager.execute(command);
 }
 
 void AppWindow::onCancelSelection()
@@ -361,9 +405,20 @@ void AppWindow::onCancelSelection()
     m_view.clearSelection();
 }
 
+bool isVectorContigous(const std::vector<unsigned int>& bector)
+{
+    for (unsigned int i = 0; i < bector.size(); ++i)
+        if (bector.front() + i != bector.at(i))
+            return false;
+
+    return true;
+}
+
 void AppWindow::onSelectedPagesChanged()
 {
-    const unsigned long numSelected = m_view.getSelectedChildrenIndexes().size();
+    const std::vector<unsigned int> indexSelected = m_view.getSelectedChildrenIndexes();
+    const unsigned long numSelected = indexSelected.size();
+    const unsigned long numPages = m_view.get_children().size();
 
     if (numSelected == 0) {
         m_removeSelectedAction->set_enabled(false);
@@ -372,25 +427,35 @@ void AppWindow::onSelectedPagesChanged()
         m_removeNextAction->set_enabled(false);
         m_rotateRightAction->set_enabled(false);
         m_rotateLeftAction->set_enabled(false);
+        m_moveLeftAction->set_enabled(false);
+        m_moveRightAction->set_enabled(false);
         m_cancelSelectionAction->set_enabled(false);
     }
     else {
         m_removeSelectedAction->set_enabled();
+        m_removeUnselectedAction->set_enabled();
         m_rotateRightAction->set_enabled();
         m_rotateLeftAction->set_enabled();
-        m_removeUnselectedAction->set_enabled();
         m_cancelSelectionAction->set_enabled();
+
+        if (indexSelected.front() == 0)
+            m_moveLeftAction->set_enabled(false);
+        else
+            m_moveLeftAction->set_enabled();
+
+        if (indexSelected.back() == numPages - 1)
+            m_moveRightAction->set_enabled(false);
+        else
+            m_moveRightAction->set_enabled();
     }
 
     if (numSelected == 1) {
-        const unsigned int index = m_view.getSelectedChildIndex();
-        if (index == 0)
+        if (indexSelected.front() == 0)
             m_removePreviousAction->set_enabled(false);
         else
             m_removePreviousAction->set_enabled();
 
-        const unsigned long numPages = m_view.get_children().size();
-        if (index == numPages - 1)
+        if (indexSelected.front() == numPages - 1)
             m_removeNextAction->set_enabled(false);
         else
             m_removeNextAction->set_enabled();
@@ -399,6 +464,11 @@ void AppWindow::onSelectedPagesChanged()
     if (numSelected > 1) {
         m_removePreviousAction->set_enabled(false);
         m_removeNextAction->set_enabled(false);
+
+        if (!isVectorContigous(indexSelected)) {
+            m_moveLeftAction->set_enabled(false);
+            m_moveRightAction->set_enabled(false);
+        }
     }
 }
 

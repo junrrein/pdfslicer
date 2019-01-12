@@ -39,6 +39,12 @@ void InteractivePageWidget::setChecked(bool checked)
     }
 }
 
+int InteractivePageWidget::sortFunction(const InteractivePageWidget& a,
+                                        const InteractivePageWidget& b)
+{
+    return Page::sortFunction(a.m_page, b.m_page);
+}
+
 void InteractivePageWidget::setupInteractiveWidgets()
 {
     m_check.set_halign(Gtk::ALIGN_END);

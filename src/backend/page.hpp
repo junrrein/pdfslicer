@@ -32,20 +32,31 @@ public:
 
     Page(PopplerDocument* document, int pageNumber);
 
-    int fileIndex() const;
+    unsigned int fileIndex() const;
+    unsigned int getDocumentIndex() const;
     int rotation() const { return m_rotation; }
     Size size() const;
     Size rotatedSize() const;
     Size scaledSize(int targetSize) const;
     Size scaledRotatedSize(int targetSize) const;
 
+    void setDocumentIndex(unsigned int newIndex);
+    void incrementDocumentIndex();
+    void decrementDocumentIndex();
     void rotateRight();
     void rotateLeft();
+
+    sigc::signal<void> indexChanged;
+
+    static int sortFunction(const Page& a, const Page& b);
+    static int sortFunction(const Glib::RefPtr<const Page>& a,
+                            const Glib::RefPtr<const Page>& b);
 
 private:
     std::unique_ptr<PopplerPage, decltype(&g_object_unref)> m_ppage;
     int m_rotation = 0;
-    int m_fileIndex;
+    unsigned int m_fileIndex;
+    unsigned int m_documentIndex;
 
     friend class PageRenderer; // For access to m_ppage
 };

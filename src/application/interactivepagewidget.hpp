@@ -38,6 +38,9 @@ public:
     sigc::signal<void, InteractivePageWidget*> shiftSelected;
     sigc::signal<void, Glib::RefPtr<const Page>> previewRequested;
 
+    static int sortFunction(const InteractivePageWidget& a,
+                            const InteractivePageWidget& b);
+
 private:
     bool m_isChecked = false;
 

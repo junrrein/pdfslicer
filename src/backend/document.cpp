@@ -16,6 +16,7 @@
 
 #include "document.hpp"
 #include "tempfile.hpp"
+#include <numeric>
 
 namespace Slicer {
 
@@ -27,19 +28,22 @@ Document::Document(const Glib::RefPtr<Gio::File>& sourceFile)
     loadDocument();
 }
 
-Glib::RefPtr<Page> Document::removePage(unsigned int position)
+Glib::RefPtr<Page> Document::removePage(unsigned int index)
 {
-    Glib::RefPtr<Page> removedPage = m_pages->get_item(position);
-    m_pages->remove(position);
+    Glib::RefPtr<Page> removedPage = m_pages->get_item(index);
+    m_pages->remove(index);
+
+    for (unsigned int i = index; i < numberOfPages(); ++i)
+        m_pages->get_item(i)->setDocumentIndex(i);
 
     return removedPage;
 }
 
-std::vector<Glib::RefPtr<Page>> Document::removePages(const std::vector<unsigned int>& positions)
+std::vector<Glib::RefPtr<Page>> Document::removePages(const std::vector<unsigned int>& indexes)
 {
     std::vector<Glib::RefPtr<Page>> removedPages;
 
-    for (unsigned int position : positions) {
+    for (unsigned int position : indexes) {
         auto page = m_pages->get_item(position);
         removedPages.push_back(page);
     }
@@ -49,10 +53,13 @@ std::vector<Glib::RefPtr<Page>> Document::removePages(const std::vector<unsigned
     // want to remove.
     // The problem is that, everytime a page is removed, all positions are invalidated.
     // After each page removal, the remaining positions must be decremented by one.
-    for (unsigned int i = 0; i < positions.size(); ++i) {
-        const unsigned int actualPosition = positions.at(i) - i;
+    for (unsigned int i = 0; i < indexes.size(); ++i) {
+        const unsigned int actualPosition = indexes.at(i) - i;
         m_pages->remove(actualPosition);
     }
+
+    for (unsigned int i = indexes.front(); i < numberOfPages(); ++i)
+        m_pages->get_item(i)->setDocumentIndex(i);
 
     return removedPages;
 }
@@ -67,23 +74,59 @@ std::vector<Glib::RefPtr<Page>> Document::removePageRange(unsigned int first, un
     const unsigned int nElem = last - first + 1;
     m_pages->splice(first, nElem, {});
 
+    for (unsigned int i = first; i < numberOfPages(); ++i)
+        m_pages->get_item(i)->setDocumentIndex(i);
+
     return removedPages;
 }
 
 void Document::insertPage(const Glib::RefPtr<Page>& page)
 {
+    for (unsigned int i = page->getDocumentIndex(); i < numberOfPages(); ++i)
+        m_pages->get_item(i)->setDocumentIndex(i + 1);
+
     m_pages->insert_sorted(page, pageComparator{});
 }
 
 void Document::insertPages(const std::vector<Glib::RefPtr<Page>>& pages)
 {
     for (const auto& page : pages)
-        m_pages->insert_sorted(page, pageComparator{});
+        insertPage(page);
 }
 
 void Document::insertPageRange(const std::vector<Glib::RefPtr<Page>>& pages, unsigned int position)
 {
+    for (unsigned int i = position; i < numberOfPages(); ++i)
+        m_pages->get_item(i)->setDocumentIndex(i + static_cast<unsigned>(pages.size()));
+
     m_pages->splice(position, 0, pages);
+}
+
+void Document::movePage(unsigned int indexToMove, unsigned int indexDestination)
+{
+    Glib::RefPtr<Page> pageToMove = removePage(indexToMove);
+    pageToMove->setDocumentIndex(indexDestination);
+    insertPage(pageToMove);
+
+    pagesReordered.emit({indexDestination});
+}
+
+void Document::movePageRange(unsigned int indexFirst,
+                             unsigned int indexLast,
+                             unsigned int indexDestination)
+{
+    auto pagesToMove = removePageRange(indexFirst, indexLast);
+
+    for (unsigned int i = 0; i < pagesToMove.size(); ++i)
+        pagesToMove.at(i)->setDocumentIndex(indexDestination + i);
+
+    insertPageRange(pagesToMove, indexDestination);
+
+    const unsigned int numberOfPages = indexLast - indexFirst + 1;
+    std::vector<unsigned int> reorderedIndexes(numberOfPages);
+    std::iota(reorderedIndexes.begin(), reorderedIndexes.end(), indexDestination);
+
+    pagesReordered.emit(reorderedIndexes);
 }
 
 void Document::rotatePagesRight(const std::vector<unsigned int>& pageNumbers)

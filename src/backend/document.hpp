@@ -27,13 +27,18 @@ class Document {
 public:
     Document(const Glib::RefPtr<Gio::File>& sourceFile);
 
-    Glib::RefPtr<Page> removePage(unsigned int position);
-    std::vector<Glib::RefPtr<Page>> removePages(const std::vector<unsigned int>& positions);
+    Glib::RefPtr<Page> removePage(unsigned int index);
+    std::vector<Glib::RefPtr<Page>> removePages(const std::vector<unsigned int>& indexes);
     std::vector<Glib::RefPtr<Page>> removePageRange(unsigned int first, unsigned int last);
 
     void insertPage(const Glib::RefPtr<Page>& page);
     void insertPages(const std::vector<Glib::RefPtr<Page>>& pages);
     void insertPageRange(const std::vector<Glib::RefPtr<Page>>& pages, unsigned int position);
+
+    void movePage(unsigned int indexToMove, unsigned int indexDestination);
+    void movePageRange(unsigned int indexFirst,
+                       unsigned int indexLast,
+                       unsigned int indexDestination);
 
     void rotatePagesRight(const std::vector<unsigned int>& pageNumbers);
     void rotatePagesLeft(const std::vector<unsigned int>& pageNumbers);
@@ -45,6 +50,7 @@ public:
     unsigned int numberOfPages() const;
 
     sigc::signal<void, std::vector<unsigned int>> pagesRotated;
+    sigc::signal<void, std::vector<unsigned int>> pagesReordered;
 
 private:
     using PopplerDocumentPointer = std::unique_ptr<PopplerDocument, decltype(&g_object_unref)>;

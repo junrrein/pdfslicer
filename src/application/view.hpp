@@ -45,6 +45,8 @@ public:
 
     sigc::signal<void> selectedPagesChanged;
 
+    static int sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b);
+
 private:
     PageWidgetList m_pageWidgets;
     int m_pageWidgetSize = 0;
@@ -64,6 +66,7 @@ private:
     void onDispatcherCalled();
     void onModelItemsChanged(guint position, guint removed, guint added);
     void onModelPagesRotated(const std::vector<unsigned int>& positions);
+    void onModelPagesReordered(const std::vector<unsigned int>& positions);
     void onPageSelection(InteractivePageWidget* pageWidget);
     void onShiftSelection(InteractivePageWidget* pageWidget);
     void onPreviewRequested(const Glib::RefPtr<const Page>& page);

@@ -85,6 +85,8 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_removeNextAction;
     Glib::RefPtr<Gio::SimpleAction> m_rotateRightAction;
     Glib::RefPtr<Gio::SimpleAction> m_rotateLeftAction;
+    Glib::RefPtr<Gio::SimpleAction> m_moveLeftAction;
+    Glib::RefPtr<Gio::SimpleAction> m_moveRightAction;
     Glib::RefPtr<Gio::SimpleAction> m_cancelSelectionAction;
     Glib::RefPtr<Gio::SimpleAction> m_shortcutsAction;
     Glib::RefPtr<Gio::SimpleAction> m_aboutAction;
@@ -99,7 +101,7 @@ private:
     void loadCustomCSS();
     void disableEditingActions();
     void enableEditingActions();
-    void trySaveDocument(Glib::RefPtr<Gio::File> file);
+    void trySaveDocument(const Glib::RefPtr<Gio::File>& file);
     void tryOpenDocument(Glib::RefPtr<Gio::File> file);
 
     // Callbacks
@@ -113,6 +115,8 @@ private:
     void onRemoveNextPages();
     void onRotatePagesRight();
     void onRotatePagesLeft();
+    void onMovePagesLeft();
+    void onMovePagesRight();
     void onCancelSelection();
     void onAboutAction();
     void onShortcutsAction();

@@ -30,8 +30,8 @@ void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile) const
     std::unique_ptr<PDFDocumentCopyingContext> copyingContext{pdfWriter.CreatePDFCopyingContext(m_document.filePath())};
 
     for (unsigned int i = 0; i < m_document.pages()->get_n_items(); ++i) {
-        const Glib::RefPtr<Page> slicerPage = m_document.pages()->get_item(i);
-        const auto pageNumber = static_cast<unsigned int>(slicerPage->fileIndex());
+        Glib::RefPtr<const Page> slicerPage = m_document.getPage(i);
+        const unsigned int pageNumber = slicerPage->fileIndex();
 
         RefCountPtr<PDFDictionary> parsedPage = parser.ParsePage(pageNumber);
         PDFPageInput inputPage{&parser, parsedPage};
