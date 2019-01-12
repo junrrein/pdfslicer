@@ -120,6 +120,24 @@ private:
     const unsigned int m_indexDestination;
 };
 
+class MovePageRangeCommand : public Command {
+public:
+    MovePageRangeCommand(Document& document,
+                         unsigned int indexFirst,
+                         unsigned int indexLast,
+                         unsigned int indexDestination);
+
+    void execute() override;
+    void undo() override;
+    void redo() override;
+
+private:
+    Document& m_document;
+    const unsigned int m_indexFirst;
+    const unsigned int m_indexLast;
+    const unsigned int m_indexDestination;
+};
+
 } // namespace Slicer
 
 #endif // COMMAND_HPP
