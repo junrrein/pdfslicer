@@ -110,6 +110,18 @@ void Document::movePage(unsigned int indexToMove, unsigned int indexDestination)
     pagesReordered.emit({indexDestination});
 }
 
+void Document::movePageRange(unsigned int indexFisrt,
+                             unsigned int indexLast,
+                             unsigned int indexDestination)
+{
+    auto pagesToMove = removePageRange(indexFisrt, indexLast);
+
+    for (unsigned int i = 0; i < pagesToMove.size(); ++i)
+        pagesToMove.at(i)->setDocumentIndex(indexDestination + i);
+
+    insertPageRange(pagesToMove, indexDestination);
+}
+
 void Document::rotatePagesRight(const std::vector<unsigned int>& pageNumbers)
 {
     for (unsigned int pageNumber : pageNumbers)

@@ -36,6 +36,9 @@ public:
     void insertPageRange(const std::vector<Glib::RefPtr<Page>>& pages, unsigned int position);
 
     void movePage(unsigned int indexToMove, unsigned int indexDestination);
+    void movePageRange(unsigned int indexFisrt,
+                       unsigned int indexLast,
+                       unsigned int indexDestination);
 
     void rotatePagesRight(const std::vector<unsigned int>& pageNumbers);
     void rotatePagesLeft(const std::vector<unsigned int>& pageNumbers);
