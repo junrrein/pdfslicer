@@ -7,5 +7,11 @@ else ()
 	set (ICON_DIR_RELATIVE "share/icons/hicolor")
 endif ()
 
-install (FILES ${APPLICATION_ID}.svg
+install (FILES
+		${APPLICATION_ID}.svg
 		DESTINATION ${ICON_DIR_RELATIVE}/scalable/apps)
+
+install (FILES
+		object-move-left-symbolic.svg
+		object-move-right-symbolic.svg
+		DESTINATION ${ICON_DIR_RELATIVE}/scalable/actions)
