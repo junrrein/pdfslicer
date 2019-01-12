@@ -364,21 +364,54 @@ void AppWindow::onRotatePagesLeft()
 
 void AppWindow::onMovePagesLeft()
 {
-    const unsigned int indexToMove = m_view.getSelectedChildIndex();
-    auto command = std::make_shared<MovePageCommand>(*m_document, indexToMove, indexToMove - 1);
+    const std::vector<unsigned int> indexToMove = m_view.getSelectedChildrenIndexes();
+
+    std::shared_ptr<Command> command;
+
+    if (indexToMove.size() == 1)
+        command = std::make_shared<MovePageCommand>(*m_document,
+                                                    indexToMove.front(),
+                                                    indexToMove.front() - 1);
+    else
+        command = std::make_shared<MovePageRangeCommand>(*m_document,
+                                                         indexToMove.front(),
+                                                         indexToMove.back(),
+                                                         indexToMove.front() - 1);
+
     m_commandManager.execute(command);
 }
 
 void AppWindow::onMovePagesRight()
 {
-    const unsigned int indexToMove = m_view.getSelectedChildIndex();
-    auto command = std::make_shared<MovePageCommand>(*m_document, indexToMove, indexToMove + 1);
+    const std::vector<unsigned int> indexToMove = m_view.getSelectedChildrenIndexes();
+
+    std::shared_ptr<Command> command;
+
+    if (indexToMove.size() == 1)
+        command = std::make_shared<MovePageCommand>(*m_document,
+                                                    indexToMove.front(),
+                                                    indexToMove.front() + 1);
+    else
+        command = std::make_shared<MovePageRangeCommand>(*m_document,
+                                                         indexToMove.front(),
+                                                         indexToMove.back(),
+                                                         indexToMove.front() + 1);
+
     m_commandManager.execute(command);
 }
 
 void AppWindow::onCancelSelection()
 {
     m_view.clearSelection();
+}
+
+bool isVectorContigous(const std::vector<unsigned int>& bector)
+{
+    for (unsigned int i = 0; i < bector.size(); ++i)
+        if (bector.front() + i != bector.at(i))
+            return false;
+
+    return true;
 }
 
 void AppWindow::onSelectedPagesChanged()
@@ -431,6 +464,11 @@ void AppWindow::onSelectedPagesChanged()
     if (numSelected > 1) {
         m_removePreviousAction->set_enabled(false);
         m_removeNextAction->set_enabled(false);
+
+        if (!isVectorContigous(indexSelected)) {
+            m_moveLeftAction->set_enabled(false);
+            m_moveRightAction->set_enabled(false);
+        }
     }
 }
 
