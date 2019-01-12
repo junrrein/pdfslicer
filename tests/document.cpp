@@ -444,6 +444,107 @@ SCENARIO("Moving 1 page across different places of a document")
     }
 }
 
+SCENARIO("Moving 2 adjacent pages across different places of a document")
+{
+    GIVEN("A multipage PDF document with 15 pages")
+    {
+        auto multipagePdfFile = Gio::File::create_for_path(multipagePdfPath);
+        Document doc{multipagePdfFile};
+        REQUIRE(doc.numberOfPages() == 15);
+
+        WHEN("The first 2 pages are moved to the 8th place")
+        {
+            doc.movePageRange(0, 1, 7);
+
+            THEN("The 8th and 9th pages of the document should be the 1st and 2nd pages of the file, respectively")
+            {
+                REQUIRE(doc.getPage(7)->fileIndex() == 0);
+                REQUIRE(doc.getPage(8)->fileIndex() == 1);
+            }
+
+            THEN("The 1st page of the document should be the 3rd page of the file")
+            REQUIRE(doc.getPage(0)->fileIndex() == 2);
+
+            THEN("The 6th and 7th pages of the document should be the 8th and 9th pages of the file, respectively")
+            {
+                REQUIRE(doc.getPage(5)->fileIndex() == 7);
+                REQUIRE(doc.getPage(6)->fileIndex() == 8);
+            }
+
+            THEN("The 10th page of the document should be the 10th page of the file")
+            REQUIRE(doc.getPage(9)->fileIndex() == 9);
+        }
+
+        WHEN("The first 2 pages are moved to the end of the document")
+        {
+            doc.movePageRange(0, 1, 13);
+
+            THEN("The 14th and 15th pages of the document should be the 1st and 2nd pages of the file, respectively")
+            {
+                REQUIRE(doc.getPage(13)->fileIndex() == 0);
+                REQUIRE(doc.getPage(14)->fileIndex() == 1);
+            }
+
+            THEN("The 1st page of the document should be the 3rd page of the file")
+            REQUIRE(doc.getPage(0)->fileIndex() == 2);
+
+            THEN("The 13th page of the document should be the 15th page of the file")
+            REQUIRE(doc.getPage(12)->fileIndex() == 14);
+        }
+
+        WHEN("The last 2 pages are moved to the 8th place")
+        {
+            doc.movePageRange(13, 14, 7);
+
+            THEN("The 8th and 9th pages of the document should be the 14th and 15th pages of the file, respectively")
+            {
+                REQUIRE(doc.getPage(7)->fileIndex() == 13);
+                REQUIRE(doc.getPage(8)->fileIndex() == 14);
+            }
+
+            THEN("The last page of the document should be the 13th page of the file")
+            REQUIRE(doc.getPage(14)->fileIndex() == 12);
+
+            THEN("The 10th page of the document should be the 8th page of the file")
+            REQUIRE(doc.getPage(9)->fileIndex() == 7);
+        }
+
+        WHEN("The last 2 pages are moved to the beggining")
+        {
+            doc.movePageRange(13, 14, 0);
+
+            THEN("The 1st and 2nd pages of the document should be the 14th and 15th pages of the file")
+            {
+                REQUIRE(doc.getPage(0)->fileIndex() == 13);
+                REQUIRE(doc.getPage(1)->fileIndex() == 14);
+            }
+
+            THEN("The last page of the document should be the 13th page of the file")
+            REQUIRE(doc.getPage(14)->fileIndex() == 12);
+
+            THEN("The 3rd page of the document should be the 1st page of the file")
+            REQUIRE(doc.getPage(2)->fileIndex() == 0);
+        }
+
+        WHEN("The first 2 pages are moved to the 2nd and 3rd places in the document")
+        {
+            doc.movePageRange(0, 1, 1);
+
+            THEN("The 2nd and 3rd pages of the document should be the 1st and 2nd pages of the file, respectively")
+            {
+                REQUIRE(doc.getPage(1)->fileIndex() == 0);
+                REQUIRE(doc.getPage(2)->fileIndex() == 1);
+            }
+
+            THEN("The 1st page of the document should be the 3rd page of the file")
+            REQUIRE(doc.getPage(0)->fileIndex() == 2);
+
+            THEN("The 4rd page of the document should be the 4rd page of the file")
+            REQUIRE(doc.getPage(3)->fileIndex() == 3);
+        }
+    }
+}
+
 unsigned int maxIndex(const Document& doc)
 {
     return doc.getPage(doc.numberOfPages() - 1)->getDocumentIndex();
