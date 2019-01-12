@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-05 20:00-0300\n"
+"POT-Creation-Date: 2019-01-12 20:25-0300\n"
 "PO-Revision-Date: 2019-01-05 23:01+0000\n"
 "Last-Translator: André Marcelo Alvarenga <andrealvarenga@gmx.net>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/pdf-"
@@ -31,43 +31,61 @@ msgstr "Bibliotecas de terceiros"
 msgid "Application icon"
 msgstr "Ícone do aplicativo"
 
-#: ../src/application/actionbar.cpp:29
+#: ../src/application/aboutdialog.cpp:44
+msgid "\"Move Left\" and \"Move Right\" icons"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
 msgstr "Girar para a esquerda"
 
-#: ../src/application/actionbar.cpp:34
+#: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
 msgstr "Girar para a direita"
 
-#: ../src/application/actionbar.cpp:41
+#: ../src/application/actionbar.cpp:43
+#, fuzzy
+msgid "Move left"
+msgstr "Girar para a esquerda"
+
+#: ../src/application/actionbar.cpp:48
+#, fuzzy
+msgid "Move right"
+msgstr "Girar para a direita"
+
+#: ../src/application/actionbar.cpp:56
 msgctxt "plural (pages)"
 msgid "Remove selected"
 msgstr "Remover selecionado"
 
-#: ../src/application/actionbar.cpp:45
+#: ../src/application/actionbar.cpp:61
 msgctxt "plural (pages)"
 msgid "Remove unselected"
 msgstr "Remover desmarcado"
 
-#: ../src/application/actionbar.cpp:49
+#: ../src/application/actionbar.cpp:62
 msgctxt "plural (pages)"
 msgid "Remove previous"
 msgstr "Remover anterior"
 
-#: ../src/application/actionbar.cpp:53
+#: ../src/application/actionbar.cpp:63
 msgctxt "plural (pages)"
 msgid "Remove next"
 msgstr "Remover próximo"
 
-#: ../src/application/actionbar.cpp:57
+#: ../src/application/actionbar.cpp:65
+msgid "More page removing operations…"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:69
 msgid "Cancel selection"
 msgstr "Cancelar seleção"
 
-#: ../src/application/appwindow.cpp:174
+#: ../src/application/appwindow.cpp:178
 msgid "The current document could not be saved"
 msgstr "O documento atual não pôde ser salvo"
 
-#: ../src/application/appwindow.cpp:300
+#: ../src/application/appwindow.cpp:306
 msgid "The selected file could not be opened"
 msgstr "O arquivo selecionado não pôde ser aberto"
 
@@ -103,7 +121,7 @@ msgstr "Reduzir"
 msgid "Zoom in"
 msgstr "Ampliar"
 
-#: ../src/application/interactivepagewidget.cpp:63
+#: ../src/application/interactivepagewidget.cpp:69
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Página {pageNumber}"

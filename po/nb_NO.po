@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-05 20:00-0300\n"
+"POT-Creation-Date: 2019-01-12 20:25-0300\n"
 "PO-Revision-Date: 2018-12-22 12:09+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
@@ -31,47 +31,65 @@ msgstr "Tredjepartsbibliotek"
 msgid "Application icon"
 msgstr "Programikon"
 
-#: ../src/application/actionbar.cpp:29
+#: ../src/application/aboutdialog.cpp:44
+msgid "\"Move Left\" and \"Move Right\" icons"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
 msgstr "Roter til venstre"
 
-#: ../src/application/actionbar.cpp:34
+#: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
 msgstr "Roter til høyre"
 
-#: ../src/application/actionbar.cpp:41
+#: ../src/application/actionbar.cpp:43
+#, fuzzy
+msgid "Move left"
+msgstr "Roter til venstre"
+
+#: ../src/application/actionbar.cpp:48
+#, fuzzy
+msgid "Move right"
+msgstr "Roter til høyre"
+
+#: ../src/application/actionbar.cpp:56
 #, fuzzy
 msgctxt "plural (pages)"
 msgid "Remove selected"
 msgstr "Fjern valgte"
 
-#: ../src/application/actionbar.cpp:45
+#: ../src/application/actionbar.cpp:61
 #, fuzzy
 msgctxt "plural (pages)"
 msgid "Remove unselected"
 msgstr "Fjern uvalgte"
 
-#: ../src/application/actionbar.cpp:49
+#: ../src/application/actionbar.cpp:62
 #, fuzzy
 msgctxt "plural (pages)"
 msgid "Remove previous"
 msgstr "Fjern forrige"
 
-#: ../src/application/actionbar.cpp:53
+#: ../src/application/actionbar.cpp:63
 #, fuzzy
 msgctxt "plural (pages)"
 msgid "Remove next"
 msgstr "Fjern neste"
 
-#: ../src/application/actionbar.cpp:57
+#: ../src/application/actionbar.cpp:65
+msgid "More page removing operations…"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:69
 msgid "Cancel selection"
 msgstr "Avbryt utvalg"
 
-#: ../src/application/appwindow.cpp:174
+#: ../src/application/appwindow.cpp:178
 msgid "The current document could not be saved"
 msgstr "Nåværende dokument kunne ikke lagres"
 
-#: ../src/application/appwindow.cpp:300
+#: ../src/application/appwindow.cpp:306
 msgid "The selected file could not be opened"
 msgstr "Valgt fil kunne ikke åpnes"
 
@@ -107,7 +125,7 @@ msgstr "Forminsk"
 msgid "Zoom in"
 msgstr "Forstørr"
 
-#: ../src/application/interactivepagewidget.cpp:63
+#: ../src/application/interactivepagewidget.cpp:69
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Side {pageNumber}"

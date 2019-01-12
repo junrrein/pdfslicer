@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-05 20:00-0300\n"
+"POT-Creation-Date: 2019-01-12 20:25-0300\n"
 "PO-Revision-Date: 2019-01-08 15:07+0000\n"
 "Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -32,43 +32,61 @@ msgstr "Librairies tierces"
 msgid "Application icon"
 msgstr "Icône de l'application"
 
-#: ../src/application/actionbar.cpp:29
+#: ../src/application/aboutdialog.cpp:44
+msgid "\"Move Left\" and \"Move Right\" icons"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
 msgstr "Rotation à gauche"
 
-#: ../src/application/actionbar.cpp:34
+#: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
 msgstr "Rotation à droite"
 
-#: ../src/application/actionbar.cpp:41
+#: ../src/application/actionbar.cpp:43
+#, fuzzy
+msgid "Move left"
+msgstr "Rotation à gauche"
+
+#: ../src/application/actionbar.cpp:48
+#, fuzzy
+msgid "Move right"
+msgstr "Rotation à droite"
+
+#: ../src/application/actionbar.cpp:56
 msgctxt "plural (pages)"
 msgid "Remove selected"
 msgstr "Supprimer page sélectionnée"
 
-#: ../src/application/actionbar.cpp:45
+#: ../src/application/actionbar.cpp:61
 msgctxt "plural (pages)"
 msgid "Remove unselected"
 msgstr "Supprimer page non sélectionnée"
 
-#: ../src/application/actionbar.cpp:49
+#: ../src/application/actionbar.cpp:62
 msgctxt "plural (pages)"
 msgid "Remove previous"
 msgstr "Supprimer page précédente"
 
-#: ../src/application/actionbar.cpp:53
+#: ../src/application/actionbar.cpp:63
 msgctxt "plural (pages)"
 msgid "Remove next"
 msgstr "Supprimer page suivante"
 
-#: ../src/application/actionbar.cpp:57
+#: ../src/application/actionbar.cpp:65
+msgid "More page removing operations…"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:69
 msgid "Cancel selection"
 msgstr "Annuler la sélection"
 
-#: ../src/application/appwindow.cpp:174
+#: ../src/application/appwindow.cpp:178
 msgid "The current document could not be saved"
 msgstr "Le document actuel n'a pas pu être sauvegardé"
 
-#: ../src/application/appwindow.cpp:300
+#: ../src/application/appwindow.cpp:306
 msgid "The selected file could not be opened"
 msgstr "Le fichier sélectionné n'a pas pu être ouvert"
 
@@ -104,7 +122,7 @@ msgstr "Zoom arrière"
 msgid "Zoom in"
 msgstr "Zoom avant"
 
-#: ../src/application/interactivepagewidget.cpp:63
+#: ../src/application/interactivepagewidget.cpp:69
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Page {pageNumber}"
