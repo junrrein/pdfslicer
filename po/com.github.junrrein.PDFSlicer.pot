@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-05 20:00-0300\n"
+"POT-Creation-Date: 2019-01-12 20:25-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,43 +29,59 @@ msgstr ""
 msgid "Application icon"
 msgstr ""
 
-#: ../src/application/actionbar.cpp:29
+#: ../src/application/aboutdialog.cpp:44
+msgid "\"Move Left\" and \"Move Right\" icons"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
 msgstr ""
 
-#: ../src/application/actionbar.cpp:34
+#: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
 msgstr ""
 
-#: ../src/application/actionbar.cpp:41
+#: ../src/application/actionbar.cpp:43
+msgid "Move left"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:48
+msgid "Move right"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:56
 msgctxt "plural (pages)"
 msgid "Remove selected"
 msgstr ""
 
-#: ../src/application/actionbar.cpp:45
+#: ../src/application/actionbar.cpp:61
 msgctxt "plural (pages)"
 msgid "Remove unselected"
 msgstr ""
 
-#: ../src/application/actionbar.cpp:49
+#: ../src/application/actionbar.cpp:62
 msgctxt "plural (pages)"
 msgid "Remove previous"
 msgstr ""
 
-#: ../src/application/actionbar.cpp:53
+#: ../src/application/actionbar.cpp:63
 msgctxt "plural (pages)"
 msgid "Remove next"
 msgstr ""
 
-#: ../src/application/actionbar.cpp:57
+#: ../src/application/actionbar.cpp:65
+msgid "More page removing operations…"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:69
 msgid "Cancel selection"
 msgstr ""
 
-#: ../src/application/appwindow.cpp:174
+#: ../src/application/appwindow.cpp:178
 msgid "The current document could not be saved"
 msgstr ""
 
-#: ../src/application/appwindow.cpp:300
+#: ../src/application/appwindow.cpp:306
 msgid "The selected file could not be opened"
 msgstr ""
 
@@ -101,7 +117,7 @@ msgstr ""
 msgid "Zoom in"
 msgstr ""
 
-#: ../src/application/interactivepagewidget.cpp:63
+#: ../src/application/interactivepagewidget.cpp:69
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr ""
