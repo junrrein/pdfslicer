@@ -36,7 +36,7 @@ public:
     void insertPageRange(const std::vector<Glib::RefPtr<Page>>& pages, unsigned int position);
 
     void movePage(unsigned int indexToMove, unsigned int indexDestination);
-    void movePageRange(unsigned int indexFisrt,
+    void movePageRange(unsigned int indexFirst,
                        unsigned int indexLast,
                        unsigned int indexDestination);
 

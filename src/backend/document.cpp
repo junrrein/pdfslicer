@@ -16,6 +16,7 @@
 
 #include "document.hpp"
 #include "tempfile.hpp"
+#include <numeric>
 
 namespace Slicer {
 
@@ -110,16 +111,22 @@ void Document::movePage(unsigned int indexToMove, unsigned int indexDestination)
     pagesReordered.emit({indexDestination});
 }
 
-void Document::movePageRange(unsigned int indexFisrt,
+void Document::movePageRange(unsigned int indexFirst,
                              unsigned int indexLast,
                              unsigned int indexDestination)
 {
-    auto pagesToMove = removePageRange(indexFisrt, indexLast);
+    auto pagesToMove = removePageRange(indexFirst, indexLast);
 
     for (unsigned int i = 0; i < pagesToMove.size(); ++i)
         pagesToMove.at(i)->setDocumentIndex(indexDestination + i);
 
     insertPageRange(pagesToMove, indexDestination);
+
+    const unsigned int numberOfPages = indexLast - indexFirst + 1;
+    std::vector<unsigned int> reorderedIndexes(numberOfPages);
+    std::iota(reorderedIndexes.begin(), reorderedIndexes.end(), indexDestination);
+
+    pagesReordered.emit(reorderedIndexes);
 }
 
 void Document::rotatePagesRight(const std::vector<unsigned int>& pageNumbers)
