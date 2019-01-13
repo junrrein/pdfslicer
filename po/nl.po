@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Heimen Stoffels <vistausss@outlook.com>, 2018.
+# Heimen Stoffels <vistausss@outlook.com>, 2018, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-01-12 20:25-0300\n"
-"PO-Revision-Date: 2018-12-22 12:09+0000\n"
+"PO-Revision-Date: 2019-01-15 10:20+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/nl/>\n"
@@ -35,6 +35,7 @@ msgstr "Applicatiepictogram"
 #: ../src/application/aboutdialog.cpp:44
 msgid "\"Move Left\" and \"Move Right\" icons"
 msgstr ""
+"Pictogrammen voor \"Naar links verplaatsen\" en \"Naar rechts verplaatsen\""
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
@@ -45,14 +46,12 @@ msgid "Rotate right"
 msgstr "Naar rechts draaien"
 
 #: ../src/application/actionbar.cpp:43
-#, fuzzy
 msgid "Move left"
-msgstr "Naar links draaien"
+msgstr "Naar links verplaatsen"
 
 #: ../src/application/actionbar.cpp:48
-#, fuzzy
 msgid "Move right"
-msgstr "Naar rechts draaien"
+msgstr "Naar rechts verplaatsen"
 
 #: ../src/application/actionbar.cpp:56
 msgctxt "plural (pages)"
@@ -76,7 +75,7 @@ msgstr "Volgende verwijderen"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr ""
+msgstr "Meer paginaverwijderingsacties…"
 
 #: ../src/application/actionbar.cpp:69
 msgid "Cancel selection"
