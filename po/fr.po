@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-01-12 20:25-0300\n"
-"PO-Revision-Date: 2019-01-08 15:07+0000\n"
+"PO-Revision-Date: 2019-01-15 10:20+0000\n"
 "Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/fr/>\n"
@@ -34,7 +34,7 @@ msgstr "Icône de l'application"
 
 #: ../src/application/aboutdialog.cpp:44
 msgid "\"Move Left\" and \"Move Right\" icons"
-msgstr ""
+msgstr "Icônes \"Déplacer à gauche\" et \"Déplacer à droite\""
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
@@ -45,14 +45,12 @@ msgid "Rotate right"
 msgstr "Rotation à droite"
 
 #: ../src/application/actionbar.cpp:43
-#, fuzzy
 msgid "Move left"
-msgstr "Rotation à gauche"
+msgstr "Déplacer vers la gauche"
 
 #: ../src/application/actionbar.cpp:48
-#, fuzzy
 msgid "Move right"
-msgstr "Rotation à droite"
+msgstr "Déplacer vers la droite"
 
 #: ../src/application/actionbar.cpp:56
 msgctxt "plural (pages)"
