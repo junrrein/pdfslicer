@@ -14,7 +14,7 @@ add_compile_definitions ("GETTEXT_PACKAGE=${GETTEXT_PACKAGE}")
 add_compile_definitions (SPDLOG_FMT_EXTERNAL)
 
 target_link_libraries_system (${CMAKE_PROJECT_NAME}
-	fmt
+	fmt::fmt-header-only
 	range-v3
 	spdlog
 	ThreadPool)
