@@ -54,7 +54,7 @@ std::shared_ptr<InteractivePageWidget> View::createPageWidget(const Glib::RefPtr
 
 void View::setDocument(Document& document, int targetWidgetSize)
 {
-    killQueuedPages();
+    killStillRenderingPages();
 
     for (Gtk::Widget* child : get_children())
         remove(*child);
@@ -72,8 +72,7 @@ void View::setDocument(Document& document, int targetWidgetSize)
         std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
         m_pageWidgets.push_back(pageWidget);
         add(*m_pageWidgets.back());
-        m_toRenderQueue.push(pageWidget);
-        m_dispatcher.emit();
+        renderPage(pageWidget);
     }
 
     m_documentConnections.emplace_back(
@@ -87,15 +86,12 @@ void View::setDocument(Document& document, int targetWidgetSize)
 
 void View::changePageSize(int targetWidgetSize)
 {
-    killQueuedPages();
-
-    std::lock_guard<std::mutex> lock(m_toRenderQueueMutex);
+    killStillRenderingPages();
 
     for (const auto& pageWidget : m_pageWidgets) {
         pageWidget->changeSize(targetWidgetSize);
         pageWidget->showSpinner();
-        m_toRenderQueue.push(pageWidget);
-        m_dispatcher.emit();
+        renderPage(pageWidget);
     }
 }
 
@@ -163,43 +159,27 @@ void View::displayRenderedPages()
     }
 }
 
-void View::renderQueuedPages()
+void View::renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget)
 {
-    std::lock_guard<std::mutex> lock1(m_toRenderQueueMutex);
-
-    while (!m_toRenderQueue.empty()) {
-        std::weak_ptr<InteractivePageWidget> weakWidget = m_toRenderQueue.front();
-
-        m_backgroundThread.pushBack([this, weakWidget]() {
-            std::shared_ptr<InteractivePageWidget> pageWidget = weakWidget.lock();
-
-            if (pageWidget != nullptr) {
-                pageWidget->renderPage();
-                std::lock_guard<std::mutex> lock2{m_renderedQueueMutex};
-                m_renderedQueue.push(pageWidget);
-                m_dispatcher.emit();
-            }
-        });
-
-        m_toRenderQueue.pop();
-    }
+    m_backgroundThread.pushBack([this, pageWidget]() {
+        pageWidget->renderPage();
+        std::lock_guard<std::mutex> lock{m_renderedQueueMutex};
+        m_renderedQueue.push(pageWidget);
+        m_dispatcher.emit();
+    });
 }
 
-void View::killQueuedPages()
+void View::killStillRenderingPages()
 {
     m_backgroundThread.killRemainingTasks();
 
-    std::lock_guard<std::mutex> lock1(m_toRenderQueueMutex);
-    std::lock_guard<std::mutex> lock2(m_renderedQueueMutex);
-
-    m_toRenderQueue = {};
+    std::lock_guard<std::mutex> lock(m_renderedQueueMutex);
     m_renderedQueue = {};
 }
 
 void View::onDispatcherCalled()
 {
     displayRenderedPages();
-    renderQueuedPages();
 }
 
 void View::onModelItemsChanged(guint position, guint removed, guint added)
@@ -218,8 +198,7 @@ void View::onModelItemsChanged(guint position, guint removed, guint added)
 
         m_pageWidgets.insert(it, pageWidget);
         add(*pageWidget);
-        m_toRenderQueue.push(pageWidget);
-        m_dispatcher.emit();
+        renderPage(pageWidget);
     }
 
     selectedPagesChanged.emit();
@@ -232,8 +211,7 @@ void View::onModelPagesRotated(const std::vector<unsigned int>& positions)
         std::advance(it, position);
 
         (*it)->showSpinner();
-        m_toRenderQueue.push(*it);
-        m_dispatcher.emit();
+        renderPage(*it);
     }
 }
 
