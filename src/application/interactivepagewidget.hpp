@@ -32,6 +32,8 @@ public:
                           int targetSize);
     virtual ~InteractivePageWidget() = default;
 
+    unsigned int documentIndex() const;
+
     void setChecked(bool checked);
     bool getChecked() const { return m_isChecked; }
 
@@ -56,7 +58,7 @@ private:
     Gtk::Label m_pageNumberLabel;
 
     void setupInteractiveWidgets();
-    void setupLabel(int pageNumber);
+    void setupLabel(unsigned int pageNumber);
     void setupSignalHandlers();
 };
 

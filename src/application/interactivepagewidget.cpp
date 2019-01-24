@@ -31,6 +31,11 @@ InteractivePageWidget::InteractivePageWidget(const Glib::RefPtr<const Page>& pag
     setupSignalHandlers();
 }
 
+unsigned int InteractivePageWidget::documentIndex() const
+{
+    return m_page->getDocumentIndex();
+}
+
 void InteractivePageWidget::setChecked(bool checked)
 {
     if (m_isChecked != checked) {
@@ -64,7 +69,7 @@ void InteractivePageWidget::setupInteractiveWidgets()
     m_overlay.add_overlay(m_previewButtonRevealer);
 }
 
-void InteractivePageWidget::setupLabel(int pageNumber)
+void InteractivePageWidget::setupLabel(unsigned int pageNumber)
 {
     m_pageNumberLabel.set_label(fmt::format(_("Page {pageNumber}"), "pageNumber"_a = pageNumber));
     m_pageNumberLabel.set_margin_top(5);
