@@ -161,7 +161,12 @@ void View::displayRenderedPages()
 
 void View::renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget)
 {
+    pageWidget->enableRendering();
+
     m_backgroundThread.pushBack([this, pageWidget]() {
+        if (pageWidget->isRenderingCancelled())
+            return;
+
         pageWidget->renderPage();
         std::lock_guard<std::mutex> lock{m_renderedQueueMutex};
         m_renderedQueue.push(pageWidget);
@@ -188,6 +193,7 @@ void View::onModelItemsChanged(guint position, guint removed, guint added)
     std::advance(it, position);
 
     for (; removed != 0; --removed) {
+        (*it)->cancelRendering();
         remove(*(*it));
         it = m_pageWidgets.erase(it);
     }
