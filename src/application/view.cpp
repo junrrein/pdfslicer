@@ -112,31 +112,22 @@ unsigned int View::getSelectedChildIndex() const
 
 std::vector<unsigned int> View::getSelectedChildrenIndexes() const
 {
-    const std::vector<const Gtk::Widget*> children = get_children();
-
     const std::vector<unsigned int> result
-        = children
-          | rsv::transform([](const Gtk::Widget* child) {
-                return dynamic_cast<const InteractivePageWidget*>(child);
-            })
-          | rsv::filter([](const InteractivePageWidget* pageWidget) {
-                return pageWidget->getChecked();
-            })
-          | rsv::transform([](const InteractivePageWidget* pageWidget) {
-                return static_cast<unsigned int>(pageWidget->get_index());
-            });
+        = m_pageWidgets
+          | rsv::filter(std::mem_fn(&InteractivePageWidget::getChecked))
+          | rsv::transform(std::mem_fn(&InteractivePageWidget::documentIndex));
 
     return result;
 }
 
 std::vector<unsigned int> View::getUnselectedChildrenIndexes() const
 {
-    std::vector<unsigned int> unselectedIndexes;
-    ranges::set_difference(ranges::view::iota(0, m_pageWidgets.size()),
-                           getSelectedChildrenIndexes(),
-                           ranges::back_inserter(unselectedIndexes));
+    const std::vector<unsigned int> result
+        = m_pageWidgets
+          | rsv::remove_if(std::mem_fn(&InteractivePageWidget::getChecked))
+          | rsv::transform(std::mem_fn(&InteractivePageWidget::documentIndex));
 
-    return unselectedIndexes;
+    return result;
 }
 
 int View::sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b)
