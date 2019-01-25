@@ -107,7 +107,10 @@ void View::clearSelection()
 
 unsigned int View::getSelectedChildIndex() const
 {
-    return getSelectedChildrenIndexes().front();
+    const std::vector<unsigned int> selected = getSelectedChildrenIndexes();
+    assert(selected.size() == 1);
+
+    return selected.front();
 }
 
 std::vector<unsigned int> View::getSelectedChildrenIndexes() const
