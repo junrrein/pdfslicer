@@ -254,15 +254,20 @@ void View::onShiftSelection(InteractivePageWidget* pageWidget)
         int first = m_lastPageSelected->get_index();
         int last = pageWidget->get_index();
 
-        if (first > last)
-            std::swap(first, last);
+        if (first != -1 && last != -1) {
+            for (auto& widget : m_pageWidgets)
+                widget->setChecked(false);
 
-        auto it = m_pageWidgets.begin();
-        std::advance(it, first);
+            if (first > last)
+                std::swap(first, last);
 
-        for (int i = first; i != last; ++i) {
-            it->get()->setChecked(true);
-            std::advance(it, 1);
+            auto it = m_pageWidgets.begin();
+            std::advance(it, first);
+
+            for (int i = first; i <= last; ++i) {
+                (*it)->setChecked(true);
+                std::advance(it, 1);
+            }
         }
     }
 
