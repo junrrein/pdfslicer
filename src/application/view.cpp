@@ -100,6 +100,8 @@ void View::clearSelection()
     for (auto& widget : m_pageWidgets)
         widget->setChecked(false);
 
+    m_lastPageSelected = nullptr;
+
     selectedPagesChanged.emit();
 }
 
