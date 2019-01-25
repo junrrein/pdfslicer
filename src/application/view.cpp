@@ -71,7 +71,7 @@ void View::setDocument(Document& document, int targetWidgetSize)
         auto page = m_document->getPage(i);
         std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
         m_pageWidgets.push_back(pageWidget);
-        add(*m_pageWidgets.back());
+        add(*pageWidget);
         renderPage(pageWidget);
     }
 
