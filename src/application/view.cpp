@@ -135,8 +135,8 @@ std::vector<unsigned int> View::getUnselectedChildrenIndexes() const
 
 int View::sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b)
 {
-    auto widgetA = dynamic_cast<InteractivePageWidget*>(a);
-    auto widgetB = dynamic_cast<InteractivePageWidget*>(b);
+    const auto widgetA = static_cast<InteractivePageWidget*>(a);
+    const auto widgetB = static_cast<InteractivePageWidget*>(b);
 
     return InteractivePageWidget::sortFunction(*widgetA, *widgetB);
 }
