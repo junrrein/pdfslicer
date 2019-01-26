@@ -32,6 +32,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.5.1" date="2019-01-xx">
+			<description>
+				<p>Correct a string in the About Dialog.</p>
+			</description>
+		</release>
 		<release version="1.5.0" date="2019-01-26">
 			<description>
 				<p>Add the ability to reorder pages.</p>
