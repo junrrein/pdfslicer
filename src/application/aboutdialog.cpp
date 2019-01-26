@@ -41,8 +41,6 @@ AboutDialog::AboutDialog(Gtk::Window& parent)
                         "ThreadPool https://github.com/adda25/ThreadPool"});
     add_credit_section(_("Application icon"),
                        {"Freepik http://www.freepik.com"});
-    add_credit_section(_("\"Move Left\" and \"Move Right\" icons"),
-                       {"Ben Davis from the Noun Project https://thenounproject.com/smashicons/collection/arrows-solid/"});
 
     signal_hide().connect([this]() {
         delete this;
