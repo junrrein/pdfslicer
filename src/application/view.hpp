@@ -71,6 +71,7 @@ private:
     void displayRenderedPages();
     void renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget);
     void killStillRenderingPages();
+    void clearState();
 };
 }
 

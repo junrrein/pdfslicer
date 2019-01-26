@@ -52,9 +52,10 @@ std::shared_ptr<InteractivePageWidget> View::createPageWidget(const Glib::RefPtr
     return pageWidget;
 }
 
-void View::setDocument(Document& document, int targetWidgetSize)
+void View::clearState()
 {
     killStillRenderingPages();
+    clearSelection();
 
     for (Gtk::Widget* child : get_children())
         remove(*child);
@@ -63,6 +64,11 @@ void View::setDocument(Document& document, int targetWidgetSize)
 
     for (sigc::connection& connection : m_documentConnections)
         connection.disconnect();
+}
+
+void View::setDocument(Document& document, int targetWidgetSize)
+{
+    clearState();
 
     m_document = &document;
     m_pageWidgetSize = targetWidgetSize;
