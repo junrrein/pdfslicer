@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-26 15:19-0300\n"
+"POT-Creation-Date: 2019-01-26 15:29-0300\n"
 "PO-Revision-Date: 2019-01-14 22:00+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
@@ -19,7 +19,9 @@ msgstr ""
 "X-Generator: Weblate 3.4-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
-msgid "A simple application to extract and rotate pages of a PDF document"
+#, fuzzy
+msgid ""
+"A simple application to extract, rotate and reorder pages of a PDF document"
 msgstr ""
 "Et enkelt program for uthenting og rotering av sider fra et PDF-dokument"
 
