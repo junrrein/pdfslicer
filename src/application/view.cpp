@@ -214,9 +214,9 @@ void View::onModelItemsChanged(guint position, guint removed, guint added)
 
 void View::onModelPagesRotated(const std::vector<unsigned int>& positions)
 {
-    for (auto [i, pageWidget] : rsv::enumerate(m_pageWidgets)) {
+    for (auto& pageWidget : m_pageWidgets) {
         for (unsigned int position : positions) {
-            if (position == i) {
+            if (position == pageWidget->documentIndex()) {
                 pageWidget->showSpinner();
                 renderPage(pageWidget);
 
@@ -228,9 +228,9 @@ void View::onModelPagesRotated(const std::vector<unsigned int>& positions)
 
 void View::onModelPagesReordered(const std::vector<unsigned int>& positions)
 {
-    for (auto [i, pageWidget] : rsv::enumerate(m_pageWidgets)) {
+    for (auto& pageWidget : m_pageWidgets) {
         for (unsigned int position : positions) {
-            if (position == i) {
+            if (position == pageWidget->documentIndex()) {
                 pageWidget->setChecked(true);
 
                 break;
