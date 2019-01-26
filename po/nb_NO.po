@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-12 20:25-0300\n"
+"POT-Creation-Date: 2019-01-26 15:19-0300\n"
 "PO-Revision-Date: 2019-01-14 22:00+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
@@ -30,10 +30,6 @@ msgstr "Tredjepartsbibliotek"
 #: ../src/application/aboutdialog.cpp:42
 msgid "Application icon"
 msgstr "Programikon"
-
-#: ../src/application/aboutdialog.cpp:44
-msgid "\"Move Left\" and \"Move Right\" icons"
-msgstr "Ikoner for \"Flytt til venstre\" og \"Flytt til høyre"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
@@ -125,7 +121,7 @@ msgstr "Forminsk"
 msgid "Zoom in"
 msgstr "Forstørr"
 
-#: ../src/application/interactivepagewidget.cpp:69
+#: ../src/application/interactivepagewidget.cpp:74
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Side {pageNumber}"
@@ -221,6 +217,9 @@ msgstr "Angre siste kommando"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Gjenta siste (angrede) kommando"
+
+#~ msgid "\"Move Left\" and \"Move Right\" icons"
+#~ msgstr "Ikoner for \"Flytt til venstre\" og \"Flytt til høyre"
 
 #~ msgid "Preview"
 #~ msgstr "Forhåndsvis"

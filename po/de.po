@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-12 20:25-0300\n"
+"POT-Creation-Date: 2019-01-26 15:19-0300\n"
 "PO-Revision-Date: 2019-01-05 23:01+0000\n"
 "Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -32,10 +32,6 @@ msgstr "Bibliotheken von Drittanbietern"
 #: ../src/application/aboutdialog.cpp:42
 msgid "Application icon"
 msgstr "Anwendungssymbol"
-
-#: ../src/application/aboutdialog.cpp:44
-msgid "\"Move Left\" and \"Move Right\" icons"
-msgstr ""
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
@@ -123,7 +119,7 @@ msgstr "Herauszoomen"
 msgid "Zoom in"
 msgstr "Hineinzoomen"
 
-#: ../src/application/interactivepagewidget.cpp:69
+#: ../src/application/interactivepagewidget.cpp:74
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Seite {pageNumber}"

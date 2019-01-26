@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-12 20:25-0300\n"
+"POT-Creation-Date: 2019-01-26 15:19-0300\n"
 "PO-Revision-Date: 2019-01-15 10:20+0000\n"
 "Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -31,10 +31,6 @@ msgstr "Librairies tierces"
 #: ../src/application/aboutdialog.cpp:42
 msgid "Application icon"
 msgstr "Icône de l'application"
-
-#: ../src/application/aboutdialog.cpp:44
-msgid "\"Move Left\" and \"Move Right\" icons"
-msgstr "Icônes \"Déplacer à gauche\" et \"Déplacer à droite\""
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
@@ -120,7 +116,7 @@ msgstr "Zoom arrière"
 msgid "Zoom in"
 msgstr "Zoom avant"
 
-#: ../src/application/interactivepagewidget.cpp:69
+#: ../src/application/interactivepagewidget.cpp:74
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Page {pageNumber}"
@@ -215,3 +211,6 @@ msgstr "Annuler la dernière commande"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Rétablir la commande annulée"
+
+#~ msgid "\"Move Left\" and \"Move Right\" icons"
+#~ msgstr "Icônes \"Déplacer à gauche\" et \"Déplacer à droite\""

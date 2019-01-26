@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-12 20:25-0300\n"
+"POT-Creation-Date: 2019-01-26 15:19-0300\n"
 "PO-Revision-Date: 2019-01-15 10:20+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -31,11 +31,6 @@ msgstr "Externe bibliotheken"
 #: ../src/application/aboutdialog.cpp:42
 msgid "Application icon"
 msgstr "Applicatiepictogram"
-
-#: ../src/application/aboutdialog.cpp:44
-msgid "\"Move Left\" and \"Move Right\" icons"
-msgstr ""
-"Pictogrammen voor \"Naar links verplaatsen\" en \"Naar rechts verplaatsen\""
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
@@ -121,7 +116,7 @@ msgstr "Uitzoomen"
 msgid "Zoom in"
 msgstr "Inzoomen"
 
-#: ../src/application/interactivepagewidget.cpp:69
+#: ../src/application/interactivepagewidget.cpp:74
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Pagina {pageNumber}"
@@ -216,6 +211,11 @@ msgstr "Vorige opdracht ongedaan maken"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Opdracht opnieuw uitvoeren"
+
+#~ msgid "\"Move Left\" and \"Move Right\" icons"
+#~ msgstr ""
+#~ "Pictogrammen voor \"Naar links verplaatsen\" en \"Naar rechts verplaatsen"
+#~ "\""
 
 #~ msgid "Preview"
 #~ msgstr "Voorbeeld"
