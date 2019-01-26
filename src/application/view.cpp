@@ -267,13 +267,8 @@ void View::onShiftSelection(InteractivePageWidget* pageWidget)
             if (first > last)
                 std::swap(first, last);
 
-            auto it = m_pageWidgets.begin();
-            std::advance(it, first);
-
-            for (int i = first; i <= last; ++i) {
-                (*it)->setChecked(true);
-                std::advance(it, 1);
-            }
+            for (auto& widget : m_pageWidgets | rsv::drop(first) | rsv::take(last - first + 1))
+                widget->setChecked(true);
         }
     }
 
