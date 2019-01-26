@@ -230,7 +230,7 @@ void View::onModelPagesReordered(const std::vector<unsigned int>& positions)
 {
     for (auto [i, pageWidget] : rsv::enumerate(m_pageWidgets)) {
         for (unsigned int position : positions) {
-            if (i == position) {
+            if (position == i) {
                 pageWidget->setChecked(true);
 
                 break;
