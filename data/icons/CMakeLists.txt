@@ -12,6 +12,4 @@ install (FILES
 		DESTINATION ${ICON_DIR_RELATIVE}/scalable/apps)
 
 install (FILES
-		object-move-left-symbolic.svg
-		object-move-right-symbolic.svg
 		DESTINATION ${ICON_DIR_RELATIVE}/scalable/actions)

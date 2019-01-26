@@ -21,6 +21,7 @@
 #include <gtkmm/checkbutton.h>
 #include <gtkmm/label.h>
 #include <gtkmm/revealer.h>
+#include <atomic>
 
 namespace Slicer {
 
@@ -31,8 +32,14 @@ public:
                           int targetSize);
     virtual ~InteractivePageWidget() = default;
 
+    unsigned int documentIndex() const;
+
     void setChecked(bool checked);
     bool getChecked() const { return m_isChecked; }
+
+    void enableRendering() { m_isRenderingCancelled = false; }
+    void cancelRendering() { m_isRenderingCancelled = true; }
+    bool isRenderingCancelled() const { return m_isRenderingCancelled; }
 
     sigc::signal<void, InteractivePageWidget*> selectedChanged;
     sigc::signal<void, InteractivePageWidget*> shiftSelected;
@@ -43,6 +50,7 @@ public:
 
 private:
     bool m_isChecked = false;
+    std::atomic<bool> m_isRenderingCancelled = false;
 
     Gtk::CheckButton m_check;
     Gtk::Button m_previewButton;
@@ -50,7 +58,7 @@ private:
     Gtk::Label m_pageNumberLabel;
 
     void setupInteractiveWidgets();
-    void setupLabel(int pageNumber);
+    void setupLabel(unsigned int pageNumber);
     void setupSignalHandlers();
 };
 
