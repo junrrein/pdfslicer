@@ -39,12 +39,12 @@ ActionBar::ActionBar()
     auto moveBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL}); // NOLINT
     moveBox->get_style_context()->add_class("linked");
 
-    m_buttonMoveLeft.set_image_from_icon_name("object-move-left-symbolic");
+    m_buttonMoveLeft.set_image_from_icon_name("go-previous-symbolic");
     m_buttonMoveLeft.set_tooltip_text(_("Move left"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonMoveLeft.gobj()), "win.move-left"); //NOLINT
     moveBox->pack_start(m_buttonMoveLeft);
 
-    m_buttonMoveRight.set_image_from_icon_name("object-move-right-symbolic");
+    m_buttonMoveRight.set_image_from_icon_name("go-next-symbolic");
     m_buttonMoveRight.set_tooltip_text(_("Move right"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonMoveRight.gobj()), "win.move-right"); //NOLINT
     moveBox->pack_start(m_buttonMoveRight);
