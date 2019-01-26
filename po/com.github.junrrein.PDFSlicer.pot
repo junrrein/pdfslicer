@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-26 15:19-0300\n"
+"POT-Creation-Date: 2019-01-26 15:29-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../src/application/aboutdialog.cpp:26
-msgid "A simple application to extract and rotate pages of a PDF document"
+msgid ""
+"A simple application to extract, rotate and reorder pages of a PDF document"
 msgstr ""
 
 #: ../src/application/aboutdialog.cpp:32
