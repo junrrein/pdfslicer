@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-01-26 15:29-0300\n"
-"PO-Revision-Date: 2019-01-05 23:01+0000\n"
+"PO-Revision-Date: 2019-02-10 18:10+0000\n"
 "Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/de/>\n"
@@ -17,15 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.4-dev\n"
+"X-Generator: Weblate 3.5-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
-#, fuzzy
 msgid ""
 "A simple application to extract, rotate and reorder pages of a PDF document"
 msgstr ""
-"Eine einfache Anwendung zum Extrahieren und Drehen von Seiten eines PDF-"
-"Dokuments"
+"Eine einfache Anwendung um Seiten eines PDF-Dokuments zu extrahieren, "
+"drehen, oder die Reihenfolge zu ändern"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Third-party libraries"
@@ -44,14 +43,12 @@ msgid "Rotate right"
 msgstr "Nach rechts drehen"
 
 #: ../src/application/actionbar.cpp:43
-#, fuzzy
 msgid "Move left"
-msgstr "Nach links drehen"
+msgstr "Nach links bewegen"
 
 #: ../src/application/actionbar.cpp:48
-#, fuzzy
 msgid "Move right"
-msgstr "Nach rechts drehen"
+msgstr "Nach rechts bewegen"
 
 #: ../src/application/actionbar.cpp:56
 msgctxt "plural (pages)"
@@ -75,7 +72,7 @@ msgstr "Nächstes entfernen"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr ""
+msgstr "Weitere Löschaktionen von Seiten…"
 
 #: ../src/application/actionbar.cpp:69
 msgid "Cancel selection"
