@@ -2,27 +2,33 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Weblate <noreply@weblate.org>, 2019.
+# naofum <naofum@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-01-16 15:59-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2019-02-24 05:01+0000\n"
+"Last-Translator: naofum <naofum@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
+"extra/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 3.5-dev\n"
 
 msgid "Extract and rotate pages of a PDF document"
-msgstr ""
+msgstr "PDF ドキュメントのページを抽出したり、回転します"
 
 msgid "A simple tool to extract, rotate and reorder pages of a PDF document"
-msgstr ""
+msgstr "PDF ドキュメントのページを抽出し、回転し、並べ替えるシンプルなツールです"
 
 msgid ""
 "PDF Slicer is a simple application to extract, rotate and reorder pages of a "
 "PDF document. The operations can be performed on single pages or on "
 "selections/ranges of pages, and it has undo/redo support."
 msgstr ""
+"PDF Slicer は PDF ドキュメントのページを抽出、回転、および順序を変更するシンプルなアプリケーションです。単一のページ、または選択/ページの"
+"範囲で操作を実行できます、元に戻す/やり直しをサポートしています。"
