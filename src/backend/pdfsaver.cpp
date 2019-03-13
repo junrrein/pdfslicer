@@ -23,8 +23,6 @@ void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile) const
 {
     InputFile sourceFile;
     sourceFile.OpenFile(m_document.filePath());
-    PDFParser parser;
-    parser.StartPDFParsing(sourceFile.GetInputStream());
     PDFWriter pdfWriter;
     pdfWriter.StartPDF(destinationFile->get_path(), ePDFVersionMax);
     std::unique_ptr<PDFDocumentCopyingContext> copyingContext{pdfWriter.CreatePDFCopyingContext(m_document.filePath())};
@@ -33,8 +31,8 @@ void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile) const
         Glib::RefPtr<const Page> slicerPage = m_document.getPage(i);
         const unsigned int pageNumber = slicerPage->fileIndex();
 
-        RefCountPtr<PDFDictionary> parsedPage = parser.ParsePage(pageNumber);
-        PDFPageInput inputPage{&parser, parsedPage};
+        RefCountPtr<PDFDictionary> parsedPage = copyingContext->GetSourceDocumentParser()->ParsePage(pageNumber);
+        PDFPageInput inputPage{copyingContext->GetSourceDocumentParser(), parsedPage};
         PDFPage outputPage;
 
         outputPage.SetArtBox(inputPage.GetArtBox());
