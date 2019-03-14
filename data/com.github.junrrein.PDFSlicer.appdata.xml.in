@@ -32,7 +32,12 @@
 		</screenshot>
 	</screenshots>
 	<releases>
-		<release version="1.5.1" date="2019-01-xx">
+		<release version="1.5.2" date="2019-03-14">
+			<description>
+				<p>Add the ability to copy page annotations.</p>
+			</description>
+		</release>
+		<release version="1.5.1" date="2019-03-14">
 			<description>
 				<p>Correct a string in the About Dialog.</p>
 			</description>
