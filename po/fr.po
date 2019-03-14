@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-26 15:19-0300\n"
-"PO-Revision-Date: 2019-01-15 10:20+0000\n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
+"POT-Creation-Date: 2019-01-26 15:29-0300\n"
+"PO-Revision-Date: 2019-01-28 21:05+0000\n"
 "Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/fr/>\n"
@@ -16,12 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.4-dev\n"
+"X-Generator: Weblate 3.5-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
-msgid "A simple application to extract and rotate pages of a PDF document"
+msgid ""
+"A simple application to extract, rotate and reorder pages of a PDF document"
 msgstr ""
-"Une application simple pour extraire et faire pivoter les pages d'un "
+"Une application simple pour extraire, pivoter et réorganiser les pages d'un "
 "document PDF"
 
 #: ../src/application/aboutdialog.cpp:32
@@ -70,7 +71,7 @@ msgstr "Supprimer page suivante"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr ""
+msgstr "Plus d'opérations de suppression de pages.…"
 
 #: ../src/application/actionbar.cpp:69
 msgid "Cancel selection"

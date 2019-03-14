@@ -1,216 +1,212 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# André Marcelo Alvarenga <andrealvarenga@gmx.net>, 2019.
+# naofum <naofum@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-01-26 15:29-0300\n"
-"PO-Revision-Date: 2019-01-05 23:01+0000\n"
-"Last-Translator: André Marcelo Alvarenga <andrealvarenga@gmx.net>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/pdf-"
-"slicer/translations/pt_BR/>\n"
-"Language: pt_BR\n"
+"PO-Revision-Date: 2019-02-24 05:02+0000\n"
+"Last-Translator: naofum <naofum@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
+"translations/ja/>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.4-dev\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 3.5-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
-#, fuzzy
 msgid ""
 "A simple application to extract, rotate and reorder pages of a PDF document"
-msgstr ""
-"Um aplicativo simples para extrair e girar páginas de um documento em PDF"
+msgstr "PDF ドキュメントの抽出、回転、およびページの順序を変更するシンプルなアプリケーション"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Third-party libraries"
-msgstr "Bibliotecas de terceiros"
+msgstr "サードパーティライブラリー"
 
 #: ../src/application/aboutdialog.cpp:42
 msgid "Application icon"
-msgstr "Ícone do aplicativo"
+msgstr "アプリケーションのアイコン"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr "Girar para a esquerda"
+msgstr "左に回転"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr "Girar para a direita"
+msgstr "右に回転"
 
 #: ../src/application/actionbar.cpp:43
-#, fuzzy
 msgid "Move left"
-msgstr "Girar para a esquerda"
+msgstr "左に移動"
 
 #: ../src/application/actionbar.cpp:48
-#, fuzzy
 msgid "Move right"
-msgstr "Girar para a direita"
+msgstr "右に移動"
 
 #: ../src/application/actionbar.cpp:56
 msgctxt "plural (pages)"
 msgid "Remove selected"
-msgstr "Remover selecionado"
+msgstr "選択した項目を削除"
 
 #: ../src/application/actionbar.cpp:61
 msgctxt "plural (pages)"
 msgid "Remove unselected"
-msgstr "Remover desmarcado"
+msgstr "選択されていない項目を削除"
 
 #: ../src/application/actionbar.cpp:62
 msgctxt "plural (pages)"
 msgid "Remove previous"
-msgstr "Remover anterior"
+msgstr "前を削除"
 
 #: ../src/application/actionbar.cpp:63
 msgctxt "plural (pages)"
 msgid "Remove next"
-msgstr "Remover próximo"
+msgstr "次を削除"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr ""
+msgstr "他のページ削除操作…"
 
 #: ../src/application/actionbar.cpp:69
 msgid "Cancel selection"
-msgstr "Cancelar seleção"
+msgstr "選択を取り消す"
 
 #: ../src/application/appwindow.cpp:178
 msgid "The current document could not be saved"
-msgstr "O documento atual não pôde ser salvo"
+msgstr "現在のドキュメントを保存できませんでした"
 
 #: ../src/application/appwindow.cpp:306
 msgid "The selected file could not be opened"
-msgstr "O arquivo selecionado não pôde ser aberto"
+msgstr "選択したファイルを開くことができません"
 
 #: ../src/application/headerbar.cpp:34
 msgid "Open document…"
-msgstr "Abrir documento…"
+msgstr "ドキュメントを開く…"
 
 #: ../src/application/headerbar.cpp:39
 msgid "Save as…"
-msgstr "Salvar como…"
+msgstr "…として保存"
 
 #: ../src/application/headerbar.cpp:44
 msgid "Undo"
-msgstr "Desfazer"
+msgstr "元に戻す"
 
 #: ../src/application/headerbar.cpp:47
 msgid "Redo"
-msgstr "Refazer"
+msgstr "やり直し"
 
 #: ../src/application/headerbar.cpp:57
 msgid "Keyboard shortcuts"
-msgstr "Atalhos de teclado"
+msgstr "キーボード ショートカット"
 
 #: ../src/application/headerbar.cpp:58
 msgid "About"
-msgstr "Sobre"
+msgstr "アプリについて"
 
 #: ../src/application/headerbar.cpp:64 ../src/application/previewwindow.cpp:57
 msgid "Zoom out"
-msgstr "Reduzir"
+msgstr "縮小"
 
 #: ../src/application/headerbar.cpp:67 ../src/application/previewwindow.cpp:64
 msgid "Zoom in"
-msgstr "Ampliar"
+msgstr "拡大"
 
 #: ../src/application/interactivepagewidget.cpp:74
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
-msgstr "Página {pageNumber}"
+msgstr "ページ {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
-msgstr "Abrir documento"
+msgstr "ドキュメントを開く"
 
 #: ../src/application/openfiledialog.cpp:27
 msgid "Open"
-msgstr "Abrir"
+msgstr "開く"
 
 #: ../src/application/openfiledialog.cpp:28
 #: ../src/application/savefiledialog.cpp:28
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "キャンセル"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr "Salvar documento como"
+msgstr "名前を付けてドキュメントを保存"
 
 #: ../src/application/savefiledialog.cpp:27
 msgid "Save"
-msgstr "Salvar"
+msgstr "保存"
 
 #: ../src/application/savefiledialog.cpp:30
 msgid "Untitled document"
-msgstr "Documento sem título"
+msgstr "無題のドキュメント"
 
 #: ../src/application/savingrevealer.cpp:26
 msgid "Saving…"
-msgstr "Salvando…"
+msgstr "保存しています…"
 
 #: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
-msgstr "Salvo!"
+msgstr "保存しました!"
 
 #: ../src/application/utils.cpp:23
 msgid "PDF document"
-msgstr "Documento em PDF"
+msgstr "PDF ドキュメント"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "Abra um documento para começar a cortar!"
+msgstr "分割するドキュメントを開きます!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Geral"
+msgstr "全般"
 
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr "Abrir documento"
+msgstr "ドキュメントを開く"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr "Salvar documento"
+msgstr "ドキュメントを保存"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr "Ampliar"
+msgstr "拡大"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr "Reduzir"
+msgstr "縮小"
 
 #: ../data/ui/shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Document editing"
-msgstr "Edição do documento"
+msgstr "ドキュメントの編集"
 
 #: ../data/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr "Remover páginas selecionadas"
+msgstr "選択したページを削除"
 
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr "Cancelar seleção"
+msgstr "選択を取り消す"
 
 #: ../data/ui/shortcuts.ui:57
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr "Desfazer o último comando"
+msgstr "最後の操作を元に戻す"
 
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr "Refaz o comando desfeito"
+msgstr "元に戻した操作をやり直す"

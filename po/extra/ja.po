@@ -2,37 +2,33 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Weblate <noreply@weblate.org>, 2019.
-# Florian <floflr@zaclys.net>, 2019.
+# naofum <naofum@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-01-16 15:59-0300\n"
-"PO-Revision-Date: 2019-01-28 21:05+0000\n"
-"Last-Translator: Florian <floflr@zaclys.net>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/extra/"
-"fr/>\n"
-"Language: fr\n"
+"PO-Revision-Date: 2019-02-24 05:01+0000\n"
+"Last-Translator: naofum <naofum@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
+"extra/ja/>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 3.5-dev\n"
 
 msgid "Extract and rotate pages of a PDF document"
-msgstr "Extraire et de faire pivoter les pages d'un document PDF"
+msgstr "PDF ドキュメントのページを抽出したり、回転します"
 
 msgid "A simple tool to extract, rotate and reorder pages of a PDF document"
-msgstr ""
-"Une application simple pour extraire, pivoter et réorganiser les pages d'un "
-"document PDF"
+msgstr "PDF ドキュメントのページを抽出し、回転し、並べ替えるシンプルなツールです"
 
 msgid ""
 "PDF Slicer is a simple application to extract, rotate and reorder pages of a "
 "PDF document. The operations can be performed on single pages or on "
 "selections/ranges of pages, and it has undo/redo support."
 msgstr ""
-"PDF Slicer est une application simple pour extraire, pivoter et réorganiser "
-"les pages d'un document PDF. Les opérations peuvent être effectuées sur une "
-"seule page ou sur des sélections/ensembles de pages, et il supporte "
-"complétement l'annulation/rétablissement des modifications."
+"PDF Slicer は PDF ドキュメントのページを抽出、回転、および順序を変更するシンプルなアプリケーションです。単一のページ、または選択/ページの"
+"範囲で操作を実行できます、元に戻す/やり直しをサポートしています。"
