@@ -1,9 +1,7 @@
 #include "pdfsaver.hpp"
 #include "tempfile.hpp"
-#include <PDFWriter.h>
 #include <PDFPage.h>
 #include <PDFPageInput.h>
-#include <PDFDocumentCopyingContext.h>
 
 namespace Slicer {
 
@@ -21,30 +19,36 @@ void PdfSaver::save(const Glib::RefPtr<Gio::File>& destinationFile)
 
 void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile) const
 {
-    PDFWriter pdfWriter;
-    pdfWriter.StartPDF(destinationFile->get_path(), ePDFVersionMax);
-    std::unique_ptr<PDFDocumentCopyingContext> copyingContext{pdfWriter.CreatePDFCopyingContext(m_document.filePath())};
+    PDFWriter destinationPdf;
+    destinationPdf.StartPDF(destinationFile->get_path(), ePDFVersionMax);
+    std::unique_ptr<PDFDocumentCopyingContext> sourceCopyingContext{destinationPdf.CreatePDFCopyingContext(m_document.filePath())};
 
-    for (unsigned int i = 0; i < m_document.pages()->get_n_items(); ++i) {
-        Glib::RefPtr<const Page> slicerPage = m_document.getPage(i);
-        const unsigned int pageNumber = slicerPage->fileIndex();
+    for (unsigned int i = 0; i < m_document.pages()->get_n_items(); ++i)
+        copyDocumentPage(i, sourceCopyingContext.get(), destinationPdf);
 
-        RefCountPtr<PDFDictionary> parsedPage = copyingContext->GetSourceDocumentParser()->ParsePage(pageNumber);
-        PDFPageInput inputPage{copyingContext->GetSourceDocumentParser(), parsedPage};
-        PDFPage outputPage;
+    destinationPdf.EndPDF();
+}
 
-        outputPage.SetArtBox(inputPage.GetArtBox());
-        outputPage.SetBleedBox(inputPage.GetBleedBox());
-        outputPage.SetCropBox(inputPage.GetCropBox());
-        outputPage.SetMediaBox(inputPage.GetMediaBox());
-        outputPage.SetRotate(inputPage.GetRotate() + slicerPage->rotation());
-        outputPage.SetTrimBox(inputPage.GetTrimBox());
+void PdfSaver::copyDocumentPage(unsigned int pageNumber,
+                                PDFDocumentCopyingContext* sourceCopyingContext,
+                                PDFWriter& destinationPdf) const
+{
+    Glib::RefPtr<const Page> slicerPage = m_document.getPage(pageNumber);
+    const unsigned int pageFileIndex = slicerPage->fileIndex();
 
-        copyingContext->MergePDFPageToPage(&outputPage, pageNumber);
-        pdfWriter.WritePage(&outputPage);
-    }
+    RefCountPtr<PDFDictionary> parsedPage = sourceCopyingContext->GetSourceDocumentParser()->ParsePage(pageFileIndex);
+    PDFPageInput inputPage{sourceCopyingContext->GetSourceDocumentParser(), parsedPage};
+    PDFPage outputPage;
 
-    pdfWriter.EndPDF();
+    outputPage.SetArtBox(inputPage.GetArtBox());
+    outputPage.SetBleedBox(inputPage.GetBleedBox());
+    outputPage.SetCropBox(inputPage.GetCropBox());
+    outputPage.SetMediaBox(inputPage.GetMediaBox());
+    outputPage.SetRotate(inputPage.GetRotate() + slicerPage->rotation());
+    outputPage.SetTrimBox(inputPage.GetTrimBox());
+
+    sourceCopyingContext->MergePDFPageToPage(&outputPage, pageFileIndex);
+    destinationPdf.WritePage(&outputPage);
 }
 
 } // namespace Slicer
