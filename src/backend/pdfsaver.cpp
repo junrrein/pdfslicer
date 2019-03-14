@@ -21,8 +21,6 @@ void PdfSaver::save(const Glib::RefPtr<Gio::File>& destinationFile)
 
 void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile) const
 {
-    InputFile sourceFile;
-    sourceFile.OpenFile(m_document.filePath());
     PDFWriter pdfWriter;
     pdfWriter.StartPDF(destinationFile->get_path(), ePDFVersionMax);
     std::unique_ptr<PDFDocumentCopyingContext> copyingContext{pdfWriter.CreatePDFCopyingContext(m_document.filePath())};
