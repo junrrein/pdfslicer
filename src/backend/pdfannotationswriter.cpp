@@ -17,6 +17,9 @@
 #include "pdfannotationswriter.hpp"
 #include <DictionaryContext.h>
 #include <ObjectsContext.h>
+#include <PDFObjectCast.h>
+#include <PDFArray.h>
+#include <PDFIndirectObjectReference.h>
 
 namespace Slicer {
 
@@ -45,6 +48,28 @@ EStatusCode PdfAnnotationsWriter::OnPageWrite(PDFPage*,
     m_annotationIds.clear();
 
     return eSuccess;
+}
+
+void PdfAnnotationsWriter::addAnnotationsFromPage(RefCountPtr<PDFDictionary> pageDictionary,
+                                                  PDFDocumentCopyingContext* copyingContext)
+{
+    PDFObjectCastPtr<PDFArray> annotations{copyingContext->GetSourceDocumentParser()->QueryDictionaryObject(pageDictionary.GetPtr(), "Annots")};
+
+    if (annotations.GetPtr()) {
+        SingleValueContainerIterator<PDFObjectVector> annotationDictionaryObjects = annotations->GetIterator();
+
+        EStatusCode status = eSuccess;
+
+        while (annotationDictionaryObjects.MoveNext() && status == eSuccess) {
+            PDFObjectCastPtr<PDFIndirectObjectReference> annotationReference = annotationDictionaryObjects.GetItem();
+
+            EStatusCodeAndObjectIDType result = copyingContext->CopyObject(annotationReference->mObjectID);
+            status = result.first;
+
+            if (status == eSuccess)
+                AddCopiedAnnotation(result.second);
+        }
+    }
 }
 
 void PdfAnnotationsWriter::AddCopiedAnnotation(ObjectIDType newAnnotation)

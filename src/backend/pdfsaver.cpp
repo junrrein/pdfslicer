@@ -2,8 +2,6 @@
 #include "tempfile.hpp"
 #include <PDFPage.h>
 #include <PDFPageInput.h>
-#include <PDFArray.h>
-#include <PDFIndirectObjectReference.h>
 
 namespace Slicer {
 
@@ -50,29 +48,8 @@ void PdfSaver::copyDocumentPage(unsigned int pageNumber)
     outputPage.SetTrimBox(inputPage.GetTrimBox());
 
     m_sourceCopyingContext->MergePDFPageToPage(&outputPage, pageFileIndex);
-    addPageAnnotations(parsedPage);
+    m_annotationsWriter.addAnnotationsFromPage(parsedPage, m_sourceCopyingContext.get());
     m_destinationPdf.WritePage(&outputPage);
-}
-
-void PdfSaver::addPageAnnotations(RefCountPtr<PDFDictionary> pageDictionary)
-{
-    PDFObjectCastPtr<PDFArray> annotations{m_sourceCopyingContext->GetSourceDocumentParser()->QueryDictionaryObject(pageDictionary.GetPtr(), "Annots")};
-
-    if (annotations.GetPtr()) {
-        SingleValueContainerIterator<PDFObjectVector> annotationDictionaryObjects = annotations->GetIterator();
-
-        EStatusCode status = eSuccess;
-
-        while (annotationDictionaryObjects.MoveNext() && status == eSuccess) {
-            PDFObjectCastPtr<PDFIndirectObjectReference> annotationReference = annotationDictionaryObjects.GetItem();
-
-            EStatusCodeAndObjectIDType result = m_sourceCopyingContext->CopyObject(annotationReference->mObjectID);
-            status = result.first;
-
-            if (status == eSuccess)
-                m_annotationsWriter.AddCopiedAnnotation(result.second);
-        }
-    }
 }
 
 } // namespace Slicer

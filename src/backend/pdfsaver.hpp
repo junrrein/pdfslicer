@@ -22,7 +22,6 @@ private:
 
     void persist(const Glib::RefPtr<Gio::File>& destinationFile);
     void copyDocumentPage(unsigned int pageNumber);
-    void addPageAnnotations(RefCountPtr<PDFDictionary> pageDictionary);
 };
 
 } // namespace Slicer

@@ -24,6 +24,7 @@
 #include <PDFEmbedParameterTypes.h>
 #include <string>
 #include <DocumentContextExtenderAdapter.h>
+#include <PDFDocumentCopyingContext.h>
 
 namespace Slicer {
 
@@ -33,10 +34,12 @@ public:
 	PdfAnnotationsWriter();
 
 	EStatusCode OnPageWrite(PDFPage*,
-							DictionaryContext* pageDictionaryContext,
-							ObjectsContext* pdfWriterObjectContext,
-							DocumentContext*) override;
+                            DictionaryContext* pageDictionaryContext,
+                            ObjectsContext* pdfWriterObjectContext,
+                            DocumentContext*) override;
 
+    void addAnnotationsFromPage(RefCountPtr<PDFDictionary> pageDictionary,
+                                PDFDocumentCopyingContext* copyingContext);
 	void AddCopiedAnnotation(ObjectIDType newAnnotation);
 
 private:
