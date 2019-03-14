@@ -67,14 +67,9 @@ void PdfAnnotationsWriter::addAnnotationsFromPage(RefCountPtr<PDFDictionary> pag
             status = result.first;
 
             if (status == eSuccess)
-                AddCopiedAnnotation(result.second);
+                m_annotationIds.push_back(result.second);
         }
     }
-}
-
-void PdfAnnotationsWriter::AddCopiedAnnotation(ObjectIDType newAnnotation)
-{
-    m_annotationIds.push_back(newAnnotation);
 }
 
 } // namespace Slicer

@@ -40,7 +40,6 @@ public:
 
     void addAnnotationsFromPage(RefCountPtr<PDFDictionary> pageDictionary,
                                 PDFDocumentCopyingContext* copyingContext);
-	void AddCopiedAnnotation(ObjectIDType newAnnotation);
 
 private:
 	ObjectIDTypeList m_annotationIds;
