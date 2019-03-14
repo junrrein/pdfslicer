@@ -191,26 +191,23 @@ void View::onDispatcherCalled()
 
 void View::onModelItemsChanged(guint position, guint removed, guint added)
 {
-    for (auto& widget : m_pageWidgets | rsv::drop(position) | rsv::take(removed)) {
-        widget->cancelRendering();
-        remove(*widget);
-    }
+    auto it = m_pageWidgets.begin();
+    std::advance(it, position);
 
-    PageWidgetList toAdd;
+    for (; removed != 0; --removed) {
+        (*it)->cancelRendering();
+        remove(*(*it));
+        it = m_pageWidgets.erase(it);
+    }
 
     for (guint i = 0; i != added; ++i) {
         auto page = m_document->getPage(position + i);
         std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
 
-        toAdd.push_back(pageWidget);
+        m_pageWidgets.insert(it, pageWidget);
         add(*pageWidget);
         renderPage(pageWidget);
     }
-
-    std::list<PageWidgetList> components = {m_pageWidgets | rsv::take(position),
-                                            std::move(toAdd),
-                                            m_pageWidgets | rsv::drop(position + removed)};
-    m_pageWidgets = ranges::action::join(components);
 
     selectedPagesChanged.emit();
 }
