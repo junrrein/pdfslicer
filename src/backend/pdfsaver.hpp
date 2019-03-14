@@ -15,11 +15,11 @@ public:
 
 private:
     Document& m_document;
+    PDFWriter m_destinationPdf;
+    std::unique_ptr<PDFDocumentCopyingContext> m_sourceCopyingContext;
 
-    void persist(const Glib::RefPtr<Gio::File>& destinationFile) const;
-    void copyDocumentPage(unsigned int pageNumber,
-                          PDFDocumentCopyingContext* sourceCopyingContext,
-                          PDFWriter& destinationPdf) const;
+    void persist(const Glib::RefPtr<Gio::File>& destinationFile);
+    void copyDocumentPage(unsigned int pageNumber);
 };
 
 } // namespace Slicer

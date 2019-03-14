@@ -17,27 +17,25 @@ void PdfSaver::save(const Glib::RefPtr<Gio::File>& destinationFile)
     tempFile->move(destinationFile, Gio::FILE_COPY_OVERWRITE);
 }
 
-void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile) const
+void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile)
 {
-    PDFWriter destinationPdf;
-    destinationPdf.StartPDF(destinationFile->get_path(), ePDFVersionMax);
-    std::unique_ptr<PDFDocumentCopyingContext> sourceCopyingContext{destinationPdf.CreatePDFCopyingContext(m_document.filePath())};
+    m_destinationPdf.StartPDF(destinationFile->get_path(), ePDFVersionMax);
+    m_sourceCopyingContext.reset(m_destinationPdf.CreatePDFCopyingContext(m_document.filePath()));
 
     for (unsigned int i = 0; i < m_document.pages()->get_n_items(); ++i)
-        copyDocumentPage(i, sourceCopyingContext.get(), destinationPdf);
+        copyDocumentPage(i);
 
-    destinationPdf.EndPDF();
+    m_sourceCopyingContext.reset();
+    m_destinationPdf.EndPDF();
 }
 
-void PdfSaver::copyDocumentPage(unsigned int pageNumber,
-                                PDFDocumentCopyingContext* sourceCopyingContext,
-                                PDFWriter& destinationPdf) const
+void PdfSaver::copyDocumentPage(unsigned int pageNumber)
 {
     Glib::RefPtr<const Page> slicerPage = m_document.getPage(pageNumber);
     const unsigned int pageFileIndex = slicerPage->fileIndex();
 
-    RefCountPtr<PDFDictionary> parsedPage = sourceCopyingContext->GetSourceDocumentParser()->ParsePage(pageFileIndex);
-    PDFPageInput inputPage{sourceCopyingContext->GetSourceDocumentParser(), parsedPage};
+    RefCountPtr<PDFDictionary> parsedPage = m_sourceCopyingContext->GetSourceDocumentParser()->ParsePage(pageFileIndex);
+    PDFPageInput inputPage{m_sourceCopyingContext->GetSourceDocumentParser(), parsedPage};
     PDFPage outputPage;
 
     outputPage.SetArtBox(inputPage.GetArtBox());
@@ -47,8 +45,8 @@ void PdfSaver::copyDocumentPage(unsigned int pageNumber,
     outputPage.SetRotate(inputPage.GetRotate() + slicerPage->rotation());
     outputPage.SetTrimBox(inputPage.GetTrimBox());
 
-    sourceCopyingContext->MergePDFPageToPage(&outputPage, pageFileIndex);
-    destinationPdf.WritePage(&outputPage);
+    m_sourceCopyingContext->MergePDFPageToPage(&outputPage, pageFileIndex);
+    m_destinationPdf.WritePage(&outputPage);
 }
 
 } // namespace Slicer
