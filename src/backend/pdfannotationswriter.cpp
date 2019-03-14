@@ -63,11 +63,10 @@ void PdfAnnotationsWriter::addAnnotationsFromPage(RefCountPtr<PDFDictionary> pag
         while (annotationDictionaryObjects.MoveNext() && status == eSuccess) {
             PDFObjectCastPtr<PDFIndirectObjectReference> annotationReference = annotationDictionaryObjects.GetItem();
 
-            EStatusCodeAndObjectIDType result = copyingContext->CopyObject(annotationReference->mObjectID);
-            status = result.first;
+            auto [status, annotation] = copyingContext->CopyObject(annotationReference->mObjectID);
 
             if (status == eSuccess)
-                m_annotationIds.push_back(result.second);
+                m_annotationIds.push_back(annotation);
         }
     }
 }
