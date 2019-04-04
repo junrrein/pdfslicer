@@ -32,6 +32,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.5.4" date="2019-04-04">
+			<description>
+				<p>Add Italian translation.</p>
+			</description>
+		</release>
 		<release version="1.5.3" date="2019-03-14">
 			<description>
 				<p>Add Japanese translation. Update existing translations.</p>
