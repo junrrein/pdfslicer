@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-26 15:29-0300\n"
 "PO-Revision-Date: 2019-02-24 05:02+0000\n"
 "Last-Translator: naofum <naofum@gmail.com>\n"
@@ -21,7 +21,9 @@ msgstr ""
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
 "A simple application to extract, rotate and reorder pages of a PDF document"
-msgstr "PDF ドキュメントの抽出、回転、およびページの順序を変更するシンプルなアプリケーション"
+msgstr ""
+"PDF ドキュメントの抽出、回転、およびページの順序を変更するシンプルなアプリ"
+"ケーション"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Third-party libraries"
