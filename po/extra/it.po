@@ -1,0 +1,37 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-16 15:59-0300\n"
+"PO-Revision-Date: 2019-04-03 15:32+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: it\n"
+
+msgid "Extract and rotate pages of a PDF document"
+msgstr "Estrai e ruota le pagine di un documento PDF"
+
+msgid "A simple tool to extract, rotate and reorder pages of a PDF document"
+msgstr ""
+"Un semplice strumento per estrarre, ruotare e riordinare le pagine di un "
+"documento PDF"
+
+msgid ""
+"PDF Slicer is a simple application to extract, rotate and reorder pages of a "
+"PDF document. The operations can be performed on single pages or on "
+"selections/ranges of pages, and it has undo/redo support."
+msgstr ""
+"PDF Slicer è una semplice applicazione per estrarre, ruotare e riordinare le "
+"pagine di un documento PDF. Le operazioni possono essere effettuate su "
+"pagine singole o su una selezione/gruppo di pagine, e supporta "
+"l'annullamento/ripristino."

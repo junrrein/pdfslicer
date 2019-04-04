@@ -1,0 +1,211 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-26 15:29-0300\n"
+"PO-Revision-Date: 2019-04-03 15:30+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: it\n"
+
+#: ../src/application/aboutdialog.cpp:26
+msgid "A simple application to extract, rotate and reorder pages of a PDF document"
+msgstr "Una semplice applicazione per estrarre, ruotare e riordinare le pagine di un documento PDF"
+
+#: ../src/application/aboutdialog.cpp:32
+msgid "Third-party libraries"
+msgstr "Librerie di terze parti"
+
+#: ../src/application/aboutdialog.cpp:42
+msgid "Application icon"
+msgstr "Icona applicazione"
+
+#: ../src/application/actionbar.cpp:30
+msgid "Rotate left"
+msgstr "Ruota a sinistra"
+
+#: ../src/application/actionbar.cpp:35
+msgid "Rotate right"
+msgstr "Ruota a destra"
+
+#: ../src/application/actionbar.cpp:43
+msgid "Move left"
+msgstr "Sposta a sinistra"
+
+#: ../src/application/actionbar.cpp:48
+msgid "Move right"
+msgstr "Sposta a destra"
+
+#: ../src/application/actionbar.cpp:56
+msgctxt "plural (pages)"
+msgid "Remove selected"
+msgstr "Rimuovi le pagine selezionate"
+
+#: ../src/application/actionbar.cpp:61
+msgctxt "plural (pages)"
+msgid "Remove unselected"
+msgstr "Rimuovi le pagine non selezionate"
+
+#: ../src/application/actionbar.cpp:62
+msgctxt "plural (pages)"
+msgid "Remove previous"
+msgstr "Rimuovi le pagine precedenti"
+
+#: ../src/application/actionbar.cpp:63
+msgctxt "plural (pages)"
+msgid "Remove next"
+msgstr "Rimuovi le pagine successive"
+
+#: ../src/application/actionbar.cpp:65
+msgid "More page removing operations…"
+msgstr "Ulteriori operazioni di rimozione pagine…"
+
+#: ../src/application/actionbar.cpp:69
+msgid "Cancel selection"
+msgstr "Annulla la selezione"
+
+#: ../src/application/appwindow.cpp:178
+msgid "The current document could not be saved"
+msgstr "Il documento corrente non può essere salvato"
+
+#: ../src/application/appwindow.cpp:306
+msgid "The selected file could not be opened"
+msgstr "Il file selezionato non può essere aperto"
+
+#: ../src/application/headerbar.cpp:34
+msgid "Open document…"
+msgstr "Apri documento…"
+
+#: ../src/application/headerbar.cpp:39
+msgid "Save as…"
+msgstr "Salva come…"
+
+#: ../src/application/headerbar.cpp:44
+msgid "Undo"
+msgstr "Annulla"
+
+#: ../src/application/headerbar.cpp:47
+msgid "Redo"
+msgstr "Ripeti"
+
+#: ../src/application/headerbar.cpp:57
+msgid "Keyboard shortcuts"
+msgstr "Scorciatoie da tastiera"
+
+#: ../src/application/headerbar.cpp:58
+msgid "About"
+msgstr "Informazioni"
+
+#: ../src/application/headerbar.cpp:64 ../src/application/previewwindow.cpp:57
+msgid "Zoom out"
+msgstr "Diminuisce l'ingrandimento"
+
+#: ../src/application/headerbar.cpp:67 ../src/application/previewwindow.cpp:64
+msgid "Zoom in"
+msgstr "Aumenta l'ingrandimento"
+
+#: ../src/application/interactivepagewidget.cpp:74
+#: ../src/application/previewwindow.cpp:51
+msgid "Page {pageNumber}"
+msgstr "Pagina {pageNumber}"
+
+#: ../src/application/openfiledialog.cpp:25
+msgid "Open document"
+msgstr "Apri documento"
+
+#: ../src/application/openfiledialog.cpp:27
+msgid "Open"
+msgstr "Apri"
+
+#: ../src/application/openfiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:28
+msgid "Cancel"
+msgstr "Annulla"
+
+#: ../src/application/savefiledialog.cpp:25
+msgid "Save document as"
+msgstr "Salva documento come"
+
+#: ../src/application/savefiledialog.cpp:27
+msgid "Save"
+msgstr "Salva"
+
+#: ../src/application/savefiledialog.cpp:30
+msgid "Untitled document"
+msgstr "Documento senza titolo"
+
+#: ../src/application/savingrevealer.cpp:26
+msgid "Saving…"
+msgstr "Salvataggio…"
+
+#: ../src/application/savingrevealer.cpp:33
+msgid "Saved!"
+msgstr "Salvato!"
+
+#: ../src/application/utils.cpp:23
+msgid "PDF document"
+msgstr "Documento PDF"
+
+#: ../src/application/welcomescreen.cpp:29
+msgid "Open a document to start slicing!"
+msgstr "Apri un documento per iniziare ad affettarlo!"
+
+#: ../data/ui/shortcuts.ui:12
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Generale"
+
+#: ../data/ui/shortcuts.ui:16
+msgctxt "shortcut window"
+msgid "Open document"
+msgstr "Apri documento"
+
+#: ../data/ui/shortcuts.ui:22
+msgctxt "shortcut window"
+msgid "Save document"
+msgstr "Salva documento"
+
+#: ../data/ui/shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "Ingradimento"
+
+#: ../data/ui/shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "Rimpicciolimento"
+
+#: ../data/ui/shortcuts.ui:41
+msgctxt "shortcut window"
+msgid "Document editing"
+msgstr "Modifica documento"
+
+#: ../data/ui/shortcuts.ui:45
+msgctxt "shortcut window"
+msgid "Remove selected pages"
+msgstr "Rimuovi le pagine selezionate"
+
+#: ../data/ui/shortcuts.ui:51
+msgctxt "shortcut window"
+msgid "Cancel selection"
+msgstr "Annulla la selezione"
+
+#: ../data/ui/shortcuts.ui:57
+msgctxt "shortcut window"
+msgid "Undo last command"
+msgstr "Annulla l'ultima azione"
+
+#: ../data/ui/shortcuts.ui:63
+msgctxt "shortcut window"
+msgid "Redo undone command"
+msgstr "Ripeti l'azione annullata"
