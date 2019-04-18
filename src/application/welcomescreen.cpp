@@ -29,7 +29,7 @@ WelcomeScreen::WelcomeScreen()
     m_label.set_label(_("Open a document to start slicing!"));
     m_label.get_style_context()->add_class("dim-label");
     m_label.get_style_context()->add_class("welcome-label");
-    m_label.set_margin_top(25);
+    m_label.set_margin_top(30);
 
     m_box.set_orientation(Gtk::ORIENTATION_VERTICAL);
     m_box.set_valign(Gtk::ALIGN_CENTER);
