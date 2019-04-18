@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-26 15:29-0300\n"
+"POT-Creation-Date: 2019-04-18 10:33-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,11 +23,11 @@ msgid ""
 msgstr ""
 
 #: ../src/application/aboutdialog.cpp:32
-msgid "Third-party libraries"
+msgid "Application icon"
 msgstr ""
 
-#: ../src/application/aboutdialog.cpp:42
-msgid "Application icon"
+#: ../src/application/aboutdialog.cpp:35
+msgid "Third-party libraries"
 msgstr ""
 
 #: ../src/application/actionbar.cpp:30
