@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-26 15:29-0300\n"
+"POT-Creation-Date: 2019-04-18 10:33-0300\n"
 "PO-Revision-Date: 2019-01-05 23:01+0000\n"
 "Last-Translator: André Marcelo Alvarenga <andrealvarenga@gmx.net>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/pdf-"
@@ -26,12 +26,12 @@ msgstr ""
 "Um aplicativo simples para extrair e girar páginas de um documento em PDF"
 
 #: ../src/application/aboutdialog.cpp:32
-msgid "Third-party libraries"
-msgstr "Bibliotecas de terceiros"
-
-#: ../src/application/aboutdialog.cpp:42
 msgid "Application icon"
 msgstr "Ícone do aplicativo"
+
+#: ../src/application/aboutdialog.cpp:35
+msgid "Third-party libraries"
+msgstr "Bibliotecas de terceiros"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"

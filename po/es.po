@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-26 15:29-0300\n"
+"POT-Creation-Date: 2019-04-18 10:33-0300\n"
 "PO-Revision-Date: 2019-01-28 21:05+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -23,12 +23,12 @@ msgstr ""
 "documento PDF"
 
 #: ../src/application/aboutdialog.cpp:32
-msgid "Third-party libraries"
-msgstr "Bibliotecas de terceros"
-
-#: ../src/application/aboutdialog.cpp:42
 msgid "Application icon"
 msgstr "Icono de aplicación"
+
+#: ../src/application/aboutdialog.cpp:35
+msgid "Third-party libraries"
+msgstr "Bibliotecas de terceros"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"

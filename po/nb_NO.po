@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-26 15:29-0300\n"
+"POT-Creation-Date: 2019-04-18 10:33-0300\n"
 "PO-Revision-Date: 2019-01-14 22:00+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
@@ -26,12 +26,12 @@ msgstr ""
 "Et enkelt program for uthenting og rotering av sider fra et PDF-dokument"
 
 #: ../src/application/aboutdialog.cpp:32
-msgid "Third-party libraries"
-msgstr "Tredjepartsbibliotek"
-
-#: ../src/application/aboutdialog.cpp:42
 msgid "Application icon"
 msgstr "Programikon"
+
+#: ../src/application/aboutdialog.cpp:35
+msgid "Third-party libraries"
+msgstr "Tredjepartsbibliotek"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
