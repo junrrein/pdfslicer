@@ -9,6 +9,7 @@ endif ()
 
 install (FILES
 		${APPLICATION_ID}.svg
+		${APPLICATION_ID}-symbolic.svg
 		DESTINATION ${ICON_DIR_RELATIVE}/scalable/apps)
 
 install (FILES

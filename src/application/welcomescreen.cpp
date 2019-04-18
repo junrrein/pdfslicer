@@ -23,17 +23,18 @@ namespace Slicer {
 WelcomeScreen::WelcomeScreen()
     : Gtk::Box{Gtk::ORIENTATION_VERTICAL}
 {
-    m_icon.set_from_icon_name(config::APPLICATION_ID, Gtk::ICON_SIZE_BUTTON);
-    m_icon.set_pixel_size(384);
+    m_icon.set_from_icon_name(config::APPLICATION_ID + "-symbolic", Gtk::ICON_SIZE_BUTTON);
+    m_icon.set_pixel_size(370);
 
     m_label.set_label(_("Open a document to start slicing!"));
     m_label.get_style_context()->add_class("dim-label");
     m_label.get_style_context()->add_class("welcome-label");
+    m_label.set_margin_top(20);
 
     m_box.set_orientation(Gtk::ORIENTATION_VERTICAL);
     m_box.set_valign(Gtk::ALIGN_CENTER);
-    m_box.pack_start(m_icon, false, false, 10);
-    m_box.pack_start(m_label, false, false, 10);
+    m_box.pack_start(m_icon, false, false);
+    m_box.pack_start(m_label, false, false);
 
     pack_start(m_box); // NOLINT
 }
