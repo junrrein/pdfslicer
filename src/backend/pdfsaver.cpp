@@ -1,7 +1,7 @@
 #include "pdfsaver.hpp"
 #include "tempfile.hpp"
-#include <PDFPage.h>
-#include <PDFPageInput.h>
+#include <qpdf/QPDFPageDocumentHelper.hh>
+#include <qpdf/QPDFWriter.hh>
 
 namespace Slicer {
 
@@ -19,37 +19,25 @@ void PdfSaver::save(const Glib::RefPtr<Gio::File>& destinationFile)
 
 void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile)
 {
-    m_destinationPdf.StartPDF(destinationFile->get_path(), ePDFVersionMax);
-    m_destinationPdf.GetDocumentContext().AddDocumentContextExtender(&m_annotationsWriter);
-    m_sourceCopyingContext.reset(m_destinationPdf.CreatePDFCopyingContext(m_document.filePath()));
+    QPDF destinationPDF;
+    destinationPDF.emptyPDF();
+    QPDFPageDocumentHelper destinationPageDocumentHelper{destinationPDF};
 
-    for (unsigned int i = 0; i < m_document.pages()->get_n_items(); ++i)
-        copyDocumentPage(i);
+    QPDF sourcePDF;
+    sourcePDF.processFile(m_document.filePath().c_str());
+    QPDFPageDocumentHelper sourcePageDocumentHelper{sourcePDF};
+    std::vector<QPDFPageObjectHelper> sourcePages = sourcePageDocumentHelper.getAllPages();
 
-    m_sourceCopyingContext.reset();
-    m_destinationPdf.GetDocumentContext().RemoveDocumentContextExtender(&m_annotationsWriter);
-    m_destinationPdf.EndPDF();
-}
+    for (unsigned int i = 0; i < m_document.pages()->get_n_items(); ++i) {
+        Glib::RefPtr<const Page> slicerPage = m_document.getPage(i);
+        const unsigned int pageFileIndex = slicerPage->fileIndex();
 
-void PdfSaver::copyDocumentPage(unsigned int pageNumber)
-{
-    Glib::RefPtr<const Page> slicerPage = m_document.getPage(pageNumber);
-    const unsigned int pageFileIndex = slicerPage->fileIndex();
+        destinationPageDocumentHelper.addPage(sourcePages.at(pageFileIndex).shallowCopyPage(), false);
+    }
 
-    RefCountPtr<PDFDictionary> parsedPage = m_sourceCopyingContext->GetSourceDocumentParser()->ParsePage(pageFileIndex);
-    PDFPageInput inputPage{m_sourceCopyingContext->GetSourceDocumentParser(), parsedPage};
-    PDFPage outputPage;
-
-    outputPage.SetArtBox(inputPage.GetArtBox());
-    outputPage.SetBleedBox(inputPage.GetBleedBox());
-    outputPage.SetCropBox(inputPage.GetCropBox());
-    outputPage.SetMediaBox(inputPage.GetMediaBox());
-    outputPage.SetRotate(inputPage.GetRotate() + slicerPage->rotation());
-    outputPage.SetTrimBox(inputPage.GetTrimBox());
-
-    m_sourceCopyingContext->MergePDFPageToPage(&outputPage, pageFileIndex);
-    m_annotationsWriter.addAnnotationsFromPage(parsedPage, m_sourceCopyingContext.get());
-    m_destinationPdf.WritePage(&outputPage);
+    QPDFWriter writer{destinationPDF};
+    writer.setOutputFilename(destinationFile->get_path().c_str());
+    writer.write();
 }
 
 } // namespace Slicer

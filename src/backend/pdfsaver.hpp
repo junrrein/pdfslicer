@@ -2,9 +2,6 @@
 #define PDFSAVER_HPP
 
 #include "document.hpp"
-#include "pdfannotationswriter.hpp"
-#include <PDFWriter.h>
-#include <PDFDocumentCopyingContext.h>
 
 namespace Slicer {
 
@@ -16,12 +13,8 @@ public:
 
 private:
     Document& m_document;
-    PDFWriter m_destinationPdf;
-    PdfAnnotationsWriter m_annotationsWriter;
-    std::unique_ptr<PDFDocumentCopyingContext> m_sourceCopyingContext;
 
     void persist(const Glib::RefPtr<Gio::File>& destinationFile);
-    void copyDocumentPage(unsigned int pageNumber);
 };
 
 } // namespace Slicer
