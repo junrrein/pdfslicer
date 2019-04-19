@@ -2,7 +2,6 @@ add_subdirectory (adda25-threadpool)
 add_subdirectory (catch2)
 add_subdirectory (fmtlib)
 add_subdirectory (GSL)
-add_subdirectory (PDF-Writer)
 add_subdirectory (spdlog)
 add_subdirectory (stduuid)
 
