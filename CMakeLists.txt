@@ -19,6 +19,7 @@ find_package (Threads REQUIRED)
 find_package (PkgConfig REQUIRED)
 pkg_check_modules (GTKMM gtkmm-3.0 IMPORTED_TARGET REQUIRED)
 pkg_check_modules (POPPLER poppler-glib IMPORTED_TARGET REQUIRED)
+pkg_check_modules (QPDF libqpdf IMPORTED_TARGET REQUIRED)
 find_package (Intl REQUIRED)
 find_package (Gettext REQUIRED)
 

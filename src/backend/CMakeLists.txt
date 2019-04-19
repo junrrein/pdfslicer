@@ -29,5 +29,6 @@ if (MINGW)
 else ()
 	target_link_libraries_system (backend
 		PkgConfig::GTKMM
-		PkgConfig::POPPLER)
+		PkgConfig::POPPLER
+		PkgConfig::QPDF)
 endif ()
