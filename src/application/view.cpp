@@ -152,7 +152,7 @@ void View::displayRenderedPages()
     std::lock_guard<std::mutex> lock{m_renderedQueueMutex};
 
     while (!m_renderedQueue.empty()) {
-        std::shared_ptr<PageWidget> pageWidget = m_renderedQueue.front().lock();
+        std::shared_ptr<InteractivePageWidget> pageWidget = m_renderedQueue.front().lock();
         m_renderedQueue.pop();
 
         if (pageWidget != nullptr) {

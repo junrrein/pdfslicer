@@ -24,16 +24,15 @@ namespace Slicer {
 
 InteractivePageWidget::InteractivePageWidget(const Glib::RefPtr<const Page>& page,
                                              int targetSize)
-    : PageWidget(page, targetSize)
+    : m_pageWidget(page, targetSize)
 {
-    setupInteractiveWidgets();
-    setupLabel(page->fileIndex() + 1);
+    setupWidgets();
     setupSignalHandlers();
 }
 
 unsigned int InteractivePageWidget::documentIndex() const
 {
-    return m_page->getDocumentIndex();
+    return page()->getDocumentIndex();
 }
 
 void InteractivePageWidget::setChecked(bool checked)
@@ -47,10 +46,35 @@ void InteractivePageWidget::setChecked(bool checked)
 int InteractivePageWidget::sortFunction(const InteractivePageWidget& a,
                                         const InteractivePageWidget& b)
 {
-    return Page::sortFunction(a.m_page, b.m_page);
+    return Page::sortFunction(a.page(), b.page());
 }
 
-void InteractivePageWidget::setupInteractiveWidgets()
+void InteractivePageWidget::changeSize(int targetSize)
+{
+    m_pageWidget.changeSize(targetSize);
+}
+
+void InteractivePageWidget::renderPage()
+{
+    m_pageWidget.renderPage();
+}
+
+void InteractivePageWidget::showSpinner()
+{
+    m_pageWidget.showSpinner();
+}
+
+void InteractivePageWidget::showPage()
+{
+    m_pageWidget.showPage();
+}
+
+const Glib::RefPtr<const Page> InteractivePageWidget::page() const
+{
+    return m_pageWidget.page();
+}
+
+void InteractivePageWidget::setupWidgets()
 {
     m_check.set_halign(Gtk::ALIGN_END);
     m_check.set_valign(Gtk::ALIGN_END);
@@ -65,17 +89,24 @@ void InteractivePageWidget::setupInteractiveWidgets()
     m_previewButtonRevealer.set_margin_top(10);
     m_previewButtonRevealer.set_margin_right(10);
 
+    m_overlay.set_halign(Gtk::ALIGN_CENTER);
+    m_overlay.set_valign(Gtk::ALIGN_CENTER);
     m_overlay.add_overlay(m_check);
     m_overlay.add_overlay(m_previewButtonRevealer);
-}
+    m_overlay.add(m_pageWidget);
+    m_overlayEventBox.add(m_overlay);
 
-void InteractivePageWidget::setupLabel(unsigned int pageNumber)
-{
-    m_pageNumberLabel.set_label(fmt::format(_("Page {pageNumber}"), "pageNumber"_a = pageNumber));
+    m_pageNumberLabel.set_label(fmt::format(_("Page {pageNumber}"),
+                                            "pageNumber"_a = page()->fileIndex() + 1));
     m_pageNumberLabel.set_margin_top(5);
     m_pageNumberLabel.set_visible();
 
-    m_outerBox.pack_start(m_pageNumberLabel, false, true);
+    m_contentBox.set_orientation(Gtk::ORIENTATION_VERTICAL);
+    m_contentBox.pack_start(m_overlayEventBox);
+    m_contentBox.pack_start(m_pageNumberLabel, false, true);
+    add(m_contentBox);
+
+    show_all();
 }
 
 void InteractivePageWidget::setupSignalHandlers()
@@ -121,7 +152,7 @@ void InteractivePageWidget::setupSignalHandlers()
     });
 
     m_previewButton.signal_clicked().connect([this]() {
-        previewRequested.emit(m_page);
+        previewRequested.emit(page());
     });
 }
 

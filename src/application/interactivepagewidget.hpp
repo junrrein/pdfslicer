@@ -19,13 +19,16 @@
 
 #include "pagewidget.hpp"
 #include <gtkmm/checkbutton.h>
+#include <gtkmm/eventbox.h>
+#include <gtkmm/flowboxchild.h>
 #include <gtkmm/label.h>
+#include <gtkmm/overlay.h>
 #include <gtkmm/revealer.h>
 #include <atomic>
 
 namespace Slicer {
 
-class InteractivePageWidget : public Slicer::PageWidget {
+class InteractivePageWidget : public Gtk::FlowBoxChild {
 
 public:
     InteractivePageWidget(const Glib::RefPtr<const Page>& page,
@@ -48,17 +51,28 @@ public:
     static int sortFunction(const InteractivePageWidget& a,
                             const InteractivePageWidget& b);
 
+    // Interface of Slicer::PageWidget
+    void changeSize(int targetSize);
+    void renderPage();
+    void showSpinner();
+    void showPage();
+
 private:
     bool m_isChecked = false;
     std::atomic<bool> m_isRenderingCancelled = false;
+
+    Gtk::Box m_contentBox;
+    Gtk::Overlay m_overlay;
+    Gtk::EventBox m_overlayEventBox;
+    Slicer::PageWidget m_pageWidget;
 
     Gtk::CheckButton m_check;
     Gtk::Button m_previewButton;
     Gtk::Revealer m_previewButtonRevealer;
     Gtk::Label m_pageNumberLabel;
 
-    void setupInteractiveWidgets();
-    void setupLabel(unsigned int pageNumber);
+    const Glib::RefPtr<const Page> page() const;
+    void setupWidgets();
     void setupSignalHandlers();
 };
 
