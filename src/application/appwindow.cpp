@@ -433,10 +433,14 @@ void AppWindow::onSelectedPagesChanged()
     }
     else {
         m_removeSelectedAction->set_enabled();
-        m_removeUnselectedAction->set_enabled();
         m_rotateRightAction->set_enabled();
         m_rotateLeftAction->set_enabled();
         m_cancelSelectionAction->set_enabled();
+
+        if (numSelected == numPages)
+            m_removeUnselectedAction->set_enabled(false);
+        else
+            m_removeUnselectedAction->set_enabled();
 
         if (indexSelected.front() == 0)
             m_moveLeftAction->set_enabled(false);
