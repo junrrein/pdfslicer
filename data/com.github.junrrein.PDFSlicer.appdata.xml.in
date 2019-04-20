@@ -32,6 +32,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.6.1" date="2019-04-20">
+			<description>
+				<p>Allow selecting pages while they are still rendering. Miscellaneous bug fixes.</p>
+			</description>
+		</release>
 		<release version="1.6.0" date="2019-04-19">
 			<description>
 				<p>Replace the PDF-Writer backend library with QPDF.</p>
