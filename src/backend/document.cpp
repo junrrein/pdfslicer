@@ -22,7 +22,7 @@ namespace Slicer {
 
 Document::Document(const Glib::RefPtr<Gio::File>& sourceFile)
     : m_popplerDocument{nullptr, &g_object_unref}
-    , m_sourceFile{sourceFile}
+    , m_originalFile{sourceFile}
     , m_pages{Gio::ListStore<Page>::create()}
 {
     loadDocument();
@@ -165,6 +165,11 @@ std::string Document::filePath() const
     return m_sourceFile->get_path();
 }
 
+std::string Document::originalParentPath() const
+{
+    return m_originalFile->get_parent()->get_path();
+}
+
 unsigned int Slicer::Document::numberOfPages() const
 {
     return m_pages->get_n_items();
@@ -172,17 +177,17 @@ unsigned int Slicer::Document::numberOfPages() const
 
 void Document::loadDocument()
 {
-    PopplerDocumentPointer tempDocument = {poppler_document_new_from_file(m_sourceFile->get_uri().c_str(),
+    PopplerDocumentPointer tempDocument = {poppler_document_new_from_file(m_originalFile->get_uri().c_str(),
                                                                           nullptr,
                                                                           nullptr),
                                            &g_object_unref};
 
     if (tempDocument == nullptr)
-        throw std::runtime_error("Couldn't load file: " + m_sourceFile->get_path());
+        throw std::runtime_error("Couldn't load file: " + m_originalFile->get_path());
 
-    m_basename = m_sourceFile->get_basename();
+    m_basename = m_originalFile->get_basename();
     Glib::RefPtr<Gio::File> tempFile = TempFile::generate();
-    m_sourceFile->copy(tempFile, Gio::FILE_COPY_OVERWRITE);
+    m_originalFile->copy(tempFile, Gio::FILE_COPY_OVERWRITE);
     m_sourceFile = tempFile;
 
     m_popplerDocument.reset(poppler_document_new_from_file(m_sourceFile->get_uri().c_str(),
