@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-18 10:33-0300\n"
+"POT-Creation-Date: 2019-04-20 18:07-0300\n"
 "PO-Revision-Date: 2019-01-14 22:00+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
@@ -123,7 +123,7 @@ msgstr "Forminsk"
 msgid "Zoom in"
 msgstr "Forstørr"
 
-#: ../src/application/interactivepagewidget.cpp:74
+#: ../src/application/interactivepagewidget.cpp:99
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Side {pageNumber}"
@@ -137,19 +137,19 @@ msgid "Open"
 msgstr "Åpne"
 
 #: ../src/application/openfiledialog.cpp:28
-#: ../src/application/savefiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:29
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../src/application/savefiledialog.cpp:25
+#: ../src/application/savefiledialog.cpp:26
 msgid "Save document as"
 msgstr "Lagre dokument som"
 
-#: ../src/application/savefiledialog.cpp:27
+#: ../src/application/savefiledialog.cpp:28
 msgid "Save"
 msgstr "Lagre"
 
-#: ../src/application/savefiledialog.cpp:30
+#: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
 msgstr "Dokument uten tittel"
 

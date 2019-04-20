@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-18 10:33-0300\n"
+"POT-Creation-Date: 2019-04-20 18:07-0300\n"
 "PO-Revision-Date: 2019-01-05 23:01+0000\n"
 "Last-Translator: André Marcelo Alvarenga <andrealvarenga@gmx.net>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/pdf-"
@@ -119,7 +119,7 @@ msgstr "Reduzir"
 msgid "Zoom in"
 msgstr "Ampliar"
 
-#: ../src/application/interactivepagewidget.cpp:74
+#: ../src/application/interactivepagewidget.cpp:99
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Página {pageNumber}"
@@ -133,19 +133,19 @@ msgid "Open"
 msgstr "Abrir"
 
 #: ../src/application/openfiledialog.cpp:28
-#: ../src/application/savefiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:29
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../src/application/savefiledialog.cpp:25
+#: ../src/application/savefiledialog.cpp:26
 msgid "Save document as"
 msgstr "Salvar documento como"
 
-#: ../src/application/savefiledialog.cpp:27
+#: ../src/application/savefiledialog.cpp:28
 msgid "Save"
 msgstr "Salvar"
 
-#: ../src/application/savefiledialog.cpp:30
+#: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
 msgstr "Documento sem título"
 
