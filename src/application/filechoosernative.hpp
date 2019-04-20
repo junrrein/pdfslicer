@@ -36,6 +36,7 @@ public:
     Glib::RefPtr<Gio::File> get_file() const;
     gint run();
 
+    void set_current_folder(const Glib::ustring& directory);
     void set_current_name(const Glib::ustring& name);
     void set_do_overwrite_confirmation(bool do_overwrite_confirmation);
     void set_select_multiple(bool select_multiple);
