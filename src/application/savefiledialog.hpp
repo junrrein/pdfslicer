@@ -18,12 +18,14 @@
 #define SAVEFILEDIALOG_HPP
 
 #include "filechoosernative.hpp"
+#include <optional>
 
 namespace Slicer {
 
 class SaveFileDialog : public FileChooserNative {
 public:
-	SaveFileDialog(Gtk::Window& parent);
+    SaveFileDialog(Gtk::Window& parent,
+                   std::optional<std::string> folderPath = {});
 };
 
 } // namespace Slicer

@@ -70,4 +70,10 @@ gint FileChooserNative::run()
     return gtk_native_dialog_run(GTK_NATIVE_DIALOG(m_fileChooser));
 }
 
+void FileChooserNative::set_current_folder(const Glib::ustring& directory)
+{
+    gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(m_fileChooser), //NOLINT
+                                        directory.c_str());              //NOLINT
+}
+
 } // namespace Slicer

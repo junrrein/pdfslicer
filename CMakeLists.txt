@@ -8,7 +8,7 @@ set (APPLICATION_NAME "PDF Slicer")
 set (APPLICATION_WEBSITE "https://junrrein.github.io/pdfslicer/")
 set (GETTEXT_PACKAGE ${APPLICATION_ID})
 set (LINUX_LOCALE_DIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
-set (VERSION 1.5.5)
+set (VERSION 1.6.1)
 
 set (SOURCE_DATA_DIR ${CMAKE_SOURCE_DIR}/data)
 
@@ -21,6 +21,11 @@ pkg_check_modules (GTKMM gtkmm-3.0 IMPORTED_TARGET REQUIRED)
 pkg_check_modules (POPPLER poppler-glib IMPORTED_TARGET REQUIRED)
 find_package (Intl REQUIRED)
 find_package (Gettext REQUIRED)
+
+# See https://unix.stackexchange.com/q/362289/
+set (ENV{PKG_CONFIG_ALLOW_SYSTEM_CFLAGS} 1)
+pkg_check_modules (QPDF libqpdf IMPORTED_TARGET REQUIRED)
+set (ENV{PKG_CONFIG_ALLOW_SYSTEM_CFLAGS} 0)
 
 find_program (CLANG_TIDY_EXE
               NAMES "clang-tidy"
@@ -40,7 +45,3 @@ add_subdirectory (src)
 add_subdirectory (tests)
 add_subdirectory (data)
 add_subdirectory (po)
-
-if (MINGW)
-	include (WindowsInstaller)
-endif ()

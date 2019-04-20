@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-18 10:33-0300\n"
+"POT-Creation-Date: 2019-04-20 18:07-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,7 +114,7 @@ msgstr ""
 msgid "Zoom in"
 msgstr ""
 
-#: ../src/application/interactivepagewidget.cpp:74
+#: ../src/application/interactivepagewidget.cpp:99
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr ""
@@ -128,19 +128,19 @@ msgid "Open"
 msgstr ""
 
 #: ../src/application/openfiledialog.cpp:28
-#: ../src/application/savefiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:29
 msgid "Cancel"
 msgstr ""
 
-#: ../src/application/savefiledialog.cpp:25
+#: ../src/application/savefiledialog.cpp:26
 msgid "Save document as"
 msgstr ""
 
-#: ../src/application/savefiledialog.cpp:27
+#: ../src/application/savefiledialog.cpp:28
 msgid "Save"
 msgstr ""
 
-#: ../src/application/savefiledialog.cpp:30
+#: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
 msgstr ""
 

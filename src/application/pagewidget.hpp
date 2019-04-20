@@ -19,15 +19,12 @@
 
 #include <page.hpp>
 #include <gtkmm/box.h>
-#include <gtkmm/eventbox.h>
-#include <gtkmm/flowboxchild.h>
 #include <gtkmm/image.h>
-#include <gtkmm/overlay.h>
 #include <gtkmm/spinner.h>
 
 namespace Slicer {
 
-class PageWidget : public Gtk::FlowBoxChild {
+class PageWidget : public Gtk::Box {
 public:
     PageWidget(const Glib::RefPtr<const Page>& page,
                int targetSize);
@@ -38,17 +35,12 @@ public:
     void showSpinner();
     void showPage();
 
-protected:
-    Glib::RefPtr<const Page> m_page;
-
-    Gtk::Box m_outerBox;
-    Gtk::EventBox m_overlayEventBox;
-    Gtk::Overlay m_overlay;
+    const Glib::RefPtr<const Page>& page() const;
 
 private:
+    Glib::RefPtr<const Page> m_page;
     int m_targetSize;
 
-    Gtk::Box m_contentBox;
     Gtk::Spinner m_spinner;
     Gtk::Image m_thumbnail;
 

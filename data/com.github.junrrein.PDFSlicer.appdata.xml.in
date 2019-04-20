@@ -32,6 +32,16 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.6.0" date="2019-04-19">
+			<description>
+				<p>Replace the PDF-Writer backend library with QPDF.</p>
+			</description>
+		</release>
+		<release version="1.5.5" date="2019-04-18">
+			<description>
+				<p>Use new application icons, courtesy of Lapo Calamandrei and Tobias Bernard.</p>
+			</description>
+		</release>
 		<release version="1.5.4" date="2019-04-04">
 			<description>
 				<p>Add Italian translation.</p>

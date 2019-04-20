@@ -47,6 +47,7 @@ public:
     const Glib::RefPtr<Gio::ListStore<Page>>& pages() const;
     std::string basename() const;
     std::string filePath() const;
+    std::string originalParentPath() const;
     unsigned int numberOfPages() const;
 
     sigc::signal<void, std::vector<unsigned int>> pagesRotated;
@@ -56,6 +57,7 @@ private:
     using PopplerDocumentPointer = std::unique_ptr<PopplerDocument, decltype(&g_object_unref)>;
 
     PopplerDocumentPointer m_popplerDocument;
+    const Glib::RefPtr<Gio::File> m_originalFile;
     Glib::RefPtr<Gio::File> m_sourceFile;
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
     std::string m_basename;

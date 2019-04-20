@@ -38,7 +38,7 @@ void PageWidget::changeSize(int targetSize)
 void PageWidget::setupWidgets()
 {
     const Page::Size pageSize = m_page->scaledRotatedSize(m_targetSize);
-    m_contentBox.set_size_request(pageSize.width, pageSize.height);
+    set_size_request(pageSize.width, pageSize.height);
     set_valign(Gtk::ALIGN_CENTER);
     set_halign(Gtk::ALIGN_CENTER);
 
@@ -48,16 +48,7 @@ void PageWidget::setupWidgets()
     m_spinner.set_halign(Gtk::ALIGN_CENTER);
     m_spinner.set_valign(Gtk::ALIGN_CENTER);
     m_spinner.start();
-    m_contentBox.pack_start(m_spinner, false, true);
-
-    m_overlay.set_halign(Gtk::ALIGN_CENTER);
-    m_overlay.set_valign(Gtk::ALIGN_CENTER);
-    m_overlay.add(m_thumbnail);
-    m_overlayEventBox.add(m_overlay);
-
-    m_outerBox.set_orientation(Gtk::ORIENTATION_VERTICAL);
-    m_outerBox.pack_start(m_contentBox);
-    add(m_outerBox);
+    pack_start(m_spinner, false, true);
 
     show_all();
 }
@@ -72,7 +63,7 @@ void PageWidget::showSpinner()
     if (!m_spinner.is_visible()) {
         m_spinner.show();
         m_spinner.start();
-        m_contentBox.remove(m_overlayEventBox);
+        remove(m_thumbnail);
     }
 }
 
@@ -80,15 +71,20 @@ void PageWidget::showPage()
 {
     if (!isThumbnailVisible()) {
         m_spinner.stop();
-        m_contentBox.pack_start(m_overlayEventBox);
-        m_overlayEventBox.show_all();
+        pack_start(m_thumbnail);
+        m_thumbnail.show();
         m_spinner.hide();
     }
 }
 
+const Glib::RefPtr<const Page>& PageWidget::page() const
+{
+    return m_page;
+}
+
 bool PageWidget::isThumbnailVisible()
 {
-    return m_overlayEventBox.get_parent() != nullptr;
+    return m_thumbnail.get_parent() != nullptr;
 }
 
 } // namespace Slicer

@@ -168,12 +168,22 @@
             ]
         },
         {
+            "name": "qpdf",
+            "cleanup": [
+                "/bin"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/qpdf/qpdf.git",
+                    "tag": "release-qpdf-8.4.0",
+                    "commit": "cb47c515189f2d0ed0f1ef0fddd57c486d5b6372"
+                }
+            ]
+        },
+        {
             "name": "pdfslicer",
             "buildsystem": "cmake-ninja",
-            "config-opts": [
-                "-DUSE_BUNDLED=FALSE",
-                "-DFLATPAK=TRUE"
-            ],
             "sources": [
                 {
                     "type": "git",
