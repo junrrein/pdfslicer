@@ -19,9 +19,13 @@ find_package (Threads REQUIRED)
 find_package (PkgConfig REQUIRED)
 pkg_check_modules (GTKMM gtkmm-3.0 IMPORTED_TARGET REQUIRED)
 pkg_check_modules (POPPLER poppler-glib IMPORTED_TARGET REQUIRED)
-pkg_check_modules (QPDF libqpdf IMPORTED_TARGET REQUIRED)
 find_package (Intl REQUIRED)
 find_package (Gettext REQUIRED)
+
+# See https://unix.stackexchange.com/q/362289/
+set (ENV{PKG_CONFIG_ALLOW_SYSTEM_CFLAGS} 1)
+pkg_check_modules (QPDF libqpdf IMPORTED_TARGET REQUIRED)
+set (ENV{PKG_CONFIG_ALLOW_SYSTEM_CFLAGS} 0)
 
 find_program (CLANG_TIDY_EXE
               NAMES "clang-tidy"
