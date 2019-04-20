@@ -168,12 +168,22 @@
             ]
         },
         {
+            "name": "qpdf",
+            "cleanup": [
+                "/bin"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/junrrein/qpdf-fix-pkgconfig.git",
+                    "tag": "release-qpdf-8.4.0-junrrein",
+                    "commit": "14454b4e4d65bd84ca8a09b0ee7c05fa5ae04666"
+                }
+            ]
+        },
+        {
             "name": "pdfslicer",
             "buildsystem": "cmake-ninja",
-            "config-opts": [
-                "-DUSE_BUNDLED=FALSE",
-                "-DFLATPAK=TRUE"
-            ],
             "sources": [
                 {
                     "type": "git",
