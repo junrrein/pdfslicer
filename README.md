@@ -19,10 +19,6 @@ with undo/redo support.
 
 You can install PDF Slicer using Flatpak. [Get it from Flathub](https://flathub.org/apps/details/com.github.junrrein.PDFSlicer).
 
-# Windows
-
-You can download the installer from the [Releases page](https://github.com/junrrein/pdfslicer/releases/latest).
-
 # Building
 
 ## Fedora
@@ -30,7 +26,7 @@ You can download the installer from the [Releases page](https://github.com/junrr
 1. Install dependencies
 
 ```bash
-sudo dnf install gtkmm30-devel poppler-glib-devel cairomm-devel libaesgm-devel uuid-devel intltool gettext
+sudo dnf install gtkmm30-devel poppler-glib-devel cairomm-devel qpdf-devel uuid-devel intltool gettext
 ```
 
 2. Check out a copy of the source code
@@ -45,7 +41,7 @@ git clone --recursive https://github.com/junrrein/pdfslicer.git
 cd ..
 mkdir build-pdfslicer
 cd build-pdfslicer
-cmake ../pdfslicer/ -DCMAKE_BUILD_TYPE=Release -DUSE_BUNDLED=FALSE
+cmake ../pdfslicer/ -DCMAKE_BUILD_TYPE=Release
 make
 ```
 
@@ -65,8 +61,8 @@ sudo xargs rm < install_manifest.txt
 
 ```bash
 flatpak remote-add --from gnome https://sdk.gnome.org/gnome.flatpakrepo
-flatpak install gnome org.gnome.Platform//3.28
-flatpak install gnome org.gnome.Sdk//3.28
+flatpak install gnome org.gnome.Platform//3.30
+flatpak install gnome org.gnome.Sdk//3.30
 wget https://raw.githubusercontent.com/junrrein/pdfslicer/master/com.github.junrrein.PDFSlicer.json
 flatpak-builder --repo=pdfslicer-repo pdfslicer com.github.junrrein.PDFSlicer.json --force-clean
 flatpak --user remote-add --no-gpg-verify --if-not-exists pdfslicer-repo pdfslicer-repo
@@ -80,19 +76,6 @@ flatpak --user uninstall com.github.junrrein.PDFSlicer
 flatpak --user remote-delete pdfslicer-repo
 rm -rf pdfslicer/ pdfslicer-repo/
 ```
-
-## Windows cross-compilation (Fedora only)
-
-```bash
-sudo dnf install mingw64-gcc-c++ mingw64-gtkmm30 mingw64-poppler-glib mingw64-librsvg2
-git clone --recursive https://github.com/junrrein/pdfslicer.git
-mkdir build-pdfslicer
-cd build-pdfslicer
-mingw64-cmake ../pdfslicer -DCMAKE_BUILD_TYPE=Release -DUSE_BUNDLED=OFF
-make package
-```
-
-This proccess will generate the installer inside the `build-pdfslicer` directory with name `PDF Slicer.exe`.
 
 # License
 
