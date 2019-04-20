@@ -61,7 +61,7 @@ ActionBar::ActionBar()
     menu->append(C_("plural (pages)", "Remove unselected"), "win.remove-unselected");
     menu->append(C_("plural (pages)", "Remove previous"), "win.remove-previous");
     menu->append(C_("plural (pages)", "Remove next"), "win.remove-next");
-    m_buttonRemovePagesMore.set_image_from_icon_name("open-menu-symbolic");
+    m_buttonRemovePagesMore.set_image_from_icon_name("pan-up-symbolic");
     m_buttonRemovePagesMore.set_tooltip_text(_("More page removing operations…"));
     m_buttonRemovePagesMore.set_menu_model(menu);
     removeBox->pack_start(m_buttonRemovePagesMore);
