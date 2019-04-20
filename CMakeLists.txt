@@ -41,7 +41,3 @@ add_subdirectory (src)
 add_subdirectory (tests)
 add_subdirectory (data)
 add_subdirectory (po)
-
-if (MINGW)
-	include (WindowsInstaller)
-endif ()

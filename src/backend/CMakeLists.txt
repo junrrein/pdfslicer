@@ -16,17 +16,6 @@ target_include_directories (backend PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries_system (backend
 	stduuid
+	PkgConfig::GTKMM
+	PkgConfig::POPPLER
 	PkgConfig::QPDF)
-
-if (MINGW)
-	target_include_directories (backend PUBLIC
-		${GTKMM_INCLUDE_DIRS}
-		${POPPLER_INCLUDE_DIRS})
-	target_link_libraries (backend
-		${GTKMM_LDFLAGS}
-		${POPPLER_LDFLAGS})
-else ()
-	target_link_libraries_system (backend
-		PkgConfig::GTKMM
-		PkgConfig::POPPLER)
-endif ()
