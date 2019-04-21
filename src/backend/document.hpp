@@ -56,11 +56,21 @@ public:
 private:
     using PopplerDocumentPointer = std::unique_ptr<PopplerDocument, decltype(&g_object_unref)>;
 
-    PopplerDocumentPointer m_popplerDocument;
-    const Glib::RefPtr<Gio::File> m_originalFile;
-    Glib::RefPtr<Gio::File> m_sourceFile;
+    // Data belonging to a specific PDF file
+    struct FileData {
+        PopplerDocumentPointer popplerDocument;
+        Glib::RefPtr<Gio::File> originalFile;
+        Glib::RefPtr<Gio::File> tempFile;
+
+        FileData();
+        FileData(PopplerDocumentPointer&& t_popplerDocument,
+                 const Glib::RefPtr<Gio::File>& t_originalFile,
+                 const Glib::RefPtr<Gio::File>& t_tempFile);
+        FileData& operator=(FileData&&) = default;
+    };
+
+    FileData m_fileData;
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
-    std::string m_basename;
 
     void loadDocument();
 };
