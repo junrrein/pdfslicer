@@ -21,9 +21,10 @@
 namespace Slicer {
 
 Document::Document(const Glib::RefPtr<Gio::File>& sourceFile)
+    : m_pages{Gio::ListStore<Page>::create()}
 {
     m_fileData = loadFile(sourceFile);
-    m_pages = loadPages(m_fileData);
+    m_pages->splice(0, 0, loadPages(m_fileData));
 }
 
 Glib::RefPtr<Page> Document::removePage(unsigned int index)
@@ -194,18 +195,18 @@ Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
     return FileData{std::move(document), sourceFile, tempFile};
 }
 
-Glib::RefPtr<Gio::ListStore<Page>> Document::loadPages(const Document::FileData& fileData)
+std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fileData)
 {
-    Glib::RefPtr<Gio::ListStore<Page>> pageStore = Gio::ListStore<Page>::create();
-
     const int num_pages = poppler_document_get_n_pages(fileData.popplerDocument.get());
+    std::vector<Glib::RefPtr<Page>> result;
+    result.reserve(static_cast<unsigned>(num_pages));
 
     for (int i = 0; i < num_pages; ++i) {
         auto page = Glib::RefPtr<Page>{new Page{fileData.popplerDocument.get(), i}};
-        pageStore->append(page);
+        result.push_back(page);
     }
 
-    return pageStore;
+    return result;
 }
 
 Document::FileData::FileData()

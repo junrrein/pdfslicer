@@ -73,7 +73,7 @@ private:
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
 
     FileData loadFile(const Glib::RefPtr<Gio::File>& sourceFile);
-    Glib::RefPtr<Gio::ListStore<Page>> loadPages(const FileData& fileData);
+    std::vector<Glib::RefPtr<Page>> loadPages(const FileData& fileData);
 };
 }
 
