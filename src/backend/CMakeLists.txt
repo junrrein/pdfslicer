@@ -19,3 +19,5 @@ target_link_libraries_system (backend
 	PkgConfig::GTKMM
 	PkgConfig::POPPLER
 	PkgConfig::QPDF)
+
+target_compile_options(backend PUBLIC "$<$<CONFIG:DEBUG>:${MY_DEBUG_OPTIONS}>")

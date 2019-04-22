@@ -20,14 +20,6 @@ target_link_libraries_system (${CMAKE_PROJECT_NAME}
 	spdlog
 	ThreadPool)
 
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-        set_target_properties (${CMAKE_PROJECT_NAME} PROPERTIES COMPILE_FLAGS ${GNU_COMPILE_FLAGS})
-    endif ()
-
-#	 if (CLANG_TIDY_EXE)
-#		 set_target_properties (${CMAKE_PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${DO_CLANG_TIDY}")
-#	 endif ()
-endif ()
+target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC "$<$<CONFIG:DEBUG>:${MY_DEBUG_OPTIONS}>")
 
 install (TARGETS ${CMAKE_PROJECT_NAME} RUNTIME DESTINATION bin)
