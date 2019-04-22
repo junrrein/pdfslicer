@@ -20,6 +20,6 @@ target_link_libraries_system (${CMAKE_PROJECT_NAME}
 	spdlog
 	ThreadPool)
 
-target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC "$<$<CONFIG:DEBUG>:${MY_DEBUG_OPTIONS}>")
+target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC $<$<CONFIG:DEBUG>:${SLICER_DEBUG_FLAGS}>)
 
 install (TARGETS ${CMAKE_PROJECT_NAME} RUNTIME DESTINATION bin)

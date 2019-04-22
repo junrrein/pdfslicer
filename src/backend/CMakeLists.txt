@@ -20,4 +20,4 @@ target_link_libraries_system (backend
 	PkgConfig::POPPLER
 	PkgConfig::QPDF)
 
-target_compile_options(backend PUBLIC "$<$<CONFIG:DEBUG>:${MY_DEBUG_OPTIONS}>")
+target_compile_options(backend PUBLIC $<$<CONFIG:DEBUG>:${SLICER_DEBUG_FLAGS}>)
