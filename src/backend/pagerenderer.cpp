@@ -25,23 +25,50 @@ PageRenderer::PageRenderer(const Page& page)
 {
 }
 
-Glib::RefPtr<Gdk::Pixbuf> PageRenderer::render(int targetSize) const
+PageRenderer::RenderDimensions PageRenderer::getRenderDimensions(int targetSize) const
 {
     const Page::Size outputSize = m_page.scaledRotatedSize(targetSize);
+    const Page::Size rotatedSize = m_page.rotatedSize();
+    double scale;
 
+    if (rotatedSize.width >= rotatedSize.height)
+        scale = static_cast<double>(outputSize.width) / rotatedSize.width;
+    else
+        scale = static_cast<double>(outputSize.height) / rotatedSize.height;
+
+    poppler::rotation_enum rotation = poppler::rotate_0;
+    switch (m_page.rotation()) {
+    case 90:
+        rotation = poppler::rotate_90;
+        break;
+    case 180:
+        rotation = poppler::rotate_180;
+        break;
+    case 270:
+        rotation = poppler::rotate_270;
+    }
+
+    return {outputSize, scale, rotation};
+}
+
+Glib::RefPtr<Gdk::Pixbuf> PageRenderer::render(int targetSize) const
+{
     poppler::page_renderer renderer;
     renderer.set_image_format(poppler::image::format_argb32);
     renderer.set_render_hint(poppler::page_renderer::antialiasing);
     renderer.set_render_hint(poppler::page_renderer::text_antialiasing);
     renderer.set_render_hint(poppler::page_renderer::text_hinting);
 
+    const auto [outputSize, scale, rotation] = getRenderDimensions(targetSize);
+
     poppler::image image = renderer.render_page(m_page.m_ppage.get(),
-                                                72.0,
-                                                72.0,
+                                                standardDpi * scale,
+                                                standardDpi * scale,
                                                 -1,
                                                 -1,
                                                 outputSize.width,
-                                                outputSize.height);
+                                                outputSize.height,
+                                                rotation);
 
     int stride = Cairo::ImageSurface::format_stride_for_width(Cairo::FORMAT_ARGB32, outputSize.width);
     auto surface = Cairo::ImageSurface::create(reinterpret_cast<unsigned char*>(image.data()),
@@ -49,9 +76,9 @@ Glib::RefPtr<Gdk::Pixbuf> PageRenderer::render(int targetSize) const
                                                outputSize.width,
                                                outputSize.height,
                                                stride);
-    auto cr = Cairo::Context::create(surface);
 
     // Paint a black outline
+    auto cr = Cairo::Context::create(surface);
     cr->set_line_width(1);
     cr->set_source_rgb(0, 0, 0);
     cr->rectangle(0, 0, outputSize.width, outputSize.height);
