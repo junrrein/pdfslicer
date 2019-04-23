@@ -20,15 +20,15 @@
 
 namespace Slicer {
 
-PageRenderer::PageRenderer(const Page& page)
+PageRenderer::PageRenderer(const Glib::RefPtr<const Page>& page)
     : m_page{page}
 {
 }
 
 PageRenderer::RenderDimensions PageRenderer::getRenderDimensions(int targetSize) const
 {
-    const Page::Size outputSize = m_page.scaledRotatedSize(targetSize);
-    const Page::Size rotatedSize = m_page.rotatedSize();
+    const Page::Size outputSize = m_page->scaledRotatedSize(targetSize);
+    const Page::Size rotatedSize = m_page->rotatedSize();
     double scale;
 
     if (rotatedSize.width >= rotatedSize.height)
@@ -37,7 +37,7 @@ PageRenderer::RenderDimensions PageRenderer::getRenderDimensions(int targetSize)
         scale = static_cast<double>(outputSize.height) / rotatedSize.height;
 
     poppler::rotation_enum rotation = poppler::rotate_0;
-    switch (m_page.rotation()) {
+    switch (m_page->rotation()) {
     case 90:
         rotation = poppler::rotate_90;
         break;
@@ -58,7 +58,7 @@ Glib::RefPtr<Gdk::Pixbuf> PageRenderer::render(int targetSize) const
 
     const auto [outputSize, scale, rotation] = getRenderDimensions(targetSize);
 
-    poppler::image image = renderer.render_page(m_page.m_ppage.get(),
+    poppler::image image = renderer.render_page(m_page->m_ppage.get(),
                                                 standardDpi * scale,
                                                 standardDpi * scale,
                                                 -1,
