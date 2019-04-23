@@ -32,6 +32,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.6.2" date="2019-04-23">
+			<description>
+				<p>Reduce memory consumption.</p>
+			</description>
+		</release>
 		<release version="1.6.1" date="2019-04-20">
 			<description>
 				<p>Allow selecting pages while they are still rendering. Miscellaneous bug fixes.</p>
