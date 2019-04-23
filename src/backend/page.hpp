@@ -18,8 +18,8 @@
 #define PAGE_HPP
 
 #include <glibmm/object.h>
-#include <poppler.h>
 #include <gdkmm/pixbuf.h>
+#include <poppler/cpp/poppler-page.h>
 
 namespace Slicer {
 
@@ -30,7 +30,7 @@ public:
         int height;
     };
 
-    Page(PopplerDocument* document, int pageNumber);
+    Page(poppler::document* document, int pageNumber);
 
     unsigned int fileIndex() const;
     unsigned int getDocumentIndex() const;
@@ -53,7 +53,7 @@ public:
                             const Glib::RefPtr<const Page>& b);
 
 private:
-    std::unique_ptr<PopplerPage, decltype(&g_object_unref)> m_ppage;
+    std::unique_ptr<poppler::page> m_ppage;
     int m_rotation = 0;
     unsigned int m_fileIndex;
     unsigned int m_documentIndex;

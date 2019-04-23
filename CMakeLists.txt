@@ -15,7 +15,7 @@ set (SOURCE_DATA_DIR ${CMAKE_SOURCE_DIR}/data)
 find_package (Threads REQUIRED)
 find_package (PkgConfig REQUIRED)
 pkg_check_modules (GTKMM gtkmm-3.0 IMPORTED_TARGET REQUIRED)
-pkg_check_modules (POPPLER poppler-glib IMPORTED_TARGET REQUIRED)
+pkg_check_modules (POPPLER poppler-cpp IMPORTED_TARGET REQUIRED)
 find_package (Intl REQUIRED)
 find_package (Gettext REQUIRED)
 # See https://unix.stackexchange.com/q/362289/

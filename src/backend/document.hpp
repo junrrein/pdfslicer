@@ -20,6 +20,7 @@
 #include "page.hpp"
 #include <giomm/file.h>
 #include <giomm/liststore.h>
+#include <poppler/cpp/poppler-document.h>
 
 namespace Slicer {
 
@@ -54,7 +55,7 @@ public:
     sigc::signal<void, std::vector<unsigned int>> pagesReordered;
 
 private:
-    using PopplerDocumentPointer = std::unique_ptr<PopplerDocument, decltype(&g_object_unref)>;
+    using PopplerDocumentPointer = std::unique_ptr<poppler::document>;
 
     // Data belonging to a specific PDF file
     struct FileData {
@@ -62,7 +63,7 @@ private:
         Glib::RefPtr<Gio::File> originalFile;
         Glib::RefPtr<Gio::File> tempFile;
 
-        FileData();
+        FileData() = default;
         FileData(PopplerDocumentPointer&& t_popplerDocument,
                  const Glib::RefPtr<Gio::File>& t_originalFile,
                  const Glib::RefPtr<Gio::File>& t_tempFile);

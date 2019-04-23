@@ -176,10 +176,7 @@ unsigned int Document::numberOfPages() const
 
 Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
 {
-    PopplerDocumentPointer tempDocument = {poppler_document_new_from_file(sourceFile->get_uri().c_str(),
-                                                                          nullptr,
-                                                                          nullptr),
-                                           &g_object_unref};
+    PopplerDocumentPointer tempDocument{poppler::document::load_from_file(sourceFile->get_path())};
 
     if (tempDocument == nullptr)
         throw std::runtime_error("Couldn't load file: " + sourceFile->get_path());
@@ -187,17 +184,14 @@ Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
     Glib::RefPtr<Gio::File> tempFile = TempFile::generate();
     sourceFile->copy(tempFile, Gio::FILE_COPY_OVERWRITE);
 
-    PopplerDocumentPointer document = {poppler_document_new_from_file(tempFile->get_uri().c_str(),
-                                                                      nullptr,
-                                                                      nullptr),
-                                       &g_object_unref};
+    PopplerDocumentPointer document{poppler::document::load_from_file(tempFile->get_path())};
 
     return FileData{std::move(document), sourceFile, tempFile};
 }
 
 std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fileData)
 {
-    const int num_pages = poppler_document_get_n_pages(fileData.popplerDocument.get());
+    const int num_pages = fileData.popplerDocument->pages();
     std::vector<Glib::RefPtr<Page>> result;
     result.reserve(static_cast<unsigned>(num_pages));
 
@@ -207,11 +201,6 @@ std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fi
     }
 
     return result;
-}
-
-Document::FileData::FileData()
-    : popplerDocument{nullptr, &g_object_unref}
-{
 }
 
 Document::FileData::FileData(PopplerDocumentPointer&& t_popplerDocument,

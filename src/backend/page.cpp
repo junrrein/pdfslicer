@@ -16,19 +16,19 @@
 
 #include "page.hpp"
 #include <cmath>
+#include <poppler/cpp/poppler-document.h>
 
 namespace Slicer {
 
-Page::Page(PopplerDocument* document, int pageNumber)
-    : m_ppage{nullptr, &g_object_unref}
+Page::Page(poppler::document* document, int pageNumber)
 {
-    PopplerPage* ppage = poppler_document_get_page(document, pageNumber);
+    poppler::page* ppage = document->create_page(pageNumber);
 
     if (ppage == nullptr)
         throw std::runtime_error("Couldn't load page with number: " + std::to_string(pageNumber));
 
     m_ppage.reset(ppage);
-    m_fileIndex = static_cast<unsigned>(poppler_page_get_index(m_ppage.get()));
+    m_fileIndex = static_cast<unsigned>(pageNumber);
     m_documentIndex = m_fileIndex;
 }
 
@@ -44,10 +44,9 @@ unsigned int Page::getDocumentIndex() const
 
 Page::Size Page::size() const
 {
-    double width = 0, height = 0;
-    poppler_page_get_size(m_ppage.get(), &width, &height);
+    poppler::rectf rectangle = m_ppage->page_rect();
 
-    return {static_cast<int>(width), static_cast<int>(height)};
+    return {static_cast<int>(rectangle.width()), static_cast<int>(rectangle.height())};
 }
 
 Page::Size Page::rotatedSize() const
