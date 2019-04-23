@@ -54,10 +54,7 @@ PageRenderer::RenderDimensions PageRenderer::getRenderDimensions(int targetSize)
 Glib::RefPtr<Gdk::Pixbuf> PageRenderer::render(int targetSize) const
 {
     poppler::page_renderer renderer;
-    renderer.set_image_format(poppler::image::format_argb32);
-    renderer.set_render_hint(poppler::page_renderer::antialiasing);
     renderer.set_render_hint(poppler::page_renderer::text_antialiasing);
-    renderer.set_render_hint(poppler::page_renderer::text_hinting);
 
     const auto [outputSize, scale, rotation] = getRenderDimensions(targetSize);
 
