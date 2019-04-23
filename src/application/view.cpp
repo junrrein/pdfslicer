@@ -218,6 +218,7 @@ void View::onModelPagesRotated(const std::vector<unsigned int>& positions)
         for (unsigned int position : positions) {
             if (position == pageWidget->documentIndex()) {
                 pageWidget->showSpinner();
+                pageWidget->changeSize(m_pageWidgetSize);
                 renderPage(pageWidget);
 
                 break;
