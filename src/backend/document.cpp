@@ -145,7 +145,7 @@ void Document::rotatePagesLeft(const std::vector<unsigned int>& pageNumbers)
     pagesRotated.emit(pageNumbers);
 }
 
-Glib::RefPtr<const Page> Document::getPage(unsigned int index) const
+Glib::RefPtr<Page> Document::getPage(unsigned int index) const
 {
     return m_pages->get_item(index);
 }
