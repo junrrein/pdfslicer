@@ -20,6 +20,7 @@
 #include <glibmm/object.h>
 #include <gdkmm/pixbuf.h>
 #include <poppler/cpp/poppler-page.h>
+#include <qpdf/QPDFPageObjectHelper.hh>
 
 namespace Slicer {
 
@@ -30,7 +31,9 @@ public:
         int height;
     };
 
-    Page(std::unique_ptr<poppler::page> ppage, int pageNumber);
+    Page(std::unique_ptr<poppler::page> ppage,
+         QPDFPageObjectHelper qpdfPage,
+         int pageNumber);
 
     unsigned int fileIndex() const;
     unsigned int getDocumentIndex() const;
@@ -54,6 +57,7 @@ public:
 
 private:
     std::unique_ptr<poppler::page> m_ppage;
+    QPDFPageObjectHelper m_qpdfPage;
     int m_rotation = 0;
     unsigned int m_fileIndex;
     unsigned int m_documentIndex;

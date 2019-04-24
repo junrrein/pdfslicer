@@ -17,6 +17,7 @@
 #include "document.hpp"
 #include "tempfile.hpp"
 #include <numeric>
+#include <range/v3/view/enumerate.hpp>
 
 namespace Slicer {
 
@@ -185,23 +186,32 @@ Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
     sourceFile->copy(tempFile, Gio::FILE_COPY_OVERWRITE);
 
     std::unique_ptr<poppler::document> document{poppler::document::load_from_file(tempFile->get_path())};
+    auto qpdfDocument = std::make_unique<QPDF>();
+    qpdfDocument->processFile(tempFile->get_path().c_str());
+    auto qpdfDocumentHelper = std::make_unique<QPDFPageDocumentHelper>(*qpdfDocument);
 
-    return FileData{sourceFile, tempFile, std::move(document)};
+    return FileData{sourceFile,
+                    tempFile,
+                    std::move(document),
+                    std::move(qpdfDocument),
+                    std::move(qpdfDocumentHelper)};
 }
 
 std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fileData)
 {
-    const int num_pages = fileData.popplerDocument->pages();
+    std::vector<QPDFPageObjectHelper> pages = fileData.qpdfDocumentHelper->getAllPages();
     std::vector<Glib::RefPtr<Page>> result;
-    result.reserve(static_cast<unsigned>(num_pages));
+    result.reserve(pages.size());
 
-    for (int i = 0; i < num_pages; ++i) {
-        std::unique_ptr<poppler::page> ppage{m_fileData.popplerDocument->create_page(i)};
+    for (auto [pageNumber, qpdfPage] : ranges::view::enumerate(pages)) {
+        std::unique_ptr<poppler::page> ppage{m_fileData.popplerDocument->create_page(pageNumber)};
 
         if (ppage == nullptr)
-            throw std::runtime_error("Couldn't load page with number: " + std::to_string(i));
+            throw std::runtime_error("Couldn't load page with number: " + std::to_string(pageNumber));
 
-        auto page = Glib::RefPtr<Page>{new Page{std::move(ppage), i}};
+        auto page = Glib::RefPtr<Page>{new Page{std::move(ppage),
+                                                qpdfPage,
+                                                static_cast<int>(pageNumber)}};
         result.push_back(page);
     }
 

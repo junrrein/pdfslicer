@@ -19,8 +19,11 @@
 
 namespace Slicer {
 
-Page::Page(std::unique_ptr<poppler::page> ppage, int pageNumber)
+Page::Page(std::unique_ptr<poppler::page> ppage,
+           QPDFPageObjectHelper qpdfPage,
+           int pageNumber)
     : m_ppage{std::move(ppage)}
+    , m_qpdfPage{qpdfPage}
     , m_fileIndex{static_cast<unsigned>(pageNumber)}
     , m_documentIndex{m_fileIndex}
 {

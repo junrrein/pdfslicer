@@ -21,6 +21,7 @@
 #include <giomm/file.h>
 #include <giomm/liststore.h>
 #include <poppler/cpp/poppler-document.h>
+#include <qpdf/QPDFPageDocumentHelper.hh>
 
 namespace Slicer {
 
@@ -59,6 +60,8 @@ private:
         Glib::RefPtr<Gio::File> originalFile;
         Glib::RefPtr<Gio::File> tempFile;
         std::unique_ptr<poppler::document> popplerDocument;
+        std::unique_ptr<QPDF> qpdfDocument;
+        std::unique_ptr<QPDFPageDocumentHelper> qpdfDocumentHelper;
     };
 
     FileData m_fileData;

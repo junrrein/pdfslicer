@@ -16,6 +16,7 @@ target_include_directories (backend PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries_system (backend
 	stduuid
+	range-v3
 	PkgConfig::GTKMM
 	PkgConfig::POPPLER
 	PkgConfig::QPDF)

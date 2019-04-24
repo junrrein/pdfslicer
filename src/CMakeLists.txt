@@ -16,7 +16,6 @@ add_compile_definitions (SPDLOG_FMT_EXTERNAL)
 target_link_libraries_system (${CMAKE_PROJECT_NAME}
 	backend
 	fmt::fmt-header-only
-	range-v3
 	spdlog
 	ThreadPool)
 
