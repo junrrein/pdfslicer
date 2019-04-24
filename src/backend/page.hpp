@@ -63,6 +63,7 @@ private:
     unsigned int m_documentIndex;
 
     friend class PageRenderer; // For access to m_ppage
+    friend class PdfSaver;     // For access to m_qpdfPage
 };
 
 struct pageComparator {
