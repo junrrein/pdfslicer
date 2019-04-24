@@ -176,7 +176,7 @@ unsigned int Document::numberOfPages() const
 
 Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
 {
-    PopplerDocumentPointer tempDocument{poppler::document::load_from_file(sourceFile->get_path())};
+    std::unique_ptr<poppler::document> tempDocument{poppler::document::load_from_file(sourceFile->get_path())};
 
     if (tempDocument == nullptr)
         throw std::runtime_error("Couldn't load file: " + sourceFile->get_path());
@@ -184,9 +184,9 @@ Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
     Glib::RefPtr<Gio::File> tempFile = TempFile::generate();
     sourceFile->copy(tempFile, Gio::FILE_COPY_OVERWRITE);
 
-    PopplerDocumentPointer document{poppler::document::load_from_file(tempFile->get_path())};
+    std::unique_ptr<poppler::document> document{poppler::document::load_from_file(tempFile->get_path())};
 
-    return FileData{std::move(document), sourceFile, tempFile};
+    return FileData{sourceFile, tempFile, std::move(document)};
 }
 
 std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fileData)

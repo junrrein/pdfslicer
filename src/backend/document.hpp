@@ -55,13 +55,10 @@ public:
     sigc::signal<void, std::vector<unsigned int>> pagesReordered;
 
 private:
-    using PopplerDocumentPointer = std::unique_ptr<poppler::document>;
-
-    // Data belonging to a specific PDF file
     struct FileData {
-        PopplerDocumentPointer popplerDocument;
         Glib::RefPtr<Gio::File> originalFile;
         Glib::RefPtr<Gio::File> tempFile;
+        std::unique_ptr<poppler::document> popplerDocument;
     };
 
     FileData m_fileData;
