@@ -30,7 +30,7 @@ public:
         int height;
     };
 
-    Page(poppler::document* document, int pageNumber);
+    Page(std::unique_ptr<poppler::page> ppage, int pageNumber);
 
     unsigned int fileIndex() const;
     unsigned int getDocumentIndex() const;

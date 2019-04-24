@@ -196,7 +196,12 @@ std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fi
     result.reserve(static_cast<unsigned>(num_pages));
 
     for (int i = 0; i < num_pages; ++i) {
-        auto page = Glib::RefPtr<Page>{new Page{fileData.popplerDocument.get(), i}};
+        std::unique_ptr<poppler::page> ppage{m_fileData.popplerDocument->create_page(i)};
+
+        if (ppage == nullptr)
+            throw std::runtime_error("Couldn't load page with number: " + std::to_string(i));
+
+        auto page = Glib::RefPtr<Page>{new Page{std::move(ppage), i}};
         result.push_back(page);
     }
 

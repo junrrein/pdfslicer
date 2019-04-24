@@ -16,20 +16,14 @@
 
 #include "page.hpp"
 #include <cmath>
-#include <poppler/cpp/poppler-document.h>
 
 namespace Slicer {
 
-Page::Page(poppler::document* document, int pageNumber)
+Page::Page(std::unique_ptr<poppler::page> ppage, int pageNumber)
+    : m_ppage{std::move(ppage)}
+    , m_fileIndex{static_cast<unsigned>(pageNumber)}
+    , m_documentIndex{m_fileIndex}
 {
-    poppler::page* ppage = document->create_page(pageNumber);
-
-    if (ppage == nullptr)
-        throw std::runtime_error("Couldn't load page with number: " + std::to_string(pageNumber));
-
-    m_ppage.reset(ppage);
-    m_fileIndex = static_cast<unsigned>(pageNumber);
-    m_documentIndex = m_fileIndex;
 }
 
 unsigned int Page::fileIndex() const
@@ -137,7 +131,7 @@ int Page::sortFunction(const Page& a, const Page& b)
 int Page::sortFunction(const Glib::RefPtr<const Page>& a,
                        const Glib::RefPtr<const Page>& b)
 {
-    return sortFunction(*(a.operator->()), *(b.operator->()));
+    return sortFunction(*a.get(), *b.get());
 }
 
 int pageComparator::operator()(const Glib::RefPtr<const Page>& a,
