@@ -62,12 +62,6 @@ private:
         PopplerDocumentPointer popplerDocument;
         Glib::RefPtr<Gio::File> originalFile;
         Glib::RefPtr<Gio::File> tempFile;
-
-        FileData() = default;
-        FileData(PopplerDocumentPointer&& t_popplerDocument,
-                 const Glib::RefPtr<Gio::File>& t_originalFile,
-                 const Glib::RefPtr<Gio::File>& t_tempFile);
-        FileData& operator=(FileData&&) = default;
     };
 
     FileData m_fileData;

@@ -208,13 +208,4 @@ std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fi
     return result;
 }
 
-Document::FileData::FileData(PopplerDocumentPointer&& t_popplerDocument,
-                             const Glib::RefPtr<Gio::File>& t_originalFile,
-                             const Glib::RefPtr<Gio::File>& t_tempFile)
-    : popplerDocument{std::move(t_popplerDocument)}
-    , originalFile{t_originalFile}
-    , tempFile{t_tempFile}
-{
-}
-
 }
