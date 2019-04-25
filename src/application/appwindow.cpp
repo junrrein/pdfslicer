@@ -250,7 +250,7 @@ void AppWindow::onShortcutsAction()
 
 void AppWindow::onSaveAction()
 {
-    Slicer::SaveFileDialog dialog{*this, m_document->originalParentPath()};
+    Slicer::SaveFileDialog dialog{*this};
 
     const int result = dialog.run();
 
