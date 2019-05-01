@@ -206,6 +206,7 @@ std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fi
 
         auto page = Glib::RefPtr<Page>{new Page{std::move(ppage),
                                                 qpdfPage,
+                                                fileData.originalFile->get_basename(),
                                                 static_cast<int>(pageNumber)}};
         result.push_back(page);
     }

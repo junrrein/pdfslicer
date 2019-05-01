@@ -33,6 +33,7 @@ public:
 
     Page(std::unique_ptr<poppler::page> ppage,
          const QPDFPageObjectHelper& qpdfPage,
+         const std::string& fileName,
          int pageNumber);
 
     unsigned int fileIndex() const;
@@ -58,6 +59,7 @@ public:
 private:
     std::unique_ptr<poppler::page> m_ppage;
     QPDFPageObjectHelper m_qpdfPage;
+    const std::string m_fileName;
     int m_rotation = 0;
     unsigned int m_fileIndex;
     unsigned int m_documentIndex;
