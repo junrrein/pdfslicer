@@ -204,7 +204,7 @@ std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fi
     result.reserve(pages.size());
 
     for (auto [pageNumber, qpdfPage] : ranges::view::enumerate(pages)) {
-        std::unique_ptr<poppler::page> ppage{m_fileData.popplerDocument->create_page(pageNumber)};
+        std::unique_ptr<poppler::page> ppage{fileData.popplerDocument->create_page(pageNumber)};
 
         if (ppage == nullptr)
             throw std::runtime_error("Couldn't load page with number: " + std::to_string(pageNumber));
