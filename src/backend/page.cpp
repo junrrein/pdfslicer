@@ -93,16 +93,6 @@ void Page::setDocumentIndex(unsigned int newIndex)
     indexChanged.emit();
 }
 
-void Page::incrementDocumentIndex()
-{
-    setDocumentIndex(getDocumentIndex() + 1);
-}
-
-void Page::decrementDocumentIndex()
-{
-    setDocumentIndex(getDocumentIndex() - 1);
-}
-
 void Page::rotateRight()
 {
     if (m_rotation == 270)
