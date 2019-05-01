@@ -32,7 +32,7 @@ public:
     };
 
     Page(std::unique_ptr<poppler::page> ppage,
-         QPDFPageObjectHelper qpdfPage,
+         const QPDFPageObjectHelper& qpdfPage,
          int pageNumber);
 
     unsigned int fileIndex() const;

@@ -71,7 +71,7 @@ private:
     Gtk::Revealer m_previewButtonRevealer;
     Gtk::Label m_pageNumberLabel;
 
-    const Glib::RefPtr<const Page> page() const;
+    const Glib::RefPtr<const Page>& page() const;
     void setupWidgets();
     void setupSignalHandlers();
 };

@@ -291,7 +291,7 @@ void AppWindow::onOpenAction()
         tryOpenDocument(dialog.get_file());
 }
 
-void AppWindow::tryOpenDocument(Glib::RefPtr<Gio::File> file)
+void AppWindow::tryOpenDocument(const Glib::RefPtr<Gio::File>& file)
 {
     try {
         m_undoAction->set_enabled(false);
@@ -405,10 +405,10 @@ void AppWindow::onCancelSelection()
     m_view.clearSelection();
 }
 
-bool isVectorContigous(const std::vector<unsigned int>& bector)
+bool isVectorContigous(const std::vector<unsigned int>& vector)
 {
-    for (unsigned int i = 0; i < bector.size(); ++i)
-        if (bector.front() + i != bector.at(i))
+    for (unsigned int i = 0; i < vector.size(); ++i)
+        if (vector.front() + i != vector.at(i))
             return false;
 
     return true;

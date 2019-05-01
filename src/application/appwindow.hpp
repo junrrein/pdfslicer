@@ -102,7 +102,7 @@ private:
     void disableEditingActions();
     void enableEditingActions();
     void trySaveDocument(const Glib::RefPtr<Gio::File>& file);
-    void tryOpenDocument(Glib::RefPtr<Gio::File> file);
+    void tryOpenDocument(const Glib::RefPtr<Gio::File>& file);
 
     // Callbacks
     void onSaveAction();

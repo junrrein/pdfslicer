@@ -47,7 +47,7 @@ SettingsManager::~SettingsManager()
 WindowState SettingsManager::loadWindowState()
 {
     try {
-        WindowState result;
+        WindowState result{};
 
         result.width = m_keyFile.get_integer(window_state::groupName, window_state::keys.width);
         result.height = m_keyFile.get_integer(window_state::groupName, window_state::keys.height);

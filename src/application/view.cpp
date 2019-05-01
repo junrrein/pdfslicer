@@ -114,7 +114,9 @@ void View::clearSelection()
 unsigned int View::getSelectedChildIndex() const
 {
     const std::vector<unsigned int> selected = getSelectedChildrenIndexes();
-    assert(selected.size() == 1);
+
+    if (selected.size() != 1)
+        throw std::runtime_error("More than one child was actually selected");
 
     return selected.front();
 }
@@ -141,8 +143,8 @@ std::vector<unsigned int> View::getUnselectedChildrenIndexes() const
 
 int View::sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b)
 {
-    const auto widgetA = static_cast<InteractivePageWidget*>(a);
-    const auto widgetB = static_cast<InteractivePageWidget*>(b);
+    const auto widgetA = dynamic_cast<InteractivePageWidget*>(a);
+    const auto widgetB = dynamic_cast<InteractivePageWidget*>(b);
 
     return InteractivePageWidget::sortFunction(*widgetA, *widgetB);
 }

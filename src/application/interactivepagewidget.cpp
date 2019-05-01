@@ -69,7 +69,7 @@ void InteractivePageWidget::showPage()
     m_pageWidget.showPage();
 }
 
-const Glib::RefPtr<const Page> InteractivePageWidget::page() const
+const Glib::RefPtr<const Page>& InteractivePageWidget::page() const
 {
     return m_pageWidget.page();
 }
@@ -97,7 +97,7 @@ void InteractivePageWidget::setupWidgets()
     m_overlayEventBox.add(m_overlay);
 
     m_pageNumberLabel.set_label(fmt::format(_("Page {pageNumber}"),
-                                            "pageNumber"_a = page()->fileIndex() + 1));
+                                            "pageNumber"_a = page()->fileIndex() + 1)); //NOLINT
     m_pageNumberLabel.set_margin_top(5);
     m_pageNumberLabel.set_visible();
 

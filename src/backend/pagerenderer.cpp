@@ -68,7 +68,7 @@ Glib::RefPtr<Gdk::Pixbuf> PageRenderer::render(int targetSize) const
                                                 rotation);
 
     int stride = Cairo::ImageSurface::format_stride_for_width(Cairo::FORMAT_ARGB32, outputSize.width);
-    auto surface = Cairo::ImageSurface::create(reinterpret_cast<unsigned char*>(image.data()),
+    auto surface = Cairo::ImageSurface::create(reinterpret_cast<unsigned char*>(image.data()), //NOLINT
                                                Cairo::FORMAT_ARGB32,
                                                outputSize.width,
                                                outputSize.height,
