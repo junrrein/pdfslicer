@@ -49,7 +49,6 @@ public:
     const Glib::RefPtr<Gio::ListStore<Page>>& pages() const;
     std::string basename() const;
     std::string filePath() const;
-    std::string originalParentPath() const;
     unsigned int numberOfPages() const;
 
     sigc::signal<void, std::vector<unsigned int>> pagesRotated;

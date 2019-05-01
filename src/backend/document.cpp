@@ -165,11 +165,6 @@ std::string Document::filePath() const
     return m_fileData.tempFile->get_path();
 }
 
-std::string Document::originalParentPath() const
-{
-    return m_fileData.originalFile->get_parent()->get_path();
-}
-
 unsigned int Document::numberOfPages() const
 {
     return m_pages->get_n_items();
