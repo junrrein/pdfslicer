@@ -34,7 +34,7 @@ public:
     Page(std::unique_ptr<poppler::page> ppage,
          const QPDFPageObjectHelper& qpdfPage,
          const std::string& fileName,
-         int pageNumber);
+         unsigned int pageNumber);
 
     unsigned int fileIndex() const;
     unsigned int getDocumentIndex() const;
