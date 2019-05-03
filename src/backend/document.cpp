@@ -147,6 +147,18 @@ void Document::rotatePagesLeft(const std::vector<unsigned int>& pageNumbers)
     pagesRotated.emit(pageNumbers);
 }
 
+void Document::addPagesFromFile(const Glib::RefPtr<Gio::File>& file, unsigned int position)
+{
+    FileData fileData = loadFile(file);
+    std::vector<Glib::RefPtr<Page>> pages = loadPages(fileData);
+
+    for (auto [i, page] : ranges::view::enumerate(pages))
+        page->setDocumentIndex(position + i);
+
+    insertPageRange(pages, position);
+    m_filesData.emplace_back(std::move(fileData));
+}
+
 Glib::RefPtr<Page> Document::getPage(unsigned int index) const
 {
     return m_pages->get_item(index);
