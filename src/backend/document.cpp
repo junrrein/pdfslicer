@@ -184,9 +184,21 @@ Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
                     std::move(qpdfDocumentHelper)};
 }
 
+Glib::ustring getDiplayNameWithoutExtension(const Glib::RefPtr<Gio::File>& file)
+{
+    const std::string attribute = G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME;
+    Glib::ustring result = file->query_info(attribute)->get_attribute_as_string(attribute);
+
+    if (auto extensionIndex = result.rfind(".pdf"); extensionIndex != Glib::ustring::npos)
+        result.erase(extensionIndex);
+
+    return result;
+}
+
 std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fileData)
 {
-    std::vector<QPDFPageObjectHelper> pages = fileData.qpdfDocumentHelper->getAllPages();
+    const Glib::ustring basenameWihoutExtension = getDiplayNameWithoutExtension(fileData.originalFile);
+    const std::vector<QPDFPageObjectHelper> pages = fileData.qpdfDocumentHelper->getAllPages();
     std::vector<Glib::RefPtr<Page>> result;
     result.reserve(pages.size());
 
@@ -198,7 +210,7 @@ std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fi
 
         auto page = Glib::RefPtr<Page>{new Page{std::move(ppage),
                                                 qpdfPage,
-                                                fileData.originalFile->get_basename(),
+                                                basenameWihoutExtension,
                                                 static_cast<unsigned>(pageNumber)}};
         result.push_back(page);
     }
