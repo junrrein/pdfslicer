@@ -61,8 +61,6 @@ void AppWindow::setDocument(std::unique_ptr<Document> document)
 
     m_stack.set_visible_child("editor");
 
-    m_headerBar.set_subtitle(m_document->basename());
-
     m_saveAction->set_enabled();
     m_zoomLevel.enable();
 

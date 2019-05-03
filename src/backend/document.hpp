@@ -47,8 +47,6 @@ public:
 
     Glib::RefPtr<Page> getPage(unsigned int index) const;
     const Glib::RefPtr<Gio::ListStore<Page>>& pages() const;
-    std::string basename() const;
-    std::string filePath() const;
     unsigned int numberOfPages() const;
 
     sigc::signal<void, std::vector<unsigned int>> pagesRotated;
@@ -63,7 +61,7 @@ private:
         std::unique_ptr<QPDFPageDocumentHelper> qpdfDocumentHelper;
     };
 
-    FileData m_fileData;
+    std::vector<FileData> m_filesData;
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
 
     FileData loadFile(const Glib::RefPtr<Gio::File>& sourceFile);
