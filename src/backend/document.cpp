@@ -214,16 +214,16 @@ std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fi
     std::vector<Glib::RefPtr<Page>> result;
     result.reserve(pages.size());
 
-    for (auto [pageNumber, qpdfPage] : ranges::view::enumerate(pages)) {
-        std::unique_ptr<poppler::page> ppage{fileData.popplerDocument->create_page(pageNumber)};
+    for (auto [i, qpdfPage] : ranges::view::enumerate(pages)) {
+        std::unique_ptr<poppler::page> ppage{fileData.popplerDocument->create_page(i)};
 
         if (ppage == nullptr)
-            throw std::runtime_error("Couldn't load page with number: " + std::to_string(pageNumber));
+            throw std::runtime_error("Couldn't load page with number: " + std::to_string(i));
 
         auto page = Glib::RefPtr<Page>{new Page{std::move(ppage),
                                                 qpdfPage,
                                                 basenameWihoutExtension,
-                                                static_cast<unsigned>(pageNumber)}};
+                                                static_cast<unsigned>(i)}};
         result.push_back(page);
     }
 
