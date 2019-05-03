@@ -17,6 +17,7 @@
 #ifndef INTERACTIVEPAGEWIDGET_HPP
 #define INTERACTIVEPAGEWIDGET_HPP
 
+#include "pagelabel.hpp"
 #include "pagewidget.hpp"
 #include <gtkmm/checkbutton.h>
 #include <gtkmm/eventbox.h>
@@ -69,7 +70,7 @@ private:
     Gtk::CheckButton m_check;
     Gtk::Button m_previewButton;
     Gtk::Revealer m_previewButtonRevealer;
-    Gtk::Label m_pageNumberLabel;
+    PageLabel m_pageLabel;
 
     const Glib::RefPtr<const Page>& page() const;
     void setupWidgets();

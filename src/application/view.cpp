@@ -25,7 +25,6 @@ namespace rsv = ranges::view;
 View::View(BackgroundThread& backgroundThread)
     : m_backgroundThread{backgroundThread}
 {
-    set_column_spacing(10);
     set_row_spacing(5);
     set_selection_mode(Gtk::SELECTION_NONE);
     set_sort_func(&sortFunction);
