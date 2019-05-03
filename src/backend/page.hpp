@@ -36,6 +36,7 @@ public:
          const Glib::ustring& fileName,
          unsigned int pageNumber);
 
+    const Glib::ustring& fileName() const;
     unsigned int fileIndex() const;
     unsigned int getDocumentIndex() const;
     int rotation() const { return m_rotation; }

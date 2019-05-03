@@ -31,6 +31,11 @@ Page::Page(std::unique_ptr<poppler::page> ppage,
 {
 }
 
+const Glib::ustring& Page::fileName() const
+{
+    return m_fileName;
+}
+
 unsigned int Page::fileIndex() const
 {
     return m_fileIndex;
