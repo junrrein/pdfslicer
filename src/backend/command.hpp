@@ -138,6 +138,24 @@ private:
     const unsigned int m_indexDestination;
 };
 
+class AddFileCommand : public Command {
+public:
+    AddFileCommand(Document& document,
+                   const Glib::RefPtr<Gio::File>& file,
+                   unsigned int position);
+
+    void execute() override;
+    void undo() override;
+    void redo() override;
+
+private:
+    Document& m_document;
+    Glib::RefPtr<Gio::File> m_file;
+    const unsigned int m_position;
+    unsigned int m_numberOfAddedPages;
+    std::vector<Glib::RefPtr<Page>> m_addedPages;
+};
+
 } // namespace Slicer
 
 #endif // COMMAND_HPP
