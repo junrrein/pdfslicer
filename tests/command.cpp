@@ -6,8 +6,9 @@
 
 using namespace Slicer;
 
-static const std::string multipagePdfPath
-    = Glib::build_filename(Glib::get_current_dir(), "multipage.pdf");
+static const std::string multipage1Name = "multipage-1";
+static const std::string multipage1Path
+    = Glib::build_filename(Glib::get_current_dir(), multipage1Name + ".pdf");
 
 bool areIndexesMonoIncreasing(const Document& doc);
 
@@ -15,7 +16,7 @@ SCENARIO("Removing a single page from different places of a document using the C
 {
     GIVEN("A multipage document with 15 pages")
     {
-        auto multipagePdfFile = Gio::File::create_for_path(multipagePdfPath);
+        auto multipagePdfFile = Gio::File::create_for_path(multipage1Path);
         Document doc{multipagePdfFile};
         REQUIRE(doc.numberOfPages() == 15);
 
@@ -135,7 +136,7 @@ SCENARIO("Removing a 2-page range from different places of a document using the 
 {
     GIVEN("A multipage PDF document with 15 pages")
     {
-        auto multipagePdfFile = Gio::File::create_for_path(multipagePdfPath);
+        auto multipagePdfFile = Gio::File::create_for_path(multipage1Path);
         Document doc{multipagePdfFile};
         REQUIRE(doc.numberOfPages() == 15);
 
@@ -220,7 +221,7 @@ SCENARIO("Removing 2 disjoint pages from different places of a document using th
 {
     GIVEN("A multipage PDF document with 15 pages")
     {
-        auto multipagePdfFile = Gio::File::create_for_path(multipagePdfPath);
+        auto multipagePdfFile = Gio::File::create_for_path(multipage1Path);
         Document doc{multipagePdfFile};
         REQUIRE(doc.numberOfPages() == 15);
 
@@ -320,7 +321,7 @@ SCENARIO("Remove all pages of a document before a certain one using RemovePageRa
 {
     GIVEN("A multipage PDF document with 15 pages")
     {
-        auto multipagePdfFile = Gio::File::create_for_path(multipagePdfPath);
+        auto multipagePdfFile = Gio::File::create_for_path(multipage1Path);
         Document doc{multipagePdfFile};
         REQUIRE(doc.numberOfPages() == 15);
 
@@ -364,7 +365,7 @@ SCENARIO("Moving 1 page across different places of a document using the Command 
 {
     GIVEN("A multipage PDF document with 15 pages")
     {
-        auto multipagePdfFile = Gio::File::create_for_path(multipagePdfPath);
+        auto multipagePdfFile = Gio::File::create_for_path(multipage1Path);
         Document doc{multipagePdfFile};
         REQUIRE(doc.numberOfPages() == 15);
 
@@ -472,7 +473,7 @@ SCENARIO("Moving 2 adjacent pages across different places of a document, using t
 {
     GIVEN("A multipage PDF document with 15 pages")
     {
-        auto multipagePdfFile = Gio::File::create_for_path(multipagePdfPath);
+        auto multipagePdfFile = Gio::File::create_for_path(multipage1Path);
         Document doc{multipagePdfFile};
         REQUIRE(doc.numberOfPages() == 15);
 
