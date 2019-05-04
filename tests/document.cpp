@@ -559,7 +559,7 @@ SCENARIO("Adding a new file to an existing document")
 
         WHEN("A 5-page PDF file is added to the beggining")
         {
-            doc.addPagesFromFile(Gio::File::create_for_path(multipage2PdfPath), 0);
+            doc.addFile(Gio::File::create_for_path(multipage2PdfPath), 0);
 
             THEN("The document should now have 20 pages")
             REQUIRE(doc.numberOfPages() == 20);
@@ -591,7 +591,7 @@ SCENARIO("Adding a new file to an existing document")
 
         WHEN("A 5-page PDF file is added to the end")
         {
-            doc.addPagesFromFile(Gio::File::create_for_path(multipage2PdfPath), doc.numberOfPages());
+            doc.addFile(Gio::File::create_for_path(multipage2PdfPath), doc.numberOfPages());
 
             THEN("The document should now have 20 pages")
             REQUIRE(doc.numberOfPages() == 20);
@@ -623,7 +623,7 @@ SCENARIO("Adding a new file to an existing document")
 
         WHEN("A 5-page PDF file is added at the 5th page of the document")
         {
-            doc.addPagesFromFile(Gio::File::create_for_path(multipage2PdfPath), 4);
+            doc.addFile(Gio::File::create_for_path(multipage2PdfPath), 4);
 
             THEN("The document should now have 20 pages")
             REQUIRE(doc.numberOfPages() == 20);

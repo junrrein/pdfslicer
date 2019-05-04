@@ -150,7 +150,7 @@ void Document::rotatePagesLeft(const std::vector<unsigned int>& pageNumbers)
     pagesRotated.emit(pageNumbers);
 }
 
-void Document::addPagesFromFile(const Glib::RefPtr<Gio::File>& file, unsigned int position)
+void Document::addFile(const Glib::RefPtr<Gio::File>& file, unsigned int position)
 {
     FileData fileData = loadFile(file);
     std::vector<Glib::RefPtr<Page>> pages = loadPages(fileData);
