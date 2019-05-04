@@ -98,6 +98,9 @@ void Document::insertPages(const std::vector<Glib::RefPtr<Page>>& pages)
 
 void Document::insertPageRange(const std::vector<Glib::RefPtr<Page>>& pages, unsigned int position)
 {
+    if (position > numberOfPages())
+        throw std::runtime_error("The insertion position is greater than the number of pages");
+
     for (unsigned int i = position; i < numberOfPages(); ++i)
         m_pages->get_item(i)->setDocumentIndex(i + static_cast<unsigned>(pages.size()));
 
