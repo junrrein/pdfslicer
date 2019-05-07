@@ -150,11 +150,11 @@ int View::sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b)
 
 void View::displayRenderedPages()
 {
-    std::lock_guard<std::mutex> lock{m_renderedQueueMutex};
+    safe::WriteAccess<LockableQueue> queue{m_renderedQueue};
 
-    while (!m_renderedQueue.empty()) {
-        std::shared_ptr<InteractivePageWidget> pageWidget = m_renderedQueue.front().lock();
-        m_renderedQueue.pop();
+    while (!queue->empty()) {
+        std::shared_ptr<InteractivePageWidget> pageWidget = queue->front().lock();
+        queue->pop();
 
         if (pageWidget != nullptr) {
             pageWidget->showPage();
@@ -171,8 +171,8 @@ void View::renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget)
             return;
 
         pageWidget->renderPage();
-        std::lock_guard<std::mutex> lock{m_renderedQueueMutex};
-        m_renderedQueue.push(pageWidget);
+        safe::WriteAccess<LockableQueue> queue{m_renderedQueue};
+        queue->push(pageWidget);
         m_dispatcher.emit();
     });
 }
@@ -181,8 +181,8 @@ void View::killStillRenderingPages()
 {
     m_backgroundThread.killRemainingTasks();
 
-    std::lock_guard<std::mutex> lock(m_renderedQueueMutex);
-    m_renderedQueue = {};
+    safe::WriteAccess<LockableQueue> queue{m_renderedQueue};
+    *queue = {};
 }
 
 void View::onDispatcherCalled()

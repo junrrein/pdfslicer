@@ -23,13 +23,11 @@
 #include <queue>
 #include <glibmm/dispatcher.h>
 #include <gtkmm/flowbox.h>
+#include <safe/lockable.h>
 
 namespace Slicer {
 
 class View : public Gtk::FlowBox {
-
-    using PageWidgetList = std::list<std::shared_ptr<InteractivePageWidget>>;
-    using PageWidgetQueue = std::queue<std::weak_ptr<InteractivePageWidget>>;
 
 public:
     View(BackgroundThread& backgroundThread);
@@ -48,12 +46,15 @@ public:
     static int sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b);
 
 private:
+    using PageWidgetList = std::list<std::shared_ptr<InteractivePageWidget>>;
+    using PageWidgetQueue = std::queue<std::weak_ptr<InteractivePageWidget>>;
+    using LockableQueue = safe::Lockable<PageWidgetQueue>;
+
     PageWidgetList m_pageWidgets;
     int m_pageWidgetSize = 0;
     Document* m_document = nullptr;
     std::vector<sigc::connection> m_documentConnections;
-    PageWidgetQueue m_renderedQueue;
-    std::mutex m_renderedQueueMutex;
+    LockableQueue m_renderedQueue;
     Glib::Dispatcher m_dispatcher;
     BackgroundThread& m_backgroundThread;
 
