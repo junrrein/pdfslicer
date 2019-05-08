@@ -39,6 +39,7 @@ AboutDialog::AboutDialog(Gtk::Window& parent)
                         "Poppler https://poppler.freedesktop.org/",
                         "QPDF https://github.com/qpdf/qpdf",
                         "range-v3 https://github.com/ericniebler/range-v3",
+                        "safe https://github.com/LouisCharlesC/safe",
                         "spdlog https://github.com/gabime/spdlog",
                         "stduuid https://github.com/mariusbancila/stduuid",
                         "ThreadPool https://github.com/adda25/ThreadPool"});
