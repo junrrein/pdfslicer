@@ -30,15 +30,9 @@ HeaderBar::HeaderBar()
 
 void HeaderBar::setupWidgets()
 {
-    m_buttonOpen.set_image_from_icon_name("document-open-symbolic");
-    m_buttonOpen.set_tooltip_text(_("Open document…"));
+    m_buttonOpen.set_label(_("Open…"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonOpen.gobj()), "win.open-document"); // NOLINT
     pack_start(m_buttonOpen);
-
-    m_buttonSave.set_image_from_icon_name("document-save-symbolic");
-    m_buttonSave.set_tooltip_text(_("Save as…"));
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonSave.gobj()), "win.save-document"); // NOLINT
-    pack_start(m_buttonSave);
 
     m_buttonUndo.set_image_from_icon_name("edit-undo-symbolic");
     m_buttonUndo.set_tooltip_text(_("Undo"));
@@ -59,6 +53,10 @@ void HeaderBar::setupWidgets()
     m_buttonAppMenu.set_image_from_icon_name("open-menu-symbolic");
     m_buttonAppMenu.set_menu_model(menu);
     pack_end(m_buttonAppMenu);
+
+    m_buttonSave.set_label(_("Save as…"));
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonSave.gobj()), "win.save-document"); // NOLINT
+    pack_end(m_buttonSave);
 
     m_buttonZoomOut.set_image_from_icon_name("zoom-out-symbolic");
     m_buttonZoomOut.set_tooltip_text(_("Zoom out"));
