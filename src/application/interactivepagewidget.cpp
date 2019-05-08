@@ -36,7 +36,6 @@ void InteractivePageWidget::setChecked(bool checked)
 {
     if (m_isChecked != checked) {
         m_isChecked = checked;
-        m_check.set_active(m_isChecked);
 
         if (checked)
             set_state_flags(Gtk::STATE_FLAG_SELECTED);
@@ -79,11 +78,6 @@ const Glib::RefPtr<const Page>& InteractivePageWidget::page() const
 
 void InteractivePageWidget::setupWidgets()
 {
-    m_check.set_halign(Gtk::ALIGN_END);
-    m_check.set_valign(Gtk::ALIGN_END);
-    m_check.set_margin_bottom(10);
-    m_check.set_margin_right(10);
-
     m_previewButton.set_image_from_icon_name("document-print-preview-symbolic");
     m_previewButtonRevealer.add(m_previewButton);
     m_previewButtonRevealer.set_transition_type(Gtk::REVEALER_TRANSITION_TYPE_CROSSFADE);
@@ -94,7 +88,6 @@ void InteractivePageWidget::setupWidgets()
 
     m_overlay.set_halign(Gtk::ALIGN_CENTER);
     m_overlay.set_valign(Gtk::ALIGN_CENTER);
-    m_overlay.add_overlay(m_check);
     m_overlay.add_overlay(m_previewButtonRevealer);
     m_overlay.add(m_pageWidget);
     m_overlayEventBox.add(m_overlay);

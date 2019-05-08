@@ -67,7 +67,6 @@ private:
     Gtk::EventBox m_overlayEventBox;
     Slicer::PageWidget m_pageWidget;
 
-    Gtk::CheckButton m_check;
     Gtk::Button m_previewButton;
     Gtk::Revealer m_previewButtonRevealer;
     PageLabel m_pageLabel;
