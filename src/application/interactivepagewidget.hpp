@@ -19,7 +19,7 @@
 
 #include "pagelabel.hpp"
 #include "pagewidget.hpp"
-#include <gtkmm/checkbutton.h>
+#include <gtkmm/button.h>
 #include <gtkmm/eventbox.h>
 #include <gtkmm/flowboxchild.h>
 #include <gtkmm/label.h>
@@ -38,8 +38,8 @@ public:
 
     unsigned int documentIndex() const;
 
-    void setChecked(bool checked);
-    bool getChecked() const { return m_isChecked; }
+    void setSelected(bool selected);
+    bool getSelected() const { return m_isSelected; }
 
     void enableRendering() { m_isRenderingCancelled = false; }
     void cancelRendering() { m_isRenderingCancelled = true; }
@@ -59,7 +59,7 @@ public:
     void showPage();
 
 private:
-    bool m_isChecked = false;
+    bool m_isSelected = false;
     std::atomic<bool> m_isRenderingCancelled = false;
 
     Gtk::Box m_contentBox;

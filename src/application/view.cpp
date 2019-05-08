@@ -103,7 +103,7 @@ void View::changePageSize(int targetWidgetSize)
 void View::clearSelection()
 {
     for (auto& widget : m_pageWidgets)
-        widget->setChecked(false);
+        widget->setSelected(false);
 
     m_lastPageSelected = nullptr;
 
@@ -124,7 +124,7 @@ std::vector<unsigned int> View::getSelectedChildrenIndexes() const
 {
     const std::vector<unsigned int> result
         = m_pageWidgets
-          | rsv::filter(std::mem_fn(&InteractivePageWidget::getChecked))
+          | rsv::filter(std::mem_fn(&InteractivePageWidget::getSelected))
           | rsv::transform(std::mem_fn(&InteractivePageWidget::documentIndex));
 
     return result;
@@ -134,7 +134,7 @@ std::vector<unsigned int> View::getUnselectedChildrenIndexes() const
 {
     const std::vector<unsigned int> result
         = m_pageWidgets
-          | rsv::remove_if(std::mem_fn(&InteractivePageWidget::getChecked))
+          | rsv::remove_if(std::mem_fn(&InteractivePageWidget::getSelected))
           | rsv::transform(std::mem_fn(&InteractivePageWidget::documentIndex));
 
     return result;
@@ -233,7 +233,7 @@ void View::onModelPagesReordered(const std::vector<unsigned int>& positions)
     for (auto& pageWidget : m_pageWidgets) {
         for (unsigned int position : positions) {
             if (position == pageWidget->documentIndex()) {
-                pageWidget->setChecked(true);
+                pageWidget->setSelected(true);
 
                 break;
             }
@@ -245,7 +245,7 @@ void View::onModelPagesReordered(const std::vector<unsigned int>& positions)
 
 void View::onPageSelection(InteractivePageWidget* pageWidget)
 {
-    if (pageWidget->getChecked())
+    if (pageWidget->getSelected())
         m_lastPageSelected = pageWidget;
     else
         m_lastPageSelected = nullptr;
@@ -264,13 +264,13 @@ void View::onShiftSelection(InteractivePageWidget* pageWidget)
 
         if (first != -1 && last != -1) {
             for (auto& widget : m_pageWidgets)
-                widget->setChecked(false);
+                widget->setSelected(false);
 
             if (first > last)
                 std::swap(first, last);
 
             for (auto& widget : m_pageWidgets | rsv::drop(first) | rsv::take(last - first + 1))
-                widget->setChecked(true);
+                widget->setSelected(true);
         }
     }
 

@@ -32,12 +32,12 @@ unsigned int InteractivePageWidget::documentIndex() const
     return page()->getDocumentIndex();
 }
 
-void InteractivePageWidget::setChecked(bool checked)
+void InteractivePageWidget::setSelected(bool selected)
 {
-    if (m_isChecked != checked) {
-        m_isChecked = checked;
+    if (m_isSelected != selected) {
+        m_isSelected = selected;
 
-        if (checked)
+        if (selected)
             set_state_flags(Gtk::STATE_FLAG_SELECTED);
         else {
             set_state_flags(Gtk::STATE_FLAG_NORMAL);
@@ -110,11 +110,11 @@ void InteractivePageWidget::setupSignalHandlers()
     m_overlayEventBox.signal_button_release_event().connect([this](GdkEventButton* eventButton) {
         if (eventButton->button == 1) {
             if ((eventButton->state & GDK_SHIFT_MASK) != 0) {
-                setChecked(true);
+                setSelected(true);
                 shiftSelected.emit(this);
             }
             else {
-                setChecked(!getChecked());
+                setSelected(!getSelected());
                 selectedChanged.emit(this);
             }
 
