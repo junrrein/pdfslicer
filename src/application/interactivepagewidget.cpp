@@ -37,6 +37,12 @@ void InteractivePageWidget::setChecked(bool checked)
     if (m_isChecked != checked) {
         m_isChecked = checked;
         m_check.set_active(m_isChecked);
+
+        if (checked)
+            set_state_flags(Gtk::STATE_FLAG_SELECTED);
+        else {
+            set_state_flags(Gtk::STATE_FLAG_NORMAL);
+        }
     }
 }
 
