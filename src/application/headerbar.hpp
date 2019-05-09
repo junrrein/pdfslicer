@@ -30,6 +30,7 @@ public:
 
 private:
     Gtk::Button m_buttonOpen;
+    Gtk::Button m_buttonAddFile;
     Gtk::Button m_buttonSave;
     Gtk::Button m_buttonUndo;
     Gtk::Button m_buttonRedo;

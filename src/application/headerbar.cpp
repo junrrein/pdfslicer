@@ -35,6 +35,11 @@ void HeaderBar::setupWidgets()
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonOpen.gobj()), "win.open-document"); // NOLINT
     pack_start(m_buttonOpen);
 
+    m_buttonAddFile.set_image_from_icon_name("document-new-symbolic");
+    m_buttonAddFile.set_tooltip_text(_("Add file…"));
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonAddFile.gobj()), "win.add-file"); // NOLINT
+    pack_start(m_buttonAddFile);
+
     m_buttonSave.set_image_from_icon_name("document-save-symbolic");
     m_buttonSave.set_tooltip_text(_("Save as…"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonSave.gobj()), "win.save-document"); // NOLINT

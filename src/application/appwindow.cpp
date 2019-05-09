@@ -61,6 +61,7 @@ void AppWindow::setDocument(std::unique_ptr<Document> document)
 
     m_stack.set_visible_child("editor");
 
+    m_addFileAction->set_enabled();
     m_saveAction->set_enabled();
     m_zoomLevel.enable();
 
@@ -106,6 +107,7 @@ void AppWindow::loadWidgets()
 void AppWindow::addActions()
 {
     m_openAction = add_action("open-document", sigc::mem_fun(*this, &AppWindow::onOpenAction));
+    m_addFileAction = add_action("add-file", sigc::mem_fun(*this, &AppWindow::onAddFileAction));
     m_saveAction = add_action("save-document", sigc::mem_fun(*this, &AppWindow::onSaveAction));
     m_undoAction = add_action("undo", sigc::mem_fun(*this, &AppWindow::onUndoAction));
     m_redoAction = add_action("redo", sigc::mem_fun(*this, &AppWindow::onRedoAction));
@@ -121,6 +123,7 @@ void AppWindow::addActions()
     m_shortcutsAction = add_action("shortcuts", sigc::mem_fun(*this, &AppWindow::onShortcutsAction));
     m_aboutAction = add_action("about", sigc::mem_fun(*this, &AppWindow::onAboutAction));
 
+    m_addFileAction->set_enabled(false);
     m_saveAction->set_enabled(false);
     m_undoAction->set_enabled(false);
     m_redoAction->set_enabled(false);
@@ -287,6 +290,33 @@ void AppWindow::onOpenAction()
 
     if (result == GTK_RESPONSE_ACCEPT)
         tryOpenDocument(dialog.get_file());
+}
+
+void AppWindow::onAddFileAction()
+{
+    Slicer::OpenFileDialog dialog{*this};
+
+    const int result = dialog.run();
+
+    if (result == Gtk::RESPONSE_ACCEPT) {
+        Glib::RefPtr<Gio::File> file = dialog.get_file();
+
+        try {
+            m_document->addFile(file, m_document->numberOfPages());
+        }
+        catch (...) {
+            Logger::logError("The file couldn't be opened");
+            Logger::logError("Filepath: " + file->get_path());
+
+            Gtk::MessageDialog errorDialog{_("The selected file could not be opened"),
+                                           false,
+                                           Gtk::MESSAGE_ERROR,
+                                           Gtk::BUTTONS_CLOSE,
+                                           true};
+            errorDialog.set_transient_for(*this);
+            errorDialog.run();
+        }
+    }
 }
 
 void AppWindow::tryOpenDocument(const Glib::RefPtr<Gio::File>& file)

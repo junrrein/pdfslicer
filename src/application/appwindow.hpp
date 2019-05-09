@@ -76,6 +76,7 @@ private:
 
     // Actions
     Glib::RefPtr<Gio::SimpleAction> m_openAction;
+    Glib::RefPtr<Gio::SimpleAction> m_addFileAction;
     Glib::RefPtr<Gio::SimpleAction> m_saveAction;
     Glib::RefPtr<Gio::SimpleAction> m_undoAction;
     Glib::RefPtr<Gio::SimpleAction> m_redoAction;
@@ -105,8 +106,9 @@ private:
     void tryOpenDocument(const Glib::RefPtr<Gio::File>& file);
 
     // Callbacks
-    void onSaveAction();
     void onOpenAction();
+    void onAddFileAction();
+    void onSaveAction();
     void onUndoAction();
     void onRedoAction();
     void onRemoveSelectedPages();
