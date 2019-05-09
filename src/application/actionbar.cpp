@@ -69,8 +69,8 @@ ActionBar::ActionBar()
     m_buttonCancelSelection.set_label(_("Cancel Selection"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonCancelSelection.gobj()), "win.cancel-selection"); // NOLINT
 
-    pack_start(*rotateBox);
     pack_start(*moveBox);
+    pack_start(*rotateBox);
     pack_start(*removeBox);
     pack_end(m_buttonCancelSelection);
 
