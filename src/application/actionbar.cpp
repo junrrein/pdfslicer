@@ -63,6 +63,9 @@ ActionBar::ActionBar()
     menu->append(C_("plural (pages)", "Remove next"), "win.remove-next");
     m_buttonRemovePagesMore.set_image_from_icon_name("pan-up-symbolic");
     m_buttonRemovePagesMore.set_tooltip_text(_("More page removing operations…"));
+    m_buttonRemovePagesMore.get_style_context()->remove_class("image-button");
+    m_buttonRemovePagesMore.get_style_context()->add_class("disclosure-button");
+    m_buttonRemovePagesMore.get_style_context()->add_class("thin-button");
     m_buttonRemovePagesMore.set_menu_model(menu);
     removeBox->pack_start(m_buttonRemovePagesMore);
 

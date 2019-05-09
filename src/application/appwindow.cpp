@@ -201,8 +201,9 @@ void AppWindow::loadCustomCSS()
             font-weight: bold;
         }
 
-        .pepino {
-            padding: 3px;
+        .thin-button {
+            padding-left: 4px;
+            padding-right: 4px;
         }
     )");
     Gtk::StyleContext::add_provider_for_screen(screen,
