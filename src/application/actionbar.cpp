@@ -66,7 +66,7 @@ ActionBar::ActionBar()
     m_buttonRemovePagesMore.set_menu_model(menu);
     removeBox->pack_start(m_buttonRemovePagesMore);
 
-    m_buttonCancelSelection.set_label(_("Cancel selection"));
+    m_buttonCancelSelection.set_label(_("Cancel Selection"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonCancelSelection.gobj()), "win.cancel-selection"); // NOLINT
 
     pack_start(*rotateBox);

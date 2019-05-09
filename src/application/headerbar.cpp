@@ -54,7 +54,7 @@ void HeaderBar::setupWidgets()
     m_buttonAppMenu.set_menu_model(menu);
     pack_end(m_buttonAppMenu);
 
-    m_buttonSave.set_label(_("Save as…"));
+    m_buttonSave.set_label(_("Save As…"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonSave.gobj()), "win.save-document"); // NOLINT
     pack_end(m_buttonSave);
 
