@@ -63,14 +63,17 @@ ActionBar::ActionBar()
     menu->append(C_("plural (pages)", "Remove next"), "win.remove-next");
     m_buttonRemovePagesMore.set_image_from_icon_name("pan-up-symbolic");
     m_buttonRemovePagesMore.set_tooltip_text(_("More page removing operations…"));
+    m_buttonRemovePagesMore.get_style_context()->remove_class("image-button");
+    m_buttonRemovePagesMore.get_style_context()->add_class("disclosure-button");
+    m_buttonRemovePagesMore.get_style_context()->add_class("thin-button");
     m_buttonRemovePagesMore.set_menu_model(menu);
     removeBox->pack_start(m_buttonRemovePagesMore);
 
-    m_buttonCancelSelection.set_label(_("Cancel selection"));
+    m_buttonCancelSelection.set_label(_("Cancel Selection"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonCancelSelection.gobj()), "win.cancel-selection"); // NOLINT
 
-    pack_start(*rotateBox);
     pack_start(*moveBox);
+    pack_start(*rotateBox);
     pack_start(*removeBox);
     pack_end(m_buttonCancelSelection);
 
