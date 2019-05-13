@@ -35,7 +35,7 @@ void HeaderBar::setupWidgets()
     pack_start(m_buttonOpen);
 
     m_buttonAddFile.set_image_from_icon_name("document-new-symbolic");
-    m_buttonAddFile.set_tooltip_text(_("Add file…"));
+    m_buttonAddFile.set_tooltip_text(_("Add Document…"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonAddFile.gobj()), "win.add-file"); // NOLINT
     pack_start(m_buttonAddFile);
 
