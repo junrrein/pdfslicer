@@ -178,6 +178,7 @@ void AppWindow::setupSignalHandlers()
     m_savedDispatcher.connect([this]() {
         m_savingRevealer.saved();
         enableEditingActions();
+        setTitleModified(false);
     });
 
     m_savingFailedDispatcher.connect([this]() {
@@ -314,6 +315,15 @@ void AppWindow::showOpenFileFailedErrorDialog(const std::string& filePath)
                                    true};
     errorDialog.set_transient_for(*this);
     errorDialog.run();
+}
+
+void AppWindow::setTitleModified(bool modified)
+{
+    if (modified && m_headerBar.get_title().at(0) != '*')
+        m_headerBar.set_title("*" + m_headerBar.get_title());
+
+    if (!modified && m_headerBar.get_title().at(0) == '*')
+        m_headerBar.set_title(m_headerBar.get_title().substr(1));
 }
 
 void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position)
@@ -545,10 +555,14 @@ void AppWindow::onSelectedPagesChanged()
 
 void AppWindow::onCommandExecuted()
 {
-    if (m_commandManager.canUndo())
+    if (m_commandManager.canUndo()) {
         m_undoAction->set_enabled();
-    else
+        setTitleModified(true);
+    }
+    else {
         m_undoAction->set_enabled(false);
+        setTitleModified(false);
+    }
 
     if (m_commandManager.canRedo())
         m_redoAction->set_enabled();
