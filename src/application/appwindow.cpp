@@ -514,6 +514,11 @@ void AppWindow::onSelectedPagesChanged()
             m_removeNextAction->set_enabled(false);
         else
             m_removeNextAction->set_enabled();
+
+        m_addDocumentAfterSelectedAction->set_enabled();
+    }
+    else {
+        m_addDocumentAfterSelectedAction->set_enabled(false);
     }
 
     if (numSelected > 1) {
