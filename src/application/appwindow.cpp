@@ -18,6 +18,7 @@
 #include "aboutdialog.hpp"
 #include "openfiledialog.hpp"
 #include "savefiledialog.hpp"
+#include "guicommand.hpp"
 #include <pdfsaver.hpp>
 #include <glibmm/main.h>
 #include <glibmm/i18n.h>
@@ -26,10 +27,6 @@
 #include <config.hpp>
 #include <fileutils.hpp>
 #include <logger.hpp>
-#include <fmt/format.h>
-#include <fmt/ostream.h>
-
-using namespace fmt::literals;
 
 namespace Slicer {
 
@@ -329,15 +326,8 @@ void AppWindow::setTitleModified(bool modified)
 void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position)
 {
     try {
-        auto command = std::make_shared<AddFileCommand>(*m_document, file, position);
+        auto command = std::make_shared<GuiAddFileCommand>(*m_document, file, position, m_headerBar);
         m_commandManager.execute(command);
-
-        if (m_headerBar.get_subtitle() == "")
-            m_headerBar.set_subtitle(fmt::format(_("added file {fileName}"),
-                                                 "fileName"_a = getDisplayName(file))); //NOLINT
-        else
-            m_headerBar.set_subtitle(_("multiple files added"));
-
         m_view.setShowFileNames(true);
     }
     catch (...) {
