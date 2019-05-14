@@ -16,6 +16,7 @@
 
 #include "document.hpp"
 #include "tempfile.hpp"
+#include "fileutils.hpp"
 #include <numeric>
 #include <range/v3/view/enumerate.hpp>
 
@@ -199,17 +200,6 @@ Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
                     std::move(document),
                     std::move(qpdfDocument),
                     std::move(qpdfDocumentHelper)};
-}
-
-Glib::ustring getDiplayNameWithoutExtension(const Glib::RefPtr<Gio::File>& file)
-{
-    const std::string attribute = G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME;
-    Glib::ustring result = file->query_info(attribute)->get_attribute_as_string(attribute);
-
-    if (auto extensionIndex = result.rfind(".pdf"); extensionIndex != Glib::ustring::npos)
-        result.erase(extensionIndex);
-
-    return result;
 }
 
 std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fileData)

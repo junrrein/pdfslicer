@@ -5,6 +5,7 @@ set (SOURCES
 	 ${CMAKE_CURRENT_SOURCE_DIR}/commandmanager.cpp
 	 ${CMAKE_CURRENT_SOURCE_DIR}/config.cpp
 	 ${CMAKE_CURRENT_SOURCE_DIR}/document.cpp
+	 ${CMAKE_CURRENT_SOURCE_DIR}/fileutils.cpp
 	 ${CMAKE_CURRENT_SOURCE_DIR}/page.cpp
 	 ${CMAKE_CURRENT_SOURCE_DIR}/pdfsaver.cpp
 	 ${CMAKE_CURRENT_SOURCE_DIR}/pagerenderer.cpp
