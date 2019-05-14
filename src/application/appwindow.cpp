@@ -24,7 +24,12 @@
 #include <gtkmm/cssprovider.h>
 #include <gtkmm/messagedialog.h>
 #include <config.hpp>
+#include <fileutils.hpp>
 #include <logger.hpp>
+#include <fmt/format.h>
+#include <fmt/ostream.h>
+
+using namespace fmt::literals;
 
 namespace Slicer {
 
@@ -315,6 +320,12 @@ void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned i
     try {
         auto command = std::make_shared<AddFileCommand>(*m_document, file, position);
         m_commandManager.execute(command);
+
+        if (m_headerBar.get_subtitle() == "")
+            m_headerBar.set_subtitle(fmt::format(_("added file {fileName}"),
+                                                 "fileName"_a = getDisplayName(file))); //NOLINT
+        else
+            m_headerBar.set_subtitle(_("multiple files added"));
     }
     catch (...) {
         showOpenFileFailedErrorDialog(file->get_path());
@@ -356,6 +367,8 @@ void AppWindow::tryOpenDocument(const Glib::RefPtr<Gio::File>& file)
     try {
         auto document = std::make_unique<Document>(file);
         setDocument(std::move(document));
+        m_headerBar.set_title(getDisplayName(file));
+        m_headerBar.set_subtitle("");
     }
     catch (...) {
         showOpenFileFailedErrorDialog(file->get_path());
