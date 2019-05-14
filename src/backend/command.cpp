@@ -184,7 +184,7 @@ void MovePageRangeCommand::redo()
     execute();
 }
 
-AddDocumentCommand::AddDocumentCommand(Document& document,
+AddFileCommand::AddFileCommand(Document& document,
                                const Glib::RefPtr<Gio::File>& file,
                                unsigned int position)
     : m_document{document}
@@ -193,17 +193,17 @@ AddDocumentCommand::AddDocumentCommand(Document& document,
 {
 }
 
-void AddDocumentCommand::execute()
+void AddFileCommand::execute()
 {
     m_numberOfAddedPages = m_document.addFile(m_file, m_position);
 }
 
-void AddDocumentCommand::undo()
+void AddFileCommand::undo()
 {
     m_addedPages = m_document.removePageRange(m_position, m_position + m_numberOfAddedPages - 1);
 }
 
-void AddDocumentCommand::redo()
+void AddFileCommand::redo()
 {
     m_document.insertPageRange(m_addedPages, m_position);
 }
