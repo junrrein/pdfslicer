@@ -76,7 +76,9 @@ private:
 
     // Actions
     Glib::RefPtr<Gio::SimpleAction> m_openAction;
-    Glib::RefPtr<Gio::SimpleAction> m_addFileAction;
+    Glib::RefPtr<Gio::SimpleAction> m_addDocumentAtBeginningAction;
+    Glib::RefPtr<Gio::SimpleAction> m_addDocumentAtEndAction;
+    Glib::RefPtr<Gio::SimpleAction> m_addDocumentAfterSelectedAction;
     Glib::RefPtr<Gio::SimpleAction> m_saveAction;
     Glib::RefPtr<Gio::SimpleAction> m_undoAction;
     Glib::RefPtr<Gio::SimpleAction> m_redoAction;
@@ -107,7 +109,9 @@ private:
 
     // Callbacks
     void onOpenAction();
-    void onAddFileAction();
+    void onAddDocumentAtBeginningAction();
+    void onAddDocumentAtEndAction();
+    void onAddDocumentAfterSelectedAction();
     void onSaveAction();
     void onUndoAction();
     void onRedoAction();
@@ -126,6 +130,7 @@ private:
     void onCommandExecuted();
     void onSizeAllocate(Gtk::Allocation&);
     bool onWindowStateEvent(GdkEventWindowState* state);
+    void showOpenFileFailedErrorDialog(const std::string& filePath);
 };
 }
 

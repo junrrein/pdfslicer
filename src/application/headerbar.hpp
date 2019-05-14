@@ -28,15 +28,18 @@ class HeaderBar : public Gtk::HeaderBar {
 public:
     HeaderBar();
 
+    void enableAddDocumentButton();
+    void disableAddDocumentButton();
+
 private:
     Gtk::Button m_buttonOpen;
-    Gtk::Button m_buttonAddFile;
-    Gtk::Button m_buttonSave;
+    Gtk::MenuButton m_buttonAddDocument;
     Gtk::Button m_buttonUndo;
     Gtk::Button m_buttonRedo;
     Gtk::Button m_buttonZoomOut;
     Gtk::Button m_buttonZoomIn;
     Gtk::Box m_boxZoom;
+    Gtk::Button m_buttonSave;
     Gtk::MenuButton m_buttonAppMenu;
 
     void setupWidgets();

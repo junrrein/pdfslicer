@@ -61,7 +61,7 @@ void AppWindow::setDocument(std::unique_ptr<Document> document)
 
     m_stack.set_visible_child("editor");
 
-    m_addFileAction->set_enabled();
+    m_headerBar.enableAddDocumentButton();
     m_saveAction->set_enabled();
     m_zoomLevel.enable();
 
@@ -107,7 +107,9 @@ void AppWindow::loadWidgets()
 void AppWindow::addActions()
 {
     m_openAction = add_action("open-document", sigc::mem_fun(*this, &AppWindow::onOpenAction));
-    m_addFileAction = add_action("add-file", sigc::mem_fun(*this, &AppWindow::onAddFileAction));
+    m_addDocumentAtBeginningAction = add_action("add-document-at-beginning", sigc::mem_fun(*this, &AppWindow::onAddDocumentAtBeginningAction));
+    m_addDocumentAtEndAction = add_action("add-document-at-end", sigc::mem_fun(*this, &AppWindow::onAddDocumentAtEndAction));
+    m_addDocumentAfterSelectedAction = add_action("add-document-after-selected", sigc::mem_fun(*this, &AppWindow::onAddDocumentAfterSelectedAction));
     m_saveAction = add_action("save-document", sigc::mem_fun(*this, &AppWindow::onSaveAction));
     m_undoAction = add_action("undo", sigc::mem_fun(*this, &AppWindow::onUndoAction));
     m_redoAction = add_action("redo", sigc::mem_fun(*this, &AppWindow::onRedoAction));
@@ -123,7 +125,7 @@ void AppWindow::addActions()
     m_shortcutsAction = add_action("shortcuts", sigc::mem_fun(*this, &AppWindow::onShortcutsAction));
     m_aboutAction = add_action("about", sigc::mem_fun(*this, &AppWindow::onAboutAction));
 
-    m_addFileAction->set_enabled(false);
+    m_headerBar.disableAddDocumentButton();
     m_saveAction->set_enabled(false);
     m_undoAction->set_enabled(false);
     m_redoAction->set_enabled(false);
@@ -293,7 +295,21 @@ void AppWindow::onOpenAction()
         tryOpenDocument(dialog.get_file());
 }
 
-void AppWindow::onAddFileAction()
+void AppWindow::showOpenFileFailedErrorDialog(const std::string& filePath)
+{
+    Logger::logError("The file couldn't be opened");
+    Logger::logError("Filepath: " + filePath);
+
+    Gtk::MessageDialog errorDialog{_("The selected file could not be opened"),
+                                   false,
+                                   Gtk::MESSAGE_ERROR,
+                                   Gtk::BUTTONS_CLOSE,
+                                   true};
+    errorDialog.set_transient_for(*this);
+    errorDialog.run();
+}
+
+void AppWindow::onAddDocumentAtBeginningAction()
 {
     Slicer::OpenFileDialog dialog{*this};
 
@@ -303,19 +319,49 @@ void AppWindow::onAddFileAction()
         Glib::RefPtr<Gio::File> file = dialog.get_file();
 
         try {
-            m_document->addFile(file, m_document->numberOfPages());
+            auto command = std::make_shared<AddFileCommand>(*m_document, file, 0);
+            m_commandManager.execute(command);
         }
         catch (...) {
-            Logger::logError("The file couldn't be opened");
-            Logger::logError("Filepath: " + file->get_path());
+            showOpenFileFailedErrorDialog(file->get_path());
+        }
+    }
+}
 
-            Gtk::MessageDialog errorDialog{_("The selected file could not be opened"),
-                                           false,
-                                           Gtk::MESSAGE_ERROR,
-                                           Gtk::BUTTONS_CLOSE,
-                                           true};
-            errorDialog.set_transient_for(*this);
-            errorDialog.run();
+void AppWindow::onAddDocumentAtEndAction()
+{
+    Slicer::OpenFileDialog dialog{*this};
+
+    const int result = dialog.run();
+
+    if (result == Gtk::RESPONSE_ACCEPT) {
+        Glib::RefPtr<Gio::File> file = dialog.get_file();
+
+        try {
+            auto command = std::make_shared<AddFileCommand>(*m_document, file, m_document->numberOfPages());
+            m_commandManager.execute(command);
+        }
+        catch (...) {
+            showOpenFileFailedErrorDialog(file->get_path());
+        }
+    }
+}
+
+void AppWindow::onAddDocumentAfterSelectedAction()
+{
+    Slicer::OpenFileDialog dialog{*this};
+
+    const int result = dialog.run();
+
+    if (result == Gtk::RESPONSE_ACCEPT) {
+        Glib::RefPtr<Gio::File> file = dialog.get_file();
+
+        try {
+            auto command = std::make_shared<AddFileCommand>(*m_document, file, m_view.getSelectedChildIndex() + 1);
+            m_commandManager.execute(command);
+        }
+        catch (...) {
+            showOpenFileFailedErrorDialog(file->get_path());
         }
     }
 }
@@ -329,16 +375,7 @@ void AppWindow::tryOpenDocument(const Glib::RefPtr<Gio::File>& file)
         setDocument(std::move(document));
     }
     catch (...) {
-        Logger::logError("The file couldn't be opened");
-        Logger::logError("Filepath: " + file->get_path());
-
-        Gtk::MessageDialog errorDialog{_("The selected file could not be opened"),
-                                       false,
-                                       Gtk::MESSAGE_ERROR,
-                                       Gtk::BUTTONS_CLOSE,
-                                       true};
-        errorDialog.set_transient_for(*this);
-        errorDialog.run();
+        showOpenFileFailedErrorDialog(file->get_path());
     }
 }
 

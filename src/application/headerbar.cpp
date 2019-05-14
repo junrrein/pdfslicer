@@ -28,16 +28,30 @@ HeaderBar::HeaderBar()
     setupWidgets();
 }
 
+void HeaderBar::enableAddDocumentButton()
+{
+    m_buttonAddDocument.set_sensitive();
+}
+
+void HeaderBar::disableAddDocumentButton()
+{
+    m_buttonAddDocument.set_sensitive(false);
+}
+
 void HeaderBar::setupWidgets()
 {
     m_buttonOpen.set_label(_("Open…"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonOpen.gobj()), "win.open-document"); // NOLINT
     pack_start(m_buttonOpen);
 
-    m_buttonAddFile.set_image_from_icon_name("document-new-symbolic");
-    m_buttonAddFile.set_tooltip_text(_("Add Document…"));
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonAddFile.gobj()), "win.add-file"); // NOLINT
-    pack_start(m_buttonAddFile);
+    Glib::RefPtr<Gio::Menu> addDocumentMenu = Gio::Menu::create();
+    addDocumentMenu->append(_("At the beggining…"), "win.add-document-at-beginning");
+    addDocumentMenu->append(_("At the end…"), "win.add-document-at-end");
+    addDocumentMenu->append(_("After the selected page…"), "win.add-document-after-selected");
+    m_buttonAddDocument.set_image_from_icon_name("list-add-symbolic");
+    m_buttonAddDocument.set_tooltip_text(_("Add Document…"));
+    m_buttonAddDocument.set_menu_model(addDocumentMenu);
+    pack_start(m_buttonAddDocument);
 
     m_buttonUndo.set_image_from_icon_name("edit-undo-symbolic");
     m_buttonUndo.set_tooltip_text(_("Undo"));
@@ -52,11 +66,11 @@ void HeaderBar::setupWidgets()
     undoBox->pack_start(m_buttonRedo);
     pack_start(*undoBox);
 
-    Glib::RefPtr<Gio::Menu> menu = Gio::Menu::create();
-    menu->append(_("Keyboard shortcuts"), "win.shortcuts");
-    menu->append(_("About"), "win.about");
+    Glib::RefPtr<Gio::Menu> appMenu = Gio::Menu::create();
+    appMenu->append(_("Keyboard shortcuts"), "win.shortcuts");
+    appMenu->append(_("About"), "win.about");
     m_buttonAppMenu.set_image_from_icon_name("open-menu-symbolic");
-    m_buttonAppMenu.set_menu_model(menu);
+    m_buttonAppMenu.set_menu_model(appMenu);
     pack_end(m_buttonAppMenu);
 
     m_buttonSave.set_label(_("Save As…"));
