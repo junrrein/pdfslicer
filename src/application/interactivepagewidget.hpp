@@ -17,7 +17,6 @@
 #ifndef INTERACTIVEPAGEWIDGET_HPP
 #define INTERACTIVEPAGEWIDGET_HPP
 
-#include "pagelabel.hpp"
 #include "pagewidget.hpp"
 #include <gtkmm/button.h>
 #include <gtkmm/eventbox.h>
@@ -69,7 +68,10 @@ private:
 
     Gtk::Button m_previewButton;
     Gtk::Revealer m_previewButtonRevealer;
-    PageLabel m_pageLabel;
+
+    Gtk::Box m_pageLabelBox;
+    Gtk::Label m_fileNameLabel;
+    Gtk::Label m_pageNumberLabel;
 
     const Glib::RefPtr<const Page>& page() const;
     void setupWidgets();
