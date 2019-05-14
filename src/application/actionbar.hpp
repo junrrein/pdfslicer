@@ -27,6 +27,9 @@ class ActionBar : public Gtk::ActionBar {
 public:
     ActionBar();
 
+    void enableButtonRemovePagesMore();
+    void disableButtonRemovePagesMore();
+
 private:
     Gtk::Button m_buttonRotateLeft;
     Gtk::Button m_buttonRotateRight;

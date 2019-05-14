@@ -82,4 +82,14 @@ ActionBar::ActionBar()
     set_size_request(-1, 45);
 }
 
+void ActionBar::enableButtonRemovePagesMore()
+{
+    m_buttonRemovePagesMore.set_sensitive();
+}
+
+void ActionBar::disableButtonRemovePagesMore()
+{
+    m_buttonRemovePagesMore.set_sensitive(false);
+}
+
 } // namespace Slicer

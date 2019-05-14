@@ -132,6 +132,7 @@ void AppWindow::addActions()
     m_removeUnselectedAction->set_enabled(false);
     m_removePreviousAction->set_enabled(false);
     m_removeNextAction->set_enabled(false);
+    m_actionBar.disableButtonRemovePagesMore();
     m_rotateRightAction->set_enabled(false);
     m_rotateLeftAction->set_enabled(false);
     m_moveLeftAction->set_enabled(false);
@@ -473,6 +474,7 @@ void AppWindow::onSelectedPagesChanged()
         m_removeUnselectedAction->set_enabled(false);
         m_removePreviousAction->set_enabled(false);
         m_removeNextAction->set_enabled(false);
+        m_actionBar.disableButtonRemovePagesMore();
         m_rotateRightAction->set_enabled(false);
         m_rotateLeftAction->set_enabled(false);
         m_moveLeftAction->set_enabled(false);
@@ -481,6 +483,7 @@ void AppWindow::onSelectedPagesChanged()
     }
     else {
         m_removeSelectedAction->set_enabled();
+        m_actionBar.enableButtonRemovePagesMore();
         m_rotateRightAction->set_enabled();
         m_rotateLeftAction->set_enabled();
         m_cancelSelectionAction->set_enabled();
