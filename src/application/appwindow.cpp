@@ -319,7 +319,7 @@ void AppWindow::onAddDocumentAtBeginningAction()
         Glib::RefPtr<Gio::File> file = dialog.get_file();
 
         try {
-            auto command = std::make_shared<AddFileCommand>(*m_document, file, 0);
+            auto command = std::make_shared<AddDocumentCommand>(*m_document, file, 0);
             m_commandManager.execute(command);
         }
         catch (...) {
@@ -338,7 +338,7 @@ void AppWindow::onAddDocumentAtEndAction()
         Glib::RefPtr<Gio::File> file = dialog.get_file();
 
         try {
-            auto command = std::make_shared<AddFileCommand>(*m_document, file, m_document->numberOfPages());
+            auto command = std::make_shared<AddDocumentCommand>(*m_document, file, m_document->numberOfPages());
             m_commandManager.execute(command);
         }
         catch (...) {
@@ -357,7 +357,7 @@ void AppWindow::onAddDocumentAfterSelectedAction()
         Glib::RefPtr<Gio::File> file = dialog.get_file();
 
         try {
-            auto command = std::make_shared<AddFileCommand>(*m_document, file, m_view.getSelectedChildIndex() + 1);
+            auto command = std::make_shared<AddDocumentCommand>(*m_document, file, m_view.getSelectedChildIndex() + 1);
             m_commandManager.execute(command);
         }
         catch (...) {

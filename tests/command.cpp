@@ -628,7 +628,7 @@ SCENARIO("Adding a new file to an existing document, using the Command abstracti
 
         WHEN("A 5-page PDF file is added to the beggining")
         {
-            AddFileCommand command{doc, Gio::File::create_for_path(multipage2Path), 0};
+            AddDocumentCommand command{doc, Gio::File::create_for_path(multipage2Path), 0};
             command.execute();
 
             THEN("The document should now have 20 pages")
@@ -675,7 +675,7 @@ SCENARIO("Adding a new file to an existing document, using the Command abstracti
 
         WHEN("A 5-page PDF file is added to the end")
         {
-            AddFileCommand command{doc, Gio::File::create_for_path(multipage2Path), doc.numberOfPages()};
+            AddDocumentCommand command{doc, Gio::File::create_for_path(multipage2Path), doc.numberOfPages()};
             command.execute();
 
             THEN("The document should now have 20 pages")
@@ -722,7 +722,7 @@ SCENARIO("Adding a new file to an existing document, using the Command abstracti
 
         WHEN("A 5-page PDF file is added at the 5th page of the document")
         {
-            AddFileCommand command{doc, Gio::File::create_for_path(multipage2Path), 4};
+            AddDocumentCommand command{doc, Gio::File::create_for_path(multipage2Path), 4};
             command.execute();
 
             THEN("The document should now have 20 pages")

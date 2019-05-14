@@ -138,11 +138,11 @@ private:
     const unsigned int m_indexDestination;
 };
 
-class AddFileCommand : public Command {
+class AddDocumentCommand : public Command {
 public:
-    AddFileCommand(Document& document,
-                   const Glib::RefPtr<Gio::File>& file,
-                   unsigned int position);
+    AddDocumentCommand(Document& document,
+                       const Glib::RefPtr<Gio::File>& file,
+                       unsigned int position);
 
     void execute() override;
     void undo() override;
