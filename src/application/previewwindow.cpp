@@ -23,7 +23,7 @@ using namespace fmt::literals;
 
 namespace Slicer {
 
-const std::set<int> PreviewWindow::zoomLevels = {1000, 1400, 1800};
+const std::vector<int> PreviewWindow::zoomLevels = {1000, 1400, 1800};
 
 PreviewWindow::PreviewWindow(const Glib::RefPtr<const Page>& page, BackgroundThread& backgroundThread)
     : m_page{page}
@@ -84,13 +84,13 @@ void PreviewWindow::setupWidgets()
 
 void PreviewWindow::setupSignalHandlers()
 {
-	m_zoomLevel.enable();
+    m_zoomLevel.enable();
 
-	m_zoomLevel.changed.connect([this](int level) {
-        m_pageWidget.changeSize(level);
+    m_zoomLevel.zoomLevelIndex().signal_changed().connect([this]() {
+        m_pageWidget.changeSize(m_zoomLevel.currentLevel());
         m_pageWidget.showSpinner();
         renderPage();
-	});
+    });
 
 	m_pageRenderedDispatcher.connect([this]() {
         m_pageWidget.showPage();

@@ -17,15 +17,16 @@
 #ifndef ZOOMLEVEL_HPP
 #define ZOOMLEVEL_HPP
 
-#include <set>
+#include <glibmm/object.h>
+#include <glibmm/property.h>
 #include <sigc++/signal.h>
 
 namespace Slicer {
 
-class ZoomLevel {
+class ZoomLevel : public Glib::Object {
 public:
 	ZoomLevel() = delete;
-    ZoomLevel(const std::set<int>& levels);
+    ZoomLevel(const std::vector<int>& levels);
 
     int currentLevel() const;
 	int minLevel() const;
@@ -34,11 +35,11 @@ public:
 	int operator++();
 	int operator--();
 
-    sigc::signal<void, int> changed;
+    Glib::PropertyProxy<unsigned> zoomLevelIndex();
 
 private:
-    const std::set<int> m_levels;
-	int m_currentLevel;
+    Glib::Property<unsigned> m_zoomLevelIndex;
+    std::vector<int> m_levels;
 };
 
 } // namespace Slicer

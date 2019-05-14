@@ -66,7 +66,7 @@ private:
     ActionBar m_actionBar;
 
     ZoomLevelWithActions m_zoomLevel;
-    static const std::set<int> zoomLevels;
+    static const std::vector<int> zoomLevels;
 
     SavingRevealer m_savingRevealer;
     Glib::Dispatcher m_savedDispatcher;

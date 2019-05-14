@@ -26,7 +26,7 @@ namespace Slicer {
 class ZoomLevelWithActions : public ZoomLevel {
 public:
     ZoomLevelWithActions() = delete;
-    ZoomLevelWithActions(const std::set<int>& levels,
+    ZoomLevelWithActions(const std::vector<int>& levels,
                          Gio::ActionMap& actionMap);
     ~ZoomLevelWithActions();
 

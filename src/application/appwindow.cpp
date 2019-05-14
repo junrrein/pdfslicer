@@ -28,7 +28,7 @@
 
 namespace Slicer {
 
-const std::set<int> AppWindow::zoomLevels = {200, 300, 400};
+const std::vector<int> AppWindow::zoomLevels = {200, 300, 400};
 
 AppWindow::AppWindow(BackgroundThread& backgroundThread, SettingsManager& settingsManager)
     : m_backgroundThread{backgroundThread}
@@ -165,8 +165,8 @@ void AppWindow::setupSignalHandlers()
         onSelectedPagesChanged();
     });
 
-    m_zoomLevel.changed.connect([this](int targetSize) {
-        m_view.changePageSize(targetSize);
+    m_zoomLevel.zoomLevelIndex().signal_changed().connect([this]() {
+        m_view.changePageSize(m_zoomLevel.currentLevel());
     });
 
     m_savedDispatcher.connect([this]() {
