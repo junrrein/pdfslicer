@@ -21,7 +21,8 @@
 
 namespace Slicer {
 
-Glib::ustring getDiplayNameWithoutExtension(const Glib::RefPtr<Gio::File>& file);
+Glib::ustring getDisplayName(const Glib::RefPtr<Gio::File>& file);
+Glib::ustring getDisplayNameWithoutExtension(const Glib::RefPtr<Gio::File>& file);
 
 }
 

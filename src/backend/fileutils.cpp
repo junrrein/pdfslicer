@@ -18,10 +18,16 @@
 
 namespace Slicer {
 
-Glib::ustring getDiplayNameWithoutExtension(const Glib::RefPtr<Gio::File>& file)
+Glib::ustring getDisplayName(const Glib::RefPtr<Gio::File>& file)
 {
     const std::string attribute = G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME;
-    Glib::ustring result = file->query_info(attribute)->get_attribute_as_string(attribute);
+
+    return file->query_info(attribute)->get_attribute_as_string(attribute);
+}
+
+Glib::ustring getDisplayNameWithoutExtension(const Glib::RefPtr<Gio::File>& file)
+{
+    Glib::ustring result = getDisplayName(file);
 
     if (auto extensionIndex = result.rfind(".pdf"); extensionIndex != Glib::ustring::npos)
         result.erase(extensionIndex);
