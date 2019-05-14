@@ -61,11 +61,10 @@ void AppWindow::setDocument(std::unique_ptr<Document> document)
 
     m_stack.set_visible_child("editor");
 
+    m_commandManager.reset();
     m_headerBar.enableAddDocumentButton();
     m_saveAction->set_enabled();
     m_zoomLevel.enable();
-
-    m_commandManager.commandExecuted.connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
 }
 
 bool AppWindow::on_delete_event(GdkEventAny*)
@@ -190,6 +189,7 @@ void AppWindow::setupSignalHandlers()
 
     signal_size_allocate().connect(sigc::mem_fun(*this, &AppWindow::onSizeAllocate));
     signal_window_state_event().connect(sigc::mem_fun(*this, &AppWindow::onWindowStateEvent));
+    m_commandManager.commandExecuted.connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
 }
 
 void AppWindow::loadCustomCSS()
@@ -353,8 +353,6 @@ void AppWindow::onAddDocumentAfterSelectedAction()
 void AppWindow::tryOpenDocument(const Glib::RefPtr<Gio::File>& file)
 {
     try {
-        m_undoAction->set_enabled(false);
-        m_redoAction->set_enabled(false);
         auto document = std::make_unique<Document>(file);
         setDocument(std::move(document));
     }
