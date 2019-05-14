@@ -326,9 +326,12 @@ void AppWindow::setTitleModified(bool modified)
 void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position)
 {
     try {
-        auto command = std::make_shared<GuiAddFileCommand>(*m_document, file, position, m_headerBar);
+        auto command = std::make_shared<GuiAddFileCommand>(*m_document,
+                                                           file,
+                                                           position,
+                                                           m_headerBar,
+                                                           m_view);
         m_commandManager.execute(command);
-        m_view.setShowFileNames(true);
     }
     catch (...) {
         showOpenFileFailedErrorDialog(file->get_path());

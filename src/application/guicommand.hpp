@@ -19,6 +19,7 @@
 
 #include <command.hpp>
 #include "headerbar.hpp"
+#include "view.hpp"
 
 namespace Slicer {
 
@@ -27,7 +28,8 @@ public:
 	GuiAddFileCommand(Document& document,
                       const Glib::RefPtr<Gio::File>& file,
                       unsigned int position,
-                      HeaderBar& headerBar);
+                      HeaderBar& headerBar,
+                      View& view);
 
     virtual void execute() override;
     virtual void undo() override;
@@ -35,6 +37,7 @@ public:
 
 private:
     HeaderBar& m_headerBar;
+    View& m_view;
     const Glib::ustring m_fileName;
     const Glib::ustring m_oldSubtitle;
 

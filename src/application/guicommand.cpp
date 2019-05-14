@@ -27,9 +27,11 @@ namespace Slicer {
 GuiAddFileCommand::GuiAddFileCommand(Document& document,
                                      const Glib::RefPtr<Gio::File>& file,
                                      unsigned int position,
-                                     HeaderBar& headerBar)
+                                     HeaderBar& headerBar,
+                                     View& view)
     : AddFileCommand{document, file, position}
     , m_headerBar{headerBar}
+    , m_view{view}
     , m_fileName{getDisplayName(file)}
     , m_oldSubtitle{headerBar.get_subtitle()}
 {
@@ -39,18 +41,23 @@ void GuiAddFileCommand::execute()
 {
     AddFileCommand::execute();
     setSubtitle();
+    m_view.setShowFileNames(true);
 }
 
 void GuiAddFileCommand::undo()
 {
     AddFileCommand::undo();
     m_headerBar.set_subtitle(m_oldSubtitle);
+
+    if (m_oldSubtitle == "")
+        m_view.setShowFileNames(false);
 }
 
 void GuiAddFileCommand::redo()
 {
     AddFileCommand::redo();
     setSubtitle();
+    m_view.setShowFileNames(true);
 }
 
 void GuiAddFileCommand::setSubtitle()
