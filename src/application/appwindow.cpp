@@ -62,6 +62,7 @@ AppWindow::~AppWindow()
 void AppWindow::setDocument(std::unique_ptr<Document> document)
 {
     m_view.setDocument(*document, m_zoomLevel.currentLevel());
+    m_view.setShowFileNames(false);
     m_document = std::move(document);
 
     m_stack.set_visible_child("editor");
@@ -326,6 +327,8 @@ void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned i
                                                  "fileName"_a = getDisplayName(file))); //NOLINT
         else
             m_headerBar.set_subtitle(_("multiple files added"));
+
+        m_view.setShowFileNames(true);
     }
     catch (...) {
         showOpenFileFailedErrorDialog(file->get_path());

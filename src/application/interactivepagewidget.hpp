@@ -32,7 +32,8 @@ class InteractivePageWidget : public Gtk::FlowBoxChild {
 
 public:
     InteractivePageWidget(const Glib::RefPtr<const Page>& page,
-                          int targetSize);
+                          int targetSize,
+                          bool showFileName);
     virtual ~InteractivePageWidget() = default;
 
     unsigned int documentIndex() const;
@@ -43,6 +44,8 @@ public:
     void enableRendering() { m_isRenderingCancelled = false; }
     void cancelRendering() { m_isRenderingCancelled = true; }
     bool isRenderingCancelled() const { return m_isRenderingCancelled; }
+
+    void setShowFilename(bool showFileName);
 
     sigc::signal<void, InteractivePageWidget*> selectedChanged;
     sigc::signal<void, InteractivePageWidget*> shiftSelected;
@@ -60,6 +63,7 @@ public:
 private:
     bool m_isSelected = false;
     std::atomic<bool> m_isRenderingCancelled = false;
+    bool m_showFileName = false;
 
     Gtk::Box m_contentBox;
     Gtk::Overlay m_overlay;

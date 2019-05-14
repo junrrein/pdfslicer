@@ -42,7 +42,7 @@ View::~View()
 
 std::shared_ptr<InteractivePageWidget> View::createPageWidget(const Glib::RefPtr<const Page>& page)
 {
-    auto pageWidget = std::make_shared<InteractivePageWidget>(page, m_pageWidgetSize);
+    auto pageWidget = std::make_shared<InteractivePageWidget>(page, m_pageWidgetSize, m_showFileNames);
 
     pageWidget->selectedChanged.connect(sigc::mem_fun(*this, &View::onPageSelection));
     pageWidget->shiftSelected.connect(sigc::mem_fun(*this, &View::onShiftSelection));
@@ -98,6 +98,17 @@ void View::changePageSize(int targetWidgetSize)
         pageWidget->showSpinner();
         renderPage(pageWidget);
     }
+}
+
+void View::setShowFileNames(bool showFileNames)
+{
+    if (m_showFileNames == showFileNames)
+        return;
+
+    m_showFileNames = showFileNames;
+
+    for (auto& pageWidget : m_pageWidgets)
+        pageWidget->setShowFilename(showFileNames);
 }
 
 void View::clearSelection()
