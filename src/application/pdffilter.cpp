@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#include "utils.hpp"
+#include "pdffilter.hpp"
 #include <glibmm/i18n.h>
 
 Glib::RefPtr<Gtk::FileFilter> Slicer::pdfFilter()
