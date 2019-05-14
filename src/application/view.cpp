@@ -171,8 +171,12 @@ void View::renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget)
             return;
 
         pageWidget->renderPage();
-        safe::WriteAccess<LockableQueue> queue{m_renderedQueue};
-        queue->push(pageWidget);
+
+        {
+            safe::WriteAccess<LockableQueue> queue{m_renderedQueue};
+            queue->push(pageWidget);
+        }
+
         m_dispatcher.emit();
     });
 }
