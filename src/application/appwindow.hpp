@@ -106,6 +106,8 @@ private:
     void enableEditingActions();
     void trySaveDocument(const Glib::RefPtr<Gio::File>& file);
     void tryOpenDocument(const Glib::RefPtr<Gio::File>& file);
+    void tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position);
+    void showOpenFileFailedErrorDialog(const std::string& filePath);
 
     // Callbacks
     void onOpenAction();
@@ -130,7 +132,6 @@ private:
     void onCommandExecuted();
     void onSizeAllocate(Gtk::Allocation&);
     bool onWindowStateEvent(GdkEventWindowState* state);
-    void showOpenFileFailedErrorDialog(const std::string& filePath);
 };
 }
 

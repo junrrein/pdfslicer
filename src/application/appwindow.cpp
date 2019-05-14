@@ -309,23 +309,25 @@ void AppWindow::showOpenFileFailedErrorDialog(const std::string& filePath)
     errorDialog.run();
 }
 
+void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position)
+{
+    try {
+        auto command = std::make_shared<AddFileCommand>(*m_document, file, position);
+        m_commandManager.execute(command);
+    }
+    catch (...) {
+        showOpenFileFailedErrorDialog(file->get_path());
+    }
+}
+
 void AppWindow::onAddDocumentAtBeginningAction()
 {
     Slicer::OpenFileDialog dialog{*this};
 
     const int result = dialog.run();
 
-    if (result == Gtk::RESPONSE_ACCEPT) {
-        Glib::RefPtr<Gio::File> file = dialog.get_file();
-
-        try {
-            auto command = std::make_shared<AddFileCommand>(*m_document, file, 0);
-            m_commandManager.execute(command);
-        }
-        catch (...) {
-            showOpenFileFailedErrorDialog(file->get_path());
-        }
-    }
+    if (result == Gtk::RESPONSE_ACCEPT)
+        tryAddDocumentAt(dialog.get_file(), 0);
 }
 
 void AppWindow::onAddDocumentAtEndAction()
@@ -334,17 +336,8 @@ void AppWindow::onAddDocumentAtEndAction()
 
     const int result = dialog.run();
 
-    if (result == Gtk::RESPONSE_ACCEPT) {
-        Glib::RefPtr<Gio::File> file = dialog.get_file();
-
-        try {
-            auto command = std::make_shared<AddFileCommand>(*m_document, file, m_document->numberOfPages());
-            m_commandManager.execute(command);
-        }
-        catch (...) {
-            showOpenFileFailedErrorDialog(file->get_path());
-        }
-    }
+    if (result == Gtk::RESPONSE_ACCEPT)
+        tryAddDocumentAt(dialog.get_file(), m_document->numberOfPages());
 }
 
 void AppWindow::onAddDocumentAfterSelectedAction()
@@ -353,17 +346,8 @@ void AppWindow::onAddDocumentAfterSelectedAction()
 
     const int result = dialog.run();
 
-    if (result == Gtk::RESPONSE_ACCEPT) {
-        Glib::RefPtr<Gio::File> file = dialog.get_file();
-
-        try {
-            auto command = std::make_shared<AddFileCommand>(*m_document, file, m_view.getSelectedChildIndex() + 1);
-            m_commandManager.execute(command);
-        }
-        catch (...) {
-            showOpenFileFailedErrorDialog(file->get_path());
-        }
-    }
+    if (result == Gtk::RESPONSE_ACCEPT)
+        tryAddDocumentAt(dialog.get_file(), m_view.getSelectedChildIndex() + 1);
 }
 
 void AppWindow::tryOpenDocument(const Glib::RefPtr<Gio::File>& file)
