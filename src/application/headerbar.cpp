@@ -42,7 +42,6 @@ void HeaderBar::setupWidgets()
 {
     m_buttonOpen.set_label(_("Open…"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonOpen.gobj()), "win.open-document"); // NOLINT
-    pack_start(m_buttonOpen);
 
     Glib::RefPtr<Gio::Menu> addDocumentMenu = Gio::Menu::create();
     addDocumentMenu->append(_("At the beggining…"), "win.add-document-at-beginning");
@@ -51,7 +50,12 @@ void HeaderBar::setupWidgets()
     m_buttonAddDocument.set_image_from_icon_name("list-add-symbolic");
     m_buttonAddDocument.set_tooltip_text(_("Add Document…"));
     m_buttonAddDocument.set_menu_model(addDocumentMenu);
-    pack_start(m_buttonAddDocument);
+
+    auto openBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL});
+    openBox->pack_start(m_buttonOpen);
+    openBox->pack_start(m_buttonAddDocument);
+    openBox->get_style_context()->add_class("linked");
+    pack_start(*openBox);
 
     m_buttonUndo.set_image_from_icon_name("edit-undo-symbolic");
     m_buttonUndo.set_tooltip_text(_("Undo"));
