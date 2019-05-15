@@ -24,6 +24,7 @@ pkg_check_modules (QPDF libqpdf IMPORTED_TARGET REQUIRED)
 set (ENV{PKG_CONFIG_ALLOW_SYSTEM_CFLAGS} 0)
 
 set (SLICER_DEBUG_FLAGS -Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wduplicated-branches -Wlogical-op)
+set (CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake-modules)
 include (Utils)
