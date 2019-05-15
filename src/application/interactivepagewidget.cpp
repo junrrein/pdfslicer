@@ -115,7 +115,7 @@ void InteractivePageWidget::setupWidgets()
     m_fileNameLabel.set_max_width_chars(10);
     m_fileNameLabel.set_visible();
     m_pageNumberLabel.set_label(fmt::format(_("Page {pageNumber}"),
-                                            "pageNumber"_a = page()->getDocumentIndex() + 1)); //NOLINT
+                                            "pageNumber"_a = page()->fileIndex() + 1)); //NOLINT
     m_pageLabelBox.set_orientation(Gtk::ORIENTATION_VERTICAL);
     m_pageLabelBox.set_margin_top(5);
     m_pageLabelBox.pack_end(m_pageNumberLabel);
