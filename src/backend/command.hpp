@@ -152,7 +152,7 @@ private:
     Document& m_document;
     Glib::RefPtr<Gio::File> m_file;
     const unsigned int m_position;
-    unsigned int m_numberOfAddedPages;
+    unsigned int m_numberOfAddedPages = 0;
     std::vector<Glib::RefPtr<Page>> m_addedPages;
 };
 

@@ -24,7 +24,7 @@ namespace Slicer {
 
 class PageLabel : public Gtk::Box {
 public:
-	PageLabel(const Glib::ustring fileName, unsigned int pageNumber);
+    PageLabel(const Glib::ustring& fileName, unsigned int pageNumber);
 
 private:
 	Gtk::Label m_nameLabel;

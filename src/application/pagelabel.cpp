@@ -6,7 +6,7 @@ using namespace fmt::literals;
 
 namespace Slicer {
 
-PageLabel::PageLabel(const Glib::ustring fileName, unsigned int pageNumber)
+PageLabel::PageLabel(const Glib::ustring& fileName, unsigned int pageNumber)
     : Gtk::Box{Gtk::ORIENTATION_HORIZONTAL}
 {
     m_nameLabel.set_text(fileName);
