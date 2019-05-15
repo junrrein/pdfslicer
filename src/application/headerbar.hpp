@@ -17,30 +17,37 @@
 #ifndef HEADERBAR_HPP
 #define HEADERBAR_HPP
 
-#include <gtkmm/headerbar.h>
 #include <giomm/actiongroup.h>
+#include <gtkmm/adjustment.h>
+#include <gtkmm/headerbar.h>
 #include <gtkmm/menubutton.h>
-#include <gtkmm/box.h>
+#include <gtkmm/scale.h>
+#include <glibmm/binding.h>
+#include <glibmm/propertyproxy.h>
 
 namespace Slicer {
 
 class HeaderBar : public Gtk::HeaderBar {
 public:
-    HeaderBar();
+    HeaderBar(const Glib::PropertyProxy<unsigned>& zoomIndexProperty);
 
     void enableAddDocumentButton();
     void disableAddDocumentButton();
+
+    void enableZoomSlider();
+    void disableZoomSlider();
 
 private:
     Gtk::Button m_buttonOpen;
     Gtk::MenuButton m_buttonAddDocument;
     Gtk::Button m_buttonUndo;
     Gtk::Button m_buttonRedo;
-    Gtk::Button m_buttonZoomOut;
-    Gtk::Button m_buttonZoomIn;
-    Gtk::Box m_boxZoom;
     Gtk::Button m_buttonSave;
+
     Gtk::MenuButton m_buttonAppMenu;
+    Gtk::Scale m_zoomSlider;
+    Glib::RefPtr<Gtk::Adjustment> m_zoomAdjustment;
+    Glib::RefPtr<Glib::Binding> m_zoomBinding;
 
     void setupWidgets();
 };
