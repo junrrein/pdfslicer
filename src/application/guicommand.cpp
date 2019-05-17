@@ -63,10 +63,10 @@ void GuiAddFileCommand::redo()
 void GuiAddFileCommand::setSubtitle()
 {
     if (m_oldSubtitle == "")
-        m_headerBar.set_subtitle(fmt::format(_("added file {fileName}"),
+        m_headerBar.set_subtitle(fmt::format(_("Added file {fileName}"),
                                              "fileName"_a = m_fileName)); //NOLINT
     else
-        m_headerBar.set_subtitle(_("multiple files added"));
+        m_headerBar.set_subtitle(_("Multiple files added"));
 }
 
 }
