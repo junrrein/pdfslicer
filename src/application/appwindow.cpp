@@ -128,6 +128,7 @@ void AppWindow::addActions()
     m_aboutAction = add_action("about", sigc::mem_fun(*this, &AppWindow::onAboutAction));
 
     m_headerBar.disableAddDocumentButton();
+    m_addDocumentAfterSelectedAction->set_enabled(false);
     m_saveAction->set_enabled(false);
     m_undoAction->set_enabled(false);
     m_redoAction->set_enabled(false);
