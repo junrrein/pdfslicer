@@ -58,7 +58,7 @@ void AppMenu::setupWidgets()
     m_zoomSlider.set_size_request(150, -1);
 
     m_zoomBox.set_orientation(Gtk::ORIENTATION_VERTICAL);
-    m_zoomBox.pack_start(m_zoomSeparatorBox, Gtk::PACK_EXPAND_WIDGET, 5);
+    m_zoomBox.pack_start(m_zoomSeparatorBox);
     m_zoomBox.pack_start(m_zoomSlider);
 
     m_shortcutsButton.set_label(_("Keyboard shortcuts"));
