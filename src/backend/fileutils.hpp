@@ -1,5 +1,5 @@
 // PDF Slicer
-// Copyright (C) 2017-2018 Julián Unrrein
+// Copyright (C) 2019 Julián Unrrein
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,14 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#include "utils.hpp"
-#include <glibmm/i18n.h>
+#ifndef FILEUTILS_HPP
+#define FILEUTILS_HPP
 
-Glib::RefPtr<Gtk::FileFilter> Slicer::pdfFilter()
-{
-	auto filter = Gtk::FileFilter::create();
-    filter->set_name(_("PDF document"));
-    filter->add_pattern("*.pdf");
+#include <giomm/file.h>
 
-	return filter;
+namespace Slicer {
+
+Glib::ustring getDisplayName(const Glib::RefPtr<Gio::File>& file);
+
 }
+
+#endif // FILEUTILS_HPP

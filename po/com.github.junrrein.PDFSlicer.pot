@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-20 18:07-0300\n"
+"POT-Creation-Date: 2019-06-17 19:32-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,8 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
-"A simple application to extract, rotate and reorder pages of a PDF document"
+"A simple application to extract, merge, rotate and reorder pages of PDF "
+"documents"
 msgstr ""
 
 #: ../src/application/aboutdialog.cpp:32
@@ -70,51 +71,71 @@ msgstr ""
 msgid "More page removing operations…"
 msgstr ""
 
-#: ../src/application/actionbar.cpp:69
-msgid "Cancel selection"
+#: ../src/application/actionbar.cpp:72
+msgid "Cancel Selection"
 msgstr ""
 
-#: ../src/application/appwindow.cpp:178
-msgid "The current document could not be saved"
+#: ../src/application/appmenu.cpp:43
+msgid "Zoom"
 msgstr ""
 
-#: ../src/application/appwindow.cpp:306
-msgid "The selected file could not be opened"
-msgstr ""
-
-#: ../src/application/headerbar.cpp:34
-msgid "Open document…"
-msgstr ""
-
-#: ../src/application/headerbar.cpp:39
-msgid "Save as…"
-msgstr ""
-
-#: ../src/application/headerbar.cpp:44
-msgid "Undo"
-msgstr ""
-
-#: ../src/application/headerbar.cpp:47
-msgid "Redo"
-msgstr ""
-
-#: ../src/application/headerbar.cpp:57
+#: ../src/application/appmenu.cpp:63
 msgid "Keyboard shortcuts"
 msgstr ""
 
-#: ../src/application/headerbar.cpp:58
+#: ../src/application/appmenu.cpp:67
 msgid "About"
 msgstr ""
 
-#: ../src/application/headerbar.cpp:64 ../src/application/previewwindow.cpp:57
-msgid "Zoom out"
+#: ../src/application/appwindow.cpp:189
+msgid "The current document could not be saved"
 msgstr ""
 
-#: ../src/application/headerbar.cpp:67 ../src/application/previewwindow.cpp:64
-msgid "Zoom in"
+#: ../src/application/appwindow.cpp:312
+msgid "The selected file could not be opened"
 msgstr ""
 
-#: ../src/application/interactivepagewidget.cpp:99
+#: ../src/application/guicommand.cpp:71
+msgid "Added file {fileName}"
+msgstr ""
+
+#: ../src/application/guicommand.cpp:74
+msgid "Multiple files added"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:55
+msgid "Open…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:59
+msgid "At the beggining…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:60
+msgid "At the end…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:61
+msgid "After the selected page…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:63
+msgid "Add Document…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:73
+msgid "Undo"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:76
+msgid "Redo"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:89
+msgid "Save As…"
+msgstr ""
+
+#: ../src/application/interactivepagewidget.cpp:118
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr ""
@@ -130,6 +151,18 @@ msgstr ""
 #: ../src/application/openfiledialog.cpp:28
 #: ../src/application/savefiledialog.cpp:29
 msgid "Cancel"
+msgstr ""
+
+#: ../src/application/pdffilter.cpp:23
+msgid "PDF document"
+msgstr ""
+
+#: ../src/application/previewwindow.cpp:58
+msgid "Zoom out"
+msgstr ""
+
+#: ../src/application/previewwindow.cpp:65
+msgid "Zoom in"
 msgstr ""
 
 #: ../src/application/savefiledialog.cpp:26
@@ -150,10 +183,6 @@ msgstr ""
 
 #: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
-msgstr ""
-
-#: ../src/application/utils.cpp:23
-msgid "PDF document"
 msgstr ""
 
 #: ../src/application/welcomescreen.cpp:29

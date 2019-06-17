@@ -16,42 +16,19 @@
 
 #include "pagerenderer.hpp"
 #include <cairomm/context.h>
+#include <poppler/cpp/poppler-page-renderer.h>
 
 namespace Slicer {
 
-PageRenderer::PageRenderer(const Page& page)
+PageRenderer::PageRenderer(const Glib::RefPtr<const Page>& page)
     : m_page{page}
 {
 }
 
-Glib::RefPtr<Gdk::Pixbuf> PageRenderer::render(int targetSize) const
+PageRenderer::RenderDimensions PageRenderer::getRenderDimensions(int targetSize) const
 {
-    const Page::Size outputSize = m_page.scaledRotatedSize(targetSize);
-    auto surface = Cairo::ImageSurface::create(Cairo::FORMAT_ARGB32,
-                                               outputSize.width,
-                                               outputSize.height);
-    auto cr = Cairo::Context::create(surface);
-
-    // Paint a white background
-    cr->set_source_rgb(255, 255, 255);
-    cr->rectangle(0, 0, outputSize.width, outputSize.height);
-    cr->fill();
-
-    cr->save();
-
-    // Rotate Context to render the page
-    if (m_page.rotation() == 90)
-        cr->translate(outputSize.width, 0);
-    else if (m_page.rotation() == 180)
-        cr->translate(outputSize.width, outputSize.height);
-    else if (m_page.rotation() == 270)
-        cr->translate(0, outputSize.height);
-
-    cr->rotate_degrees(m_page.rotation());
-
-    // Scale Context to match the ImageSurface's area.
-    // Otherwise the page would get rendered at (realWidth x realHeight).
-    const Page::Size rotatedSize = m_page.rotatedSize();
+    const Page::Size outputSize = m_page->scaledRotatedSize(targetSize);
+    const Page::Size rotatedSize = m_page->rotatedSize();
     double scale;
 
     if (rotatedSize.width >= rotatedSize.height)
@@ -59,22 +36,52 @@ Glib::RefPtr<Gdk::Pixbuf> PageRenderer::render(int targetSize) const
     else
         scale = static_cast<double>(outputSize.height) / rotatedSize.height;
 
-    cr->scale(scale, scale);
+    poppler::rotation_enum rotation = poppler::rotate_0;
+    switch (m_page->rotation()) {
+    case 90:
+        rotation = poppler::rotate_90;
+        break;
+    case 180:
+        rotation = poppler::rotate_180;
+        break;
+    case 270:
+        rotation = poppler::rotate_270;
+    }
 
-    // Render page
-    poppler_page_render(m_page.m_ppage.get(), cr->cobj());
+    return {outputSize, scale, rotation};
+}
 
-    // Scale and/or rotate back and paint a black outline
-    cr->restore();
+Glib::RefPtr<Gdk::Pixbuf> PageRenderer::render(int targetSize) const
+{
+    poppler::page_renderer renderer;
+    renderer.set_render_hint(poppler::page_renderer::text_antialiasing);
+
+    const auto [outputSize, scale, rotation] = getRenderDimensions(targetSize);
+
+    poppler::image image = renderer.render_page(m_page->m_ppage.get(),
+                                                standardDpi * scale,
+                                                standardDpi * scale,
+                                                -1,
+                                                -1,
+                                                outputSize.width,
+                                                outputSize.height,
+                                                rotation);
+
+    const int stride = Cairo::ImageSurface::format_stride_for_width(Cairo::FORMAT_ARGB32, outputSize.width);
+    auto surface = Cairo::ImageSurface::create(reinterpret_cast<unsigned char*>(image.data()), //NOLINT
+                                               Cairo::FORMAT_ARGB32,
+                                               outputSize.width,
+                                               outputSize.height,
+                                               stride);
+
+    // Paint a black outline
+    auto cr = Cairo::Context::create(surface);
     cr->set_line_width(1);
     cr->set_source_rgb(0, 0, 0);
     cr->rectangle(0, 0, outputSize.width, outputSize.height);
     cr->stroke();
 
-    // Convert rendered page to a pixbuf
-    auto pixbuf = Gdk::Pixbuf::create(surface, 0, 0, outputSize.width, outputSize.height);
-
-    return pixbuf;
+    return Gdk::Pixbuf::create(surface, 0, 0, outputSize.width, outputSize.height);
 }
 
 } // namespace Slicer

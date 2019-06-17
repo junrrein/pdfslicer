@@ -20,6 +20,8 @@
 #include "page.hpp"
 #include <giomm/file.h>
 #include <giomm/liststore.h>
+#include <poppler/cpp/poppler-document.h>
+#include <qpdf/QPDFPageDocumentHelper.hh>
 
 namespace Slicer {
 
@@ -43,26 +45,29 @@ public:
     void rotatePagesRight(const std::vector<unsigned int>& pageNumbers);
     void rotatePagesLeft(const std::vector<unsigned int>& pageNumbers);
 
-    Glib::RefPtr<const Page> getPage(unsigned int index) const;
+    unsigned int addFile(const Glib::RefPtr<Gio::File>& file, unsigned int position);
+
+    Glib::RefPtr<Page> getPage(unsigned int index) const;
     const Glib::RefPtr<Gio::ListStore<Page>>& pages() const;
-    std::string basename() const;
-    std::string filePath() const;
-    std::string originalParentPath() const;
     unsigned int numberOfPages() const;
 
     sigc::signal<void, std::vector<unsigned int>> pagesRotated;
     sigc::signal<void, std::vector<unsigned int>> pagesReordered;
 
 private:
-    using PopplerDocumentPointer = std::unique_ptr<PopplerDocument, decltype(&g_object_unref)>;
+    struct FileData {
+        Glib::RefPtr<Gio::File> originalFile;
+        Glib::RefPtr<Gio::File> tempFile;
+        std::unique_ptr<poppler::document> popplerDocument;
+        std::unique_ptr<QPDF> qpdfDocument;
+        std::unique_ptr<QPDFPageDocumentHelper> qpdfDocumentHelper;
+    };
 
-    PopplerDocumentPointer m_popplerDocument;
-    const Glib::RefPtr<Gio::File> m_originalFile;
-    Glib::RefPtr<Gio::File> m_sourceFile;
+    std::vector<FileData> m_filesData;
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
-    std::string m_basename;
 
-    void loadDocument();
+    FileData loadFile(const Glib::RefPtr<Gio::File>& sourceFile);
+    std::vector<Glib::RefPtr<Page>> loadPages(const FileData& fileData);
 };
 }
 

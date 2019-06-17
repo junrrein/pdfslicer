@@ -6,10 +6,10 @@
 	<project_license>GPL-3.0-or-later</project_license>
 	<name>PDF Slicer</name>
 	<launchable>@APPLICATION_ID@.desktop</launchable>
-	<_summary>A simple tool to extract, rotate and reorder pages of a PDF document</_summary>
+	<_summary>A simple tool to extract, merge, rotate and reorder pages of PDF documents</_summary>
 	<description>
 		<_p>
-		PDF Slicer is a simple application to extract, rotate and reorder pages of a PDF document.
+		PDF Slicer is a simple application to extract, merge, rotate and reorder pages of PDF documents.
 		The operations can be performed on single pages or on selections/ranges of pages,
 		and it has undo/redo support.
 		</_p>
@@ -32,6 +32,26 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.7.0" date="2019-06-17">
+			<description>
+				<p>Add the ability to merge files. Miscellaneous UI improvements.</p>
+			</description>
+		</release>
+		<release version="1.6.3" date="2019-04-25">
+			<description>
+				<p>Fix bug where a strange directory was used when saving a file on a Flatpak-packaged Slicer.</p>
+			</description>
+		</release>
+		<release version="1.6.2" date="2019-04-23">
+			<description>
+				<p>Reduce memory consumption.</p>
+			</description>
+		</release>
+		<release version="1.6.1" date="2019-04-20">
+			<description>
+				<p>Allow selecting pages while they are still rendering. Miscellaneous bug fixes.</p>
+			</description>
+		</release>
 		<release version="1.6.0" date="2019-04-19">
 			<description>
 				<p>Replace the PDF-Writer backend library with QPDF.</p>

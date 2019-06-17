@@ -17,6 +17,12 @@ range-v3
 Licensed under the Boost Software License 1.0,
 A copy of the license text is available at third-party/range-v3/LICENSE.txt.
 
+safe
+====
+Copyright (c) 2019 Louis-Charles Caron
+Licensed under the MIT License.
+A copy of the license text is available at third-party/LouisCharlesC-safe/LICENSE.
+
 spdlog
 ======
 Copyright (c) 2016 Gabi Melman.

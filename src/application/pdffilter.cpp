@@ -14,35 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef ACTIONBAR_HPP
-#define ACTIONBAR_HPP
+#include "pdffilter.hpp"
+#include <glibmm/i18n.h>
 
-#include <gtkmm/actionbar.h>
-#include <gtkmm/button.h>
-#include <gtkmm/menubutton.h>
+Glib::RefPtr<Gtk::FileFilter> Slicer::pdfFilter()
+{
+	auto filter = Gtk::FileFilter::create();
+    filter->set_name(_("PDF document"));
+    filter->add_pattern("*.pdf");
 
-namespace Slicer {
-
-class ActionBar : public Gtk::ActionBar {
-public:
-    ActionBar();
-
-    void enableButtonRemovePagesMore();
-    void disableButtonRemovePagesMore();
-
-private:
-    Gtk::Button m_buttonRotateLeft;
-    Gtk::Button m_buttonRotateRight;
-
-    Gtk::Button m_buttonMoveLeft;
-    Gtk::Button m_buttonMoveRight;
-
-    Gtk::Button m_buttonRemovePages;
-    Gtk::MenuButton m_buttonRemovePagesMore;
-
-    Gtk::Button m_buttonCancelSelection;
-};
-
-} // namespace Slicer
-
-#endif // ACTIONBAR_HPP
+	return filter;
+}

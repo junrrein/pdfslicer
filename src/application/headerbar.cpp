@@ -17,10 +17,12 @@
 #include "headerbar.hpp"
 #include <glibmm/i18n.h>
 #include <giomm/menu.h>
+#include <gtkmm/box.h>
 
 namespace Slicer {
 
-HeaderBar::HeaderBar()
+HeaderBar::HeaderBar(const Glib::PropertyProxy<unsigned>& zoomIndexProperty)
+    : m_appMenu{zoomIndexProperty}
 {
     set_title("PDF Slicer");
     set_show_close_button();
@@ -28,17 +30,44 @@ HeaderBar::HeaderBar()
     setupWidgets();
 }
 
+void HeaderBar::enableAddDocumentButton()
+{
+    m_buttonAddDocument.set_sensitive();
+}
+
+void HeaderBar::disableAddDocumentButton()
+{
+    m_buttonAddDocument.set_sensitive(false);
+}
+
+void HeaderBar::enableZoomSlider()
+{
+    m_appMenu.enableZoomSlider();
+}
+
+void HeaderBar::disableZoomSlider()
+{
+    m_appMenu.disableZoomSlider();
+}
+
 void HeaderBar::setupWidgets()
 {
-    m_buttonOpen.set_image_from_icon_name("document-open-symbolic");
-    m_buttonOpen.set_tooltip_text(_("Open document…"));
+    m_buttonOpen.set_label(_("Open…"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonOpen.gobj()), "win.open-document"); // NOLINT
-    pack_start(m_buttonOpen);
 
-    m_buttonSave.set_image_from_icon_name("document-save-symbolic");
-    m_buttonSave.set_tooltip_text(_("Save as…"));
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonSave.gobj()), "win.save-document"); // NOLINT
-    pack_start(m_buttonSave);
+    Glib::RefPtr<Gio::Menu> addDocumentMenu = Gio::Menu::create();
+    addDocumentMenu->append(_("At the beggining…"), "win.add-document-at-beginning");
+    addDocumentMenu->append(_("At the end…"), "win.add-document-at-end");
+    addDocumentMenu->append(_("After the selected page…"), "win.add-document-after-selected");
+    m_buttonAddDocument.set_image_from_icon_name("list-add-symbolic");
+    m_buttonAddDocument.set_tooltip_text(_("Add Document…"));
+    m_buttonAddDocument.set_menu_model(addDocumentMenu);
+
+    auto openBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL});
+    openBox->pack_start(m_buttonOpen);
+    openBox->pack_start(m_buttonAddDocument);
+    openBox->get_style_context()->add_class("linked");
+    pack_start(*openBox);
 
     m_buttonUndo.set_image_from_icon_name("edit-undo-symbolic");
     m_buttonUndo.set_tooltip_text(_("Undo"));
@@ -53,23 +82,13 @@ void HeaderBar::setupWidgets()
     undoBox->pack_start(m_buttonRedo);
     pack_start(*undoBox);
 
-    Glib::RefPtr<Gio::Menu> menu = Gio::Menu::create();
-    menu->append(_("Keyboard shortcuts"), "win.shortcuts");
-    menu->append(_("About"), "win.about");
+    m_buttonAppMenu.set_popover(m_appMenu);
     m_buttonAppMenu.set_image_from_icon_name("open-menu-symbolic");
-    m_buttonAppMenu.set_menu_model(menu);
     pack_end(m_buttonAppMenu);
 
-    m_buttonZoomOut.set_image_from_icon_name("zoom-out-symbolic");
-    m_buttonZoomOut.set_tooltip_text(_("Zoom out"));
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonZoomOut.gobj()), "win.zoom-out"); // NOLINT
-    m_buttonZoomIn.set_image_from_icon_name("zoom-in-symbolic");
-    m_buttonZoomIn.set_tooltip_text(_("Zoom in"));
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonZoomIn.gobj()), "win.zoom-in"); // NOLINT
-    m_boxZoom.pack_start(m_buttonZoomOut);
-    m_boxZoom.pack_start(m_buttonZoomIn);
-    m_boxZoom.get_style_context()->add_class("linked");
-    pack_end(m_boxZoom);
+    m_buttonSave.set_label(_("Save As…"));
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonSave.gobj()), "win.save-document"); // NOLINT
+    pack_end(m_buttonSave);
 }
 
 } // namespace Slicer

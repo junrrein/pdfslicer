@@ -15,7 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "savefiledialog.hpp"
-#include "utils.hpp"
+#include "pdffilter.hpp"
 #include <glibmm/i18n.h>
 
 namespace Slicer {

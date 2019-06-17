@@ -57,6 +57,9 @@ private:
     WindowState m_windowState;
     CommandManager m_commandManager;
 
+    ZoomLevelWithActions m_zoomLevel;
+    static const std::vector<int> zoomLevels;
+
     HeaderBar m_headerBar;
     Gtk::Overlay m_overlay;
     Gtk::Stack m_stack;
@@ -64,9 +67,6 @@ private:
     Gtk::ScrolledWindow m_scroller;
     View m_view;
     ActionBar m_actionBar;
-
-    ZoomLevelWithActions m_zoomLevel;
-    static const std::set<int> zoomLevels;
 
     SavingRevealer m_savingRevealer;
     Glib::Dispatcher m_savedDispatcher;
@@ -76,6 +76,9 @@ private:
 
     // Actions
     Glib::RefPtr<Gio::SimpleAction> m_openAction;
+    Glib::RefPtr<Gio::SimpleAction> m_addDocumentAtBeginningAction;
+    Glib::RefPtr<Gio::SimpleAction> m_addDocumentAtEndAction;
+    Glib::RefPtr<Gio::SimpleAction> m_addDocumentAfterSelectedAction;
     Glib::RefPtr<Gio::SimpleAction> m_saveAction;
     Glib::RefPtr<Gio::SimpleAction> m_undoAction;
     Glib::RefPtr<Gio::SimpleAction> m_redoAction;
@@ -102,11 +105,17 @@ private:
     void disableEditingActions();
     void enableEditingActions();
     void trySaveDocument(const Glib::RefPtr<Gio::File>& file);
-    void tryOpenDocument(Glib::RefPtr<Gio::File> file);
+    void tryOpenDocument(const Glib::RefPtr<Gio::File>& file);
+    void tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position);
+    void showOpenFileFailedErrorDialog(const std::string& filePath);
+    void setTitleModified(bool modified);
 
     // Callbacks
-    void onSaveAction();
     void onOpenAction();
+    void onAddDocumentAtBeginningAction();
+    void onAddDocumentAtEndAction();
+    void onAddDocumentAfterSelectedAction();
+    void onSaveAction();
     void onUndoAction();
     void onRedoAction();
     void onRemoveSelectedPages();

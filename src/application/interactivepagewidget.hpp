@@ -18,7 +18,7 @@
 #define INTERACTIVEPAGEWIDGET_HPP
 
 #include "pagewidget.hpp"
-#include <gtkmm/checkbutton.h>
+#include <gtkmm/button.h>
 #include <gtkmm/eventbox.h>
 #include <gtkmm/flowboxchild.h>
 #include <gtkmm/label.h>
@@ -32,17 +32,20 @@ class InteractivePageWidget : public Gtk::FlowBoxChild {
 
 public:
     InteractivePageWidget(const Glib::RefPtr<const Page>& page,
-                          int targetSize);
+                          int targetSize,
+                          bool showFileName);
     virtual ~InteractivePageWidget() = default;
 
     unsigned int documentIndex() const;
 
-    void setChecked(bool checked);
-    bool getChecked() const { return m_isChecked; }
+    void setSelected(bool selected);
+    bool getSelected() const { return m_isSelected; }
 
     void enableRendering() { m_isRenderingCancelled = false; }
     void cancelRendering() { m_isRenderingCancelled = true; }
     bool isRenderingCancelled() const { return m_isRenderingCancelled; }
+
+    void setShowFilename(bool showFileName);
 
     sigc::signal<void, InteractivePageWidget*> selectedChanged;
     sigc::signal<void, InteractivePageWidget*> shiftSelected;
@@ -58,20 +61,23 @@ public:
     void showPage();
 
 private:
-    bool m_isChecked = false;
+    bool m_isSelected = false;
     std::atomic<bool> m_isRenderingCancelled = false;
+    bool m_showFileName = false;
 
     Gtk::Box m_contentBox;
     Gtk::Overlay m_overlay;
     Gtk::EventBox m_overlayEventBox;
     Slicer::PageWidget m_pageWidget;
 
-    Gtk::CheckButton m_check;
     Gtk::Button m_previewButton;
     Gtk::Revealer m_previewButtonRevealer;
+
+    Gtk::Box m_pageLabelBox;
+    Gtk::Label m_fileNameLabel;
     Gtk::Label m_pageNumberLabel;
 
-    const Glib::RefPtr<const Page> page() const;
+    const Glib::RefPtr<const Page>& page() const;
     void setupWidgets();
     void setupSignalHandlers();
 };

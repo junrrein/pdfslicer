@@ -23,16 +23,9 @@ void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile)
     destinationPDF.emptyPDF();
     QPDFPageDocumentHelper destinationPageDocumentHelper{destinationPDF};
 
-    QPDF sourcePDF;
-    sourcePDF.processFile(m_document.filePath().c_str());
-    QPDFPageDocumentHelper sourcePageDocumentHelper{sourcePDF};
-    std::vector<QPDFPageObjectHelper> sourcePages = sourcePageDocumentHelper.getAllPages();
-
     for (unsigned int i = 0; i < m_document.pages()->get_n_items(); ++i) {
-        Glib::RefPtr<const Page> slicerPage = m_document.getPage(i);
-        const unsigned int pageFileIndex = slicerPage->fileIndex();
-
-        QPDFPageObjectHelper pageCopy = sourcePages.at(pageFileIndex).shallowCopyPage();
+        Glib::RefPtr<Page> slicerPage = m_document.getPage(i);
+        QPDFPageObjectHelper pageCopy = slicerPage->m_qpdfPage.shallowCopyPage();
 
         if (slicerPage->rotation() != 0)
             pageCopy.rotatePage(slicerPage->rotation(), true);

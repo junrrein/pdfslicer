@@ -1,5 +1,5 @@
 // PDF Slicer
-// Copyright (C) 2017-2018 Julián Unrrein
+// Copyright (C) 2019 Julián Unrrein
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,35 +14,37 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef ACTIONBAR_HPP
-#define ACTIONBAR_HPP
+#ifndef GUICOMMAND_HPP
+#define GUICOMMAND_HPP
 
-#include <gtkmm/actionbar.h>
-#include <gtkmm/button.h>
-#include <gtkmm/menubutton.h>
+#include <command.hpp>
+#include "headerbar.hpp"
+#include "view.hpp"
 
 namespace Slicer {
 
-class ActionBar : public Gtk::ActionBar {
+class GuiAddFileCommand : public AddFileCommand {
 public:
-    ActionBar();
+	GuiAddFileCommand(Document& document,
+					  const Glib::RefPtr<Gio::File>& file,
+					  unsigned int position,
+					  HeaderBar& headerBar,
+					  View& view);
 
-    void enableButtonRemovePagesMore();
-    void disableButtonRemovePagesMore();
+	virtual void execute() override;
+	virtual void undo() override;
+	virtual void redo() override;
 
 private:
-    Gtk::Button m_buttonRotateLeft;
-    Gtk::Button m_buttonRotateRight;
+	HeaderBar& m_headerBar;
+	View& m_view;
+	const Glib::ustring m_fileName;
+	const Glib::ustring m_oldSubtitle;
 
-    Gtk::Button m_buttonMoveLeft;
-    Gtk::Button m_buttonMoveRight;
-
-    Gtk::Button m_buttonRemovePages;
-    Gtk::MenuButton m_buttonRemovePagesMore;
-
-    Gtk::Button m_buttonCancelSelection;
+	void executeInternal();
+	void setSubtitle();
 };
 
-} // namespace Slicer
+}
 
-#endif // ACTIONBAR_HPP
+#endif // GUICOMMAND_HPP

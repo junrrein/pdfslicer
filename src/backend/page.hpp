@@ -18,8 +18,9 @@
 #define PAGE_HPP
 
 #include <glibmm/object.h>
-#include <poppler.h>
 #include <gdkmm/pixbuf.h>
+#include <poppler/cpp/poppler-page.h>
+#include <qpdf/QPDFPageObjectHelper.hh>
 
 namespace Slicer {
 
@@ -30,8 +31,12 @@ public:
         int height;
     };
 
-    Page(PopplerDocument* document, int pageNumber);
+    Page(std::unique_ptr<poppler::page> ppage,
+         const QPDFPageObjectHelper& qpdfPage,
+         const Glib::ustring& fileName,
+         unsigned int pageNumber);
 
+    const Glib::ustring& fileName() const;
     unsigned int fileIndex() const;
     unsigned int getDocumentIndex() const;
     int rotation() const { return m_rotation; }
@@ -41,8 +46,6 @@ public:
     Size scaledRotatedSize(int targetSize) const;
 
     void setDocumentIndex(unsigned int newIndex);
-    void incrementDocumentIndex();
-    void decrementDocumentIndex();
     void rotateRight();
     void rotateLeft();
 
@@ -53,12 +56,15 @@ public:
                             const Glib::RefPtr<const Page>& b);
 
 private:
-    std::unique_ptr<PopplerPage, decltype(&g_object_unref)> m_ppage;
-    int m_rotation = 0;
-    unsigned int m_fileIndex;
+    std::unique_ptr<poppler::page> m_ppage;
+    QPDFPageObjectHelper m_qpdfPage;
+    const Glib::ustring m_fileName;
+    const unsigned int m_fileIndex;
     unsigned int m_documentIndex;
+    int m_rotation = 0;
 
     friend class PageRenderer; // For access to m_ppage
+    friend class PdfSaver;     // For access to m_qpdfPage
 };
 
 struct pageComparator {

@@ -25,7 +25,6 @@ namespace rsv = ranges::view;
 View::View(BackgroundThread& backgroundThread)
     : m_backgroundThread{backgroundThread}
 {
-    set_column_spacing(10);
     set_row_spacing(5);
     set_selection_mode(Gtk::SELECTION_NONE);
     set_sort_func(&sortFunction);
@@ -43,7 +42,7 @@ View::~View()
 
 std::shared_ptr<InteractivePageWidget> View::createPageWidget(const Glib::RefPtr<const Page>& page)
 {
-    auto pageWidget = std::make_shared<InteractivePageWidget>(page, m_pageWidgetSize);
+    auto pageWidget = std::make_shared<InteractivePageWidget>(page, m_pageWidgetSize, m_showFileNames);
 
     pageWidget->selectedChanged.connect(sigc::mem_fun(*this, &View::onPageSelection));
     pageWidget->shiftSelected.connect(sigc::mem_fun(*this, &View::onShiftSelection));
@@ -101,10 +100,32 @@ void View::changePageSize(int targetWidgetSize)
     }
 }
 
+void View::setShowFileNames(bool showFileNames)
+{
+    if (m_showFileNames == showFileNames)
+        return;
+
+    m_showFileNames = showFileNames;
+
+    for (auto& pageWidget : m_pageWidgets)
+        pageWidget->setShowFilename(showFileNames);
+}
+
+void View::selectPageRange(unsigned int first, unsigned int last)
+{
+    if (first > last || last > m_document->numberOfPages() - 1)
+        throw std::runtime_error("Incorrect parameters");
+
+    clearSelection();
+
+    for (auto& widget : m_pageWidgets | rsv::drop(first) | rsv::take(last - first + 1))
+        widget->setSelected(true);
+}
+
 void View::clearSelection()
 {
     for (auto& widget : m_pageWidgets)
-        widget->setChecked(false);
+        widget->setSelected(false);
 
     m_lastPageSelected = nullptr;
 
@@ -114,7 +135,9 @@ void View::clearSelection()
 unsigned int View::getSelectedChildIndex() const
 {
     const std::vector<unsigned int> selected = getSelectedChildrenIndexes();
-    assert(selected.size() == 1);
+
+    if (selected.size() != 1)
+        throw std::runtime_error("More than one child was actually selected");
 
     return selected.front();
 }
@@ -123,7 +146,7 @@ std::vector<unsigned int> View::getSelectedChildrenIndexes() const
 {
     const std::vector<unsigned int> result
         = m_pageWidgets
-          | rsv::filter(std::mem_fn(&InteractivePageWidget::getChecked))
+          | rsv::filter(std::mem_fn(&InteractivePageWidget::getSelected))
           | rsv::transform(std::mem_fn(&InteractivePageWidget::documentIndex));
 
     return result;
@@ -133,7 +156,7 @@ std::vector<unsigned int> View::getUnselectedChildrenIndexes() const
 {
     const std::vector<unsigned int> result
         = m_pageWidgets
-          | rsv::remove_if(std::mem_fn(&InteractivePageWidget::getChecked))
+          | rsv::remove_if(std::mem_fn(&InteractivePageWidget::getSelected))
           | rsv::transform(std::mem_fn(&InteractivePageWidget::documentIndex));
 
     return result;
@@ -141,19 +164,19 @@ std::vector<unsigned int> View::getUnselectedChildrenIndexes() const
 
 int View::sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b)
 {
-    const auto widgetA = static_cast<InteractivePageWidget*>(a);
-    const auto widgetB = static_cast<InteractivePageWidget*>(b);
+    const auto widgetA = dynamic_cast<InteractivePageWidget*>(a);
+    const auto widgetB = dynamic_cast<InteractivePageWidget*>(b);
 
     return InteractivePageWidget::sortFunction(*widgetA, *widgetB);
 }
 
 void View::displayRenderedPages()
 {
-    std::lock_guard<std::mutex> lock{m_renderedQueueMutex};
+    safe::WriteAccess<LockableQueue> queue{m_renderedQueue};
 
-    while (!m_renderedQueue.empty()) {
-        std::shared_ptr<InteractivePageWidget> pageWidget = m_renderedQueue.front().lock();
-        m_renderedQueue.pop();
+    while (!queue->empty()) {
+        std::shared_ptr<InteractivePageWidget> pageWidget = queue->front().lock();
+        queue->pop();
 
         if (pageWidget != nullptr) {
             pageWidget->showPage();
@@ -170,8 +193,12 @@ void View::renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget)
             return;
 
         pageWidget->renderPage();
-        std::lock_guard<std::mutex> lock{m_renderedQueueMutex};
-        m_renderedQueue.push(pageWidget);
+
+        {
+            safe::WriteAccess<LockableQueue> queue{m_renderedQueue};
+            queue->push(pageWidget);
+        }
+
         m_dispatcher.emit();
     });
 }
@@ -180,8 +207,8 @@ void View::killStillRenderingPages()
 {
     m_backgroundThread.killRemainingTasks();
 
-    std::lock_guard<std::mutex> lock(m_renderedQueueMutex);
-    m_renderedQueue = {};
+    safe::WriteAccess<LockableQueue> queue{m_renderedQueue};
+    *queue = {};
 }
 
 void View::onDispatcherCalled()
@@ -218,6 +245,7 @@ void View::onModelPagesRotated(const std::vector<unsigned int>& positions)
         for (unsigned int position : positions) {
             if (position == pageWidget->documentIndex()) {
                 pageWidget->showSpinner();
+                pageWidget->changeSize(m_pageWidgetSize);
                 renderPage(pageWidget);
 
                 break;
@@ -231,7 +259,7 @@ void View::onModelPagesReordered(const std::vector<unsigned int>& positions)
     for (auto& pageWidget : m_pageWidgets) {
         for (unsigned int position : positions) {
             if (position == pageWidget->documentIndex()) {
-                pageWidget->setChecked(true);
+                pageWidget->setSelected(true);
 
                 break;
             }
@@ -243,7 +271,7 @@ void View::onModelPagesReordered(const std::vector<unsigned int>& positions)
 
 void View::onPageSelection(InteractivePageWidget* pageWidget)
 {
-    if (pageWidget->getChecked())
+    if (pageWidget->getSelected())
         m_lastPageSelected = pageWidget;
     else
         m_lastPageSelected = nullptr;
@@ -262,13 +290,13 @@ void View::onShiftSelection(InteractivePageWidget* pageWidget)
 
         if (first != -1 && last != -1) {
             for (auto& widget : m_pageWidgets)
-                widget->setChecked(false);
+                widget->setSelected(false);
 
             if (first > last)
                 std::swap(first, last);
 
             for (auto& widget : m_pageWidgets | rsv::drop(first) | rsv::take(last - first + 1))
-                widget->setChecked(true);
+                widget->setSelected(true);
         }
     }
 

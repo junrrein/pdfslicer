@@ -23,12 +23,21 @@ namespace Slicer {
 
 class PageRenderer {
 public:
-    PageRenderer(const Page& page);
+    PageRenderer(const Glib::RefPtr<const Page>& page);
 
     Glib::RefPtr<Gdk::Pixbuf> render(int targetSize) const;
 
 private:
-    const Page& m_page;
+    struct RenderDimensions {
+        Page::Size outputSize;
+        double scale;
+        poppler::rotation_enum rotation;
+    };
+
+    const Glib::RefPtr<const Page>& m_page;
+
+    static constexpr double standardDpi = 72.0;
+    RenderDimensions getRenderDimensions(int targetSize) const;
 };
 
 } // namespace Slicer

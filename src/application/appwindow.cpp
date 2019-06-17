@@ -18,24 +18,27 @@
 #include "aboutdialog.hpp"
 #include "openfiledialog.hpp"
 #include "savefiledialog.hpp"
+#include "guicommand.hpp"
 #include <pdfsaver.hpp>
 #include <glibmm/main.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/cssprovider.h>
 #include <gtkmm/messagedialog.h>
 #include <config.hpp>
+#include <fileutils.hpp>
 #include <logger.hpp>
 
 namespace Slicer {
 
-const std::set<int> AppWindow::zoomLevels = {200, 300, 400};
+const std::vector<int> AppWindow::zoomLevels = {200, 300, 400};
 
 AppWindow::AppWindow(BackgroundThread& backgroundThread, SettingsManager& settingsManager)
     : m_backgroundThread{backgroundThread}
     , m_settingsManager{settingsManager}
     , m_windowState{}
-    , m_view{m_backgroundThread}
     , m_zoomLevel{zoomLevels, *this}
+    , m_headerBar{m_zoomLevel.zoomLevelIndex()}
+    , m_view{m_backgroundThread}
 {
     set_size_request(500, 500);
 
@@ -57,16 +60,16 @@ AppWindow::~AppWindow()
 void AppWindow::setDocument(std::unique_ptr<Document> document)
 {
     m_view.setDocument(*document, m_zoomLevel.currentLevel());
+    m_view.setShowFileNames(false);
     m_document = std::move(document);
 
     m_stack.set_visible_child("editor");
 
-    m_headerBar.set_subtitle(m_document->basename());
-
+    m_commandManager.reset();
+    m_headerBar.enableAddDocumentButton();
+    m_headerBar.enableZoomSlider();
     m_saveAction->set_enabled();
     m_zoomLevel.enable();
-
-    m_commandManager.commandExecuted.connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
 }
 
 bool AppWindow::on_delete_event(GdkEventAny*)
@@ -108,6 +111,9 @@ void AppWindow::loadWidgets()
 void AppWindow::addActions()
 {
     m_openAction = add_action("open-document", sigc::mem_fun(*this, &AppWindow::onOpenAction));
+    m_addDocumentAtBeginningAction = add_action("add-document-at-beginning", sigc::mem_fun(*this, &AppWindow::onAddDocumentAtBeginningAction));
+    m_addDocumentAtEndAction = add_action("add-document-at-end", sigc::mem_fun(*this, &AppWindow::onAddDocumentAtEndAction));
+    m_addDocumentAfterSelectedAction = add_action("add-document-after-selected", sigc::mem_fun(*this, &AppWindow::onAddDocumentAfterSelectedAction));
     m_saveAction = add_action("save-document", sigc::mem_fun(*this, &AppWindow::onSaveAction));
     m_undoAction = add_action("undo", sigc::mem_fun(*this, &AppWindow::onUndoAction));
     m_redoAction = add_action("redo", sigc::mem_fun(*this, &AppWindow::onRedoAction));
@@ -123,6 +129,9 @@ void AppWindow::addActions()
     m_shortcutsAction = add_action("shortcuts", sigc::mem_fun(*this, &AppWindow::onShortcutsAction));
     m_aboutAction = add_action("about", sigc::mem_fun(*this, &AppWindow::onAboutAction));
 
+    m_headerBar.disableAddDocumentButton();
+    m_addDocumentAfterSelectedAction->set_enabled(false);
+    m_headerBar.disableZoomSlider();
     m_saveAction->set_enabled(false);
     m_undoAction->set_enabled(false);
     m_redoAction->set_enabled(false);
@@ -130,6 +139,7 @@ void AppWindow::addActions()
     m_removeUnselectedAction->set_enabled(false);
     m_removePreviousAction->set_enabled(false);
     m_removeNextAction->set_enabled(false);
+    m_actionBar.disableButtonRemovePagesMore();
     m_rotateRightAction->set_enabled(false);
     m_rotateLeftAction->set_enabled(false);
     m_moveLeftAction->set_enabled(false);
@@ -162,13 +172,14 @@ void AppWindow::setupSignalHandlers()
         onSelectedPagesChanged();
     });
 
-    m_zoomLevel.changed.connect([this](int targetSize) {
-        m_view.changePageSize(targetSize);
+    m_zoomLevel.zoomLevelIndex().signal_changed().connect([this]() {
+        m_view.changePageSize(m_zoomLevel.currentLevel());
     });
 
     m_savedDispatcher.connect([this]() {
         m_savingRevealer.saved();
         enableEditingActions();
+        setTitleModified(false);
     });
 
     m_savingFailedDispatcher.connect([this]() {
@@ -187,6 +198,7 @@ void AppWindow::setupSignalHandlers()
 
     signal_size_allocate().connect(sigc::mem_fun(*this, &AppWindow::onSizeAllocate));
     signal_window_state_event().connect(sigc::mem_fun(*this, &AppWindow::onWindowStateEvent));
+    m_commandManager.commandExecuted.connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
 }
 
 void AppWindow::loadCustomCSS()
@@ -203,8 +215,9 @@ void AppWindow::loadCustomCSS()
             font-weight: bold;
         }
 
-        .pepino {
-            padding: 3px;
+        .thin-button {
+            padding-left: 4px;
+            padding-right: 4px;
         }
     )");
     Gtk::StyleContext::add_provider_for_screen(screen,
@@ -250,7 +263,7 @@ void AppWindow::onShortcutsAction()
 
 void AppWindow::onSaveAction()
 {
-    Slicer::SaveFileDialog dialog{*this, m_document->originalParentPath()};
+    Slicer::SaveFileDialog dialog{*this};
 
     const int result = dialog.run();
 
@@ -291,25 +304,84 @@ void AppWindow::onOpenAction()
         tryOpenDocument(dialog.get_file());
 }
 
-void AppWindow::tryOpenDocument(Glib::RefPtr<Gio::File> file)
+void AppWindow::showOpenFileFailedErrorDialog(const std::string& filePath)
+{
+    Logger::logError("The file couldn't be opened");
+    Logger::logError("Filepath: " + filePath);
+
+    Gtk::MessageDialog errorDialog{_("The selected file could not be opened"),
+                                   false,
+                                   Gtk::MESSAGE_ERROR,
+                                   Gtk::BUTTONS_CLOSE,
+                                   true};
+    errorDialog.set_transient_for(*this);
+    errorDialog.run();
+}
+
+void AppWindow::setTitleModified(bool modified)
+{
+    if (modified && m_headerBar.get_title().at(0) != '*')
+        m_headerBar.set_title("*" + m_headerBar.get_title());
+
+    if (!modified && m_headerBar.get_title().at(0) == '*')
+        m_headerBar.set_title(m_headerBar.get_title().substr(1));
+}
+
+void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position)
 {
     try {
-        m_undoAction->set_enabled(false);
-        m_redoAction->set_enabled(false);
-        auto document = std::make_unique<Document>(file);
-        setDocument(std::move(document));
+        auto command = std::make_shared<GuiAddFileCommand>(*m_document,
+                                                           file,
+                                                           position,
+                                                           m_headerBar,
+                                                           m_view);
+        m_commandManager.execute(command);
     }
     catch (...) {
-        Logger::logError("The file couldn't be opened");
-        Logger::logError("Filepath: " + file->get_path());
+        showOpenFileFailedErrorDialog(file->get_path());
+    }
+}
 
-        Gtk::MessageDialog errorDialog{_("The selected file could not be opened"),
-                                       false,
-                                       Gtk::MESSAGE_ERROR,
-                                       Gtk::BUTTONS_CLOSE,
-                                       true};
-        errorDialog.set_transient_for(*this);
-        errorDialog.run();
+void AppWindow::onAddDocumentAtBeginningAction()
+{
+    Slicer::OpenFileDialog dialog{*this};
+
+    const int result = dialog.run();
+
+    if (result == Gtk::RESPONSE_ACCEPT)
+        tryAddDocumentAt(dialog.get_file(), 0);
+}
+
+void AppWindow::onAddDocumentAtEndAction()
+{
+    Slicer::OpenFileDialog dialog{*this};
+
+    const int result = dialog.run();
+
+    if (result == Gtk::RESPONSE_ACCEPT)
+        tryAddDocumentAt(dialog.get_file(), m_document->numberOfPages());
+}
+
+void AppWindow::onAddDocumentAfterSelectedAction()
+{
+    Slicer::OpenFileDialog dialog{*this};
+
+    const int result = dialog.run();
+
+    if (result == Gtk::RESPONSE_ACCEPT)
+        tryAddDocumentAt(dialog.get_file(), m_view.getSelectedChildIndex() + 1);
+}
+
+void AppWindow::tryOpenDocument(const Glib::RefPtr<Gio::File>& file)
+{
+    try {
+        auto document = std::make_unique<Document>(file);
+        setDocument(std::move(document));
+        m_headerBar.set_title(getDisplayName(file));
+        m_headerBar.set_subtitle("");
+    }
+    catch (...) {
+        showOpenFileFailedErrorDialog(file->get_path());
     }
 }
 
@@ -405,10 +477,10 @@ void AppWindow::onCancelSelection()
     m_view.clearSelection();
 }
 
-bool isVectorContigous(const std::vector<unsigned int>& bector)
+bool isVectorContigous(const std::vector<unsigned int>& vector)
 {
-    for (unsigned int i = 0; i < bector.size(); ++i)
-        if (bector.front() + i != bector.at(i))
+    for (unsigned int i = 0; i < vector.size(); ++i)
+        if (vector.front() + i != vector.at(i))
             return false;
 
     return true;
@@ -425,6 +497,7 @@ void AppWindow::onSelectedPagesChanged()
         m_removeUnselectedAction->set_enabled(false);
         m_removePreviousAction->set_enabled(false);
         m_removeNextAction->set_enabled(false);
+        m_actionBar.disableButtonRemovePagesMore();
         m_rotateRightAction->set_enabled(false);
         m_rotateLeftAction->set_enabled(false);
         m_moveLeftAction->set_enabled(false);
@@ -433,6 +506,7 @@ void AppWindow::onSelectedPagesChanged()
     }
     else {
         m_removeSelectedAction->set_enabled();
+        m_actionBar.enableButtonRemovePagesMore();
         m_rotateRightAction->set_enabled();
         m_rotateLeftAction->set_enabled();
         m_cancelSelectionAction->set_enabled();
@@ -463,6 +537,11 @@ void AppWindow::onSelectedPagesChanged()
             m_removeNextAction->set_enabled(false);
         else
             m_removeNextAction->set_enabled();
+
+        m_addDocumentAfterSelectedAction->set_enabled();
+    }
+    else {
+        m_addDocumentAfterSelectedAction->set_enabled(false);
     }
 
     if (numSelected > 1) {
@@ -478,10 +557,14 @@ void AppWindow::onSelectedPagesChanged()
 
 void AppWindow::onCommandExecuted()
 {
-    if (m_commandManager.canUndo())
+    if (m_commandManager.canUndo()) {
         m_undoAction->set_enabled();
-    else
+        setTitleModified(true);
+    }
+    else {
         m_undoAction->set_enabled(false);
+        setTitleModified(false);
+    }
 
     if (m_commandManager.canRedo())
         m_redoAction->set_enabled();

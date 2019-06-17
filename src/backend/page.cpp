@@ -19,17 +19,21 @@
 
 namespace Slicer {
 
-Page::Page(PopplerDocument* document, int pageNumber)
-    : m_ppage{nullptr, &g_object_unref}
+Page::Page(std::unique_ptr<poppler::page> ppage,
+           const QPDFPageObjectHelper& qpdfPage,
+           const Glib::ustring& fileName,
+           unsigned int pageNumber)
+    : m_ppage{std::move(ppage)}
+    , m_qpdfPage{qpdfPage}
+    , m_fileName{fileName}
+    , m_fileIndex{pageNumber}
+    , m_documentIndex{m_fileIndex}
 {
-    PopplerPage* ppage = poppler_document_get_page(document, pageNumber);
+}
 
-    if (ppage == nullptr)
-        throw std::runtime_error("Couldn't load page with number: " + std::to_string(pageNumber));
-
-    m_ppage.reset(ppage);
-    m_fileIndex = static_cast<unsigned>(poppler_page_get_index(m_ppage.get()));
-    m_documentIndex = m_fileIndex;
+const Glib::ustring& Page::fileName() const
+{
+    return m_fileName;
 }
 
 unsigned int Page::fileIndex() const
@@ -44,10 +48,9 @@ unsigned int Page::getDocumentIndex() const
 
 Page::Size Page::size() const
 {
-    double width = 0, height = 0;
-    poppler_page_get_size(m_ppage.get(), &width, &height);
+    poppler::rectf rectangle = m_ppage->page_rect();
 
-    return {static_cast<int>(width), static_cast<int>(height)};
+    return {static_cast<int>(rectangle.width()), static_cast<int>(rectangle.height())};
 }
 
 Page::Size Page::rotatedSize() const
@@ -95,16 +98,6 @@ void Page::setDocumentIndex(unsigned int newIndex)
     indexChanged.emit();
 }
 
-void Page::incrementDocumentIndex()
-{
-    setDocumentIndex(getDocumentIndex() + 1);
-}
-
-void Page::decrementDocumentIndex()
-{
-    setDocumentIndex(getDocumentIndex() - 1);
-}
-
 void Page::rotateRight()
 {
     if (m_rotation == 270)
@@ -138,7 +131,7 @@ int Page::sortFunction(const Page& a, const Page& b)
 int Page::sortFunction(const Glib::RefPtr<const Page>& a,
                        const Glib::RefPtr<const Page>& b)
 {
-    return sortFunction(*(a.operator->()), *(b.operator->()));
+    return sortFunction(*a.get(), *b.get());
 }
 
 int pageComparator::operator()(const Glib::RefPtr<const Page>& a,

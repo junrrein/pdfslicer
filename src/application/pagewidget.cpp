@@ -55,7 +55,7 @@ void PageWidget::setupWidgets()
 
 void PageWidget::renderPage()
 {
-    m_thumbnail.set(PageRenderer{*m_page.operator->()}.render(m_targetSize));
+    m_thumbnail.set(PageRenderer{m_page}.render(m_targetSize));
 }
 
 void PageWidget::showSpinner()

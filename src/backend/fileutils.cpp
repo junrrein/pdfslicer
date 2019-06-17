@@ -1,5 +1,5 @@
 // PDF Slicer
-// Copyright (C) 2017-2018 Julián Unrrein
+// Copyright (C) 2019 Julián Unrrein
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,35 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef ACTIONBAR_HPP
-#define ACTIONBAR_HPP
-
-#include <gtkmm/actionbar.h>
-#include <gtkmm/button.h>
-#include <gtkmm/menubutton.h>
+#include "fileutils.hpp"
 
 namespace Slicer {
 
-class ActionBar : public Gtk::ActionBar {
-public:
-    ActionBar();
+Glib::ustring getDisplayName(const Glib::RefPtr<Gio::File>& file)
+{
+    const std::string attribute = G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME;
 
-    void enableButtonRemovePagesMore();
-    void disableButtonRemovePagesMore();
+    return file->query_info(attribute)->get_attribute_as_string(attribute);
+}
 
-private:
-    Gtk::Button m_buttonRotateLeft;
-    Gtk::Button m_buttonRotateRight;
-
-    Gtk::Button m_buttonMoveLeft;
-    Gtk::Button m_buttonMoveRight;
-
-    Gtk::Button m_buttonRemovePages;
-    Gtk::MenuButton m_buttonRemovePagesMore;
-
-    Gtk::Button m_buttonCancelSelection;
-};
-
-} // namespace Slicer
-
-#endif // ACTIONBAR_HPP
+}

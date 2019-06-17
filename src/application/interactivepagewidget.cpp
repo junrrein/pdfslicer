@@ -23,8 +23,10 @@ using namespace fmt::literals;
 namespace Slicer {
 
 InteractivePageWidget::InteractivePageWidget(const Glib::RefPtr<const Page>& page,
-                                             int targetSize)
-    : m_pageWidget(page, targetSize)
+                                             int targetSize,
+                                             bool showFileName)
+    : m_showFileName{showFileName}
+    , m_pageWidget{page, targetSize}
 {
     setupWidgets();
     setupSignalHandlers();
@@ -35,12 +37,30 @@ unsigned int InteractivePageWidget::documentIndex() const
     return page()->getDocumentIndex();
 }
 
-void InteractivePageWidget::setChecked(bool checked)
+void InteractivePageWidget::setSelected(bool selected)
 {
-    if (m_isChecked != checked) {
-        m_isChecked = checked;
-        m_check.set_active(m_isChecked);
+    if (m_isSelected != selected) {
+        m_isSelected = selected;
+
+        if (selected)
+            set_state_flags(Gtk::STATE_FLAG_SELECTED);
+        else {
+            set_state_flags(Gtk::STATE_FLAG_NORMAL);
+        }
     }
+}
+
+void InteractivePageWidget::setShowFilename(bool showFileName)
+{
+    if (m_showFileName == showFileName)
+        return;
+
+    m_showFileName = showFileName;
+
+    if (m_showFileName)
+        m_pageLabelBox.pack_end(m_fileNameLabel);
+    else
+        m_pageLabelBox.remove(m_fileNameLabel);
 }
 
 int InteractivePageWidget::sortFunction(const InteractivePageWidget& a,
@@ -69,18 +89,13 @@ void InteractivePageWidget::showPage()
     m_pageWidget.showPage();
 }
 
-const Glib::RefPtr<const Page> InteractivePageWidget::page() const
+const Glib::RefPtr<const Page>& InteractivePageWidget::page() const
 {
     return m_pageWidget.page();
 }
 
 void InteractivePageWidget::setupWidgets()
 {
-    m_check.set_halign(Gtk::ALIGN_END);
-    m_check.set_valign(Gtk::ALIGN_END);
-    m_check.set_margin_bottom(10);
-    m_check.set_margin_right(10);
-
     m_previewButton.set_image_from_icon_name("document-print-preview-symbolic");
     m_previewButtonRevealer.add(m_previewButton);
     m_previewButtonRevealer.set_transition_type(Gtk::REVEALER_TRANSITION_TYPE_CROSSFADE);
@@ -91,20 +106,30 @@ void InteractivePageWidget::setupWidgets()
 
     m_overlay.set_halign(Gtk::ALIGN_CENTER);
     m_overlay.set_valign(Gtk::ALIGN_CENTER);
-    m_overlay.add_overlay(m_check);
     m_overlay.add_overlay(m_previewButtonRevealer);
     m_overlay.add(m_pageWidget);
     m_overlayEventBox.add(m_overlay);
 
+    m_fileNameLabel.set_label(page()->fileName());
+    m_fileNameLabel.set_tooltip_text(page()->fileName());
+    m_fileNameLabel.set_ellipsize(Pango::ELLIPSIZE_END);
+    m_fileNameLabel.set_max_width_chars(10);
+    m_fileNameLabel.set_visible();
     m_pageNumberLabel.set_label(fmt::format(_("Page {pageNumber}"),
-                                            "pageNumber"_a = page()->fileIndex() + 1));
-    m_pageNumberLabel.set_margin_top(5);
-    m_pageNumberLabel.set_visible();
+                                            "pageNumber"_a = page()->fileIndex() + 1)); //NOLINT
+    m_pageLabelBox.set_orientation(Gtk::ORIENTATION_VERTICAL);
+    m_pageLabelBox.set_margin_top(5);
+    m_pageLabelBox.pack_end(m_pageNumberLabel);
+    if (m_showFileName)
+        m_pageLabelBox.pack_end(m_fileNameLabel);
 
     m_contentBox.set_orientation(Gtk::ORIENTATION_VERTICAL);
     m_contentBox.pack_start(m_overlayEventBox);
-    m_contentBox.pack_start(m_pageNumberLabel, false, true);
+    m_contentBox.pack_start(m_pageLabelBox, Gtk::PACK_SHRINK);
     add(m_contentBox);
+
+    set_margin_start(10);
+    set_margin_end(10);
 
     show_all();
 }
@@ -114,11 +139,11 @@ void InteractivePageWidget::setupSignalHandlers()
     m_overlayEventBox.signal_button_release_event().connect([this](GdkEventButton* eventButton) {
         if (eventButton->button == 1) {
             if ((eventButton->state & GDK_SHIFT_MASK) != 0) {
-                setChecked(true);
+                setSelected(true);
                 shiftSelected.emit(this);
             }
             else {
-                setChecked(!getChecked());
+                setSelected(!getSelected());
                 selectedChanged.emit(this);
             }
 
