@@ -111,6 +111,7 @@ void InteractivePageWidget::setupWidgets()
     m_overlayEventBox.add(m_overlay);
 
     m_fileNameLabel.set_label(page()->fileName());
+    m_fileNameLabel.set_tooltip_text(page()->fileName());
     m_fileNameLabel.set_ellipsize(Pango::ELLIPSIZE_END);
     m_fileNameLabel.set_max_width_chars(10);
     m_fileNameLabel.set_visible();
