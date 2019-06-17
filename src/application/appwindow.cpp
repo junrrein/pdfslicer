@@ -30,14 +30,15 @@
 
 namespace Slicer {
 
-const std::set<int> AppWindow::zoomLevels = {200, 300, 400};
+const std::vector<int> AppWindow::zoomLevels = {200, 300, 400};
 
 AppWindow::AppWindow(BackgroundThread& backgroundThread, SettingsManager& settingsManager)
     : m_backgroundThread{backgroundThread}
     , m_settingsManager{settingsManager}
     , m_windowState{}
-    , m_view{m_backgroundThread}
     , m_zoomLevel{zoomLevels, *this}
+    , m_headerBar{m_zoomLevel.zoomLevelIndex()}
+    , m_view{m_backgroundThread}
 {
     set_size_request(500, 500);
 
@@ -66,6 +67,7 @@ void AppWindow::setDocument(std::unique_ptr<Document> document)
 
     m_commandManager.reset();
     m_headerBar.enableAddDocumentButton();
+    m_headerBar.enableZoomSlider();
     m_saveAction->set_enabled();
     m_zoomLevel.enable();
 }
@@ -129,6 +131,7 @@ void AppWindow::addActions()
 
     m_headerBar.disableAddDocumentButton();
     m_addDocumentAfterSelectedAction->set_enabled(false);
+    m_headerBar.disableZoomSlider();
     m_saveAction->set_enabled(false);
     m_undoAction->set_enabled(false);
     m_redoAction->set_enabled(false);
@@ -169,8 +172,8 @@ void AppWindow::setupSignalHandlers()
         onSelectedPagesChanged();
     });
 
-    m_zoomLevel.changed.connect([this](int targetSize) {
-        m_view.changePageSize(targetSize);
+    m_zoomLevel.zoomLevelIndex().signal_changed().connect([this]() {
+        m_view.changePageSize(m_zoomLevel.currentLevel());
     });
 
     m_savedDispatcher.connect([this]() {

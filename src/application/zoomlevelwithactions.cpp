@@ -18,8 +18,9 @@
 
 namespace Slicer {
 
-ZoomLevelWithActions::ZoomLevelWithActions(const std::set<int>& levels, Gio::ActionMap& actionMap)
-    : ZoomLevel{levels}
+ZoomLevelWithActions::ZoomLevelWithActions(const std::vector<int>& levels, Gio::ActionMap& actionMap)
+    : Glib::ObjectBase{typeid(ZoomLevelWithActions)}
+    , ZoomLevel{levels}
     , m_actionMap{actionMap}
 {
     m_zoomInAction = m_actionMap.add_action("zoom-in", sigc::mem_fun(*this, &ZoomLevelWithActions::onZoomInAction));

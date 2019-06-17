@@ -44,7 +44,7 @@ private:
 	Glib::Dispatcher m_pageRenderedDispatcher;
 	Glib::RefPtr<Gio::SimpleActionGroup> m_actionGroup;
 	ZoomLevelWithActions m_zoomLevel;
-	static const std::set<int> zoomLevels;
+    static const std::vector<int> zoomLevels;
 
     PageWidget m_pageWidget;
 	Gtk::ScrolledWindow m_scroller;

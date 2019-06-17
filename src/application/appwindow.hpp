@@ -57,6 +57,9 @@ private:
     WindowState m_windowState;
     CommandManager m_commandManager;
 
+    ZoomLevelWithActions m_zoomLevel;
+    static const std::vector<int> zoomLevels;
+
     HeaderBar m_headerBar;
     Gtk::Overlay m_overlay;
     Gtk::Stack m_stack;
@@ -64,9 +67,6 @@ private:
     Gtk::ScrolledWindow m_scroller;
     View m_view;
     ActionBar m_actionBar;
-
-    ZoomLevelWithActions m_zoomLevel;
-    static const std::set<int> zoomLevels;
 
     SavingRevealer m_savingRevealer;
     Glib::Dispatcher m_savedDispatcher;
