@@ -9,7 +9,7 @@
 	<_summary>A simple tool to extract, merge, rotate and reorder pages of PDF documents</_summary>
 	<description>
 		<_p>
-		PDF Slicer is a simple application to extract, merge, rotate and reorder pages PDF documents.
+		PDF Slicer is a simple application to extract, merge, rotate and reorder pages of PDF documents.
 		The operations can be performed on single pages or on selections/ranges of pages,
 		and it has undo/redo support.
 		</_p>
