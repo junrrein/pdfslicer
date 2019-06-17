@@ -42,7 +42,6 @@ void AppMenu::setupWidgets()
 {
     m_zoomSeparatorLabel.set_label(_("Zoom"));
     m_zoomSeparatorLabel.get_style_context()->add_class("separator");
-    m_zoomSeparatorBox.set_orientation(Gtk::ORIENTATION_HORIZONTAL);
     m_zoomSeparatorBox.pack_start(m_zoomSeparatorLeft);
     m_zoomSeparatorBox.pack_start(m_zoomSeparatorLabel, Gtk::PACK_SHRINK);
     m_zoomSeparatorBox.pack_start(m_zoomSeparatorRight);
