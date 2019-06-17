@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-20 18:07-0300\n"
+"POT-Creation-Date: 2019-06-17 19:32-0300\n"
 "PO-Revision-Date: 2019-01-28 21:05+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -16,8 +16,13 @@ msgstr ""
 "X-Generator: Weblate 3.5-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
+#, fuzzy
+#| msgid ""
+#| "A simple application to extract, rotate and reorder pages of a PDF "
+#| "document"
 msgid ""
-"A simple application to extract, rotate and reorder pages of a PDF document"
+"A simple application to extract, merge, rotate and reorder pages of PDF "
+"documents"
 msgstr ""
 "Una aplicación sencilla para extraer, rotar y reordenar páginas de un "
 "documento PDF"
@@ -70,51 +75,83 @@ msgstr "Remover siguientes"
 msgid "More page removing operations…"
 msgstr "Más operaciones para remover páginas…"
 
-#: ../src/application/actionbar.cpp:69
-msgid "Cancel selection"
+#: ../src/application/actionbar.cpp:72
+#, fuzzy
+#| msgid "Cancel selection"
+msgid "Cancel Selection"
 msgstr "Cancelar selección"
 
-#: ../src/application/appwindow.cpp:178
-msgid "The current document could not be saved"
-msgstr "El documento actual no pudo ser guardado"
+#: ../src/application/appmenu.cpp:43
+#, fuzzy
+#| msgid "Zoom in"
+msgid "Zoom"
+msgstr "Ampliar"
 
-#: ../src/application/appwindow.cpp:306
-msgid "The selected file could not be opened"
-msgstr "No se pudo abrir el archivo seleccionado"
-
-#: ../src/application/headerbar.cpp:34
-msgid "Open document…"
-msgstr "Abrir documento…"
-
-#: ../src/application/headerbar.cpp:39
-msgid "Save as…"
-msgstr "Guardar como…"
-
-#: ../src/application/headerbar.cpp:44
-msgid "Undo"
-msgstr "Deshacer"
-
-#: ../src/application/headerbar.cpp:47
-msgid "Redo"
-msgstr "Repetir"
-
-#: ../src/application/headerbar.cpp:57
+#: ../src/application/appmenu.cpp:63
 msgid "Keyboard shortcuts"
 msgstr "Atajos de teclado"
 
-#: ../src/application/headerbar.cpp:58
+#: ../src/application/appmenu.cpp:67
 msgid "About"
 msgstr "Acerca de"
 
-#: ../src/application/headerbar.cpp:64 ../src/application/previewwindow.cpp:57
-msgid "Zoom out"
-msgstr "Reducir"
+#: ../src/application/appwindow.cpp:189
+msgid "The current document could not be saved"
+msgstr "El documento actual no pudo ser guardado"
 
-#: ../src/application/headerbar.cpp:67 ../src/application/previewwindow.cpp:64
-msgid "Zoom in"
-msgstr "Ampliar"
+#: ../src/application/appwindow.cpp:312
+msgid "The selected file could not be opened"
+msgstr "No se pudo abrir el archivo seleccionado"
 
-#: ../src/application/interactivepagewidget.cpp:99
+#: ../src/application/guicommand.cpp:71
+msgid "Added file {fileName}"
+msgstr ""
+
+#: ../src/application/guicommand.cpp:74
+msgid "Multiple files added"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:55
+#, fuzzy
+#| msgid "Open"
+msgid "Open…"
+msgstr "Abrir"
+
+#: ../src/application/headerbar.cpp:59
+msgid "At the beggining…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:60
+msgid "At the end…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:61
+#, fuzzy
+#| msgid "Preview the selected page"
+msgid "After the selected page…"
+msgstr "Mostrar vista previa de la página seleccionada"
+
+#: ../src/application/headerbar.cpp:63
+#, fuzzy
+#| msgid "Open document…"
+msgid "Add Document…"
+msgstr "Abrir documento…"
+
+#: ../src/application/headerbar.cpp:73
+msgid "Undo"
+msgstr "Deshacer"
+
+#: ../src/application/headerbar.cpp:76
+msgid "Redo"
+msgstr "Repetir"
+
+#: ../src/application/headerbar.cpp:89
+#, fuzzy
+#| msgid "Save as…"
+msgid "Save As…"
+msgstr "Guardar como…"
+
+#: ../src/application/interactivepagewidget.cpp:118
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Página {pageNumber}"
@@ -131,6 +168,18 @@ msgstr "Abrir"
 #: ../src/application/savefiledialog.cpp:29
 msgid "Cancel"
 msgstr "Cancelar"
+
+#: ../src/application/pdffilter.cpp:23
+msgid "PDF document"
+msgstr "Documento PDF"
+
+#: ../src/application/previewwindow.cpp:58
+msgid "Zoom out"
+msgstr "Reducir"
+
+#: ../src/application/previewwindow.cpp:65
+msgid "Zoom in"
+msgstr "Ampliar"
 
 #: ../src/application/savefiledialog.cpp:26
 msgid "Save document as"
@@ -151,10 +200,6 @@ msgstr "Guardando…"
 #: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
 msgstr "¡Guardado!"
-
-#: ../src/application/utils.cpp:23
-msgid "PDF document"
-msgstr "Documento PDF"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
@@ -218,6 +263,3 @@ msgstr "Rehacer comando deshecho"
 
 #~ msgid "Quit"
 #~ msgstr "Salir"
-
-#~ msgid "Preview the selected page"
-#~ msgstr "Mostrar vista previa de la página seleccionada"

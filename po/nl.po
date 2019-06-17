@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-20 18:07-0300\n"
+"POT-Creation-Date: 2019-06-17 19:32-0300\n"
 "PO-Revision-Date: 2019-01-28 21:05+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -19,8 +19,13 @@ msgstr ""
 "X-Generator: Weblate 3.5-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
+#, fuzzy
+#| msgid ""
+#| "A simple application to extract, rotate and reorder pages of a PDF "
+#| "document"
 msgid ""
-"A simple application to extract, rotate and reorder pages of a PDF document"
+"A simple application to extract, merge, rotate and reorder pages of PDF "
+"documents"
 msgstr ""
 "Een eenvoudige applicatie om pagina's van een PDF-document te extraheren, "
 "draaien en herorganiseren"
@@ -73,51 +78,84 @@ msgstr "Volgende verwijderen"
 msgid "More page removing operations…"
 msgstr "Meer paginaverwijderingsacties…"
 
-#: ../src/application/actionbar.cpp:69
-msgid "Cancel selection"
+#: ../src/application/actionbar.cpp:72
+#, fuzzy
+#| msgid "Cancel selection"
+msgid "Cancel Selection"
 msgstr "Selectie annuleren"
 
-#: ../src/application/appwindow.cpp:178
-msgid "The current document could not be saved"
-msgstr "Het huidige document kan niet worden opgeslagen"
+#: ../src/application/appmenu.cpp:43
+#, fuzzy
+#| msgid "Zoom in"
+msgid "Zoom"
+msgstr "Inzoomen"
 
-#: ../src/application/appwindow.cpp:306
-msgid "The selected file could not be opened"
-msgstr "Het geselecteerde bestand kan niet worden geopend"
-
-#: ../src/application/headerbar.cpp:34
-msgid "Open document…"
-msgstr "Document openen…"
-
-#: ../src/application/headerbar.cpp:39
-msgid "Save as…"
-msgstr "Opslaan als…"
-
-#: ../src/application/headerbar.cpp:44
-msgid "Undo"
-msgstr "Ongedaan maken"
-
-#: ../src/application/headerbar.cpp:47
-msgid "Redo"
-msgstr "Opnieuw"
-
-#: ../src/application/headerbar.cpp:57
+#: ../src/application/appmenu.cpp:63
 msgid "Keyboard shortcuts"
 msgstr "Sneltoetsen"
 
-#: ../src/application/headerbar.cpp:58
+#: ../src/application/appmenu.cpp:67
 msgid "About"
 msgstr "Over"
 
-#: ../src/application/headerbar.cpp:64 ../src/application/previewwindow.cpp:57
-msgid "Zoom out"
-msgstr "Uitzoomen"
+#: ../src/application/appwindow.cpp:189
+msgid "The current document could not be saved"
+msgstr "Het huidige document kan niet worden opgeslagen"
 
-#: ../src/application/headerbar.cpp:67 ../src/application/previewwindow.cpp:64
-msgid "Zoom in"
-msgstr "Inzoomen"
+#: ../src/application/appwindow.cpp:312
+msgid "The selected file could not be opened"
+msgstr "Het geselecteerde bestand kan niet worden geopend"
 
-#: ../src/application/interactivepagewidget.cpp:99
+#: ../src/application/guicommand.cpp:71
+msgid "Added file {fileName}"
+msgstr ""
+
+#: ../src/application/guicommand.cpp:74
+msgid "Multiple files added"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:55
+#, fuzzy
+#| msgid "Open"
+msgid "Open…"
+msgstr "Openen"
+
+#: ../src/application/headerbar.cpp:59
+msgid "At the beggining…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:60
+msgid "At the end…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:61
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "Remove selected pages"
+msgid "After the selected page…"
+msgstr "Geselecteerde pagina's verwijderen"
+
+#: ../src/application/headerbar.cpp:63
+#, fuzzy
+#| msgid "Open document…"
+msgid "Add Document…"
+msgstr "Document openen…"
+
+#: ../src/application/headerbar.cpp:73
+msgid "Undo"
+msgstr "Ongedaan maken"
+
+#: ../src/application/headerbar.cpp:76
+msgid "Redo"
+msgstr "Opnieuw"
+
+#: ../src/application/headerbar.cpp:89
+#, fuzzy
+#| msgid "Save as…"
+msgid "Save As…"
+msgstr "Opslaan als…"
+
+#: ../src/application/interactivepagewidget.cpp:118
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Pagina {pageNumber}"
@@ -134,6 +172,18 @@ msgstr "Openen"
 #: ../src/application/savefiledialog.cpp:29
 msgid "Cancel"
 msgstr "Annuleren"
+
+#: ../src/application/pdffilter.cpp:23
+msgid "PDF document"
+msgstr "PDF-document"
+
+#: ../src/application/previewwindow.cpp:58
+msgid "Zoom out"
+msgstr "Uitzoomen"
+
+#: ../src/application/previewwindow.cpp:65
+msgid "Zoom in"
+msgstr "Inzoomen"
 
 #: ../src/application/savefiledialog.cpp:26
 msgid "Save document as"
@@ -154,10 +204,6 @@ msgstr "Bezig met opslaan…"
 #: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
 msgstr "Opgeslagen!"
-
-#: ../src/application/utils.cpp:23
-msgid "PDF document"
-msgstr "PDF-document"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
