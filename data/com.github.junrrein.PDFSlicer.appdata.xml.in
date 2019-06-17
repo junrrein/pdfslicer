@@ -34,7 +34,7 @@
 	<releases>
 		<release version="1.7.0" date="2019-06-17">
 			<description>
-				<p>Fix bug where a strange directory was used when saving a file on a Flatpak-packaged Slicer.</p>
+				<p>Add the ability to merge files. Miscellaneous UI improvements.</p>
 			</description>
 		</release>
 		<release version="1.6.3" date="2019-04-25">
