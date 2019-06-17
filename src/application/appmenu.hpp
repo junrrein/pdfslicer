@@ -42,7 +42,7 @@ private:
 	Gtk::Box m_zoomSeparatorBox;
 	Gtk::Label m_zoomSeparatorLabel;
 	Gtk::Separator m_zoomSeparatorLeft;
-	Gtk::Separator m_zoomSeparatorRight;
+    Gtk::Separator m_zoomSeparatorRight;
 	Gtk::Label m_zoomLabel;
 	Gtk::Scale m_zoomSlider;
 	Glib::RefPtr<Gtk::Adjustment> m_zoomAdjustment;

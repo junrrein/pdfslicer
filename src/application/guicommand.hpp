@@ -41,6 +41,7 @@ private:
 	const Glib::ustring m_fileName;
 	const Glib::ustring m_oldSubtitle;
 
+	void executeInternal();
 	void setSubtitle();
 };
 

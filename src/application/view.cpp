@@ -111,6 +111,17 @@ void View::setShowFileNames(bool showFileNames)
         pageWidget->setShowFilename(showFileNames);
 }
 
+void View::selectPageRange(unsigned int first, unsigned int last)
+{
+    if (first > last || last > m_document->numberOfPages() - 1)
+        throw std::runtime_error("Incorrect parameters");
+
+    clearSelection();
+
+    for (auto& widget : m_pageWidgets | rsv::drop(first) | rsv::take(last - first + 1))
+        widget->setSelected(true);
+}
+
 void View::clearSelection()
 {
     for (auto& widget : m_pageWidgets)

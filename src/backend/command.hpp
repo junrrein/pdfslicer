@@ -148,11 +148,13 @@ public:
     virtual void undo() override;
     virtual void redo() override;
 
+protected:
+    const unsigned int m_position;
+    unsigned int m_numberOfAddedPages = 0;
+
 private:
     Document& m_document;
     Glib::RefPtr<Gio::File> m_file;
-    const unsigned int m_position;
-    unsigned int m_numberOfAddedPages = 0;
     std::vector<Glib::RefPtr<Page>> m_addedPages;
 };
 

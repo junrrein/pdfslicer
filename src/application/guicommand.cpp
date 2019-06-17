@@ -40,8 +40,7 @@ GuiAddFileCommand::GuiAddFileCommand(Document& document,
 void GuiAddFileCommand::execute()
 {
     AddFileCommand::execute();
-    setSubtitle();
-    m_view.setShowFileNames(true);
+    executeInternal();
 }
 
 void GuiAddFileCommand::undo()
@@ -56,8 +55,14 @@ void GuiAddFileCommand::undo()
 void GuiAddFileCommand::redo()
 {
     AddFileCommand::redo();
+    executeInternal();
+}
+
+void GuiAddFileCommand::executeInternal()
+{
     setSubtitle();
     m_view.setShowFileNames(true);
+    m_view.selectPageRange(m_position, m_position + m_numberOfAddedPages - 1);
 }
 
 void GuiAddFileCommand::setSubtitle()
