@@ -23,7 +23,7 @@ namespace Slicer {
 AboutDialog::AboutDialog(Gtk::Window& parent)
 {
     set_program_name(config::APPLICATION_NAME);
-    set_comments(_("A simple application to extract, rotate and reorder pages of a PDF document"));
+    set_comments(_("A simple application to extract, merge, rotate and reorder pages of PDF documents"));
     set_logo_icon_name(config::APPLICATION_ID);
     set_version(config::VERSION);
     set_copyright("Copyright © 2017-2018 Julián Unrrein");
