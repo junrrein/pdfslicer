@@ -204,7 +204,7 @@ Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
 
 std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fileData)
 {
-    const Glib::ustring basenameWihoutExtension = getDiplayNameWithoutExtension(fileData.originalFile);
+    const Glib::ustring basename = getDisplayName(fileData.originalFile);
     const std::vector<QPDFPageObjectHelper> pages = fileData.qpdfDocumentHelper->getAllPages();
     std::vector<Glib::RefPtr<Page>> result;
     result.reserve(pages.size());
@@ -217,7 +217,7 @@ std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fi
 
         auto page = Glib::RefPtr<Page>{new Page{std::move(ppage),
                                                 qpdfPage,
-                                                basenameWihoutExtension,
+                                                basename,
                                                 static_cast<unsigned>(i)}};
         result.push_back(page);
     }

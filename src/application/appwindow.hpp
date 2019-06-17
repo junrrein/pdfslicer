@@ -108,6 +108,7 @@ private:
     void tryOpenDocument(const Glib::RefPtr<Gio::File>& file);
     void tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position);
     void showOpenFileFailedErrorDialog(const std::string& filePath);
+    void setTitleModified(bool modified);
 
     // Callbacks
     void onOpenAction();

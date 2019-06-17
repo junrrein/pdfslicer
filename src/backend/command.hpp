@@ -144,9 +144,9 @@ public:
                    const Glib::RefPtr<Gio::File>& file,
                    unsigned int position);
 
-    void execute() override;
-    void undo() override;
-    void redo() override;
+    virtual void execute() override;
+    virtual void undo() override;
+    virtual void redo() override;
 
 private:
     Document& m_document;

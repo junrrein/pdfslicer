@@ -18,12 +18,14 @@
 #include "aboutdialog.hpp"
 #include "openfiledialog.hpp"
 #include "savefiledialog.hpp"
+#include "guicommand.hpp"
 #include <pdfsaver.hpp>
 #include <glibmm/main.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/cssprovider.h>
 #include <gtkmm/messagedialog.h>
 #include <config.hpp>
+#include <fileutils.hpp>
 #include <logger.hpp>
 
 namespace Slicer {
@@ -57,6 +59,7 @@ AppWindow::~AppWindow()
 void AppWindow::setDocument(std::unique_ptr<Document> document)
 {
     m_view.setDocument(*document, m_zoomLevel.currentLevel());
+    m_view.setShowFileNames(false);
     m_document = std::move(document);
 
     m_stack.set_visible_child("editor");
@@ -172,6 +175,7 @@ void AppWindow::setupSignalHandlers()
     m_savedDispatcher.connect([this]() {
         m_savingRevealer.saved();
         enableEditingActions();
+        setTitleModified(false);
     });
 
     m_savingFailedDispatcher.connect([this]() {
@@ -310,10 +314,23 @@ void AppWindow::showOpenFileFailedErrorDialog(const std::string& filePath)
     errorDialog.run();
 }
 
+void AppWindow::setTitleModified(bool modified)
+{
+    if (modified && m_headerBar.get_title().at(0) != '*')
+        m_headerBar.set_title("*" + m_headerBar.get_title());
+
+    if (!modified && m_headerBar.get_title().at(0) == '*')
+        m_headerBar.set_title(m_headerBar.get_title().substr(1));
+}
+
 void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position)
 {
     try {
-        auto command = std::make_shared<AddFileCommand>(*m_document, file, position);
+        auto command = std::make_shared<GuiAddFileCommand>(*m_document,
+                                                           file,
+                                                           position,
+                                                           m_headerBar,
+                                                           m_view);
         m_commandManager.execute(command);
     }
     catch (...) {
@@ -356,6 +373,8 @@ void AppWindow::tryOpenDocument(const Glib::RefPtr<Gio::File>& file)
     try {
         auto document = std::make_unique<Document>(file);
         setDocument(std::move(document));
+        m_headerBar.set_title(getDisplayName(file));
+        m_headerBar.set_subtitle("");
     }
     catch (...) {
         showOpenFileFailedErrorDialog(file->get_path());
@@ -534,10 +553,14 @@ void AppWindow::onSelectedPagesChanged()
 
 void AppWindow::onCommandExecuted()
 {
-    if (m_commandManager.canUndo())
+    if (m_commandManager.canUndo()) {
         m_undoAction->set_enabled();
-    else
+        setTitleModified(true);
+    }
+    else {
         m_undoAction->set_enabled(false);
+        setTitleModified(false);
+    }
 
     if (m_commandManager.canRedo())
         m_redoAction->set_enabled();

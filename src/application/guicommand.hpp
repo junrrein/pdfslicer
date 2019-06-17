@@ -14,24 +14,36 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef PAGELABEL_HPP
-#define PAGELABEL_HPP
+#ifndef GUICOMMAND_HPP
+#define GUICOMMAND_HPP
 
-#include <gtkmm/box.h>
-#include <gtkmm/label.h>
+#include <command.hpp>
+#include "headerbar.hpp"
+#include "view.hpp"
 
 namespace Slicer {
 
-class PageLabel : public Gtk::Box {
+class GuiAddFileCommand : public AddFileCommand {
 public:
-    PageLabel(const Glib::ustring& fileName, unsigned int pageNumber);
+	GuiAddFileCommand(Document& document,
+					  const Glib::RefPtr<Gio::File>& file,
+					  unsigned int position,
+					  HeaderBar& headerBar,
+					  View& view);
+
+	virtual void execute() override;
+	virtual void undo() override;
+	virtual void redo() override;
 
 private:
-	Gtk::Label m_nameLabel;
-	Gtk::Label m_pageNumberLabel;
-	Gtk::Label m_separatorLabel;
+	HeaderBar& m_headerBar;
+	View& m_view;
+	const Glib::ustring m_fileName;
+	const Glib::ustring m_oldSubtitle;
+
+	void setSubtitle();
 };
 
-} // namespace Slicer
+}
 
-#endif // PAGELABEL_HPP
+#endif // GUICOMMAND_HPP

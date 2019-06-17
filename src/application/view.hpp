@@ -35,6 +35,7 @@ public:
 
     void setDocument(Document& document, int targetWidgetSize);
     void changePageSize(int targetWidgetSize);
+    void setShowFileNames(bool showFileNames);
     void clearSelection();
 
     unsigned int getSelectedChildIndex() const;
@@ -52,6 +53,7 @@ private:
 
     PageWidgetList m_pageWidgets;
     int m_pageWidgetSize = 0;
+    bool m_showFileNames = false;
     Document* m_document = nullptr;
     std::vector<sigc::connection> m_documentConnections;
     LockableQueue m_renderedQueue;

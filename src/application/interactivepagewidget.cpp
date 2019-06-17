@@ -15,13 +15,18 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "interactivepagewidget.hpp"
+#include <glibmm/i18n.h>
+#include <fmt/format.h>
+
+using namespace fmt::literals;
 
 namespace Slicer {
 
 InteractivePageWidget::InteractivePageWidget(const Glib::RefPtr<const Page>& page,
-                                             int targetSize)
-    : m_pageWidget(page, targetSize)
-    , m_pageLabel{m_pageWidget.page()->fileName(), m_pageWidget.page()->fileIndex() + 1}
+                                             int targetSize,
+                                             bool showFileName)
+    : m_showFileName{showFileName}
+    , m_pageWidget{page, targetSize}
 {
     setupWidgets();
     setupSignalHandlers();
@@ -43,6 +48,19 @@ void InteractivePageWidget::setSelected(bool selected)
             set_state_flags(Gtk::STATE_FLAG_NORMAL);
         }
     }
+}
+
+void InteractivePageWidget::setShowFilename(bool showFileName)
+{
+    if (m_showFileName == showFileName)
+        return;
+
+    m_showFileName = showFileName;
+
+    if (m_showFileName)
+        m_pageLabelBox.pack_end(m_fileNameLabel);
+    else
+        m_pageLabelBox.remove(m_fileNameLabel);
 }
 
 int InteractivePageWidget::sortFunction(const InteractivePageWidget& a,
@@ -92,11 +110,22 @@ void InteractivePageWidget::setupWidgets()
     m_overlay.add(m_pageWidget);
     m_overlayEventBox.add(m_overlay);
 
-    m_pageLabel.set_margin_top(5);
+    m_fileNameLabel.set_label(page()->fileName());
+    m_fileNameLabel.set_tooltip_text(page()->fileName());
+    m_fileNameLabel.set_ellipsize(Pango::ELLIPSIZE_END);
+    m_fileNameLabel.set_max_width_chars(10);
+    m_fileNameLabel.set_visible();
+    m_pageNumberLabel.set_label(fmt::format(_("Page {pageNumber}"),
+                                            "pageNumber"_a = page()->fileIndex() + 1)); //NOLINT
+    m_pageLabelBox.set_orientation(Gtk::ORIENTATION_VERTICAL);
+    m_pageLabelBox.set_margin_top(5);
+    m_pageLabelBox.pack_end(m_pageNumberLabel);
+    if (m_showFileName)
+        m_pageLabelBox.pack_end(m_fileNameLabel);
 
     m_contentBox.set_orientation(Gtk::ORIENTATION_VERTICAL);
     m_contentBox.pack_start(m_overlayEventBox);
-    m_contentBox.pack_start(m_pageLabel, Gtk::PACK_SHRINK);
+    m_contentBox.pack_start(m_pageLabelBox, Gtk::PACK_SHRINK);
     add(m_contentBox);
 
     set_margin_start(10);
