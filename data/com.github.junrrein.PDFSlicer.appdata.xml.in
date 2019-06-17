@@ -6,10 +6,10 @@
 	<project_license>GPL-3.0-or-later</project_license>
 	<name>PDF Slicer</name>
 	<launchable>@APPLICATION_ID@.desktop</launchable>
-	<_summary>A simple tool to extract, rotate and reorder pages of a PDF document</_summary>
+	<_summary>A simple tool to extract, merge, rotate and reorder pages of PDF documents</_summary>
 	<description>
 		<_p>
-		PDF Slicer is a simple application to extract, rotate and reorder pages of a PDF document.
+		PDF Slicer is a simple application to extract, merge, rotate and reorder pages PDF documents.
 		The operations can be performed on single pages or on selections/ranges of pages,
 		and it has undo/redo support.
 		</_p>
