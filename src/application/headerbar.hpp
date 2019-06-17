@@ -17,13 +17,9 @@
 #ifndef HEADERBAR_HPP
 #define HEADERBAR_HPP
 
-#include <giomm/actiongroup.h>
-#include <gtkmm/adjustment.h>
+#include "appmenu.hpp"
 #include <gtkmm/headerbar.h>
 #include <gtkmm/menubutton.h>
-#include <gtkmm/scale.h>
-#include <glibmm/binding.h>
-#include <glibmm/propertyproxy.h>
 
 namespace Slicer {
 
@@ -43,11 +39,8 @@ private:
     Gtk::Button m_buttonUndo;
     Gtk::Button m_buttonRedo;
     Gtk::Button m_buttonSave;
-
     Gtk::MenuButton m_buttonAppMenu;
-    Gtk::Scale m_zoomSlider;
-    Glib::RefPtr<Gtk::Adjustment> m_zoomAdjustment;
-    Glib::RefPtr<Glib::Binding> m_zoomBinding;
+    AppMenu m_appMenu;
 
     void setupWidgets();
 };

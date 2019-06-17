@@ -18,21 +18,16 @@
 #include <glibmm/i18n.h>
 #include <giomm/menu.h>
 #include <gtkmm/box.h>
-#include <gtkmm/separator.h>
-#include <gtkmm/stack.h>
 
 namespace Slicer {
 
 HeaderBar::HeaderBar(const Glib::PropertyProxy<unsigned>& zoomIndexProperty)
+    : m_appMenu{zoomIndexProperty}
 {
     set_title("PDF Slicer");
     set_show_close_button();
 
     setupWidgets();
-
-    m_zoomBinding = Glib::Binding::bind_property(zoomIndexProperty,
-                                                 m_zoomAdjustment->property_value(),
-                                                 Glib::BINDING_BIDIRECTIONAL);
 }
 
 void HeaderBar::enableAddDocumentButton()
@@ -47,12 +42,12 @@ void HeaderBar::disableAddDocumentButton()
 
 void HeaderBar::enableZoomSlider()
 {
-    m_zoomSlider.set_sensitive();
+    m_appMenu.enableZoomSlider();
 }
 
 void HeaderBar::disableZoomSlider()
 {
-    m_zoomSlider.set_sensitive(false);
+    m_appMenu.disableZoomSlider();
 }
 
 void HeaderBar::setupWidgets()
@@ -83,28 +78,9 @@ void HeaderBar::setupWidgets()
     undoBox->pack_start(m_buttonRedo);
     pack_start(*undoBox);
 
-    Glib::RefPtr<Gio::Menu> appMenu = Gio::Menu::create();
-    appMenu->append(_("Keyboard shortcuts"), "win.shortcuts");
-    appMenu->append(_("About"), "win.about");
+    m_buttonAppMenu.set_popover(m_appMenu);
     m_buttonAppMenu.set_image_from_icon_name("open-menu-symbolic");
-    m_buttonAppMenu.set_menu_model(appMenu);
     pack_end(m_buttonAppMenu);
-
-    m_zoomAdjustment = Gtk::Adjustment::create(0, 0, 2, 1, 1);
-    m_zoomSlider.set_adjustment(m_zoomAdjustment);
-    m_zoomSlider.set_has_origin(false);
-    m_zoomSlider.set_draw_value(false);
-    m_zoomSlider.set_round_digits(0);
-    m_zoomSlider.add_mark(0, Gtk::POS_BOTTOM, "");
-    m_zoomSlider.add_mark(1, Gtk::POS_BOTTOM, "");
-    m_zoomSlider.add_mark(2, Gtk::POS_BOTTOM, "");
-    auto appMenuSeparator = Gtk::manage(new Gtk::Separator{});
-    Gtk::Popover* appMenuPopover = m_buttonAppMenu.get_popover();
-    auto appMenuStack = dynamic_cast<Gtk::Stack*>(appMenuPopover->get_child());
-    auto appMenuBox = dynamic_cast<Gtk::Box*>(appMenuStack->get_visible_child());
-    appMenuBox->pack_start(m_zoomSlider);
-    appMenuBox->pack_start(*appMenuSeparator, Gtk::PACK_EXPAND_WIDGET, 5);
-    appMenuBox->show_all();
 
     m_buttonSave.set_label(_("Save As…"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonSave.gobj()), "win.save-document"); // NOLINT
