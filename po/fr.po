@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-06-17 19:32-0300\n"
-"PO-Revision-Date: 2019-01-28 21:05+0000\n"
+"PO-Revision-Date: 2019-06-19 22:55+0000\n"
 "Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/fr/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.5-dev\n"
+"X-Generator: Weblate 3.7\n"
 
 #: ../src/application/aboutdialog.cpp:26
 #, fuzzy
@@ -57,12 +57,12 @@ msgstr "Déplacer vers la droite"
 #: ../src/application/actionbar.cpp:56
 msgctxt "plural (pages)"
 msgid "Remove selected"
-msgstr "Supprimer page sélectionnée"
+msgstr "Supprimer la sélection"
 
 #: ../src/application/actionbar.cpp:61
 msgctxt "plural (pages)"
 msgid "Remove unselected"
-msgstr "Supprimer page non sélectionnée"
+msgstr "Supprimer les pages non sélectionnées"
 
 #: ../src/application/actionbar.cpp:62
 msgctxt "plural (pages)"
