@@ -120,6 +120,8 @@ void View::selectPageRange(unsigned int first, unsigned int last)
 
     for (auto& widget : m_pageWidgets | rsv::drop(first) | rsv::take(last - first + 1))
         widget->setSelected(true);
+
+    selectedPagesChanged.emit();
 }
 
 void View::clearSelection()
