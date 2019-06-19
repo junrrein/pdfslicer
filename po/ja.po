@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2019-01-26 15:29-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-17 19:32-0300\n"
 "PO-Revision-Date: 2019-02-24 05:02+0000\n"
 "Last-Translator: naofum <naofum@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -19,17 +19,24 @@ msgstr ""
 "X-Generator: Weblate 3.5-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
+#, fuzzy
+#| msgid ""
+#| "A simple application to extract, rotate and reorder pages of a PDF "
+#| "document"
 msgid ""
-"A simple application to extract, rotate and reorder pages of a PDF document"
-msgstr "PDF ドキュメントの抽出、回転、およびページの順序を変更するシンプルなアプリケーション"
+"A simple application to extract, merge, rotate and reorder pages of PDF "
+"documents"
+msgstr ""
+"PDF ドキュメントの抽出、回転、およびページの順序を変更するシンプルなアプリ"
+"ケーション"
 
 #: ../src/application/aboutdialog.cpp:32
-msgid "Third-party libraries"
-msgstr "サードパーティライブラリー"
-
-#: ../src/application/aboutdialog.cpp:42
 msgid "Application icon"
 msgstr "アプリケーションのアイコン"
+
+#: ../src/application/aboutdialog.cpp:35
+msgid "Third-party libraries"
+msgstr "サードパーティライブラリー"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
@@ -71,51 +78,84 @@ msgstr "次を削除"
 msgid "More page removing operations…"
 msgstr "他のページ削除操作…"
 
-#: ../src/application/actionbar.cpp:69
-msgid "Cancel selection"
+#: ../src/application/actionbar.cpp:72
+#, fuzzy
+#| msgid "Cancel selection"
+msgid "Cancel Selection"
 msgstr "選択を取り消す"
 
-#: ../src/application/appwindow.cpp:178
-msgid "The current document could not be saved"
-msgstr "現在のドキュメントを保存できませんでした"
+#: ../src/application/appmenu.cpp:43
+#, fuzzy
+#| msgid "Zoom in"
+msgid "Zoom"
+msgstr "拡大"
 
-#: ../src/application/appwindow.cpp:306
-msgid "The selected file could not be opened"
-msgstr "選択したファイルを開くことができません"
-
-#: ../src/application/headerbar.cpp:34
-msgid "Open document…"
-msgstr "ドキュメントを開く…"
-
-#: ../src/application/headerbar.cpp:39
-msgid "Save as…"
-msgstr "…として保存"
-
-#: ../src/application/headerbar.cpp:44
-msgid "Undo"
-msgstr "元に戻す"
-
-#: ../src/application/headerbar.cpp:47
-msgid "Redo"
-msgstr "やり直し"
-
-#: ../src/application/headerbar.cpp:57
+#: ../src/application/appmenu.cpp:63
 msgid "Keyboard shortcuts"
 msgstr "キーボード ショートカット"
 
-#: ../src/application/headerbar.cpp:58
+#: ../src/application/appmenu.cpp:67
 msgid "About"
 msgstr "アプリについて"
 
-#: ../src/application/headerbar.cpp:64 ../src/application/previewwindow.cpp:57
-msgid "Zoom out"
-msgstr "縮小"
+#: ../src/application/appwindow.cpp:189
+msgid "The current document could not be saved"
+msgstr "現在のドキュメントを保存できませんでした"
 
-#: ../src/application/headerbar.cpp:67 ../src/application/previewwindow.cpp:64
-msgid "Zoom in"
-msgstr "拡大"
+#: ../src/application/appwindow.cpp:312
+msgid "The selected file could not be opened"
+msgstr "選択したファイルを開くことができません"
 
-#: ../src/application/interactivepagewidget.cpp:74
+#: ../src/application/guicommand.cpp:71
+msgid "Added file {fileName}"
+msgstr ""
+
+#: ../src/application/guicommand.cpp:74
+msgid "Multiple files added"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:55
+#, fuzzy
+#| msgid "Open"
+msgid "Open…"
+msgstr "開く"
+
+#: ../src/application/headerbar.cpp:59
+msgid "At the beggining…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:60
+msgid "At the end…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:61
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "Remove selected pages"
+msgid "After the selected page…"
+msgstr "選択したページを削除"
+
+#: ../src/application/headerbar.cpp:63
+#, fuzzy
+#| msgid "Open document…"
+msgid "Add Document…"
+msgstr "ドキュメントを開く…"
+
+#: ../src/application/headerbar.cpp:73
+msgid "Undo"
+msgstr "元に戻す"
+
+#: ../src/application/headerbar.cpp:76
+msgid "Redo"
+msgstr "やり直し"
+
+#: ../src/application/headerbar.cpp:89
+#, fuzzy
+#| msgid "Save as…"
+msgid "Save As…"
+msgstr "…として保存"
+
+#: ../src/application/interactivepagewidget.cpp:118
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "ページ {pageNumber}"
@@ -129,19 +169,31 @@ msgid "Open"
 msgstr "開く"
 
 #: ../src/application/openfiledialog.cpp:28
-#: ../src/application/savefiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:29
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../src/application/savefiledialog.cpp:25
+#: ../src/application/pdffilter.cpp:23
+msgid "PDF document"
+msgstr "PDF ドキュメント"
+
+#: ../src/application/previewwindow.cpp:58
+msgid "Zoom out"
+msgstr "縮小"
+
+#: ../src/application/previewwindow.cpp:65
+msgid "Zoom in"
+msgstr "拡大"
+
+#: ../src/application/savefiledialog.cpp:26
 msgid "Save document as"
 msgstr "名前を付けてドキュメントを保存"
 
-#: ../src/application/savefiledialog.cpp:27
+#: ../src/application/savefiledialog.cpp:28
 msgid "Save"
 msgstr "保存"
 
-#: ../src/application/savefiledialog.cpp:30
+#: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
 msgstr "無題のドキュメント"
 
@@ -152,10 +204,6 @@ msgstr "保存しています…"
 #: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
 msgstr "保存しました!"
-
-#: ../src/application/utils.cpp:23
-msgid "PDF document"
-msgstr "PDF ドキュメント"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"

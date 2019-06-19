@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2019-01-26 15:29-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-17 19:32-0300\n"
 "PO-Revision-Date: 2019-02-10 18:10+0000\n"
 "Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -20,19 +20,24 @@ msgstr ""
 "X-Generator: Weblate 3.5-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
+#, fuzzy
+#| msgid ""
+#| "A simple application to extract, rotate and reorder pages of a PDF "
+#| "document"
 msgid ""
-"A simple application to extract, rotate and reorder pages of a PDF document"
+"A simple application to extract, merge, rotate and reorder pages of PDF "
+"documents"
 msgstr ""
 "Eine einfache Anwendung um Seiten eines PDF-Dokuments zu extrahieren, "
 "drehen, oder die Reihenfolge zu ändern"
 
 #: ../src/application/aboutdialog.cpp:32
-msgid "Third-party libraries"
-msgstr "Bibliotheken von Drittanbietern"
-
-#: ../src/application/aboutdialog.cpp:42
 msgid "Application icon"
 msgstr "Anwendungssymbol"
+
+#: ../src/application/aboutdialog.cpp:35
+msgid "Third-party libraries"
+msgstr "Bibliotheken von Drittanbietern"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
@@ -74,51 +79,84 @@ msgstr "Nächstes entfernen"
 msgid "More page removing operations…"
 msgstr "Weitere Löschaktionen von Seiten…"
 
-#: ../src/application/actionbar.cpp:69
-msgid "Cancel selection"
+#: ../src/application/actionbar.cpp:72
+#, fuzzy
+#| msgid "Cancel selection"
+msgid "Cancel Selection"
 msgstr "Auswahl abbrechen"
 
-#: ../src/application/appwindow.cpp:178
-msgid "The current document could not be saved"
-msgstr "Das aktuelle Dokument konnte nicht gespeichert werden"
+#: ../src/application/appmenu.cpp:43
+#, fuzzy
+#| msgid "Zoom in"
+msgid "Zoom"
+msgstr "Hineinzoomen"
 
-#: ../src/application/appwindow.cpp:306
-msgid "The selected file could not be opened"
-msgstr "Die ausgewählte Datei konnte nicht geöffnet werden"
-
-#: ../src/application/headerbar.cpp:34
-msgid "Open document…"
-msgstr "Dokument öffnen…"
-
-#: ../src/application/headerbar.cpp:39
-msgid "Save as…"
-msgstr "Speichern unter…"
-
-#: ../src/application/headerbar.cpp:44
-msgid "Undo"
-msgstr "Rückgängig"
-
-#: ../src/application/headerbar.cpp:47
-msgid "Redo"
-msgstr "Wiederherstellen"
-
-#: ../src/application/headerbar.cpp:57
+#: ../src/application/appmenu.cpp:63
 msgid "Keyboard shortcuts"
 msgstr "Tastenkombinationen"
 
-#: ../src/application/headerbar.cpp:58
+#: ../src/application/appmenu.cpp:67
 msgid "About"
 msgstr "Über"
 
-#: ../src/application/headerbar.cpp:64 ../src/application/previewwindow.cpp:57
-msgid "Zoom out"
-msgstr "Herauszoomen"
+#: ../src/application/appwindow.cpp:189
+msgid "The current document could not be saved"
+msgstr "Das aktuelle Dokument konnte nicht gespeichert werden"
 
-#: ../src/application/headerbar.cpp:67 ../src/application/previewwindow.cpp:64
-msgid "Zoom in"
-msgstr "Hineinzoomen"
+#: ../src/application/appwindow.cpp:312
+msgid "The selected file could not be opened"
+msgstr "Die ausgewählte Datei konnte nicht geöffnet werden"
 
-#: ../src/application/interactivepagewidget.cpp:74
+#: ../src/application/guicommand.cpp:71
+msgid "Added file {fileName}"
+msgstr ""
+
+#: ../src/application/guicommand.cpp:74
+msgid "Multiple files added"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:55
+#, fuzzy
+#| msgid "Open"
+msgid "Open…"
+msgstr "Öffnen"
+
+#: ../src/application/headerbar.cpp:59
+msgid "At the beggining…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:60
+msgid "At the end…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:61
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "Remove selected pages"
+msgid "After the selected page…"
+msgstr "Ausgewählte Seiten entfernen"
+
+#: ../src/application/headerbar.cpp:63
+#, fuzzy
+#| msgid "Open document…"
+msgid "Add Document…"
+msgstr "Dokument öffnen…"
+
+#: ../src/application/headerbar.cpp:73
+msgid "Undo"
+msgstr "Rückgängig"
+
+#: ../src/application/headerbar.cpp:76
+msgid "Redo"
+msgstr "Wiederherstellen"
+
+#: ../src/application/headerbar.cpp:89
+#, fuzzy
+#| msgid "Save as…"
+msgid "Save As…"
+msgstr "Speichern unter…"
+
+#: ../src/application/interactivepagewidget.cpp:118
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Seite {pageNumber}"
@@ -132,19 +170,31 @@ msgid "Open"
 msgstr "Öffnen"
 
 #: ../src/application/openfiledialog.cpp:28
-#: ../src/application/savefiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:29
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: ../src/application/savefiledialog.cpp:25
+#: ../src/application/pdffilter.cpp:23
+msgid "PDF document"
+msgstr "PDF-Dokument"
+
+#: ../src/application/previewwindow.cpp:58
+msgid "Zoom out"
+msgstr "Herauszoomen"
+
+#: ../src/application/previewwindow.cpp:65
+msgid "Zoom in"
+msgstr "Hineinzoomen"
+
+#: ../src/application/savefiledialog.cpp:26
 msgid "Save document as"
 msgstr "Dokument speichern unter"
 
-#: ../src/application/savefiledialog.cpp:27
+#: ../src/application/savefiledialog.cpp:28
 msgid "Save"
 msgstr "Speichern"
 
-#: ../src/application/savefiledialog.cpp:30
+#: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
 msgstr "Unbenanntes Dokument"
 
@@ -155,10 +205,6 @@ msgstr "Wird gespeichert…"
 #: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
 msgstr "Gespeichert!"
-
-#: ../src/application/utils.cpp:23
-msgid "PDF document"
-msgstr "PDF-Dokument"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"

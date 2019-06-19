@@ -2,9 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2019-01-26 15:29-0300\n"
-"PO-Revision-Date: 2019-01-28 21:05+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-17 19:32-0300\n"
+"PO-Revision-Date: 2019-06-19 23:18+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/es/>\n"
@@ -13,22 +13,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.5-dev\n"
+"X-Generator: Weblate 3.7\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
-"A simple application to extract, rotate and reorder pages of a PDF document"
+"A simple application to extract, merge, rotate and reorder pages of PDF "
+"documents"
 msgstr ""
-"Una aplicación sencilla para extraer, rotar y reordenar páginas de un "
-"documento PDF"
+"Una aplicación sencilla para extraer, combinar, rotar y reordenar páginas de "
+"documentos PDF"
 
 #: ../src/application/aboutdialog.cpp:32
-msgid "Third-party libraries"
-msgstr "Bibliotecas de terceros"
-
-#: ../src/application/aboutdialog.cpp:42
 msgid "Application icon"
 msgstr "Icono de aplicación"
+
+#: ../src/application/aboutdialog.cpp:35
+msgid "Third-party libraries"
+msgstr "Bibliotecas de terceros"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
@@ -70,51 +71,71 @@ msgstr "Remover siguientes"
 msgid "More page removing operations…"
 msgstr "Más operaciones para remover páginas…"
 
-#: ../src/application/actionbar.cpp:69
-msgid "Cancel selection"
-msgstr "Cancelar selección"
+#: ../src/application/actionbar.cpp:72
+msgid "Cancel Selection"
+msgstr "Cancelar Selección"
 
-#: ../src/application/appwindow.cpp:178
-msgid "The current document could not be saved"
-msgstr "El documento actual no pudo ser guardado"
+#: ../src/application/appmenu.cpp:43
+msgid "Zoom"
+msgstr "Zoom"
 
-#: ../src/application/appwindow.cpp:306
-msgid "The selected file could not be opened"
-msgstr "No se pudo abrir el archivo seleccionado"
-
-#: ../src/application/headerbar.cpp:34
-msgid "Open document…"
-msgstr "Abrir documento…"
-
-#: ../src/application/headerbar.cpp:39
-msgid "Save as…"
-msgstr "Guardar como…"
-
-#: ../src/application/headerbar.cpp:44
-msgid "Undo"
-msgstr "Deshacer"
-
-#: ../src/application/headerbar.cpp:47
-msgid "Redo"
-msgstr "Repetir"
-
-#: ../src/application/headerbar.cpp:57
+#: ../src/application/appmenu.cpp:63
 msgid "Keyboard shortcuts"
 msgstr "Atajos de teclado"
 
-#: ../src/application/headerbar.cpp:58
+#: ../src/application/appmenu.cpp:67
 msgid "About"
 msgstr "Acerca de"
 
-#: ../src/application/headerbar.cpp:64 ../src/application/previewwindow.cpp:57
-msgid "Zoom out"
-msgstr "Reducir"
+#: ../src/application/appwindow.cpp:189
+msgid "The current document could not be saved"
+msgstr "El documento actual no pudo ser guardado"
 
-#: ../src/application/headerbar.cpp:67 ../src/application/previewwindow.cpp:64
-msgid "Zoom in"
-msgstr "Ampliar"
+#: ../src/application/appwindow.cpp:312
+msgid "The selected file could not be opened"
+msgstr "No se pudo abrir el archivo seleccionado"
 
-#: ../src/application/interactivepagewidget.cpp:74
+#: ../src/application/guicommand.cpp:71
+msgid "Added file {fileName}"
+msgstr "Añadido archivo {fileName}"
+
+#: ../src/application/guicommand.cpp:74
+msgid "Multiple files added"
+msgstr "Múltiples archivos añadidos"
+
+#: ../src/application/headerbar.cpp:55
+msgid "Open…"
+msgstr "Abrir…"
+
+#: ../src/application/headerbar.cpp:59
+msgid "At the beggining…"
+msgstr "Al inicio…"
+
+#: ../src/application/headerbar.cpp:60
+msgid "At the end…"
+msgstr "Al final…"
+
+#: ../src/application/headerbar.cpp:61
+msgid "After the selected page…"
+msgstr "Luego de la página seleccionada…"
+
+#: ../src/application/headerbar.cpp:63
+msgid "Add Document…"
+msgstr "Añadir Documento…"
+
+#: ../src/application/headerbar.cpp:73
+msgid "Undo"
+msgstr "Deshacer"
+
+#: ../src/application/headerbar.cpp:76
+msgid "Redo"
+msgstr "Repetir"
+
+#: ../src/application/headerbar.cpp:89
+msgid "Save As…"
+msgstr "Guardar Como…"
+
+#: ../src/application/interactivepagewidget.cpp:118
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Página {pageNumber}"
@@ -128,19 +149,31 @@ msgid "Open"
 msgstr "Abrir"
 
 #: ../src/application/openfiledialog.cpp:28
-#: ../src/application/savefiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:29
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../src/application/savefiledialog.cpp:25
+#: ../src/application/pdffilter.cpp:23
+msgid "PDF document"
+msgstr "Documento PDF"
+
+#: ../src/application/previewwindow.cpp:58
+msgid "Zoom out"
+msgstr "Reducir"
+
+#: ../src/application/previewwindow.cpp:65
+msgid "Zoom in"
+msgstr "Ampliar"
+
+#: ../src/application/savefiledialog.cpp:26
 msgid "Save document as"
 msgstr "Guardar documento como"
 
-#: ../src/application/savefiledialog.cpp:27
+#: ../src/application/savefiledialog.cpp:28
 msgid "Save"
 msgstr "Guardar"
 
-#: ../src/application/savefiledialog.cpp:30
+#: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
 msgstr "Documento sin título"
 
@@ -151,10 +184,6 @@ msgstr "Guardando…"
 #: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
 msgstr "¡Guardado!"
-
-#: ../src/application/utils.cpp:23
-msgid "PDF document"
-msgstr "Documento PDF"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
@@ -218,6 +247,3 @@ msgstr "Rehacer comando deshecho"
 
 #~ msgid "Quit"
 #~ msgstr "Salir"
-
-#~ msgid "Preview the selected page"
-#~ msgstr "Mostrar vista previa de la página seleccionada"
