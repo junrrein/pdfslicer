@@ -2,9 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-06-17 19:32-0300\n"
-"PO-Revision-Date: 2019-01-28 21:05+0000\n"
+"PO-Revision-Date: 2019-06-19 23:18+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/es/>\n"
@@ -13,19 +13,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.5-dev\n"
+"X-Generator: Weblate 3.7\n"
 
 #: ../src/application/aboutdialog.cpp:26
-#, fuzzy
-#| msgid ""
-#| "A simple application to extract, rotate and reorder pages of a PDF "
-#| "document"
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
-"Una aplicación sencilla para extraer, rotar y reordenar páginas de un "
-"documento PDF"
+"Una aplicación sencilla para extraer, combinar, rotar y reordenar páginas de "
+"documentos PDF"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application icon"
@@ -76,16 +72,12 @@ msgid "More page removing operations…"
 msgstr "Más operaciones para remover páginas…"
 
 #: ../src/application/actionbar.cpp:72
-#, fuzzy
-#| msgid "Cancel selection"
 msgid "Cancel Selection"
-msgstr "Cancelar selección"
+msgstr "Cancelar Selección"
 
 #: ../src/application/appmenu.cpp:43
-#, fuzzy
-#| msgid "Zoom in"
 msgid "Zoom"
-msgstr "Ampliar"
+msgstr "Zoom"
 
 #: ../src/application/appmenu.cpp:63
 msgid "Keyboard shortcuts"
@@ -105,37 +97,31 @@ msgstr "No se pudo abrir el archivo seleccionado"
 
 #: ../src/application/guicommand.cpp:71
 msgid "Added file {fileName}"
-msgstr ""
+msgstr "Añadido archivo {fileName}"
 
 #: ../src/application/guicommand.cpp:74
 msgid "Multiple files added"
-msgstr ""
+msgstr "Múltiples archivos añadidos"
 
 #: ../src/application/headerbar.cpp:55
-#, fuzzy
-#| msgid "Open"
 msgid "Open…"
-msgstr "Abrir"
+msgstr "Abrir…"
 
 #: ../src/application/headerbar.cpp:59
 msgid "At the beggining…"
-msgstr ""
+msgstr "Al inicio…"
 
 #: ../src/application/headerbar.cpp:60
 msgid "At the end…"
-msgstr ""
+msgstr "Al final…"
 
 #: ../src/application/headerbar.cpp:61
-#, fuzzy
-#| msgid "Preview the selected page"
 msgid "After the selected page…"
-msgstr "Mostrar vista previa de la página seleccionada"
+msgstr "Luego de la página seleccionada…"
 
 #: ../src/application/headerbar.cpp:63
-#, fuzzy
-#| msgid "Open document…"
 msgid "Add Document…"
-msgstr "Abrir documento…"
+msgstr "Añadir Documento…"
 
 #: ../src/application/headerbar.cpp:73
 msgid "Undo"
@@ -146,10 +132,8 @@ msgid "Redo"
 msgstr "Repetir"
 
 #: ../src/application/headerbar.cpp:89
-#, fuzzy
-#| msgid "Save as…"
 msgid "Save As…"
-msgstr "Guardar como…"
+msgstr "Guardar Como…"
 
 #: ../src/application/interactivepagewidget.cpp:118
 #: ../src/application/previewwindow.cpp:51
