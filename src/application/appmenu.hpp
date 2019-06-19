@@ -38,8 +38,7 @@ public:
 private:
     Gtk::Box m_contentBox;
 
-	Gtk::Box m_zoomBox;
-	Gtk::Box m_zoomSeparatorBox;
+    Gtk::Box m_zoomSeparatorBox;
 	Gtk::Label m_zoomSeparatorLabel;
 	Gtk::Separator m_zoomSeparatorLeft;
     Gtk::Separator m_zoomSeparatorRight;
@@ -48,7 +47,6 @@ private:
 	Glib::RefPtr<Gtk::Adjustment> m_zoomAdjustment;
 	Glib::RefPtr<Glib::Binding> m_zoomBinding;
 
-    Gtk::Box m_appBox;
     Gtk::Separator m_appSeparator;
     Gtk::ModelButton m_shortcutsButton;
     Gtk::ModelButton m_aboutButton;
