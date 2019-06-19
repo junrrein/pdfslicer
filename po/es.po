@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-17 19:32-0300\n"
 "PO-Revision-Date: 2019-06-19 23:18+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
