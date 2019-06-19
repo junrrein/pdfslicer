@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 19:51-0300\n"
+"POT-Creation-Date: 2019-06-19 20:23-0300\n"
 "PO-Revision-Date: 2019-02-24 05:01+0000\n"
 "Last-Translator: naofum <naofum@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -20,23 +20,17 @@ msgstr ""
 "X-Generator: Weblate 3.5-dev\n"
 
 #, fuzzy
-#| msgid "A simple tool to extract, rotate and reorder pages of a PDF document"
 msgid "Extract, merge, rotate and reorder pages of PDF documents"
 msgstr ""
 "PDF ドキュメントのページを抽出し、回転し、並べ替えるシンプルなツールです"
 
 #, fuzzy
-#| msgid "A simple tool to extract, rotate and reorder pages of a PDF document"
 msgid ""
 "A simple tool to extract, merge, rotate and reorder pages of PDF documents"
 msgstr ""
 "PDF ドキュメントのページを抽出し、回転し、並べ替えるシンプルなツールです"
 
 #, fuzzy
-#| msgid ""
-#| "PDF Slicer is a simple application to extract, rotate and reorder pages "
-#| "of a PDF document. The operations can be performed on single pages or on "
-#| "selections/ranges of pages, and it has undo/redo support."
 msgid ""
 "PDF Slicer is a simple application to extract, merge, rotate and reorder "
 "pages of PDF documents. The operations can be performed on single pages or "
