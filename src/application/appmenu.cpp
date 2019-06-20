@@ -62,7 +62,7 @@ void AppMenu::setupWidgets()
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_shortcutsButton.gobj()), "win.shortcuts"); //NOLINT
     m_shortcutsButton.get_style_context()->add_class("flat");
     m_shortcutsButton.get_child()->set_halign(Gtk::ALIGN_START);
-    m_aboutButton.set_label(_("About"));
+    m_aboutButton.set_label(_("About PDF Slicer"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_aboutButton.gobj()), "win.about"); //NOLINT
     m_aboutButton.get_style_context()->add_class("flat");
     m_aboutButton.get_child()->set_halign(Gtk::ALIGN_START);

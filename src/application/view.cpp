@@ -120,6 +120,8 @@ void View::selectPageRange(unsigned int first, unsigned int last)
 
     for (auto& widget : m_pageWidgets | rsv::drop(first) | rsv::take(last - first + 1))
         widget->setSelected(true);
+
+    selectedPagesChanged.emit();
 }
 
 void View::clearSelection()
@@ -147,7 +149,7 @@ std::vector<unsigned int> View::getSelectedChildrenIndexes() const
     const std::vector<unsigned int> result
         = m_pageWidgets
           | rsv::filter(std::mem_fn(&InteractivePageWidget::getSelected))
-          | rsv::transform(std::mem_fn(&InteractivePageWidget::documentIndex));
+          | rsv::transform(std::mem_fn(&InteractivePageWidget::get_index));
 
     return result;
 }
@@ -157,7 +159,7 @@ std::vector<unsigned int> View::getUnselectedChildrenIndexes() const
     const std::vector<unsigned int> result
         = m_pageWidgets
           | rsv::remove_if(std::mem_fn(&InteractivePageWidget::getSelected))
-          | rsv::transform(std::mem_fn(&InteractivePageWidget::documentIndex));
+          | rsv::transform(std::mem_fn(&InteractivePageWidget::get_index));
 
     return result;
 }

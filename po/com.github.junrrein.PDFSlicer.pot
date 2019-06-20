@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 19:32-0300\n"
+"POT-Creation-Date: 2019-06-19 21:45-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,16 +75,16 @@ msgstr ""
 msgid "Cancel Selection"
 msgstr ""
 
-#: ../src/application/appmenu.cpp:43
+#: ../src/application/appmenu.cpp:45
 msgid "Zoom"
 msgstr ""
 
-#: ../src/application/appmenu.cpp:63
+#: ../src/application/appmenu.cpp:61
 msgid "Keyboard shortcuts"
 msgstr ""
 
-#: ../src/application/appmenu.cpp:67
-msgid "About"
+#: ../src/application/appmenu.cpp:65
+msgid "About PDF Slicer"
 msgstr ""
 
 #: ../src/application/appwindow.cpp:189
