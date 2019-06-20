@@ -245,7 +245,7 @@ void View::onModelPagesRotated(const std::vector<unsigned int>& positions)
 {
     for (auto& pageWidget : m_pageWidgets) {
         for (unsigned int position : positions) {
-            if (position == pageWidget->documentIndex()) {
+            if (position == static_cast<unsigned>(pageWidget->get_index())) {
                 pageWidget->showSpinner();
                 pageWidget->changeSize(m_pageWidgetSize);
                 renderPage(pageWidget);
@@ -260,7 +260,7 @@ void View::onModelPagesReordered(const std::vector<unsigned int>& positions)
 {
     for (auto& pageWidget : m_pageWidgets) {
         for (unsigned int position : positions) {
-            if (position == pageWidget->documentIndex()) {
+            if (position == static_cast<unsigned>(pageWidget->get_index())) {
                 pageWidget->setSelected(true);
 
                 break;
