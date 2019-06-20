@@ -1,6 +1,6 @@
 theme: jekyll-theme-cayman
 title: PDF Slicer
-description: A simple application to extract, rotate and reorder pages of a PDF document
+description: A simple application to extract, merge, rotate and reorder pages of PDF documents
 github:
   repository_name: PDF Slicer
   latest_release_url: https://github.com/junrrein/pdfslicer/releases/latest
