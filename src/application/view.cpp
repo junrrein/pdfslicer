@@ -149,7 +149,7 @@ std::vector<unsigned int> View::getSelectedChildrenIndexes() const
     const std::vector<unsigned int> result
         = m_pageWidgets
           | rsv::filter(std::mem_fn(&InteractivePageWidget::getSelected))
-          | rsv::transform(std::mem_fn(&InteractivePageWidget::documentIndex));
+          | rsv::transform(std::mem_fn(&InteractivePageWidget::get_index));
 
     return result;
 }
@@ -159,7 +159,7 @@ std::vector<unsigned int> View::getUnselectedChildrenIndexes() const
     const std::vector<unsigned int> result
         = m_pageWidgets
           | rsv::remove_if(std::mem_fn(&InteractivePageWidget::getSelected))
-          | rsv::transform(std::mem_fn(&InteractivePageWidget::documentIndex));
+          | rsv::transform(std::mem_fn(&InteractivePageWidget::get_index));
 
     return result;
 }
