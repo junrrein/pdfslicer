@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 19:32-0300\n"
+"POT-Creation-Date: 2019-06-19 21:45-0300\n"
 "PO-Revision-Date: 2019-06-19 22:55+0000\n"
 "Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -84,19 +84,19 @@ msgstr "Plus d'opérations de suppression de pages.…"
 msgid "Cancel Selection"
 msgstr "Annuler la sélection"
 
-#: ../src/application/appmenu.cpp:43
+#: ../src/application/appmenu.cpp:45
 #, fuzzy
 #| msgid "Zoom in"
 msgid "Zoom"
 msgstr "Zoom avant"
 
-#: ../src/application/appmenu.cpp:63
+#: ../src/application/appmenu.cpp:61
 msgid "Keyboard shortcuts"
 msgstr "Raccourcis clavier"
 
-#: ../src/application/appmenu.cpp:67
-msgid "About"
-msgstr "À propos"
+#: ../src/application/appmenu.cpp:65
+msgid "About PDF Slicer"
+msgstr ""
 
 #: ../src/application/appwindow.cpp:189
 msgid "The current document could not be saved"
@@ -258,6 +258,9 @@ msgstr "Annuler la dernière commande"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Rétablir la commande annulée"
+
+#~ msgid "About"
+#~ msgstr "À propos"
 
 #~ msgid "\"Move Left\" and \"Move Right\" icons"
 #~ msgstr "Icônes \"Déplacer à gauche\" et \"Déplacer à droite\""

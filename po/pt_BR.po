@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 19:32-0300\n"
+"POT-Creation-Date: 2019-06-19 21:45-0300\n"
 "PO-Revision-Date: 2019-01-05 23:01+0000\n"
 "Last-Translator: André Marcelo Alvarenga <andrealvarenga@gmx.net>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/pdf-"
@@ -82,19 +82,19 @@ msgstr ""
 msgid "Cancel Selection"
 msgstr "Cancelar seleção"
 
-#: ../src/application/appmenu.cpp:43
+#: ../src/application/appmenu.cpp:45
 #, fuzzy
 #| msgid "Zoom in"
 msgid "Zoom"
 msgstr "Ampliar"
 
-#: ../src/application/appmenu.cpp:63
+#: ../src/application/appmenu.cpp:61
 msgid "Keyboard shortcuts"
 msgstr "Atalhos de teclado"
 
-#: ../src/application/appmenu.cpp:67
-msgid "About"
-msgstr "Sobre"
+#: ../src/application/appmenu.cpp:65
+msgid "About PDF Slicer"
+msgstr ""
 
 #: ../src/application/appwindow.cpp:189
 msgid "The current document could not be saved"
@@ -256,3 +256,6 @@ msgstr "Desfazer o último comando"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Refaz o comando desfeito"
+
+#~ msgid "About"
+#~ msgstr "Sobre"

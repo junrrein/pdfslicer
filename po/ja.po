@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 19:32-0300\n"
+"POT-Creation-Date: 2019-06-19 21:45-0300\n"
 "PO-Revision-Date: 2019-02-24 05:02+0000\n"
 "Last-Translator: naofum <naofum@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -84,19 +84,19 @@ msgstr "他のページ削除操作…"
 msgid "Cancel Selection"
 msgstr "選択を取り消す"
 
-#: ../src/application/appmenu.cpp:43
+#: ../src/application/appmenu.cpp:45
 #, fuzzy
 #| msgid "Zoom in"
 msgid "Zoom"
 msgstr "拡大"
 
-#: ../src/application/appmenu.cpp:63
+#: ../src/application/appmenu.cpp:61
 msgid "Keyboard shortcuts"
 msgstr "キーボード ショートカット"
 
-#: ../src/application/appmenu.cpp:67
-msgid "About"
-msgstr "アプリについて"
+#: ../src/application/appmenu.cpp:65
+msgid "About PDF Slicer"
+msgstr ""
 
 #: ../src/application/appwindow.cpp:189
 msgid "The current document could not be saved"
@@ -258,3 +258,6 @@ msgstr "最後の操作を元に戻す"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "元に戻した操作をやり直す"
+
+#~ msgid "About"
+#~ msgstr "アプリについて"

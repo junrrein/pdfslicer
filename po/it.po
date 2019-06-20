@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 19:32-0300\n"
+"POT-Creation-Date: 2019-06-19 21:45-0300\n"
 "PO-Revision-Date: 2019-04-03 15:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -84,19 +84,19 @@ msgstr "Ulteriori operazioni di rimozione pagine…"
 msgid "Cancel Selection"
 msgstr "Annulla la selezione"
 
-#: ../src/application/appmenu.cpp:43
+#: ../src/application/appmenu.cpp:45
 #, fuzzy
 #| msgid "Zoom in"
 msgid "Zoom"
 msgstr "Aumenta l'ingrandimento"
 
-#: ../src/application/appmenu.cpp:63
+#: ../src/application/appmenu.cpp:61
 msgid "Keyboard shortcuts"
 msgstr "Scorciatoie da tastiera"
 
-#: ../src/application/appmenu.cpp:67
-msgid "About"
-msgstr "Informazioni"
+#: ../src/application/appmenu.cpp:65
+msgid "About PDF Slicer"
+msgstr ""
 
 #: ../src/application/appwindow.cpp:189
 msgid "The current document could not be saved"
@@ -258,3 +258,6 @@ msgstr "Annulla l'ultima azione"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Ripeti l'azione annullata"
+
+#~ msgid "About"
+#~ msgstr "Informazioni"
