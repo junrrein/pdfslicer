@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-06-19 21:45-0300\n"
-"PO-Revision-Date: 2019-01-28 21:05+0000\n"
+"PO-Revision-Date: 2019-06-22 13:01+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/nl/>\n"
@@ -16,19 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.5-dev\n"
+"X-Generator: Weblate 3.7\n"
 
 #: ../src/application/aboutdialog.cpp:26
-#, fuzzy
-#| msgid ""
-#| "A simple application to extract, rotate and reorder pages of a PDF "
-#| "document"
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
 "Een eenvoudige applicatie om pagina's van een PDF-document te extraheren, "
-"draaien en herorganiseren"
+"samenvoegen, draaien en herorganiseren"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application icon"
@@ -79,16 +75,12 @@ msgid "More page removing operations…"
 msgstr "Meer paginaverwijderingsacties…"
 
 #: ../src/application/actionbar.cpp:72
-#, fuzzy
-#| msgid "Cancel selection"
 msgid "Cancel Selection"
 msgstr "Selectie annuleren"
 
 #: ../src/application/appmenu.cpp:45
-#, fuzzy
-#| msgid "Zoom in"
 msgid "Zoom"
-msgstr "Inzoomen"
+msgstr "Zoom"
 
 #: ../src/application/appmenu.cpp:61
 msgid "Keyboard shortcuts"
@@ -108,38 +100,31 @@ msgstr "Het geselecteerde bestand kan niet worden geopend"
 
 #: ../src/application/guicommand.cpp:71
 msgid "Added file {fileName}"
-msgstr ""
+msgstr "Bestand {fileName} toegevoegd"
 
 #: ../src/application/guicommand.cpp:74
 msgid "Multiple files added"
-msgstr ""
+msgstr "Meerdere bestanden toegevoegd"
 
 #: ../src/application/headerbar.cpp:55
-#, fuzzy
-#| msgid "Open"
 msgid "Open…"
-msgstr "Openen"
+msgstr "Openen…"
 
 #: ../src/application/headerbar.cpp:59
 msgid "At the beggining…"
-msgstr ""
+msgstr "Aan het begin…"
 
 #: ../src/application/headerbar.cpp:60
 msgid "At the end…"
-msgstr ""
+msgstr "Aan het eind…"
 
 #: ../src/application/headerbar.cpp:61
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Remove selected pages"
 msgid "After the selected page…"
-msgstr "Geselecteerde pagina's verwijderen"
+msgstr "Na de geselecteerde pagina…"
 
 #: ../src/application/headerbar.cpp:63
-#, fuzzy
-#| msgid "Open document…"
 msgid "Add Document…"
-msgstr "Document openen…"
+msgstr "Document toevoegen…"
 
 #: ../src/application/headerbar.cpp:73
 msgid "Undo"
@@ -150,8 +135,6 @@ msgid "Redo"
 msgstr "Opnieuw"
 
 #: ../src/application/headerbar.cpp:89
-#, fuzzy
-#| msgid "Save as…"
 msgid "Save As…"
 msgstr "Opslaan als…"
 
