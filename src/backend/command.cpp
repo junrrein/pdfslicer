@@ -187,9 +187,9 @@ void MovePageRangeCommand::redo()
 AddFileCommand::AddFileCommand(Document& document,
                                const Glib::RefPtr<Gio::File>& file,
                                unsigned int position)
-    : m_document{document}
+    : m_position{position}
+    , m_document{document}
     , m_file{file}
-    , m_position{position}
 {
 }
 
