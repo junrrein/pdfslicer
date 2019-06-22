@@ -124,6 +124,16 @@ void View::selectPageRange(unsigned int first, unsigned int last)
     selectedPagesChanged.emit();
 }
 
+void View::selectAll()
+{
+    for (auto& widget : m_pageWidgets)
+        widget->setSelected(true);
+
+    m_lastPageSelected = nullptr;
+
+    selectedPagesChanged.emit();
+}
+
 void View::clearSelection()
 {
     for (auto& widget : m_pageWidgets)
