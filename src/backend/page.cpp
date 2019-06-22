@@ -29,6 +29,20 @@ Page::Page(std::unique_ptr<poppler::page> ppage,
     , m_fileIndex{pageNumber}
     , m_documentIndex{m_fileIndex}
 {
+    switch (m_ppage->orientation()) {
+    case poppler::page::orientation_enum::portrait:
+        m_sourceRotation = m_currentRotation = 0;
+        break;
+    case poppler::page::orientation_enum::landscape:
+        m_sourceRotation = m_currentRotation = 90;
+        break;
+    case poppler::page::orientation_enum::upside_down:
+        m_sourceRotation = m_currentRotation = 180;
+        break;
+    case poppler::page::orientation_enum::seascape:
+        m_sourceRotation = m_currentRotation = 270;
+        break;
+    }
 }
 
 const Glib::ustring& Page::fileName() const
@@ -57,7 +71,7 @@ Page::Size Page::rotatedSize() const
 {
     Size size = this->size();
 
-    if (std::abs((m_rotation / 90) % 2) != 0)
+    if (std::abs((m_currentRotation / 90) % 2) != 0)
         std::swap(size.width, size.height);
 
     return size;
@@ -100,18 +114,18 @@ void Page::setDocumentIndex(unsigned int newIndex)
 
 void Page::rotateRight()
 {
-    if (m_rotation == 270)
-        m_rotation = 0;
+    if (m_currentRotation == 270)
+        m_currentRotation = 0;
     else
-        m_rotation += 90;
+        m_currentRotation += 90;
 }
 
 void Page::rotateLeft()
 {
-    if (m_rotation == 0)
-        m_rotation = 270;
+    if (m_currentRotation == 0)
+        m_currentRotation = 270;
     else
-        m_rotation -= 90;
+        m_currentRotation -= 90;
 }
 
 int Page::sortFunction(const Page& a, const Page& b)
