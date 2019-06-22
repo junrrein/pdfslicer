@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-22 15:43-0300\n"
+"POT-Creation-Date: 2019-06-22 16:05-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,31 +103,35 @@ msgstr ""
 msgid "Open…"
 msgstr ""
 
-#: ../src/application/headerbar.cpp:59
-msgid "At the beggining…"
-msgstr ""
-
 #: ../src/application/headerbar.cpp:60
-msgid "At the end…"
+msgid "Add a Document"
 msgstr ""
 
 #: ../src/application/headerbar.cpp:61
-msgid "After the selected page…"
+msgid "At the beggining…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:62
+msgid "At the end…"
 msgstr ""
 
 #: ../src/application/headerbar.cpp:63
-msgid "Add Document…"
+msgid "After the selected page…"
 msgstr ""
 
-#: ../src/application/headerbar.cpp:73
+#: ../src/application/headerbar.cpp:65
+msgid "Add a Document…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:75
 msgid "Undo"
 msgstr ""
 
-#: ../src/application/headerbar.cpp:76
+#: ../src/application/headerbar.cpp:78
 msgid "Redo"
 msgstr ""
 
-#: ../src/application/headerbar.cpp:89
+#: ../src/application/headerbar.cpp:91
 msgid "Save As…"
 msgstr ""
 
