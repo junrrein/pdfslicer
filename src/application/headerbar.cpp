@@ -56,11 +56,13 @@ void HeaderBar::setupWidgets()
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonOpen.gobj()), "win.open-document"); // NOLINT
 
     Glib::RefPtr<Gio::Menu> addDocumentMenu = Gio::Menu::create();
-    addDocumentMenu->append(_("At the beggining…"), "win.add-document-at-beginning");
-    addDocumentMenu->append(_("At the end…"), "win.add-document-at-end");
-    addDocumentMenu->append(_("After the selected page…"), "win.add-document-after-selected");
+    Glib::RefPtr<Gio::Menu> addDocumentSubmenu = Gio::Menu::create();
+    addDocumentMenu->append_section(_("Add a Document"), addDocumentSubmenu);
+    addDocumentSubmenu->append(_("At the beggining…"), "win.add-document-at-beginning");
+    addDocumentSubmenu->append(_("At the end…"), "win.add-document-at-end");
+    addDocumentSubmenu->append(_("After the selected page…"), "win.add-document-after-selected");
     m_buttonAddDocument.set_image_from_icon_name("list-add-symbolic");
-    m_buttonAddDocument.set_tooltip_text(_("Add Document…"));
+    m_buttonAddDocument.set_tooltip_text(_("Add a Document…"));
     m_buttonAddDocument.set_menu_model(addDocumentMenu);
 
     auto openBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL});
