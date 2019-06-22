@@ -69,13 +69,22 @@ ActionBar::ActionBar()
     m_buttonRemovePagesMore.set_menu_model(menu);
     removeBox->pack_start(m_buttonRemovePagesMore);
 
+    m_buttonSelectAll.set_image_from_icon_name("edit-select-all-symbolic");
+    m_buttonSelectAll.set_tooltip_text(_("Select all pages"));
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonSelectAll.gobj()), "win.select-all"); // NOLINT
+
     m_buttonCancelSelection.set_label(_("Cancel Selection"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonCancelSelection.gobj()), "win.cancel-selection"); // NOLINT
+
+    auto selectBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL});
+    selectBox->get_style_context()->add_class("linked");
+    selectBox->pack_start(m_buttonSelectAll);
+    selectBox->pack_start(m_buttonCancelSelection);
 
     pack_start(*moveBox);
     pack_start(*rotateBox);
     pack_start(*removeBox);
-    pack_end(m_buttonCancelSelection);
+    pack_end(*selectBox);
 
     // The following is to work around a bug with themes other than Adwaita.
     // Without this, the ActionBar is too narrow and the buttons don't fit.
