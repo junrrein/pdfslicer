@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-19 21:45-0300\n"
+"POT-Creation-Date: 2019-06-22 15:43-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,23 +48,19 @@ msgid "Move right"
 msgstr ""
 
 #: ../src/application/actionbar.cpp:56
-msgctxt "plural (pages)"
-msgid "Remove selected"
+msgid "Remove selected pages"
 msgstr ""
 
 #: ../src/application/actionbar.cpp:61
-msgctxt "plural (pages)"
-msgid "Remove unselected"
+msgid "Remove unselected pages"
 msgstr ""
 
 #: ../src/application/actionbar.cpp:62
-msgctxt "plural (pages)"
-msgid "Remove previous"
+msgid "Remove previous pages"
 msgstr ""
 
 #: ../src/application/actionbar.cpp:63
-msgctxt "plural (pages)"
-msgid "Remove next"
+msgid "Remove next pages"
 msgstr ""
 
 #: ../src/application/actionbar.cpp:65
@@ -135,7 +131,7 @@ msgstr ""
 msgid "Save As…"
 msgstr ""
 
-#: ../src/application/interactivepagewidget.cpp:118
+#: ../src/application/interactivepagewidget.cpp:113
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr ""
