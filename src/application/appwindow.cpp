@@ -613,8 +613,6 @@ void AppWindow::onSizeAllocate(Gtk::Allocation&)
 {
     if (!is_maximized())
         get_size(m_windowState.width, m_windowState.height);
-
-    restoreScrollPosition();
 }
 
 bool AppWindow::onWindowStateEvent(GdkEventWindowState* state)
