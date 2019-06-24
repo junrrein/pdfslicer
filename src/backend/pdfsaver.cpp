@@ -27,7 +27,7 @@ void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile)
         Glib::RefPtr<Page> slicerPage = m_document.getPage(i);
         QPDFPageObjectHelper pageCopy = slicerPage->m_qpdfPage.shallowCopyPage();
 
-        if (slicerPage->currentRotation() != 0)
+        if (slicerPage->currentRotation() != slicerPage->sourceRotation())
             pageCopy.rotatePage(slicerPage->currentRotation(), false);
 
         destinationPageDocumentHelper.addPage(pageCopy, false);
