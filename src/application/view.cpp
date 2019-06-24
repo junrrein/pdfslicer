@@ -59,7 +59,7 @@ void View::clearState()
     for (Gtk::Widget* child : get_children())
         remove(*child);
 
-    m_pageWidgets = {};
+    m_pageWidgets.clear();
 
     for (sigc::connection& connection : m_documentConnections)
         connection.disconnect();
