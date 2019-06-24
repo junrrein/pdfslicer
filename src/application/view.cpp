@@ -63,6 +63,8 @@ void View::clearState()
 
     for (sigc::connection& connection : m_documentConnections)
         connection.disconnect();
+
+    m_documentConnections.clear();
 }
 
 void View::setDocument(Document& document, int targetWidgetSize)
