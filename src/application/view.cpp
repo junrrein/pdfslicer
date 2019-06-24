@@ -93,8 +93,10 @@ void View::changePageSize(int targetWidgetSize)
 {
     killStillRenderingPages();
 
+    m_pageWidgetSize = targetWidgetSize;
+
     for (auto& pageWidget : m_pageWidgets) {
-        pageWidget->changeSize(targetWidgetSize);
+        pageWidget->changeSize(m_pageWidgetSize);
         pageWidget->showSpinner();
         renderPage(pageWidget);
     }
