@@ -200,7 +200,8 @@ void AppWindow::setupSignalHandlers()
         onScrollPositionChanged();
     });
 
-    signal_size_allocate().connect(sigc::mem_fun(*this, &AppWindow::onSizeAllocate));
+    signal_configure_event().connect(sigc::mem_fun(*this, &AppWindow::onWindowConfigureEvent),
+                                     false); // Run before default handler
     signal_window_state_event().connect(sigc::mem_fun(*this, &AppWindow::onWindowStateEvent));
     m_commandManager.commandExecuted.connect(sigc::mem_fun(*this, &AppWindow::onCommandExecuted));
 }
@@ -580,9 +581,7 @@ void AppWindow::onZoomLevelChanged()
 {
     m_view.changePageSize(m_zoomLevel.currentLevel());
 
-    m_onScrollLimitChangedConnection = m_scroller.get_vadjustment()->signal_changed().connect([this]() {
-        onScrollLimitChanged();
-    });
+    queueRestoreScrollPosition();
 }
 
 void AppWindow::saveScrollPosition()
@@ -602,6 +601,13 @@ void AppWindow::restoreScrollPosition()
                                             * m_scroller.get_vadjustment()->get_upper());
 }
 
+void AppWindow::queueRestoreScrollPosition()
+{
+    m_onScrollLimitChangedConnection = m_scroller.get_vadjustment()->signal_changed().connect([this]() {
+        onScrollLimitChanged();
+    });
+}
+
 void AppWindow::onScrollLimitChanged()
 {
     restoreScrollPosition();
@@ -609,10 +615,15 @@ void AppWindow::onScrollLimitChanged()
     m_onScrollLimitChangedConnection.disconnect();
 }
 
-void AppWindow::onSizeAllocate(Gtk::Allocation&)
+bool AppWindow::onWindowConfigureEvent(GdkEventConfigure*)
 {
     if (!is_maximized())
         get_size(m_windowState.width, m_windowState.height);
+
+    if (m_document != nullptr)
+        queueRestoreScrollPosition();
+
+    return false;
 }
 
 bool AppWindow::onWindowStateEvent(GdkEventWindowState* state)

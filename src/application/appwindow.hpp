@@ -112,6 +112,7 @@ private:
     void setTitleModified(bool modified);
     void saveScrollPosition();
     void restoreScrollPosition();
+    void queueRestoreScrollPosition();
 
     // Callbacks
     void onOpenAction();
@@ -138,7 +139,7 @@ private:
     void onScrollPositionChanged();
     void onScrollLimitChanged();
     sigc::connection m_onScrollLimitChangedConnection;
-    void onSizeAllocate(Gtk::Allocation&);
+    bool onWindowConfigureEvent(GdkEventConfigure*);
     bool onWindowStateEvent(GdkEventWindowState* state);
 };
 }
