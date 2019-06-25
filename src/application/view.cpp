@@ -59,10 +59,12 @@ void View::clearState()
     for (Gtk::Widget* child : get_children())
         remove(*child);
 
-    m_pageWidgets = {};
+    m_pageWidgets.clear();
 
     for (sigc::connection& connection : m_documentConnections)
         connection.disconnect();
+
+    m_documentConnections.clear();
 }
 
 void View::setDocument(Document& document, int targetWidgetSize)
@@ -93,8 +95,10 @@ void View::changePageSize(int targetWidgetSize)
 {
     killStillRenderingPages();
 
+    m_pageWidgetSize = targetWidgetSize;
+
     for (auto& pageWidget : m_pageWidgets) {
-        pageWidget->changeSize(targetWidgetSize);
+        pageWidget->changeSize(m_pageWidgetSize);
         pageWidget->showSpinner();
         renderPage(pageWidget);
     }
@@ -245,7 +249,7 @@ void View::onModelPagesRotated(const std::vector<unsigned int>& positions)
 {
     for (auto& pageWidget : m_pageWidgets) {
         for (unsigned int position : positions) {
-            if (position == pageWidget->documentIndex()) {
+            if (position == static_cast<unsigned>(pageWidget->get_index())) {
                 pageWidget->showSpinner();
                 pageWidget->changeSize(m_pageWidgetSize);
                 renderPage(pageWidget);
@@ -260,7 +264,7 @@ void View::onModelPagesReordered(const std::vector<unsigned int>& positions)
 {
     for (auto& pageWidget : m_pageWidgets) {
         for (unsigned int position : positions) {
-            if (position == pageWidget->documentIndex()) {
+            if (position == static_cast<unsigned>(pageWidget->get_index())) {
                 pageWidget->setSelected(true);
 
                 break;

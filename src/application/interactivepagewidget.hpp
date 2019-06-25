@@ -36,8 +36,6 @@ public:
                           bool showFileName);
     virtual ~InteractivePageWidget() = default;
 
-    unsigned int documentIndex() const;
-
     void setSelected(bool selected);
     bool getSelected() const { return m_isSelected; }
 

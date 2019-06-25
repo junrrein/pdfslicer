@@ -32,11 +32,6 @@ InteractivePageWidget::InteractivePageWidget(const Glib::RefPtr<const Page>& pag
     setupSignalHandlers();
 }
 
-unsigned int InteractivePageWidget::documentIndex() const
-{
-    return page()->getDocumentIndex();
-}
-
 void InteractivePageWidget::setSelected(bool selected)
 {
     if (m_isSelected != selected) {

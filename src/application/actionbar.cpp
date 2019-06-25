@@ -53,14 +53,14 @@ ActionBar::ActionBar()
     removeBox->get_style_context()->add_class("linked");
 
     m_buttonRemovePages.set_image_from_icon_name("user-trash-symbolic");
-    m_buttonRemovePages.set_tooltip_text(C_("plural (pages)", "Remove selected"));
+    m_buttonRemovePages.set_tooltip_text(_("Remove selected pages"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePages.gobj()), "win.remove-selected"); // NOLINT
     removeBox->pack_start(m_buttonRemovePages);
 
     Glib::RefPtr<Gio::Menu> menu = Gio::Menu::create();
-    menu->append(C_("plural (pages)", "Remove unselected"), "win.remove-unselected");
-    menu->append(C_("plural (pages)", "Remove previous"), "win.remove-previous");
-    menu->append(C_("plural (pages)", "Remove next"), "win.remove-next");
+    menu->append(_("Remove unselected pages"), "win.remove-unselected");
+    menu->append(_("Remove previous pages"), "win.remove-previous");
+    menu->append(_("Remove next pages"), "win.remove-next");
     m_buttonRemovePagesMore.set_image_from_icon_name("pan-up-symbolic");
     m_buttonRemovePagesMore.set_tooltip_text(_("More page removing operations…"));
     m_buttonRemovePagesMore.get_style_context()->remove_class("image-button");

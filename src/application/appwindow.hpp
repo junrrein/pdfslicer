@@ -65,6 +65,7 @@ private:
     Gtk::Stack m_stack;
     WelcomeScreen m_welcomeScreen;
     Gtk::ScrolledWindow m_scroller;
+    double m_scrollPosition = 0;
     View m_view;
     ActionBar m_actionBar;
 
@@ -109,6 +110,9 @@ private:
     void tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position);
     void showOpenFileFailedErrorDialog(const std::string& filePath);
     void setTitleModified(bool modified);
+    void saveScrollPosition();
+    void restoreScrollPosition();
+    void queueRestoreScrollPosition();
 
     // Callbacks
     void onOpenAction();
@@ -131,7 +135,11 @@ private:
     void onShortcutsAction();
     void onSelectedPagesChanged();
     void onCommandExecuted();
-    void onSizeAllocate(Gtk::Allocation&);
+    void onZoomLevelChanged();
+    void onScrollPositionChanged();
+    void onScrollLimitChanged();
+    sigc::connection m_onScrollLimitChangedConnection;
+    bool onWindowConfigureEvent(GdkEventConfigure*);
     bool onWindowStateEvent(GdkEventWindowState* state);
 };
 }

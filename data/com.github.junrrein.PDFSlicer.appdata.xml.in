@@ -32,6 +32,16 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.7.2" date="2019-06-24">
+			<description>
+				<p>Restore scroll position when zomming in/out or resizing the window. Update Dutch and Japanese translations. Miscellaneous bug fixes and UI improvements.</p>
+			</description>
+		</release>
+		<release version="1.7.1" date="2019-06-21">
+			<description>
+				<p>Fix a couple of bugs.</p>
+			</description>
+		</release>
 		<release version="1.7.0" date="2019-06-17">
 			<description>
 				<p>Add the ability to merge files. Miscellaneous UI improvements.</p>

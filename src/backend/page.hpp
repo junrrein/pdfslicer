@@ -39,7 +39,8 @@ public:
     const Glib::ustring& fileName() const;
     unsigned int fileIndex() const;
     unsigned int getDocumentIndex() const;
-    int rotation() const { return m_rotation; }
+    int sourceRotation() const { return m_sourceRotation; }
+    int currentRotation() const { return m_currentRotation; }
     Size size() const;
     Size rotatedSize() const;
     Size scaledSize(int targetSize) const;
@@ -61,7 +62,8 @@ private:
     const Glib::ustring m_fileName;
     const unsigned int m_fileIndex;
     unsigned int m_documentIndex;
-    int m_rotation = 0;
+    int m_sourceRotation;
+    int m_currentRotation;
 
     friend class PageRenderer; // For access to m_ppage
     friend class PdfSaver;     // For access to m_qpdfPage

@@ -36,19 +36,25 @@ PageRenderer::RenderDimensions PageRenderer::getRenderDimensions(int targetSize)
     else
         scale = static_cast<double>(outputSize.height) / rotatedSize.height;
 
-    poppler::rotation_enum rotation = poppler::rotate_0;
-    switch (m_page->rotation()) {
+    // The rotation used for rendering depends on the source page orientation
+    int renderRotationDegrees = m_page->currentRotation() - m_page->sourceRotation();
+
+    if (renderRotationDegrees < 0)
+        renderRotationDegrees += 360;
+
+    poppler::rotation_enum renderRotation = poppler::rotate_0;
+    switch (renderRotationDegrees) {
     case 90:
-        rotation = poppler::rotate_90;
+        renderRotation = poppler::rotate_90;
         break;
     case 180:
-        rotation = poppler::rotate_180;
+        renderRotation = poppler::rotate_180;
         break;
     case 270:
-        rotation = poppler::rotate_270;
+        renderRotation = poppler::rotate_270;
     }
 
-    return {outputSize, scale, rotation};
+    return {outputSize, scale, renderRotation};
 }
 
 Glib::RefPtr<Gdk::Pixbuf> PageRenderer::render(int targetSize) const
@@ -56,7 +62,7 @@ Glib::RefPtr<Gdk::Pixbuf> PageRenderer::render(int targetSize) const
     poppler::page_renderer renderer;
     renderer.set_render_hint(poppler::page_renderer::text_antialiasing);
 
-    const auto [outputSize, scale, rotation] = getRenderDimensions(targetSize);
+    const auto [outputSize, scale, renderRotation] = getRenderDimensions(targetSize);
 
     poppler::image image = renderer.render_page(m_page->m_ppage.get(),
                                                 standardDpi * scale,
@@ -65,7 +71,7 @@ Glib::RefPtr<Gdk::Pixbuf> PageRenderer::render(int targetSize) const
                                                 -1,
                                                 outputSize.width,
                                                 outputSize.height,
-                                                rotation);
+                                                renderRotation);
 
     const int stride = Cairo::ImageSurface::format_stride_for_width(Cairo::FORMAT_ARGB32, outputSize.width);
     auto surface = Cairo::ImageSurface::create(reinterpret_cast<unsigned char*>(image.data()), //NOLINT

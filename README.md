@@ -81,7 +81,7 @@ rm -rf pdfslicer/ pdfslicer-repo/
 
 PDF Slicer can be used under the terms of the GNU GPL 3.0 license, or, at your option, any later version. A copy can be found at the LICENSE file.
 
-The application icons were made by [Lapo Calamandrei](calamandrei@gmail.com) and [Tobias Bernard](tbernard@gnome.org). They can be used under the terms of the GNU GPL 3.0 license, or, at your option, any later version. A copy can be found at the LICENSE file.
+The application icons were made by [Lapo Calamandrei](mailto:calamandrei@gmail.com) and [Tobias Bernard](mailto:tbernard@gnome.org). They can be used under the terms of the GNU GPL 3.0 license, or, at your option, any later version. A copy can be found at the LICENSE file.
 
 A number of third-party libraries are distributed as part of this source
 code repository. They are enumerated at the LICENSE-THIRD-PARTY file,
