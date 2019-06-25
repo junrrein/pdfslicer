@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-19 21:45-0300\n"
+"POT-Creation-Date: 2019-06-25 16:32-0300\n"
 "PO-Revision-Date: 2019-02-10 18:10+0000\n"
 "Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -21,9 +21,6 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:26
 #, fuzzy
-#| msgid ""
-#| "A simple application to extract, rotate and reorder pages of a PDF "
-#| "document"
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
@@ -56,24 +53,24 @@ msgid "Move right"
 msgstr "Nach rechts bewegen"
 
 #: ../src/application/actionbar.cpp:56
-msgctxt "plural (pages)"
-msgid "Remove selected"
-msgstr "Ausgewähltes entfernen"
+#, fuzzy
+msgid "Remove selected pages"
+msgstr "Ausgewählte Seiten entfernen"
 
 #: ../src/application/actionbar.cpp:61
-msgctxt "plural (pages)"
-msgid "Remove unselected"
-msgstr "Nicht ausgewähltes entfernen"
+#, fuzzy
+msgid "Remove unselected pages"
+msgstr "Ausgewählte Seiten entfernen"
 
 #: ../src/application/actionbar.cpp:62
-msgctxt "plural (pages)"
-msgid "Remove previous"
+#, fuzzy
+msgid "Remove previous pages"
 msgstr "Vorheriges entfernen"
 
 #: ../src/application/actionbar.cpp:63
-msgctxt "plural (pages)"
-msgid "Remove next"
-msgstr "Nächstes entfernen"
+#, fuzzy
+msgid "Remove next pages"
+msgstr "Ausgewählte Seiten entfernen"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
@@ -81,13 +78,11 @@ msgstr "Weitere Löschaktionen von Seiten…"
 
 #: ../src/application/actionbar.cpp:72
 #, fuzzy
-#| msgid "Cancel selection"
 msgid "Cancel Selection"
 msgstr "Auswahl abbrechen"
 
 #: ../src/application/appmenu.cpp:45
 #, fuzzy
-#| msgid "Zoom in"
 msgid "Zoom"
 msgstr "Hineinzoomen"
 
@@ -103,7 +98,7 @@ msgstr ""
 msgid "The current document could not be saved"
 msgstr "Das aktuelle Dokument konnte nicht gespeichert werden"
 
-#: ../src/application/appwindow.cpp:312
+#: ../src/application/appwindow.cpp:317
 msgid "The selected file could not be opened"
 msgstr "Die ausgewählte Datei konnte nicht geöffnet werden"
 
@@ -117,46 +112,46 @@ msgstr ""
 
 #: ../src/application/headerbar.cpp:55
 #, fuzzy
-#| msgid "Open"
 msgid "Open…"
 msgstr "Öffnen"
 
-#: ../src/application/headerbar.cpp:59
+#: ../src/application/headerbar.cpp:60
+#, fuzzy
+msgid "Add a Document"
+msgstr "Dokument öffnen…"
+
+#: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
 msgstr ""
 
-#: ../src/application/headerbar.cpp:60
+#: ../src/application/headerbar.cpp:62
 msgid "At the end…"
 msgstr ""
 
-#: ../src/application/headerbar.cpp:61
+#: ../src/application/headerbar.cpp:63
 #, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Remove selected pages"
 msgid "After the selected page…"
 msgstr "Ausgewählte Seiten entfernen"
 
-#: ../src/application/headerbar.cpp:63
+#: ../src/application/headerbar.cpp:65
 #, fuzzy
-#| msgid "Open document…"
-msgid "Add Document…"
+msgid "Add a Document…"
 msgstr "Dokument öffnen…"
 
-#: ../src/application/headerbar.cpp:73
+#: ../src/application/headerbar.cpp:75
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: ../src/application/headerbar.cpp:76
+#: ../src/application/headerbar.cpp:78
 msgid "Redo"
 msgstr "Wiederherstellen"
 
-#: ../src/application/headerbar.cpp:89
+#: ../src/application/headerbar.cpp:91
 #, fuzzy
-#| msgid "Save as…"
 msgid "Save As…"
 msgstr "Speichern unter…"
 
-#: ../src/application/interactivepagewidget.cpp:118
+#: ../src/application/interactivepagewidget.cpp:113
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Seite {pageNumber}"
@@ -259,6 +254,18 @@ msgstr "Letzten Befehl rückgängig machen"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Wiederherstellen"
+
+#~ msgctxt "plural (pages)"
+#~ msgid "Remove selected"
+#~ msgstr "Ausgewähltes entfernen"
+
+#~ msgctxt "plural (pages)"
+#~ msgid "Remove unselected"
+#~ msgstr "Nicht ausgewähltes entfernen"
+
+#~ msgctxt "plural (pages)"
+#~ msgid "Remove next"
+#~ msgstr "Nächstes entfernen"
 
 #~ msgid "About"
 #~ msgstr "Über"
