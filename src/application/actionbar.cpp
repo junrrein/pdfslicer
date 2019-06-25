@@ -75,15 +75,11 @@ ActionBar::ActionBar()
     m_buttonCancelSelection.set_label(_("Cancel Selection"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonCancelSelection.gobj()), "win.cancel-selection"); // NOLINT
 
-    auto selectBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL});
-    selectBox->get_style_context()->add_class("linked");
-    selectBox->pack_start(m_buttonSelectAll);
-    selectBox->pack_start(m_buttonCancelSelection);
-
     pack_start(*moveBox);
     pack_start(*rotateBox);
     pack_start(*removeBox);
-    pack_end(*selectBox);
+    pack_end(m_buttonCancelSelection);
+    pack_end(m_buttonSelectAll);
 
     // The following is to work around a bug with themes other than Adwaita.
     // Without this, the ActionBar is too narrow and the buttons don't fit.
