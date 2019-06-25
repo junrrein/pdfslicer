@@ -2,9 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-06-25 16:32-0300\n"
-"PO-Revision-Date: 2019-06-25 19:16+0000\n"
+"PO-Revision-Date: 2019-06-25 19:46+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/es/>\n"
@@ -48,24 +48,20 @@ msgid "Move right"
 msgstr "Mover a la derecha"
 
 #: ../src/application/actionbar.cpp:56
-#, fuzzy
 msgid "Remove selected pages"
 msgstr "Remover páginas seleccionadas"
 
 #: ../src/application/actionbar.cpp:61
-#, fuzzy
 msgid "Remove unselected pages"
-msgstr "Remover páginas seleccionadas"
+msgstr "Remover páginas no seleccionadas"
 
 #: ../src/application/actionbar.cpp:62
-#, fuzzy
 msgid "Remove previous pages"
-msgstr "Remover anteriores"
+msgstr "Remover páginas anteriores"
 
 #: ../src/application/actionbar.cpp:63
-#, fuzzy
 msgid "Remove next pages"
-msgstr "Remover páginas seleccionadas"
+msgstr "Remover páginas siguientes"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
@@ -108,9 +104,8 @@ msgid "Open…"
 msgstr "Abrir…"
 
 #: ../src/application/headerbar.cpp:60
-#, fuzzy
 msgid "Add a Document"
-msgstr "Añadir Documento…"
+msgstr "Añadir un Documento"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
@@ -125,9 +120,8 @@ msgid "After the selected page…"
 msgstr "Luego de la página seleccionada…"
 
 #: ../src/application/headerbar.cpp:65
-#, fuzzy
 msgid "Add a Document…"
-msgstr "Añadir Documento…"
+msgstr "Añadir un Documento…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
