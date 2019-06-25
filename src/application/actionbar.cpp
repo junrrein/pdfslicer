@@ -57,16 +57,16 @@ ActionBar::ActionBar()
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonRemovePages.gobj()), "win.remove-selected"); // NOLINT
     removeBox->pack_start(m_buttonRemovePages);
 
-    Glib::RefPtr<Gio::Menu> menu = Gio::Menu::create();
-    menu->append(_("Remove unselected pages"), "win.remove-unselected");
-    menu->append(_("Remove previous pages"), "win.remove-previous");
-    menu->append(_("Remove next pages"), "win.remove-next");
+    Glib::RefPtr<Gio::Menu> removeMenu = Gio::Menu::create();
+    removeMenu->append(_("Remove unselected pages"), "win.remove-unselected");
+    removeMenu->append(_("Remove previous pages"), "win.remove-previous");
+    removeMenu->append(_("Remove next pages"), "win.remove-next");
     m_buttonRemovePagesMore.set_image_from_icon_name("pan-up-symbolic");
     m_buttonRemovePagesMore.set_tooltip_text(_("More page removing operations…"));
     m_buttonRemovePagesMore.get_style_context()->remove_class("image-button");
     m_buttonRemovePagesMore.get_style_context()->add_class("disclosure-button");
     m_buttonRemovePagesMore.get_style_context()->add_class("thin-button");
-    m_buttonRemovePagesMore.set_menu_model(menu);
+    m_buttonRemovePagesMore.set_menu_model(removeMenu);
     removeBox->pack_start(m_buttonRemovePagesMore);
 
     m_buttonSelectAll.set_label(_("Select All"));
