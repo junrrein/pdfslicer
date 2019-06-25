@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-06-19 21:45-0300\n"
-"PO-Revision-Date: 2019-06-19 22:55+0000\n"
+"PO-Revision-Date: 2019-06-25 19:16+0000\n"
 "Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/fr/>\n"
@@ -16,19 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.7\n"
+"X-Generator: Weblate 3.7.1-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
-#, fuzzy
-#| msgid ""
-#| "A simple application to extract, rotate and reorder pages of a PDF "
-#| "document"
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
-"Une application simple pour extraire, pivoter et réorganiser les pages d'un "
-"document PDF"
+"Une application simple pour extraire, fusionner,  pivoter et réorganiser des "
+"pages de documents PDF"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application icon"
@@ -79,16 +75,12 @@ msgid "More page removing operations…"
 msgstr "Plus d'opérations de suppression de pages.…"
 
 #: ../src/application/actionbar.cpp:72
-#, fuzzy
-#| msgid "Cancel selection"
 msgid "Cancel Selection"
-msgstr "Annuler la sélection"
+msgstr "Annuler Sélection"
 
 #: ../src/application/appmenu.cpp:45
-#, fuzzy
-#| msgid "Zoom in"
 msgid "Zoom"
-msgstr "Zoom avant"
+msgstr "Zoom"
 
 #: ../src/application/appmenu.cpp:61
 msgid "Keyboard shortcuts"
@@ -96,7 +88,7 @@ msgstr "Raccourcis clavier"
 
 #: ../src/application/appmenu.cpp:65
 msgid "About PDF Slicer"
-msgstr ""
+msgstr "À propos de PDF Slicer"
 
 #: ../src/application/appwindow.cpp:189
 msgid "The current document could not be saved"
@@ -108,38 +100,31 @@ msgstr "Le fichier sélectionné n'a pas pu être ouvert"
 
 #: ../src/application/guicommand.cpp:71
 msgid "Added file {fileName}"
-msgstr ""
+msgstr "Ajouter le fichier {fileName}"
 
 #: ../src/application/guicommand.cpp:74
 msgid "Multiple files added"
-msgstr ""
+msgstr "Plusieurs fichiers ajoutés"
 
 #: ../src/application/headerbar.cpp:55
-#, fuzzy
-#| msgid "Open"
 msgid "Open…"
-msgstr "Ouvrir"
+msgstr "Ouvrir…"
 
 #: ../src/application/headerbar.cpp:59
 msgid "At the beggining…"
-msgstr ""
+msgstr "Au début…"
 
 #: ../src/application/headerbar.cpp:60
 msgid "At the end…"
-msgstr ""
+msgstr "A la fin…"
 
 #: ../src/application/headerbar.cpp:61
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Remove selected pages"
 msgid "After the selected page…"
-msgstr "Supprimer les pages sélectionnées"
+msgstr "Après la page sélectionnée…"
 
 #: ../src/application/headerbar.cpp:63
-#, fuzzy
-#| msgid "Open document…"
 msgid "Add Document…"
-msgstr "Ouvrir document.…"
+msgstr "Ajouter Document…"
 
 #: ../src/application/headerbar.cpp:73
 msgid "Undo"
@@ -150,8 +135,6 @@ msgid "Redo"
 msgstr "Rétablir"
 
 #: ../src/application/headerbar.cpp:89
-#, fuzzy
-#| msgid "Save as…"
 msgid "Save As…"
 msgstr "Enregistrer sous.…"
 
