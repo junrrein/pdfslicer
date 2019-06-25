@@ -125,6 +125,9 @@ void AppWindow::addActions()
     m_rotateLeftAction = add_action("rotate-left", sigc::mem_fun(*this, &AppWindow::onRotatePagesLeft));
     m_moveLeftAction = add_action("move-left", sigc::mem_fun(*this, &AppWindow::onMovePagesLeft));
     m_moveRightAction = add_action("move-right", sigc::mem_fun(*this, &AppWindow::onMovePagesRight));
+    m_selectAllAction = add_action("select-all", sigc::mem_fun(*this, &AppWindow::onSelectAll));
+    m_selectOddPagesAction = add_action("select-odd", sigc::mem_fun(*this, &AppWindow::onSelectOddPages));
+    m_selectEvenPagesAction = add_action("select-even", sigc::mem_fun(*this, &AppWindow::onSelectEvenPages));
     m_cancelSelectionAction = add_action("cancel-selection", sigc::mem_fun(*this, &AppWindow::onCancelSelection));
     m_shortcutsAction = add_action("shortcuts", sigc::mem_fun(*this, &AppWindow::onShortcutsAction));
     m_aboutAction = add_action("about", sigc::mem_fun(*this, &AppWindow::onAboutAction));
@@ -144,6 +147,7 @@ void AppWindow::addActions()
     m_rotateLeftAction->set_enabled(false);
     m_moveLeftAction->set_enabled(false);
     m_moveRightAction->set_enabled(false);
+    m_selectAllAction->set_enabled(false);
     m_cancelSelectionAction->set_enabled(false);
 }
 
@@ -477,6 +481,21 @@ void AppWindow::onMovePagesRight()
     m_commandManager.execute(command);
 }
 
+void AppWindow::onSelectAll()
+{
+    m_view.selectAllPages();
+}
+
+void AppWindow::onSelectOddPages()
+{
+    m_view.selectOddPages();
+}
+
+void AppWindow::onSelectEvenPages()
+{
+    m_view.selectEvenPages();
+}
+
 void AppWindow::onCancelSelection()
 {
     m_view.clearSelection();
@@ -558,6 +577,11 @@ void AppWindow::onSelectedPagesChanged()
             m_moveRightAction->set_enabled(false);
         }
     }
+
+    if (numPages == 0 || numPages == numSelected)
+        m_selectAllAction->set_enabled(false);
+    else
+        m_selectAllAction->set_enabled();
 }
 
 void AppWindow::onCommandExecuted()
