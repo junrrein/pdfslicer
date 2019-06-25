@@ -124,7 +124,7 @@ void View::selectPageRange(unsigned int first, unsigned int last)
     selectedPagesChanged.emit();
 }
 
-void View::selectAll()
+void View::selectAllPages()
 {
     for (auto& widget : m_pageWidgets)
         widget->setSelected(true);

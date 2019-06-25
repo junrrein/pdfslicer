@@ -480,7 +480,7 @@ void AppWindow::onMovePagesRight()
 
 void AppWindow::onSelectAll()
 {
-    m_view.selectAll();
+    m_view.selectAllPages();
 }
 
 void AppWindow::onCancelSelection()
