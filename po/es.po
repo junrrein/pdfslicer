@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2019-06-19 21:45-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-25 16:32-0300\n"
 "PO-Revision-Date: 2019-06-25 19:16+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -48,24 +48,24 @@ msgid "Move right"
 msgstr "Mover a la derecha"
 
 #: ../src/application/actionbar.cpp:56
-msgctxt "plural (pages)"
-msgid "Remove selected"
-msgstr "Remover seleccionadas"
+#, fuzzy
+msgid "Remove selected pages"
+msgstr "Remover páginas seleccionadas"
 
 #: ../src/application/actionbar.cpp:61
-msgctxt "plural (pages)"
-msgid "Remove unselected"
-msgstr "Remover no seleccionadas"
+#, fuzzy
+msgid "Remove unselected pages"
+msgstr "Remover páginas seleccionadas"
 
 #: ../src/application/actionbar.cpp:62
-msgctxt "plural (pages)"
-msgid "Remove previous"
+#, fuzzy
+msgid "Remove previous pages"
 msgstr "Remover anteriores"
 
 #: ../src/application/actionbar.cpp:63
-msgctxt "plural (pages)"
-msgid "Remove next"
-msgstr "Remover siguientes"
+#, fuzzy
+msgid "Remove next pages"
+msgstr "Remover páginas seleccionadas"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
@@ -91,7 +91,7 @@ msgstr "Acerca de PDF Slicer"
 msgid "The current document could not be saved"
 msgstr "El documento actual no pudo ser guardado"
 
-#: ../src/application/appwindow.cpp:312
+#: ../src/application/appwindow.cpp:317
 msgid "The selected file could not be opened"
 msgstr "No se pudo abrir el archivo seleccionado"
 
@@ -107,35 +107,41 @@ msgstr "Múltiples archivos añadidos"
 msgid "Open…"
 msgstr "Abrir…"
 
-#: ../src/application/headerbar.cpp:59
+#: ../src/application/headerbar.cpp:60
+#, fuzzy
+msgid "Add a Document"
+msgstr "Añadir Documento…"
+
+#: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
 msgstr "Al inicio…"
 
-#: ../src/application/headerbar.cpp:60
+#: ../src/application/headerbar.cpp:62
 msgid "At the end…"
 msgstr "Al final…"
 
-#: ../src/application/headerbar.cpp:61
+#: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
 msgstr "Luego de la página seleccionada…"
 
-#: ../src/application/headerbar.cpp:63
-msgid "Add Document…"
+#: ../src/application/headerbar.cpp:65
+#, fuzzy
+msgid "Add a Document…"
 msgstr "Añadir Documento…"
 
-#: ../src/application/headerbar.cpp:73
+#: ../src/application/headerbar.cpp:75
 msgid "Undo"
 msgstr "Deshacer"
 
-#: ../src/application/headerbar.cpp:76
+#: ../src/application/headerbar.cpp:78
 msgid "Redo"
 msgstr "Repetir"
 
-#: ../src/application/headerbar.cpp:89
+#: ../src/application/headerbar.cpp:91
 msgid "Save As…"
 msgstr "Guardar Como…"
 
-#: ../src/application/interactivepagewidget.cpp:118
+#: ../src/application/interactivepagewidget.cpp:113
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Página {pageNumber}"
@@ -238,6 +244,18 @@ msgstr "Deshacer el último comando"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Rehacer comando deshecho"
+
+#~ msgctxt "plural (pages)"
+#~ msgid "Remove selected"
+#~ msgstr "Remover seleccionadas"
+
+#~ msgctxt "plural (pages)"
+#~ msgid "Remove unselected"
+#~ msgstr "Remover no seleccionadas"
+
+#~ msgctxt "plural (pages)"
+#~ msgid "Remove next"
+#~ msgstr "Remover siguientes"
 
 #~ msgid "About"
 #~ msgstr "Acerca de"

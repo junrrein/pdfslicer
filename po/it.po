@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-19 21:45-0300\n"
+"POT-Creation-Date: 2019-06-25 16:32-0300\n"
 "PO-Revision-Date: 2019-04-03 15:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -20,9 +20,6 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:26
 #, fuzzy
-#| msgid ""
-#| "A simple application to extract, rotate and reorder pages of a PDF "
-#| "document"
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
@@ -55,24 +52,24 @@ msgid "Move right"
 msgstr "Sposta a destra"
 
 #: ../src/application/actionbar.cpp:56
-msgctxt "plural (pages)"
-msgid "Remove selected"
+#, fuzzy
+msgid "Remove selected pages"
 msgstr "Rimuovi le pagine selezionate"
 
 #: ../src/application/actionbar.cpp:61
-msgctxt "plural (pages)"
-msgid "Remove unselected"
-msgstr "Rimuovi le pagine non selezionate"
+#, fuzzy
+msgid "Remove unselected pages"
+msgstr "Rimuovi le pagine selezionate"
 
 #: ../src/application/actionbar.cpp:62
-msgctxt "plural (pages)"
-msgid "Remove previous"
+#, fuzzy
+msgid "Remove previous pages"
 msgstr "Rimuovi le pagine precedenti"
 
 #: ../src/application/actionbar.cpp:63
-msgctxt "plural (pages)"
-msgid "Remove next"
-msgstr "Rimuovi le pagine successive"
+#, fuzzy
+msgid "Remove next pages"
+msgstr "Rimuovi le pagine selezionate"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
@@ -80,13 +77,11 @@ msgstr "Ulteriori operazioni di rimozione pagine…"
 
 #: ../src/application/actionbar.cpp:72
 #, fuzzy
-#| msgid "Cancel selection"
 msgid "Cancel Selection"
 msgstr "Annulla la selezione"
 
 #: ../src/application/appmenu.cpp:45
 #, fuzzy
-#| msgid "Zoom in"
 msgid "Zoom"
 msgstr "Aumenta l'ingrandimento"
 
@@ -102,7 +97,7 @@ msgstr ""
 msgid "The current document could not be saved"
 msgstr "Il documento corrente non può essere salvato"
 
-#: ../src/application/appwindow.cpp:312
+#: ../src/application/appwindow.cpp:317
 msgid "The selected file could not be opened"
 msgstr "Il file selezionato non può essere aperto"
 
@@ -116,46 +111,46 @@ msgstr ""
 
 #: ../src/application/headerbar.cpp:55
 #, fuzzy
-#| msgid "Open"
 msgid "Open…"
 msgstr "Apri"
 
-#: ../src/application/headerbar.cpp:59
+#: ../src/application/headerbar.cpp:60
+#, fuzzy
+msgid "Add a Document"
+msgstr "Apri documento…"
+
+#: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
 msgstr ""
 
-#: ../src/application/headerbar.cpp:60
+#: ../src/application/headerbar.cpp:62
 msgid "At the end…"
 msgstr ""
 
-#: ../src/application/headerbar.cpp:61
+#: ../src/application/headerbar.cpp:63
 #, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Remove selected pages"
 msgid "After the selected page…"
 msgstr "Rimuovi le pagine selezionate"
 
-#: ../src/application/headerbar.cpp:63
+#: ../src/application/headerbar.cpp:65
 #, fuzzy
-#| msgid "Open document…"
-msgid "Add Document…"
+msgid "Add a Document…"
 msgstr "Apri documento…"
 
-#: ../src/application/headerbar.cpp:73
+#: ../src/application/headerbar.cpp:75
 msgid "Undo"
 msgstr "Annulla"
 
-#: ../src/application/headerbar.cpp:76
+#: ../src/application/headerbar.cpp:78
 msgid "Redo"
 msgstr "Ripeti"
 
-#: ../src/application/headerbar.cpp:89
+#: ../src/application/headerbar.cpp:91
 #, fuzzy
-#| msgid "Save as…"
 msgid "Save As…"
 msgstr "Salva come…"
 
-#: ../src/application/interactivepagewidget.cpp:118
+#: ../src/application/interactivepagewidget.cpp:113
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
 msgstr "Pagina {pageNumber}"
@@ -258,6 +253,18 @@ msgstr "Annulla l'ultima azione"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Ripeti l'azione annullata"
+
+#~ msgctxt "plural (pages)"
+#~ msgid "Remove selected"
+#~ msgstr "Rimuovi le pagine selezionate"
+
+#~ msgctxt "plural (pages)"
+#~ msgid "Remove unselected"
+#~ msgstr "Rimuovi le pagine non selezionate"
+
+#~ msgctxt "plural (pages)"
+#~ msgid "Remove next"
+#~ msgstr "Rimuovi le pagine successive"
 
 #~ msgid "About"
 #~ msgstr "Informazioni"
