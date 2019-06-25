@@ -69,8 +69,7 @@ ActionBar::ActionBar()
     m_buttonRemovePagesMore.set_menu_model(menu);
     removeBox->pack_start(m_buttonRemovePagesMore);
 
-    m_buttonSelectAll.set_image_from_icon_name("edit-select-all-symbolic");
-    m_buttonSelectAll.set_tooltip_text(_("Select all pages"));
+    m_buttonSelectAll.set_label(_("Select All"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonSelectAll.gobj()), "win.select-all"); // NOLINT
 
     m_buttonCancelSelection.set_label(_("Cancel Selection"));
