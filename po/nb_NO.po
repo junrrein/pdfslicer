@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 19:32-0300\n"
+"POT-Creation-Date: 2019-06-19 21:45-0300\n"
 "PO-Revision-Date: 2019-01-14 22:00+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
@@ -86,19 +86,19 @@ msgstr "Flere sidefjerningsoperasjoner…"
 msgid "Cancel Selection"
 msgstr "Avbryt utvalg"
 
-#: ../src/application/appmenu.cpp:43
+#: ../src/application/appmenu.cpp:45
 #, fuzzy
 #| msgid "Zoom in"
 msgid "Zoom"
 msgstr "Forstørr"
 
-#: ../src/application/appmenu.cpp:63
+#: ../src/application/appmenu.cpp:61
 msgid "Keyboard shortcuts"
 msgstr "Tastatursnarveier"
 
-#: ../src/application/appmenu.cpp:67
-msgid "About"
-msgstr "Om"
+#: ../src/application/appmenu.cpp:65
+msgid "About PDF Slicer"
+msgstr ""
 
 #: ../src/application/appwindow.cpp:189
 msgid "The current document could not be saved"
@@ -261,6 +261,9 @@ msgstr "Angre siste kommando"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Gjenta siste (angrede) kommando"
+
+#~ msgid "About"
+#~ msgstr "Om"
 
 #~ msgid "\"Move Left\" and \"Move Right\" icons"
 #~ msgstr "Ikoner for \"Flytt til venstre\" og \"Flytt til høyre"

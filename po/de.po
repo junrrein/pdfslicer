@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 19:32-0300\n"
+"POT-Creation-Date: 2019-06-19 21:45-0300\n"
 "PO-Revision-Date: 2019-02-10 18:10+0000\n"
 "Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -85,19 +85,19 @@ msgstr "Weitere Löschaktionen von Seiten…"
 msgid "Cancel Selection"
 msgstr "Auswahl abbrechen"
 
-#: ../src/application/appmenu.cpp:43
+#: ../src/application/appmenu.cpp:45
 #, fuzzy
 #| msgid "Zoom in"
 msgid "Zoom"
 msgstr "Hineinzoomen"
 
-#: ../src/application/appmenu.cpp:63
+#: ../src/application/appmenu.cpp:61
 msgid "Keyboard shortcuts"
 msgstr "Tastenkombinationen"
 
-#: ../src/application/appmenu.cpp:67
-msgid "About"
-msgstr "Über"
+#: ../src/application/appmenu.cpp:65
+msgid "About PDF Slicer"
+msgstr ""
 
 #: ../src/application/appwindow.cpp:189
 msgid "The current document could not be saved"
@@ -259,6 +259,9 @@ msgstr "Letzten Befehl rückgängig machen"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Wiederherstellen"
+
+#~ msgid "About"
+#~ msgstr "Über"
 
 #~ msgid "Preview"
 #~ msgstr "Vorschau"

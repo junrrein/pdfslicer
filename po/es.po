@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 19:32-0300\n"
+"POT-Creation-Date: 2019-06-19 21:45-0300\n"
 "PO-Revision-Date: 2019-06-19 23:18+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -75,17 +75,17 @@ msgstr "Más operaciones para remover páginas…"
 msgid "Cancel Selection"
 msgstr "Cancelar Selección"
 
-#: ../src/application/appmenu.cpp:43
+#: ../src/application/appmenu.cpp:45
 msgid "Zoom"
 msgstr "Zoom"
 
-#: ../src/application/appmenu.cpp:63
+#: ../src/application/appmenu.cpp:61
 msgid "Keyboard shortcuts"
 msgstr "Atajos de teclado"
 
-#: ../src/application/appmenu.cpp:67
-msgid "About"
-msgstr "Acerca de"
+#: ../src/application/appmenu.cpp:65
+msgid "About PDF Slicer"
+msgstr ""
 
 #: ../src/application/appwindow.cpp:189
 msgid "The current document could not be saved"
@@ -238,6 +238,9 @@ msgstr "Deshacer el último comando"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Rehacer comando deshecho"
+
+#~ msgid "About"
+#~ msgstr "Acerca de"
 
 #~ msgid "\"Move Left\" and \"Move Right\" icons"
 #~ msgstr "Iconos \"Mover a la Izquierda\" y \"Mover a la Derecha\""

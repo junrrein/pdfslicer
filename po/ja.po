@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 19:32-0300\n"
-"PO-Revision-Date: 2019-02-24 05:02+0000\n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
+"POT-Creation-Date: 2019-06-19 21:45-0300\n"
+"PO-Revision-Date: 2019-06-22 13:01+0000\n"
 "Last-Translator: naofum <naofum@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/ja/>\n"
@@ -16,19 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.5-dev\n"
+"X-Generator: Weblate 3.7\n"
 
 #: ../src/application/aboutdialog.cpp:26
-#, fuzzy
-#| msgid ""
-#| "A simple application to extract, rotate and reorder pages of a PDF "
-#| "document"
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
-msgstr ""
-"PDF ドキュメントの抽出、回転、およびページの順序を変更するシンプルなアプリ"
-"ケーション"
+msgstr "PDF ドキュメントの抽出、マージ、回転、およびページの順序を変更するシンプルなアプリケーション"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application icon"
@@ -79,24 +73,20 @@ msgid "More page removing operations…"
 msgstr "他のページ削除操作…"
 
 #: ../src/application/actionbar.cpp:72
-#, fuzzy
-#| msgid "Cancel selection"
 msgid "Cancel Selection"
 msgstr "選択を取り消す"
 
-#: ../src/application/appmenu.cpp:43
-#, fuzzy
-#| msgid "Zoom in"
+#: ../src/application/appmenu.cpp:45
 msgid "Zoom"
-msgstr "拡大"
+msgstr "ズーム"
 
-#: ../src/application/appmenu.cpp:63
+#: ../src/application/appmenu.cpp:61
 msgid "Keyboard shortcuts"
 msgstr "キーボード ショートカット"
 
-#: ../src/application/appmenu.cpp:67
-msgid "About"
-msgstr "アプリについて"
+#: ../src/application/appmenu.cpp:65
+msgid "About PDF Slicer"
+msgstr ""
 
 #: ../src/application/appwindow.cpp:189
 msgid "The current document could not be saved"
@@ -108,38 +98,31 @@ msgstr "選択したファイルを開くことができません"
 
 #: ../src/application/guicommand.cpp:71
 msgid "Added file {fileName}"
-msgstr ""
+msgstr "ファイル {fileName} を追加しました"
 
 #: ../src/application/guicommand.cpp:74
 msgid "Multiple files added"
-msgstr ""
+msgstr "複数のファイルが追加されました"
 
 #: ../src/application/headerbar.cpp:55
-#, fuzzy
-#| msgid "Open"
 msgid "Open…"
-msgstr "開く"
+msgstr "開く…"
 
 #: ../src/application/headerbar.cpp:59
 msgid "At the beggining…"
-msgstr ""
+msgstr "最初に…"
 
 #: ../src/application/headerbar.cpp:60
 msgid "At the end…"
-msgstr ""
+msgstr "最後に…"
 
 #: ../src/application/headerbar.cpp:61
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Remove selected pages"
 msgid "After the selected page…"
-msgstr "選択したページを削除"
+msgstr "選択したページの後…"
 
 #: ../src/application/headerbar.cpp:63
-#, fuzzy
-#| msgid "Open document…"
 msgid "Add Document…"
-msgstr "ドキュメントを開く…"
+msgstr "ドキュメントを追加…"
 
 #: ../src/application/headerbar.cpp:73
 msgid "Undo"
@@ -150,10 +133,8 @@ msgid "Redo"
 msgstr "やり直し"
 
 #: ../src/application/headerbar.cpp:89
-#, fuzzy
-#| msgid "Save as…"
 msgid "Save As…"
-msgstr "…として保存"
+msgstr "名前を付けて保存…"
 
 #: ../src/application/interactivepagewidget.cpp:118
 #: ../src/application/previewwindow.cpp:51
@@ -258,3 +239,6 @@ msgstr "最後の操作を元に戻す"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "元に戻した操作をやり直す"
+
+#~ msgid "About"
+#~ msgstr "アプリについて"
