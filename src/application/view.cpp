@@ -134,6 +134,36 @@ void View::selectAllPages()
     selectedPagesChanged.emit();
 }
 
+void View::selectOddPages()
+{
+    clearSelection();
+
+    for (auto [i, widget] : ranges::view::enumerate(m_pageWidgets)) {
+        if (i % 2 == 0) {
+            widget->setSelected(true);
+        }
+    }
+
+    m_lastPageSelected = nullptr;
+
+    selectedPagesChanged.emit();
+}
+
+void View::selectEvenPages()
+{
+    clearSelection();
+
+    for (auto [i, widget] : ranges::view::enumerate(m_pageWidgets)) {
+        if (i % 2 == 1) {
+            widget->setSelected(true);
+        }
+    }
+
+    m_lastPageSelected = nullptr;
+
+    selectedPagesChanged.emit();
+}
+
 void View::clearSelection()
 {
     for (auto& widget : m_pageWidgets)
