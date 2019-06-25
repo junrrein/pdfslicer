@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-25 16:32-0300\n"
+"POT-Creation-Date: 2019-06-25 18:42-0300\n"
 "PO-Revision-Date: 2019-06-25 19:16+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -72,6 +72,25 @@ msgid "More page removing operations…"
 msgstr "Más operaciones para remover páginas…"
 
 #: ../src/application/actionbar.cpp:72
+msgid "Select All"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:76
+#, fuzzy
+msgid "Select odd pages"
+msgstr "Remover páginas seleccionadas"
+
+#: ../src/application/actionbar.cpp:77
+#, fuzzy
+msgid "Select even pages"
+msgstr "Remover páginas seleccionadas"
+
+#: ../src/application/actionbar.cpp:80
+#, fuzzy
+msgid "More page selecting options…"
+msgstr "Más operaciones para remover páginas…"
+
+#: ../src/application/actionbar.cpp:90
 msgid "Cancel Selection"
 msgstr "Cancelar Selección"
 
@@ -87,11 +106,11 @@ msgstr "Atajos de teclado"
 msgid "About PDF Slicer"
 msgstr "Acerca de PDF Slicer"
 
-#: ../src/application/appwindow.cpp:189
+#: ../src/application/appwindow.cpp:193
 msgid "The current document could not be saved"
 msgstr "El documento actual no pudo ser guardado"
 
-#: ../src/application/appwindow.cpp:317
+#: ../src/application/appwindow.cpp:321
 msgid "The selected file could not be opened"
 msgstr "No se pudo abrir el archivo seleccionado"
 
@@ -232,15 +251,20 @@ msgstr "Remover páginas seleccionadas"
 
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
+msgid "Select all pages"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:57
+msgctxt "shortcut window"
 msgid "Cancel selection"
 msgstr "Cancelar selección"
 
-#: ../data/ui/shortcuts.ui:57
+#: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Undo last command"
 msgstr "Deshacer el último comando"
 
-#: ../data/ui/shortcuts.ui:63
+#: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Rehacer comando deshecho"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-25 16:32-0300\n"
+"POT-Creation-Date: 2019-06-25 18:42-0300\n"
 "PO-Revision-Date: 2019-06-25 19:16+0000\n"
 "Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -75,6 +75,25 @@ msgid "More page removing operations…"
 msgstr "Plus d'opérations de suppression de pages.…"
 
 #: ../src/application/actionbar.cpp:72
+msgid "Select All"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:76
+#, fuzzy
+msgid "Select odd pages"
+msgstr "Supprimer les pages sélectionnées"
+
+#: ../src/application/actionbar.cpp:77
+#, fuzzy
+msgid "Select even pages"
+msgstr "Supprimer les pages sélectionnées"
+
+#: ../src/application/actionbar.cpp:80
+#, fuzzy
+msgid "More page selecting options…"
+msgstr "Plus d'opérations de suppression de pages.…"
+
+#: ../src/application/actionbar.cpp:90
 msgid "Cancel Selection"
 msgstr "Annuler Sélection"
 
@@ -90,11 +109,11 @@ msgstr "Raccourcis clavier"
 msgid "About PDF Slicer"
 msgstr "À propos de PDF Slicer"
 
-#: ../src/application/appwindow.cpp:189
+#: ../src/application/appwindow.cpp:193
 msgid "The current document could not be saved"
 msgstr "Le document actuel n'a pas pu être sauvegardé"
 
-#: ../src/application/appwindow.cpp:317
+#: ../src/application/appwindow.cpp:321
 msgid "The selected file could not be opened"
 msgstr "Le fichier sélectionné n'a pas pu être ouvert"
 
@@ -235,15 +254,20 @@ msgstr "Supprimer les pages sélectionnées"
 
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
+msgid "Select all pages"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:57
+msgctxt "shortcut window"
 msgid "Cancel selection"
 msgstr "Annuler la sélection"
 
-#: ../data/ui/shortcuts.ui:57
+#: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Undo last command"
 msgstr "Annuler la dernière commande"
 
-#: ../data/ui/shortcuts.ui:63
+#: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Rétablir la commande annulée"
