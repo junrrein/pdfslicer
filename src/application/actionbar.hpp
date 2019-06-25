@@ -41,6 +41,8 @@ private:
     Gtk::MenuButton m_buttonRemovePagesMore;
 
     Gtk::Button m_buttonSelectAll;
+    Gtk::MenuButton m_buttonSelectMore;
+
     Gtk::Button m_buttonCancelSelection;
 };
 

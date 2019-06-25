@@ -72,6 +72,21 @@ ActionBar::ActionBar()
     m_buttonSelectAll.set_label(_("Select All"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonSelectAll.gobj()), "win.select-all"); // NOLINT
 
+    Glib::RefPtr<Gio::Menu> selectMenu = Gio::Menu::create();
+    selectMenu->append(_("Select odd pages"), "win.select-odd");
+    selectMenu->append(_("Select even pages"), "win.select-even");
+    m_buttonSelectMore.set_menu_model(selectMenu);
+    m_buttonSelectMore.set_image_from_icon_name("pan-up-symbolic");
+    m_buttonSelectMore.set_tooltip_text(_("More page selecting options…"));
+    m_buttonSelectMore.get_style_context()->remove_class("image-button");
+    m_buttonSelectMore.get_style_context()->add_class("disclosure-button");
+    m_buttonSelectMore.get_style_context()->add_class("thin-button");
+
+    auto selectBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL}); // NOLINT
+    selectBox->pack_start(m_buttonSelectAll);
+    selectBox->pack_start(m_buttonSelectMore);
+    selectBox->get_style_context()->add_class("linked");
+
     m_buttonCancelSelection.set_label(_("Cancel Selection"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonCancelSelection.gobj()), "win.cancel-selection"); // NOLINT
 
@@ -79,7 +94,7 @@ ActionBar::ActionBar()
     pack_start(*rotateBox);
     pack_start(*removeBox);
     pack_end(m_buttonCancelSelection);
-    pack_end(m_buttonSelectAll);
+    pack_end(*selectBox);
 
     // The following is to work around a bug with themes other than Adwaita.
     // Without this, the ActionBar is too narrow and the buttons don't fit.
