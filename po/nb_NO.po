@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-06-25 16:32-0300\n"
-"PO-Revision-Date: 2019-06-26 19:39+0000\n"
+"PO-Revision-Date: 2019-06-25 19:16+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "pdf-slicer/translations/nb_NO/>\n"
@@ -71,6 +71,26 @@ msgid "More page removing operations…"
 msgstr "Flere sidefjerningsoperasjoner…"
 
 #: ../src/application/actionbar.cpp:72
+msgid "Select All"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:76
+#, fuzzy
+msgid "Select odd pages"
+msgstr "Fjern valgte sider"
+
+#: ../src/application/actionbar.cpp:77
+#, fuzzy
+msgid "Select even pages"
+msgstr "Fjern valgte sider"
+
+#: ../src/application/actionbar.cpp:80
+#, fuzzy
+msgid "More page selecting options…"
+msgstr "Flere sidefjerningsoperasjoner…"
+
+#: ../src/application/actionbar.cpp:90
+#, fuzzy
 msgid "Cancel Selection"
 msgstr "Avbryt utvalg"
 
@@ -86,11 +106,11 @@ msgstr "Tastatursnarveier"
 msgid "About PDF Slicer"
 msgstr "Om PDF Slicer"
 
-#: ../src/application/appwindow.cpp:189
+#: ../src/application/appwindow.cpp:193
 msgid "The current document could not be saved"
 msgstr "Nåværende dokument kunne ikke lagres"
 
-#: ../src/application/appwindow.cpp:317
+#: ../src/application/appwindow.cpp:321
 msgid "The selected file could not be opened"
 msgstr "Valgt fil kunne ikke åpnes"
 
@@ -230,15 +250,21 @@ msgstr "Fjern valgte sider"
 
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
+msgid "Select all pages"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:57
+msgctxt "shortcut window"
 msgid "Cancel selection"
 msgstr "Avbryt utvalg"
 
-#: ../data/ui/shortcuts.ui:57
+#: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Undo last command"
 msgstr "Angre siste kommando"
 
-#: ../data/ui/shortcuts.ui:63
+#: ../data/ui/shortcuts.ui:69
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Gjenta angret kommando"

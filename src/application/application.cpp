@@ -54,6 +54,7 @@ void Application::addAccels()
     set_accel_for_action("win.redo", "<Control><Shift>z");
     set_accel_for_action("win.remove-selected", "Delete");
     set_accel_for_action("win.preview-selected", "KP_Space");
+    set_accel_for_action("win.select-all", "<Control>a");
     set_accel_for_action("win.cancel-selection", "Escape");
     set_accels_for_action("win.zoom-in",
                           {"<Control>plus", "<Control>KP_Add"});

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-25 16:32-0300\n"
+"POT-Creation-Date: 2019-06-25 18:42-0300\n"
 "PO-Revision-Date: 2019-02-10 18:10+0000\n"
 "Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -77,6 +77,25 @@ msgid "More page removing operations…"
 msgstr "Weitere Löschaktionen von Seiten…"
 
 #: ../src/application/actionbar.cpp:72
+msgid "Select All"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:76
+#, fuzzy
+msgid "Select odd pages"
+msgstr "Ausgewählte Seiten entfernen"
+
+#: ../src/application/actionbar.cpp:77
+#, fuzzy
+msgid "Select even pages"
+msgstr "Ausgewählte Seiten entfernen"
+
+#: ../src/application/actionbar.cpp:80
+#, fuzzy
+msgid "More page selecting options…"
+msgstr "Weitere Löschaktionen von Seiten…"
+
+#: ../src/application/actionbar.cpp:90
 #, fuzzy
 msgid "Cancel Selection"
 msgstr "Auswahl abbrechen"
@@ -94,11 +113,11 @@ msgstr "Tastenkombinationen"
 msgid "About PDF Slicer"
 msgstr ""
 
-#: ../src/application/appwindow.cpp:189
+#: ../src/application/appwindow.cpp:193
 msgid "The current document could not be saved"
 msgstr "Das aktuelle Dokument konnte nicht gespeichert werden"
 
-#: ../src/application/appwindow.cpp:317
+#: ../src/application/appwindow.cpp:321
 msgid "The selected file could not be opened"
 msgstr "Die ausgewählte Datei konnte nicht geöffnet werden"
 
@@ -242,15 +261,20 @@ msgstr "Ausgewählte Seiten entfernen"
 
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
+msgid "Select all pages"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:57
+msgctxt "shortcut window"
 msgid "Cancel selection"
 msgstr "Auswahl aufheben"
 
-#: ../data/ui/shortcuts.ui:57
+#: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Undo last command"
 msgstr "Letzten Befehl rückgängig machen"
 
-#: ../data/ui/shortcuts.ui:63
+#: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Wiederherstellen"

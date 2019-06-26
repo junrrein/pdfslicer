@@ -37,6 +37,9 @@ public:
     void changePageSize(int targetWidgetSize);
     void setShowFileNames(bool showFileNames);
     void selectPageRange(unsigned int first, unsigned int last);
+    void selectAllPages();
+    void selectOddPages();
+    void selectEvenPages();
     void clearSelection();
 
     unsigned int getSelectedChildIndex() const;
