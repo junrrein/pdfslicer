@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-06-25 16:32-0300\n"
-"PO-Revision-Date: 2019-06-25 19:16+0000\n"
+"PO-Revision-Date: 2019-07-02 13:01+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "pdf-slicer/translations/nb_NO/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1-dev\n"
+"X-Generator: Weblate 3.8-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -71,8 +71,9 @@ msgid "More page removing operations…"
 msgstr "Flere sidefjerningsoperasjoner…"
 
 #: ../src/application/actionbar.cpp:72
+#, fuzzy
 msgid "Select All"
-msgstr ""
+msgstr "Velg alt"
 
 #: ../src/application/actionbar.cpp:76
 #, fuzzy
@@ -251,7 +252,7 @@ msgstr "Fjern valgte sider"
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr ""
+msgstr "Velg alle sider"
 
 #: ../data/ui/shortcuts.ui:57
 msgctxt "shortcut window"
