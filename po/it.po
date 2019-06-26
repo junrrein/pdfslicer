@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# Jimmy Scionti <jimmy.scionti@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-25 16:45-0300\n"
-"PO-Revision-Date: 2019-06-25 19:47+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
+"POT-Creation-Date: 2019-06-25 16:32-0300\n"
+"PO-Revision-Date: 2019-06-25 19:46+0000\n"
+"Last-Translator: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/pdf-slicer/"
+"translations/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.7.1-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -51,24 +51,20 @@ msgid "Move right"
 msgstr "Sposta a destra"
 
 #: ../src/application/actionbar.cpp:56
-#, fuzzy
 msgid "Remove selected pages"
-msgstr "Rimuove le pagine selezionate"
+msgstr "Rimuovi le pagine selezionate"
 
 #: ../src/application/actionbar.cpp:61
-#, fuzzy
 msgid "Remove unselected pages"
-msgstr "Rimuove le pagine selezionate"
+msgstr "Rimuovi le pagine non selezionate"
 
 #: ../src/application/actionbar.cpp:62
-#, fuzzy
 msgid "Remove previous pages"
-msgstr "Rimuove le pagine precedenti"
+msgstr "Rimuovi le pagine precedenti"
 
 #: ../src/application/actionbar.cpp:63
-#, fuzzy
 msgid "Remove next pages"
-msgstr "Rimuove le pagine selezionate"
+msgstr "Rimuovi le pagine successive"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
@@ -111,9 +107,8 @@ msgid "Open…"
 msgstr "Apri…"
 
 #: ../src/application/headerbar.cpp:60
-#, fuzzy
 msgid "Add a Document"
-msgstr "Apri documento…"
+msgstr "Aggiungi un documento"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
@@ -128,9 +123,8 @@ msgid "After the selected page…"
 msgstr "Dopo la pagina selezionata…"
 
 #: ../src/application/headerbar.cpp:65
-#, fuzzy
 msgid "Add a Document…"
-msgstr "Apri documento…"
+msgstr "Aggiungi un documento…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
@@ -231,7 +225,7 @@ msgstr "Modifica documento"
 #: ../data/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr "Rimuove le pagine selezionate"
+msgstr "Rimuovi le pagine selezionate"
 
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
@@ -250,15 +244,15 @@ msgstr "Ripete l'azione annullata"
 
 #~ msgctxt "plural (pages)"
 #~ msgid "Remove selected"
-#~ msgstr "Rimuove le pagine selezionate"
+#~ msgstr "Rimuovi le pagine selezionate"
 
 #~ msgctxt "plural (pages)"
 #~ msgid "Remove unselected"
-#~ msgstr "Rimuove le pagine non selezionate"
+#~ msgstr "Rimuovi le pagine non selezionate"
 
 #~ msgctxt "plural (pages)"
 #~ msgid "Remove next"
-#~ msgstr "Rimuove le pagine successive"
+#~ msgstr "Rimuovi le pagine successive"
 
 #~ msgid "About"
 #~ msgstr "Informazioni"
