@@ -18,12 +18,14 @@
 #define OPENFILEDIALOG_H
 
 #include <gtkmm/filechooserdialog.h>
+#include <optional>
 
 namespace Slicer {
 
 class OpenFileDialog : public Gtk::FileChooserDialog {
 public:
-	OpenFileDialog(Gtk::Window& parent);
+    OpenFileDialog(Gtk::Window& parent,
+                   std::optional<std::string> folderPath = {});
 };
 
 } // namespace Slicer

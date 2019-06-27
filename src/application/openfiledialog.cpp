@@ -20,7 +20,8 @@
 
 namespace Slicer {
 
-OpenFileDialog::OpenFileDialog(Gtk::Window& parent)
+OpenFileDialog::OpenFileDialog(Gtk::Window& parent,
+                               std::optional<std::string> folderPath)
     : Gtk::FileChooserDialog{parent,
                              _("Open document"),
                              Gtk::FILE_CHOOSER_ACTION_OPEN}
@@ -29,6 +30,9 @@ OpenFileDialog::OpenFileDialog(Gtk::Window& parent)
     add_button(_("Cancel"), Gtk::RESPONSE_CANCEL);
     set_select_multiple(false);
     add_filter(pdfFilter());
+
+    if (folderPath.has_value())
+        set_current_folder(folderPath.value());
 }
 
 } // namespace Slicer
