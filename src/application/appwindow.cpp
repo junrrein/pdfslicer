@@ -22,8 +22,10 @@
 #include <pdfsaver.hpp>
 #include <glibmm/main.h>
 #include <glibmm/i18n.h>
+#include <gtkmm/builder.h>
 #include <gtkmm/cssprovider.h>
 #include <gtkmm/messagedialog.h>
+#include <gtkmm/shortcutswindow.h>
 #include <config.hpp>
 #include <fileutils.hpp>
 #include <logger.hpp>

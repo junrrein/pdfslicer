@@ -17,11 +17,11 @@
 #ifndef OPENFILEDIALOG_H
 #define OPENFILEDIALOG_H
 
-#include "filechoosernative.hpp"
+#include <gtkmm/filechooserdialog.h>
 
 namespace Slicer {
 
-class OpenFileDialog : public FileChooserNative {
+class OpenFileDialog : public Gtk::FileChooserDialog {
 public:
 	OpenFileDialog(Gtk::Window& parent);
 };
