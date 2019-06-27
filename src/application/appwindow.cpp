@@ -20,6 +20,7 @@
 #include "savefiledialog.hpp"
 #include "guicommand.hpp"
 #include <pdfsaver.hpp>
+#include <glibmm/convert.h>
 #include <glibmm/main.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/builder.h>
@@ -27,7 +28,6 @@
 #include <gtkmm/messagedialog.h>
 #include <gtkmm/shortcutswindow.h>
 #include <config.hpp>
-#include <fileutils.hpp>
 #include <logger.hpp>
 
 namespace Slicer {
@@ -388,7 +388,7 @@ void AppWindow::tryOpenDocument(const Glib::RefPtr<Gio::File>& file)
     try {
         auto document = std::make_unique<Document>(file);
         setDocument(std::move(document));
-        m_headerBar.set_title(getDisplayName(file));
+        m_headerBar.set_title(Glib::filename_display_basename(file->get_path()));
         m_headerBar.set_subtitle("");
     }
     catch (...) {

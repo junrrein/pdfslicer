@@ -16,7 +16,7 @@
 
 #include "document.hpp"
 #include "tempfile.hpp"
-#include "fileutils.hpp"
+#include <glibmm/convert.h>
 #include <numeric>
 #include <range/v3/view/enumerate.hpp>
 
@@ -204,7 +204,7 @@ Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
 
 std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fileData)
 {
-    const Glib::ustring basename = getDisplayName(fileData.originalFile);
+    const Glib::ustring basename = Glib::filename_display_basename(fileData.originalFile->get_path());
     const std::vector<QPDFPageObjectHelper> pages = fileData.qpdfDocumentHelper->getAllPages();
     std::vector<Glib::RefPtr<Page>> result;
     result.reserve(pages.size());
