@@ -5,6 +5,7 @@
     "sdk": "org.gnome.Sdk",
     "command": "pdfslicer",
     "finish-args": [
+        "--filesystem=host",
         "--share=ipc",
         "--socket=x11",
         "--socket=wayland"
