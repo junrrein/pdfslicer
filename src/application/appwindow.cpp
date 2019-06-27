@@ -355,7 +355,7 @@ void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned i
 
 void AppWindow::onAddDocumentAtBeginningAction()
 {
-    Slicer::OpenFileDialog dialog{*this};
+    Slicer::OpenFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
 
     const int result = dialog.run();
 
@@ -365,7 +365,7 @@ void AppWindow::onAddDocumentAtBeginningAction()
 
 void AppWindow::onAddDocumentAtEndAction()
 {
-    Slicer::OpenFileDialog dialog{*this};
+    Slicer::OpenFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
 
     const int result = dialog.run();
 
@@ -375,7 +375,7 @@ void AppWindow::onAddDocumentAtEndAction()
 
 void AppWindow::onAddDocumentAfterSelectedAction()
 {
-    Slicer::OpenFileDialog dialog{*this};
+    Slicer::OpenFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
 
     const int result = dialog.run();
 
