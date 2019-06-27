@@ -50,6 +50,8 @@ public:
     Glib::RefPtr<Page> getPage(unsigned int index) const;
     const Glib::RefPtr<Gio::ListStore<Page>>& pages() const;
     unsigned int numberOfPages() const;
+    std::string originalDocumentParentPath() const;
+    std::string lastAddedFileParentPath() const;
 
     sigc::signal<void, std::vector<unsigned int>> pagesRotated;
     sigc::signal<void, std::vector<unsigned int>> pagesReordered;

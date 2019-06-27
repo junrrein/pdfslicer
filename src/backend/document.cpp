@@ -180,6 +180,16 @@ unsigned int Document::numberOfPages() const
     return m_pages->get_n_items();
 }
 
+std::string Document::originalDocumentParentPath() const
+{
+    return m_filesData.front().originalFile->get_parent()->get_path();
+}
+
+std::string Document::lastAddedFileParentPath() const
+{
+    return m_filesData.back().originalFile->get_parent()->get_path();
+}
+
 Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
 {
     std::unique_ptr<poppler::document> tempDocument{poppler::document::load_from_file(sourceFile->get_path())};
