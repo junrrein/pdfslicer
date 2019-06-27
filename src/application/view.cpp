@@ -140,12 +140,11 @@ void View::selectAllPages()
 
 void View::selectOddPages()
 {
-    clearSelection();
-
     for (auto [i, widget] : ranges::view::enumerate(m_pageWidgets)) {
-        if (i % 2 == 0) {
+        if (i % 2 == 0)
             widget->setSelected(true);
-        }
+        else
+            widget->setSelected(false);
     }
 
     m_lastPageSelected = nullptr;
@@ -155,12 +154,11 @@ void View::selectOddPages()
 
 void View::selectEvenPages()
 {
-    clearSelection();
-
     for (auto [i, widget] : ranges::view::enumerate(m_pageWidgets)) {
-        if (i % 2 == 1) {
+        if (i % 2 == 1)
             widget->setSelected(true);
-        }
+        else
+            widget->setSelected(false);
     }
 
     m_lastPageSelected = nullptr;
