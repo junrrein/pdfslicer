@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-06-25 16:32-0300\n"
-"PO-Revision-Date: 2019-06-22 13:01+0000\n"
+"PO-Revision-Date: 2019-07-02 13:01+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/nl/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1-dev\n"
+"X-Generator: Weblate 3.8-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -72,22 +72,19 @@ msgstr "Meer paginaverwijderingsacties…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr ""
+msgstr "Alles selecteren"
 
 #: ../src/application/actionbar.cpp:76
-#, fuzzy
 msgid "Select odd pages"
-msgstr "Geselecteerde pagina's verwijderen"
+msgstr "Oneven pagina's selecteren"
 
 #: ../src/application/actionbar.cpp:77
-#, fuzzy
 msgid "Select even pages"
-msgstr "Geselecteerde pagina's verwijderen"
+msgstr "Even pagina's selecteren"
 
 #: ../src/application/actionbar.cpp:80
-#, fuzzy
 msgid "More page selecting options…"
-msgstr "Meer paginaverwijderingsacties…"
+msgstr "Meer paginaselectie-opties…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Cancel Selection"
@@ -249,7 +246,7 @@ msgstr "Geselecteerde pagina's verwijderen"
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr ""
+msgstr "Alle pagina's selecteren"
 
 #: ../data/ui/shortcuts.ui:57
 msgctxt "shortcut window"
