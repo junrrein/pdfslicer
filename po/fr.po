@@ -23,7 +23,7 @@ msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
-"Une application simple pour extraire, fusionner,  pivoter et réorganiser des "
+"Une application simple pour extraire, fusionner, pivoter et réorganiser des "
 "pages de documents PDF"
 
 #: ../src/application/aboutdialog.cpp:32
@@ -36,11 +36,11 @@ msgstr "Librairies tierces"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr "Rotation à gauche"
+msgstr "Rotation antihoraire"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr "Rotation à droite"
+msgstr "Rotation horaire"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
@@ -58,44 +58,44 @@ msgstr "Supprimer les pages sélectionnées"
 #: ../src/application/actionbar.cpp:61
 #, fuzzy
 msgid "Remove unselected pages"
-msgstr "Supprimer les pages sélectionnées"
+msgstr "Supprimer les pages non sélectionnées"
 
 #: ../src/application/actionbar.cpp:62
 #, fuzzy
 msgid "Remove previous pages"
-msgstr "Supprimer page précédente"
+msgstr "Supprimer les pages précédentes"
 
 #: ../src/application/actionbar.cpp:63
 #, fuzzy
 msgid "Remove next pages"
-msgstr "Supprimer les pages sélectionnées"
+msgstr "Supprimer les pages suivantes"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr "Plus d'opérations de suppression de pages.…"
+msgstr "Plus d'opérations de suppression de pages…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr ""
+msgstr "Tout sélectionner"
 
 #: ../src/application/actionbar.cpp:76
 #, fuzzy
 msgid "Select odd pages"
-msgstr "Supprimer les pages sélectionnées"
+msgstr "Supprimer les pages impaires"
 
 #: ../src/application/actionbar.cpp:77
 #, fuzzy
 msgid "Select even pages"
-msgstr "Supprimer les pages sélectionnées"
+msgstr "Supprimer les pages paires"
 
 #: ../src/application/actionbar.cpp:80
 #, fuzzy
 msgid "More page selecting options…"
-msgstr "Plus d'opérations de suppression de pages.…"
+msgstr "Plus d'opérations de sélection de pages…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Cancel Selection"
-msgstr "Annuler Sélection"
+msgstr "Annuler la sélection"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
@@ -119,7 +119,7 @@ msgstr "Le fichier sélectionné n'a pas pu être ouvert"
 
 #: ../src/application/guicommand.cpp:71
 msgid "Added file {fileName}"
-msgstr "Ajouter le fichier {fileName}"
+msgstr "Fichier {fileName} ajouté"
 
 #: ../src/application/guicommand.cpp:74
 msgid "Multiple files added"
@@ -132,7 +132,7 @@ msgstr "Ouvrir…"
 #: ../src/application/headerbar.cpp:60
 #, fuzzy
 msgid "Add a Document"
-msgstr "Ajouter Document…"
+msgstr "Ajouter un document…"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
@@ -140,7 +140,7 @@ msgstr "Au début…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
-msgstr "A la fin…"
+msgstr "À la fin…"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
@@ -149,7 +149,7 @@ msgstr "Après la page sélectionnée…"
 #: ../src/application/headerbar.cpp:65
 #, fuzzy
 msgid "Add a Document…"
-msgstr "Ajouter Document…"
+msgstr "Ajouter un document…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
@@ -170,7 +170,7 @@ msgstr "Page {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
-msgstr "Ouvrir document"
+msgstr "Ouvrir le document"
 
 #: ../src/application/openfiledialog.cpp:27
 msgid "Open"
@@ -211,11 +211,11 @@ msgstr "Enregistrement…"
 
 #: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
-msgstr "Enregistré !"
+msgstr "Enregistré !"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "Ouvrez un document pour commencer à le couper !"
+msgstr "Ouvrez un document pour commencer à le couper !"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
@@ -225,12 +225,12 @@ msgstr "Général"
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr "Ouvrir document"
+msgstr "Ouvrir le document"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr "Enregistrer document"
+msgstr "Enregistrer le document"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
@@ -255,7 +255,7 @@ msgstr "Supprimer les pages sélectionnées"
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr ""
+msgstr "Sélectionner toutes les pages"
 
 #: ../data/ui/shortcuts.ui:57
 msgctxt "shortcut window"
