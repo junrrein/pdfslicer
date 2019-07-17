@@ -15,8 +15,6 @@ with undo/redo support.
 
 # Installing
 
-# Linux
-
 You can install PDF Slicer using Flatpak. [Get it from Flathub](https://flathub.org/apps/details/com.github.junrrein.PDFSlicer).
 
 # Building
@@ -76,6 +74,12 @@ flatpak --user uninstall com.github.junrrein.PDFSlicer
 flatpak --user remote-delete pdfslicer-repo
 rm -rf pdfslicer/ pdfslicer-repo/
 ```
+
+# Contributing
+
+## Translations
+
+You can contribute your translations at [PDF Slicer's Weblate page](https://hosted.weblate.org/projects/pdf-slicer/).
 
 # License
 
