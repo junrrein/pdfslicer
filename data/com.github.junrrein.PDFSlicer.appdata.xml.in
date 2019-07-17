@@ -32,6 +32,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.7.3" date="2019-07-17">
+			<description>
+				<p>Add the ability to select all pages, odd pages and even pages. Update Dutch, French, Italian, Japanese, Norwegian and Spanish translations.</p>
+			</description>
+		</release>
 		<release version="1.7.2" date="2019-06-24">
 			<description>
 				<p>Restore scroll position when zomming in/out or resizing the window. Update Dutch and Japanese translations. Miscellaneous bug fixes and UI improvements.</p>
