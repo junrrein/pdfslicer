@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-25 18:42-0300\n"
-"PO-Revision-Date: 2019-06-25 19:16+0000\n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
+"POT-Creation-Date: 2019-06-25 16:32-0300\n"
+"PO-Revision-Date: 2019-07-02 13:01+0000\n"
 "Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/fr/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.7.1-dev\n"
+"X-Generator: Weblate 3.8-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -51,24 +51,20 @@ msgid "Move right"
 msgstr "Déplacer vers la droite"
 
 #: ../src/application/actionbar.cpp:56
-#, fuzzy
 msgid "Remove selected pages"
 msgstr "Supprimer les pages sélectionnées"
 
 #: ../src/application/actionbar.cpp:61
-#, fuzzy
 msgid "Remove unselected pages"
-msgstr "Supprimer les pages sélectionnées"
+msgstr "Supprimer les pages non sélectionnées"
 
 #: ../src/application/actionbar.cpp:62
-#, fuzzy
 msgid "Remove previous pages"
-msgstr "Supprimer page précédente"
+msgstr "Supprimer les pages précédentes"
 
 #: ../src/application/actionbar.cpp:63
-#, fuzzy
 msgid "Remove next pages"
-msgstr "Supprimer les pages sélectionnées"
+msgstr "Supprimer les pages suivantes"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
@@ -76,22 +72,19 @@ msgstr "Plus d'opérations de suppression de pages.…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr ""
+msgstr "Tout sélectionner"
 
 #: ../src/application/actionbar.cpp:76
-#, fuzzy
 msgid "Select odd pages"
-msgstr "Supprimer les pages sélectionnées"
+msgstr "Sélectionner les pages impaires"
 
 #: ../src/application/actionbar.cpp:77
-#, fuzzy
 msgid "Select even pages"
-msgstr "Supprimer les pages sélectionnées"
+msgstr "Sélectionner les pages paires"
 
 #: ../src/application/actionbar.cpp:80
-#, fuzzy
 msgid "More page selecting options…"
-msgstr "Plus d'opérations de suppression de pages.…"
+msgstr "Plus d'options de sélection de page…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Cancel Selection"
@@ -130,9 +123,8 @@ msgid "Open…"
 msgstr "Ouvrir…"
 
 #: ../src/application/headerbar.cpp:60
-#, fuzzy
 msgid "Add a Document"
-msgstr "Ajouter Document…"
+msgstr "Ajouter un document"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
@@ -147,9 +139,8 @@ msgid "After the selected page…"
 msgstr "Après la page sélectionnée…"
 
 #: ../src/application/headerbar.cpp:65
-#, fuzzy
 msgid "Add a Document…"
-msgstr "Ajouter Document…"
+msgstr "Ajouter un document…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
@@ -255,7 +246,7 @@ msgstr "Supprimer les pages sélectionnées"
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr ""
+msgstr "Sélectionner toutes les pages"
 
 #: ../data/ui/shortcuts.ui:57
 msgctxt "shortcut window"
