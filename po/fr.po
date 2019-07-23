@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Florian <floflr@zaclys.net>, 2019.
+# Yvan Masson <yvan@masson-informatique.fr>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-23 19:36-0300\n"
-"PO-Revision-Date: 2019-07-02 13:01+0000\n"
-"Last-Translator: Florian <floflr@zaclys.net>\n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
+"POT-Creation-Date: 2019-06-25 16:32-0300\n"
+"PO-Revision-Date: 2019-07-23 12:07+0000\n"
+"Last-Translator: Yvan Masson <yvan@masson-informatique.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/fr/>\n"
 "Language: fr\n"
@@ -23,7 +24,7 @@ msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
-"Une application simple pour extraire, fusionner,  pivoter et réorganiser des "
+"Une application simple pour extraire, fusionner, pivoter et réorganiser des "
 "pages de documents PDF"
 
 #: ../src/application/aboutdialog.cpp:32
@@ -36,11 +37,11 @@ msgstr "Librairies tierces"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr "Rotation à gauche"
+msgstr "Rotation antihoraire"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr "Rotation à droite"
+msgstr "Rotation horaire"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
@@ -88,7 +89,7 @@ msgstr "Plus d'options de sélection de page…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Cancel Selection"
-msgstr "Annuler Sélection"
+msgstr "Annuler la sélection"
 
 #: ../src/application/addfiledialog.cpp:26
 #, fuzzy
@@ -177,7 +178,7 @@ msgstr "Page {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:24
 msgid "Open document"
-msgstr "Ouvrir document"
+msgstr "Ouvrir un document"
 
 #: ../src/application/openfiledialog.cpp:27
 msgid "Open"
@@ -227,12 +228,12 @@ msgstr "Général"
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr "Ouvrir document"
+msgstr "Ouvrir un document"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr "Enregistrer document"
+msgstr "Enregistrer le document"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"

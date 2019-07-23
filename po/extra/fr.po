@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Weblate <noreply@weblate.org>, 2019.
 # Florian <floflr@zaclys.net>, 2019.
+# Yvan Masson <yvan@masson-informatique.fr>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-06-25 16:32-0300\n"
-"PO-Revision-Date: 2019-06-25 19:24+0000\n"
-"Last-Translator: Florian <floflr@zaclys.net>\n"
+"PO-Revision-Date: 2019-07-23 12:07+0000\n"
+"Last-Translator: Yvan Masson <yvan@masson-informatique.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/extra/"
 "fr/>\n"
 "Language: fr\n"
@@ -17,11 +18,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.7.1-dev\n"
+"X-Generator: Weblate 3.8-dev\n"
 
 msgid "Extract, merge, rotate and reorder pages of PDF documents"
-msgstr ""
-"Extraire, fusionner, faire pivoter et réorganiser des pages de documents PDF"
+msgstr "Extraire, fusionner, pivoter et réorganiser des pages de documents PDF"
 
 msgid ""
 "A simple tool to extract, merge, rotate and reorder pages of PDF documents"
