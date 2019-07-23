@@ -60,22 +60,18 @@ void AddFileDialog::setupOptionWidget(bool enableAfterSelected)
     m_radioButtonEnd.join_group(m_radioButtonBeggining);
     m_radioButtonAfterSelected.join_group(m_radioButtonBeggining);
 
-    m_radioButtonsBox.set_orientation(Gtk::ORIENTATION_VERTICAL);
-    m_radioButtonsBox.pack_start(m_radioButtonBeggining);
-    m_radioButtonsBox.pack_start(m_radioButtonEnd);
-    m_radioButtonsBox.pack_start(m_radioButtonAfterSelected);
-
-    m_insertOptionBox.set_orientation(Gtk::ORIENTATION_HORIZONTAL);
-    m_insertOptionBox.pack_start(m_insertPositionLabel);
-    m_insertOptionBox.pack_start(m_radioButtonsBox);
+    m_insertOptionGrid.attach(m_insertPositionLabel, 0, 0);
+    m_insertOptionGrid.attach(m_radioButtonBeggining, 1, 0);
+    m_insertOptionGrid.attach(m_radioButtonEnd, 1, 1);
+    m_insertOptionGrid.attach(m_radioButtonAfterSelected, 1, 2);
 
     m_radioButtonEnd.set_active();
 
     if (!enableAfterSelected)
         m_radioButtonAfterSelected.set_sensitive(false);
 
-    set_extra_widget(m_insertOptionBox);
-    m_insertOptionBox.show_all();
+    set_extra_widget(m_insertOptionGrid);
+    m_insertOptionGrid.show_all();
 }
 
 } // namespace Slicer

@@ -18,6 +18,7 @@
 #define ADDFILEDIALOG_HPP
 
 #include <gtkmm/filechooserdialog.h>
+#include <gtkmm/grid.h>
 #include <gtkmm/label.h>
 #include <gtkmm/radiobutton.h>
 
@@ -32,16 +33,14 @@ public:
 	};
 
 	AddFileDialog(Gtk::Window& window,
-				  const std::string& folderPath,
-				  bool enableAfterSelected);
+                  const std::string& folderPath,
+                  bool enableAfterSelected);
 
 	InsertPosition insertPosition() const;
 
 private:
-	Gtk::Box m_insertOptionBox;
+    Gtk::Grid m_insertOptionGrid;
 	Gtk::Label m_insertPositionLabel;
-
-	Gtk::Box m_radioButtonsBox;
 	Gtk::RadioButton m_radioButtonBeggining;
 	Gtk::RadioButton m_radioButtonEnd;
 	Gtk::RadioButton m_radioButtonAfterSelected;
