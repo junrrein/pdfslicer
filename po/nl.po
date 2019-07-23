@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-25 18:42-0300\n"
-"PO-Revision-Date: 2019-06-22 13:01+0000\n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
+"POT-Creation-Date: 2019-06-25 16:32-0300\n"
+"PO-Revision-Date: 2019-07-02 13:01+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/nl/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7\n"
+"X-Generator: Weblate 3.8-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -51,24 +51,20 @@ msgid "Move right"
 msgstr "Naar rechts verplaatsen"
 
 #: ../src/application/actionbar.cpp:56
-#, fuzzy
 msgid "Remove selected pages"
 msgstr "Geselecteerde pagina's verwijderen"
 
 #: ../src/application/actionbar.cpp:61
-#, fuzzy
 msgid "Remove unselected pages"
-msgstr "Geselecteerde pagina's verwijderen"
+msgstr "Niet-geselecteerde pagina's verwijderen"
 
 #: ../src/application/actionbar.cpp:62
-#, fuzzy
 msgid "Remove previous pages"
-msgstr "Vorige verwijderen"
+msgstr "Vorige pagina's verwijderen"
 
 #: ../src/application/actionbar.cpp:63
-#, fuzzy
 msgid "Remove next pages"
-msgstr "Geselecteerde pagina's verwijderen"
+msgstr "Volgende pagina's verwijderen"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
@@ -76,22 +72,19 @@ msgstr "Meer paginaverwijderingsacties…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr ""
+msgstr "Alles selecteren"
 
 #: ../src/application/actionbar.cpp:76
-#, fuzzy
 msgid "Select odd pages"
-msgstr "Geselecteerde pagina's verwijderen"
+msgstr "Oneven pagina's selecteren"
 
 #: ../src/application/actionbar.cpp:77
-#, fuzzy
 msgid "Select even pages"
-msgstr "Geselecteerde pagina's verwijderen"
+msgstr "Even pagina's selecteren"
 
 #: ../src/application/actionbar.cpp:80
-#, fuzzy
 msgid "More page selecting options…"
-msgstr "Meer paginaverwijderingsacties…"
+msgstr "Meer paginaselectie-opties…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Cancel Selection"
@@ -107,7 +100,7 @@ msgstr "Sneltoetsen"
 
 #: ../src/application/appmenu.cpp:65
 msgid "About PDF Slicer"
-msgstr ""
+msgstr "Over PDF Slicer"
 
 #: ../src/application/appwindow.cpp:193
 msgid "The current document could not be saved"
@@ -130,9 +123,8 @@ msgid "Open…"
 msgstr "Openen…"
 
 #: ../src/application/headerbar.cpp:60
-#, fuzzy
 msgid "Add a Document"
-msgstr "Document toevoegen…"
+msgstr "Document toevoegen"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
@@ -147,7 +139,6 @@ msgid "After the selected page…"
 msgstr "Na de geselecteerde pagina…"
 
 #: ../src/application/headerbar.cpp:65
-#, fuzzy
 msgid "Add a Document…"
 msgstr "Document toevoegen…"
 
@@ -255,7 +246,7 @@ msgstr "Geselecteerde pagina's verwijderen"
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr ""
+msgstr "Alle pagina's selecteren"
 
 #: ../data/ui/shortcuts.ui:57
 msgctxt "shortcut window"
