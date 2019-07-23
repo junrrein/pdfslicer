@@ -52,7 +52,7 @@ AddFileDialog::InsertPosition AddFileDialog::insertPosition() const
 
 void AddFileDialog::setupOptionWidget(bool enableAfterSelected)
 {
-    m_insertPositionLabel.set_label(_("Insertion position:"));
+    m_insertPositionLabel.set_label(_("Insertion position"));
     m_radioButtonBeggining.set_label(_("Beginning"));
     m_radioButtonEnd.set_label(_("End"));
     m_radioButtonAfterSelected.set_label(_("After the selected page"));
