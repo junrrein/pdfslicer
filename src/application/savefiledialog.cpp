@@ -22,12 +22,12 @@ namespace Slicer {
 
 SaveFileDialog::SaveFileDialog(Gtk::Window& parent,
                                std::optional<std::string> folderPath)
-    : Gtk::FileChooserDialog{parent,
-                             _("Save document as"),
-                             Gtk::FILE_CHOOSER_ACTION_SAVE}
+    : Gtk::FileChooserNative{_("Save document as"),
+                             parent,
+                             Gtk::FILE_CHOOSER_ACTION_SAVE,
+                             _("Save"),
+                             _("Cancel")}
 {
-    add_button(_("Save"), Gtk::RESPONSE_ACCEPT);
-    add_button(_("Cancel"), Gtk::RESPONSE_CANCEL);
     set_current_name(_("Untitled document") + Glib::ustring{".pdf"});
     add_filter(pdfFilter());
     set_do_overwrite_confirmation(true);

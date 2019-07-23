@@ -1,5 +1,5 @@
 // PDF Slicer
-// Copyright (C) 2017-2018 Julián Unrrein
+// Copyright (C) 2019 Julián Unrrein
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,20 +14,40 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef OPENFILEDIALOG_H
-#define OPENFILEDIALOG_H
+#ifndef ADDFILEDIALOG_HPP
+#define ADDFILEDIALOG_HPP
 
 #include <gtkmm/filechoosernative.h>
-#include <optional>
+#include <gtkmm/grid.h>
+#include <gtkmm/label.h>
+#include <gtkmm/radiobutton.h>
 
 namespace Slicer {
 
-class OpenFileDialog : public Gtk::FileChooserNative {
+class AddFileDialog : public Gtk::FileChooserNative {
 public:
-    OpenFileDialog(Gtk::Window& parent,
-                   std::optional<std::string> folderPath = {});
+	enum class InsertPosition {
+		beginning,
+		end,
+		afterSelected
+	};
+
+	AddFileDialog(Gtk::Window& window,
+                  const std::string& folderPath,
+                  bool enableAfterSelected);
+
+	InsertPosition insertPosition() const;
+
+private:
+    Gtk::Grid m_insertOptionGrid;
+	Gtk::Label m_insertPositionLabel;
+	Gtk::RadioButton m_radioButtonBeggining;
+	Gtk::RadioButton m_radioButtonEnd;
+	Gtk::RadioButton m_radioButtonAfterSelected;
+
+	void setupOptionWidget(bool enableAfterSelected);
 };
 
 } // namespace Slicer
 
-#endif // OPENFILEDIALOG_H
+#endif // ADDFILEDIALOG_HPP

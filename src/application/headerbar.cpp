@@ -30,16 +30,6 @@ HeaderBar::HeaderBar(const Glib::PropertyProxy<unsigned>& zoomIndexProperty)
     setupWidgets();
 }
 
-void HeaderBar::enableAddDocumentButton()
-{
-    m_buttonAddDocument.set_sensitive();
-}
-
-void HeaderBar::disableAddDocumentButton()
-{
-    m_buttonAddDocument.set_sensitive(false);
-}
-
 void HeaderBar::enableZoomSlider()
 {
     m_appMenu.enableZoomSlider();
@@ -55,15 +45,9 @@ void HeaderBar::setupWidgets()
     m_buttonOpen.set_label(_("Open…"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonOpen.gobj()), "win.open-document"); // NOLINT
 
-    Glib::RefPtr<Gio::Menu> addDocumentMenu = Gio::Menu::create();
-    Glib::RefPtr<Gio::Menu> addDocumentSubmenu = Gio::Menu::create();
-    addDocumentMenu->append_section(_("Add a Document"), addDocumentSubmenu);
-    addDocumentSubmenu->append(_("At the beggining…"), "win.add-document-at-beginning");
-    addDocumentSubmenu->append(_("At the end…"), "win.add-document-at-end");
-    addDocumentSubmenu->append(_("After the selected page…"), "win.add-document-after-selected");
     m_buttonAddDocument.set_image_from_icon_name("list-add-symbolic");
     m_buttonAddDocument.set_tooltip_text(_("Add a Document…"));
-    m_buttonAddDocument.set_menu_model(addDocumentMenu);
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonAddDocument.gobj()), "win.add-document"); // NOLINT
 
     auto openBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL});
     openBox->pack_start(m_buttonOpen);

@@ -59,8 +59,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/glibmm/2.58/glibmm-2.58.0.tar.xz",
-                    "sha256": "d34189237b99e88228e6f557f7d6e62f767fe356f395a244f5ad0e486254b645"
+                    "url": "http://ftp.gnome.org/pub/GNOME/sources/glibmm/2.60/glibmm-2.60.0.tar.xz",
+                    "sha256": "a3a1b1c9805479a16c0018acd84b3bfff23a122aee9e3c5013bb81231aeef2bc"
                 }
             ]
         },
@@ -85,8 +85,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/pangomm/2.40/pangomm-2.40.1.tar.xz",
-                    "sha256": "9762ee2a2d5781be6797448d4dd2383ce14907159b30bc12bf6b08e7227be3af"
+                    "url": "http://ftp.gnome.org/pub/GNOME/sources/pangomm/2.40/pangomm-2.40.2.tar.xz",
+                    "sha256": "0a97aa72513db9088ca3034af923484108746dba146e98ed76842cf858322d05"
                 }
             ]
         },
@@ -98,8 +98,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/atkmm/2.24/atkmm-2.24.2.tar.xz",
-                    "sha256": "ff95385759e2af23828d4056356f25376cfabc41e690ac1df055371537e458bd"
+                    "url": "http://ftp.gnome.org/pub/GNOME/sources/atkmm/2.24/atkmm-2.24.3.tar.xz",
+                    "sha256": "9235b343cc0dceaef6c405e66ff69812447aa9fd9557068a2dfe4a62bf78e3a9"
                 }
             ]
         },
@@ -114,8 +114,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/gtkmm/3.22/gtkmm-3.22.2.tar.xz",
-                    "sha256": "91afd98a31519536f5f397c2d79696e3d53143b80b75778521ca7b48cb280090"
+                    "url": "http://ftp.gnome.org/pub/GNOME/sources/gtkmm/3.24/gtkmm-3.24.1.tar.xz",
+                    "sha256": "ddfe42ed2458a20a34de252854bcf4b52d3f0c671c045f56b42aa27c7542d2fd"
                 }
             ]
         },

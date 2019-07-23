@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-25 18:42-0300\n"
-"PO-Revision-Date: 2019-06-25 19:16+0000\n"
+"POT-Creation-Date: 2019-07-23 19:36-0300\n"
+"PO-Revision-Date: 2019-07-02 13:01+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/es/>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1-dev\n"
+"X-Generator: Weblate 3.8-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -48,24 +48,20 @@ msgid "Move right"
 msgstr "Mover a la derecha"
 
 #: ../src/application/actionbar.cpp:56
-#, fuzzy
 msgid "Remove selected pages"
 msgstr "Remover páginas seleccionadas"
 
 #: ../src/application/actionbar.cpp:61
-#, fuzzy
 msgid "Remove unselected pages"
-msgstr "Remover páginas seleccionadas"
+msgstr "Remover páginas no seleccionadas"
 
 #: ../src/application/actionbar.cpp:62
-#, fuzzy
 msgid "Remove previous pages"
-msgstr "Remover anteriores"
+msgstr "Remover páginas anteriores"
 
 #: ../src/application/actionbar.cpp:63
-#, fuzzy
 msgid "Remove next pages"
-msgstr "Remover páginas seleccionadas"
+msgstr "Remover páginas siguientes"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
@@ -73,26 +69,55 @@ msgstr "Más operaciones para remover páginas…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr ""
+msgstr "Seleccionar Todo"
 
 #: ../src/application/actionbar.cpp:76
-#, fuzzy
 msgid "Select odd pages"
-msgstr "Remover páginas seleccionadas"
+msgstr "Seleccionar páginas impares"
 
 #: ../src/application/actionbar.cpp:77
-#, fuzzy
 msgid "Select even pages"
-msgstr "Remover páginas seleccionadas"
+msgstr "Seleccionar páginas pares"
 
 #: ../src/application/actionbar.cpp:80
-#, fuzzy
 msgid "More page selecting options…"
-msgstr "Más operaciones para remover páginas…"
+msgstr "Más opciones para seleccionar páginas…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Cancel Selection"
 msgstr "Cancelar Selección"
+
+#: ../src/application/addfiledialog.cpp:26
+#, fuzzy
+msgid "Select document to add"
+msgstr "Guardar documento como"
+
+#: ../src/application/addfiledialog.cpp:29
+msgid "Add"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:30
+#: ../src/application/openfiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:29
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../src/application/addfiledialog.cpp:55
+msgid "Insertion position"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:56
+msgid "Beginning"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:57
+msgid "End"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:58
+#, fuzzy
+msgid "After the selected page"
+msgstr "Luego de la página seleccionada…"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
@@ -122,41 +147,23 @@ msgstr "Añadido archivo {fileName}"
 msgid "Multiple files added"
 msgstr "Múltiples archivos añadidos"
 
-#: ../src/application/headerbar.cpp:55
+#: ../src/application/headerbar.cpp:45
 msgid "Open…"
 msgstr "Abrir…"
 
-#: ../src/application/headerbar.cpp:60
-#, fuzzy
-msgid "Add a Document"
-msgstr "Añadir Documento…"
-
-#: ../src/application/headerbar.cpp:61
-msgid "At the beggining…"
-msgstr "Al inicio…"
-
-#: ../src/application/headerbar.cpp:62
-msgid "At the end…"
-msgstr "Al final…"
-
-#: ../src/application/headerbar.cpp:63
-msgid "After the selected page…"
-msgstr "Luego de la página seleccionada…"
-
-#: ../src/application/headerbar.cpp:65
-#, fuzzy
+#: ../src/application/headerbar.cpp:49
 msgid "Add a Document…"
-msgstr "Añadir Documento…"
+msgstr "Añadir un Documento…"
 
-#: ../src/application/headerbar.cpp:75
+#: ../src/application/headerbar.cpp:59
 msgid "Undo"
 msgstr "Deshacer"
 
-#: ../src/application/headerbar.cpp:78
+#: ../src/application/headerbar.cpp:62
 msgid "Redo"
 msgstr "Repetir"
 
-#: ../src/application/headerbar.cpp:91
+#: ../src/application/headerbar.cpp:75
 msgid "Save As…"
 msgstr "Guardar Como…"
 
@@ -165,18 +172,13 @@ msgstr "Guardar Como…"
 msgid "Page {pageNumber}"
 msgstr "Página {pageNumber}"
 
-#: ../src/application/openfiledialog.cpp:25
+#: ../src/application/openfiledialog.cpp:24
 msgid "Open document"
 msgstr "Abrir documento"
 
 #: ../src/application/openfiledialog.cpp:27
 msgid "Open"
 msgstr "Abrir"
-
-#: ../src/application/openfiledialog.cpp:28
-#: ../src/application/savefiledialog.cpp:29
-msgid "Cancel"
-msgstr "Cancelar"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF document"
@@ -190,7 +192,7 @@ msgstr "Reducir"
 msgid "Zoom in"
 msgstr "Ampliar"
 
-#: ../src/application/savefiledialog.cpp:26
+#: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
 msgstr "Guardar documento como"
 
@@ -252,7 +254,7 @@ msgstr "Remover páginas seleccionadas"
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr ""
+msgstr "Seleccionar todas las páginas"
 
 #: ../data/ui/shortcuts.ui:57
 msgctxt "shortcut window"
@@ -268,6 +270,15 @@ msgstr "Deshacer el último comando"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Rehacer comando deshecho"
+
+#~ msgid "Add a Document"
+#~ msgstr "Añadir un Documento"
+
+#~ msgid "At the beggining…"
+#~ msgstr "Al inicio…"
+
+#~ msgid "At the end…"
+#~ msgstr "Al final…"
 
 #~ msgctxt "plural (pages)"
 #~ msgid "Remove selected"
