@@ -180,11 +180,6 @@ unsigned int Document::numberOfPages() const
     return m_pages->get_n_items();
 }
 
-std::string Document::originalDocumentParentPath() const
-{
-    return m_filesData.front().originalFile->get_parent()->get_path();
-}
-
 std::string Document::lastAddedFileParentPath() const
 {
     return m_filesData.back().originalFile->get_parent()->get_path();
