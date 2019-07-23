@@ -24,8 +24,7 @@ namespace Slicer {
 
 class OpenFileDialog : public Gtk::FileChooserNative {
 public:
-    OpenFileDialog(Gtk::Window& parent,
-                   std::optional<std::string> folderPath = {});
+    OpenFileDialog(Gtk::Window& parent);
 };
 
 } // namespace Slicer
