@@ -21,13 +21,13 @@
 namespace Slicer {
 
 OpenFileDialog::OpenFileDialog(Gtk::Window& parent)
-    : FileChooserNative{parent,
-                        _("Open document"),
-                        GTK_FILE_CHOOSER_ACTION_OPEN,
-                        _("Open"),
-                        _("Cancel")}
+    : Gtk::FileChooserNative{_("Open document"),
+                             parent,
+                             Gtk::FILE_CHOOSER_ACTION_OPEN,
+                             _("Open"),
+                             _("Cancel")}
 {
-	set_select_multiple(false);
+    set_select_multiple(false);
     add_filter(pdfFilter());
 }
 

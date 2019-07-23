@@ -15,7 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "guicommand.hpp"
-#include <fileutils.hpp>
+#include <glibmm/convert.h>
 #include <glibmm/i18n.h>
 #include <fmt/format.h>
 #include <fmt/ostream.h>
@@ -32,7 +32,7 @@ GuiAddFileCommand::GuiAddFileCommand(Document& document,
     : AddFileCommand{document, file, position}
     , m_headerBar{headerBar}
     , m_view{view}
-    , m_fileName{getDisplayName(file)}
+    , m_fileName{Glib::filename_display_basename(file->get_path())}
     , m_oldSubtitle{headerBar.get_subtitle()}
 {
 }

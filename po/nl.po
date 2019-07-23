@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2019-06-25 16:32-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-23 19:36-0300\n"
 "PO-Revision-Date: 2019-07-02 13:01+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -90,6 +90,38 @@ msgstr "Meer paginaselectie-opties…"
 msgid "Cancel Selection"
 msgstr "Selectie annuleren"
 
+#: ../src/application/addfiledialog.cpp:26
+#, fuzzy
+msgid "Select document to add"
+msgstr "Document opslaan als"
+
+#: ../src/application/addfiledialog.cpp:29
+msgid "Add"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:30
+#: ../src/application/openfiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:29
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: ../src/application/addfiledialog.cpp:55
+msgid "Insertion position"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:56
+msgid "Beginning"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:57
+msgid "End"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:58
+#, fuzzy
+msgid "After the selected page"
+msgstr "Na de geselecteerde pagina…"
+
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
 msgstr "Zoom"
@@ -118,39 +150,23 @@ msgstr "Bestand {fileName} toegevoegd"
 msgid "Multiple files added"
 msgstr "Meerdere bestanden toegevoegd"
 
-#: ../src/application/headerbar.cpp:55
+#: ../src/application/headerbar.cpp:45
 msgid "Open…"
 msgstr "Openen…"
 
-#: ../src/application/headerbar.cpp:60
-msgid "Add a Document"
-msgstr "Document toevoegen"
-
-#: ../src/application/headerbar.cpp:61
-msgid "At the beggining…"
-msgstr "Aan het begin…"
-
-#: ../src/application/headerbar.cpp:62
-msgid "At the end…"
-msgstr "Aan het eind…"
-
-#: ../src/application/headerbar.cpp:63
-msgid "After the selected page…"
-msgstr "Na de geselecteerde pagina…"
-
-#: ../src/application/headerbar.cpp:65
+#: ../src/application/headerbar.cpp:49
 msgid "Add a Document…"
 msgstr "Document toevoegen…"
 
-#: ../src/application/headerbar.cpp:75
+#: ../src/application/headerbar.cpp:59
 msgid "Undo"
 msgstr "Ongedaan maken"
 
-#: ../src/application/headerbar.cpp:78
+#: ../src/application/headerbar.cpp:62
 msgid "Redo"
 msgstr "Opnieuw"
 
-#: ../src/application/headerbar.cpp:91
+#: ../src/application/headerbar.cpp:75
 msgid "Save As…"
 msgstr "Opslaan als…"
 
@@ -159,18 +175,13 @@ msgstr "Opslaan als…"
 msgid "Page {pageNumber}"
 msgstr "Pagina {pageNumber}"
 
-#: ../src/application/openfiledialog.cpp:25
+#: ../src/application/openfiledialog.cpp:24
 msgid "Open document"
 msgstr "Document openen"
 
 #: ../src/application/openfiledialog.cpp:27
 msgid "Open"
 msgstr "Openen"
-
-#: ../src/application/openfiledialog.cpp:28
-#: ../src/application/savefiledialog.cpp:29
-msgid "Cancel"
-msgstr "Annuleren"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF document"
@@ -184,7 +195,7 @@ msgstr "Uitzoomen"
 msgid "Zoom in"
 msgstr "Inzoomen"
 
-#: ../src/application/savefiledialog.cpp:26
+#: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
 msgstr "Document opslaan als"
 
@@ -262,6 +273,15 @@ msgstr "Vorige opdracht ongedaan maken"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Opdracht opnieuw uitvoeren"
+
+#~ msgid "Add a Document"
+#~ msgstr "Document toevoegen"
+
+#~ msgid "At the beggining…"
+#~ msgstr "Aan het begin…"
+
+#~ msgid "At the end…"
+#~ msgstr "Aan het eind…"
 
 #~ msgctxt "plural (pages)"
 #~ msgid "Remove selected"

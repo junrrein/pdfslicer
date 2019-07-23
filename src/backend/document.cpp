@@ -16,7 +16,7 @@
 
 #include "document.hpp"
 #include "tempfile.hpp"
-#include "fileutils.hpp"
+#include <glibmm/convert.h>
 #include <numeric>
 #include <range/v3/view/enumerate.hpp>
 
@@ -180,6 +180,16 @@ unsigned int Document::numberOfPages() const
     return m_pages->get_n_items();
 }
 
+std::string Document::originalDocumentParentPath() const
+{
+    return m_filesData.front().originalFile->get_parent()->get_path();
+}
+
+std::string Document::lastAddedFileParentPath() const
+{
+    return m_filesData.back().originalFile->get_parent()->get_path();
+}
+
 Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
 {
     std::unique_ptr<poppler::document> tempDocument{poppler::document::load_from_file(sourceFile->get_path())};
@@ -204,7 +214,7 @@ Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
 
 std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fileData)
 {
-    const Glib::ustring basename = getDisplayName(fileData.originalFile);
+    const Glib::ustring basename = Glib::filename_display_basename(fileData.originalFile->get_path());
     const std::vector<QPDFPageObjectHelper> pages = fileData.qpdfDocumentHelper->getAllPages();
     std::vector<Glib::RefPtr<Page>> result;
     result.reserve(pages.size());

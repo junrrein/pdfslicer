@@ -1,4 +1,5 @@
 set (APPLICATION_SOURCES
+	${CMAKE_CURRENT_SOURCE_DIR}/addfiledialog.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/application.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/appmenu.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/backgroundthread.cpp
@@ -6,7 +7,6 @@ set (APPLICATION_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/aboutdialog.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/actionbar.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/appwindow.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/filechoosernative.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/guicommand.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/headerbar.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/interactivepagewidget.cpp

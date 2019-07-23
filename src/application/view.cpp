@@ -16,7 +16,7 @@
 
 #include "view.hpp"
 #include "previewwindow.hpp"
-#include <range/v3/all.hpp>
+#include <range/v3/view.hpp>
 
 namespace Slicer {
 
@@ -140,12 +140,11 @@ void View::selectAllPages()
 
 void View::selectOddPages()
 {
-    clearSelection();
-
-    for (auto [i, widget] : ranges::view::enumerate(m_pageWidgets)) {
-        if (i % 2 == 0) {
+    for (auto [i, widget] : rsv::enumerate(m_pageWidgets)) {
+        if (i % 2 == 0)
             widget->setSelected(true);
-        }
+        else
+            widget->setSelected(false);
     }
 
     m_lastPageSelected = nullptr;
@@ -155,12 +154,11 @@ void View::selectOddPages()
 
 void View::selectEvenPages()
 {
-    clearSelection();
-
-    for (auto [i, widget] : ranges::view::enumerate(m_pageWidgets)) {
-        if (i % 2 == 1) {
+    for (auto [i, widget] : rsv::enumerate(m_pageWidgets)) {
+        if (i % 2 == 1)
             widget->setSelected(true);
-        }
+        else
+            widget->setSelected(false);
     }
 
     m_lastPageSelected = nullptr;

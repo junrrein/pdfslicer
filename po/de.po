@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-25 18:42-0300\n"
+"POT-Creation-Date: 2019-07-23 19:36-0300\n"
 "PO-Revision-Date: 2019-02-10 18:10+0000\n"
 "Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -100,6 +100,38 @@ msgstr "Weitere Löschaktionen von Seiten…"
 msgid "Cancel Selection"
 msgstr "Auswahl abbrechen"
 
+#: ../src/application/addfiledialog.cpp:26
+#, fuzzy
+msgid "Select document to add"
+msgstr "Dokument speichern unter"
+
+#: ../src/application/addfiledialog.cpp:29
+msgid "Add"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:30
+#: ../src/application/openfiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:29
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: ../src/application/addfiledialog.cpp:55
+msgid "Insertion position"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:56
+msgid "Beginning"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:57
+msgid "End"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:58
+#, fuzzy
+msgid "After the selected page"
+msgstr "Ausgewählte Seiten entfernen"
+
 #: ../src/application/appmenu.cpp:45
 #, fuzzy
 msgid "Zoom"
@@ -129,43 +161,25 @@ msgstr ""
 msgid "Multiple files added"
 msgstr ""
 
-#: ../src/application/headerbar.cpp:55
+#: ../src/application/headerbar.cpp:45
 #, fuzzy
 msgid "Open…"
 msgstr "Öffnen"
 
-#: ../src/application/headerbar.cpp:60
-#, fuzzy
-msgid "Add a Document"
-msgstr "Dokument öffnen…"
-
-#: ../src/application/headerbar.cpp:61
-msgid "At the beggining…"
-msgstr ""
-
-#: ../src/application/headerbar.cpp:62
-msgid "At the end…"
-msgstr ""
-
-#: ../src/application/headerbar.cpp:63
-#, fuzzy
-msgid "After the selected page…"
-msgstr "Ausgewählte Seiten entfernen"
-
-#: ../src/application/headerbar.cpp:65
+#: ../src/application/headerbar.cpp:49
 #, fuzzy
 msgid "Add a Document…"
 msgstr "Dokument öffnen…"
 
-#: ../src/application/headerbar.cpp:75
+#: ../src/application/headerbar.cpp:59
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: ../src/application/headerbar.cpp:78
+#: ../src/application/headerbar.cpp:62
 msgid "Redo"
 msgstr "Wiederherstellen"
 
-#: ../src/application/headerbar.cpp:91
+#: ../src/application/headerbar.cpp:75
 #, fuzzy
 msgid "Save As…"
 msgstr "Speichern unter…"
@@ -175,18 +189,13 @@ msgstr "Speichern unter…"
 msgid "Page {pageNumber}"
 msgstr "Seite {pageNumber}"
 
-#: ../src/application/openfiledialog.cpp:25
+#: ../src/application/openfiledialog.cpp:24
 msgid "Open document"
 msgstr "Dokument öffnen"
 
 #: ../src/application/openfiledialog.cpp:27
 msgid "Open"
 msgstr "Öffnen"
-
-#: ../src/application/openfiledialog.cpp:28
-#: ../src/application/savefiledialog.cpp:29
-msgid "Cancel"
-msgstr "Abbrechen"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF document"
@@ -200,7 +209,7 @@ msgstr "Herauszoomen"
 msgid "Zoom in"
 msgstr "Hineinzoomen"
 
-#: ../src/application/savefiledialog.cpp:26
+#: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
 msgstr "Dokument speichern unter"
 
@@ -278,6 +287,10 @@ msgstr "Letzten Befehl rückgängig machen"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Wiederherstellen"
+
+#, fuzzy
+#~ msgid "Add a Document"
+#~ msgstr "Dokument öffnen…"
 
 #~ msgctxt "plural (pages)"
 #~ msgid "Remove selected"

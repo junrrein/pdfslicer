@@ -91,6 +91,38 @@ msgstr "Plus d'options de sélection de page…"
 msgid "Cancel Selection"
 msgstr "Annuler la sélection"
 
+#: ../src/application/addfiledialog.cpp:26
+#, fuzzy
+msgid "Select document to add"
+msgstr "Enregistrer le document sous"
+
+#: ../src/application/addfiledialog.cpp:29
+msgid "Add"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:30
+#: ../src/application/openfiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:29
+msgid "Cancel"
+msgstr "Annuler"
+
+#: ../src/application/addfiledialog.cpp:55
+msgid "Insertion position"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:56
+msgid "Beginning"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:57
+msgid "End"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:58
+#, fuzzy
+msgid "After the selected page"
+msgstr "Après la page sélectionnée…"
+
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
 msgstr "Zoom"
@@ -119,39 +151,23 @@ msgstr "Ajouter le fichier {fileName}"
 msgid "Multiple files added"
 msgstr "Plusieurs fichiers ajoutés"
 
-#: ../src/application/headerbar.cpp:55
+#: ../src/application/headerbar.cpp:45
 msgid "Open…"
 msgstr "Ouvrir…"
 
-#: ../src/application/headerbar.cpp:60
-msgid "Add a Document"
-msgstr "Ajouter un document"
-
-#: ../src/application/headerbar.cpp:61
-msgid "At the beggining…"
-msgstr "Au début…"
-
-#: ../src/application/headerbar.cpp:62
-msgid "At the end…"
-msgstr "A la fin…"
-
-#: ../src/application/headerbar.cpp:63
-msgid "After the selected page…"
-msgstr "Après la page sélectionnée…"
-
-#: ../src/application/headerbar.cpp:65
+#: ../src/application/headerbar.cpp:49
 msgid "Add a Document…"
 msgstr "Ajouter un document…"
 
-#: ../src/application/headerbar.cpp:75
+#: ../src/application/headerbar.cpp:59
 msgid "Undo"
 msgstr "Annuler"
 
-#: ../src/application/headerbar.cpp:78
+#: ../src/application/headerbar.cpp:62
 msgid "Redo"
 msgstr "Rétablir"
 
-#: ../src/application/headerbar.cpp:91
+#: ../src/application/headerbar.cpp:75
 msgid "Save As…"
 msgstr "Enregistrer sous.…"
 
@@ -160,18 +176,13 @@ msgstr "Enregistrer sous.…"
 msgid "Page {pageNumber}"
 msgstr "Page {pageNumber}"
 
-#: ../src/application/openfiledialog.cpp:25
+#: ../src/application/openfiledialog.cpp:24
 msgid "Open document"
 msgstr "Ouvrir un document"
 
 #: ../src/application/openfiledialog.cpp:27
 msgid "Open"
 msgstr "Ouvrir"
-
-#: ../src/application/openfiledialog.cpp:28
-#: ../src/application/savefiledialog.cpp:29
-msgid "Cancel"
-msgstr "Annuler"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF document"
@@ -185,7 +196,7 @@ msgstr "Zoom arrière"
 msgid "Zoom in"
 msgstr "Zoom avant"
 
-#: ../src/application/savefiledialog.cpp:26
+#: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
 msgstr "Enregistrer le document sous"
 
@@ -263,6 +274,15 @@ msgstr "Annuler la dernière commande"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Rétablir la commande annulée"
+
+#~ msgid "Add a Document"
+#~ msgstr "Ajouter un document"
+
+#~ msgid "At the beggining…"
+#~ msgstr "Au début…"
+
+#~ msgid "At the end…"
+#~ msgstr "A la fin…"
 
 #~ msgctxt "plural (pages)"
 #~ msgid "Remove selected"
