@@ -27,7 +27,7 @@ AddFileDialog::AddFileDialog(Gtk::Window& window,
                              _("Add document"),
                              Gtk::FILE_CHOOSER_ACTION_OPEN}
 {
-    add_button(_("Open"), Gtk::RESPONSE_ACCEPT);
+    add_button(_("Add"), Gtk::RESPONSE_ACCEPT);
     add_button(_("Cancel"), Gtk::RESPONSE_CANCEL);
     set_select_multiple(false);
     add_filter(pdfFilter());
