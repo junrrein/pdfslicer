@@ -69,7 +69,7 @@ void AddFileDialog::setupOptionWidget(bool enableAfterSelected)
     m_insertOptionBox.pack_start(m_insertPositionLabel);
     m_insertOptionBox.pack_start(m_radioButtonsBox);
 
-    m_radioButtonBeggining.set_active();
+    m_radioButtonEnd.set_active();
 
     if (!enableAfterSelected)
         m_radioButtonAfterSelected.set_sensitive(false);
