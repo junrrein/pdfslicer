@@ -24,7 +24,7 @@ AddFileDialog::AddFileDialog(Gtk::Window& window,
                              const std::string& folderPath,
                              bool enableAfterSelected)
     : Gtk::FileChooserDialog{window,
-                             _("Add document"),
+                             _("Select document to add"),
                              Gtk::FILE_CHOOSER_ACTION_OPEN}
 {
     add_button(_("Add"), Gtk::RESPONSE_ACCEPT);
