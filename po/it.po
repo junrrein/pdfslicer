@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2019-06-25 16:32-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-23 19:36-0300\n"
 "PO-Revision-Date: 2019-06-25 19:46+0000\n"
 "Last-Translator: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -93,6 +93,38 @@ msgstr "Ulteriori operazioni di rimozione pagine…"
 msgid "Cancel Selection"
 msgstr "Annulla la selezione"
 
+#: ../src/application/addfiledialog.cpp:26
+#, fuzzy
+msgid "Select document to add"
+msgstr "Salva documento come"
+
+#: ../src/application/addfiledialog.cpp:29
+msgid "Add"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:30
+#: ../src/application/openfiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:29
+msgid "Cancel"
+msgstr "Annulla"
+
+#: ../src/application/addfiledialog.cpp:55
+msgid "Insertion position"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:56
+msgid "Beginning"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:57
+msgid "End"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:58
+#, fuzzy
+msgid "After the selected page"
+msgstr "Dopo la pagina selezionata…"
+
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
 msgstr "Zoom"
@@ -121,39 +153,23 @@ msgstr "Aggiunto file {fileName}"
 msgid "Multiple files added"
 msgstr "Più file aggiunti"
 
-#: ../src/application/headerbar.cpp:55
+#: ../src/application/headerbar.cpp:45
 msgid "Open…"
 msgstr "Apri…"
 
-#: ../src/application/headerbar.cpp:60
-msgid "Add a Document"
-msgstr "Aggiungi un documento"
-
-#: ../src/application/headerbar.cpp:61
-msgid "At the beggining…"
-msgstr "All'inizio…"
-
-#: ../src/application/headerbar.cpp:62
-msgid "At the end…"
-msgstr "Alla fine…"
-
-#: ../src/application/headerbar.cpp:63
-msgid "After the selected page…"
-msgstr "Dopo la pagina selezionata…"
-
-#: ../src/application/headerbar.cpp:65
+#: ../src/application/headerbar.cpp:49
 msgid "Add a Document…"
 msgstr "Aggiungi un documento…"
 
-#: ../src/application/headerbar.cpp:75
+#: ../src/application/headerbar.cpp:59
 msgid "Undo"
 msgstr "Annulla"
 
-#: ../src/application/headerbar.cpp:78
+#: ../src/application/headerbar.cpp:62
 msgid "Redo"
 msgstr "Ripeti"
 
-#: ../src/application/headerbar.cpp:91
+#: ../src/application/headerbar.cpp:75
 msgid "Save As…"
 msgstr "Salva come…"
 
@@ -162,18 +178,13 @@ msgstr "Salva come…"
 msgid "Page {pageNumber}"
 msgstr "Pagina {pageNumber}"
 
-#: ../src/application/openfiledialog.cpp:25
+#: ../src/application/openfiledialog.cpp:24
 msgid "Open document"
 msgstr "Apri documento"
 
 #: ../src/application/openfiledialog.cpp:27
 msgid "Open"
 msgstr "Apri"
-
-#: ../src/application/openfiledialog.cpp:28
-#: ../src/application/savefiledialog.cpp:29
-msgid "Cancel"
-msgstr "Annulla"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF document"
@@ -187,7 +198,7 @@ msgstr "Riduci l'ingrandimento"
 msgid "Zoom in"
 msgstr "Aumenta l'ingrandimento"
 
-#: ../src/application/savefiledialog.cpp:26
+#: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
 msgstr "Salva documento come"
 
@@ -265,6 +276,15 @@ msgstr "Annulla l'ultima azione"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Ripete l'azione annullata"
+
+#~ msgid "Add a Document"
+#~ msgstr "Aggiungi un documento"
+
+#~ msgid "At the beggining…"
+#~ msgstr "All'inizio…"
+
+#~ msgid "At the end…"
+#~ msgstr "Alla fine…"
 
 #~ msgctxt "plural (pages)"
 #~ msgid "Remove selected"

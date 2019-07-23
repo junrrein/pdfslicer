@@ -5,12 +5,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2019-06-25 16:32-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-23 19:36-0300\n"
 "PO-Revision-Date: 2019-07-02 13:01+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
-"pdf-slicer/translations/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
+"slicer/translations/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -95,6 +95,38 @@ msgstr "Flere sidefjerningsoperasjoner…"
 msgid "Cancel Selection"
 msgstr "Avbryt utvalg"
 
+#: ../src/application/addfiledialog.cpp:26
+#, fuzzy
+msgid "Select document to add"
+msgstr "Lagre dokument som"
+
+#: ../src/application/addfiledialog.cpp:29
+msgid "Add"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:30
+#: ../src/application/openfiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:29
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: ../src/application/addfiledialog.cpp:55
+msgid "Insertion position"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:56
+msgid "Beginning"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:57
+msgid "End"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:58
+#, fuzzy
+msgid "After the selected page"
+msgstr "Fjern valgt side…"
+
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
 msgstr "Forstørr"
@@ -123,39 +155,23 @@ msgstr "Tillagt fil {fileName}"
 msgid "Multiple files added"
 msgstr "Flere filer lagt til"
 
-#: ../src/application/headerbar.cpp:55
+#: ../src/application/headerbar.cpp:45
 msgid "Open…"
 msgstr "Åpne…"
 
-#: ../src/application/headerbar.cpp:60
-msgid "Add a Document"
-msgstr "Åpne et dokument"
-
-#: ../src/application/headerbar.cpp:61
-msgid "At the beggining…"
-msgstr "I begynnelsen…"
-
-#: ../src/application/headerbar.cpp:62
-msgid "At the end…"
-msgstr "På slutten…"
-
-#: ../src/application/headerbar.cpp:63
-msgid "After the selected page…"
-msgstr "Fjern valgt side…"
-
-#: ../src/application/headerbar.cpp:65
+#: ../src/application/headerbar.cpp:49
 msgid "Add a Document…"
 msgstr "Legg til et dokument…"
 
-#: ../src/application/headerbar.cpp:75
+#: ../src/application/headerbar.cpp:59
 msgid "Undo"
 msgstr "Angre"
 
-#: ../src/application/headerbar.cpp:78
+#: ../src/application/headerbar.cpp:62
 msgid "Redo"
 msgstr "Gjenta"
 
-#: ../src/application/headerbar.cpp:91
+#: ../src/application/headerbar.cpp:75
 #, fuzzy
 msgid "Save As…"
 msgstr "Lagre som…"
@@ -165,18 +181,13 @@ msgstr "Lagre som…"
 msgid "Page {pageNumber}"
 msgstr "Side {pageNumber}"
 
-#: ../src/application/openfiledialog.cpp:25
+#: ../src/application/openfiledialog.cpp:24
 msgid "Open document"
 msgstr "Åpne dokument"
 
 #: ../src/application/openfiledialog.cpp:27
 msgid "Open"
 msgstr "Åpne"
-
-#: ../src/application/openfiledialog.cpp:28
-#: ../src/application/savefiledialog.cpp:29
-msgid "Cancel"
-msgstr "Avbryt"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF document"
@@ -190,7 +201,7 @@ msgstr "Forminsk"
 msgid "Zoom in"
 msgstr "Forstørr"
 
-#: ../src/application/savefiledialog.cpp:26
+#: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
 msgstr "Lagre dokument som"
 
@@ -269,6 +280,15 @@ msgstr "Angre siste kommando"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Gjenta angret kommando"
+
+#~ msgid "Add a Document"
+#~ msgstr "Åpne et dokument"
+
+#~ msgid "At the beggining…"
+#~ msgstr "I begynnelsen…"
+
+#~ msgid "At the end…"
+#~ msgstr "På slutten…"
 
 #, fuzzy
 #~ msgctxt "plural (pages)"

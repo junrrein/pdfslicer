@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2019-06-25 18:42-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-23 19:36-0300\n"
 "PO-Revision-Date: 2019-07-02 13:01+0000\n"
 "Last-Translator: naofum <naofum@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -90,6 +90,38 @@ msgstr "他のページ選択操作…"
 msgid "Cancel Selection"
 msgstr "選択を取り消す"
 
+#: ../src/application/addfiledialog.cpp:26
+#, fuzzy
+msgid "Select document to add"
+msgstr "名前を付けてドキュメントを保存"
+
+#: ../src/application/addfiledialog.cpp:29
+msgid "Add"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:30
+#: ../src/application/openfiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:29
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: ../src/application/addfiledialog.cpp:55
+msgid "Insertion position"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:56
+msgid "Beginning"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:57
+msgid "End"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:58
+#, fuzzy
+msgid "After the selected page"
+msgstr "選択したページの後…"
+
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
 msgstr "ズーム"
@@ -118,39 +150,23 @@ msgstr "ファイル {fileName} を追加しました"
 msgid "Multiple files added"
 msgstr "複数のファイルが追加されました"
 
-#: ../src/application/headerbar.cpp:55
+#: ../src/application/headerbar.cpp:45
 msgid "Open…"
 msgstr "開く…"
 
-#: ../src/application/headerbar.cpp:60
-msgid "Add a Document"
-msgstr "ドキュメントを追加"
-
-#: ../src/application/headerbar.cpp:61
-msgid "At the beggining…"
-msgstr "最初に…"
-
-#: ../src/application/headerbar.cpp:62
-msgid "At the end…"
-msgstr "最後に…"
-
-#: ../src/application/headerbar.cpp:63
-msgid "After the selected page…"
-msgstr "選択したページの後…"
-
-#: ../src/application/headerbar.cpp:65
+#: ../src/application/headerbar.cpp:49
 msgid "Add a Document…"
 msgstr "ドキュメントを追加…"
 
-#: ../src/application/headerbar.cpp:75
+#: ../src/application/headerbar.cpp:59
 msgid "Undo"
 msgstr "元に戻す"
 
-#: ../src/application/headerbar.cpp:78
+#: ../src/application/headerbar.cpp:62
 msgid "Redo"
 msgstr "やり直し"
 
-#: ../src/application/headerbar.cpp:91
+#: ../src/application/headerbar.cpp:75
 msgid "Save As…"
 msgstr "名前を付けて保存…"
 
@@ -159,18 +175,13 @@ msgstr "名前を付けて保存…"
 msgid "Page {pageNumber}"
 msgstr "ページ {pageNumber}"
 
-#: ../src/application/openfiledialog.cpp:25
+#: ../src/application/openfiledialog.cpp:24
 msgid "Open document"
 msgstr "ドキュメントを開く"
 
 #: ../src/application/openfiledialog.cpp:27
 msgid "Open"
 msgstr "開く"
-
-#: ../src/application/openfiledialog.cpp:28
-#: ../src/application/savefiledialog.cpp:29
-msgid "Cancel"
-msgstr "キャンセル"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF document"
@@ -184,7 +195,7 @@ msgstr "縮小"
 msgid "Zoom in"
 msgstr "拡大"
 
-#: ../src/application/savefiledialog.cpp:26
+#: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
 msgstr "名前を付けてドキュメントを保存"
 
@@ -262,6 +273,15 @@ msgstr "最後の操作を元に戻す"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "元に戻した操作をやり直す"
+
+#~ msgid "Add a Document"
+#~ msgstr "ドキュメントを追加"
+
+#~ msgid "At the beggining…"
+#~ msgstr "最初に…"
+
+#~ msgid "At the end…"
+#~ msgstr "最後に…"
 
 #~ msgctxt "plural (pages)"
 #~ msgid "Remove selected"
