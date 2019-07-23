@@ -64,6 +64,7 @@ void AddFileDialog::setupOptionWidget(bool enableAfterSelected)
     m_insertOptionGrid.attach(m_radioButtonBeggining, 1, 0);
     m_insertOptionGrid.attach(m_radioButtonEnd, 1, 1);
     m_insertOptionGrid.attach(m_radioButtonAfterSelected, 1, 2);
+    m_insertOptionGrid.set_column_spacing(5);
 
     m_radioButtonEnd.set_active();
 
