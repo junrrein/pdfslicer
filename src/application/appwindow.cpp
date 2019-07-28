@@ -305,7 +305,10 @@ void AppWindow::trySaveDocument(const Glib::RefPtr<Gio::File>& file)
 
 void AppWindow::onOpenAction()
 {
-    Slicer::OpenFileDialog dialog{*this};
+    Slicer::OpenFileDialog dialog{*this,
+                                  m_document != nullptr
+                                      ? m_document->lastAddedFileParentPath()
+                                      : std::optional<std::string>{}};
 
     const int result = dialog.run();
 
