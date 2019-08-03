@@ -5,12 +5,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-07-23 19:36-0300\n"
-"PO-Revision-Date: 2019-07-02 13:01+0000\n"
+"PO-Revision-Date: 2019-08-05 20:23+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
-"slicer/translations/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"pdf-slicer/translations/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -102,7 +102,7 @@ msgstr "Lagre dokument som"
 
 #: ../src/application/addfiledialog.cpp:29
 msgid "Add"
-msgstr ""
+msgstr "Legg til"
 
 #: ../src/application/addfiledialog.cpp:30
 #: ../src/application/openfiledialog.cpp:28
@@ -111,16 +111,19 @@ msgid "Cancel"
 msgstr "Avbryt"
 
 #: ../src/application/addfiledialog.cpp:55
+#, fuzzy
 msgid "Insertion position"
-msgstr ""
+msgstr "Innsettingsposisjon"
 
 #: ../src/application/addfiledialog.cpp:56
+#, fuzzy
 msgid "Beginning"
-msgstr ""
+msgstr "Begynnelsen"
 
 #: ../src/application/addfiledialog.cpp:57
+#, fuzzy
 msgid "End"
-msgstr ""
+msgstr "Slutten"
 
 #: ../src/application/addfiledialog.cpp:58
 #, fuzzy
