@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-07-23 19:36-0300\n"
-"PO-Revision-Date: 2019-07-02 13:01+0000\n"
+"PO-Revision-Date: 2019-08-05 20:23+0000\n"
 "Last-Translator: naofum <naofum@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/ja/>\n"
@@ -91,13 +91,12 @@ msgid "Cancel Selection"
 msgstr "選択を取り消す"
 
 #: ../src/application/addfiledialog.cpp:26
-#, fuzzy
 msgid "Select document to add"
-msgstr "名前を付けてドキュメントを保存"
+msgstr "追加するドキュメントを選択"
 
 #: ../src/application/addfiledialog.cpp:29
 msgid "Add"
-msgstr ""
+msgstr "追加"
 
 #: ../src/application/addfiledialog.cpp:30
 #: ../src/application/openfiledialog.cpp:28
@@ -107,20 +106,19 @@ msgstr "キャンセル"
 
 #: ../src/application/addfiledialog.cpp:55
 msgid "Insertion position"
-msgstr ""
+msgstr "挿入位置"
 
 #: ../src/application/addfiledialog.cpp:56
 msgid "Beginning"
-msgstr ""
+msgstr "開始"
 
 #: ../src/application/addfiledialog.cpp:57
 msgid "End"
-msgstr ""
+msgstr "終了"
 
 #: ../src/application/addfiledialog.cpp:58
-#, fuzzy
 msgid "After the selected page"
-msgstr "選択したページの後…"
+msgstr "選択したページの後"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
