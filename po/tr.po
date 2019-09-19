@@ -1,0 +1,268 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Sabri Ünal <libreajans@gmail.com>, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-23 19:36-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/application/aboutdialog.cpp:26
+msgid ""
+"A simple application to extract, merge, rotate and reorder pages of PDF "
+"documents"
+msgstr ""
+
+#: ../src/application/aboutdialog.cpp:32
+msgid "Application icon"
+msgstr ""
+
+#: ../src/application/aboutdialog.cpp:35
+msgid "Third-party libraries"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:30
+msgid "Rotate left"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:35
+msgid "Rotate right"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:43
+msgid "Move left"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:48
+msgid "Move right"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:56
+msgid "Remove selected pages"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:61
+msgid "Remove unselected pages"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:62
+msgid "Remove previous pages"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:63
+msgid "Remove next pages"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:65
+msgid "More page removing operations…"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:72
+msgid "Select All"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:76
+msgid "Select odd pages"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:77
+msgid "Select even pages"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:80
+msgid "More page selecting options…"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:90
+msgid "Cancel Selection"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:26
+msgid "Select document to add"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:29
+msgid "Add"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:30
+#: ../src/application/openfiledialog.cpp:28
+#: ../src/application/savefiledialog.cpp:29
+msgid "Cancel"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:55
+msgid "Insertion position"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:56
+msgid "Beginning"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:57
+msgid "End"
+msgstr ""
+
+#: ../src/application/addfiledialog.cpp:58
+msgid "After the selected page"
+msgstr ""
+
+#: ../src/application/appmenu.cpp:45
+msgid "Zoom"
+msgstr ""
+
+#: ../src/application/appmenu.cpp:61
+msgid "Keyboard shortcuts"
+msgstr ""
+
+#: ../src/application/appmenu.cpp:65
+msgid "About PDF Slicer"
+msgstr ""
+
+#: ../src/application/appwindow.cpp:193
+msgid "The current document could not be saved"
+msgstr ""
+
+#: ../src/application/appwindow.cpp:321
+msgid "The selected file could not be opened"
+msgstr ""
+
+#: ../src/application/guicommand.cpp:71
+msgid "Added file {fileName}"
+msgstr ""
+
+#: ../src/application/guicommand.cpp:74
+msgid "Multiple files added"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:45
+msgid "Open…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:49
+msgid "Add a Document…"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:59
+msgid "Undo"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:62
+msgid "Redo"
+msgstr ""
+
+#: ../src/application/headerbar.cpp:75
+msgid "Save As…"
+msgstr ""
+
+#: ../src/application/interactivepagewidget.cpp:113
+#: ../src/application/previewwindow.cpp:51
+msgid "Page {pageNumber}"
+msgstr ""
+
+#: ../src/application/openfiledialog.cpp:24
+msgid "Open document"
+msgstr ""
+
+#: ../src/application/openfiledialog.cpp:27
+msgid "Open"
+msgstr ""
+
+#: ../src/application/pdffilter.cpp:23
+msgid "PDF document"
+msgstr ""
+
+#: ../src/application/previewwindow.cpp:58
+msgid "Zoom out"
+msgstr ""
+
+#: ../src/application/previewwindow.cpp:65
+msgid "Zoom in"
+msgstr ""
+
+#: ../src/application/savefiledialog.cpp:25
+msgid "Save document as"
+msgstr ""
+
+#: ../src/application/savefiledialog.cpp:28
+msgid "Save"
+msgstr ""
+
+#: ../src/application/savefiledialog.cpp:31
+msgid "Untitled document"
+msgstr ""
+
+#: ../src/application/savingrevealer.cpp:26
+msgid "Saving…"
+msgstr ""
+
+#: ../src/application/savingrevealer.cpp:33
+msgid "Saved!"
+msgstr ""
+
+#: ../src/application/welcomescreen.cpp:29
+msgid "Open a document to start slicing!"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:12
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:16
+msgctxt "shortcut window"
+msgid "Open document"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:22
+msgctxt "shortcut window"
+msgid "Save document"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:41
+msgctxt "shortcut window"
+msgid "Document editing"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:45
+msgctxt "shortcut window"
+msgid "Remove selected pages"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:51
+msgctxt "shortcut window"
+msgid "Select all pages"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:57
+msgctxt "shortcut window"
+msgid "Cancel selection"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:63
+msgctxt "shortcut window"
+msgid "Undo last command"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:69
+msgctxt "shortcut window"
+msgid "Redo undone command"
+msgstr ""
