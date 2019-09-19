@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-07-23 19:36-0300\n"
-"PO-Revision-Date: 2019-09-19 19:17+0000\n"
+"PO-Revision-Date: 2019-09-21 20:28+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/tr/>\n"
@@ -23,6 +23,8 @@ msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
+"PDF belgelerinin sayfalarını ayıklamak, birleştirmek, döndürmek ve yeniden "
+"sıralamak için basit bir araç"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application icon"
@@ -30,242 +32,242 @@ msgstr "Uygulama simgesi"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Third-party libraries"
-msgstr ""
+msgstr "Üçüncü Taraf Kütüphaneler"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr ""
+msgstr "Sola çevir"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr ""
+msgstr "Sağa çevir"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
-msgstr ""
+msgstr "Sola kaydır"
 
 #: ../src/application/actionbar.cpp:48
 msgid "Move right"
-msgstr ""
+msgstr "Sağa kaydır"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr ""
+msgstr "Seçili sayfaları kaldır"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr ""
+msgstr "Seçili olmayan sayfaları kaldır"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
-msgstr ""
+msgstr "Önceki sayfaları kaldır"
 
 #: ../src/application/actionbar.cpp:63
 msgid "Remove next pages"
-msgstr ""
+msgstr "Sonraki sayfaları kaldır"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr ""
+msgstr "Daha fazla sayfa kaldırma işlemleri…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr ""
+msgstr "Tümünü Seç"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
-msgstr ""
+msgstr "Tek sayfaları seç"
 
 #: ../src/application/actionbar.cpp:77
 msgid "Select even pages"
-msgstr ""
+msgstr "Çift sayfaları seç"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr ""
+msgstr "Daha fazla sayfa seçim işlemleri…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Cancel Selection"
-msgstr ""
+msgstr "Seçimi İptal Et"
 
 #: ../src/application/addfiledialog.cpp:26
 msgid "Select document to add"
-msgstr ""
+msgstr "Belgeyi eklemek için seç"
 
 #: ../src/application/addfiledialog.cpp:29
 msgid "Add"
-msgstr ""
+msgstr "Ekle"
 
 #: ../src/application/addfiledialog.cpp:30
 #: ../src/application/openfiledialog.cpp:28
 #: ../src/application/savefiledialog.cpp:29
 msgid "Cancel"
-msgstr ""
+msgstr "İptal Et"
 
 #: ../src/application/addfiledialog.cpp:55
 msgid "Insertion position"
-msgstr ""
+msgstr "Ekleme konumu"
 
 #: ../src/application/addfiledialog.cpp:56
 msgid "Beginning"
-msgstr ""
+msgstr "Başlangıç"
 
 #: ../src/application/addfiledialog.cpp:57
 msgid "End"
-msgstr ""
+msgstr "Bitiş"
 
 #: ../src/application/addfiledialog.cpp:58
 msgid "After the selected page"
-msgstr ""
+msgstr "Seçilen sayfadan sonra"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
-msgstr ""
+msgstr "Yakınlaştır"
 
 #: ../src/application/appmenu.cpp:61
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "Klavye Kısayolları"
 
 #: ../src/application/appmenu.cpp:65
 msgid "About PDF Slicer"
-msgstr ""
+msgstr "PDF Slicer Hakkında"
 
 #: ../src/application/appwindow.cpp:193
 msgid "The current document could not be saved"
-msgstr ""
+msgstr "Geçerli belge kaydedilemedi"
 
 #: ../src/application/appwindow.cpp:321
 msgid "The selected file could not be opened"
-msgstr ""
+msgstr "Seçili dosya açılamadı"
 
 #: ../src/application/guicommand.cpp:71
 msgid "Added file {fileName}"
-msgstr ""
+msgstr "{fileName} dosyası eklendi"
 
 #: ../src/application/guicommand.cpp:74
 msgid "Multiple files added"
-msgstr ""
+msgstr "Çoklu dosya eklendi"
 
 #: ../src/application/headerbar.cpp:45
 msgid "Open…"
-msgstr ""
+msgstr "Aç…"
 
 #: ../src/application/headerbar.cpp:49
 msgid "Add a Document…"
-msgstr ""
+msgstr "Belge Ekle…"
 
 #: ../src/application/headerbar.cpp:59
 msgid "Undo"
-msgstr ""
+msgstr "Geri Al"
 
 #: ../src/application/headerbar.cpp:62
 msgid "Redo"
-msgstr ""
+msgstr "Yinele"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Save As…"
-msgstr ""
+msgstr "Farklı Kaydet…"
 
 #: ../src/application/interactivepagewidget.cpp:113
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
-msgstr ""
+msgstr "Sayfa: {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:24
 msgid "Open document"
-msgstr ""
+msgstr "Belge aç"
 
 #: ../src/application/openfiledialog.cpp:27
 msgid "Open"
-msgstr ""
+msgstr "Aç"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF document"
-msgstr ""
+msgstr "PDF belgesi"
 
 #: ../src/application/previewwindow.cpp:58
 msgid "Zoom out"
-msgstr ""
+msgstr "Uzaklaştır"
 
 #: ../src/application/previewwindow.cpp:65
 msgid "Zoom in"
-msgstr ""
+msgstr "Yakınlaştır"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr ""
+msgstr "Belgeyi farklı kaydet"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
-msgstr ""
+msgstr "Kaydet"
 
 #: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
-msgstr ""
+msgstr "Başlıksız belge"
 
 #: ../src/application/savingrevealer.cpp:26
 msgid "Saving…"
-msgstr ""
+msgstr "Kaydediliyor…"
 
 #: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
-msgstr ""
+msgstr "Kaydedildi!"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr ""
+msgstr "Dilimlemeye başlamak için bir belge aç!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Genel"
 
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr ""
+msgstr "Belge aç"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr ""
+msgstr "Belgeyi kaydet"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "Yakınlaştır"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "Uzaklaştır"
 
 #: ../data/ui/shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Document editing"
-msgstr ""
+msgstr "Belge düzenleme"
 
 #: ../data/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr ""
+msgstr "Seçili sayfaları kaldır"
 
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr ""
+msgstr "Tüm sayfaları seç"
 
 #: ../data/ui/shortcuts.ui:57
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr ""
+msgstr "Seçimi iptal et"
 
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr ""
+msgstr "Son komutu geri al"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr ""
+msgstr "Geri alma komutunu yinele"
