@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-07-23 19:36-0300\n"
-"PO-Revision-Date: 2019-06-25 19:46+0000\n"
+"PO-Revision-Date: 2019-08-01 05:14+0000\n"
 "Last-Translator: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/it/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1-dev\n"
+"X-Generator: Weblate 3.8-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -72,35 +72,31 @@ msgstr "Ulteriori operazioni di rimozione pagine…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr ""
+msgstr "Seleziona tutto"
 
 #: ../src/application/actionbar.cpp:76
-#, fuzzy
 msgid "Select odd pages"
-msgstr "Rimuove le pagine selezionate"
+msgstr "Seleziona le pagine dispari"
 
 #: ../src/application/actionbar.cpp:77
-#, fuzzy
 msgid "Select even pages"
-msgstr "Rimuove le pagine selezionate"
+msgstr "Seleziona le pagine pari"
 
 #: ../src/application/actionbar.cpp:80
-#, fuzzy
 msgid "More page selecting options…"
-msgstr "Ulteriori operazioni di rimozione pagine…"
+msgstr "Ulteriori operazioni di selzione delle pagine…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Cancel Selection"
 msgstr "Annulla la selezione"
 
 #: ../src/application/addfiledialog.cpp:26
-#, fuzzy
 msgid "Select document to add"
-msgstr "Salva documento come"
+msgstr "Seleziona il documento da aggiungere"
 
 #: ../src/application/addfiledialog.cpp:29
 msgid "Add"
-msgstr ""
+msgstr "Aggiunge"
 
 #: ../src/application/addfiledialog.cpp:30
 #: ../src/application/openfiledialog.cpp:28
@@ -110,20 +106,19 @@ msgstr "Annulla"
 
 #: ../src/application/addfiledialog.cpp:55
 msgid "Insertion position"
-msgstr ""
+msgstr "Posizione di inserimento"
 
 #: ../src/application/addfiledialog.cpp:56
 msgid "Beginning"
-msgstr ""
+msgstr "Inizio"
 
 #: ../src/application/addfiledialog.cpp:57
 msgid "End"
-msgstr ""
+msgstr "Fine"
 
 #: ../src/application/addfiledialog.cpp:58
-#, fuzzy
 msgid "After the selected page"
-msgstr "Dopo la pagina selezionata…"
+msgstr "Dopo la pagina selezionata"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
@@ -260,7 +255,7 @@ msgstr "Rimuovi le pagine selezionate"
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr ""
+msgstr "Seleziona tutte le pagine"
 
 #: ../data/ui/shortcuts.ui:57
 msgctxt "shortcut window"

@@ -2,9 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-07-23 19:36-0300\n"
-"PO-Revision-Date: 2019-07-02 13:01+0000\n"
+"PO-Revision-Date: 2019-08-01 05:14+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/es/>\n"
@@ -88,13 +88,12 @@ msgid "Cancel Selection"
 msgstr "Cancelar Selección"
 
 #: ../src/application/addfiledialog.cpp:26
-#, fuzzy
 msgid "Select document to add"
-msgstr "Guardar documento como"
+msgstr "Seleccionar documento a añadir"
 
 #: ../src/application/addfiledialog.cpp:29
 msgid "Add"
-msgstr ""
+msgstr "Añadir"
 
 #: ../src/application/addfiledialog.cpp:30
 #: ../src/application/openfiledialog.cpp:28
@@ -104,20 +103,19 @@ msgstr "Cancelar"
 
 #: ../src/application/addfiledialog.cpp:55
 msgid "Insertion position"
-msgstr ""
+msgstr "Posición de inserción"
 
 #: ../src/application/addfiledialog.cpp:56
 msgid "Beginning"
-msgstr ""
+msgstr "Inicio"
 
 #: ../src/application/addfiledialog.cpp:57
 msgid "End"
-msgstr ""
+msgstr "Final"
 
 #: ../src/application/addfiledialog.cpp:58
-#, fuzzy
 msgid "After the selected page"
-msgstr "Luego de la página seleccionada…"
+msgstr "Luego de la página seleccionada"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"

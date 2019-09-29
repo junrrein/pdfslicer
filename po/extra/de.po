@@ -4,13 +4,14 @@
 # Weblate <noreply@weblate.org>, 2018.
 # Ettore Atalan <atalanttore@googlemail.com>, 2018.
 # Johannes Keyser <johanneskeyser@posteo.de>, 2019.
+# Andreas Kleinert <Andy.Kleinert@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-06-19 20:23-0300\n"
-"PO-Revision-Date: 2019-02-10 18:10+0000\n"
-"Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
+"PO-Revision-Date: 2019-08-01 05:14+0000\n"
+"Last-Translator: Andreas Kleinert <Andy.Kleinert@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/extra/"
 "de/>\n"
 "Language: de\n"
@@ -18,31 +19,28 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.5-dev\n"
+"X-Generator: Weblate 3.8-dev\n"
 
-#, fuzzy
 msgid "Extract, merge, rotate and reorder pages of PDF documents"
 msgstr ""
-"Ein einfaches Werkzeug um Seiten eines PDF-Dokuments zu Extrahieren, Drehen, "
-"und neu zu sortieren"
+"Extrahieren, Zusammenführen, Drehen und Neuordnen von Seiten aus PDF-"
+"Dokumenten"
 
-#, fuzzy
 msgid ""
 "A simple tool to extract, merge, rotate and reorder pages of PDF documents"
 msgstr ""
-"Ein einfaches Werkzeug um Seiten eines PDF-Dokuments zu Extrahieren, Drehen, "
-"und neu zu sortieren"
+"Ein einfaches Werkzeug zum Extrahieren, Zusammenführen, Drehen und Neuordnen "
+"von Seiten aus PDF-Dokumenten"
 
-#, fuzzy
 msgid ""
 "PDF Slicer is a simple application to extract, merge, rotate and reorder "
 "pages of PDF documents. The operations can be performed on single pages or "
 "on selections/ranges of pages, and it has undo/redo support."
 msgstr ""
-"PDF Slicer ist eine einfache Anwendung zum Extrahieren, Drehen, und Anordnen "
-"von Seiten eines PDF-Dokuments. Die Aktionen können auf einzelnen Seiten "
-"oder auf Auswahlen/Seitenbereichen durchgeführt werden und unterstützen das "
-"Rückgängig machen/Wiederherstellen."
+"PDF Slicer ist eine einfache Anwendung zum Extrahieren, Zusammenführen, "
+"Drehen und Neuordnen von Seiten aus PDF-Dokumenten. Die Aufgaben können auf "
+"einzelnen Seiten oder auf Auswahlen/Seitenbereichen durchgeführt werden, und "
+"es gibt eine Widerrufen/Wiederholen-Funktion."
 
 #~ msgid "Extract and rotate pages of a PDF document"
 #~ msgstr "Extrahieren und Drehen von Seiten eines PDF-Dokuments"

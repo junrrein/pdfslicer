@@ -1,297 +1,272 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# naofum <naofum@gmail.com>, 2019.
+# Yaron Shahrabani <sh.yaron@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-07-23 19:36-0300\n"
-"PO-Revision-Date: 2019-08-05 20:23+0000\n"
-"Last-Translator: naofum <naofum@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
-"translations/ja/>\n"
-"Language: ja\n"
+"PO-Revision-Date: 2019-08-14 09:24+0000\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: Hebrew <https://hosted.weblate.org/projects/pdf-slicer/"
+"translations/he/>\n"
+"Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
+"n % 10 == 0) ? 2 : 3));\n"
 "X-Generator: Weblate 3.8-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
-msgstr ""
-"PDF ドキュメントの抽出、マージ、回転、およびページの順序を変更するシンプルな"
-"アプリケーション"
+msgstr "כלי פשוט לחילוץ, מיזוג, הטיה וסידור מחדש של עמודים במסמכי PDF"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application icon"
-msgstr "アプリケーションのアイコン"
+msgstr "סמל היישום"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Third-party libraries"
-msgstr "サードパーティライブラリー"
+msgstr "ספריות צד־שלישי"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr "左に回転"
+msgstr "הטיה לשמאל"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr "右に回転"
+msgstr "הטיה לימין"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
-msgstr "左に移動"
+msgstr "העברה שמאלה"
 
 #: ../src/application/actionbar.cpp:48
 msgid "Move right"
-msgstr "右に移動"
+msgstr "העברה ימינה"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr "選択したページを削除"
+msgstr "הסרת העמודים הנבחרים"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr "選択していないページを削除"
+msgstr "הסרת העמודים שלא נבחרו"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
-msgstr "前のページを削除"
+msgstr "הסרת העמודים הקודמים"
 
 #: ../src/application/actionbar.cpp:63
 msgid "Remove next pages"
-msgstr "次のページを削除"
+msgstr "הסרת העמודים הבאים"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr "他のページ削除操作…"
+msgstr "פעולות הסרת עמודים נוספות…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr "すべて選択"
+msgstr "לבחור הכול"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
-msgstr "奇数ページを削除"
+msgstr "לבחור עמודים אי־זוגיים"
 
 #: ../src/application/actionbar.cpp:77
 msgid "Select even pages"
-msgstr "偶数ページを削除"
+msgstr "לבחור עמודים זוגיים"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr "他のページ選択操作…"
+msgstr "אפשרויות בחירת עמודים נוספות…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Cancel Selection"
-msgstr "選択を取り消す"
+msgstr "ביטול הבחירה"
 
 #: ../src/application/addfiledialog.cpp:26
 msgid "Select document to add"
-msgstr "追加するドキュメントを選択"
+msgstr "יש לבחור מסמך להוספה"
 
 #: ../src/application/addfiledialog.cpp:29
 msgid "Add"
-msgstr "追加"
+msgstr "הוספה"
 
 #: ../src/application/addfiledialog.cpp:30
 #: ../src/application/openfiledialog.cpp:28
 #: ../src/application/savefiledialog.cpp:29
 msgid "Cancel"
-msgstr "キャンセル"
+msgstr "ביטול"
 
 #: ../src/application/addfiledialog.cpp:55
 msgid "Insertion position"
-msgstr "挿入位置"
+msgstr "מיקום ההוספה"
 
 #: ../src/application/addfiledialog.cpp:56
 msgid "Beginning"
-msgstr "開始"
+msgstr "התחלה"
 
 #: ../src/application/addfiledialog.cpp:57
 msgid "End"
-msgstr "終了"
+msgstr "סוף"
 
 #: ../src/application/addfiledialog.cpp:58
 msgid "After the selected page"
-msgstr "選択したページの後"
+msgstr "לאחר העמוד הנבחר"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
-msgstr "ズーム"
+msgstr "תקריב"
 
 #: ../src/application/appmenu.cpp:61
 msgid "Keyboard shortcuts"
-msgstr "キーボード ショートカット"
+msgstr "קיצורי מקלדת"
 
 #: ../src/application/appmenu.cpp:65
 msgid "About PDF Slicer"
-msgstr "PDF Slicer について"
+msgstr "על אודות PDF Slicer"
 
 #: ../src/application/appwindow.cpp:193
 msgid "The current document could not be saved"
-msgstr "現在のドキュメントを保存できませんでした"
+msgstr "לא ניתן לשמור את המסמך הנוכחי"
 
 #: ../src/application/appwindow.cpp:321
 msgid "The selected file could not be opened"
-msgstr "選択したファイルを開くことができません"
+msgstr "לא ניתן לפתוח את הקובץ הנבחר"
 
 #: ../src/application/guicommand.cpp:71
 msgid "Added file {fileName}"
-msgstr "ファイル {fileName} を追加しました"
+msgstr "הקובץ {fileName} נוסף"
 
 #: ../src/application/guicommand.cpp:74
 msgid "Multiple files added"
-msgstr "複数のファイルが追加されました"
+msgstr "נוספו מגוון קבצים"
 
 #: ../src/application/headerbar.cpp:45
 msgid "Open…"
-msgstr "開く…"
+msgstr "פתיחה…"
 
 #: ../src/application/headerbar.cpp:49
 msgid "Add a Document…"
-msgstr "ドキュメントを追加…"
+msgstr "הוספת מסמך…"
 
 #: ../src/application/headerbar.cpp:59
 msgid "Undo"
-msgstr "元に戻す"
+msgstr "ביטול"
 
 #: ../src/application/headerbar.cpp:62
 msgid "Redo"
-msgstr "やり直し"
+msgstr "החזרה"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Save As…"
-msgstr "名前を付けて保存…"
+msgstr "שמירה בשם…"
 
 #: ../src/application/interactivepagewidget.cpp:113
 #: ../src/application/previewwindow.cpp:51
 msgid "Page {pageNumber}"
-msgstr "ページ {pageNumber}"
+msgstr "עמוד {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:24
 msgid "Open document"
-msgstr "ドキュメントを開く"
+msgstr "פתיחת מסמך"
 
 #: ../src/application/openfiledialog.cpp:27
 msgid "Open"
-msgstr "開く"
+msgstr "פתיחה"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF document"
-msgstr "PDF ドキュメント"
+msgstr "מסמך PDF"
 
 #: ../src/application/previewwindow.cpp:58
 msgid "Zoom out"
-msgstr "縮小"
+msgstr "התרחקות"
 
 #: ../src/application/previewwindow.cpp:65
 msgid "Zoom in"
-msgstr "拡大"
+msgstr "התקרבות"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr "名前を付けてドキュメントを保存"
+msgstr "שמירת המסמך בשם"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
-msgstr "保存"
+msgstr "שמירה"
 
 #: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
-msgstr "無題のドキュメント"
+msgstr "מסמך ללא כותרת"
 
 #: ../src/application/savingrevealer.cpp:26
 msgid "Saving…"
-msgstr "保存しています…"
+msgstr "בהליכי שמירה…"
 
 #: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
-msgstr "保存しました!"
+msgstr "נשמר!"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "分割するドキュメントを開きます!"
+msgstr "יש לפתוח מסמך כדי להתחיל לחתוך!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr "全般"
+msgstr "כללי"
 
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr "ドキュメントを開く"
+msgstr "פתיחת מסמך"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr "ドキュメントを保存"
+msgstr "שמירת מסמך"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr "拡大"
+msgstr "התקרבות"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr "縮小"
+msgstr "התרחקות"
 
 #: ../data/ui/shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Document editing"
-msgstr "ドキュメントの編集"
+msgstr "עריכת מסמך"
 
 #: ../data/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr "選択したページを削除"
+msgstr "הסרת העמודים הנבחרים"
 
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr "すべてのページを選択"
+msgstr "לבחור את כל העמודים"
 
 #: ../data/ui/shortcuts.ui:57
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr "選択を取り消す"
+msgstr "ביטול הבחירה"
 
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr "最後の操作を元に戻す"
+msgstr "ביטול הפעולה האחרונה"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr "元に戻した操作をやり直す"
-
-#~ msgid "Add a Document"
-#~ msgstr "ドキュメントを追加"
-
-#~ msgid "At the beggining…"
-#~ msgstr "最初に…"
-
-#~ msgid "At the end…"
-#~ msgstr "最後に…"
-
-#~ msgctxt "plural (pages)"
-#~ msgid "Remove selected"
-#~ msgstr "選択した項目を削除"
-
-#~ msgctxt "plural (pages)"
-#~ msgid "Remove unselected"
-#~ msgstr "選択されていない項目を削除"
-
-#~ msgctxt "plural (pages)"
-#~ msgid "Remove next"
-#~ msgstr "次を削除"
-
-#~ msgid "About"
-#~ msgstr "アプリについて"
+msgstr "החזרת הפעולה שבוטלה"

@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Ettore Atalan <atalanttore@googlemail.com>, 2018.
 # Johannes Keyser <johanneskeyser@posteo.de>, 2019.
+# Andreas Kleinert <Andy.Kleinert@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-07-23 19:36-0300\n"
-"PO-Revision-Date: 2019-02-10 18:10+0000\n"
-"Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
+"PO-Revision-Date: 2019-08-01 05:14+0000\n"
+"Last-Translator: Andreas Kleinert <Andy.Kleinert@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/de/>\n"
 "Language: de\n"
@@ -17,16 +18,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.5-dev\n"
+"X-Generator: Weblate 3.8-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
-#, fuzzy
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
-"Eine einfache Anwendung um Seiten eines PDF-Dokuments zu extrahieren, "
-"drehen, oder die Reihenfolge zu ändern"
+"Eine einfache Anwendung zum Extrahieren, Zusammenführen, Drehen und "
+"Neuordnen von Seiten in PDF-Dokumenten"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application icon"
@@ -53,24 +53,20 @@ msgid "Move right"
 msgstr "Nach rechts bewegen"
 
 #: ../src/application/actionbar.cpp:56
-#, fuzzy
 msgid "Remove selected pages"
 msgstr "Ausgewählte Seiten entfernen"
 
 #: ../src/application/actionbar.cpp:61
-#, fuzzy
 msgid "Remove unselected pages"
 msgstr "Ausgewählte Seiten entfernen"
 
 #: ../src/application/actionbar.cpp:62
-#, fuzzy
 msgid "Remove previous pages"
-msgstr "Vorheriges entfernen"
+msgstr "Vorherige Seiten entfernen"
 
 #: ../src/application/actionbar.cpp:63
-#, fuzzy
 msgid "Remove next pages"
-msgstr "Ausgewählte Seiten entfernen"
+msgstr "Nachfolgende Seiten entfernen"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
@@ -78,36 +74,31 @@ msgstr "Weitere Löschaktionen von Seiten…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr ""
+msgstr "Alle auswählen"
 
 #: ../src/application/actionbar.cpp:76
-#, fuzzy
 msgid "Select odd pages"
-msgstr "Ausgewählte Seiten entfernen"
+msgstr "Ungerade Seiten auswählen"
 
 #: ../src/application/actionbar.cpp:77
-#, fuzzy
 msgid "Select even pages"
-msgstr "Ausgewählte Seiten entfernen"
+msgstr "Gerade Seiten auswählen"
 
 #: ../src/application/actionbar.cpp:80
-#, fuzzy
 msgid "More page selecting options…"
-msgstr "Weitere Löschaktionen von Seiten…"
+msgstr "Weitere Seitenauswahloptionen …"
 
 #: ../src/application/actionbar.cpp:90
-#, fuzzy
 msgid "Cancel Selection"
-msgstr "Auswahl abbrechen"
+msgstr "Auswahl aufheben"
 
 #: ../src/application/addfiledialog.cpp:26
-#, fuzzy
 msgid "Select document to add"
-msgstr "Dokument speichern unter"
+msgstr "Hizuzufügendes Dokument auswählen"
 
 #: ../src/application/addfiledialog.cpp:29
 msgid "Add"
-msgstr ""
+msgstr "Hinzufügen"
 
 #: ../src/application/addfiledialog.cpp:30
 #: ../src/application/openfiledialog.cpp:28
@@ -117,25 +108,23 @@ msgstr "Abbrechen"
 
 #: ../src/application/addfiledialog.cpp:55
 msgid "Insertion position"
-msgstr ""
+msgstr "Einfügeposition"
 
 #: ../src/application/addfiledialog.cpp:56
 msgid "Beginning"
-msgstr ""
+msgstr "Anfang"
 
 #: ../src/application/addfiledialog.cpp:57
 msgid "End"
-msgstr ""
+msgstr "Ende"
 
 #: ../src/application/addfiledialog.cpp:58
-#, fuzzy
 msgid "After the selected page"
-msgstr "Ausgewählte Seiten entfernen"
+msgstr "Nach der ausgewählten Seite"
 
 #: ../src/application/appmenu.cpp:45
-#, fuzzy
 msgid "Zoom"
-msgstr "Hineinzoomen"
+msgstr "Vergrößern"
 
 #: ../src/application/appmenu.cpp:61
 msgid "Keyboard shortcuts"
@@ -143,7 +132,7 @@ msgstr "Tastenkombinationen"
 
 #: ../src/application/appmenu.cpp:65
 msgid "About PDF Slicer"
-msgstr ""
+msgstr "Über PDF Slicer"
 
 #: ../src/application/appwindow.cpp:193
 msgid "The current document could not be saved"
@@ -155,21 +144,19 @@ msgstr "Die ausgewählte Datei konnte nicht geöffnet werden"
 
 #: ../src/application/guicommand.cpp:71
 msgid "Added file {fileName}"
-msgstr ""
+msgstr "Hinzugefügte Datei {fileName}"
 
 #: ../src/application/guicommand.cpp:74
 msgid "Multiple files added"
-msgstr ""
+msgstr "Mehrere Dateien hinzugefügt"
 
 #: ../src/application/headerbar.cpp:45
-#, fuzzy
 msgid "Open…"
-msgstr "Öffnen"
+msgstr "Öffnen …"
 
 #: ../src/application/headerbar.cpp:49
-#, fuzzy
 msgid "Add a Document…"
-msgstr "Dokument öffnen…"
+msgstr "Dokument hinzufügen …"
 
 #: ../src/application/headerbar.cpp:59
 msgid "Undo"
@@ -180,9 +167,8 @@ msgid "Redo"
 msgstr "Wiederherstellen"
 
 #: ../src/application/headerbar.cpp:75
-#, fuzzy
 msgid "Save As…"
-msgstr "Speichern unter…"
+msgstr "Speichern unter …"
 
 #: ../src/application/interactivepagewidget.cpp:113
 #: ../src/application/previewwindow.cpp:51
@@ -271,7 +257,7 @@ msgstr "Ausgewählte Seiten entfernen"
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr ""
+msgstr "Alle Seiten auswählen"
 
 #: ../data/ui/shortcuts.ui:57
 msgctxt "shortcut window"
