@@ -32,6 +32,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.7.4" date="2019-09-29">
+			<description>
+				<p>Rework the way files are added to the current document. Add Hebrew and Turkish translations. Update existing translations.</p>
+			</description>
+		</release>
 		<release version="1.7.3" date="2019-07-17">
 			<description>
 				<p>Add the ability to select all pages, odd pages and even pages. Update Dutch, French, Italian, Japanese, Norwegian and Spanish translations.</p>
