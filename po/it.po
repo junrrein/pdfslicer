@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-07-23 19:36-0300\n"
-"PO-Revision-Date: 2019-08-01 05:14+0000\n"
+"PO-Revision-Date: 2019-10-03 13:15+0000\n"
 "Last-Translator: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/it/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.8-dev\n"
+"X-Generator: Weblate 3.9-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -52,19 +52,19 @@ msgstr "Sposta a destra"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr "Rimuovi le pagine selezionate"
+msgstr "Rimuovere le pagine selezionate"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr "Rimuovi le pagine non selezionate"
+msgstr "Rimuovere le pagine non selezionate"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
-msgstr "Rimuovi le pagine precedenti"
+msgstr "Rimuovere le pagine precedenti"
 
 #: ../src/application/actionbar.cpp:63
 msgid "Remove next pages"
-msgstr "Rimuovi le pagine successive"
+msgstr "Rimuovere le pagine successive"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
@@ -154,7 +154,7 @@ msgstr "Apri…"
 
 #: ../src/application/headerbar.cpp:49
 msgid "Add a Document…"
-msgstr "Aggiungi un documento…"
+msgstr "Aggiungere un documento…"
 
 #: ../src/application/headerbar.cpp:59
 msgid "Undo"
@@ -187,7 +187,7 @@ msgstr "Documento PDF"
 
 #: ../src/application/previewwindow.cpp:58
 msgid "Zoom out"
-msgstr "Riduci l'ingrandimento"
+msgstr "Riduce l'ingrandimento"
 
 #: ../src/application/previewwindow.cpp:65
 msgid "Zoom in"
@@ -215,7 +215,7 @@ msgstr "Salvato!"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "Apri un documento per iniziare ad affettarlo!"
+msgstr "Aprire un documento per iniziare ad affettarlo!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
@@ -250,7 +250,7 @@ msgstr "Modifica documento"
 #: ../data/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr "Rimuovi le pagine selezionate"
+msgstr "Rimuovere le pagine selezionate"
 
 #: ../data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
@@ -265,12 +265,12 @@ msgstr "Annulla la selezione"
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr "Annulla l'ultima azione"
+msgstr "Annulla il comando precedente"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr "Ripete l'azione annullata"
+msgstr "Ripete il comando precedente"
 
 #~ msgid "Add a Document"
 #~ msgstr "Aggiungi un documento"
