@@ -177,8 +177,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://poppler.freedesktop.org/poppler-0.72.0.tar.xz",
-                    "sha256": "c1747eb8f26e9e753c4001ed951db2896edc1021b6d0f547a0bd2a27c30ada51"
+                    "url": "https://poppler.freedesktop.org/poppler-0.81.0.tar.xz",
+                    "sha256": "212d020b035b67b36c9666bd08ac778dff3222d85c01c338787d546f0f9bfe02"
                 }
             ]
         },
