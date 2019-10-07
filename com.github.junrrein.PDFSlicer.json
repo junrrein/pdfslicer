@@ -177,8 +177,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qpdf/qpdf.git",
-                    "tag": "release-qpdf-8.4.0",
-                    "commit": "cb47c515189f2d0ed0f1ef0fddd57c486d5b6372"
+                    "tag": "release-qpdf-9.0.1",
+                    "commit": "bcfb0c7d9a8c7e50f96db440184b2ce00cbc144d"
                 }
             ]
         },
