@@ -150,6 +150,7 @@
                 }
             ]
         },
+        "boost.json",
         {
             "name": "popplerdata",
             "no-autogen": true,
