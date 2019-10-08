@@ -16,6 +16,7 @@
 
 #include "appwindow.hpp"
 #include "aboutdialog.hpp"
+#include "addfiledialog.hpp"
 #include "openfiledialog.hpp"
 #include "savefiledialog.hpp"
 #include "guicommand.hpp"
@@ -358,7 +359,7 @@ void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned i
 
 void AppWindow::onAddDocumentAtBeginningAction()
 {
-    Slicer::OpenFileDialog dialog{*this};
+    Slicer::AddFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
 
     const int result = dialog.run();
 
@@ -368,7 +369,7 @@ void AppWindow::onAddDocumentAtBeginningAction()
 
 void AppWindow::onAddDocumentAtEndAction()
 {
-    Slicer::OpenFileDialog dialog{*this};
+    Slicer::AddFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
 
     const int result = dialog.run();
 
@@ -378,7 +379,7 @@ void AppWindow::onAddDocumentAtEndAction()
 
 void AppWindow::onAddDocumentAfterSelectedAction()
 {
-    Slicer::OpenFileDialog dialog{*this};
+    Slicer::AddFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
 
     const int result = dialog.run();
 
