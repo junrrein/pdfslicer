@@ -1,5 +1,4 @@
 set (APPLICATION_SOURCES
-	${CMAKE_CURRENT_SOURCE_DIR}/addfiledialog.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/application.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/appmenu.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/backgroundthread.cpp
