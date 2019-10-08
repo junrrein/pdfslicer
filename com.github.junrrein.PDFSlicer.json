@@ -169,7 +169,9 @@
             "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-DCMAKE_INSTALL_LIBDIR=/app/lib",
-                "-DCMAKE_INSTALL_INCLUDEDIR=/app/include"
+                "-DCMAKE_INSTALL_INCLUDEDIR=/app/include",
+                "-DENABLE_UTILS=OFF",
+                "-DENABLE_GLIB=OFF"
             ],
             "cleanup": [
                 "/bin"
