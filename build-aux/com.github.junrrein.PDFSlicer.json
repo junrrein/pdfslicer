@@ -1,0 +1,69 @@
+{
+    "app-id": "com.github.junrrein.PDFSlicer",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.34",
+    "sdk": "org.gnome.Sdk",
+    "command": "pdfslicer",
+    "finish-args": [
+        "--filesystem=host",
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=wayland"
+    ],
+    "cleanup": [
+        "/bin/mm-common-prepare",
+        "/include",
+        "/lib/*/include",
+        "/lib/pkgconfig",
+        "/share/pkgconfig",
+        "/share/aclocal",
+        "/man",
+        "/share/man",
+        "/share/info",
+        "/share/gtk-doc",
+        "*.la",
+        "*.a"
+    ],
+    "modules": [
+        "gtkmm.json",
+        "poppler.json",
+        {
+            "name": "intltool",
+            "cleanup": [
+                "*"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz",
+                    "sha256": "67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd"
+                }
+            ]
+        },
+        {
+            "name": "qpdf",
+            "cleanup": [
+                "/bin"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/qpdf/qpdf.git",
+                    "tag": "release-qpdf-9.0.1",
+                    "commit": "bcfb0c7d9a8c7e50f96db440184b2ce00cbc144d"
+                }
+            ]
+        },
+        {
+            "name": "pdfslicer",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/junrrein/pdfslicer.git",
+                    "disable-fsckobjects": true
+                }
+            ]
+        }
+    ]
+}

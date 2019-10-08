@@ -20,59 +20,19 @@
 
 namespace Slicer {
 
-AddFileDialog::AddFileDialog(Gtk::Window& window,
-                             const std::string& folderPath,
-                             bool enableAfterSelected)
+AddFileDialog::AddFileDialog(Gtk::Window& parent,
+                             std::optional<std::string> folderPath)
     : Gtk::FileChooserNative{_("Select document to add"),
-                             window,
+                             parent,
                              Gtk::FILE_CHOOSER_ACTION_OPEN,
                              _("Add"),
                              _("Cancel")}
 {
     set_select_multiple(false);
     add_filter(pdfFilter());
-    set_current_folder(folderPath);
 
-    setupOptionWidget(enableAfterSelected);
-}
-
-AddFileDialog::InsertPosition AddFileDialog::insertPosition() const
-{
-    if (m_radioButtonBeggining.get_active())
-        return InsertPosition::beginning;
-
-    if (m_radioButtonEnd.get_active())
-        return InsertPosition::end;
-
-    if (m_radioButtonAfterSelected.get_active())
-        return InsertPosition::afterSelected;
-
-    throw std::runtime_error("No alternative selected");
-}
-
-void AddFileDialog::setupOptionWidget(bool enableAfterSelected)
-{
-    m_insertPositionLabel.set_label(_("Insertion position"));
-    m_radioButtonBeggining.set_label(_("Beginning"));
-    m_radioButtonEnd.set_label(_("End"));
-    m_radioButtonAfterSelected.set_label(_("After the selected page"));
-
-    m_radioButtonEnd.join_group(m_radioButtonBeggining);
-    m_radioButtonAfterSelected.join_group(m_radioButtonBeggining);
-
-    m_insertOptionGrid.attach(m_insertPositionLabel, 0, 0);
-    m_insertOptionGrid.attach(m_radioButtonBeggining, 1, 0);
-    m_insertOptionGrid.attach(m_radioButtonEnd, 1, 1);
-    m_insertOptionGrid.attach(m_radioButtonAfterSelected, 1, 2);
-    m_insertOptionGrid.set_column_spacing(5);
-
-    m_radioButtonEnd.set_active();
-
-    if (!enableAfterSelected)
-        m_radioButtonAfterSelected.set_sensitive(false);
-
-    set_extra_widget(m_insertOptionGrid);
-    m_insertOptionGrid.show_all();
+    if (folderPath.has_value())
+        set_current_folder(folderPath.value());
 }
 
 } // namespace Slicer

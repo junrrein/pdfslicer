@@ -3,3 +3,6 @@ compile_commands.json
 *.mo
 *~
 src/backend/config.hpp
+build-aux/.flatpak-builder/
+build-aux/.pdfslicer/
+build-aux/pdfslicer-repo/

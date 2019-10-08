@@ -27,12 +27,15 @@ class HeaderBar : public Gtk::HeaderBar {
 public:
     HeaderBar(const Glib::PropertyProxy<unsigned>& zoomIndexProperty);
 
+    void enableAddDocumentButton();
+    void disableAddDocumentButton();
+
     void enableZoomSlider();
     void disableZoomSlider();
 
 private:
     Gtk::Button m_buttonOpen;
-    Gtk::Button m_buttonAddDocument;
+    Gtk::MenuButton m_buttonAddDocument;
     Gtk::Button m_buttonUndo;
     Gtk::Button m_buttonRedo;
     Gtk::Button m_buttonSave;

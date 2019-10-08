@@ -1,0 +1,55 @@
+{
+	"modules": [
+		"boost.json",
+		{
+			"name": "openjpeg",
+			"buildsystem": "cmake-ninja",
+			"config-opts": [
+				"-DBUILD_CODEC=OFF"
+			],
+			"cleanup": [
+				"/lib/openjpeg-2.3"
+			],
+			"sources": [
+				{
+					"type": "git",
+					"url": "https://github.com/uclouvain/openjpeg.git",
+					"tag": "v2.3.1",
+					"commit": "57096325457f96d8cd07bd3af04fe81d7a2ba788"
+				}
+			]
+		},
+		{
+			"name": "popplerdata",
+			"no-autogen": true,
+			"make-install-args": [
+				"prefix=/app"
+			],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "http://poppler.freedesktop.org/poppler-data-0.4.9.tar.gz",
+					"sha256": "1f9c7e7de9ecd0db6ab287349e31bf815ca108a5a175cf906a90163bdbe32012"
+				}
+			]
+		}
+	],
+	"name": "poppler",
+	"buildsystem": "cmake-ninja",
+	"config-opts": [
+		"-DCMAKE_INSTALL_LIBDIR=/app/lib",
+		"-DCMAKE_INSTALL_INCLUDEDIR=/app/include",
+		"-DENABLE_UTILS=OFF",
+		"-DENABLE_GLIB=OFF"
+	],
+	"cleanup": [
+		"/bin"
+	],
+	"sources": [
+		{
+			"type": "archive",
+			"url": "https://poppler.freedesktop.org/poppler-0.81.0.tar.xz",
+			"sha256": "212d020b035b67b36c9666bd08ac778dff3222d85c01c338787d546f0f9bfe02"
+		}
+	]
+}

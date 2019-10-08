@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2019-07-23 19:36-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-08 18:29-0300\n"
 "PO-Revision-Date: 2019-08-01 05:14+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -87,35 +87,19 @@ msgstr "Más opciones para seleccionar páginas…"
 msgid "Cancel Selection"
 msgstr "Cancelar Selección"
 
-#: ../src/application/addfiledialog.cpp:26
+#: ../src/application/addfiledialog.cpp:25
 msgid "Select document to add"
 msgstr "Seleccionar documento a añadir"
 
-#: ../src/application/addfiledialog.cpp:29
+#: ../src/application/addfiledialog.cpp:28
 msgid "Add"
 msgstr "Añadir"
 
-#: ../src/application/addfiledialog.cpp:30
-#: ../src/application/openfiledialog.cpp:28
+#: ../src/application/addfiledialog.cpp:29
+#: ../src/application/openfiledialog.cpp:29
 #: ../src/application/savefiledialog.cpp:29
 msgid "Cancel"
 msgstr "Cancelar"
-
-#: ../src/application/addfiledialog.cpp:55
-msgid "Insertion position"
-msgstr "Posición de inserción"
-
-#: ../src/application/addfiledialog.cpp:56
-msgid "Beginning"
-msgstr "Inicio"
-
-#: ../src/application/addfiledialog.cpp:57
-msgid "End"
-msgstr "Final"
-
-#: ../src/application/addfiledialog.cpp:58
-msgid "After the selected page"
-msgstr "Luego de la página seleccionada"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
@@ -129,11 +113,11 @@ msgstr "Atajos de teclado"
 msgid "About PDF Slicer"
 msgstr "Acerca de PDF Slicer"
 
-#: ../src/application/appwindow.cpp:193
+#: ../src/application/appwindow.cpp:196
 msgid "The current document could not be saved"
 msgstr "El documento actual no pudo ser guardado"
 
-#: ../src/application/appwindow.cpp:321
+#: ../src/application/appwindow.cpp:327
 msgid "The selected file could not be opened"
 msgstr "No se pudo abrir el archivo seleccionado"
 
@@ -145,23 +129,40 @@ msgstr "Añadido archivo {fileName}"
 msgid "Multiple files added"
 msgstr "Múltiples archivos añadidos"
 
-#: ../src/application/headerbar.cpp:45
+#: ../src/application/headerbar.cpp:55
 msgid "Open…"
 msgstr "Abrir…"
 
-#: ../src/application/headerbar.cpp:49
+#: ../src/application/headerbar.cpp:60
+msgid "Add a Document"
+msgstr "Añadir un Documento"
+
+#: ../src/application/headerbar.cpp:61
+msgid "At the beggining…"
+msgstr "Al inicio…"
+
+#: ../src/application/headerbar.cpp:62
+msgid "At the end…"
+msgstr "Al final…"
+
+#: ../src/application/headerbar.cpp:63
+#, fuzzy
+msgid "After the selected page…"
+msgstr "Luego de la página seleccionada"
+
+#: ../src/application/headerbar.cpp:65
 msgid "Add a Document…"
 msgstr "Añadir un Documento…"
 
-#: ../src/application/headerbar.cpp:59
+#: ../src/application/headerbar.cpp:75
 msgid "Undo"
 msgstr "Deshacer"
 
-#: ../src/application/headerbar.cpp:62
+#: ../src/application/headerbar.cpp:78
 msgid "Redo"
 msgstr "Repetir"
 
-#: ../src/application/headerbar.cpp:75
+#: ../src/application/headerbar.cpp:91
 msgid "Save As…"
 msgstr "Guardar Como…"
 
@@ -170,11 +171,11 @@ msgstr "Guardar Como…"
 msgid "Page {pageNumber}"
 msgstr "Página {pageNumber}"
 
-#: ../src/application/openfiledialog.cpp:24
+#: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
 msgstr "Abrir documento"
 
-#: ../src/application/openfiledialog.cpp:27
+#: ../src/application/openfiledialog.cpp:28
 msgid "Open"
 msgstr "Abrir"
 
@@ -269,14 +270,14 @@ msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Rehacer comando deshecho"
 
-#~ msgid "Add a Document"
-#~ msgstr "Añadir un Documento"
+#~ msgid "Insertion position"
+#~ msgstr "Posición de inserción"
 
-#~ msgid "At the beggining…"
-#~ msgstr "Al inicio…"
+#~ msgid "Beginning"
+#~ msgstr "Inicio"
 
-#~ msgid "At the end…"
-#~ msgstr "Al final…"
+#~ msgid "End"
+#~ msgstr "Final"
 
 #~ msgctxt "plural (pages)"
 #~ msgid "Remove selected"

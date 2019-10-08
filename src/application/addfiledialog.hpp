@@ -14,40 +14,20 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef ADDFILEDIALOG_HPP
-#define ADDFILEDIALOG_HPP
+#ifndef SLICER_ADDFILEDIALOG_HPP
+#define SLICER_ADDFILEDIALOG_HPP
 
 #include <gtkmm/filechoosernative.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/label.h>
-#include <gtkmm/radiobutton.h>
+#include <optional>
 
 namespace Slicer {
 
 class AddFileDialog : public Gtk::FileChooserNative {
 public:
-	enum class InsertPosition {
-		beginning,
-		end,
-		afterSelected
-	};
-
-	AddFileDialog(Gtk::Window& window,
-                  const std::string& folderPath,
-                  bool enableAfterSelected);
-
-	InsertPosition insertPosition() const;
-
-private:
-    Gtk::Grid m_insertOptionGrid;
-	Gtk::Label m_insertPositionLabel;
-	Gtk::RadioButton m_radioButtonBeggining;
-	Gtk::RadioButton m_radioButtonEnd;
-	Gtk::RadioButton m_radioButtonAfterSelected;
-
-	void setupOptionWidget(bool enableAfterSelected);
+    AddFileDialog(Gtk::Window& parent,
+                  std::optional<std::string> folderPath = {});
 };
 
 } // namespace Slicer
 
-#endif // ADDFILEDIALOG_HPP
+#endif // SLICER_ADDFILEDIALOG_HPP

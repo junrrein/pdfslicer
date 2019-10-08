@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#include "addfiledialog.hpp"
 #include "appwindow.hpp"
 #include "aboutdialog.hpp"
+#include "addfiledialog.hpp"
 #include "openfiledialog.hpp"
 #include "savefiledialog.hpp"
 #include "guicommand.hpp"
@@ -69,7 +69,7 @@ void AppWindow::setDocument(std::unique_ptr<Document> document)
     m_stack.set_visible_child("editor");
 
     m_commandManager.reset();
-    m_addDocumentAction->set_enabled();
+    m_headerBar.enableAddDocumentButton();
     m_headerBar.enableZoomSlider();
     m_saveAction->set_enabled();
     m_zoomLevel.enable();
@@ -114,7 +114,9 @@ void AppWindow::loadWidgets()
 void AppWindow::addActions()
 {
     m_openAction = add_action("open-document", sigc::mem_fun(*this, &AppWindow::onOpenAction));
-    m_addDocumentAction = add_action("add-document", sigc::mem_fun(*this, &AppWindow::onAddDocumentAction));
+    m_addDocumentAtBeginningAction = add_action("add-document-at-beginning", sigc::mem_fun(*this, &AppWindow::onAddDocumentAtBeginningAction));
+    m_addDocumentAtEndAction = add_action("add-document-at-end", sigc::mem_fun(*this, &AppWindow::onAddDocumentAtEndAction));
+    m_addDocumentAfterSelectedAction = add_action("add-document-after-selected", sigc::mem_fun(*this, &AppWindow::onAddDocumentAfterSelectedAction));
     m_saveAction = add_action("save-document", sigc::mem_fun(*this, &AppWindow::onSaveAction));
     m_undoAction = add_action("undo", sigc::mem_fun(*this, &AppWindow::onUndoAction));
     m_redoAction = add_action("redo", sigc::mem_fun(*this, &AppWindow::onRedoAction));
@@ -133,7 +135,8 @@ void AppWindow::addActions()
     m_shortcutsAction = add_action("shortcuts", sigc::mem_fun(*this, &AppWindow::onShortcutsAction));
     m_aboutAction = add_action("about", sigc::mem_fun(*this, &AppWindow::onAboutAction));
 
-    m_addDocumentAction->set_enabled(false);
+    m_headerBar.disableAddDocumentButton();
+    m_addDocumentAfterSelectedAction->set_enabled(false);
     m_headerBar.disableZoomSlider();
     m_saveAction->set_enabled(false);
     m_undoAction->set_enabled(false);
@@ -272,7 +275,7 @@ void AppWindow::onShortcutsAction()
 
 void AppWindow::onSaveAction()
 {
-    Slicer::SaveFileDialog dialog{*this};
+    Slicer::SaveFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
 
     const int result = dialog.run();
 
@@ -305,7 +308,10 @@ void AppWindow::trySaveDocument(const Glib::RefPtr<Gio::File>& file)
 
 void AppWindow::onOpenAction()
 {
-    Slicer::OpenFileDialog dialog{*this};
+    Slicer::OpenFileDialog dialog{*this,
+                                  m_document != nullptr
+                                      ? m_document->lastAddedFileParentPath()
+                                      : std::optional<std::string>{}};
 
     const int result = dialog.run();
 
@@ -351,28 +357,34 @@ void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned i
     }
 }
 
-void AppWindow::onAddDocumentAction()
+void AppWindow::onAddDocumentAtBeginningAction()
 {
-    bool isOnlyOnePageSelected = m_view.getSelectedChildrenIndexes().size() == 1;
-
-    AddFileDialog dialog{*this,
-                         m_document->lastAddedFileParentPath(),
-                         isOnlyOnePageSelected};
+    Slicer::AddFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
 
     const int result = dialog.run();
 
-    if (result == Gtk::RESPONSE_ACCEPT) {
-        switch (dialog.insertPosition()) {
-        case AddFileDialog::InsertPosition::beginning:
-            tryAddDocumentAt(dialog.get_file(), 0);
-            break;
-        case AddFileDialog::InsertPosition::end:
-            tryAddDocumentAt(dialog.get_file(), m_document->numberOfPages());
-            break;
-        case AddFileDialog::InsertPosition::afterSelected:
-            tryAddDocumentAt(dialog.get_file(), m_view.getSelectedChildIndex() + 1);
-        }
-    }
+    if (result == Gtk::RESPONSE_ACCEPT)
+        tryAddDocumentAt(dialog.get_file(), 0);
+}
+
+void AppWindow::onAddDocumentAtEndAction()
+{
+    Slicer::AddFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
+
+    const int result = dialog.run();
+
+    if (result == Gtk::RESPONSE_ACCEPT)
+        tryAddDocumentAt(dialog.get_file(), m_document->numberOfPages());
+}
+
+void AppWindow::onAddDocumentAfterSelectedAction()
+{
+    Slicer::AddFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
+
+    const int result = dialog.run();
+
+    if (result == Gtk::RESPONSE_ACCEPT)
+        tryAddDocumentAt(dialog.get_file(), m_view.getSelectedChildIndex() + 1);
 }
 
 void AppWindow::tryOpenDocument(const Glib::RefPtr<Gio::File>& file)
@@ -555,6 +567,11 @@ void AppWindow::onSelectedPagesChanged()
             m_removeNextAction->set_enabled(false);
         else
             m_removeNextAction->set_enabled();
+
+        m_addDocumentAfterSelectedAction->set_enabled();
+    }
+    else {
+        m_addDocumentAfterSelectedAction->set_enabled(false);
     }
 
     if (numSelected > 1) {

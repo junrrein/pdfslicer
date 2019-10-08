@@ -77,7 +77,9 @@ private:
 
     // Actions
     Glib::RefPtr<Gio::SimpleAction> m_openAction;
-    Glib::RefPtr<Gio::SimpleAction> m_addDocumentAction;
+    Glib::RefPtr<Gio::SimpleAction> m_addDocumentAtBeginningAction;
+    Glib::RefPtr<Gio::SimpleAction> m_addDocumentAtEndAction;
+    Glib::RefPtr<Gio::SimpleAction> m_addDocumentAfterSelectedAction;
     Glib::RefPtr<Gio::SimpleAction> m_saveAction;
     Glib::RefPtr<Gio::SimpleAction> m_undoAction;
     Glib::RefPtr<Gio::SimpleAction> m_redoAction;
@@ -117,7 +119,9 @@ private:
 
     // Callbacks
     void onOpenAction();
-    void onAddDocumentAction();
+    void onAddDocumentAtBeginningAction();
+    void onAddDocumentAtEndAction();
+    void onAddDocumentAfterSelectedAction();
     void onSaveAction();
     void onUndoAction();
     void onRedoAction();
