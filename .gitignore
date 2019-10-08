@@ -4,5 +4,5 @@ compile_commands.json
 *~
 src/backend/config.hpp
 build-aux/.flatpak-builder/
-build-aux/pdfslicer/
+build-aux/.pdfslicer/
 build-aux/pdfslicer-repo/
