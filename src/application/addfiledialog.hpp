@@ -17,14 +17,14 @@
 #ifndef ADDFILEDIALOG_HPP
 #define ADDFILEDIALOG_HPP
 
-#include <gtkmm/filechoosernative.h>
+#include <gtkmm/filechooserdialog.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/label.h>
 #include <gtkmm/radiobutton.h>
 
 namespace Slicer {
 
-class AddFileDialog : public Gtk::FileChooserNative {
+class AddFileDialog : public Gtk::FileChooserDialog {
 public:
 	enum class InsertPosition {
 		beginning,

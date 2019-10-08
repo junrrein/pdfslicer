@@ -23,12 +23,15 @@ namespace Slicer {
 AddFileDialog::AddFileDialog(Gtk::Window& window,
                              const std::string& folderPath,
                              bool enableAfterSelected)
-    : Gtk::FileChooserNative{_("Select document to add"),
-                             window,
-                             Gtk::FILE_CHOOSER_ACTION_OPEN,
-                             _("Add"),
-                             _("Cancel")}
+    : Gtk::FileChooserDialog{window,
+                             _("Select document to add"),
+                             Gtk::FILE_CHOOSER_ACTION_OPEN}
 {
+    Gtk::Button* addButton = add_button(_("Add"), Gtk::RESPONSE_ACCEPT);
+    add_button(_("Cancel"), Gtk::RESPONSE_CANCEL);
+
+    addButton->get_style_context()->add_class("suggested-action");
+
     set_select_multiple(false);
     add_filter(pdfFilter());
     set_current_folder(folderPath);
