@@ -4,13 +4,14 @@
 # Ettore Atalan <atalanttore@googlemail.com>, 2018.
 # Johannes Keyser <johanneskeyser@posteo.de>, 2019.
 # Andreas Kleinert <Andy.Kleinert@gmail.com>, 2019.
+# nautilusx <mail.ka@mailbox.org>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-10-08 18:29-0300\n"
-"PO-Revision-Date: 2019-08-01 05:14+0000\n"
-"Last-Translator: Andreas Kleinert <Andy.Kleinert@gmail.com>\n"
+"PO-Revision-Date: 2019-10-24 00:53+0000\n"
+"Last-Translator: nautilusx <mail.ka@mailbox.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/de/>\n"
 "Language: de\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.8-dev\n"
+"X-Generator: Weblate 3.9.1-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -139,22 +140,20 @@ msgid "Open…"
 msgstr "Öffnen …"
 
 #: ../src/application/headerbar.cpp:60
-#, fuzzy
 msgid "Add a Document"
-msgstr "Dokument öffnen…"
+msgstr "Dokument hinzufügen"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr ""
+msgstr "Am Anfang…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
-msgstr ""
+msgstr "Am Ende…"
 
 #: ../src/application/headerbar.cpp:63
-#, fuzzy
 msgid "After the selected page…"
-msgstr "Nach der ausgewählten Seite"
+msgstr "Nach der ausgewählten Seite…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add a Document…"
