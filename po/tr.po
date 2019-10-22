@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-10-08 18:29-0300\n"
-"PO-Revision-Date: 2019-09-21 20:28+0000\n"
+"PO-Revision-Date: 2019-10-24 00:53+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/tr/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Weblate 3.9.1-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -137,22 +137,20 @@ msgid "Open…"
 msgstr "Aç…"
 
 #: ../src/application/headerbar.cpp:60
-#, fuzzy
 msgid "Add a Document"
-msgstr "Belge Ekle…"
+msgstr "Belge Ekle"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr ""
+msgstr "Başlangıçta…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
-msgstr ""
+msgstr "Bitişte…"
 
 #: ../src/application/headerbar.cpp:63
-#, fuzzy
 msgid "After the selected page…"
-msgstr "Seçilen sayfadan sonra"
+msgstr "Seçilen sayfadan sonra…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add a Document…"
