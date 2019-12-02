@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-10-08 18:29-0300\n"
-"PO-Revision-Date: 2019-08-05 20:23+0000\n"
+"PO-Revision-Date: 2019-10-16 04:52+0000\n"
 "Last-Translator: naofum <naofum@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/ja/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.8-dev\n"
+"X-Generator: Weblate 3.9\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -149,9 +149,8 @@ msgid "At the end…"
 msgstr "最後に…"
 
 #: ../src/application/headerbar.cpp:63
-#, fuzzy
 msgid "After the selected page…"
-msgstr "選択したページの後"
+msgstr "選択したページの後…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add a Document…"

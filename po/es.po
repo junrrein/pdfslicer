@@ -2,9 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-10-08 18:29-0300\n"
-"PO-Revision-Date: 2019-08-01 05:14+0000\n"
+"PO-Revision-Date: 2019-10-11 19:52+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/es/>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.8-dev\n"
+"X-Generator: Weblate 3.9-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -146,9 +146,8 @@ msgid "At the end…"
 msgstr "Al final…"
 
 #: ../src/application/headerbar.cpp:63
-#, fuzzy
 msgid "After the selected page…"
-msgstr "Luego de la página seleccionada"
+msgstr "Luego de la página seleccionada…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add a Document…"
