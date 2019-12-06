@@ -8,7 +8,7 @@ set (APPLICATION_NAME "PDF Slicer")
 set (APPLICATION_WEBSITE "https://junrrein.github.io/pdfslicer/")
 set (GETTEXT_PACKAGE ${APPLICATION_ID})
 set (LINUX_LOCALE_DIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
-set (VERSION 1.7.6)
+set (VERSION 1.7.7)
 
 set (SOURCE_DATA_DIR ${CMAKE_SOURCE_DIR}/data)
 
