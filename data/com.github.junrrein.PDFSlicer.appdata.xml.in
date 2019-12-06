@@ -32,6 +32,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.7.6" date="2019-12-06">
+			<description>
+				<p>Add Czech translation.</p>
+			</description>
+		</release>
 		<release version="1.7.5" date="2019-12-02">
 			<description>
 				<p>Return to the way adding files was handled before, since the new way doesn't work inside the Flatpak sandbox. Update existing translations.</p>
