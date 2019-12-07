@@ -61,7 +61,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/junrrein/pdfslicer.git",
-                    "disable-fsckobjects": true
+                    "disable-shallow-clone": true
                 }
             ]
         }
