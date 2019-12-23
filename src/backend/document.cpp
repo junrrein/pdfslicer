@@ -156,7 +156,7 @@ unsigned int Document::addFile(const Glib::RefPtr<Gio::File>& file, unsigned int
     FileData fileData = loadFile(file);
     std::vector<Glib::RefPtr<Page>> pages = loadPages(fileData);
 
-    for (auto [i, page] : ranges::view::enumerate(pages))
+    for (auto [i, page] : ranges::views::enumerate(pages))
         page->setDocumentIndex(position + i);
 
     insertPageRange(pages, position);

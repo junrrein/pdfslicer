@@ -29,7 +29,7 @@ ZoomLevel::ZoomLevel(const std::vector<int>& levels)
     : m_zoomLevelIndex{*this, "zoom-level-index", 0}
     , m_levels{levels}
 {
-    m_levels |= ranges::action::sort | ranges::action::unique;
+    m_levels |= ranges::actions::sort | ranges::actions::unique;
 
     if (m_levels.empty())
         throw std::runtime_error("There has to be at least one zoom level");

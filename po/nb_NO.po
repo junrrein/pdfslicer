@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-08 18:29-0300\n"
+"POT-Creation-Date: 2019-12-23 16:35-0300\n"
 "PO-Revision-Date: 2019-08-05 20:23+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
@@ -107,6 +107,7 @@ msgstr "Legg til"
 #: ../src/application/addfiledialog.cpp:29
 #: ../src/application/openfiledialog.cpp:29
 #: ../src/application/savefiledialog.cpp:29
+#: ../src/application/unsavedchangesdialog.cpp:33
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -122,13 +123,13 @@ msgstr "Tastatursnarveier"
 msgid "About PDF Slicer"
 msgstr "Om PDF Slicer"
 
-#: ../src/application/appwindow.cpp:196
-msgid "The current document could not be saved"
-msgstr "Nåværende dokument kunne ikke lagres"
-
-#: ../src/application/appwindow.cpp:327
+#: ../src/application/appwindow.cpp:366
 msgid "The selected file could not be opened"
 msgstr "Valgt fil kunne ikke åpnes"
+
+#: ../src/application/appwindow.cpp:377
+msgid "The current document could not be saved"
+msgstr "Nåværende dokument kunne ikke lagres"
 
 #: ../src/application/guicommand.cpp:71
 msgid "Added file {fileName}"
@@ -172,6 +173,7 @@ msgid "Redo"
 msgstr "Gjenta"
 
 #: ../src/application/headerbar.cpp:91
+#: ../src/application/unsavedchangesdialog.cpp:34
 #, fuzzy
 msgid "Save As…"
 msgstr "Lagre som…"
@@ -220,6 +222,14 @@ msgstr "Lagrer…"
 #: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
 msgstr "Lagret!"
+
+#: ../src/application/unsavedchangesdialog.cpp:24
+msgid "Save modified document before closing?"
+msgstr ""
+
+#: ../src/application/unsavedchangesdialog.cpp:32
+msgid "Close without Saving"
+msgstr ""
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"

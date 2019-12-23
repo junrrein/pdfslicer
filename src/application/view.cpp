@@ -17,10 +17,11 @@
 #include "view.hpp"
 #include "previewwindow.hpp"
 #include <range/v3/view.hpp>
+#include <range/v3/range/conversion.hpp>
 
 namespace Slicer {
 
-namespace rsv = ranges::view;
+namespace rsv = ranges::views;
 
 View::View(BackgroundThread& backgroundThread)
     : m_backgroundThread{backgroundThread}
@@ -188,22 +189,18 @@ unsigned int View::getSelectedChildIndex() const
 
 std::vector<unsigned int> View::getSelectedChildrenIndexes() const
 {
-    const std::vector<unsigned int> result
-        = m_pageWidgets
-          | rsv::filter(std::mem_fn(&InteractivePageWidget::getSelected))
-          | rsv::transform(std::mem_fn(&InteractivePageWidget::get_index));
-
-    return result;
+    return m_pageWidgets
+           | rsv::filter(std::mem_fn(&InteractivePageWidget::getSelected))
+           | rsv::transform(std::mem_fn(&InteractivePageWidget::get_index))
+           | ranges::to<std::vector<unsigned int>>;
 }
 
 std::vector<unsigned int> View::getUnselectedChildrenIndexes() const
 {
-    const std::vector<unsigned int> result
-        = m_pageWidgets
-          | rsv::remove_if(std::mem_fn(&InteractivePageWidget::getSelected))
-          | rsv::transform(std::mem_fn(&InteractivePageWidget::get_index));
-
-    return result;
+    return m_pageWidgets
+           | rsv::remove_if(std::mem_fn(&InteractivePageWidget::getSelected))
+           | rsv::transform(std::mem_fn(&InteractivePageWidget::get_index))
+           | ranges::to<std::vector<unsigned int>>;
 }
 
 int View::sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b)

@@ -2,24 +2,6 @@
 	"modules": [
 		"boost.json",
 		{
-			"name": "openjpeg",
-			"buildsystem": "cmake-ninja",
-			"config-opts": [
-				"-DBUILD_CODEC=OFF"
-			],
-			"cleanup": [
-				"/lib/openjpeg-2.3"
-			],
-			"sources": [
-				{
-					"type": "git",
-					"url": "https://github.com/uclouvain/openjpeg.git",
-					"tag": "v2.3.1",
-					"commit": "57096325457f96d8cd07bd3af04fe81d7a2ba788"
-				}
-			]
-		},
-		{
 			"name": "popplerdata",
 			"no-autogen": true,
 			"make-install-args": [

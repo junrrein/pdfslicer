@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-08 18:29-0300\n"
+"POT-Creation-Date: 2019-12-23 16:35-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,6 +98,7 @@ msgstr ""
 #: ../src/application/addfiledialog.cpp:29
 #: ../src/application/openfiledialog.cpp:29
 #: ../src/application/savefiledialog.cpp:29
+#: ../src/application/unsavedchangesdialog.cpp:33
 msgid "Cancel"
 msgstr ""
 
@@ -113,12 +114,12 @@ msgstr ""
 msgid "About PDF Slicer"
 msgstr ""
 
-#: ../src/application/appwindow.cpp:196
-msgid "The current document could not be saved"
+#: ../src/application/appwindow.cpp:366
+msgid "The selected file could not be opened"
 msgstr ""
 
-#: ../src/application/appwindow.cpp:327
-msgid "The selected file could not be opened"
+#: ../src/application/appwindow.cpp:377
+msgid "The current document could not be saved"
 msgstr ""
 
 #: ../src/application/guicommand.cpp:71
@@ -162,6 +163,7 @@ msgid "Redo"
 msgstr ""
 
 #: ../src/application/headerbar.cpp:91
+#: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
 msgstr ""
 
@@ -208,6 +210,14 @@ msgstr ""
 
 #: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
+msgstr ""
+
+#: ../src/application/unsavedchangesdialog.cpp:24
+msgid "Save modified document before closing?"
+msgstr ""
+
+#: ../src/application/unsavedchangesdialog.cpp:32
+msgid "Close without Saving"
 msgstr ""
 
 #: ../src/application/welcomescreen.cpp:29

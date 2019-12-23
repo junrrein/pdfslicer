@@ -20,6 +20,7 @@
 #include "openfiledialog.hpp"
 #include "savefiledialog.hpp"
 #include "guicommand.hpp"
+#include "unsavedchangesdialog.hpp"
 #include <pdfsaver.hpp>
 #include <glibmm/convert.h>
 #include <glibmm/main.h>
@@ -77,12 +78,31 @@ void AppWindow::setDocument(std::unique_ptr<Document> document)
 
 bool AppWindow::on_delete_event(GdkEventAny*)
 {
-    // TODO: Right now, when we are saving a document and the user
-    // tries to close the window, the app does nothing. It doesn't
-    // react at all.
-    // Maybe we should tell the user visually that his request to
-    // close the window was purposefully ignored.
-    return m_isSavingDocument;
+    if (m_isSavingDocument)
+        return true;
+
+    if (m_isDocumentModified) {
+        UnsavedChangesDialog dialog{*this};
+        int response = dialog.run();
+        dialog.hide();
+
+        switch (response) {
+        case Gtk::RESPONSE_CLOSE:
+            return false;
+
+        case Gtk::RESPONSE_CANCEL:
+        case Gtk::RESPONSE_DELETE_EVENT:
+            return true;
+
+        case Gtk::RESPONSE_YES: {
+            const bool success = showSaveFileDialogAndSave(SaveFileIn::Foreground);
+
+            return !success;
+        }
+        }
+    }
+
+    return false;
 }
 
 void AppWindow::loadWindowState()
@@ -186,21 +206,13 @@ void AppWindow::setupSignalHandlers()
     m_savedDispatcher.connect([this]() {
         m_savingRevealer.saved();
         enableEditingActions();
-        setTitleModified(false);
+        setModified(false);
     });
 
     m_savingFailedDispatcher.connect([this]() {
         m_savingRevealer.set_reveal_child(false);
         enableEditingActions();
-
-        Gtk::MessageDialog errorDialog{_("The current document could not be saved"),
-                                       false,
-                                       Gtk::MESSAGE_ERROR,
-                                       Gtk::BUTTONS_CLOSE,
-                                       true};
-        errorDialog.set_transient_for(*this);
-
-        errorDialog.run();
+        showSaveFileFailedErrorDialog();
     });
 
     m_scroller.get_vadjustment()->signal_value_changed().connect([this]() {
@@ -275,15 +287,44 @@ void AppWindow::onShortcutsAction()
 
 void AppWindow::onSaveAction()
 {
-    Slicer::SaveFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
-
-    const int result = dialog.run();
-
-    if (result == GTK_RESPONSE_ACCEPT)
-        trySaveDocument(dialog.get_file());
+    showSaveFileDialogAndSave(SaveFileIn::Background);
 }
 
-void AppWindow::trySaveDocument(const Glib::RefPtr<Gio::File>& file)
+bool AppWindow::showSaveFileDialogAndSave(SaveFileIn howToSave)
+{
+    Slicer::SaveFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
+    const int result = dialog.run();
+
+    if (result == GTK_RESPONSE_ACCEPT) {
+        const Glib::RefPtr<Gio::File>& file = dialog.get_file();
+
+        if (howToSave == SaveFileIn::Foreground)
+            return saveFileInForeground(file);
+        else
+            saveFileInBackground(file);
+    }
+
+    return false;
+}
+
+bool AppWindow::saveFileInForeground(const Glib::RefPtr<Gio::File>& file)
+{
+    try {
+        PdfSaver{*m_document}.save(file);
+
+        return true;
+    }
+    catch (...) {
+        Logger::logError("Saving the document failed");
+        Logger::logError("The destination file was: " + file->get_path());
+
+        showSaveFileFailedErrorDialog();
+
+        return false;
+    }
+}
+
+void AppWindow::saveFileInBackground(const Glib::RefPtr<Gio::File>& file)
 {
     m_savingRevealer.saving();
     disableEditingActions();
@@ -319,27 +360,39 @@ void AppWindow::onOpenAction()
         tryOpenDocument(dialog.get_file());
 }
 
-void AppWindow::showOpenFileFailedErrorDialog(const std::string& filePath)
+void AppWindow::showOpenFileFailedErrorDialog()
 {
-    Logger::logError("The file couldn't be opened");
-    Logger::logError("Filepath: " + filePath);
-
-    Gtk::MessageDialog errorDialog{_("The selected file could not be opened"),
+    Gtk::MessageDialog errorDialog{*this,
+                                   _("The selected file could not be opened"),
                                    false,
                                    Gtk::MESSAGE_ERROR,
                                    Gtk::BUTTONS_CLOSE,
                                    true};
-    errorDialog.set_transient_for(*this);
     errorDialog.run();
 }
 
-void AppWindow::setTitleModified(bool modified)
+void AppWindow::showSaveFileFailedErrorDialog()
 {
-    if (modified && m_headerBar.get_title().at(0) != '*')
-        m_headerBar.set_title("*" + m_headerBar.get_title());
+    Gtk::MessageDialog errorDialog{*this,
+                                   _("The current document could not be saved"),
+                                   false,
+                                   Gtk::MESSAGE_ERROR,
+                                   Gtk::BUTTONS_CLOSE,
+                                   true};
+    errorDialog.run();
+}
 
-    if (!modified && m_headerBar.get_title().at(0) == '*')
+void AppWindow::setModified(bool modified)
+{
+    if (modified == m_isDocumentModified)
+        return;
+
+    if (modified)
+        m_headerBar.set_title("*" + m_headerBar.get_title());
+    else
         m_headerBar.set_title(m_headerBar.get_title().substr(1));
+
+    m_isDocumentModified = modified;
 }
 
 void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position)
@@ -353,7 +406,10 @@ void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned i
         m_commandManager.execute(command);
     }
     catch (...) {
-        showOpenFileFailedErrorDialog(file->get_path());
+        Logger::logError("The file couldn't be added");
+        Logger::logError("Filepath: " + file->get_path());
+
+        showOpenFileFailedErrorDialog();
     }
 }
 
@@ -396,7 +452,10 @@ void AppWindow::tryOpenDocument(const Glib::RefPtr<Gio::File>& file)
         m_headerBar.set_subtitle("");
     }
     catch (...) {
-        showOpenFileFailedErrorDialog(file->get_path());
+        Logger::logError("The file couldn't be opened");
+        Logger::logError("Filepath: " + file->get_path());
+
+        showOpenFileFailedErrorDialog();
     }
 }
 
@@ -594,11 +653,11 @@ void AppWindow::onCommandExecuted()
 {
     if (m_commandManager.canUndo()) {
         m_undoAction->set_enabled();
-        setTitleModified(true);
+        setModified(true);
     }
     else {
         m_undoAction->set_enabled(false);
-        setTitleModified(false);
+        setModified(false);
     }
 
     if (m_commandManager.canRedo())
