@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2019-10-08 18:29-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-23 16:35-0300\n"
 "PO-Revision-Date: 2019-10-24 00:53+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -101,6 +101,7 @@ msgstr "Ekle"
 #: ../src/application/addfiledialog.cpp:29
 #: ../src/application/openfiledialog.cpp:29
 #: ../src/application/savefiledialog.cpp:29
+#: ../src/application/unsavedchangesdialog.cpp:33
 msgid "Cancel"
 msgstr "İptal Et"
 
@@ -116,13 +117,13 @@ msgstr "Klavye Kısayolları"
 msgid "About PDF Slicer"
 msgstr "PDF Slicer Hakkında"
 
-#: ../src/application/appwindow.cpp:196
-msgid "The current document could not be saved"
-msgstr "Geçerli belge kaydedilemedi"
-
-#: ../src/application/appwindow.cpp:327
+#: ../src/application/appwindow.cpp:366
 msgid "The selected file could not be opened"
 msgstr "Seçili dosya açılamadı"
+
+#: ../src/application/appwindow.cpp:377
+msgid "The current document could not be saved"
+msgstr "Geçerli belge kaydedilemedi"
 
 #: ../src/application/guicommand.cpp:71
 msgid "Added file {fileName}"
@@ -165,6 +166,7 @@ msgid "Redo"
 msgstr "Yinele"
 
 #: ../src/application/headerbar.cpp:91
+#: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
 msgstr "Farklı Kaydet…"
 
@@ -212,6 +214,14 @@ msgstr "Kaydediliyor…"
 #: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
 msgstr "Kaydedildi!"
+
+#: ../src/application/unsavedchangesdialog.cpp:24
+msgid "Save modified document before closing?"
+msgstr ""
+
+#: ../src/application/unsavedchangesdialog.cpp:32
+msgid "Close without Saving"
+msgstr ""
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
