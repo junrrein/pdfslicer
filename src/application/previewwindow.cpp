@@ -23,7 +23,7 @@ using namespace fmt::literals;
 
 namespace Slicer {
 
-const std::vector<int> PreviewWindow::zoomLevels = {1000, 1400, 1800};
+const std::vector<int> PreviewWindow::zoomLevels = {1000, 1400, 1800, 2200, 2600};
 
 PreviewWindow::PreviewWindow(const Glib::RefPtr<const Page>& page, BackgroundThread& backgroundThread)
     : m_page{page}
