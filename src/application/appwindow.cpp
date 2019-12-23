@@ -94,7 +94,7 @@ bool AppWindow::on_delete_event(GdkEventAny*)
             return true;
 
         case Gtk::RESPONSE_YES: {
-            const bool success = showSaveFileDialogAndSave();
+            const bool success = showSaveFileDialogAndSave(SaveFileIn::Foreground);
 
             return !success;
         }
@@ -281,29 +281,6 @@ void AppWindow::enableEditingActions()
     onCommandExecuted();
 }
 
-bool AppWindow::showSaveFileDialogAndSave()
-{
-    Slicer::SaveFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
-    const int result = dialog.run();
-
-    if (result == GTK_RESPONSE_ACCEPT) {
-        const Glib::RefPtr<Gio::File>& file = dialog.get_file();
-
-        try {
-            PdfSaver{*m_document}.save(file);
-
-            return true;
-        }
-        catch (...) {
-            Logger::logError("Saving the document failed");
-            Logger::logError("The destination file was: " + file->get_path());
-            m_savingFailedDispatcher.emit();
-        }
-    }
-
-    return false;
-}
-
 void AppWindow::onAboutAction()
 {
     (new Slicer::AboutDialog{*this})->present();
@@ -317,15 +294,42 @@ void AppWindow::onShortcutsAction()
 
 void AppWindow::onSaveAction()
 {
-    Slicer::SaveFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
-
-    const int result = dialog.run();
-
-    if (result == GTK_RESPONSE_ACCEPT)
-        trySaveDocument(dialog.get_file());
+    showSaveFileDialogAndSave(SaveFileIn::Background);
 }
 
-void AppWindow::trySaveDocument(const Glib::RefPtr<Gio::File>& file)
+bool AppWindow::showSaveFileDialogAndSave(SaveFileIn howToSave)
+{
+    Slicer::SaveFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
+    const int result = dialog.run();
+
+    if (result == GTK_RESPONSE_ACCEPT) {
+        const Glib::RefPtr<Gio::File>& file = dialog.get_file();
+
+        if (howToSave == SaveFileIn::Foreground)
+            return saveFileInForeground(file);
+        else
+            saveFileInBackground(file);
+    }
+
+    return false;
+}
+
+bool AppWindow::saveFileInForeground(const Glib::RefPtr<Gio::File>& file)
+{
+    try {
+        PdfSaver{*m_document}.save(file);
+
+        return true;
+    }
+    catch (...) {
+        Logger::logError("Saving the document failed");
+        Logger::logError("The destination file was: " + file->get_path());
+
+        return false;
+    }
+}
+
+void AppWindow::saveFileInBackground(const Glib::RefPtr<Gio::File>& file)
 {
     m_savingRevealer.saving();
     disableEditingActions();

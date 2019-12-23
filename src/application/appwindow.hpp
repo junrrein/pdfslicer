@@ -49,6 +49,11 @@ protected:
     virtual bool on_delete_event(GdkEventAny*) override;
 
 private:
+    enum class SaveFileIn {
+        Foreground,
+        Background
+    };
+
     std::unique_ptr<Document> m_document;
     bool m_isDocumentModified = false;
     std::atomic<bool> m_isSavingDocument{false};
@@ -109,8 +114,9 @@ private:
     void loadCustomCSS();
     void disableEditingActions();
     void enableEditingActions();
-    bool showSaveFileDialogAndSave();
-    void trySaveDocument(const Glib::RefPtr<Gio::File>& file);
+    bool showSaveFileDialogAndSave(SaveFileIn howToSave);
+    bool saveFileInForeground(const Glib::RefPtr<Gio::File>& file);
+    void saveFileInBackground(const Glib::RefPtr<Gio::File>& file);
     void tryOpenDocument(const Glib::RefPtr<Gio::File>& file);
     void tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position);
     void showOpenFileFailedErrorDialog(const std::string& filePath);
