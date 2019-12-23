@@ -103,6 +103,7 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_cancelSelectionAction;
     Glib::RefPtr<Gio::SimpleAction> m_shortcutsAction;
     Glib::RefPtr<Gio::SimpleAction> m_aboutAction;
+    Glib::RefPtr<Gio::SimpleAction> m_closeWindowAction;
 
     // Functions
     void loadWindowState();
@@ -147,6 +148,7 @@ private:
     void onSelectEvenPages();
     void onCancelSelection();
     void onAboutAction();
+    void onCloseWindowAction();
     void onShortcutsAction();
     void onSelectedPagesChanged();
     void onCommandExecuted();

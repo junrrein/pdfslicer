@@ -60,6 +60,7 @@ void Application::addAccels()
                           {"<Control>plus", "<Control>KP_Add"});
     set_accels_for_action("win.zoom-out",
                           {"<Control>minus", "<Control>KP_Subtract"});
+    set_accel_for_action("win.close-window", "<Control>q");
 
     // FIXME: The following actions don't work
     set_accels_for_action("preview.zoom-in",
