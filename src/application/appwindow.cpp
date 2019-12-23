@@ -365,12 +365,12 @@ void AppWindow::showOpenFileFailedErrorDialog(const std::string& filePath)
     Logger::logError("The file couldn't be opened");
     Logger::logError("Filepath: " + filePath);
 
-    Gtk::MessageDialog errorDialog{_("The selected file could not be opened"),
+    Gtk::MessageDialog errorDialog{*this,
+                                   _("The selected file could not be opened"),
                                    false,
                                    Gtk::MESSAGE_ERROR,
                                    Gtk::BUTTONS_CLOSE,
                                    true};
-    errorDialog.set_transient_for(*this);
     errorDialog.run();
 }
 
