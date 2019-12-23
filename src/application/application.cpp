@@ -60,6 +60,7 @@ void Application::addAccels()
                           {"<Control>plus", "<Control>KP_Add"});
     set_accels_for_action("win.zoom-out",
                           {"<Control>minus", "<Control>KP_Subtract"});
+    set_accel_for_action("win.reset-zoom", "<Control>0");
     set_accel_for_action("win.close-window", "<Control>q");
 
     // FIXME: The following actions don't work
@@ -67,6 +68,7 @@ void Application::addAccels()
                           {"<Control>plus", "<Control>KP_Add"});
     set_accels_for_action("preview.zoom-out",
                           {"<Control>minus", "<Control>KP_Subtract"});
+    set_accel_for_action("preview.reset-zoom", "<Control>0");
 }
 
 void Application::on_open(const Application::type_vec_files& files,

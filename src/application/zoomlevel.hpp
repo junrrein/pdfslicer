@@ -28,6 +28,8 @@ public:
 	ZoomLevel() = delete;
     ZoomLevel(const std::vector<int>& levels);
 
+    void setToDefaultLevel();
+
     int currentLevel() const;
 	int minLevel() const;
 	int maxLevel() const;

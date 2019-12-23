@@ -38,6 +38,11 @@ ZoomLevel::ZoomLevel(const std::vector<int>& levels)
         throw std::runtime_error("Zoom levels have to be greater than zero");
 }
 
+void ZoomLevel::setToDefaultLevel()
+{
+    m_zoomLevelIndex.set_value(0);
+}
+
 int ZoomLevel::currentLevel() const
 {
     return m_levels.at(m_zoomLevelIndex.get_value());
