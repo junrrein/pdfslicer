@@ -50,6 +50,7 @@ protected:
 
 private:
     std::unique_ptr<Document> m_document;
+    bool m_isDocumentModified = false;
     std::atomic<bool> m_isSavingDocument{false};
     BackgroundThread& m_backgroundThread;
 
@@ -108,11 +109,12 @@ private:
     void loadCustomCSS();
     void disableEditingActions();
     void enableEditingActions();
+    bool showSaveFileDialogAndSave();
     void trySaveDocument(const Glib::RefPtr<Gio::File>& file);
     void tryOpenDocument(const Glib::RefPtr<Gio::File>& file);
     void tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position);
     void showOpenFileFailedErrorDialog(const std::string& filePath);
-    void setTitleModified(bool modified);
+    void setModified(bool modified);
     void saveScrollPosition();
     void restoreScrollPosition();
     void queueRestoreScrollPosition();

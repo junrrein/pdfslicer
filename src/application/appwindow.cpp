@@ -20,6 +20,7 @@
 #include "openfiledialog.hpp"
 #include "savefiledialog.hpp"
 #include "guicommand.hpp"
+#include "unsavedchangesdialog.hpp"
 #include <pdfsaver.hpp>
 #include <glibmm/convert.h>
 #include <glibmm/main.h>
@@ -77,12 +78,30 @@ void AppWindow::setDocument(std::unique_ptr<Document> document)
 
 bool AppWindow::on_delete_event(GdkEventAny*)
 {
-    // TODO: Right now, when we are saving a document and the user
-    // tries to close the window, the app does nothing. It doesn't
-    // react at all.
-    // Maybe we should tell the user visually that his request to
-    // close the window was purposefully ignored.
-    return m_isSavingDocument;
+    if (m_isSavingDocument)
+        return true;
+
+    if (m_isDocumentModified) {
+        UnsavedChangesDialog dialog{*this};
+        int response = dialog.run();
+
+        switch (response) {
+        case Gtk::RESPONSE_CLOSE:
+            return false;
+
+        case Gtk::RESPONSE_CANCEL:
+        case Gtk::RESPONSE_DELETE_EVENT:
+            return true;
+
+        case Gtk::RESPONSE_YES: {
+            const bool success = showSaveFileDialogAndSave();
+
+            return !success;
+        }
+        }
+    }
+
+    return false;
 }
 
 void AppWindow::loadWindowState()
@@ -186,7 +205,7 @@ void AppWindow::setupSignalHandlers()
     m_savedDispatcher.connect([this]() {
         m_savingRevealer.saved();
         enableEditingActions();
-        setTitleModified(false);
+        setModified(false);
     });
 
     m_savingFailedDispatcher.connect([this]() {
@@ -262,6 +281,29 @@ void AppWindow::enableEditingActions()
     onCommandExecuted();
 }
 
+bool AppWindow::showSaveFileDialogAndSave()
+{
+    Slicer::SaveFileDialog dialog{*this, m_document->lastAddedFileParentPath()};
+    const int result = dialog.run();
+
+    if (result == GTK_RESPONSE_ACCEPT) {
+        const Glib::RefPtr<Gio::File>& file = dialog.get_file();
+
+        try {
+            PdfSaver{*m_document}.save(file);
+
+            return true;
+        }
+        catch (...) {
+            Logger::logError("Saving the document failed");
+            Logger::logError("The destination file was: " + file->get_path());
+            m_savingFailedDispatcher.emit();
+        }
+    }
+
+    return false;
+}
+
 void AppWindow::onAboutAction()
 {
     (new Slicer::AboutDialog{*this})->present();
@@ -333,13 +375,17 @@ void AppWindow::showOpenFileFailedErrorDialog(const std::string& filePath)
     errorDialog.run();
 }
 
-void AppWindow::setTitleModified(bool modified)
+void AppWindow::setModified(bool modified)
 {
-    if (modified && m_headerBar.get_title().at(0) != '*')
-        m_headerBar.set_title("*" + m_headerBar.get_title());
+    if (modified == m_isDocumentModified)
+        return;
 
-    if (!modified && m_headerBar.get_title().at(0) == '*')
+    if (modified)
+        m_headerBar.set_title("*" + m_headerBar.get_title());
+    else
         m_headerBar.set_title(m_headerBar.get_title().substr(1));
+
+    m_isDocumentModified = modified;
 }
 
 void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position)
@@ -594,11 +640,11 @@ void AppWindow::onCommandExecuted()
 {
     if (m_commandManager.canUndo()) {
         m_undoAction->set_enabled();
-        setTitleModified(true);
+        setModified(true);
     }
     else {
         m_undoAction->set_enabled(false);
-        setTitleModified(false);
+        setModified(false);
     }
 
     if (m_commandManager.canRedo())
