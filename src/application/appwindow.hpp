@@ -120,6 +120,7 @@ private:
     void tryOpenDocument(const Glib::RefPtr<Gio::File>& file);
     void tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position);
     void showOpenFileFailedErrorDialog(const std::string& filePath);
+    void showSaveFileFailedErrorDialog();
     void setModified(bool modified);
     void saveScrollPosition();
     void restoreScrollPosition();

@@ -84,6 +84,7 @@ bool AppWindow::on_delete_event(GdkEventAny*)
     if (m_isDocumentModified) {
         UnsavedChangesDialog dialog{*this};
         int response = dialog.run();
+        dialog.hide();
 
         switch (response) {
         case Gtk::RESPONSE_CLOSE:
@@ -211,15 +212,7 @@ void AppWindow::setupSignalHandlers()
     m_savingFailedDispatcher.connect([this]() {
         m_savingRevealer.set_reveal_child(false);
         enableEditingActions();
-
-        Gtk::MessageDialog errorDialog{_("The current document could not be saved"),
-                                       false,
-                                       Gtk::MESSAGE_ERROR,
-                                       Gtk::BUTTONS_CLOSE,
-                                       true};
-        errorDialog.set_transient_for(*this);
-
-        errorDialog.run();
+        showSaveFileFailedErrorDialog();
     });
 
     m_scroller.get_vadjustment()->signal_value_changed().connect([this]() {
@@ -325,6 +318,8 @@ bool AppWindow::saveFileInForeground(const Glib::RefPtr<Gio::File>& file)
         Logger::logError("Saving the document failed");
         Logger::logError("The destination file was: " + file->get_path());
 
+        showSaveFileFailedErrorDialog();
+
         return false;
     }
 }
@@ -376,6 +371,17 @@ void AppWindow::showOpenFileFailedErrorDialog(const std::string& filePath)
                                    Gtk::BUTTONS_CLOSE,
                                    true};
     errorDialog.set_transient_for(*this);
+    errorDialog.run();
+}
+
+void AppWindow::showSaveFileFailedErrorDialog()
+{
+    Gtk::MessageDialog errorDialog{*this,
+                                   _("The current document could not be saved"),
+                                   false,
+                                   Gtk::MESSAGE_ERROR,
+                                   Gtk::BUTTONS_CLOSE,
+                                   true};
     errorDialog.run();
 }
 
