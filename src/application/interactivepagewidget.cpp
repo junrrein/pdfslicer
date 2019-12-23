@@ -103,7 +103,6 @@ void InteractivePageWidget::setupWidgets()
     m_overlay.set_valign(Gtk::ALIGN_CENTER);
     m_overlay.add_overlay(m_previewButtonRevealer);
     m_overlay.add(m_pageWidget);
-    m_overlayEventBox.add(m_overlay);
 
     m_fileNameLabel.set_label(page()->fileName());
     m_fileNameLabel.set_tooltip_text(page()->fileName());
@@ -119,9 +118,10 @@ void InteractivePageWidget::setupWidgets()
         m_pageLabelBox.pack_end(m_fileNameLabel);
 
     m_contentBox.set_orientation(Gtk::ORIENTATION_VERTICAL);
-    m_contentBox.pack_start(m_overlayEventBox);
+    m_contentBox.pack_start(m_overlay);
     m_contentBox.pack_start(m_pageLabelBox, Gtk::PACK_SHRINK);
-    add(m_contentBox);
+    m_eventBox.add(m_contentBox);
+    add(m_eventBox);
 
     set_margin_start(10);
     set_margin_end(10);
@@ -131,7 +131,7 @@ void InteractivePageWidget::setupWidgets()
 
 void InteractivePageWidget::setupSignalHandlers()
 {
-    m_overlayEventBox.signal_button_release_event().connect([this](GdkEventButton* eventButton) {
+    m_eventBox.signal_button_release_event().connect([this](GdkEventButton* eventButton) {
         if (eventButton->button == 1) {
             if ((eventButton->state & GDK_SHIFT_MASK) != 0) {
                 setSelected(true);
@@ -148,13 +148,13 @@ void InteractivePageWidget::setupSignalHandlers()
         return false;
     });
 
-    m_overlayEventBox.signal_enter_notify_event().connect([this](GdkEventCrossing*) {
+    m_eventBox.signal_enter_notify_event().connect([this](GdkEventCrossing*) {
         m_previewButtonRevealer.set_reveal_child(true);
 
         return false;
     });
 
-    m_overlayEventBox.signal_leave_notify_event().connect([this](GdkEventCrossing*) {
+    m_eventBox.signal_leave_notify_event().connect([this](GdkEventCrossing*) {
         m_previewButtonRevealer.set_reveal_child(false);
 
         return false;

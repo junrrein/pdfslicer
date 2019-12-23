@@ -63,9 +63,9 @@ private:
     std::atomic<bool> m_isRenderingCancelled = false;
     bool m_showFileName = false;
 
+    Gtk::EventBox m_eventBox;
     Gtk::Box m_contentBox;
     Gtk::Overlay m_overlay;
-    Gtk::EventBox m_overlayEventBox;
     Slicer::PageWidget m_pageWidget;
 
     Gtk::Button m_previewButton;
