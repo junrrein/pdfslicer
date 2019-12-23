@@ -48,7 +48,7 @@ void AppMenu::setupWidgets()
     m_zoomSeparatorBox.pack_start(m_zoomSeparatorLabel, Gtk::PACK_SHRINK, 5);
     m_zoomSeparatorBox.pack_start(m_zoomSeparatorRight);
 
-    m_zoomAdjustment = Gtk::Adjustment::create(0, 0, 2, 1, 1);
+    m_zoomAdjustment = Gtk::Adjustment::create(0, 0, 4, 1, 1);
     m_zoomSlider.set_adjustment(m_zoomAdjustment);
     m_zoomSlider.set_has_origin(false);
     m_zoomSlider.set_draw_value(false);
@@ -56,6 +56,8 @@ void AppMenu::setupWidgets()
     m_zoomSlider.add_mark(0, Gtk::POS_BOTTOM, "");
     m_zoomSlider.add_mark(1, Gtk::POS_BOTTOM, "");
     m_zoomSlider.add_mark(2, Gtk::POS_BOTTOM, "");
+    m_zoomSlider.add_mark(3, Gtk::POS_BOTTOM, "");
+    m_zoomSlider.add_mark(4, Gtk::POS_BOTTOM, "");
     m_zoomSlider.set_size_request(150, -1);
 
     m_shortcutsButton.set_label(_("Keyboard shortcuts"));

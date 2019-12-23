@@ -34,7 +34,7 @@
 
 namespace Slicer {
 
-const std::vector<int> AppWindow::zoomLevels = {200, 300, 400};
+const std::vector<int> AppWindow::zoomLevels = {200, 300, 400, 550, 700};
 
 AppWindow::AppWindow(BackgroundThread& backgroundThread, SettingsManager& settingsManager)
     : m_backgroundThread{backgroundThread}
