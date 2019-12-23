@@ -360,11 +360,8 @@ void AppWindow::onOpenAction()
         tryOpenDocument(dialog.get_file());
 }
 
-void AppWindow::showOpenFileFailedErrorDialog(const std::string& filePath)
+void AppWindow::showOpenFileFailedErrorDialog()
 {
-    Logger::logError("The file couldn't be opened");
-    Logger::logError("Filepath: " + filePath);
-
     Gtk::MessageDialog errorDialog{*this,
                                    _("The selected file could not be opened"),
                                    false,
@@ -409,7 +406,10 @@ void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned i
         m_commandManager.execute(command);
     }
     catch (...) {
-        showOpenFileFailedErrorDialog(file->get_path());
+        Logger::logError("The file couldn't be added");
+        Logger::logError("Filepath: " + file->get_path());
+
+        showOpenFileFailedErrorDialog();
     }
 }
 
@@ -452,7 +452,10 @@ void AppWindow::tryOpenDocument(const Glib::RefPtr<Gio::File>& file)
         m_headerBar.set_subtitle("");
     }
     catch (...) {
-        showOpenFileFailedErrorDialog(file->get_path());
+        Logger::logError("The file couldn't be opened");
+        Logger::logError("Filepath: " + file->get_path());
+
+        showOpenFileFailedErrorDialog();
     }
 }
 
