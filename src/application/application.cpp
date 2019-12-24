@@ -33,15 +33,26 @@ Application::Application()
     Glib::set_application_name(config::APPLICATION_NAME);
 }
 
+void Application::addActions()
+{
+    m_newWindowAction = add_action("new-window", sigc::mem_fun(*this, &Application::onNewWindowAction));
+}
+
 void Application::on_startup()
 {
     Gtk::Application::on_startup();
 
     Gtk::Window::set_default_icon_name(config::APPLICATION_ID);
+    addActions();
     addAccels();
 }
 
 void Application::on_activate()
+{
+    createWindow()->present();
+}
+
+void Application::onNewWindowAction()
 {
     createWindow()->present();
 }
