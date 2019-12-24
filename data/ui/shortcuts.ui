@@ -34,6 +34,18 @@
 								<property name="title" translatable="yes" context="shortcut window">Zoom out</property>
 							</object>
 						</child>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="accelerator">&lt;ctrl&gt;0</property>
+								<property name="title" translatable="yes" context="shortcut window">Reset zoom level</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="accelerator">&lt;ctrl&gt;W</property>
+								<property name="title" translatable="yes" context="shortcut window">Close window</property>
+							</object>
+						</child>
 					</object>
 				</child>
 				<child>
