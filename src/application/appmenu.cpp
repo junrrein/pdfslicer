@@ -60,6 +60,10 @@ void AppMenu::setupWidgets()
     m_zoomSlider.add_mark(4, Gtk::POS_BOTTOM, "");
     m_zoomSlider.set_size_request(150, -1);
 
+    m_newWindowButton.set_label(_("New window"));
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_newWindowButton.gobj()), "app.new-window"); //NOLINT
+    m_newWindowButton.get_style_context()->add_class("flat");
+    m_newWindowButton.get_child()->set_halign(Gtk::ALIGN_START);
     m_shortcutsButton.set_label(_("Keyboard shortcuts"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_shortcutsButton.gobj()), "win.shortcuts"); //NOLINT
     m_shortcutsButton.get_style_context()->add_class("flat");
@@ -74,6 +78,7 @@ void AppMenu::setupWidgets()
     m_contentBox.pack_start(m_zoomSeparatorBox);
     m_contentBox.pack_start(m_zoomSlider);
     m_contentBox.pack_start(m_appSeparator, Gtk::PACK_EXPAND_PADDING, 5);
+    m_contentBox.pack_start(m_newWindowButton);
     m_contentBox.pack_start(m_shortcutsButton);
     m_contentBox.pack_start(m_aboutButton);
     add(m_contentBox);
