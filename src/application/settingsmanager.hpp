@@ -35,6 +35,9 @@ public:
     WindowState loadWindowState();
     void saveWindowState(const WindowState& windowState);
 
+    unsigned int loadZoomLevel();
+    void saveZoomLevel(unsigned int zoomLevel);
+
 private:
     Glib::KeyFile m_keyFile;
 

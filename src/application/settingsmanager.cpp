@@ -34,6 +34,16 @@ namespace window_state {
     static const WindowState defaultWindowState = {800, 600, false};
 }
 
+namespace misc {
+    static const std::string groupName = "misc";
+
+    static const struct {
+        std::string zoomLevel = "zoom-level";
+    } keys;
+
+    static const unsigned int defaultZoomLevel = 0;
+}
+
 SettingsManager::SettingsManager()
 {
     loadConfigFile();
@@ -71,6 +81,28 @@ void SettingsManager::saveWindowState(const WindowState& windowState)
     }
     catch (const Glib::Error& e) {
         Logger::logWarning("Error while writing window state: " + e.what());
+    }
+}
+
+unsigned int SettingsManager::loadZoomLevel()
+{
+    try {
+        return static_cast<unsigned>(m_keyFile.get_integer(misc::groupName, misc::keys.zoomLevel));
+    }
+    catch (const Glib::Error& e) {
+        Logger::logWarning("Error while loading zoom level: " + e.what());
+
+        return misc::defaultZoomLevel;
+    }
+}
+
+void SettingsManager::saveZoomLevel(unsigned int zoomLevel)
+{
+    try {
+        m_keyFile.set_integer(misc::groupName, misc::keys.zoomLevel, static_cast<int>(zoomLevel));
+    }
+    catch (const Glib::Error& e) {
+        Logger::logWarning("Error while writing zoom level: " + e.what());
     }
 }
 
