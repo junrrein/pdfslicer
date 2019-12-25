@@ -36,13 +36,13 @@ namespace Slicer {
 
 const std::vector<int> AppWindow::zoomLevels = {200, 300, 400, 550, 700};
 
-AppWindow::AppWindow(BackgroundThread& backgroundThread, SettingsManager& settingsManager)
-    : m_backgroundThread{backgroundThread}
+AppWindow::AppWindow(TaskRunner& taskRunner, SettingsManager& settingsManager)
+    : m_taskRunner{taskRunner}
     , m_settingsManager{settingsManager}
     , m_windowState{}
     , m_zoomLevel{zoomLevels, *this}
     , m_headerBar{m_zoomLevel.zoomLevelIndex()}
-    , m_view{m_backgroundThread}
+    , m_view{m_taskRunner}
 {
     set_size_request(500, 500);
 

@@ -17,9 +17,9 @@
 #ifndef PREVIEWWINDOW_HPP
 #define PREVIEWWINDOW_HPP
 
-#include "../application/backgroundthread.hpp"
 #include <page.hpp>
 #include "pagewidget.hpp"
+#include "taskrunner.hpp"
 #include "zoomlevelwithactions.hpp"
 #include <glibmm/dispatcher.h>
 #include <gtkmm/window.h>
@@ -35,18 +35,17 @@ namespace Slicer {
 class PreviewWindow : public Gtk::Window {
 public:
     PreviewWindow(const Glib::RefPtr<const Page>& page,
-                  BackgroundThread& backgroundThread);
-	virtual ~PreviewWindow() = default;
+                  TaskRunner& taskRunner);
+    virtual ~PreviewWindow();
 
 private:
     Glib::RefPtr<const Page> m_page;
-	BackgroundThread& m_backgroundThread;
-	Glib::Dispatcher m_pageRenderedDispatcher;
+    TaskRunner& m_taskRunner;
 	Glib::RefPtr<Gio::SimpleActionGroup> m_actionGroup;
 	ZoomLevelWithActions m_zoomLevel;
     static const std::vector<int> zoomLevels;
 
-    PageWidget m_pageWidget;
+    std::shared_ptr<PageWidget> m_pageWidget;
 	Gtk::ScrolledWindow m_scroller;
 	Gtk::Overlay m_overlay;
 	Gtk::Button m_buttonZoomIn;

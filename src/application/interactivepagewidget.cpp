@@ -45,6 +45,16 @@ void InteractivePageWidget::setSelected(bool selected)
     }
 }
 
+void InteractivePageWidget::setRenderingTask(const std::weak_ptr<Task>& task)
+{
+    m_pageWidget.setRenderingTask(task);
+}
+
+void InteractivePageWidget::cancelRendering()
+{
+    m_pageWidget.cancelRendering();
+}
+
 void InteractivePageWidget::setShowFilename(bool showFileName)
 {
     if (m_showFileName == showFileName)

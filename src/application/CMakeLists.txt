@@ -2,7 +2,6 @@ set (APPLICATION_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/addfiledialog.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/application.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/appmenu.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/backgroundthread.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/settingsmanager.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/aboutdialog.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/actionbar.cpp
@@ -16,6 +15,8 @@ set (APPLICATION_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/previewwindow.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/savefiledialog.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/savingrevealer.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/task.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/taskrunner.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/unsavedchangesdialog.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/view.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/welcomescreen.cpp

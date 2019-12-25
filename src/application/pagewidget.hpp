@@ -17,6 +17,7 @@
 #ifndef VIEWCHILD_HPP
 #define VIEWCHILD_HPP
 
+#include "task.hpp"
 #include <page.hpp>
 #include <gtkmm/box.h>
 #include <gtkmm/image.h>
@@ -34,12 +35,15 @@ public:
     void renderPage();
     void showSpinner();
     void showPage();
+    void setRenderingTask(const std::weak_ptr<Task>& task);
+    void cancelRendering();
 
     const Glib::RefPtr<const Page>& page() const;
 
 private:
     Glib::RefPtr<const Page> m_page;
     int m_targetSize;
+    std::weak_ptr<Task> m_renderingTask;
 
     Gtk::Spinner m_spinner;
     Gtk::Image m_thumbnail;

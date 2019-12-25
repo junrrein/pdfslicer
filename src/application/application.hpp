@@ -29,7 +29,7 @@ public:
     virtual ~Application() override = default;
 
 private:
-    BackgroundThread m_backgroundThread;
+    TaskRunner m_taskRunner;
     SettingsManager m_settingsManager;
 
     Glib::RefPtr<Gio::SimpleAction> m_newWindowAction;
