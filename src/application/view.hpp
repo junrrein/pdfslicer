@@ -61,21 +61,18 @@ private:
     Document* m_document = nullptr;
     std::vector<sigc::connection> m_documentConnections;
     LockableQueue m_renderedQueue;
-    Glib::Dispatcher m_dispatcher;
     BackgroundThread& m_backgroundThread;
 
     InteractivePageWidget* m_lastPageSelected = nullptr;
 
     std::shared_ptr<InteractivePageWidget> createPageWidget(const Glib::RefPtr<const Page>& page);
 
-    void onDispatcherCalled();
     void onModelItemsChanged(guint position, guint removed, guint added);
     void onModelPagesRotated(const std::vector<unsigned int>& positions);
     void onModelPagesReordered(const std::vector<unsigned int>& positions);
     void onPageSelection(InteractivePageWidget* pageWidget);
     void onShiftSelection(InteractivePageWidget* pageWidget);
     void onPreviewRequested(const Glib::RefPtr<const Page>& page);
-    void displayRenderedPages();
     void renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget);
     void killStillRenderingPages();
     void clearState();

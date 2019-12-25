@@ -16,6 +16,7 @@
 
 #include "view.hpp"
 #include "previewwindow.hpp"
+#include <glibmm/main.h>
 #include <range/v3/view.hpp>
 #include <range/v3/range/conversion.hpp>
 
@@ -29,8 +30,6 @@ View::View(BackgroundThread& backgroundThread)
     set_row_spacing(5);
     set_selection_mode(Gtk::SELECTION_NONE);
     set_sort_func(&sortFunction);
-
-    m_dispatcher.connect(sigc::mem_fun(*this, &View::onDispatcherCalled));
 }
 
 View::~View()
@@ -211,36 +210,24 @@ int View::sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b)
     return InteractivePageWidget::sortFunction(*widgetA, *widgetB);
 }
 
-void View::displayRenderedPages()
-{
-    safe::WriteAccess<LockableQueue> queue{m_renderedQueue};
-
-    while (!queue->empty()) {
-        std::shared_ptr<InteractivePageWidget> pageWidget = queue->front().lock();
-        queue->pop();
-
-        if (pageWidget != nullptr) {
-            pageWidget->showPage();
-        }
-    }
-}
-
 void View::renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget)
 {
     pageWidget->enableRendering();
 
-    m_backgroundThread.pushBack([this, pageWidget]() {
+    m_backgroundThread.pushBack([pageWidget]() {
         if (pageWidget->isRenderingCancelled())
             return;
 
         pageWidget->renderPage();
 
-        {
-            safe::WriteAccess<LockableQueue> queue{m_renderedQueue};
-            queue->push(pageWidget);
-        }
+        if (pageWidget->isRenderingCancelled())
+            return;
 
-        m_dispatcher.emit();
+        Glib::signal_idle().connect([pageWidget]() {
+            pageWidget->showPage();
+
+            return false;
+        });
     });
 }
 
@@ -250,11 +237,6 @@ void View::killStillRenderingPages()
 
     safe::WriteAccess<LockableQueue> queue{m_renderedQueue};
     *queue = {};
-}
-
-void View::onDispatcherCalled()
-{
-    displayRenderedPages();
 }
 
 void View::onModelItemsChanged(guint position, guint removed, guint added)
