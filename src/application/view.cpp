@@ -24,8 +24,8 @@ namespace Slicer {
 
 namespace rsv = ranges::views;
 
-View::View(BackgroundThread& backgroundThread)
-    : m_backgroundThread{backgroundThread}
+View::View(TaskRunner& taskRunner)
+    : m_taskRunner{taskRunner}
 {
     set_row_spacing(5);
     set_selection_mode(Gtk::SELECTION_NONE);
@@ -37,7 +37,7 @@ View::~View()
     for (sigc::connection& connection : m_documentConnections)
         connection.disconnect();
 
-    m_backgroundThread.killRemainingTasks();
+    cancelRenderingTasks();
 }
 
 std::shared_ptr<InteractivePageWidget> View::createPageWidget(const Glib::RefPtr<const Page>& page)
@@ -53,7 +53,7 @@ std::shared_ptr<InteractivePageWidget> View::createPageWidget(const Glib::RefPtr
 
 void View::clearState()
 {
-    killStillRenderingPages();
+    cancelRenderingTasks();
     clearSelection();
 
     for (Gtk::Widget* child : get_children())
@@ -93,7 +93,7 @@ void View::setDocument(Document& document, int targetWidgetSize)
 
 void View::changePageSize(int targetWidgetSize)
 {
-    killStillRenderingPages();
+    cancelRenderingTasks();
 
     m_pageWidgetSize = targetWidgetSize;
 
@@ -212,31 +212,31 @@ int View::sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b)
 
 void View::renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget)
 {
-    pageWidget->enableRendering();
+    std::weak_ptr<InteractivePageWidget> weakWidget = pageWidget;
 
-    m_backgroundThread.pushBack([pageWidget]() {
-        if (pageWidget->isRenderingCancelled())
-            return;
+    auto funcExecute = [weakWidget]() {
+        if (auto widget = weakWidget.lock(); widget != nullptr)
+            widget->renderPage();
+    };
 
-        pageWidget->renderPage();
+    auto funcPostExecute = [weakWidget]() {
+        if (auto widget = weakWidget.lock(); widget != nullptr)
+            widget->showPage();
+    };
 
-        if (pageWidget->isRenderingCancelled())
-            return;
+    auto task = std::make_shared<Task>(funcExecute, funcPostExecute);
 
-        Glib::signal_idle().connect([pageWidget]() {
-            pageWidget->showPage();
-
-            return false;
-        });
-    });
+    m_renderingTasks.push_back(task);
+    pageWidget->setRenderingTask(task);
+    m_taskRunner.queueBack(task);
 }
 
-void View::killStillRenderingPages()
+void View::cancelRenderingTasks()
 {
-    m_backgroundThread.killRemainingTasks();
+    for (auto& task : m_renderingTasks)
+        task->cancel();
 
-    safe::WriteAccess<LockableQueue> queue{m_renderedQueue};
-    *queue = {};
+    m_renderingTasks.clear();
 }
 
 void View::onModelItemsChanged(guint position, guint removed, guint added)
@@ -328,6 +328,6 @@ void View::onShiftSelection(InteractivePageWidget* pageWidget)
 
 void View::onPreviewRequested(const Glib::RefPtr<const Page>& page)
 {
-    (new PreviewWindow{page, m_backgroundThread})->show();
+    (new PreviewWindow{page, m_taskRunner})->show();
 }
 }

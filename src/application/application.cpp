@@ -83,7 +83,7 @@ void Application::on_open(const Application::type_vec_files& files,
 
 AppWindow* Application::createWindow()
 {
-    auto window = new Slicer::AppWindow{m_backgroundThread, m_settingsManager}; //NOLINT
+    auto window = new Slicer::AppWindow{m_taskRunner, m_settingsManager}; //NOLINT
 
     window->signal_hide().connect([window]() {
         delete window; //NOLINT

@@ -18,13 +18,13 @@
 #define INTERACTIVEPAGEWIDGET_HPP
 
 #include "pagewidget.hpp"
+#include "task.hpp"
 #include <gtkmm/button.h>
 #include <gtkmm/eventbox.h>
 #include <gtkmm/flowboxchild.h>
 #include <gtkmm/label.h>
 #include <gtkmm/overlay.h>
 #include <gtkmm/revealer.h>
-#include <atomic>
 
 namespace Slicer {
 
@@ -39,9 +39,8 @@ public:
     void setSelected(bool selected);
     bool getSelected() const { return m_isSelected; }
 
-    void enableRendering() { m_isRenderingCancelled = false; }
-    void cancelRendering() { m_isRenderingCancelled = true; }
-    bool isRenderingCancelled() const { return m_isRenderingCancelled; }
+    void setRenderingTask(const std::weak_ptr<Task>& task);
+    void cancelRendering();
 
     void setShowFilename(bool showFileName);
 
@@ -60,8 +59,8 @@ public:
 
 private:
     bool m_isSelected = false;
-    std::atomic<bool> m_isRenderingCancelled = false;
     bool m_showFileName = false;
+    std::weak_ptr<Task> m_renderingTask;
 
     Gtk::EventBox m_eventBox;
     Gtk::Box m_contentBox;

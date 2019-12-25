@@ -28,7 +28,7 @@ public:
     virtual ~Application() override = default;
 
 private:
-    BackgroundThread m_backgroundThread;
+    TaskRunner m_taskRunner;
     SettingsManager m_settingsManager;
 
     Application();
