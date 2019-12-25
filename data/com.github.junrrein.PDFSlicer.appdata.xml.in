@@ -32,6 +32,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.8.0" date="2019-12-25">
+			<description>
+				<p>Add the ability to open new windows. Add more zoom levels. Other minor improvements.</p>
+			</description>
+		</release>
 		<release version="1.7.6" date="2019-12-06">
 			<description>
 				<p>Add Czech translation.</p>
