@@ -60,6 +60,8 @@ void Application::onNewWindowAction()
 
 void Application::addAccels()
 {
+    set_accel_for_action("app.new-window", "<Control>n");
+
     set_accel_for_action("win.open-document", "<Control>o");
     set_accel_for_action("win.save-document", "<Control>s");
     set_accel_for_action("win.undo", "<Control>z");

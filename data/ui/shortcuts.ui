@@ -42,6 +42,12 @@
 						</child>
 						<child>
 							<object class="GtkShortcutsShortcut">
+								<property name="accelerator">&lt;ctrl&gt;N</property>
+								<property name="title" translatable="yes" context="shortcut window">New window</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkShortcutsShortcut">
 								<property name="accelerator">&lt;ctrl&gt;Q</property>
 								<property name="title" translatable="yes" context="shortcut window">Close window</property>
 							</object>
