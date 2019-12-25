@@ -226,17 +226,14 @@ void View::renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget)
 
     auto task = std::make_shared<Task>(funcExecute, funcPostExecute);
 
-    m_renderingTasks.push_back(task);
     pageWidget->setRenderingTask(task);
     m_taskRunner.queueBack(task);
 }
 
 void View::cancelRenderingTasks()
 {
-    for (auto& task : m_renderingTasks)
-        task->cancel();
-
-    m_renderingTasks.clear();
+    for (auto& pageWidget : m_pageWidgets)
+        pageWidget->cancelRendering();
 }
 
 void View::onModelItemsChanged(guint position, guint removed, guint added)

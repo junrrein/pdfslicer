@@ -59,7 +59,6 @@ private:
     Document* m_document = nullptr;
     std::vector<sigc::connection> m_documentConnections;
     TaskRunner& m_taskRunner;
-    std::vector<std::shared_ptr<Task>> m_renderingTasks;
 
     InteractivePageWidget* m_lastPageSelected = nullptr;
 
