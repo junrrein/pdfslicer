@@ -1,5 +1,5 @@
 // PDF Slicer
-// Copyright (C) 2017-2018 Julián Unrrein
+// Copyright (C) 2019 Julián Unrrein
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,36 +14,31 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef ZOOMLEVEL_HPP
-#define ZOOMLEVEL_HPP
+#ifndef SLICER_TASK_HPP
+#define SLICER_TASK_HPP
 
-#include <glibmm/object.h>
-#include <glibmm/property.h>
-#include <sigc++/signal.h>
+#include <atomic>
+#include <functional>
 
 namespace Slicer {
 
-class ZoomLevel : public Glib::Object {
+class Task {
 public:
-	ZoomLevel() = delete;
-    ZoomLevel(const std::vector<int>& levels);
+	Task(const std::function<void()>& funcExecute,
+		 const std::function<void()>& funcPostExecute);
 
-    void setToDefaultLevel();
+	bool isCanceled() const;
 
-    int currentLevel() const;
-	int minLevel() const;
-	int maxLevel() const;
-
-	int operator++();
-	int operator--();
-
-    Glib::PropertyProxy<unsigned> zoomLevelIndex();
+	void cancel();
+	void execute();
+	void postExecute();
 
 private:
-    Glib::Property<unsigned> m_zoomLevelIndex;
-    std::vector<int> m_levels;
+	std::atomic_bool m_isCanceled = false;
+	std::function<void()> m_funcExecute;
+	std::function<void()> m_funcPostExecute;
 };
 
 } // namespace Slicer
 
-#endif // ZOOMLEVEL_HPP
+#endif // SLICER_TASK_HPP

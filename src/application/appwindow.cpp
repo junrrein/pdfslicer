@@ -34,15 +34,15 @@
 
 namespace Slicer {
 
-const std::vector<int> AppWindow::zoomLevels = {200, 300, 400};
+const std::vector<int> AppWindow::zoomLevels = {200, 300, 400, 550, 700};
 
-AppWindow::AppWindow(BackgroundThread& backgroundThread, SettingsManager& settingsManager)
-    : m_backgroundThread{backgroundThread}
+AppWindow::AppWindow(TaskRunner& taskRunner, SettingsManager& settingsManager)
+    : m_taskRunner{taskRunner}
     , m_settingsManager{settingsManager}
     , m_windowState{}
     , m_zoomLevel{zoomLevels, *this}
     , m_headerBar{m_zoomLevel.zoomLevelIndex()}
-    , m_view{m_backgroundThread}
+    , m_view{m_taskRunner}
 {
     set_size_request(500, 500);
 
@@ -154,6 +154,7 @@ void AppWindow::addActions()
     m_cancelSelectionAction = add_action("cancel-selection", sigc::mem_fun(*this, &AppWindow::onCancelSelection));
     m_shortcutsAction = add_action("shortcuts", sigc::mem_fun(*this, &AppWindow::onShortcutsAction));
     m_aboutAction = add_action("about", sigc::mem_fun(*this, &AppWindow::onAboutAction));
+    m_closeWindowAction = add_action("close-window", sigc::mem_fun(*this, &AppWindow::onCloseWindowAction));
 
     m_headerBar.disableAddDocumentButton();
     m_addDocumentAfterSelectedAction->set_enabled(false);
@@ -277,6 +278,11 @@ void AppWindow::enableEditingActions()
 void AppWindow::onAboutAction()
 {
     (new Slicer::AboutDialog{*this})->present();
+}
+
+void AppWindow::onCloseWindowAction()
+{
+    this->close();
 }
 
 void AppWindow::onShortcutsAction()

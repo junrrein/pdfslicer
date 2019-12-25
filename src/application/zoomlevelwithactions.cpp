@@ -25,15 +25,18 @@ ZoomLevelWithActions::ZoomLevelWithActions(const std::vector<int>& levels, Gio::
 {
     m_zoomInAction = m_actionMap.add_action("zoom-in", sigc::mem_fun(*this, &ZoomLevelWithActions::onZoomInAction));
     m_zoomOutAction = m_actionMap.add_action("zoom-out", sigc::mem_fun(*this, &ZoomLevelWithActions::onZoomOutAction));
+    m_resetZoomAction = m_actionMap.add_action("reset-zoom", sigc::mem_fun(*this, &ZoomLevelWithActions::onResetZoomAction));
 
     m_zoomInAction->set_enabled(false);
     m_zoomOutAction->set_enabled(false);
+    m_resetZoomAction->set_enabled(false);
 }
 
 ZoomLevelWithActions::~ZoomLevelWithActions()
 {
     m_actionMap.remove_action("zoom-in");
     m_actionMap.remove_action("zoom-out");
+    m_actionMap.remove_action("reset-zoom");
 }
 
 void ZoomLevelWithActions::enable()
@@ -47,12 +50,15 @@ void ZoomLevelWithActions::enable()
         m_zoomOutAction->set_enabled(false);
     else
         m_zoomOutAction->set_enabled();
+
+    m_resetZoomAction->set_enabled();
 }
 
 void ZoomLevelWithActions::disable()
 {
     m_zoomInAction->set_enabled(false);
     m_zoomOutAction->set_enabled(false);
+    m_resetZoomAction->set_enabled(false);
 }
 
 void ZoomLevelWithActions::onZoomInAction()
@@ -73,6 +79,11 @@ void ZoomLevelWithActions::onZoomOutAction()
         m_zoomOutAction->set_enabled(false);
 
     m_zoomInAction->set_enabled();
+}
+
+void ZoomLevelWithActions::onResetZoomAction()
+{
+    setToDefaultLevel();
 }
 
 } // namespace Slicer

@@ -19,6 +19,7 @@
 
 #include "appwindow.hpp"
 #include <gtkmm/application.h>
+#include <giomm/simpleaction.h>
 
 namespace Slicer {
 
@@ -28,18 +29,23 @@ public:
     virtual ~Application() override = default;
 
 private:
-    BackgroundThread m_backgroundThread;
+    TaskRunner m_taskRunner;
     SettingsManager m_settingsManager;
+
+    Glib::RefPtr<Gio::SimpleAction> m_newWindowAction;
 
     Application();
     AppWindow* createWindow();
+
+    void addActions();
+    void addAccels();
+    void setupAppMenu();
 
     void on_startup() override;
     void on_activate() override;
     void on_open(const Gio::Application::type_vec_files& files,
                  const Glib::ustring& hint) override;
-
-    void addAccels();
+    void onNewWindowAction();
 };
 
 } // namespace Slicer

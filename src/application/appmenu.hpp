@@ -48,6 +48,7 @@ private:
 	Glib::RefPtr<Glib::Binding> m_zoomBinding;
 
     Gtk::Separator m_appSeparator;
+    Gtk::ModelButton m_newWindowButton;
     Gtk::ModelButton m_shortcutsButton;
     Gtk::ModelButton m_aboutButton;
 

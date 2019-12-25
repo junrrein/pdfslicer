@@ -16,6 +16,7 @@
 
 #include "view.hpp"
 #include "previewwindow.hpp"
+#include <glibmm/main.h>
 #include <range/v3/view.hpp>
 #include <range/v3/range/conversion.hpp>
 
@@ -23,14 +24,12 @@ namespace Slicer {
 
 namespace rsv = ranges::views;
 
-View::View(BackgroundThread& backgroundThread)
-    : m_backgroundThread{backgroundThread}
+View::View(TaskRunner& taskRunner)
+    : m_taskRunner{taskRunner}
 {
     set_row_spacing(5);
     set_selection_mode(Gtk::SELECTION_NONE);
     set_sort_func(&sortFunction);
-
-    m_dispatcher.connect(sigc::mem_fun(*this, &View::onDispatcherCalled));
 }
 
 View::~View()
@@ -38,7 +37,7 @@ View::~View()
     for (sigc::connection& connection : m_documentConnections)
         connection.disconnect();
 
-    m_backgroundThread.killRemainingTasks();
+    cancelRenderingTasks();
 }
 
 std::shared_ptr<InteractivePageWidget> View::createPageWidget(const Glib::RefPtr<const Page>& page)
@@ -54,7 +53,7 @@ std::shared_ptr<InteractivePageWidget> View::createPageWidget(const Glib::RefPtr
 
 void View::clearState()
 {
-    killStillRenderingPages();
+    cancelRenderingTasks();
     clearSelection();
 
     for (Gtk::Widget* child : get_children())
@@ -94,7 +93,7 @@ void View::setDocument(Document& document, int targetWidgetSize)
 
 void View::changePageSize(int targetWidgetSize)
 {
-    killStillRenderingPages();
+    cancelRenderingTasks();
 
     m_pageWidgetSize = targetWidgetSize;
 
@@ -211,50 +210,29 @@ int View::sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b)
     return InteractivePageWidget::sortFunction(*widgetA, *widgetB);
 }
 
-void View::displayRenderedPages()
-{
-    safe::WriteAccess<LockableQueue> queue{m_renderedQueue};
-
-    while (!queue->empty()) {
-        std::shared_ptr<InteractivePageWidget> pageWidget = queue->front().lock();
-        queue->pop();
-
-        if (pageWidget != nullptr) {
-            pageWidget->showPage();
-        }
-    }
-}
-
 void View::renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget)
 {
-    pageWidget->enableRendering();
+    std::weak_ptr<InteractivePageWidget> weakWidget = pageWidget;
 
-    m_backgroundThread.pushBack([this, pageWidget]() {
-        if (pageWidget->isRenderingCancelled())
-            return;
+    auto funcExecute = [weakWidget]() {
+        if (auto widget = weakWidget.lock(); widget != nullptr)
+            widget->renderPage();
+    };
 
-        pageWidget->renderPage();
+    auto funcPostExecute = [weakWidget]() {
+        if (auto widget = weakWidget.lock(); widget != nullptr)
+            widget->showPage();
+    };
 
-        {
-            safe::WriteAccess<LockableQueue> queue{m_renderedQueue};
-            queue->push(pageWidget);
-        }
-
-        m_dispatcher.emit();
-    });
+    auto task = std::make_shared<Task>(funcExecute, funcPostExecute);
+    pageWidget->setRenderingTask(task);
+    m_taskRunner.queueBack(task);
 }
 
-void View::killStillRenderingPages()
+void View::cancelRenderingTasks()
 {
-    m_backgroundThread.killRemainingTasks();
-
-    safe::WriteAccess<LockableQueue> queue{m_renderedQueue};
-    *queue = {};
-}
-
-void View::onDispatcherCalled()
-{
-    displayRenderedPages();
+    for (auto& pageWidget : m_pageWidgets)
+        pageWidget->cancelRendering();
 }
 
 void View::onModelItemsChanged(guint position, guint removed, guint added)
@@ -346,6 +324,6 @@ void View::onShiftSelection(InteractivePageWidget* pageWidget)
 
 void View::onPreviewRequested(const Glib::RefPtr<const Page>& page)
 {
-    (new PreviewWindow{page, m_backgroundThread})->show();
+    (new PreviewWindow{page, m_taskRunner})->show();
 }
 }

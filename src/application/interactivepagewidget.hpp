@@ -24,7 +24,6 @@
 #include <gtkmm/label.h>
 #include <gtkmm/overlay.h>
 #include <gtkmm/revealer.h>
-#include <atomic>
 
 namespace Slicer {
 
@@ -38,10 +37,6 @@ public:
 
     void setSelected(bool selected);
     bool getSelected() const { return m_isSelected; }
-
-    void enableRendering() { m_isRenderingCancelled = false; }
-    void cancelRendering() { m_isRenderingCancelled = true; }
-    bool isRenderingCancelled() const { return m_isRenderingCancelled; }
 
     void setShowFilename(bool showFileName);
 
@@ -57,15 +52,16 @@ public:
     void renderPage();
     void showSpinner();
     void showPage();
+    void setRenderingTask(const std::weak_ptr<Task>& task);
+    void cancelRendering();
 
 private:
     bool m_isSelected = false;
-    std::atomic<bool> m_isRenderingCancelled = false;
     bool m_showFileName = false;
 
+    Gtk::EventBox m_eventBox;
     Gtk::Box m_contentBox;
     Gtk::Overlay m_overlay;
-    Gtk::EventBox m_overlayEventBox;
     Slicer::PageWidget m_pageWidget;
 
     Gtk::Button m_previewButton;

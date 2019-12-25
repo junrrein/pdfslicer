@@ -38,9 +38,11 @@ private:
 
     Glib::RefPtr<Gio::SimpleAction> m_zoomInAction;
     Glib::RefPtr<Gio::SimpleAction> m_zoomOutAction;
+    Glib::RefPtr<Gio::SimpleAction> m_resetZoomAction;
 
     void onZoomInAction();
     void onZoomOutAction();
+    void onResetZoomAction();
 };
 
 } // namespace Slicer

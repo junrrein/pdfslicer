@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 16:35-0300\n"
+"POT-Creation-Date: 2019-12-25 18:27-0300\n"
 "PO-Revision-Date: 2019-10-16 04:52+0000\n"
 "Last-Translator: naofum <naofum@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -105,23 +105,27 @@ msgstr "追加"
 msgid "Cancel"
 msgstr "キャンセル"
 
+#: ../src/application/application.cpp:91 ../src/application/appmenu.cpp:63
+msgid "New window"
+msgstr ""
+
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
 msgstr "ズーム"
 
-#: ../src/application/appmenu.cpp:61
+#: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
 msgstr "キーボード ショートカット"
 
-#: ../src/application/appmenu.cpp:65
+#: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
 msgstr "PDF Slicer について"
 
-#: ../src/application/appwindow.cpp:366
+#: ../src/application/appwindow.cpp:372
 msgid "The selected file could not be opened"
 msgstr "選択したファイルを開くことができません"
 
-#: ../src/application/appwindow.cpp:377
+#: ../src/application/appwindow.cpp:383
 msgid "The current document could not be saved"
 msgstr "現在のドキュメントを保存できませんでした"
 
@@ -170,8 +174,8 @@ msgstr "やり直し"
 msgid "Save As…"
 msgstr "名前を付けて保存…"
 
-#: ../src/application/interactivepagewidget.cpp:113
-#: ../src/application/previewwindow.cpp:51
+#: ../src/application/interactivepagewidget.cpp:122
+#: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
 msgstr "ページ {pageNumber}"
 
@@ -187,11 +191,11 @@ msgstr "開く"
 msgid "PDF document"
 msgstr "PDF ドキュメント"
 
-#: ../src/application/previewwindow.cpp:58
+#: ../src/application/previewwindow.cpp:64
 msgid "Zoom out"
 msgstr "縮小"
 
-#: ../src/application/previewwindow.cpp:65
+#: ../src/application/previewwindow.cpp:71
 msgid "Zoom in"
 msgstr "拡大"
 
@@ -252,32 +256,47 @@ msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "縮小"
 
-#: ../data/ui/shortcuts.ui:41
+#: ../data/ui/shortcuts.ui:40
+msgctxt "shortcut window"
+msgid "Reset zoom level"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:46
+msgctxt "shortcut window"
+msgid "New window"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:52
+msgctxt "shortcut window"
+msgid "Close window"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Document editing"
 msgstr "ドキュメントの編集"
 
-#: ../data/ui/shortcuts.ui:45
+#: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
 msgstr "選択したページを削除"
 
-#: ../data/ui/shortcuts.ui:51
+#: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Select all pages"
 msgstr "すべてのページを選択"
 
-#: ../data/ui/shortcuts.ui:57
+#: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Cancel selection"
 msgstr "選択を取り消す"
 
-#: ../data/ui/shortcuts.ui:63
+#: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Undo last command"
 msgstr "最後の操作を元に戻す"
 
-#: ../data/ui/shortcuts.ui:69
+#: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "元に戻した操作をやり直す"

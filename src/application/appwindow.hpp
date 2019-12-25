@@ -17,10 +17,11 @@
 #ifndef SLICERWINDOW_HPP
 #define SLICERWINDOW_HPP
 
-#include "../application/settingsmanager.hpp"
 #include "actionbar.hpp"
 #include "headerbar.hpp"
 #include "savingrevealer.hpp"
+#include "settingsmanager.hpp"
+#include "taskrunner.hpp"
 #include "view.hpp"
 #include "welcomescreen.hpp"
 #include "zoomlevelwithactions.hpp"
@@ -39,7 +40,7 @@ namespace Slicer {
 
 class AppWindow : public Gtk::ApplicationWindow {
 public:
-    AppWindow(BackgroundThread& backgroundThread,
+    AppWindow(TaskRunner& taskRunner,
               SettingsManager& settingsManager);
     virtual ~AppWindow() override;
 
@@ -57,7 +58,7 @@ private:
     std::unique_ptr<Document> m_document;
     bool m_isDocumentModified = false;
     std::atomic<bool> m_isSavingDocument{false};
-    BackgroundThread& m_backgroundThread;
+    TaskRunner& m_taskRunner;
 
     SettingsManager& m_settingsManager;
     WindowState m_windowState;
@@ -103,6 +104,7 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_cancelSelectionAction;
     Glib::RefPtr<Gio::SimpleAction> m_shortcutsAction;
     Glib::RefPtr<Gio::SimpleAction> m_aboutAction;
+    Glib::RefPtr<Gio::SimpleAction> m_closeWindowAction;
 
     // Functions
     void loadWindowState();
@@ -147,6 +149,7 @@ private:
     void onSelectEvenPages();
     void onCancelSelection();
     void onAboutAction();
+    void onCloseWindowAction();
     void onShortcutsAction();
     void onSelectedPagesChanged();
     void onCommandExecuted();

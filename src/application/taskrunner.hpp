@@ -1,5 +1,5 @@
 // PDF Slicer
-// Copyright (C) 2017-2018 Julián Unrrein
+// Copyright (C) 2019 Julián Unrrein
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,36 +14,28 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#ifndef ZOOMLEVEL_HPP
-#define ZOOMLEVEL_HPP
+#ifndef SLICER_TASKRUNNER_HPP
+#define SLICER_TASKRUNNER_HPP
 
-#include <glibmm/object.h>
-#include <glibmm/property.h>
-#include <sigc++/signal.h>
+#include "task.hpp"
+#include <threadpool.hpp>
 
 namespace Slicer {
 
-class ZoomLevel : public Glib::Object {
+class TaskRunner {
 public:
-	ZoomLevel() = delete;
-    ZoomLevel(const std::vector<int>& levels);
+	TaskRunner();
+	~TaskRunner();
 
-    void setToDefaultLevel();
-
-    int currentLevel() const;
-	int minLevel() const;
-	int maxLevel() const;
-
-	int operator++();
-	int operator--();
-
-    Glib::PropertyProxy<unsigned> zoomLevelIndex();
+	void queueBack(const std::shared_ptr<Task>& task);
+	void queueFront(const std::shared_ptr<Task>& task);
 
 private:
-    Glib::Property<unsigned> m_zoomLevelIndex;
-    std::vector<int> m_levels;
+	astp::ThreadPool m_threadpool;
+
+	void runTask(const std::shared_ptr<Task>& task);
 };
 
 } // namespace Slicer
 
-#endif // ZOOMLEVEL_HPP
+#endif // SLICER_TASKRUNNER_HPP

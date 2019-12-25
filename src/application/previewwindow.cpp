@@ -23,15 +23,16 @@ using namespace fmt::literals;
 
 namespace Slicer {
 
-const std::vector<int> PreviewWindow::zoomLevels = {1000, 1400, 1800};
+const std::vector<int> PreviewWindow::zoomLevels = {1000, 1400, 1800, 2200, 2600};
 
-PreviewWindow::PreviewWindow(const Glib::RefPtr<const Page>& page, BackgroundThread& backgroundThread)
+PreviewWindow::PreviewWindow(const Glib::RefPtr<const Page>& page, TaskRunner& taskRunner)
     : m_page{page}
-    , m_backgroundThread{backgroundThread}
+    , m_taskRunner{taskRunner}
     , m_actionGroup{Gio::SimpleActionGroup::create()}
     , m_zoomLevel{zoomLevels, *(m_actionGroup.operator->())}
-    , m_pageWidget{m_page, m_zoomLevel.currentLevel()}
 {
+    m_pageWidget = std::make_shared<PageWidget>(m_page, m_zoomLevel.currentLevel());
+
 	set_size_request(400, 400);
 	set_default_size(900, 600);
 
@@ -43,7 +44,12 @@ PreviewWindow::PreviewWindow(const Glib::RefPtr<const Page>& page, BackgroundThr
 	loadCustomCSS();
 	renderPage();
 
-	show_all_children();
+    show_all_children();
+}
+
+PreviewWindow::~PreviewWindow()
+{
+    m_pageWidget->cancelRendering();
 }
 
 void PreviewWindow::setTitle()
@@ -76,7 +82,7 @@ void PreviewWindow::setupWidgets()
 	m_boxZoom.set_margin_bottom(15);
 	m_boxZoom.set_margin_right(15);
 
-    m_scroller.add(m_pageWidget);
+    m_scroller.add(*m_pageWidget);
 	m_overlay.add(m_scroller);
 	m_overlay.add_overlay(m_boxZoom);
 	add(m_overlay); // NOLINT
@@ -87,14 +93,11 @@ void PreviewWindow::setupSignalHandlers()
     m_zoomLevel.enable();
 
     m_zoomLevel.zoomLevelIndex().signal_changed().connect([this]() {
-        m_pageWidget.changeSize(m_zoomLevel.currentLevel());
-        m_pageWidget.showSpinner();
+        m_pageWidget->cancelRendering();
+        m_pageWidget->changeSize(m_zoomLevel.currentLevel());
+        m_pageWidget->showSpinner();
         renderPage();
     });
-
-	m_pageRenderedDispatcher.connect([this]() {
-        m_pageWidget.showPage();
-	});
 
 	signal_hide().connect([this]() {
 		delete this;
@@ -117,10 +120,21 @@ void PreviewWindow::loadCustomCSS()
 
 void PreviewWindow::renderPage()
 {
-    m_backgroundThread.pushFront([this]() {
-        m_pageWidget.renderPage();
-		m_pageRenderedDispatcher.emit();
-	});
+    std::weak_ptr<PageWidget> weakWidget = m_pageWidget;
+
+    auto funcExecute = [weakWidget]() {
+        if (auto widget = weakWidget.lock(); widget != nullptr)
+            widget->renderPage();
+    };
+
+    auto funcPostExecute = [weakWidget]() {
+        if (auto widget = weakWidget.lock(); widget != nullptr)
+            widget->showPage();
+    };
+
+    auto task = std::make_shared<Task>(funcExecute, funcPostExecute);
+    m_pageWidget->setRenderingTask(task);
+    m_taskRunner.queueFront(task);
 }
 
 } // namespace Slicer

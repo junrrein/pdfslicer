@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 16:35-0300\n"
+"POT-Creation-Date: 2019-12-25 18:27-0300\n"
 "PO-Revision-Date: 2019-12-05 23:05+0000\n"
 "Last-Translator: Tomáš Průcha <pruchatomas@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -105,23 +105,27 @@ msgstr "Přidat"
 msgid "Cancel"
 msgstr "Zrušit"
 
+#: ../src/application/application.cpp:91 ../src/application/appmenu.cpp:63
+msgid "New window"
+msgstr ""
+
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
 msgstr "Zvětšení"
 
-#: ../src/application/appmenu.cpp:61
+#: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
 msgstr "Klávesové zkratky"
 
-#: ../src/application/appmenu.cpp:65
+#: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
 msgstr "O aplikaci PDF Slicer"
 
-#: ../src/application/appwindow.cpp:366
+#: ../src/application/appwindow.cpp:372
 msgid "The selected file could not be opened"
 msgstr "Vybraný soubor nelze otevřít"
 
-#: ../src/application/appwindow.cpp:377
+#: ../src/application/appwindow.cpp:383
 msgid "The current document could not be saved"
 msgstr "Aktuální dokument nelze uložit"
 
@@ -170,8 +174,8 @@ msgstr "Znovu"
 msgid "Save As…"
 msgstr "Uložit jako…"
 
-#: ../src/application/interactivepagewidget.cpp:113
-#: ../src/application/previewwindow.cpp:51
+#: ../src/application/interactivepagewidget.cpp:122
+#: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
 msgstr "Stránka {pageNumber}"
 
@@ -187,11 +191,11 @@ msgstr "Otevřít"
 msgid "PDF document"
 msgstr "PDF dokument"
 
-#: ../src/application/previewwindow.cpp:58
+#: ../src/application/previewwindow.cpp:64
 msgid "Zoom out"
 msgstr "Zmenšit"
 
-#: ../src/application/previewwindow.cpp:65
+#: ../src/application/previewwindow.cpp:71
 msgid "Zoom in"
 msgstr "Zvětšit"
 
@@ -252,32 +256,47 @@ msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Zmenšit"
 
-#: ../data/ui/shortcuts.ui:41
+#: ../data/ui/shortcuts.ui:40
+msgctxt "shortcut window"
+msgid "Reset zoom level"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:46
+msgctxt "shortcut window"
+msgid "New window"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:52
+msgctxt "shortcut window"
+msgid "Close window"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Document editing"
 msgstr "Úpravy dokumentu"
 
-#: ../data/ui/shortcuts.ui:45
+#: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
 msgstr "Odstranit vybrané stránky"
 
-#: ../data/ui/shortcuts.ui:51
+#: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Select all pages"
 msgstr "Vybrat všechny stránky"
 
-#: ../data/ui/shortcuts.ui:57
+#: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Cancel selection"
 msgstr "Zrušit výběr"
 
-#: ../data/ui/shortcuts.ui:63
+#: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Undo last command"
 msgstr "Zrušit poslední úpravu"
 
-#: ../data/ui/shortcuts.ui:69
+#: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Vrátit předchozí úpravu"

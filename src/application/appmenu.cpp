@@ -48,7 +48,7 @@ void AppMenu::setupWidgets()
     m_zoomSeparatorBox.pack_start(m_zoomSeparatorLabel, Gtk::PACK_SHRINK, 5);
     m_zoomSeparatorBox.pack_start(m_zoomSeparatorRight);
 
-    m_zoomAdjustment = Gtk::Adjustment::create(0, 0, 2, 1, 1);
+    m_zoomAdjustment = Gtk::Adjustment::create(0, 0, 4, 1, 1);
     m_zoomSlider.set_adjustment(m_zoomAdjustment);
     m_zoomSlider.set_has_origin(false);
     m_zoomSlider.set_draw_value(false);
@@ -56,8 +56,14 @@ void AppMenu::setupWidgets()
     m_zoomSlider.add_mark(0, Gtk::POS_BOTTOM, "");
     m_zoomSlider.add_mark(1, Gtk::POS_BOTTOM, "");
     m_zoomSlider.add_mark(2, Gtk::POS_BOTTOM, "");
+    m_zoomSlider.add_mark(3, Gtk::POS_BOTTOM, "");
+    m_zoomSlider.add_mark(4, Gtk::POS_BOTTOM, "");
     m_zoomSlider.set_size_request(150, -1);
 
+    m_newWindowButton.set_label(_("New window"));
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_newWindowButton.gobj()), "app.new-window"); //NOLINT
+    m_newWindowButton.get_style_context()->add_class("flat");
+    m_newWindowButton.get_child()->set_halign(Gtk::ALIGN_START);
     m_shortcutsButton.set_label(_("Keyboard shortcuts"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_shortcutsButton.gobj()), "win.shortcuts"); //NOLINT
     m_shortcutsButton.get_style_context()->add_class("flat");
@@ -72,6 +78,7 @@ void AppMenu::setupWidgets()
     m_contentBox.pack_start(m_zoomSeparatorBox);
     m_contentBox.pack_start(m_zoomSlider);
     m_contentBox.pack_start(m_appSeparator, Gtk::PACK_EXPAND_PADDING, 5);
+    m_contentBox.pack_start(m_newWindowButton);
     m_contentBox.pack_start(m_shortcutsButton);
     m_contentBox.pack_start(m_aboutButton);
     add(m_contentBox);

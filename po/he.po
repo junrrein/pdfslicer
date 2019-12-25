@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 16:35-0300\n"
+"POT-Creation-Date: 2019-12-25 18:27-0300\n"
 "PO-Revision-Date: 2019-08-14 09:24+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -104,23 +104,27 @@ msgstr "הוספה"
 msgid "Cancel"
 msgstr "ביטול"
 
+#: ../src/application/application.cpp:91 ../src/application/appmenu.cpp:63
+msgid "New window"
+msgstr ""
+
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
 msgstr "תקריב"
 
-#: ../src/application/appmenu.cpp:61
+#: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
 msgstr "קיצורי מקלדת"
 
-#: ../src/application/appmenu.cpp:65
+#: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
 msgstr "על אודות PDF Slicer"
 
-#: ../src/application/appwindow.cpp:366
+#: ../src/application/appwindow.cpp:372
 msgid "The selected file could not be opened"
 msgstr "לא ניתן לפתוח את הקובץ הנבחר"
 
-#: ../src/application/appwindow.cpp:377
+#: ../src/application/appwindow.cpp:383
 msgid "The current document could not be saved"
 msgstr "לא ניתן לשמור את המסמך הנוכחי"
 
@@ -171,8 +175,8 @@ msgstr "החזרה"
 msgid "Save As…"
 msgstr "שמירה בשם…"
 
-#: ../src/application/interactivepagewidget.cpp:113
-#: ../src/application/previewwindow.cpp:51
+#: ../src/application/interactivepagewidget.cpp:122
+#: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
 msgstr "עמוד {pageNumber}"
 
@@ -188,11 +192,11 @@ msgstr "פתיחה"
 msgid "PDF document"
 msgstr "מסמך PDF"
 
-#: ../src/application/previewwindow.cpp:58
+#: ../src/application/previewwindow.cpp:64
 msgid "Zoom out"
 msgstr "התרחקות"
 
-#: ../src/application/previewwindow.cpp:65
+#: ../src/application/previewwindow.cpp:71
 msgid "Zoom in"
 msgstr "התקרבות"
 
@@ -253,32 +257,47 @@ msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "התרחקות"
 
-#: ../data/ui/shortcuts.ui:41
+#: ../data/ui/shortcuts.ui:40
+msgctxt "shortcut window"
+msgid "Reset zoom level"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:46
+msgctxt "shortcut window"
+msgid "New window"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:52
+msgctxt "shortcut window"
+msgid "Close window"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Document editing"
 msgstr "עריכת מסמך"
 
-#: ../data/ui/shortcuts.ui:45
+#: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
 msgstr "הסרת העמודים הנבחרים"
 
-#: ../data/ui/shortcuts.ui:51
+#: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Select all pages"
 msgstr "לבחור את כל העמודים"
 
-#: ../data/ui/shortcuts.ui:57
+#: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Cancel selection"
 msgstr "ביטול הבחירה"
 
-#: ../data/ui/shortcuts.ui:63
+#: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Undo last command"
 msgstr "ביטול הפעולה האחרונה"
 
-#: ../data/ui/shortcuts.ui:69
+#: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "החזרת הפעולה שבוטלה"
