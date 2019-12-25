@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 16:35-0300\n"
+"POT-Creation-Date: 2019-12-25 18:27-0300\n"
 "PO-Revision-Date: 2019-10-11 19:52+0000\n"
 "Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -106,23 +106,27 @@ msgstr "Ajouter"
 msgid "Cancel"
 msgstr "Annuler"
 
+#: ../src/application/application.cpp:91 ../src/application/appmenu.cpp:63
+msgid "New window"
+msgstr ""
+
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
 msgstr "Zoom"
 
-#: ../src/application/appmenu.cpp:61
+#: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
 msgstr "Raccourcis clavier"
 
-#: ../src/application/appmenu.cpp:65
+#: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
 msgstr "À propos de PDF Slicer"
 
-#: ../src/application/appwindow.cpp:366
+#: ../src/application/appwindow.cpp:372
 msgid "The selected file could not be opened"
 msgstr "Le fichier sélectionné n'a pas pu être ouvert"
 
-#: ../src/application/appwindow.cpp:377
+#: ../src/application/appwindow.cpp:383
 msgid "The current document could not be saved"
 msgstr "Le document actuel n'a pas pu être sauvegardé"
 
@@ -171,8 +175,8 @@ msgstr "Rétablir"
 msgid "Save As…"
 msgstr "Enregistrer sous.…"
 
-#: ../src/application/interactivepagewidget.cpp:113
-#: ../src/application/previewwindow.cpp:51
+#: ../src/application/interactivepagewidget.cpp:122
+#: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
 msgstr "Page {pageNumber}"
 
@@ -188,11 +192,11 @@ msgstr "Ouvrir"
 msgid "PDF document"
 msgstr "Document PDF"
 
-#: ../src/application/previewwindow.cpp:58
+#: ../src/application/previewwindow.cpp:64
 msgid "Zoom out"
 msgstr "Zoom arrière"
 
-#: ../src/application/previewwindow.cpp:65
+#: ../src/application/previewwindow.cpp:71
 msgid "Zoom in"
 msgstr "Zoom avant"
 
@@ -253,32 +257,47 @@ msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Zoom arrière"
 
-#: ../data/ui/shortcuts.ui:41
+#: ../data/ui/shortcuts.ui:40
+msgctxt "shortcut window"
+msgid "Reset zoom level"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:46
+msgctxt "shortcut window"
+msgid "New window"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:52
+msgctxt "shortcut window"
+msgid "Close window"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Document editing"
 msgstr "Édition du document"
 
-#: ../data/ui/shortcuts.ui:45
+#: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
 msgstr "Supprimer les pages sélectionnées"
 
-#: ../data/ui/shortcuts.ui:51
+#: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Select all pages"
 msgstr "Sélectionner toutes les pages"
 
-#: ../data/ui/shortcuts.ui:57
+#: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Cancel selection"
 msgstr "Annuler la sélection"
 
-#: ../data/ui/shortcuts.ui:63
+#: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Undo last command"
 msgstr "Annuler la dernière commande"
 
-#: ../data/ui/shortcuts.ui:69
+#: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Rétablir la commande annulée"
