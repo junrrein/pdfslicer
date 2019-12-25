@@ -52,8 +52,6 @@ private:
 	Gtk::Button m_buttonZoomOut;
 	Gtk::Box m_boxZoom;
 
-    std::shared_ptr<Task> m_renderingTask;
-
     void setTitle();
 	void setupWidgets();
 	void setupSignalHandlers();

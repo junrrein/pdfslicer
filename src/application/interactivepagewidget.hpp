@@ -18,7 +18,6 @@
 #define INTERACTIVEPAGEWIDGET_HPP
 
 #include "pagewidget.hpp"
-#include "task.hpp"
 #include <gtkmm/button.h>
 #include <gtkmm/eventbox.h>
 #include <gtkmm/flowboxchild.h>
@@ -39,9 +38,6 @@ public:
     void setSelected(bool selected);
     bool getSelected() const { return m_isSelected; }
 
-    void setRenderingTask(const std::weak_ptr<Task>& task);
-    void cancelRendering();
-
     void setShowFilename(bool showFileName);
 
     sigc::signal<void, InteractivePageWidget*> selectedChanged;
@@ -56,11 +52,12 @@ public:
     void renderPage();
     void showSpinner();
     void showPage();
+    void setRenderingTask(const std::weak_ptr<Task>& task);
+    void cancelRendering();
 
 private:
     bool m_isSelected = false;
     bool m_showFileName = false;
-    std::weak_ptr<Task> m_renderingTask;
 
     Gtk::EventBox m_eventBox;
     Gtk::Box m_contentBox;

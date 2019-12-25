@@ -77,6 +77,17 @@ void PageWidget::showPage()
     }
 }
 
+void PageWidget::setRenderingTask(const std::weak_ptr<Task>& task)
+{
+    m_renderingTask = task;
+}
+
+void PageWidget::cancelRendering()
+{
+    if (auto task = m_renderingTask.lock(); task != nullptr)
+        task->cancel();
+}
+
 const Glib::RefPtr<const Page>& PageWidget::page() const
 {
     return m_page;

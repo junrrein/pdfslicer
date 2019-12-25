@@ -49,8 +49,7 @@ PreviewWindow::PreviewWindow(const Glib::RefPtr<const Page>& page, TaskRunner& t
 
 PreviewWindow::~PreviewWindow()
 {
-    if (m_renderingTask != nullptr)
-        m_renderingTask->cancel();
+    m_pageWidget->cancelRendering();
 }
 
 void PreviewWindow::setTitle()
@@ -94,9 +93,7 @@ void PreviewWindow::setupSignalHandlers()
     m_zoomLevel.enable();
 
     m_zoomLevel.zoomLevelIndex().signal_changed().connect([this]() {
-        if (m_renderingTask != nullptr)
-            m_renderingTask->cancel();
-
+        m_pageWidget->cancelRendering();
         m_pageWidget->changeSize(m_zoomLevel.currentLevel());
         m_pageWidget->showSpinner();
         renderPage();
@@ -135,9 +132,9 @@ void PreviewWindow::renderPage()
             widget->showPage();
     };
 
-    m_renderingTask = std::make_shared<Task>(funcExecute, funcPostExecute);
-
-    m_taskRunner.queueFront(m_renderingTask);
+    auto task = std::make_shared<Task>(funcExecute, funcPostExecute);
+    m_pageWidget->setRenderingTask(task);
+    m_taskRunner.queueFront(task);
 }
 
 } // namespace Slicer

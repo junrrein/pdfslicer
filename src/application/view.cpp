@@ -225,7 +225,6 @@ void View::renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget)
     };
 
     auto task = std::make_shared<Task>(funcExecute, funcPostExecute);
-
     pageWidget->setRenderingTask(task);
     m_taskRunner.queueBack(task);
 }
