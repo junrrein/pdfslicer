@@ -65,7 +65,7 @@ void HeaderBar::setupWidgets()
     m_buttonAddDocument.set_tooltip_text(_("Add a Document…"));
     m_buttonAddDocument.set_menu_model(addDocumentMenu);
 
-    auto openBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL});
+    auto openBox = Gtk::manage(new Gtk::Box{Gtk::ORIENTATION_HORIZONTAL}); // NOLINT
     openBox->pack_start(m_buttonOpen);
     openBox->pack_start(m_buttonAddDocument);
     openBox->get_style_context()->add_class("linked");
