@@ -48,7 +48,7 @@ void GuiAddFileCommand::undo()
     AddFileCommand::undo();
     m_headerBar.set_subtitle(m_oldSubtitle);
 
-    if (m_oldSubtitle == "")
+    if (m_oldSubtitle.empty())
         m_view.setShowFileNames(false);
 }
 
@@ -67,7 +67,7 @@ void GuiAddFileCommand::executeInternal()
 
 void GuiAddFileCommand::setSubtitle()
 {
-    if (m_oldSubtitle == "")
+    if (m_oldSubtitle.empty())
         m_headerBar.set_subtitle(fmt::format(_("Added file {fileName}"),
                                              "fileName"_a = m_fileName)); //NOLINT
     else
