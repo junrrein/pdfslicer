@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-12-25 18:27-0300\n"
-"PO-Revision-Date: 2019-12-26 15:01+0000\n"
+"PO-Revision-Date: 2019-12-28 11:07+0000\n"
 "Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/fr/>\n"
@@ -171,9 +171,8 @@ msgid "Redo"
 msgstr "Rétablir"
 
 #: ../src/application/headerbar.cpp:91
-#, fuzzy
 msgid "Save As"
-msgstr "Enregistrer sous.…"
+msgstr "Enregistrer sous"
 
 #: ../src/application/interactivepagewidget.cpp:122
 #: ../src/application/previewwindow.cpp:57
