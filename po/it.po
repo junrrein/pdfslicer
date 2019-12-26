@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-25 18:27-0300\n"
+"POT-Creation-Date: 2019-12-26 11:59-0300\n"
 "PO-Revision-Date: 2019-10-03 13:15+0000\n"
 "Last-Translator: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -121,11 +121,11 @@ msgstr "Scorciatoie da tastiera"
 msgid "About PDF Slicer"
 msgstr "Informazioni su PDF Slicer"
 
-#: ../src/application/appwindow.cpp:372
+#: ../src/application/appwindow.cpp:375
 msgid "The selected file could not be opened"
 msgstr "Il file selezionato non può essere aperto"
 
-#: ../src/application/appwindow.cpp:383
+#: ../src/application/appwindow.cpp:386
 msgid "The current document could not be saved"
 msgstr "Il documento corrente non può essere salvato"
 
@@ -137,9 +137,9 @@ msgstr "Aggiunto file {fileName}"
 msgid "Multiple files added"
 msgstr "Più file aggiunti"
 
-#: ../src/application/headerbar.cpp:55
-msgid "Open…"
-msgstr "Apri…"
+#: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
+msgid "Open"
+msgstr "Apri"
 
 #: ../src/application/headerbar.cpp:60
 msgid "Add a Document"
@@ -171,8 +171,8 @@ msgid "Redo"
 msgstr "Ripeti"
 
 #: ../src/application/headerbar.cpp:91
-#: ../src/application/unsavedchangesdialog.cpp:34
-msgid "Save As…"
+#, fuzzy
+msgid "Save As"
 msgstr "Salva come…"
 
 #: ../src/application/interactivepagewidget.cpp:122
@@ -183,10 +183,6 @@ msgstr "Pagina {pageNumber}"
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
 msgstr "Apri documento"
-
-#: ../src/application/openfiledialog.cpp:28
-msgid "Open"
-msgstr "Apri"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF document"
@@ -227,6 +223,10 @@ msgstr ""
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
 msgstr ""
+
+#: ../src/application/unsavedchangesdialog.cpp:34
+msgid "Save As…"
+msgstr "Salva come…"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
@@ -301,6 +301,9 @@ msgstr "Annulla il comando precedente"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Ripete il comando precedente"
+
+#~ msgid "Open…"
+#~ msgstr "Apri…"
 
 #~ msgid "Insertion position"
 #~ msgstr "Posizione di inserimento"
