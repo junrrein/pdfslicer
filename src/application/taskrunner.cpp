@@ -33,7 +33,7 @@ TaskRunner::~TaskRunner()
 
 void TaskRunner::queueBack(const std::shared_ptr<Task>& task)
 {
-    m_threadpool.push([this, task]() {
+    m_threadpool.push([task]() {
         runTask(task);
     });
 }
@@ -41,7 +41,7 @@ void TaskRunner::queueBack(const std::shared_ptr<Task>& task)
 void TaskRunner::queueFront(const std::shared_ptr<Task>& task)
 {
     std::thread{[this, task]() {
-        m_threadpool.apply_for(1, [this, task]() {
+        m_threadpool.apply_for(1, [task]() {
             runTask(task);
         });
     }}
