@@ -309,7 +309,7 @@ bool AppWindow::showSaveFileDialogAndSave(SaveFileIn howToSave)
 
         if (howToSave == SaveFileIn::Foreground)
             return saveFileInForeground(file);
-        else
+        else //NOLINT
             saveFileInBackground(file);
     }
 
