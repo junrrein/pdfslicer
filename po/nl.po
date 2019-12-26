@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-12-23 16:35-0300\n"
-"PO-Revision-Date: 2019-12-25 21:29+0000\n"
+"PO-Revision-Date: 2019-12-26 15:01+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/nl/>\n"
@@ -107,7 +107,7 @@ msgstr "Annuleren"
 
 #: ../src/application/application.cpp:91 ../src/application/appmenu.cpp:63
 msgid "New window"
-msgstr ""
+msgstr "Nieuw venster"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
@@ -259,17 +259,17 @@ msgstr "Uitzoomen"
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr ""
+msgstr "Standaard zoomniveau"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
 msgid "New window"
-msgstr ""
+msgstr "Nieuw venster"
 
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr ""
+msgstr "Venster sluiten"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
