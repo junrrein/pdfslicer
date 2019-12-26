@@ -107,8 +107,8 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_closeWindowAction;
 
     // Functions
-    void loadWindowState();
-    void saveWindowState();
+    void loadPreviousSessionState();
+    void saveCurrentSessionState();
     void loadWidgets();
     void addActions();
     void setupWidgets();

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-25 18:27-0300\n"
+"POT-Creation-Date: 2019-12-26 11:59-0300\n"
 "PO-Revision-Date: 2019-08-14 09:24+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -120,11 +120,11 @@ msgstr "קיצורי מקלדת"
 msgid "About PDF Slicer"
 msgstr "על אודות PDF Slicer"
 
-#: ../src/application/appwindow.cpp:372
+#: ../src/application/appwindow.cpp:375
 msgid "The selected file could not be opened"
 msgstr "לא ניתן לפתוח את הקובץ הנבחר"
 
-#: ../src/application/appwindow.cpp:383
+#: ../src/application/appwindow.cpp:386
 msgid "The current document could not be saved"
 msgstr "לא ניתן לשמור את המסמך הנוכחי"
 
@@ -136,9 +136,9 @@ msgstr "הקובץ {fileName} נוסף"
 msgid "Multiple files added"
 msgstr "נוספו מגוון קבצים"
 
-#: ../src/application/headerbar.cpp:55
-msgid "Open…"
-msgstr "פתיחה…"
+#: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
+msgid "Open"
+msgstr "פתיחה"
 
 #: ../src/application/headerbar.cpp:60
 #, fuzzy
@@ -171,8 +171,8 @@ msgid "Redo"
 msgstr "החזרה"
 
 #: ../src/application/headerbar.cpp:91
-#: ../src/application/unsavedchangesdialog.cpp:34
-msgid "Save As…"
+#, fuzzy
+msgid "Save As"
 msgstr "שמירה בשם…"
 
 #: ../src/application/interactivepagewidget.cpp:122
@@ -183,10 +183,6 @@ msgstr "עמוד {pageNumber}"
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
 msgstr "פתיחת מסמך"
-
-#: ../src/application/openfiledialog.cpp:28
-msgid "Open"
-msgstr "פתיחה"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF document"
@@ -227,6 +223,10 @@ msgstr ""
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
 msgstr ""
+
+#: ../src/application/unsavedchangesdialog.cpp:34
+msgid "Save As…"
+msgstr "שמירה בשם…"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
@@ -301,6 +301,9 @@ msgstr "ביטול הפעולה האחרונה"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "החזרת הפעולה שבוטלה"
+
+#~ msgid "Open…"
+#~ msgstr "פתיחה…"
 
 #~ msgid "Insertion position"
 #~ msgstr "מיקום ההוספה"

@@ -46,7 +46,7 @@ AppWindow::AppWindow(TaskRunner& taskRunner, SettingsManager& settingsManager)
 {
     set_size_request(500, 500);
 
-    loadWindowState();
+    loadPreviousSessionState();
     loadWidgets();
     addActions();
     setupWidgets();
@@ -58,7 +58,7 @@ AppWindow::AppWindow(TaskRunner& taskRunner, SettingsManager& settingsManager)
 
 AppWindow::~AppWindow()
 {
-    saveWindowState();
+    saveCurrentSessionState();
 }
 
 void AppWindow::setDocument(std::unique_ptr<Document> document)
@@ -105,7 +105,7 @@ bool AppWindow::on_delete_event(GdkEventAny*)
     return false;
 }
 
-void AppWindow::loadWindowState()
+void AppWindow::loadPreviousSessionState()
 {
     m_windowState = m_settingsManager.loadWindowState();
 
@@ -113,11 +113,14 @@ void AppWindow::loadWindowState()
 
     if (m_windowState.isMaximized)
         maximize();
+
+    m_zoomLevel.zoomLevelIndex().set_value(m_settingsManager.loadZoomLevel());
 }
 
-void AppWindow::saveWindowState()
+void AppWindow::saveCurrentSessionState()
 {
     m_settingsManager.saveWindowState(m_windowState);
+    m_settingsManager.saveZoomLevel(m_zoomLevel.zoomLevelIndex().get_value());
 }
 
 void AppWindow::loadWidgets()

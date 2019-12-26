@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-25 18:27-0300\n"
+"POT-Creation-Date: 2019-12-26 11:59-0300\n"
 "PO-Revision-Date: 2019-10-24 00:53+0000\n"
 "Last-Translator: nautilusx <mail.ka@mailbox.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -124,11 +124,11 @@ msgstr "Tastenkombinationen"
 msgid "About PDF Slicer"
 msgstr "Über PDF Slicer"
 
-#: ../src/application/appwindow.cpp:372
+#: ../src/application/appwindow.cpp:375
 msgid "The selected file could not be opened"
 msgstr "Die ausgewählte Datei konnte nicht geöffnet werden"
 
-#: ../src/application/appwindow.cpp:383
+#: ../src/application/appwindow.cpp:386
 msgid "The current document could not be saved"
 msgstr "Das aktuelle Dokument konnte nicht gespeichert werden"
 
@@ -140,9 +140,9 @@ msgstr "Hinzugefügte Datei {fileName}"
 msgid "Multiple files added"
 msgstr "Mehrere Dateien hinzugefügt"
 
-#: ../src/application/headerbar.cpp:55
-msgid "Open…"
-msgstr "Öffnen …"
+#: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
+msgid "Open"
+msgstr "Öffnen"
 
 #: ../src/application/headerbar.cpp:60
 msgid "Add a Document"
@@ -173,8 +173,8 @@ msgid "Redo"
 msgstr "Wiederherstellen"
 
 #: ../src/application/headerbar.cpp:91
-#: ../src/application/unsavedchangesdialog.cpp:34
-msgid "Save As…"
+#, fuzzy
+msgid "Save As"
 msgstr "Speichern unter …"
 
 #: ../src/application/interactivepagewidget.cpp:122
@@ -185,10 +185,6 @@ msgstr "Seite {pageNumber}"
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
 msgstr "Dokument öffnen"
-
-#: ../src/application/openfiledialog.cpp:28
-msgid "Open"
-msgstr "Öffnen"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF document"
@@ -229,6 +225,10 @@ msgstr ""
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
 msgstr ""
+
+#: ../src/application/unsavedchangesdialog.cpp:34
+msgid "Save As…"
+msgstr "Speichern unter …"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
@@ -303,6 +303,9 @@ msgstr "Letzten Befehl rückgängig machen"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Wiederherstellen"
+
+#~ msgid "Open…"
+#~ msgstr "Öffnen …"
 
 #~ msgid "Insertion position"
 #~ msgstr "Einfügeposition"
