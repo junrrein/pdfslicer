@@ -52,7 +52,7 @@ void HeaderBar::disableZoomSlider()
 
 void HeaderBar::setupWidgets()
 {
-    m_buttonOpen.set_label(_("Open…"));
+    m_buttonOpen.set_label(_("Open"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonOpen.gobj()), "win.open-document"); // NOLINT
 
     Glib::RefPtr<Gio::Menu> addDocumentMenu = Gio::Menu::create();
@@ -88,7 +88,7 @@ void HeaderBar::setupWidgets()
     m_buttonAppMenu.set_image_from_icon_name("open-menu-symbolic");
     pack_end(m_buttonAppMenu);
 
-    m_buttonSave.set_label(_("Save As…"));
+    m_buttonSave.set_label(_("Save As"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonSave.gobj()), "win.save-document"); // NOLINT
     pack_end(m_buttonSave);
 }
