@@ -39,6 +39,8 @@ public:
     virtual ~PreviewWindow();
 
 private:
+    static void loadCustomCSS();
+
     Glib::RefPtr<const Page> m_page;
     TaskRunner& m_taskRunner;
 	Glib::RefPtr<Gio::SimpleActionGroup> m_actionGroup;
@@ -55,7 +57,6 @@ private:
     void setTitle();
 	void setupWidgets();
 	void setupSignalHandlers();
-	void loadCustomCSS();
 	void renderPage();
 };
 
