@@ -5,292 +5,298 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-12-26 11:59-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2019-12-28 11:07+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/pdf-slicer/"
+"translations/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.10\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
+"Jednostavni program za izdvajanje, sjedinjavanje, okretanje i mijenjanje "
+"redoslijeda stranica PDF dokumenata"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application icon"
-msgstr ""
+msgstr "Ikona programa"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Third-party libraries"
-msgstr ""
+msgstr "Biblioteke trećih strana"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr ""
+msgstr "Okreni nalijevo"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr ""
+msgstr "Okreni nadesno"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
-msgstr ""
+msgstr "Pomakni nalijevo"
 
 #: ../src/application/actionbar.cpp:48
 msgid "Move right"
-msgstr ""
+msgstr "Pomakni nadesno"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr ""
+msgstr "Ukloni odabrane stranice"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr ""
+msgstr "Ukloni neodabrane stranice"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
-msgstr ""
+msgstr "Ukloni prethodne stranice"
 
 #: ../src/application/actionbar.cpp:63
 msgid "Remove next pages"
-msgstr ""
+msgstr "Ukloni sljedeće stranice"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr ""
+msgstr "Daljnje operacije za uklanjanje stranica …"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr ""
+msgstr "Odaberi sve"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
-msgstr ""
+msgstr "Odaberi neparne stranice"
 
 #: ../src/application/actionbar.cpp:77
 msgid "Select even pages"
-msgstr ""
+msgstr "Odaberi parne stranice"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr ""
+msgstr "Daljnje operacije za biranje stranica …"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Cancel Selection"
-msgstr ""
+msgstr "Prekini odabir"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select document to add"
-msgstr ""
+msgstr "Odaberi dokument za dodavanje"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
-msgstr ""
+msgstr "Dodaj"
 
 #: ../src/application/addfiledialog.cpp:29
 #: ../src/application/openfiledialog.cpp:29
 #: ../src/application/savefiledialog.cpp:29
 #: ../src/application/unsavedchangesdialog.cpp:33
 msgid "Cancel"
-msgstr ""
+msgstr "Odustani"
 
 #: ../src/application/application.cpp:91 ../src/application/appmenu.cpp:63
 msgid "New window"
-msgstr ""
+msgstr "Novi prozor"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
-msgstr ""
+msgstr "Zumiraj"
 
 #: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "Tipkovnički prečaci"
 
 #: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
-msgstr ""
+msgstr "O programu PDF Slicer"
 
 #: ../src/application/appwindow.cpp:375
 msgid "The selected file could not be opened"
-msgstr ""
+msgstr "Nije bilo moguće otvoriti odabranu datoteku"
 
 #: ../src/application/appwindow.cpp:386
 msgid "The current document could not be saved"
-msgstr ""
+msgstr "Nije bilo moguće spremiti trenutačnu datoteku"
 
 #: ../src/application/guicommand.cpp:71
 msgid "Added file {fileName}"
-msgstr ""
+msgstr "Dodana datoteka {fileName}"
 
 #: ../src/application/guicommand.cpp:74
 msgid "Multiple files added"
-msgstr ""
+msgstr "Dodano je više datoteka"
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
-msgstr ""
+msgstr "Otvori"
 
 #: ../src/application/headerbar.cpp:60
 msgid "Add a Document"
-msgstr ""
+msgstr "Dodaj dokument"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr ""
+msgstr "Na početku …"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
-msgstr ""
+msgstr "Na kraju …"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
-msgstr ""
+msgstr "Nakon odabrane stranice …"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add a Document…"
-msgstr ""
+msgstr "Dodaj dokument …"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
-msgstr ""
+msgstr "Poništi"
 
 #: ../src/application/headerbar.cpp:78
 msgid "Redo"
-msgstr ""
+msgstr "Ponovi"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
-msgstr ""
+msgstr "Spremi kao"
 
 #: ../src/application/interactivepagewidget.cpp:122
 #: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
-msgstr ""
+msgstr "{pageNumber}. stranica"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
-msgstr ""
+msgstr "Otvori dokument"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF document"
-msgstr ""
+msgstr "PDF dokument"
 
 #: ../src/application/previewwindow.cpp:64
 msgid "Zoom out"
-msgstr ""
+msgstr "Povećaj prikaz"
 
 #: ../src/application/previewwindow.cpp:71
 msgid "Zoom in"
-msgstr ""
+msgstr "Smanji prikaz"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr ""
+msgstr "Spremi dokument kao"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
-msgstr ""
+msgstr "Spremi"
 
 #: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
-msgstr ""
+msgstr "Neimenovani dokument"
 
 #: ../src/application/savingrevealer.cpp:26
 msgid "Saving…"
-msgstr ""
+msgstr "Spremanje …"
 
 #: ../src/application/savingrevealer.cpp:33
 msgid "Saved!"
-msgstr ""
+msgstr "Spremljeno!"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr ""
+msgstr "Spremiti promijenjeni dokument nakon zatvaranja?"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
-msgstr ""
+msgstr "Zatvori bez spremanja"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
-msgstr ""
+msgstr "Spremi kao …"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr ""
+msgstr "Otvori jedan dokument za započinjanje rezanja!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Opće"
 
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr ""
+msgstr "Otvori dokument"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr ""
+msgstr "Spremi dokument"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "Smanji prikaz"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "Povećaj prikaz"
 
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr ""
+msgstr "Vrati razinu zumiranja"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
 msgid "New window"
-msgstr ""
+msgstr "Novi prozor"
 
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr ""
+msgstr "Zatvori prozor"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Document editing"
-msgstr ""
+msgstr "Uređivanje dokumenta"
 
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr ""
+msgstr "Ukloni odabrane stranice"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr ""
+msgstr "Odaberi sve stranice"
 
 #: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr ""
+msgstr "Prekini odabir"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr ""
+msgstr "Vrati zadnju naredbu"
 
 #: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr ""
+msgstr "Ponovi zadnju naredbu"
