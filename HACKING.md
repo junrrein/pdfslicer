@@ -1,6 +1,6 @@
 # Contributing code
 
-If you are thinking about giving a hand with coding in Slicer, you've come to the right place :)
+If you are thinking about giving a hand with coding in Slicer, you've come to the right place, and thanks in advance :)
 
 ## Before coding
 
