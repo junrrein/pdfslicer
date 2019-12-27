@@ -91,6 +91,10 @@ rm -rf pdfslicer/ pdfslicer-repo/
 
 You can contribute your translations at [PDF Slicer's Weblate page](https://hosted.weblate.org/projects/pdf-slicer/).
 
+## Code
+
+Check out the [HACKING.md](HACKING.md) file.
+
 # License
 
 PDF Slicer can be used under the terms of the GNU GPL 3.0 license, or, at your option, any later version. A copy can be found at the LICENSE file.
