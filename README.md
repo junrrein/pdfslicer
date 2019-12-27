@@ -15,13 +15,14 @@ with undo/redo support.
 
 # Table of Contents
 
-   * [Installing](#installing)
-   * [Building](#building)
-      * [Fedora](#fedora)
-      * [Flatpak](#flatpak)
-   * [Contributing](#contributing)
-      * [Translations](#translations)
-   * [License](#license)
+* [Installing](#installing)
+* [Building](#building)
+  * [Fedora](#fedora)
+  * [Flatpak](#flatpak)
+* [Contributing](#contributing)
+  * [Translations](#translations)
+  * [Code](#code)
+* [License](#license)
 
 # Installing
 
