@@ -28,6 +28,8 @@ void PdfSaver::save(const Glib::RefPtr<Gio::File>& destinationFile)
 
 void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile)
 {
+    // Use the hollow shell of the first PDF to build the result.
+    // This preserves the metadata and outline of that file.
     QPDF* destinationPDF = m_filesData.front().qpdf.get();
     QPDFPageDocumentHelper* destinationPageDocumentHelper = m_filesData.front().qpdfPageDocumentHelper.get();
 
@@ -36,31 +38,13 @@ void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile)
 
     for (PageData page : m_saveData.pages) {
         QPDFPageObjectHelper qpdfPage = m_filesData.at(page.file).qpdfPages.at(page.pageNumber);
-
+        qpdfPage.rotatePage(page.rotation, false);
         destinationPageDocumentHelper->addPage(qpdfPage, false);
     }
 
     QPDFWriter writer{*destinationPDF};
     writer.setOutputFilename(destinationFile->get_path().c_str());
     writer.write();
-
-    //    QPDF destinationPDF;
-    //    destinationPDF.emptyPDF();
-    //    QPDFPageDocumentHelper destinationPageDocumentHelper{destinationPDF};
-
-    //    for (unsigned int i = 0; i < m_document.pages()->get_n_items(); ++i) {
-    //        Glib::RefPtr<Page> slicerPage = m_document.getPage(i);
-    //        QPDFPageObjectHelper pageCopy = slicerPage->m_qpdfPage.shallowCopyPage();
-
-    //        if (slicerPage->currentRotation() != slicerPage->sourceRotation())
-    //            pageCopy.rotatePage(slicerPage->currentRotation(), false);
-
-    //        destinationPageDocumentHelper.addPage(pageCopy, false);
-    //    }
-
-    //    QPDFWriter writer{destinationPDF};
-    //    writer.setOutputFilename(destinationFile->get_path().c_str());
-    //    writer.write();
 }
 
 } // namespace Slicer

@@ -13,6 +13,7 @@ public:
     struct PageData {
         unsigned int file;
         unsigned int pageNumber;
+        int rotation;
     };
 
     struct SaveData {

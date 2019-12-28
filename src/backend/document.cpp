@@ -195,7 +195,8 @@ PdfSaver::SaveData Document::getSaveData() const
     for (unsigned int i = 0; i < m_pages->get_n_items(); ++i) {
         Glib::RefPtr<Page> page = m_pages->get_item(i);
         result.pages.push_back(PdfSaver::PageData{page->m_fileNumber,
-                                                  page->indexInFile()});
+                                                  page->indexInFile(),
+                                                  page->currentRotation()});
     }
 
     return result;
