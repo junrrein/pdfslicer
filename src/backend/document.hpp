@@ -64,11 +64,11 @@ private:
         std::unique_ptr<QPDFPageDocumentHelper> qpdfDocumentHelper;
     };
 
+    static FileData loadFile(const Glib::RefPtr<Gio::File>& sourceFile);
+    static std::vector<Glib::RefPtr<Page>> loadPages(const FileData& fileData);
+
     std::vector<FileData> m_filesData;
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
-
-    FileData loadFile(const Glib::RefPtr<Gio::File>& sourceFile);
-    std::vector<Glib::RefPtr<Page>> loadPages(const FileData& fileData);
 };
 }
 

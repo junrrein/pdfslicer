@@ -17,10 +17,9 @@
 #ifndef SAVINGREVEALER_HPP
 #define SAVINGREVEALER_HPP
 
-#include <glibmm/dispatcher.h>
 #include <gtkmm/box.h>
 #include <gtkmm/button.h>
-#include <gtkmm/image.h>
+#include <gtkmm/frame.h>
 #include <gtkmm/label.h>
 #include <gtkmm/revealer.h>
 #include <gtkmm/spinner.h>
@@ -35,12 +34,15 @@ public:
     void saved();
 
 private:
+    Gtk::Frame m_outerFrame;
+
     Gtk::Box m_boxSaving;
     Gtk::Label m_labelSaving;
     Gtk::Spinner m_spinner;
+
     Gtk::Box m_boxDone;
     Gtk::Label m_labelDone;
-    Gtk::Image m_iconDone;
+    Gtk::Button m_closeButton;
 
     sigc::connection m_connectionSaved;
 };

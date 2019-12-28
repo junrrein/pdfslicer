@@ -31,9 +31,9 @@ public:
 	void queueFront(const std::shared_ptr<Task>& task);
 
 private:
-	astp::ThreadPool m_threadpool;
+    static void runTask(const std::shared_ptr<Task>& task);
 
-	void runTask(const std::shared_ptr<Task>& task);
+	astp::ThreadPool m_threadpool;
 };
 
 } // namespace Slicer

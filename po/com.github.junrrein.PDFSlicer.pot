@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-26 11:59-0300\n"
+"POT-Creation-Date: 2019-12-28 14:17-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,11 +118,11 @@ msgstr ""
 msgid "About PDF Slicer"
 msgstr ""
 
-#: ../src/application/appwindow.cpp:375
+#: ../src/application/appwindow.cpp:371
 msgid "The selected file could not be opened"
 msgstr ""
 
-#: ../src/application/appwindow.cpp:386
+#: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
 msgstr ""
 
@@ -203,12 +203,12 @@ msgstr ""
 msgid "Untitled document"
 msgstr ""
 
-#: ../src/application/savingrevealer.cpp:26
-msgid "Saving…"
+#: ../src/application/savingrevealer.cpp:25
+msgid "Saving document…"
 msgstr ""
 
-#: ../src/application/savingrevealer.cpp:33
-msgid "Saved!"
+#: ../src/application/savingrevealer.cpp:32
+msgid "Document succesfully saved"
 msgstr ""
 
 #: ../src/application/unsavedchangesdialog.cpp:24

@@ -4,7 +4,7 @@
 
 # PDF Slicer
 
-This is a simple application for extracting, rotating and reordering pages of a PDF document,
+This is a simple application for extracting, merging, rotating and reordering pages of PDF documents,
 with undo/redo support.
 
 ![](docs/readme-screenshot-1.png)
@@ -15,13 +15,14 @@ with undo/redo support.
 
 # Table of Contents
 
-   * [Installing](#installing)
-   * [Building](#building)
-      * [Fedora](#fedora)
-      * [Flatpak](#flatpak)
-   * [Contributing](#contributing)
-      * [Translations](#translations)
-   * [License](#license)
+* [Installing](#installing)
+* [Building](#building)
+  * [Fedora](#fedora)
+  * [Flatpak](#flatpak)
+* [Contributing](#contributing)
+  * [Translations](#translations)
+  * [Code](#code)
+* [License](#license)
 
 # Installing
 
@@ -90,6 +91,10 @@ rm -rf pdfslicer/ pdfslicer-repo/
 ## Translations
 
 You can contribute your translations at [PDF Slicer's Weblate page](https://hosted.weblate.org/projects/pdf-slicer/).
+
+## Code
+
+Check out the [HACKING.md](HACKING.md) file.
 
 # License
 

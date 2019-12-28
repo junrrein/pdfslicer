@@ -55,6 +55,8 @@ private:
         Background
     };
 
+    static void loadCustomCSS();
+
     std::unique_ptr<Document> m_document;
     bool m_isDocumentModified = false;
     std::atomic<bool> m_isSavingDocument{false};
@@ -113,7 +115,6 @@ private:
     void addActions();
     void setupWidgets();
     void setupSignalHandlers();
-    void loadCustomCSS();
     void disableEditingActions();
     void enableEditingActions();
     bool showSaveFileDialogAndSave(SaveFileIn howToSave);

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-26 11:59-0300\n"
+"POT-Creation-Date: 2019-12-28 14:17-0300\n"
 "PO-Revision-Date: 2019-10-16 04:52+0000\n"
 "Last-Translator: naofum <naofum@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -121,11 +121,11 @@ msgstr "キーボード ショートカット"
 msgid "About PDF Slicer"
 msgstr "PDF Slicer について"
 
-#: ../src/application/appwindow.cpp:375
+#: ../src/application/appwindow.cpp:371
 msgid "The selected file could not be opened"
 msgstr "選択したファイルを開くことができません"
 
-#: ../src/application/appwindow.cpp:386
+#: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
 msgstr "現在のドキュメントを保存できませんでした"
 
@@ -207,13 +207,14 @@ msgstr "保存"
 msgid "Untitled document"
 msgstr "無題のドキュメント"
 
-#: ../src/application/savingrevealer.cpp:26
-msgid "Saving…"
-msgstr "保存しています…"
+#: ../src/application/savingrevealer.cpp:25
+#, fuzzy
+msgid "Saving document…"
+msgstr "ドキュメントを保存"
 
-#: ../src/application/savingrevealer.cpp:33
-msgid "Saved!"
-msgstr "保存しました!"
+#: ../src/application/savingrevealer.cpp:32
+msgid "Document succesfully saved"
+msgstr ""
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
@@ -300,6 +301,12 @@ msgstr "最後の操作を元に戻す"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "元に戻した操作をやり直す"
+
+#~ msgid "Saving…"
+#~ msgstr "保存しています…"
+
+#~ msgid "Saved!"
+#~ msgstr "保存しました!"
 
 #~ msgid "Open…"
 #~ msgstr "開く…"
