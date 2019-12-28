@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2019-12-26 11:59-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-28 14:17-0300\n"
 "PO-Revision-Date: 2019-12-28 11:07+0000\n"
 "Last-Translator: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -121,11 +121,11 @@ msgstr "Scorciatoie da tastiera"
 msgid "About PDF Slicer"
 msgstr "Informazioni su PDF Slicer"
 
-#: ../src/application/appwindow.cpp:375
+#: ../src/application/appwindow.cpp:371
 msgid "The selected file could not be opened"
 msgstr "Il file selezionato non può essere aperto"
 
-#: ../src/application/appwindow.cpp:386
+#: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
 msgstr "Il documento corrente non può essere salvato"
 
@@ -206,13 +206,14 @@ msgstr "Salva"
 msgid "Untitled document"
 msgstr "Documento senza titolo"
 
-#: ../src/application/savingrevealer.cpp:26
-msgid "Saving…"
-msgstr "Salvataggio…"
+#: ../src/application/savingrevealer.cpp:25
+#, fuzzy
+msgid "Saving document…"
+msgstr "Salva documento"
 
-#: ../src/application/savingrevealer.cpp:33
-msgid "Saved!"
-msgstr "Salvato!"
+#: ../src/application/savingrevealer.cpp:32
+msgid "Document succesfully saved"
+msgstr ""
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
@@ -299,6 +300,12 @@ msgstr "Annulla il comando precedente"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Ripete il comando precedente"
+
+#~ msgid "Saving…"
+#~ msgstr "Salvataggio…"
+
+#~ msgid "Saved!"
+#~ msgstr "Salvato!"
 
 #~ msgid "Open…"
 #~ msgstr "Apri…"

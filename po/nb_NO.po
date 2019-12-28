@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-26 11:59-0300\n"
+"POT-Creation-Date: 2019-12-28 14:17-0300\n"
 "PO-Revision-Date: 2019-12-25 21:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
@@ -127,11 +127,11 @@ msgstr "Tastatursnarveier"
 msgid "About PDF Slicer"
 msgstr "Om PDF Slicer"
 
-#: ../src/application/appwindow.cpp:375
+#: ../src/application/appwindow.cpp:371
 msgid "The selected file could not be opened"
 msgstr "Valgt fil kunne ikke åpnes"
 
-#: ../src/application/appwindow.cpp:386
+#: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
 msgstr "Nåværende dokument kunne ikke lagres"
 
@@ -214,13 +214,14 @@ msgstr "Lagre"
 msgid "Untitled document"
 msgstr "Dokument uten tittel"
 
-#: ../src/application/savingrevealer.cpp:26
-msgid "Saving…"
-msgstr "Lagrer…"
+#: ../src/application/savingrevealer.cpp:25
+#, fuzzy
+msgid "Saving document…"
+msgstr "Lagre dokument"
 
-#: ../src/application/savingrevealer.cpp:33
-msgid "Saved!"
-msgstr "Lagret!"
+#: ../src/application/savingrevealer.cpp:32
+msgid "Document succesfully saved"
+msgstr ""
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
@@ -309,6 +310,12 @@ msgstr "Angre siste kommando"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Gjenta angret kommando"
+
+#~ msgid "Saving…"
+#~ msgstr "Lagrer…"
+
+#~ msgid "Saved!"
+#~ msgstr "Lagret!"
 
 #~ msgid "Open…"
 #~ msgstr "Åpne…"
