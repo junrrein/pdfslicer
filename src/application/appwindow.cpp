@@ -234,10 +234,6 @@ void AppWindow::loadCustomCSS()
     auto screen = Gdk::Screen::get_default();
     auto provider = Gtk::CssProvider::create();
     provider->load_from_data(R"(
-        overlay > revealer > box {
-            border-radius: 0px 0px 11px 11px;
-        }
-
         .welcome-label {
             font-size: 19px;
             font-weight: bold;
