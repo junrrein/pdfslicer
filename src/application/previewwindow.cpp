@@ -55,7 +55,7 @@ PreviewWindow::~PreviewWindow()
 void PreviewWindow::setTitle()
 {
     set_title(fmt::format(_("Page {pageNumber}"),
-                          "pageNumber"_a = m_page->fileIndex() + 1)); //NOLINT
+                          "pageNumber"_a = m_page->indexInFile() + 1)); //NOLINT
 }
 
 void PreviewWindow::setupWidgets()

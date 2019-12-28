@@ -20,7 +20,6 @@
 #include <glibmm/object.h>
 #include <gdkmm/pixbuf.h>
 #include <poppler/cpp/poppler-page.h>
-#include <qpdf/QPDFPageObjectHelper.hh>
 
 namespace Slicer {
 
@@ -32,12 +31,12 @@ public:
     };
 
     Page(std::unique_ptr<poppler::page> ppage,
-         const QPDFPageObjectHelper& qpdfPage,
          const Glib::ustring& fileName,
+         unsigned int fileNumber,
          unsigned int pageNumber);
 
     const Glib::ustring& fileName() const;
-    unsigned int fileIndex() const;
+    unsigned int indexInFile() const;
     unsigned int getDocumentIndex() const;
     int sourceRotation() const { return m_sourceRotation; }
     int currentRotation() const { return m_currentRotation; }
@@ -51,6 +50,7 @@ public:
     void rotateLeft();
 
     sigc::signal<void> indexChanged;
+    const unsigned int m_fileNumber;
 
     static int sortFunction(const Page& a, const Page& b);
     static int sortFunction(const Glib::RefPtr<const Page>& a,
@@ -58,15 +58,13 @@ public:
 
 private:
     std::unique_ptr<poppler::page> m_ppage;
-    QPDFPageObjectHelper m_qpdfPage;
     const Glib::ustring m_fileName;
-    const unsigned int m_fileIndex;
-    unsigned int m_documentIndex;
+    const unsigned int m_indexInFile;
+    unsigned int m_indexInDocument;
     int m_sourceRotation;
     int m_currentRotation;
 
     friend class PageRenderer; // For access to m_ppage
-    friend class PdfSaver;     // For access to m_qpdfPage
 };
 
 struct pageComparator {
