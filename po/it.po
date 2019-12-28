@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-12-26 11:59-0300\n"
-"PO-Revision-Date: 2019-10-03 13:15+0000\n"
+"PO-Revision-Date: 2019-12-28 11:07+0000\n"
 "Last-Translator: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/it/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Weblate 3.10\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -107,7 +107,7 @@ msgstr "Annulla"
 
 #: ../src/application/application.cpp:91 ../src/application/appmenu.cpp:63
 msgid "New window"
-msgstr ""
+msgstr "Nuova finestra"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
@@ -154,9 +154,8 @@ msgid "At the end…"
 msgstr "Alla fine…"
 
 #: ../src/application/headerbar.cpp:63
-#, fuzzy
 msgid "After the selected page…"
-msgstr "Dopo la pagina selezionata"
+msgstr "Dopo la pagina selezionata…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add a Document…"
@@ -171,9 +170,8 @@ msgid "Redo"
 msgstr "Ripeti"
 
 #: ../src/application/headerbar.cpp:91
-#, fuzzy
 msgid "Save As"
-msgstr "Salva come…"
+msgstr "Salva come"
 
 #: ../src/application/interactivepagewidget.cpp:122
 #: ../src/application/previewwindow.cpp:57
@@ -218,11 +216,11 @@ msgstr "Salvato!"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr ""
+msgstr "Salvare le modifiche al documento prima della chiusura?"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
-msgstr ""
+msgstr "Chiudi senza salvare"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
@@ -260,17 +258,17 @@ msgstr "Rimpicciolimento"
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr ""
+msgstr "Ripristina il livello di ingrandimento"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
 msgid "New window"
-msgstr ""
+msgstr "Nuova finestra"
 
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr ""
+msgstr "Chiudi finestra"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
