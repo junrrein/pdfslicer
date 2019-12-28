@@ -35,7 +35,7 @@ You can install PDF Slicer using Flatpak. [Get it from Flathub](https://flathub.
 1. Install dependencies
 
 ```bash
-sudo dnf install gtkmm30-devel poppler-glib-devel cairomm-devel qpdf-devel uuid-devel intltool gettext
+sudo dnf install gtkmm30-devel poppler-cpp-devel cairomm-devel qpdf-devel uuid-devel intltool gettext
 ```
 
 2. Check out a copy of the source code
