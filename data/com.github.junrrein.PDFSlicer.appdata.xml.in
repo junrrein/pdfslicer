@@ -32,6 +32,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.8.2" date="2019-12-xx">
+			<description>
+				<p>Add Croatian translation. Update existing translations. Minor improvements.</p>
+			</description>
+		</release>
 		<release version="1.8.1" date="2019-12-25">
 			<description>
 				<p>Remember the zoom level across sessions.</p>
