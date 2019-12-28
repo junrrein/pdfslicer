@@ -28,7 +28,6 @@ SavingRevealer::SavingRevealer()
     m_spinner.set_margin_right(3);
     m_boxSaving.pack_start(m_labelSaving);
     m_boxSaving.pack_start(m_spinner);
-    m_boxSaving.set_size_request(-1, 34);
 
     m_labelDone.set_label(_("Document succesfully saved"));
     m_labelDone.set_padding(10, -1);
