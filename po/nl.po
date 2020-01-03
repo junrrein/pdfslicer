@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-12-28 14:17-0300\n"
-"PO-Revision-Date: 2019-12-28 11:07+0000\n"
+"PO-Revision-Date: 2019-12-31 17:21+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/nl/>\n"
@@ -207,13 +207,12 @@ msgid "Untitled document"
 msgstr "Naamloos document"
 
 #: ../src/application/savingrevealer.cpp:25
-#, fuzzy
 msgid "Saving document…"
-msgstr "Document opslaan"
+msgstr "Bezig met opslaan…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
-msgstr ""
+msgstr "Het document is opgeslagen"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"

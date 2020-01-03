@@ -2,9 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-28 14:17-0300\n"
-"PO-Revision-Date: 2019-12-26 15:01+0000\n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
+"POT-Creation-Date: 2019-12-23 16:35-0300\n"
+"PO-Revision-Date: 2019-12-31 17:21+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/es/>\n"
@@ -167,9 +167,8 @@ msgid "Redo"
 msgstr "Repetir"
 
 #: ../src/application/headerbar.cpp:91
-#, fuzzy
 msgid "Save As"
-msgstr "Guardar Como…"
+msgstr "Guardar Como"
 
 #: ../src/application/interactivepagewidget.cpp:122
 #: ../src/application/previewwindow.cpp:57
@@ -205,13 +204,12 @@ msgid "Untitled document"
 msgstr "Documento sin título"
 
 #: ../src/application/savingrevealer.cpp:25
-#, fuzzy
 msgid "Saving document…"
-msgstr "Guardar documento"
+msgstr "Guardando documento…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
-msgstr ""
+msgstr "Documento guardado exitosamente"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
