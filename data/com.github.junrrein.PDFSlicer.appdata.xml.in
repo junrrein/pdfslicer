@@ -32,7 +32,7 @@
 		</screenshot>
 	</screenshots>
 	<releases>
-		<release version="1.8.2" date="2019-12-xx">
+		<release version="1.8.2" date="2020-01-03">
 			<description>
 				<p>Preserve metadata and outline of the first opened file when saving. Other improvements. Add Croatian translation. Update existing translations.</p>
 			</description>
