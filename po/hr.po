@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2019-12-26 11:59-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-03 19:04-0300\n"
 "PO-Revision-Date: 2019-12-28 11:07+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 3.10\n"
 
 #: ../src/application/aboutdialog.cpp:26
@@ -122,11 +122,11 @@ msgstr "Tipkovnički prečaci"
 msgid "About PDF Slicer"
 msgstr "O programu PDF Slicer"
 
-#: ../src/application/appwindow.cpp:375
+#: ../src/application/appwindow.cpp:371
 msgid "The selected file could not be opened"
 msgstr "Nije bilo moguće otvoriti odabranu datoteku"
 
-#: ../src/application/appwindow.cpp:386
+#: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
 msgstr "Nije bilo moguće spremiti trenutačnu datoteku"
 
@@ -207,13 +207,14 @@ msgstr "Spremi"
 msgid "Untitled document"
 msgstr "Neimenovani dokument"
 
-#: ../src/application/savingrevealer.cpp:26
-msgid "Saving…"
-msgstr "Spremanje …"
+#: ../src/application/savingrevealer.cpp:25
+#, fuzzy
+msgid "Saving document…"
+msgstr "Spremi dokument"
 
-#: ../src/application/savingrevealer.cpp:33
-msgid "Saved!"
-msgstr "Spremljeno!"
+#: ../src/application/savingrevealer.cpp:32
+msgid "Document succesfully saved"
+msgstr ""
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
@@ -300,3 +301,9 @@ msgstr "Vrati zadnju naredbu"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Ponovi zadnju naredbu"
+
+#~ msgid "Saving…"
+#~ msgstr "Spremanje …"
+
+#~ msgid "Saved!"
+#~ msgstr "Spremljeno!"
