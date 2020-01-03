@@ -26,7 +26,7 @@ Document::Document(const Glib::RefPtr<Gio::File>& sourceFile)
     : m_pages{Gio::ListStore<Page>::create()}
 {
     FileData fileData = loadFile(sourceFile);
-    m_pages->splice(0, 0, loadPages(fileData));
+    m_pages->splice(0, 0, loadPages(fileData, 0));
 
     m_filesData.emplace_back(std::move(fileData));
 }
@@ -154,7 +154,7 @@ void Document::rotatePagesLeft(const std::vector<unsigned int>& pageNumbers)
 unsigned int Document::addFile(const Glib::RefPtr<Gio::File>& file, unsigned int position)
 {
     FileData fileData = loadFile(file);
-    std::vector<Glib::RefPtr<Page>> pages = loadPages(fileData);
+    std::vector<Glib::RefPtr<Page>> pages = loadPages(fileData, m_filesData.size());
 
     for (auto [i, page] : ranges::views::enumerate(pages))
         page->setDocumentIndex(position + i);
@@ -185,6 +185,23 @@ std::string Document::lastAddedFileParentPath() const
     return m_filesData.back().originalFile->get_parent()->get_path();
 }
 
+PdfSaver::SaveData Document::getSaveData() const
+{
+    PdfSaver::SaveData result;
+
+    for (const FileData& fileData : m_filesData)
+        result.files.push_back(fileData.tempFile);
+
+    for (unsigned int i = 0; i < m_pages->get_n_items(); ++i) {
+        Glib::RefPtr<Page> page = m_pages->get_item(i);
+        result.pages.push_back(PdfSaver::PageData{page->m_fileNumber,
+                                                  page->indexInFile(),
+                                                  page->currentRotation()});
+    }
+
+    return result;
+}
+
 Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
 {
     std::unique_ptr<poppler::document> tempDocument{poppler::document::load_from_file(sourceFile->get_path())};
@@ -196,33 +213,27 @@ Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
     sourceFile->copy(tempFile, Gio::FILE_COPY_OVERWRITE);
 
     std::unique_ptr<poppler::document> document{poppler::document::load_from_file(tempFile->get_path())};
-    auto qpdfDocument = std::make_unique<QPDF>();
-    qpdfDocument->processFile(tempFile->get_path().c_str());
-    auto qpdfDocumentHelper = std::make_unique<QPDFPageDocumentHelper>(*qpdfDocument);
 
     return FileData{sourceFile,
                     tempFile,
-                    std::move(document),
-                    std::move(qpdfDocument),
-                    std::move(qpdfDocumentHelper)};
+                    std::move(document)};
 }
 
-std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fileData)
+std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fileData,
+                                                    unsigned int fileNumber)
 {
     const Glib::ustring basename = Glib::filename_display_basename(fileData.originalFile->get_path());
-    const std::vector<QPDFPageObjectHelper> pages = fileData.qpdfDocumentHelper->getAllPages();
     std::vector<Glib::RefPtr<Page>> result;
-    result.reserve(pages.size());
 
-    for (auto [i, qpdfPage] : ranges::views::enumerate(pages)) {
+    for (int i = 0; i < fileData.popplerDocument->pages(); ++i) {
         std::unique_ptr<poppler::page> ppage{fileData.popplerDocument->create_page(i)};
 
         if (ppage == nullptr)
             throw std::runtime_error("Couldn't load page with number: " + std::to_string(i));
 
         auto page = Glib::RefPtr<Page>{new Page{std::move(ppage),
-                                                qpdfPage,
                                                 basename,
+                                                fileNumber,
                                                 static_cast<unsigned>(i)}};
         result.push_back(page);
     }

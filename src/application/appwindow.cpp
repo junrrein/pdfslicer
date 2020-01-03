@@ -315,7 +315,7 @@ bool AppWindow::showSaveFileDialogAndSave(SaveFileIn howToSave)
 bool AppWindow::saveFileInForeground(const Glib::RefPtr<Gio::File>& file)
 {
     try {
-        PdfSaver{*m_document}.save(file);
+        PdfSaver{m_document->getSaveData()}.save(file);
 
         return true;
     }
@@ -337,7 +337,7 @@ void AppWindow::saveFileInBackground(const Glib::RefPtr<Gio::File>& file)
 
     std::thread thread{[this, file]() {
         try {
-            PdfSaver{*m_document}.save(file);
+            PdfSaver{m_document->getSaveData()}.save(file);
             m_savedDispatcher.emit();
         }
         catch (...) {

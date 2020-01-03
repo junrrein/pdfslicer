@@ -10,6 +10,14 @@ Make sure that your contribution is likely to be well received! If you aren't wo
 
 Just do a plain-old pull request through Github. I'll try to respond immediately, acknowledging your PR, but it may take me some days to review it.
 
+## Requirements
+
+* Your patch should compile without any warnings.
+
+    When compiling with GCC, Slicer hard-codes the warning flags I care about as part of the CMake build process, so you won't miss any warnings by accident.
+
+    Those flags are: `-Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wduplicated-branches -Wlogical-op`.
+
 ## Things to keep in mind
 
 * Slicer uses `clang-format` throughout all of its C++ source files, providing a `.clang-format` file.
@@ -23,3 +31,7 @@ Just do a plain-old pull request through Github. I'll try to respond immediately
     If you think a class of warning should be disabled because it's not useful, file an issue and I'll take a look at it.
 
 * If you introduce new strings or modify already existing ones, don't worry about updating translation templates (`.pot` / `.po` files). I'll do that for you after merging your PR.
+
+## Got questions?
+
+Don't hesitate to send me an email to junrrein at gmail dot com.

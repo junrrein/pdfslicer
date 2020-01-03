@@ -35,7 +35,7 @@ You can install PDF Slicer using Flatpak. [Get it from Flathub](https://flathub.
 1. Install dependencies
 
 ```bash
-sudo dnf install gtkmm30-devel poppler-glib-devel cairomm-devel qpdf-devel uuid-devel intltool gettext
+sudo dnf install gtkmm30-devel poppler-cpp-devel cairomm-devel qpdf-devel uuid-devel intltool gettext
 ```
 
 2. Check out a copy of the source code
@@ -70,8 +70,8 @@ sudo xargs rm < install_manifest.txt
 
 ```bash
 flatpak remote-add --from gnome https://sdk.gnome.org/gnome.flatpakrepo
-flatpak install gnome org.gnome.Platform//3.30
-flatpak install gnome org.gnome.Sdk//3.30
+flatpak install gnome org.gnome.Platform//3.34
+flatpak install gnome org.gnome.Sdk//3.34
 wget https://raw.githubusercontent.com/junrrein/pdfslicer/master/com.github.junrrein.PDFSlicer.json
 flatpak-builder --repo=pdfslicer-repo pdfslicer com.github.junrrein.PDFSlicer.json --force-clean
 flatpak --user remote-add --no-gpg-verify --if-not-exists pdfslicer-repo pdfslicer-repo

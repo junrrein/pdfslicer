@@ -20,14 +20,14 @@
 namespace Slicer {
 
 Page::Page(std::unique_ptr<poppler::page> ppage,
-           const QPDFPageObjectHelper& qpdfPage,
            const Glib::ustring& fileName,
+           unsigned int fileNumber,
            unsigned int pageNumber)
-    : m_ppage{std::move(ppage)}
-    , m_qpdfPage{qpdfPage}
+    : m_fileNumber{fileNumber}
+    , m_ppage{std::move(ppage)}
     , m_fileName{fileName}
-    , m_fileIndex{pageNumber}
-    , m_documentIndex{m_fileIndex}
+    , m_indexInFile{pageNumber}
+    , m_indexInDocument{m_indexInFile}
 {
     switch (m_ppage->orientation()) {
     case poppler::page::orientation_enum::portrait:
@@ -50,14 +50,14 @@ const Glib::ustring& Page::fileName() const
     return m_fileName;
 }
 
-unsigned int Page::fileIndex() const
+unsigned int Page::indexInFile() const
 {
-    return m_fileIndex;
+    return m_indexInFile;
 }
 
 unsigned int Page::getDocumentIndex() const
 {
-    return m_documentIndex;
+    return m_indexInDocument;
 }
 
 Page::Size Page::size() const
@@ -107,7 +107,7 @@ Page::Size Page::scaledRotatedSize(int targetSize) const
 
 void Page::setDocumentIndex(unsigned int newIndex)
 {
-    m_documentIndex = newIndex;
+    m_indexInDocument = newIndex;
 
     indexChanged.emit();
 }

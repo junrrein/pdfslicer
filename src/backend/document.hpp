@@ -18,10 +18,10 @@
 #define DOCUMENT_HPP
 
 #include "page.hpp"
+#include "pdfsaver.hpp"
 #include <giomm/file.h>
 #include <giomm/liststore.h>
 #include <poppler/cpp/poppler-document.h>
-#include <qpdf/QPDFPageDocumentHelper.hh>
 
 namespace Slicer {
 
@@ -52,6 +52,8 @@ public:
     unsigned int numberOfPages() const;
     std::string lastAddedFileParentPath() const;
 
+    PdfSaver::SaveData getSaveData() const;
+
     sigc::signal<void, std::vector<unsigned int>> pagesRotated;
     sigc::signal<void, std::vector<unsigned int>> pagesReordered;
 
@@ -60,12 +62,10 @@ private:
         Glib::RefPtr<Gio::File> originalFile;
         Glib::RefPtr<Gio::File> tempFile;
         std::unique_ptr<poppler::document> popplerDocument;
-        std::unique_ptr<QPDF> qpdfDocument;
-        std::unique_ptr<QPDFPageDocumentHelper> qpdfDocumentHelper;
     };
 
     static FileData loadFile(const Glib::RefPtr<Gio::File>& sourceFile);
-    static std::vector<Glib::RefPtr<Page>> loadPages(const FileData& fileData);
+    static std::vector<Glib::RefPtr<Page>> loadPages(const FileData& fileData, unsigned int fileNumber);
 
     std::vector<FileData> m_filesData;
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
