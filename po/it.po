@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Jimmy Scionti <jimmy.scionti@gmail.com>, 2019.
+# albanobattistella <albano_battistella@hotmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-12-28 14:17-0300\n"
-"PO-Revision-Date: 2019-12-28 11:07+0000\n"
-"Last-Translator: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
+"PO-Revision-Date: 2020-01-21 18:21+0000\n"
+"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/it/>\n"
 "Language: it\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 3.11-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -207,13 +208,12 @@ msgid "Untitled document"
 msgstr "Documento senza titolo"
 
 #: ../src/application/savingrevealer.cpp:25
-#, fuzzy
 msgid "Saving document…"
-msgstr "Salva documento"
+msgstr "Salvataggio del documento in corso…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
-msgstr ""
+msgstr "Documento salvato con successo"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
