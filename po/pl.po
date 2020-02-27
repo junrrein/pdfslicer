@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Michal Biesiada <blade-14@o2.pl>, 2020.
+# Julián Unrrein <junrrein@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-01-03 19:04-0300\n"
-"PO-Revision-Date: 2020-02-22 09:02+0000\n"
-"Last-Translator: Michal Biesiada <blade-14@o2.pl>\n"
+"PO-Revision-Date: 2020-02-29 02:35+0000\n"
+"Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/pl/>\n"
 "Language: pl\n"
@@ -17,13 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.11.1\n"
+"X-Generator: Weblate 4.0-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
+"Prosta aplikacja do wyodrębniania, scalania, obracania i zmiany kolejności "
+"stron dokumentów PDF"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application icon"
@@ -35,19 +38,19 @@ msgstr ""
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr ""
+msgstr "Rotuj w lewo"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr ""
+msgstr "Rotuj w prawo"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
-msgstr ""
+msgstr "Przesuń w lewo"
 
 #: ../src/application/actionbar.cpp:48
 msgid "Move right"
-msgstr ""
+msgstr "Przesuń w prawo"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
