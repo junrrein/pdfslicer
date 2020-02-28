@@ -1,17 +1,10 @@
 #include <catch.hpp>
+#include "common.hpp"
 
 #include <command.hpp>
 #include <giomm/file.h>
-#include <glibmm/miscutils.h>
 
 using namespace Slicer;
-
-static const std::string multipage1Name = "multipage-1";
-static const std::string multipage2Name = "multipage-2";
-static const std::string multipage1Path
-    = Glib::build_filename(Glib::get_current_dir(), multipage1Name + ".pdf");
-static const std::string multipage2Path
-    = Glib::build_filename(Glib::get_current_dir(), multipage2Name + ".pdf");
 
 bool areIndexesMonoIncreasing(const Document& doc);
 

@@ -1,29 +1,22 @@
 #include <catch.hpp>
+#include "common.hpp"
 
 #include <document.hpp>
 #include <giomm/file.h>
-#include <glibmm/miscutils.h>
 
 using namespace Slicer;
-
-static const std::string multipage1Name = "multipage-1.pdf";
-static const std::string multipage2Name = "multipage-2.pdf";
-static const std::string multipage1PdfPath
-    = Glib::build_filename(Glib::get_current_dir(), multipage1Name);
-static const std::string multipage2PdfPath
-    = Glib::build_filename(Glib::get_current_dir(), multipage2Name);
 
 SCENARIO("Adding a new file to an existing document")
 {
     GIVEN("A multipage PDF document with 15 pages")
     {
-        auto multipagePdfFile = Gio::File::create_for_path(multipage1PdfPath);
+        auto multipagePdfFile = Gio::File::create_for_path(multipage1Path);
         Document doc{multipagePdfFile};
         REQUIRE(doc.numberOfPages() == 15);
 
         WHEN("A 5-page PDF file is added to the beggining")
         {
-            doc.addFile(Gio::File::create_for_path(multipage2PdfPath), 0);
+            doc.addFile(Gio::File::create_for_path(multipage2Path), 0);
 
             THEN("The document should now have 20 pages")
             REQUIRE(doc.numberOfPages() == 20);
@@ -55,7 +48,7 @@ SCENARIO("Adding a new file to an existing document")
 
         WHEN("A 5-page PDF file is added to the end")
         {
-            doc.addFile(Gio::File::create_for_path(multipage2PdfPath), doc.numberOfPages());
+            doc.addFile(Gio::File::create_for_path(multipage2Path), doc.numberOfPages());
 
             THEN("The document should now have 20 pages")
             REQUIRE(doc.numberOfPages() == 20);
@@ -87,7 +80,7 @@ SCENARIO("Adding a new file to an existing document")
 
         WHEN("A 5-page PDF file is added at the 5th page of the document")
         {
-            doc.addFile(Gio::File::create_for_path(multipage2PdfPath), 4);
+            doc.addFile(Gio::File::create_for_path(multipage2Path), 4);
 
             THEN("The document should now have 20 pages")
             REQUIRE(doc.numberOfPages() == 20);

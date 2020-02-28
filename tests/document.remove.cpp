@@ -1,17 +1,10 @@
 #include <catch.hpp>
+#include "common.hpp"
 
 #include <document.hpp>
 #include <giomm/file.h>
-#include <glibmm/miscutils.h>
 
 using namespace Slicer;
-
-static const std::string multipage1Name = "multipage-1.pdf";
-static const std::string multipage2Name = "multipage-2.pdf";
-static const std::string multipage1PdfPath
-    = Glib::build_filename(Glib::get_current_dir(), multipage1Name);
-static const std::string multipage2PdfPath
-    = Glib::build_filename(Glib::get_current_dir(), multipage2Name);
 
 unsigned int maxIndex(const Document& doc)
 {
@@ -22,7 +15,7 @@ SCENARIO("Removing a single page from different places of a document")
 {
     GIVEN("A multipage document with 15 pages")
     {
-        auto multipagePdfFile = Gio::File::create_for_path(multipage1PdfPath);
+        auto multipagePdfFile = Gio::File::create_for_path(multipage1Path);
         Document doc{multipagePdfFile};
         REQUIRE(doc.numberOfPages() == 15);
 
@@ -165,7 +158,7 @@ SCENARIO("Removing a 2-page range from different places of a document")
 {
     GIVEN("A multipage PDF document with 15 pages")
     {
-        auto multipagePdfFile = Gio::File::create_for_path(multipage1PdfPath);
+        auto multipagePdfFile = Gio::File::create_for_path(multipage1Path);
         Document doc{multipagePdfFile};
         REQUIRE(doc.numberOfPages() == 15);
 
@@ -268,7 +261,7 @@ SCENARIO("Removing 2 disjoint pages from different places of a document")
 {
     GIVEN("A multipage PDF document with 15 pages")
     {
-        auto multipagePdfFile = Gio::File::create_for_path(multipage1PdfPath);
+        auto multipagePdfFile = Gio::File::create_for_path(multipage1Path);
         Document doc{multipagePdfFile};
         REQUIRE(doc.numberOfPages() == 15);
 
