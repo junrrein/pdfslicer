@@ -1,7 +1,9 @@
 set (SOURCES
 	main.cpp
 	command.cpp
-	document.cpp
+	document.addfile.cpp
+	document.move.cpp
+	document.remove.cpp
 	tempfile.cpp)
 
 add_executable (pdfslicer_tests ${SOURCES})
