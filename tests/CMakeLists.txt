@@ -1,6 +1,8 @@
 set (SOURCES
 	main.cpp
-	command.cpp
+	command.addfile.cpp
+	command.move.cpp
+	command.remove.cpp
 	document.addfile.cpp
 	document.move.cpp
 	document.remove.cpp
