@@ -6,12 +6,12 @@
 
 using namespace Slicer;
 
-static const std::string multipage1Name = "multipage-1";
-static const std::string multipage2Name = "multipage-2";
+static const std::string multipage1Name = "multipage-1.pdf";
+static const std::string multipage2Name = "multipage-2.pdf";
 static const std::string multipage1PdfPath
-    = Glib::build_filename(Glib::get_current_dir(), multipage1Name + ".pdf");
+    = Glib::build_filename(Glib::get_current_dir(), multipage1Name);
 static const std::string multipage2PdfPath
-    = Glib::build_filename(Glib::get_current_dir(), multipage2Name + ".pdf");
+    = Glib::build_filename(Glib::get_current_dir(), multipage2Name);
 
 unsigned int maxIndex(const Document& doc)
 {
