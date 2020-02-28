@@ -1,8 +1,6 @@
-#include <catch.hpp>
 #include "common.hpp"
-
+#include <catch.hpp>
 #include <document.hpp>
-#include <giomm/file.h>
 
 using namespace Slicer;
 
