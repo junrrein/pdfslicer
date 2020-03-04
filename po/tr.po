@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Sabri Ünal <libreajans@gmail.com>, 2019.
+# Sabri Ünal <libreajans@gmail.com>, 2019, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-12-28 14:17-0300\n"
-"PO-Revision-Date: 2019-10-24 00:53+0000\n"
+"PO-Revision-Date: 2020-03-06 18:33+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/tr/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1-dev\n"
+"X-Generator: Weblate 4.0-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -107,7 +107,7 @@ msgstr "İptal Et"
 
 #: ../src/application/application.cpp:91 ../src/application/appmenu.cpp:63
 msgid "New window"
-msgstr ""
+msgstr "Yeni pencere"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
@@ -170,9 +170,8 @@ msgid "Redo"
 msgstr "Yinele"
 
 #: ../src/application/headerbar.cpp:91
-#, fuzzy
 msgid "Save As"
-msgstr "Farklı Kaydet…"
+msgstr "Farklı Kaydet"
 
 #: ../src/application/interactivepagewidget.cpp:122
 #: ../src/application/previewwindow.cpp:57
@@ -208,21 +207,20 @@ msgid "Untitled document"
 msgstr "Başlıksız belge"
 
 #: ../src/application/savingrevealer.cpp:25
-#, fuzzy
 msgid "Saving document…"
-msgstr "Belgeyi kaydet"
+msgstr "Belge kaydediliyor…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
-msgstr ""
+msgstr "Belge kaydedildi"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr ""
+msgstr "Değiştirilmiş belge kapatmadan önce kaydedilsin mi?"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
-msgstr ""
+msgstr "Kaydetmeden Kapat"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
@@ -260,17 +258,17 @@ msgstr "Uzaklaştır"
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr ""
+msgstr "Yakınlaştırma düzeyini sıfırla"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
 msgid "New window"
-msgstr ""
+msgstr "Yeni pencere"
 
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr ""
+msgstr "Pencereyi kapat"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
