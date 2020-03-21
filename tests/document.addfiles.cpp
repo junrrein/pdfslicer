@@ -59,5 +59,99 @@ SCENARIO("Adding 2 new files to an existing document")
                 REQUIRE(doc.getPage(34)->fileName() == multipage1Name);
             }
         }
+
+        WHEN("Two PDF files (5 and 15 pages) are added to the end")
+        {
+            doc.addFiles(filesToAdd, doc.numberOfPages());
+
+            THEN("The document should now have 35 pages")
+            REQUIRE(doc.numberOfPages() == 35);
+
+            THEN("The first page of the document should be the first page of the first file")
+            {
+                REQUIRE(doc.getPage(0)->indexInFile() == 0);
+                REQUIRE(doc.getPage(0)->fileName() == multipage1Name);
+            }
+
+            THEN("The 15th page of the document should be the last page of the first file")
+            {
+                REQUIRE(doc.getPage(14)->indexInFile() == 14);
+                REQUIRE(doc.getPage(14)->fileName() == multipage1Name);
+            }
+
+            THEN("The 16th page of the document should be the first page of the second file")
+            {
+                REQUIRE(doc.getPage(15)->indexInFile() == 0);
+                REQUIRE(doc.getPage(15)->fileName() == multipage2Name);
+            }
+
+            THEN("The 20th page of the document should be the last page of the second file")
+            {
+                REQUIRE(doc.getPage(19)->indexInFile() == 4);
+                REQUIRE(doc.getPage(19)->fileName() == multipage2Name);
+            }
+
+            THEN("The 21st page of the document should be the first page of the third file")
+            {
+                REQUIRE(doc.getPage(20)->indexInFile() == 0);
+                REQUIRE(doc.getPage(20)->fileName() == multipage3Name);
+            }
+
+            THEN("The last page of the document should be the last page of the third file")
+            {
+                REQUIRE(doc.getPage(34)->indexInFile() == 14);
+                REQUIRE(doc.getPage(34)->fileName() == multipage3Name);
+            }
+        }
+
+        WHEN("Two PDF files (5 and 15 pages) are added at the 5th page of the document")
+        {
+            doc.addFiles(filesToAdd, 4);
+
+            THEN("The document should now have 35 pages")
+            REQUIRE(doc.numberOfPages() == 35);
+
+            THEN("The 4th page of the document should be the 4th page of the first file")
+            {
+                REQUIRE(doc.getPage(3)->indexInFile() == 3);
+                REQUIRE(doc.getPage(3)->fileName() == multipage1Name);
+            }
+
+            THEN("The 5th page of the document should be the 1st page of the second file")
+            {
+                REQUIRE(doc.getPage(4)->indexInFile() == 0);
+                REQUIRE(doc.getPage(4)->fileName() == multipage2Name);
+            }
+
+            THEN("The 9th page of the document should be the 5th page of the second file")
+            {
+                REQUIRE(doc.getPage(8)->indexInFile() == 4);
+                REQUIRE(doc.getPage(8)->fileName() == multipage2Name);
+            }
+
+            THEN("The 10th page of the document should be the 1st page of the third file")
+            {
+                REQUIRE(doc.getPage(9)->indexInFile() == 0);
+                REQUIRE(doc.getPage(9)->fileName() == multipage3Name);
+            }
+
+            THEN("The 24th page of the document should be the last page of the third file")
+            {
+                REQUIRE(doc.getPage(23)->indexInFile() == 14);
+                REQUIRE(doc.getPage(23)->fileName() == multipage3Name);
+            }
+
+            THEN("The 25th page of the document should be the 5th page of the first file")
+            {
+                REQUIRE(doc.getPage(24)->indexInFile() == 4);
+                REQUIRE(doc.getPage(24)->fileName() == multipage1Name);
+            }
+
+            THEN("The 35th page of the document should be the last page of the first file")
+            {
+                REQUIRE(doc.getPage(34)->indexInFile() == 14);
+                REQUIRE(doc.getPage(34)->fileName() == multipage1Name);
+            }
+        }
     }
 }
