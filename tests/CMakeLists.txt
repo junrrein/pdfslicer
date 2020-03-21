@@ -4,6 +4,7 @@ set (SOURCES
 	command.move.cpp
 	command.remove.cpp
 	document.addfile.cpp
+	document.addfiles.cpp
 	document.move.cpp
 	document.remove.cpp
 	tempfile.cpp)
