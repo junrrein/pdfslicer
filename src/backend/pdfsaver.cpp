@@ -15,6 +15,8 @@ PdfSaver::PdfSaver(const SaveData& saveData)
         auto qpdfPageDocumentHelper = std::make_unique<QPDFPageDocumentHelper>(*qpdf);
         std::vector<QPDFPageObjectHelper> pages = qpdfPageDocumentHelper->getAllPages();
 
+        qpdfPageDocumentHelper->pushInheritedAttributesToPage();
+
         m_filesData.emplace_back(FileData{std::move(qpdf),
                                           std::move(qpdfPageDocumentHelper),
                                           std::move(pages)});
@@ -63,6 +65,8 @@ void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile)
         destinationPDF->replaceObject(
             originalPages.at(static_cast<unsigned>(pageNumber)).getObjectHandle().getObjGen(),
             QPDFObjectHandle::newNull());
+
+    destinationPageDocumentHelper->removeUnreferencedResources();
 
     // Write the result to a file
     QPDFWriter writer{*destinationPDF};
