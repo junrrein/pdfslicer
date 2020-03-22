@@ -211,9 +211,9 @@ void AddFileCommand::redo()
 AddFilesCommand::AddFilesCommand(Document& document,
                                  const std::vector<Glib::RefPtr<Gio::File>>& files,
                                  unsigned int position)
-    : m_position{position}
+    : m_files{files}
+    , m_position{position}
     , m_document{document}
-    , m_files{files}
 {
 }
 

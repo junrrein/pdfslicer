@@ -121,7 +121,8 @@ private:
     bool saveFileInForeground(const Glib::RefPtr<Gio::File>& file);
     void saveFileInBackground(const Glib::RefPtr<Gio::File>& file);
     void tryOpenDocument(const Glib::RefPtr<Gio::File>& file);
-    void tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position);
+    void tryAddDocumentsAt(const std::vector<Glib::RefPtr<Gio::File>>& files,
+                           unsigned int position);
     void showOpenFileFailedErrorDialog();
     void showSaveFileFailedErrorDialog();
     void setModified(bool modified);

@@ -23,13 +23,13 @@
 
 namespace Slicer {
 
-class GuiAddFileCommand : public AddFileCommand {
+class GuiAddFilesCommand : public AddFilesCommand {
 public:
-	GuiAddFileCommand(Document& document,
-					  const Glib::RefPtr<Gio::File>& file,
-					  unsigned int position,
-					  HeaderBar& headerBar,
-					  View& view);
+    GuiAddFilesCommand(Document& document,
+                       const std::vector<Glib::RefPtr<Gio::File>>& files,
+                       unsigned int position,
+                       HeaderBar& headerBar,
+                       View& view);
 
 	virtual void execute() override;
 	virtual void undo() override;
@@ -38,7 +38,6 @@ public:
 private:
 	HeaderBar& m_headerBar;
 	View& m_view;
-	const Glib::ustring m_fileName;
 	const Glib::ustring m_oldSubtitle;
 
 	void executeInternal();

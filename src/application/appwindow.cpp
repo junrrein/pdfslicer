@@ -368,7 +368,7 @@ void AppWindow::onOpenAction()
 void AppWindow::showOpenFileFailedErrorDialog()
 {
     Gtk::MessageDialog errorDialog{*this,
-                                   _("The selected file could not be opened"),
+                                   _("The selected files could not be opened"),
                                    false,
                                    Gtk::MESSAGE_ERROR,
                                    Gtk::BUTTONS_CLOSE,
@@ -400,19 +400,22 @@ void AppWindow::setModified(bool modified)
     m_isDocumentModified = modified;
 }
 
-void AppWindow::tryAddDocumentAt(const Glib::RefPtr<Gio::File>& file, unsigned int position)
+void AppWindow::tryAddDocumentsAt(const std::vector<Glib::RefPtr<Gio::File>>& files,
+                                  unsigned int position)
 {
     try {
-        auto command = std::make_shared<GuiAddFileCommand>(*m_document,
-                                                           file,
-                                                           position,
-                                                           m_headerBar,
-                                                           m_view);
+        auto command = std::make_shared<GuiAddFilesCommand>(*m_document,
+                                                            files,
+                                                            position,
+                                                            m_headerBar,
+                                                            m_view);
         m_commandManager.execute(command);
     }
     catch (...) {
-        Logger::logError("The file couldn't be added");
-        Logger::logError("Filepath: " + file->get_path());
+        Logger::logError("The files couldn't be added");
+
+        for (auto file : files)
+            Logger::logError("Filepath: " + file->get_path());
 
         showOpenFileFailedErrorDialog();
     }
@@ -425,7 +428,7 @@ void AppWindow::onAddDocumentAtBeginningAction()
     const int result = dialog.run();
 
     if (result == Gtk::RESPONSE_ACCEPT)
-        tryAddDocumentAt(dialog.get_file(), 0);
+        tryAddDocumentsAt(dialog.get_files(), 0);
 }
 
 void AppWindow::onAddDocumentAtEndAction()
@@ -435,7 +438,7 @@ void AppWindow::onAddDocumentAtEndAction()
     const int result = dialog.run();
 
     if (result == Gtk::RESPONSE_ACCEPT)
-        tryAddDocumentAt(dialog.get_file(), m_document->numberOfPages());
+        tryAddDocumentsAt(dialog.get_files(), m_document->numberOfPages());
 }
 
 void AppWindow::onAddDocumentAfterSelectedAction()
@@ -445,7 +448,7 @@ void AppWindow::onAddDocumentAfterSelectedAction()
     const int result = dialog.run();
 
     if (result == Gtk::RESPONSE_ACCEPT)
-        tryAddDocumentAt(dialog.get_file(), m_view.getSelectedChildIndex() + 1);
+        tryAddDocumentsAt(dialog.get_files(), m_view.getSelectedChildIndex() + 1);
 }
 
 void AppWindow::tryOpenDocument(const Glib::RefPtr<Gio::File>& file)
