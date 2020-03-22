@@ -32,6 +32,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.8.3" date="2020-03-xx">
+			<description>
+				<p>Add the ability to add multiple files in one step. Reduce the file size of some saved documents. Add Polish translation. Update existing translation.</p>
+			</description>
+		</release>
 		<release version="1.8.2" date="2020-01-03">
 			<description>
 				<p>Preserve metadata and outline of the first opened file when saving. Other improvements. Add Croatian translation. Update existing translations.</p>
