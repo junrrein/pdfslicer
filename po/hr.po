@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2020-01-03 19:04-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-22 03:16-0300\n"
 "PO-Revision-Date: 2020-01-12 23:21+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 3.10.1\n"
 
 #: ../src/application/aboutdialog.cpp:26
@@ -92,7 +92,8 @@ msgid "Cancel Selection"
 msgstr "Prekini odabir"
 
 #: ../src/application/addfiledialog.cpp:25
-msgid "Select document to add"
+#, fuzzy
+msgid "Select documents to add"
 msgstr "Odaberi dokument za dodavanje"
 
 #: ../src/application/addfiledialog.cpp:28
@@ -123,18 +124,19 @@ msgid "About PDF Slicer"
 msgstr "O programu PDF Slicer"
 
 #: ../src/application/appwindow.cpp:371
-msgid "The selected file could not be opened"
+#, fuzzy
+msgid "The selected files could not be opened"
 msgstr "Nije bilo moguće otvoriti odabranu datoteku"
 
 #: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
 msgstr "Nije bilo moguće spremiti trenutačnu datoteku"
 
-#: ../src/application/guicommand.cpp:71
+#: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
 msgstr "Dodana datoteka {fileName}"
 
-#: ../src/application/guicommand.cpp:74
+#: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
 msgstr "Dodano je više datoteka"
 
@@ -143,7 +145,8 @@ msgid "Open"
 msgstr "Otvori"
 
 #: ../src/application/headerbar.cpp:60
-msgid "Add a Document"
+#, fuzzy
+msgid "Add Documents"
 msgstr "Dodaj dokument"
 
 #: ../src/application/headerbar.cpp:61
@@ -159,7 +162,8 @@ msgid "After the selected page…"
 msgstr "Nakon odabrane stranice …"
 
 #: ../src/application/headerbar.cpp:65
-msgid "Add a Document…"
+#, fuzzy
+msgid "Add Documents…"
 msgstr "Dodaj dokument …"
 
 #: ../src/application/headerbar.cpp:75
@@ -184,7 +188,8 @@ msgid "Open document"
 msgstr "Otvori dokument"
 
 #: ../src/application/pdffilter.cpp:23
-msgid "PDF document"
+#, fuzzy
+msgid "PDF documents"
 msgstr "PDF dokument"
 
 #: ../src/application/previewwindow.cpp:64

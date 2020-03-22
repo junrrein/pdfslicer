@@ -5,12 +5,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2019-12-28 14:17-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-22 03:16-0300\n"
 "PO-Revision-Date: 2020-01-24 04:21+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
-"pdf-slicer/translations/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
+"slicer/translations/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -97,7 +97,7 @@ msgstr "Avbryt utvalg"
 
 #: ../src/application/addfiledialog.cpp:25
 #, fuzzy
-msgid "Select document to add"
+msgid "Select documents to add"
 msgstr "Lagre dokument som"
 
 #: ../src/application/addfiledialog.cpp:28
@@ -128,18 +128,19 @@ msgid "About PDF Slicer"
 msgstr "Om PDF Slicer"
 
 #: ../src/application/appwindow.cpp:371
-msgid "The selected file could not be opened"
+#, fuzzy
+msgid "The selected files could not be opened"
 msgstr "Valgt fil kunne ikke åpnes"
 
 #: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
 msgstr "Nåværende dokument kunne ikke lagres"
 
-#: ../src/application/guicommand.cpp:71
+#: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
 msgstr "Tillagt fil {fileName}"
 
-#: ../src/application/guicommand.cpp:74
+#: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
 msgstr "Flere filer lagt til"
 
@@ -148,7 +149,8 @@ msgid "Open"
 msgstr "Åpne"
 
 #: ../src/application/headerbar.cpp:60
-msgid "Add a Document"
+#, fuzzy
+msgid "Add Documents"
 msgstr "Åpne et dokument"
 
 #: ../src/application/headerbar.cpp:61
@@ -165,7 +167,8 @@ msgid "After the selected page…"
 msgstr "Fjern valgt side…"
 
 #: ../src/application/headerbar.cpp:65
-msgid "Add a Document…"
+#, fuzzy
+msgid "Add Documents…"
 msgstr "Legg til et dokument…"
 
 #: ../src/application/headerbar.cpp:75
@@ -191,7 +194,8 @@ msgid "Open document"
 msgstr "Åpne dokument"
 
 #: ../src/application/pdffilter.cpp:23
-msgid "PDF document"
+#, fuzzy
+msgid "PDF documents"
 msgstr "PDF-dokument"
 
 #: ../src/application/previewwindow.cpp:64

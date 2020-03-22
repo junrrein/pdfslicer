@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2019-12-28 14:17-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-22 03:16-0300\n"
 "PO-Revision-Date: 2020-02-06 16:50+0000\n"
 "Last-Translator: nautilusx <mail.ka@mailbox.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -94,7 +94,8 @@ msgid "Cancel Selection"
 msgstr "Auswahl aufheben"
 
 #: ../src/application/addfiledialog.cpp:25
-msgid "Select document to add"
+#, fuzzy
+msgid "Select documents to add"
 msgstr "Hizuzufügendes Dokument auswählen"
 
 #: ../src/application/addfiledialog.cpp:28
@@ -125,18 +126,19 @@ msgid "About PDF Slicer"
 msgstr "Über PDF Slicer"
 
 #: ../src/application/appwindow.cpp:371
-msgid "The selected file could not be opened"
+#, fuzzy
+msgid "The selected files could not be opened"
 msgstr "Die ausgewählte Datei konnte nicht geöffnet werden"
 
 #: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
 msgstr "Das aktuelle Dokument konnte nicht gespeichert werden"
 
-#: ../src/application/guicommand.cpp:71
+#: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
 msgstr "Hinzugefügte Datei {fileName}"
 
-#: ../src/application/guicommand.cpp:74
+#: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
 msgstr "Mehrere Dateien hinzugefügt"
 
@@ -145,7 +147,8 @@ msgid "Open"
 msgstr "Öffnen"
 
 #: ../src/application/headerbar.cpp:60
-msgid "Add a Document"
+#, fuzzy
+msgid "Add Documents"
 msgstr "Dokument hinzufügen"
 
 #: ../src/application/headerbar.cpp:61
@@ -161,7 +164,8 @@ msgid "After the selected page…"
 msgstr "Nach der ausgewählten Seite…"
 
 #: ../src/application/headerbar.cpp:65
-msgid "Add a Document…"
+#, fuzzy
+msgid "Add Documents…"
 msgstr "Dokument hinzufügen …"
 
 #: ../src/application/headerbar.cpp:75
@@ -186,7 +190,8 @@ msgid "Open document"
 msgstr "Dokument öffnen"
 
 #: ../src/application/pdffilter.cpp:23
-msgid "PDF document"
+#, fuzzy
+msgid "PDF documents"
 msgstr "PDF-Dokument"
 
 #: ../src/application/previewwindow.cpp:64

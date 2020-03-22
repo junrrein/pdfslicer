@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-28 14:17-0300\n"
+"POT-Creation-Date: 2020-03-22 03:16-0300\n"
 "PO-Revision-Date: 2019-10-16 04:52+0000\n"
 "Last-Translator: naofum <naofum@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -91,7 +91,8 @@ msgid "Cancel Selection"
 msgstr "選択を取り消す"
 
 #: ../src/application/addfiledialog.cpp:25
-msgid "Select document to add"
+#, fuzzy
+msgid "Select documents to add"
 msgstr "追加するドキュメントを選択"
 
 #: ../src/application/addfiledialog.cpp:28
@@ -122,18 +123,19 @@ msgid "About PDF Slicer"
 msgstr "PDF Slicer について"
 
 #: ../src/application/appwindow.cpp:371
-msgid "The selected file could not be opened"
+#, fuzzy
+msgid "The selected files could not be opened"
 msgstr "選択したファイルを開くことができません"
 
 #: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
 msgstr "現在のドキュメントを保存できませんでした"
 
-#: ../src/application/guicommand.cpp:71
+#: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
 msgstr "ファイル {fileName} を追加しました"
 
-#: ../src/application/guicommand.cpp:74
+#: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
 msgstr "複数のファイルが追加されました"
 
@@ -142,7 +144,8 @@ msgid "Open"
 msgstr "開く"
 
 #: ../src/application/headerbar.cpp:60
-msgid "Add a Document"
+#, fuzzy
+msgid "Add Documents"
 msgstr "ドキュメントを追加"
 
 #: ../src/application/headerbar.cpp:61
@@ -158,7 +161,8 @@ msgid "After the selected page…"
 msgstr "選択したページの後…"
 
 #: ../src/application/headerbar.cpp:65
-msgid "Add a Document…"
+#, fuzzy
+msgid "Add Documents…"
 msgstr "ドキュメントを追加…"
 
 #: ../src/application/headerbar.cpp:75
@@ -184,7 +188,8 @@ msgid "Open document"
 msgstr "ドキュメントを開く"
 
 #: ../src/application/pdffilter.cpp:23
-msgid "PDF document"
+#, fuzzy
+msgid "PDF documents"
 msgstr "PDF ドキュメント"
 
 #: ../src/application/previewwindow.cpp:64

@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2019-12-28 14:17-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-22 03:16-0300\n"
 "PO-Revision-Date: 2020-03-06 18:33+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -91,7 +91,8 @@ msgid "Cancel Selection"
 msgstr "Seçimi İptal Et"
 
 #: ../src/application/addfiledialog.cpp:25
-msgid "Select document to add"
+#, fuzzy
+msgid "Select documents to add"
 msgstr "Belgeyi eklemek için seç"
 
 #: ../src/application/addfiledialog.cpp:28
@@ -122,18 +123,19 @@ msgid "About PDF Slicer"
 msgstr "PDF Slicer Hakkında"
 
 #: ../src/application/appwindow.cpp:371
-msgid "The selected file could not be opened"
+#, fuzzy
+msgid "The selected files could not be opened"
 msgstr "Seçili dosya açılamadı"
 
 #: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
 msgstr "Geçerli belge kaydedilemedi"
 
-#: ../src/application/guicommand.cpp:71
+#: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
 msgstr "{fileName} dosyası eklendi"
 
-#: ../src/application/guicommand.cpp:74
+#: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
 msgstr "Çoklu dosya eklendi"
 
@@ -142,7 +144,8 @@ msgid "Open"
 msgstr "Aç"
 
 #: ../src/application/headerbar.cpp:60
-msgid "Add a Document"
+#, fuzzy
+msgid "Add Documents"
 msgstr "Belge Ekle"
 
 #: ../src/application/headerbar.cpp:61
@@ -158,7 +161,8 @@ msgid "After the selected page…"
 msgstr "Seçilen sayfadan sonra…"
 
 #: ../src/application/headerbar.cpp:65
-msgid "Add a Document…"
+#, fuzzy
+msgid "Add Documents…"
 msgstr "Belge Ekle…"
 
 #: ../src/application/headerbar.cpp:75
@@ -183,7 +187,8 @@ msgid "Open document"
 msgstr "Belge aç"
 
 #: ../src/application/pdffilter.cpp:23
-msgid "PDF document"
+#, fuzzy
+msgid "PDF documents"
 msgstr "PDF belgesi"
 
 #: ../src/application/previewwindow.cpp:64
