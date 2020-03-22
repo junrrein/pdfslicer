@@ -46,6 +46,7 @@ public:
     void rotatePagesLeft(const std::vector<unsigned int>& pageNumbers);
 
     unsigned int addFile(const Glib::RefPtr<Gio::File>& file, unsigned int position);
+    unsigned int addFiles(const std::vector<Glib::RefPtr<Gio::File>>& files, unsigned int position);
 
     Glib::RefPtr<Page> getPage(unsigned int index) const;
     const Glib::RefPtr<Gio::ListStore<Page>>& pages() const;

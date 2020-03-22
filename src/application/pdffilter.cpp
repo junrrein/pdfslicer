@@ -20,7 +20,7 @@
 Glib::RefPtr<Gtk::FileFilter> Slicer::pdfFilter()
 {
 	auto filter = Gtk::FileFilter::create();
-    filter->set_name(_("PDF document"));
+    filter->set_name(_("PDF documents"));
     filter->add_pattern("*.pdf");
 
 	return filter;

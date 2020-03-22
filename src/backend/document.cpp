@@ -165,6 +165,20 @@ unsigned int Document::addFile(const Glib::RefPtr<Gio::File>& file, unsigned int
     return pages.size();
 }
 
+unsigned int Document::addFiles(const std::vector<Glib::RefPtr<Gio::File>>& files,
+                                unsigned int position)
+{
+    unsigned int totalNumberOfInsertedPages = 0;
+
+    for (const auto& file : files) {
+        unsigned int numberOfInsertedPages = addFile(file, position);
+        position += numberOfInsertedPages;
+        totalNumberOfInsertedPages += numberOfInsertedPages;
+    }
+
+    return totalNumberOfInsertedPages;
+}
+
 Glib::RefPtr<Page> Document::getPage(unsigned int index) const
 {
     return m_pages->get_item(index);

@@ -24,54 +24,57 @@ using namespace fmt::literals;
 
 namespace Slicer {
 
-GuiAddFileCommand::GuiAddFileCommand(Document& document,
-                                     const Glib::RefPtr<Gio::File>& file,
-                                     unsigned int position,
-                                     HeaderBar& headerBar,
-                                     View& view)
-    : AddFileCommand{document, file, position}
+GuiAddFilesCommand::GuiAddFilesCommand(Document& document,
+                                       const std::vector<Glib::RefPtr<Gio::File>>& files,
+                                       unsigned int position,
+                                       HeaderBar& headerBar,
+                                       View& view)
+    : AddFilesCommand{document, files, position}
     , m_headerBar{headerBar}
     , m_view{view}
-    , m_fileName{Glib::filename_display_basename(file->get_path())}
     , m_oldSubtitle{headerBar.get_subtitle()}
 {
 }
 
-void GuiAddFileCommand::execute()
+void GuiAddFilesCommand::execute()
 {
-    AddFileCommand::execute();
+    AddFilesCommand::execute();
     executeInternal();
 }
 
-void GuiAddFileCommand::undo()
+void GuiAddFilesCommand::undo()
 {
-    AddFileCommand::undo();
+    AddFilesCommand::undo();
     m_headerBar.set_subtitle(m_oldSubtitle);
 
     if (m_oldSubtitle.empty())
         m_view.setShowFileNames(false);
 }
 
-void GuiAddFileCommand::redo()
+void GuiAddFilesCommand::redo()
 {
-    AddFileCommand::redo();
+    AddFilesCommand::redo();
     executeInternal();
 }
 
-void GuiAddFileCommand::executeInternal()
+void GuiAddFilesCommand::executeInternal()
 {
     setSubtitle();
     m_view.setShowFileNames(true);
     m_view.selectPageRange(m_position, m_position + m_numberOfAddedPages - 1);
 }
 
-void GuiAddFileCommand::setSubtitle()
+void GuiAddFilesCommand::setSubtitle()
 {
-    if (m_oldSubtitle.empty())
+    if (m_oldSubtitle.empty() && m_files.size() == 1) {
+        Glib::ustring filename = Glib::filename_display_basename(m_files.at(0)->get_path());
+
         m_headerBar.set_subtitle(fmt::format(_("Added file {fileName}"),
-                                             "fileName"_a = m_fileName)); //NOLINT
-    else
+                                             "fileName"_a = filename)); //NOLINT
+    }
+    else {
         m_headerBar.set_subtitle(_("Multiple files added"));
+    }
 }
 
 }
