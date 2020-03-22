@@ -138,23 +138,23 @@ private:
     const unsigned int m_indexDestination;
 };
 
-class AddFileCommand : public Command {
+class AddFilesCommand : public Command {
 public:
-    AddFileCommand(Document& document,
-                   const Glib::RefPtr<Gio::File>& file,
-                   unsigned int position);
+    AddFilesCommand(Document& document,
+                    const std::vector<Glib::RefPtr<Gio::File>>& files,
+                    unsigned int position);
 
     virtual void execute() override;
     virtual void undo() override;
     virtual void redo() override;
 
 protected:
+    const std::vector<Glib::RefPtr<Gio::File>> m_files;
     const unsigned int m_position;
     unsigned int m_numberOfAddedPages = 0;
 
 private:
     Document& m_document;
-    Glib::RefPtr<Gio::File> m_file;
     std::vector<Glib::RefPtr<Page>> m_addedPages;
 };
 

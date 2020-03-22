@@ -4,6 +4,6 @@ target_link_libraries (stduuid INTERFACE GSL)
 
 # FIXME: In Apple platforms, we need to link against CoreFoundation
 if (NOT WIN32)
-	pkg_check_modules (ossp-uuid uuid IMPORTED_TARGET REQUIRED)
-	target_link_libraries (stduuid INTERFACE PkgConfig::ossp-uuid)
+	pkg_check_modules (libuuid uuid IMPORTED_TARGET REQUIRED)
+	target_link_libraries (stduuid INTERFACE PkgConfig::libuuid)
 endif ()

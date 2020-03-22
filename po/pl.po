@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2020-01-03 19:04-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-22 03:16-0300\n"
 "PO-Revision-Date: 2020-02-29 02:35+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -93,7 +93,7 @@ msgid "Cancel Selection"
 msgstr ""
 
 #: ../src/application/addfiledialog.cpp:25
-msgid "Select document to add"
+msgid "Select documents to add"
 msgstr ""
 
 #: ../src/application/addfiledialog.cpp:28
@@ -124,18 +124,18 @@ msgid "About PDF Slicer"
 msgstr ""
 
 #: ../src/application/appwindow.cpp:371
-msgid "The selected file could not be opened"
+msgid "The selected files could not be opened"
 msgstr ""
 
 #: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
 msgstr ""
 
-#: ../src/application/guicommand.cpp:71
+#: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
 msgstr ""
 
-#: ../src/application/guicommand.cpp:74
+#: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
 msgstr ""
 
@@ -144,7 +144,7 @@ msgid "Open"
 msgstr ""
 
 #: ../src/application/headerbar.cpp:60
-msgid "Add a Document"
+msgid "Add Documents"
 msgstr ""
 
 #: ../src/application/headerbar.cpp:61
@@ -160,7 +160,7 @@ msgid "After the selected page…"
 msgstr ""
 
 #: ../src/application/headerbar.cpp:65
-msgid "Add a Document…"
+msgid "Add Documents…"
 msgstr ""
 
 #: ../src/application/headerbar.cpp:75
@@ -185,7 +185,7 @@ msgid "Open document"
 msgstr ""
 
 #: ../src/application/pdffilter.cpp:23
-msgid "PDF document"
+msgid "PDF documents"
 msgstr ""
 
 #: ../src/application/previewwindow.cpp:64

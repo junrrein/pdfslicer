@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-03 19:04-0300\n"
+"POT-Creation-Date: 2020-03-22 03:16-0300\n"
 "PO-Revision-Date: 2019-12-31 17:21+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -88,7 +88,8 @@ msgid "Cancel Selection"
 msgstr "Cancelar Selección"
 
 #: ../src/application/addfiledialog.cpp:25
-msgid "Select document to add"
+#, fuzzy
+msgid "Select documents to add"
 msgstr "Seleccionar documento a añadir"
 
 #: ../src/application/addfiledialog.cpp:28
@@ -119,18 +120,19 @@ msgid "About PDF Slicer"
 msgstr "Acerca de PDF Slicer"
 
 #: ../src/application/appwindow.cpp:371
-msgid "The selected file could not be opened"
+#, fuzzy
+msgid "The selected files could not be opened"
 msgstr "No se pudo abrir el archivo seleccionado"
 
 #: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
 msgstr "El documento actual no pudo ser guardado"
 
-#: ../src/application/guicommand.cpp:71
+#: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
 msgstr "Añadido archivo {fileName}"
 
-#: ../src/application/guicommand.cpp:74
+#: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
 msgstr "Múltiples archivos añadidos"
 
@@ -139,7 +141,8 @@ msgid "Open"
 msgstr "Abrir"
 
 #: ../src/application/headerbar.cpp:60
-msgid "Add a Document"
+#, fuzzy
+msgid "Add Documents"
 msgstr "Añadir un Documento"
 
 #: ../src/application/headerbar.cpp:61
@@ -155,7 +158,8 @@ msgid "After the selected page…"
 msgstr "Luego de la página seleccionada…"
 
 #: ../src/application/headerbar.cpp:65
-msgid "Add a Document…"
+#, fuzzy
+msgid "Add Documents…"
 msgstr "Añadir un Documento…"
 
 #: ../src/application/headerbar.cpp:75
@@ -180,7 +184,8 @@ msgid "Open document"
 msgstr "Abrir documento"
 
 #: ../src/application/pdffilter.cpp:23
-msgid "PDF document"
+#, fuzzy
+msgid "PDF documents"
 msgstr "Documento PDF"
 
 #: ../src/application/previewwindow.cpp:64

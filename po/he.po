@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-28 14:17-0300\n"
+"POT-Creation-Date: 2020-03-22 03:16-0300\n"
 "PO-Revision-Date: 2019-08-14 09:24+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -90,7 +90,8 @@ msgid "Cancel Selection"
 msgstr "ביטול הבחירה"
 
 #: ../src/application/addfiledialog.cpp:25
-msgid "Select document to add"
+#, fuzzy
+msgid "Select documents to add"
 msgstr "יש לבחור מסמך להוספה"
 
 #: ../src/application/addfiledialog.cpp:28
@@ -121,18 +122,19 @@ msgid "About PDF Slicer"
 msgstr "על אודות PDF Slicer"
 
 #: ../src/application/appwindow.cpp:371
-msgid "The selected file could not be opened"
+#, fuzzy
+msgid "The selected files could not be opened"
 msgstr "לא ניתן לפתוח את הקובץ הנבחר"
 
 #: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
 msgstr "לא ניתן לשמור את המסמך הנוכחי"
 
-#: ../src/application/guicommand.cpp:71
+#: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
 msgstr "הקובץ {fileName} נוסף"
 
-#: ../src/application/guicommand.cpp:74
+#: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
 msgstr "נוספו מגוון קבצים"
 
@@ -142,7 +144,7 @@ msgstr "פתיחה"
 
 #: ../src/application/headerbar.cpp:60
 #, fuzzy
-msgid "Add a Document"
+msgid "Add Documents"
 msgstr "הוספת מסמך…"
 
 #: ../src/application/headerbar.cpp:61
@@ -159,7 +161,8 @@ msgid "After the selected page…"
 msgstr "לאחר העמוד הנבחר"
 
 #: ../src/application/headerbar.cpp:65
-msgid "Add a Document…"
+#, fuzzy
+msgid "Add Documents…"
 msgstr "הוספת מסמך…"
 
 #: ../src/application/headerbar.cpp:75
@@ -185,7 +188,8 @@ msgid "Open document"
 msgstr "פתיחת מסמך"
 
 #: ../src/application/pdffilter.cpp:23
-msgid "PDF document"
+#, fuzzy
+msgid "PDF documents"
 msgstr "מסמך PDF"
 
 #: ../src/application/previewwindow.cpp:64
