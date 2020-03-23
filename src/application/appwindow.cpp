@@ -65,9 +65,9 @@ AppWindow::~AppWindow()
 
 void AppWindow::setDocument(std::unique_ptr<Document> document)
 {
-    m_view.setDocument(*document, m_zoomLevel.currentLevel());
-    m_view.setShowFileNames(false);
     m_document = std::move(document);
+    m_view.setDocument(*m_document, m_zoomLevel.currentLevel());
+    m_view.setShowFileNames(false);
 
     m_stack.set_visible_child("editor");
 
@@ -589,7 +589,7 @@ void AppWindow::onSelectedPagesChanged()
 {
     const std::vector<unsigned int> indexSelected = m_view.getSelectedChildrenIndexes();
     const unsigned long numSelected = indexSelected.size();
-    const unsigned long numPages = m_view.get_children().size();
+    const unsigned long numPages = m_document->numberOfPages();
 
     if (numSelected == 0) {
         m_removeSelectedAction->set_enabled(false);
