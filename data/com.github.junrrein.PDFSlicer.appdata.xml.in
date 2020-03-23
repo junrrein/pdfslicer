@@ -34,7 +34,7 @@
 	<releases>
 		<release version="1.8.3" date="2020-03-xx">
 			<description>
-				<p>Add the ability to add multiple files in one step. Add the ability to zoom using Ctrl+Scrolling on the views. Reduce the file size of some saved documents. Add Polish translation. Update existing translations.</p>
+				<p>Add the ability to add multiple files in one step. Add the ability to zoom using Ctrl+Scrolling on the views. Improve keyboard navigation. Reduce the file size of some saved documents. Add Polish translation. Update existing translations.</p>
 			</description>
 		</release>
 		<release version="1.8.2" date="2020-01-03">
