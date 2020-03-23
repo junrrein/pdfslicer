@@ -48,8 +48,6 @@ public:
 
     sigc::signal<void> selectedPagesChanged;
 
-    static int sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b);
-
 private:
     Gtk::FlowBox m_flowBox;
     std::list<std::shared_ptr<InteractivePageWidget>> m_pageWidgets;
@@ -72,6 +70,8 @@ private:
     void renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget);
     void cancelRenderingTasks();
     void clearState();
+
+    static int sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b);
 };
 }
 
