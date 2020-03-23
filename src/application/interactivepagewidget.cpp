@@ -102,6 +102,7 @@ const Glib::RefPtr<const Page>& InteractivePageWidget::page() const
 void InteractivePageWidget::setupWidgets()
 {
     m_previewButton.set_image_from_icon_name("system-search-symbolic");
+    m_previewButton.set_can_focus(false);
     m_previewButtonRevealer.add(m_previewButton);
     m_previewButtonRevealer.set_transition_type(Gtk::REVEALER_TRANSITION_TYPE_CROSSFADE);
     m_previewButtonRevealer.set_halign(Gtk::ALIGN_END);
