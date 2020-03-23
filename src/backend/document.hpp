@@ -55,8 +55,8 @@ public:
 
     PdfSaver::SaveData getSaveData() const;
 
-    sigc::signal<void, std::vector<unsigned int>> pagesRotated;
-    sigc::signal<void, std::vector<unsigned int>> pagesReordered;
+    sigc::signal<void, std::vector<unsigned int>> pagesRotated;   // NOLINT
+    sigc::signal<void, std::vector<unsigned int>> pagesReordered; // NOLINT
 
 private:
     struct FileData {
