@@ -32,6 +32,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.8.3.1" date="2020-03-23">
+			<description>
+				<p>Fix a couple of bugs.</p>
+			</description>
+		</release>
 		<release version="1.8.3" date="2020-03-23">
 			<description>
 				<p>Add the ability to add multiple files in one step. Add the ability to zoom by Ctrl+Scrolling on the views. Improve keyboard navigation. Reduce the file size of some saved documents. Add Polish translation. Update existing translations.</p>
