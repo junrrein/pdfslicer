@@ -19,17 +19,15 @@
 
 #include <string>
 
-namespace Slicer {
+namespace Slicer::Logger {
 
-namespace Logger {
+void setupLogger();
+void logInfo(const std::string& str);
+void logWarning(const std::string& str);
+void logError(const std::string& str);
 
-    void setupLogger();
-    void logInfo(const std::string& str);
-    void logWarning(const std::string& str);
-    void logError(const std::string& str);
+std::string getPathToLogFile();
 
-    std::string getPathToLogFile();
-}
 }
 
 #endif // LOGGER_HPP
