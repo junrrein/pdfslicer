@@ -27,9 +27,11 @@ namespace rsv = ranges::views;
 View::View(TaskRunner& taskRunner)
     : m_taskRunner{taskRunner}
 {
-    set_row_spacing(5);
-    set_selection_mode(Gtk::SELECTION_NONE);
-    set_sort_func(&sortFunction);
+    m_flowBox.set_row_spacing(5);
+    m_flowBox.set_selection_mode(Gtk::SELECTION_NONE);
+    m_flowBox.set_sort_func(&sortFunction);
+
+    add(m_flowBox);
 }
 
 View::~View()
@@ -56,8 +58,8 @@ void View::clearState()
     cancelRenderingTasks();
     clearSelection();
 
-    for (Gtk::Widget* child : get_children())
-        remove(*child);
+    for (Gtk::Widget* child : m_flowBox.get_children())
+        m_flowBox.remove(*child);
 
     m_pageWidgets.clear();
 
@@ -78,7 +80,7 @@ void View::setDocument(Document& document, int targetWidgetSize)
         auto page = m_document->getPage(i);
         std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
         m_pageWidgets.push_back(pageWidget);
-        add(*pageWidget);
+        m_flowBox.add(*pageWidget);
         renderPage(pageWidget);
     }
 
@@ -242,7 +244,7 @@ void View::onModelItemsChanged(guint position, guint removed, guint added)
 
     for (; removed != 0; --removed) {
         (*it)->cancelRendering();
-        remove(*(*it));
+        m_flowBox.remove(*(*it));
         it = m_pageWidgets.erase(it);
     }
 
@@ -251,7 +253,7 @@ void View::onModelItemsChanged(guint position, guint removed, guint added)
         std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
 
         m_pageWidgets.insert(it, pageWidget);
-        add(*pageWidget);
+        m_flowBox.add(*pageWidget);
         renderPage(pageWidget);
     }
 

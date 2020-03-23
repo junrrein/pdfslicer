@@ -22,11 +22,12 @@
 #include "taskrunner.hpp"
 #include <queue>
 #include <glibmm/dispatcher.h>
+#include <gtkmm/eventbox.h>
 #include <gtkmm/flowbox.h>
 
 namespace Slicer {
 
-class View : public Gtk::FlowBox {
+class View : public Gtk::EventBox {
 
 public:
     View(TaskRunner& taskRunner);
@@ -50,6 +51,7 @@ public:
     static int sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b);
 
 private:
+    Gtk::FlowBox m_flowBox;
     std::list<std::shared_ptr<InteractivePageWidget>> m_pageWidgets;
     int m_pageWidgetSize = 0;
     bool m_showFileNames = false;
