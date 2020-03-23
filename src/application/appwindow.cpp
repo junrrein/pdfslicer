@@ -416,7 +416,7 @@ void AppWindow::tryAddDocumentsAt(const std::vector<Glib::RefPtr<Gio::File>>& fi
     catch (...) {
         Logger::logError("The files couldn't be added");
 
-        for (auto file : files)
+        for (const auto& file : files)
             Logger::logError("Filepath: " + file->get_path());
 
         showOpenFileFailedErrorDialog();
