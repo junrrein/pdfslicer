@@ -24,7 +24,13 @@ namespace Slicer {
 class AboutDialog : public Gtk::AboutDialog {
 public:
     AboutDialog(Gtk::Window& parent);
-    virtual ~AboutDialog() = default;
+
+    AboutDialog(const AboutDialog&) = delete;
+    AboutDialog& operator=(const AboutDialog&) = delete;
+    AboutDialog(AboutDialog&&) = delete;
+    AboutDialog& operator=(AboutDialog&& src) = delete;
+
+    ~AboutDialog() override = default;
 };
 
 } // namespace Slicer
