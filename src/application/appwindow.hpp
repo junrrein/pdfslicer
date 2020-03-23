@@ -42,12 +42,18 @@ class AppWindow : public Gtk::ApplicationWindow {
 public:
     AppWindow(TaskRunner& taskRunner,
               SettingsManager& settingsManager);
-    virtual ~AppWindow() override;
+
+    AppWindow(const AppWindow&) = delete;
+    AppWindow& operator=(const AppWindow&) = delete;
+    AppWindow(AppWindow&&) = delete;
+    AppWindow& operator=(AppWindow&& src) = delete;
+
+    ~AppWindow() override;
 
     void setDocument(std::unique_ptr<Document> document);
 
 protected:
-    virtual bool on_delete_event(GdkEventAny*) override;
+    bool on_delete_event(GdkEventAny*) override;
 
 private:
     enum class SaveFileIn {
