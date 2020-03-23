@@ -46,9 +46,9 @@ public:
 
     void setShowFilename(bool showFileName);
 
-    sigc::signal<void, InteractivePageWidget*> selectedChanged;    // NOLINT
-    sigc::signal<void, InteractivePageWidget*> shiftSelected;      // NOLINT
-    sigc::signal<void, Glib::RefPtr<const Page>> previewRequested; // NOLINT
+    sigc::signal<void, InteractivePageWidget*> selectedChanged;
+    sigc::signal<void, InteractivePageWidget*> shiftSelected;
+    sigc::signal<void, Glib::RefPtr<const Page>> previewRequested;
 
     static int sortFunction(const InteractivePageWidget& a,
                             const InteractivePageWidget& b);

@@ -34,7 +34,7 @@ public:
     bool canUndo() const;
     bool canRedo() const;
 
-    sigc::signal<void> commandExecuted; // NOLINT
+    sigc::signal<void> commandExecuted;
 
 private:
     using CommandStack = std::stack<std::shared_ptr<Command>>;

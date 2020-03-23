@@ -54,7 +54,7 @@ public:
     std::vector<unsigned int> getSelectedChildrenIndexes() const;
     std::vector<unsigned int> getUnselectedChildrenIndexes() const;
 
-    sigc::signal<void> selectedPagesChanged; // NOLINT
+    sigc::signal<void> selectedPagesChanged;
 
 private:
     Gtk::FlowBox m_flowBox;
