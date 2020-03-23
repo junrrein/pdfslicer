@@ -28,7 +28,13 @@ public:
     ZoomLevelWithActions() = delete;
     ZoomLevelWithActions(const std::vector<int>& levels,
                          Gio::ActionMap& actionMap);
-    ~ZoomLevelWithActions();
+
+    ZoomLevelWithActions(const ZoomLevelWithActions&) = delete;
+    ZoomLevelWithActions& operator=(const ZoomLevelWithActions&) = delete;
+    ZoomLevelWithActions(ZoomLevelWithActions&&) = delete;
+    ZoomLevelWithActions& operator=(ZoomLevelWithActions&& src) = delete;
+
+    ~ZoomLevelWithActions() override;
 
     void enable();
     void disable();
