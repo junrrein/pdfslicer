@@ -25,6 +25,12 @@ namespace Slicer {
 class TaskRunner {
 public:
 	TaskRunner();
+
+    TaskRunner(const TaskRunner&) = delete;
+    TaskRunner& operator=(const TaskRunner&) = delete;
+    TaskRunner(TaskRunner&&) = delete;
+    TaskRunner& operator=(TaskRunner&& src) = delete;
+
 	~TaskRunner();
 
 	void queueBack(const std::shared_ptr<Task>& task);
