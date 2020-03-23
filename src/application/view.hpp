@@ -33,7 +33,13 @@ public:
     View(TaskRunner& taskRunner,
          const std::function<void()>& onMouseWheelUp,
          const std::function<void()>& onMouseWheelDown);
-    virtual ~View();
+
+    View(const View&) = delete;
+    View& operator=(const View&) = delete;
+    View(View&&) = delete;
+    View& operator=(View&& src) = delete;
+
+    ~View() override;
 
     void setDocument(Document& document, int targetWidgetSize);
     void changePageSize(int targetWidgetSize);
@@ -48,7 +54,7 @@ public:
     std::vector<unsigned int> getSelectedChildrenIndexes() const;
     std::vector<unsigned int> getUnselectedChildrenIndexes() const;
 
-    sigc::signal<void> selectedPagesChanged;
+    sigc::signal<void> selectedPagesChanged; // NOLINT
 
 private:
     Gtk::FlowBox m_flowBox;
