@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Tomáš Průcha <pruchatomas@gmail.com>, 2019.
+# Tomáš Průcha <pruchatomas@gmail.com>, 2019, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-03-22 03:16-0300\n"
-"PO-Revision-Date: 2019-12-31 17:21+0000\n"
+"PO-Revision-Date: 2020-03-23 21:49+0000\n"
 "Last-Translator: Tomáš Průcha <pruchatomas@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/cs/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 4.0-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -91,9 +91,8 @@ msgid "Cancel Selection"
 msgstr "Zrušit výběr"
 
 #: ../src/application/addfiledialog.cpp:25
-#, fuzzy
 msgid "Select documents to add"
-msgstr "Vybrat dokument pro přidání"
+msgstr "Vybrat dokumenty pro přidání"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
@@ -123,9 +122,8 @@ msgid "About PDF Slicer"
 msgstr "O aplikaci PDF Slicer"
 
 #: ../src/application/appwindow.cpp:371
-#, fuzzy
 msgid "The selected files could not be opened"
-msgstr "Vybraný soubor nelze otevřít"
+msgstr "Vybrané soubory nelze otevřít"
 
 #: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
@@ -144,9 +142,8 @@ msgid "Open"
 msgstr "Otevřít"
 
 #: ../src/application/headerbar.cpp:60
-#, fuzzy
 msgid "Add Documents"
-msgstr "Přidat dokument"
+msgstr "Přidat dokumenty"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
@@ -161,9 +158,8 @@ msgid "After the selected page…"
 msgstr "Za vybranou stránku…"
 
 #: ../src/application/headerbar.cpp:65
-#, fuzzy
 msgid "Add Documents…"
-msgstr "Přidat dokument…"
+msgstr "Přidat dokumenty…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
@@ -187,9 +183,8 @@ msgid "Open document"
 msgstr "Otevřít dokument"
 
 #: ../src/application/pdffilter.cpp:23
-#, fuzzy
 msgid "PDF documents"
-msgstr "PDF dokument"
+msgstr "PDF dokumenty"
 
 #: ../src/application/previewwindow.cpp:64
 msgid "Zoom out"
