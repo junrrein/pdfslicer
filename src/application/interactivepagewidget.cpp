@@ -172,6 +172,8 @@ void InteractivePageWidget::setupSignalHandlers()
                 selectedChanged.emit(this);
             }
 
+            grab_focus();
+
             return true;
         }
 
