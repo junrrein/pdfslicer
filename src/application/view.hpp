@@ -51,7 +51,6 @@ public:
 
 private:
     using PageWidgetList = std::list<std::shared_ptr<InteractivePageWidget>>;
-    using PageWidgetQueue = std::queue<std::weak_ptr<InteractivePageWidget>>;
 
     PageWidgetList m_pageWidgets;
     int m_pageWidgetSize = 0;
