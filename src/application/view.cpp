@@ -112,6 +112,9 @@ void View::setDocument(Document& document, int targetWidgetSize)
         m_pageWidgets.push_back(pageWidget);
         m_flowBox.add(*pageWidget);
         renderPage(pageWidget);
+
+        if (i == 0)
+            pageWidget->grab_focus();
     }
 
     m_documentConnections.emplace_back(
