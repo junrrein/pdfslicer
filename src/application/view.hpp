@@ -50,9 +50,7 @@ public:
     static int sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b);
 
 private:
-    using PageWidgetList = std::list<std::shared_ptr<InteractivePageWidget>>;
-
-    PageWidgetList m_pageWidgets;
+    std::list<std::shared_ptr<InteractivePageWidget>> m_pageWidgets;
     int m_pageWidgetSize = 0;
     bool m_showFileNames = false;
     Document* m_document = nullptr;
