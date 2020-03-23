@@ -25,7 +25,7 @@ class PageRenderer {
 public:
     PageRenderer(const Glib::RefPtr<const Page>& page);
 
-    Glib::RefPtr<Gdk::Pixbuf> render(int targetSize) const;
+    [[nodiscard]] Glib::RefPtr<Gdk::Pixbuf> render(int targetSize) const;
 
 private:
     struct RenderDimensions {
@@ -37,7 +37,7 @@ private:
     const Glib::RefPtr<const Page>& m_page;
 
     static constexpr double standardDpi = 72.0;
-    RenderDimensions getRenderDimensions(int targetSize) const;
+    [[nodiscard]] RenderDimensions getRenderDimensions(int targetSize) const;
 };
 
 } // namespace Slicer
