@@ -152,6 +152,12 @@ void InteractivePageWidget::setupSignalHandlers()
             return true;
         }
 
+        if (event->keyval == GDK_KEY_Return || event->keyval == GDK_KEY_KP_Enter) {
+            previewRequested.emit(page());
+
+            return true;
+        }
+
         return false;
     });
 
