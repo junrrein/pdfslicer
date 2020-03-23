@@ -25,7 +25,7 @@ namespace Slicer {
 
 class ZoomLevel : public Glib::Object {
 public:
-	ZoomLevel() = delete;
+    ZoomLevel() = delete;
     ZoomLevel(const std::vector<int>& levels);
 
     void setToDefaultLevel();
