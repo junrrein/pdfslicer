@@ -142,6 +142,19 @@ void InteractivePageWidget::setupWidgets()
 
 void InteractivePageWidget::setupSignalHandlers()
 {
+    add_events(Gdk::KEY_RELEASE_MASK);
+
+    signal_key_release_event().connect([this](GdkEventKey* event) {
+        if (event->keyval == GDK_KEY_space) {
+            setSelected(!getSelected());
+            selectedChanged.emit(this);
+
+            return true;
+        }
+
+        return false;
+    });
+
     m_eventBox.signal_button_release_event().connect([this](GdkEventButton* eventButton) {
         if (eventButton->button == 1) {
             if ((eventButton->state & GDK_SHIFT_MASK) != 0) {
