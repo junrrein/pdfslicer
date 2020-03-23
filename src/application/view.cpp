@@ -45,16 +45,16 @@ void View::setupFlowbox()
 void View::setupSignalHandlers(const std::function<void()>& onMouseWheelUp,
                                const std::function<void()>& onMouseWheelDown)
 {
-    add_events(Gdk::SCROLL_MASK);
+    add_events(Gdk::SCROLL_MASK | Gdk::SMOOTH_SCROLL_MASK);
 
     signal_scroll_event().connect([onMouseWheelUp, onMouseWheelDown](GdkEventScroll* event) {
         if ((event->state & Gdk::CONTROL_MASK) != 0) {
-            if (event->direction == GDK_SCROLL_UP) {
+            if (event->delta_y < 0) {
                 onMouseWheelUp();
                 return true;
             }
 
-            if (event->direction == GDK_SCROLL_DOWN) {
+            if (event->delta_y > 0) {
                 onMouseWheelDown();
                 return true;
             }
