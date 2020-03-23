@@ -25,8 +25,8 @@ namespace Slicer {
 namespace rsv = ranges::views;
 
 View::View(TaskRunner& taskRunner,
-           std::function<void()> onMouseWheelUp,
-           std::function<void()> onMouseWheelDown)
+           const std::function<void()>& onMouseWheelUp,
+           const std::function<void()>& onMouseWheelDown)
     : m_taskRunner{taskRunner}
 {
     setupFlowbox();

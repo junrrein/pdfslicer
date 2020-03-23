@@ -31,8 +31,8 @@ class View : public Gtk::EventBox {
 
 public:
     View(TaskRunner& taskRunner,
-         std::function<void()> onMouseWheelUp,
-         std::function<void()> onMouseWheelDown);
+         const std::function<void()>& onMouseWheelUp,
+         const std::function<void()>& onMouseWheelDown);
     virtual ~View();
 
     void setDocument(Document& document, int targetWidgetSize);
