@@ -42,7 +42,9 @@ AppWindow::AppWindow(TaskRunner& taskRunner, SettingsManager& settingsManager)
     , m_windowState{}
     , m_zoomLevel{zoomLevels, *this}
     , m_headerBar{m_zoomLevel.zoomLevelIndex()}
-    , m_view{m_taskRunner}
+    , m_view{m_taskRunner,
+             std::bind(&AppWindow::onViewMouseWheelUp, this),
+             std::bind(&AppWindow::onViewMouseWheelDown, this)}
 {
     set_size_request(500, 500);
 
@@ -710,6 +712,16 @@ void AppWindow::onScrollLimitChanged()
     restoreScrollPosition();
 
     m_onScrollLimitChangedConnection.disconnect();
+}
+
+void AppWindow::onViewMouseWheelUp()
+{
+    activate_action("zoom-in");
+}
+
+void AppWindow::onViewMouseWheelDown()
+{
+    activate_action("zoom-out");
 }
 
 bool AppWindow::onWindowConfigureEvent(GdkEventConfigure*)

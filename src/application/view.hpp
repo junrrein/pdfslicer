@@ -30,7 +30,9 @@ namespace Slicer {
 class View : public Gtk::EventBox {
 
 public:
-    View(TaskRunner& taskRunner);
+    View(TaskRunner& taskRunner,
+         std::function<void()> onMouseWheelUp,
+         std::function<void()> onMouseWheelDown);
     virtual ~View();
 
     void setDocument(Document& document, int targetWidgetSize);
@@ -61,6 +63,9 @@ private:
 
     std::shared_ptr<InteractivePageWidget> createPageWidget(const Glib::RefPtr<const Page>& page);
 
+    void setupFlowbox();
+    void setupSignalHandlers(const std::function<void()>& onMouseWheelUp,
+                             const std::function<void()>& onMouseWheelDown);
     void onModelItemsChanged(guint position, guint removed, guint added);
     void onModelPagesRotated(const std::vector<unsigned int>& positions);
     void onModelPagesReordered(const std::vector<unsigned int>& positions);

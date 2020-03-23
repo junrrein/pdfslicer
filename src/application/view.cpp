@@ -24,14 +24,44 @@ namespace Slicer {
 
 namespace rsv = ranges::views;
 
-View::View(TaskRunner& taskRunner)
+View::View(TaskRunner& taskRunner,
+           std::function<void()> onMouseWheelUp,
+           std::function<void()> onMouseWheelDown)
     : m_taskRunner{taskRunner}
+{
+    setupFlowbox();
+    setupSignalHandlers(onMouseWheelUp, onMouseWheelDown);
+}
+
+void View::setupFlowbox()
 {
     m_flowBox.set_row_spacing(5);
     m_flowBox.set_selection_mode(Gtk::SELECTION_NONE);
     m_flowBox.set_sort_func(&sortFunction);
 
     add(m_flowBox);
+}
+
+void View::setupSignalHandlers(const std::function<void()>& onMouseWheelUp,
+                               const std::function<void()>& onMouseWheelDown)
+{
+    add_events(Gdk::SCROLL_MASK);
+
+    signal_scroll_event().connect([onMouseWheelUp, onMouseWheelDown](GdkEventScroll* event) {
+        if ((event->state & Gdk::CONTROL_MASK) != 0) {
+            if (event->direction == GDK_SCROLL_UP) {
+                onMouseWheelUp();
+                return true;
+            }
+
+            if (event->direction == GDK_SCROLL_DOWN) {
+                onMouseWheelDown();
+                return true;
+            }
+        }
+
+        return false;
+    });
 }
 
 View::~View()

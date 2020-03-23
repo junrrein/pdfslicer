@@ -158,6 +158,8 @@ private:
     void onZoomLevelChanged();
     void onScrollPositionChanged();
     void onScrollLimitChanged();
+    void onViewMouseWheelUp();
+    void onViewMouseWheelDown();
     sigc::connection m_onScrollLimitChangedConnection;
     bool onWindowConfigureEvent(GdkEventConfigure*);
     bool onWindowStateEvent(GdkEventWindowState* state);
