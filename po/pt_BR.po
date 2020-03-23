@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# André Marcelo Alvarenga <andrealvarenga@gmx.net>, 2019.
+# André Marcelo Alvarenga <andrealvarenga@gmx.net>, 2019, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-03-22 03:16-0300\n"
-"PO-Revision-Date: 2019-12-31 17:21+0000\n"
+"PO-Revision-Date: 2020-03-23 21:49+0000\n"
 "Last-Translator: André Marcelo Alvarenga <andrealvarenga@gmx.net>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/pdf-"
-"slicer/translations/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
+"pdf-slicer/translations/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 4.0-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -91,7 +91,6 @@ msgid "Cancel Selection"
 msgstr "Cancelar seleção"
 
 #: ../src/application/addfiledialog.cpp:25
-#, fuzzy
 msgid "Select documents to add"
 msgstr "Selecionar documento a adicionar"
 
@@ -123,9 +122,8 @@ msgid "About PDF Slicer"
 msgstr "Sobre o PDF Slicer"
 
 #: ../src/application/appwindow.cpp:371
-#, fuzzy
 msgid "The selected files could not be opened"
-msgstr "O arquivo selecionado não pôde ser aberto"
+msgstr "Os arquivos selecionados não puderam ser abertos"
 
 #: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
@@ -144,9 +142,8 @@ msgid "Open"
 msgstr "Abrir"
 
 #: ../src/application/headerbar.cpp:60
-#, fuzzy
 msgid "Add Documents"
-msgstr "Adicionar um documento"
+msgstr "Adicionar documentos"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
@@ -161,9 +158,8 @@ msgid "After the selected page…"
 msgstr "Após a página selecionada…"
 
 #: ../src/application/headerbar.cpp:65
-#, fuzzy
 msgid "Add Documents…"
-msgstr "Adicionar um documento…"
+msgstr "Adicionar documentos…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
@@ -187,9 +183,8 @@ msgid "Open document"
 msgstr "Abrir documento"
 
 #: ../src/application/pdffilter.cpp:23
-#, fuzzy
 msgid "PDF documents"
-msgstr "Documento em PDF"
+msgstr "Documentos em PDF"
 
 #: ../src/application/previewwindow.cpp:64
 msgid "Zoom out"
