@@ -1,5 +1,5 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*,bugprone-*,cppcoreguidelines-*,misc-*,modernize-*,-modernize-pass-by-value,performance-*,readability-*,-bugprone-too-small-loop-variable,-cppcoreguidelines-avoid-magic-numbers,-modernize-use-trailing-return-type,-readability-braces-around-statements,-readability-magic-numbers,-readability-named-parameter,-clang-diagnostic-unused-command-line-argument,-clang-diagnostic-unknown-warning-option'
+Checks:          'clang-diagnostic-*,clang-analyzer-*,bugprone-*,cppcoreguidelines-*,misc-*,modernize-*,-modernize-pass-by-value,performance-*,readability-*,-bugprone-too-small-loop-variable,-cppcoreguidelines-avoid-magic-numbers,-cppcoreguidelines-non-private-member-variables-in-classes,-misc-non-private-member-variables-in-classes,-modernize-use-trailing-return-type,-readability-braces-around-statements,-readability-magic-numbers,-readability-named-parameter,-clang-diagnostic-unused-command-line-argument,-clang-diagnostic-unknown-warning-option'
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
 AnalyzeTemporaryDtors: false
