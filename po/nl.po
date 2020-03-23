@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Heimen Stoffels <vistausss@outlook.com>, 2018, 2019.
+# Heimen Stoffels <vistausss@outlook.com>, 2018, 2019, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-03-22 03:16-0300\n"
-"PO-Revision-Date: 2019-12-31 17:21+0000\n"
+"PO-Revision-Date: 2020-03-23 21:49+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/nl/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 4.0-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -91,9 +91,8 @@ msgid "Cancel Selection"
 msgstr "Selectie annuleren"
 
 #: ../src/application/addfiledialog.cpp:25
-#, fuzzy
 msgid "Select documents to add"
-msgstr "Kies het toe te voegen document"
+msgstr "Kies de toe te voegen documenten"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
@@ -123,9 +122,8 @@ msgid "About PDF Slicer"
 msgstr "Over PDF Slicer"
 
 #: ../src/application/appwindow.cpp:371
-#, fuzzy
 msgid "The selected files could not be opened"
-msgstr "Het geselecteerde bestand kan niet worden geopend"
+msgstr "De geselecteerde bestanden kunnen niet worden geopend"
 
 #: ../src/application/appwindow.cpp:382
 msgid "The current document could not be saved"
@@ -144,9 +142,8 @@ msgid "Open"
 msgstr "Openen"
 
 #: ../src/application/headerbar.cpp:60
-#, fuzzy
 msgid "Add Documents"
-msgstr "Document toevoegen"
+msgstr "Documenten toevoegen"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
@@ -161,9 +158,8 @@ msgid "After the selected page…"
 msgstr "Na de geselecteerde pagina…"
 
 #: ../src/application/headerbar.cpp:65
-#, fuzzy
 msgid "Add Documents…"
-msgstr "Document toevoegen…"
+msgstr "Documenten toevoegen…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
@@ -187,9 +183,8 @@ msgid "Open document"
 msgstr "Document openen"
 
 #: ../src/application/pdffilter.cpp:23
-#, fuzzy
 msgid "PDF documents"
-msgstr "PDF-document"
+msgstr "PDF-documenten"
 
 #: ../src/application/previewwindow.cpp:64
 msgid "Zoom out"
