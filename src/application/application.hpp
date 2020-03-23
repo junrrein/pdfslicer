@@ -26,7 +26,13 @@ namespace Slicer {
 class Application : public Gtk::Application {
 public:
     static Glib::RefPtr<Application> create();
-    virtual ~Application() override = default;
+
+    Application(const Application&) = delete;
+    Application& operator=(const Application&) = delete;
+    Application(Application&&) = delete;
+    Application& operator=(Application&& src) = delete;
+
+    ~Application() override = default;
 
 private:
     TaskRunner m_taskRunner;
