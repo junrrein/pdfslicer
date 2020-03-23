@@ -37,7 +37,13 @@ class PreviewWindow : public Gtk::Window {
 public:
     PreviewWindow(const Glib::RefPtr<const Page>& page,
                   TaskRunner& taskRunner);
-    virtual ~PreviewWindow();
+
+    PreviewWindow(const PreviewWindow&) = delete;
+    PreviewWindow& operator=(const PreviewWindow&) = delete;
+    PreviewWindow(PreviewWindow&&) = delete;
+    PreviewWindow& operator=(PreviewWindow&& src) = delete;
+
+    ~PreviewWindow() override;
 
 private:
     static void loadCustomCSS();
