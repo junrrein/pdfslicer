@@ -34,7 +34,7 @@ public:
     ZoomLevelWithActions(ZoomLevelWithActions&&) = delete;
     ZoomLevelWithActions& operator=(ZoomLevelWithActions&& src) = delete;
 
-    ~ZoomLevelWithActions() override;
+    ~ZoomLevelWithActions(); // NOLINT
 
     void enable();
     void disable();
