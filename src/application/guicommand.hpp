@@ -31,9 +31,9 @@ public:
                        HeaderBar& headerBar,
                        View& view);
 
-	virtual void execute() override;
-	virtual void undo() override;
-	virtual void redo() override;
+    void execute() override;
+    void undo() override;
+    void redo() override;
 
 private:
 	HeaderBar& m_headerBar;
