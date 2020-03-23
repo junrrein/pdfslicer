@@ -24,7 +24,7 @@ Just do a plain-old pull request through Github. I'll try to respond immediately
 
     Try to use an IDE or extension that automatically applies `clang-format` on saving files so you don't have to think about it.
 
-* Slicer provides a `.clang-tidy` file, that you can use for static analysis of your source files. To use it, run `clang-tidy -quiet yoursource.cpp`.  
+* Slicer provides a `.clang-tidy` file, that you can use for static analysis of your source and header files. To use it, run `clang-tidy -quiet yourfile.cpp`.
 
     If you think a specific instance of a warning should be ignored, add a `// NOLINT` comment at the end of the line that triggers it.
 
