@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-03-22 03:16-0300\n"
-"PO-Revision-Date: 2020-03-23 21:49+0000\n"
+"PO-Revision-Date: 2020-04-10 16:09+0000\n"
 "Last-Translator: Tomáš Průcha <pruchatomas@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/cs/>\n"
@@ -184,7 +184,7 @@ msgstr "Otevřít dokument"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF documents"
-msgstr "PDF dokumenty"
+msgstr "Dokumenty PDF"
 
 #: ../src/application/previewwindow.cpp:64
 msgid "Zoom out"
