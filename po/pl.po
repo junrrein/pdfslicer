@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-03-22 03:16-0300\n"
-"PO-Revision-Date: 2020-02-29 02:35+0000\n"
-"Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
+"PO-Revision-Date: 2020-04-03 05:02+0000\n"
+"Last-Translator: Michal Biesiada <blade-14@o2.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/pl/>\n"
 "Language: pl\n"
@@ -74,15 +74,15 @@ msgstr ""
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr ""
+msgstr "Wybierz wszystkie"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
-msgstr ""
+msgstr "Wybierz strony nieparzyste"
 
 #: ../src/application/actionbar.cpp:77
 msgid "Select even pages"
-msgstr ""
+msgstr "Wybierz strony parzyste"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
