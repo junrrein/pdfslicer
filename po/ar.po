@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-26 12:25-0300\n"
+"POT-Creation-Date: 2020-04-26 12:55-0300\n"
 "PO-Revision-Date: 2020-04-26 06:11+0000\n"
 "Last-Translator: Ali Galal <lj66163@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -109,7 +109,7 @@ msgstr "إضافة"
 msgid "Cancel"
 msgstr "إغلاق"
 
-#: ../src/application/application.cpp:91 ../src/application/appmenu.cpp:63
+#: ../src/application/application.cpp:92 ../src/application/appmenu.cpp:63
 msgid "New window"
 msgstr "نافذة جديدة"
 
@@ -125,11 +125,11 @@ msgstr "اختصارات لوحة المفاتيح"
 msgid "About PDF Slicer"
 msgstr "عن PDF Slicer"
 
-#: ../src/application/appwindow.cpp:374
+#: ../src/application/appwindow.cpp:375
 msgid "The selected files could not be opened"
 msgstr "الملفات المحددة لا يمكن فتحها"
 
-#: ../src/application/appwindow.cpp:385
+#: ../src/application/appwindow.cpp:386
 msgid "The current document could not be saved"
 msgstr "هذا المستند لا يمكن حفظه"
 
@@ -290,16 +290,22 @@ msgid "Select all pages"
 msgstr "تحديد كل الصفحات"
 
 #: ../data/ui/shortcuts.ui:75
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Invert current selection"
+msgstr "انهاء التحديد"
+
+#: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Cancel selection"
 msgstr "إنهاء التحديد"
 
-#: ../data/ui/shortcuts.ui:81
+#: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Undo last command"
 msgstr "إرجاع الامر الأخير"
 
-#: ../data/ui/shortcuts.ui:87
+#: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "إعادة الامر"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-26 12:21-0300\n"
+"POT-Creation-Date: 2020-04-26 12:55-0300\n"
 "PO-Revision-Date: 2020-04-10 16:09+0000\n"
 "Last-Translator: Tomáš Průcha <pruchatomas@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -110,7 +110,7 @@ msgstr "Přidat"
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: ../src/application/application.cpp:91 ../src/application/appmenu.cpp:63
+#: ../src/application/application.cpp:92 ../src/application/appmenu.cpp:63
 msgid "New window"
 msgstr "Nové okno"
 
@@ -126,11 +126,11 @@ msgstr "Klávesové zkratky"
 msgid "About PDF Slicer"
 msgstr "O aplikaci PDF Slicer"
 
-#: ../src/application/appwindow.cpp:374
+#: ../src/application/appwindow.cpp:375
 msgid "The selected files could not be opened"
 msgstr "Vybrané soubory nelze otevřít"
 
-#: ../src/application/appwindow.cpp:385
+#: ../src/application/appwindow.cpp:386
 msgid "The current document could not be saved"
 msgstr "Aktuální dokument nelze uložit"
 
@@ -291,16 +291,22 @@ msgid "Select all pages"
 msgstr "Vybrat všechny stránky"
 
 #: ../data/ui/shortcuts.ui:75
+#, fuzzy
 msgctxt "shortcut window"
-msgid "Cancel selection"
+msgid "Invert current selection"
 msgstr "Zrušit výběr"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
+msgid "Cancel selection"
+msgstr "Zrušit výběr"
+
+#: ../data/ui/shortcuts.ui:87
+msgctxt "shortcut window"
 msgid "Undo last command"
 msgstr "Zrušit poslední úpravu"
 
-#: ../data/ui/shortcuts.ui:87
+#: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Vrátit předchozí úpravu"

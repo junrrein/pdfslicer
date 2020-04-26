@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-26 12:21-0300\n"
+"POT-Creation-Date: 2020-04-26 12:55-0300\n"
 "PO-Revision-Date: 2020-04-07 17:09+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -111,7 +111,7 @@ msgstr "Dodaj"
 msgid "Cancel"
 msgstr "Odustani"
 
-#: ../src/application/application.cpp:91 ../src/application/appmenu.cpp:63
+#: ../src/application/application.cpp:92 ../src/application/appmenu.cpp:63
 msgid "New window"
 msgstr "Novi prozor"
 
@@ -127,11 +127,11 @@ msgstr "Tipkovnički prečaci"
 msgid "About PDF Slicer"
 msgstr "O programu PDF Slicer"
 
-#: ../src/application/appwindow.cpp:374
+#: ../src/application/appwindow.cpp:375
 msgid "The selected files could not be opened"
 msgstr "Nije bilo moguće otvoriti odabrane datoteke"
 
-#: ../src/application/appwindow.cpp:385
+#: ../src/application/appwindow.cpp:386
 msgid "The current document could not be saved"
 msgstr "Nije bilo moguće spremiti trenutačnu datoteku"
 
@@ -292,16 +292,22 @@ msgid "Select all pages"
 msgstr "Odaberi sve stranice"
 
 #: ../data/ui/shortcuts.ui:75
+#, fuzzy
 msgctxt "shortcut window"
-msgid "Cancel selection"
+msgid "Invert current selection"
 msgstr "Prekini odabir"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
+msgid "Cancel selection"
+msgstr "Prekini odabir"
+
+#: ../data/ui/shortcuts.ui:87
+msgctxt "shortcut window"
 msgid "Undo last command"
 msgstr "Vrati zadnju naredbu"
 
-#: ../data/ui/shortcuts.ui:87
+#: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Ponovi zadnju naredbu"
