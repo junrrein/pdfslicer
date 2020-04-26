@@ -5,13 +5,14 @@
 # Johannes Keyser <johanneskeyser@posteo.de>, 2019.
 # Andreas Kleinert <Andy.Kleinert@gmail.com>, 2019.
 # nautilusx <mail.ka@mailbox.org>, 2019, 2020.
+# Milo Ivir <mail@milotype.de>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-04-26 12:55-0300\n"
-"PO-Revision-Date: 2020-02-06 16:50+0000\n"
-"Last-Translator: nautilusx <mail.ka@mailbox.org>\n"
+"PO-Revision-Date: 2020-04-29 01:11+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/de/>\n"
 "Language: de\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.11-dev\n"
+"X-Generator: Weblate 4.0.2\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -90,18 +91,16 @@ msgid "More page selecting options…"
 msgstr "Weitere Seitenauswahloptionen …"
 
 #: ../src/application/actionbar.cpp:90
-#, fuzzy
 msgid "Invert Selection"
-msgstr "Auswahl aufheben"
+msgstr "Auswahl umkehren"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
 msgstr "Auswahl aufheben"
 
 #: ../src/application/addfiledialog.cpp:25
-#, fuzzy
 msgid "Select documents to add"
-msgstr "Hizuzufügendes Dokument auswählen"
+msgstr "Hizuzufügende Dokumente auswählen"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
@@ -131,9 +130,8 @@ msgid "About PDF Slicer"
 msgstr "Über PDF Slicer"
 
 #: ../src/application/appwindow.cpp:375
-#, fuzzy
 msgid "The selected files could not be opened"
-msgstr "Die ausgewählte Datei konnte nicht geöffnet werden"
+msgstr "Die ausgewählten Datein konnten nicht geöffnet werden"
 
 #: ../src/application/appwindow.cpp:386
 msgid "The current document could not be saved"
@@ -152,9 +150,8 @@ msgid "Open"
 msgstr "Öffnen"
 
 #: ../src/application/headerbar.cpp:60
-#, fuzzy
 msgid "Add Documents"
-msgstr "Dokument hinzufügen"
+msgstr "Dokumente hinzufügen"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
@@ -169,9 +166,8 @@ msgid "After the selected page…"
 msgstr "Nach der ausgewählten Seite…"
 
 #: ../src/application/headerbar.cpp:65
-#, fuzzy
 msgid "Add Documents…"
-msgstr "Dokument hinzufügen …"
+msgstr "Dokumente hinzufügen …"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
@@ -195,9 +191,8 @@ msgid "Open document"
 msgstr "Dokument öffnen"
 
 #: ../src/application/pdffilter.cpp:23
-#, fuzzy
 msgid "PDF documents"
-msgstr "PDF-Dokument"
+msgstr "PDF-Dokumente"
 
 #: ../src/application/previewwindow.cpp:64
 msgid "Zoom out"
@@ -299,10 +294,9 @@ msgid "Select all pages"
 msgstr "Alle Seiten auswählen"
 
 #: ../data/ui/shortcuts.ui:75
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr "Auswahl aufheben"
+msgstr "Aktuelle Auswahl umkehren"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
