@@ -87,6 +87,9 @@ ActionBar::ActionBar()
     selectBox->pack_start(m_buttonSelectMore);
     selectBox->get_style_context()->add_class("linked");
 
+    m_buttonInvertSelection.set_label(_("Invert Selection"));
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonInvertSelection.gobj()), "win.invert-selection"); // NOLINT
+
     m_buttonCancelSelection.set_label(_("Cancel Selection"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonCancelSelection.gobj()), "win.cancel-selection"); // NOLINT
 
@@ -94,6 +97,7 @@ ActionBar::ActionBar()
     pack_start(*rotateBox);
     pack_start(*removeBox);
     pack_end(m_buttonCancelSelection);
+    pack_end(m_buttonInvertSelection);
     pack_end(*selectBox);
 
     // The following is to work around a bug with themes other than Adwaita.

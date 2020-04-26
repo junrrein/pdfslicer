@@ -49,6 +49,7 @@ public:
     void selectOddPages();
     void selectEvenPages();
     void clearSelection();
+    void invertSelection();
 
     unsigned int getSelectedChildIndex() const;
     std::vector<unsigned int> getSelectedChildrenIndexes() const;
