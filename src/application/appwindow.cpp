@@ -178,6 +178,7 @@ void AppWindow::addActions()
     m_moveLeftAction->set_enabled(false);
     m_moveRightAction->set_enabled(false);
     m_selectAllAction->set_enabled(false);
+    m_invertSelectionAction->set_enabled(false);
     m_cancelSelectionAction->set_enabled(false);
 }
 
@@ -663,6 +664,11 @@ void AppWindow::onSelectedPagesChanged()
         m_selectAllAction->set_enabled(false);
     else
         m_selectAllAction->set_enabled();
+
+    if (numSelected == 0 || numSelected == numPages)
+        m_invertSelectionAction->set_enabled(false);
+    else
+        m_invertSelectionAction->set_enabled();
 }
 
 void AppWindow::onCommandExecuted()
