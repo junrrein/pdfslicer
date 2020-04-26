@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-04-26 12:21-0300\n"
-"PO-Revision-Date: 2020-04-26 16:10+0000\n"
+"PO-Revision-Date: 2020-04-29 01:11+0000\n"
 "Last-Translator: André Marcelo Alvarenga <andrealvarenga@gmx.net>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "pdf-slicer/translations/pt_BR/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.0.2-dev\n"
+"X-Generator: Weblate 4.0.2\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -290,10 +290,9 @@ msgid "Select all pages"
 msgstr "Selecionar todas as páginas"
 
 #: ../data/ui/shortcuts.ui:75
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr "Cancelar seleção"
+msgstr "Inverter seleção atual"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
