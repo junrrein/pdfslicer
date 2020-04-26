@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-26 12:21-0300\n"
+"POT-Creation-Date: 2020-04-26 12:55-0300\n"
 "PO-Revision-Date: 2019-12-31 17:21+0000\n"
 "Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -112,7 +112,7 @@ msgstr "Ajouter"
 msgid "Cancel"
 msgstr "Annuler"
 
-#: ../src/application/application.cpp:91 ../src/application/appmenu.cpp:63
+#: ../src/application/application.cpp:92 ../src/application/appmenu.cpp:63
 msgid "New window"
 msgstr "Nouvelle fenêtre"
 
@@ -128,12 +128,12 @@ msgstr "Raccourcis clavier"
 msgid "About PDF Slicer"
 msgstr "À propos de PDF Slicer"
 
-#: ../src/application/appwindow.cpp:374
+#: ../src/application/appwindow.cpp:375
 #, fuzzy
 msgid "The selected files could not be opened"
 msgstr "Le fichier sélectionné n'a pas pu être ouvert"
 
-#: ../src/application/appwindow.cpp:385
+#: ../src/application/appwindow.cpp:386
 msgid "The current document could not be saved"
 msgstr "Le document actuel n'a pas pu être sauvegardé"
 
@@ -297,16 +297,22 @@ msgid "Select all pages"
 msgstr "Sélectionner toutes les pages"
 
 #: ../data/ui/shortcuts.ui:75
+#, fuzzy
 msgctxt "shortcut window"
-msgid "Cancel selection"
+msgid "Invert current selection"
 msgstr "Annuler la sélection"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
+msgid "Cancel selection"
+msgstr "Annuler la sélection"
+
+#: ../data/ui/shortcuts.ui:87
+msgctxt "shortcut window"
 msgid "Undo last command"
 msgstr "Annuler la dernière commande"
 
-#: ../data/ui/shortcuts.ui:87
+#: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Rétablir la commande annulée"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-26 12:21-0300\n"
+"POT-Creation-Date: 2020-04-26 12:55-0300\n"
 "PO-Revision-Date: 2020-03-06 18:33+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -111,7 +111,7 @@ msgstr "Ekle"
 msgid "Cancel"
 msgstr "İptal Et"
 
-#: ../src/application/application.cpp:91 ../src/application/appmenu.cpp:63
+#: ../src/application/application.cpp:92 ../src/application/appmenu.cpp:63
 msgid "New window"
 msgstr "Yeni pencere"
 
@@ -127,12 +127,12 @@ msgstr "Klavye Kısayolları"
 msgid "About PDF Slicer"
 msgstr "PDF Slicer Hakkında"
 
-#: ../src/application/appwindow.cpp:374
+#: ../src/application/appwindow.cpp:375
 #, fuzzy
 msgid "The selected files could not be opened"
 msgstr "Seçili dosya açılamadı"
 
-#: ../src/application/appwindow.cpp:385
+#: ../src/application/appwindow.cpp:386
 msgid "The current document could not be saved"
 msgstr "Geçerli belge kaydedilemedi"
 
@@ -296,16 +296,22 @@ msgid "Select all pages"
 msgstr "Tüm sayfaları seç"
 
 #: ../data/ui/shortcuts.ui:75
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Invert current selection"
+msgstr "Seçimi İptal Et"
+
+#: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Cancel selection"
 msgstr "Seçimi iptal et"
 
-#: ../data/ui/shortcuts.ui:81
+#: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Undo last command"
 msgstr "Son komutu geri al"
 
-#: ../data/ui/shortcuts.ui:87
+#: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Geri alma komutunu yinele"

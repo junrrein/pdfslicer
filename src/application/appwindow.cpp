@@ -156,7 +156,7 @@ void AppWindow::addActions()
     m_selectAllAction = add_action("select-all", sigc::mem_fun(*this, &AppWindow::onSelectAll));
     m_selectOddPagesAction = add_action("select-odd", sigc::mem_fun(*this, &AppWindow::onSelectOddPages));
     m_selectEvenPagesAction = add_action("select-even", sigc::mem_fun(*this, &AppWindow::onSelectEvenPages));
-    m_invertSelection = add_action("invert-selection", sigc::mem_fun(*this, &AppWindow::onInvertSelection));
+    m_invertSelectionAction = add_action("invert-selection", sigc::mem_fun(*this, &AppWindow::onInvertSelection));
     m_cancelSelectionAction = add_action("cancel-selection", sigc::mem_fun(*this, &AppWindow::onCancelSelection));
     m_shortcutsAction = add_action("shortcuts", sigc::mem_fun(*this, &AppWindow::onShortcutsAction));
     m_aboutAction = add_action("about", sigc::mem_fun(*this, &AppWindow::onAboutAction));
@@ -178,6 +178,7 @@ void AppWindow::addActions()
     m_moveLeftAction->set_enabled(false);
     m_moveRightAction->set_enabled(false);
     m_selectAllAction->set_enabled(false);
+    m_invertSelectionAction->set_enabled(false);
     m_cancelSelectionAction->set_enabled(false);
 }
 
@@ -663,6 +664,11 @@ void AppWindow::onSelectedPagesChanged()
         m_selectAllAction->set_enabled(false);
     else
         m_selectAllAction->set_enabled();
+
+    if (numSelected == 0 || numSelected == numPages)
+        m_invertSelectionAction->set_enabled(false);
+    else
+        m_invertSelectionAction->set_enabled();
 }
 
 void AppWindow::onCommandExecuted()
