@@ -32,6 +32,11 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.8.5" date="2020-04-xx">
+			<description>
+				<p>Add ability to invert the current page selection (@miltolstoy). Add Arabic translation (@3eloa).</p>
+			</description>
+		</release>
 		<release version="1.8.4" date="2020-04-23">
 			<description>
 				<p>Update existing translations.</p>
