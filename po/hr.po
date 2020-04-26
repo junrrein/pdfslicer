@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-04-26 12:21-0300\n"
-"PO-Revision-Date: 2020-04-26 16:10+0000\n"
+"PO-Revision-Date: 2020-04-29 01:11+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/hr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.0.2-dev\n"
+"X-Generator: Weblate 4.0.2\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -37,11 +37,11 @@ msgstr "Biblioteke trećih strana"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr "Okreni nalijevo"
+msgstr "Okreni ulijevo"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr "Okreni nadesno"
+msgstr "Okreni udesno"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
@@ -181,7 +181,7 @@ msgstr "Spremi kao"
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
-msgstr "{pageNumber}. stranica"
+msgstr "Stranica br. {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
@@ -291,10 +291,9 @@ msgid "Select all pages"
 msgstr "Odaberi sve stranice"
 
 #: ../data/ui/shortcuts.ui:75
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr "Prekini odabir"
+msgstr "Preokreni trenutačni odabir"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
