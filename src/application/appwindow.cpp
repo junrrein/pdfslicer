@@ -42,7 +42,9 @@ AppWindow::AppWindow(TaskRunner& taskRunner, SettingsManager& settingsManager)
     , m_windowState{}
     , m_zoomLevel{zoomLevels, *this}
     , m_headerBar{m_zoomLevel.zoomLevelIndex()}
-    , m_view{m_taskRunner}
+    , m_view{m_taskRunner,
+             std::bind(&AppWindow::onViewMouseWheelUp, this),
+             std::bind(&AppWindow::onViewMouseWheelDown, this)}
 {
     set_size_request(500, 500);
 
@@ -63,9 +65,9 @@ AppWindow::~AppWindow()
 
 void AppWindow::setDocument(std::unique_ptr<Document> document)
 {
-    m_view.setDocument(*document, m_zoomLevel.currentLevel());
-    m_view.setShowFileNames(false);
     m_document = std::move(document);
+    m_view.setDocument(*m_document, m_zoomLevel.currentLevel());
+    m_view.setShowFileNames(false);
 
     m_stack.set_visible_child("editor");
 
@@ -154,6 +156,7 @@ void AppWindow::addActions()
     m_selectAllAction = add_action("select-all", sigc::mem_fun(*this, &AppWindow::onSelectAll));
     m_selectOddPagesAction = add_action("select-odd", sigc::mem_fun(*this, &AppWindow::onSelectOddPages));
     m_selectEvenPagesAction = add_action("select-even", sigc::mem_fun(*this, &AppWindow::onSelectEvenPages));
+    m_invertSelection = add_action("invert-selection", sigc::mem_fun(*this, &AppWindow::onInvertSelection));
     m_cancelSelectionAction = add_action("cancel-selection", sigc::mem_fun(*this, &AppWindow::onCancelSelection));
     m_shortcutsAction = add_action("shortcuts", sigc::mem_fun(*this, &AppWindow::onShortcutsAction));
     m_aboutAction = add_action("about", sigc::mem_fun(*this, &AppWindow::onAboutAction));
@@ -414,7 +417,7 @@ void AppWindow::tryAddDocumentsAt(const std::vector<Glib::RefPtr<Gio::File>>& fi
     catch (...) {
         Logger::logError("The files couldn't be added");
 
-        for (auto file : files)
+        for (const auto& file : files)
             Logger::logError("Filepath: " + file->get_path());
 
         showOpenFileFailedErrorDialog();
@@ -569,6 +572,11 @@ void AppWindow::onSelectEvenPages()
     m_view.selectEvenPages();
 }
 
+void AppWindow::onInvertSelection()
+{
+    m_view.invertSelection();
+}
+
 void AppWindow::onCancelSelection()
 {
     m_view.clearSelection();
@@ -587,7 +595,7 @@ void AppWindow::onSelectedPagesChanged()
 {
     const std::vector<unsigned int> indexSelected = m_view.getSelectedChildrenIndexes();
     const unsigned long numSelected = indexSelected.size();
-    const unsigned long numPages = m_view.get_children().size();
+    const unsigned long numPages = m_document->numberOfPages();
 
     if (numSelected == 0) {
         m_removeSelectedAction->set_enabled(false);
@@ -710,6 +718,16 @@ void AppWindow::onScrollLimitChanged()
     restoreScrollPosition();
 
     m_onScrollLimitChangedConnection.disconnect();
+}
+
+void AppWindow::onViewMouseWheelUp()
+{
+    activate_action("zoom-in");
+}
+
+void AppWindow::onViewMouseWheelDown()
+{
+    activate_action("zoom-out");
 }
 
 bool AppWindow::onWindowConfigureEvent(GdkEventConfigure*)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-22 03:16-0300\n"
+"POT-Creation-Date: 2020-04-26 12:25-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,6 +84,10 @@ msgid "More page selecting options…"
 msgstr ""
 
 #: ../src/application/actionbar.cpp:90
+msgid "Invert Selection"
+msgstr ""
+
+#: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
 msgstr ""
 
@@ -118,11 +122,11 @@ msgstr ""
 msgid "About PDF Slicer"
 msgstr ""
 
-#: ../src/application/appwindow.cpp:371
+#: ../src/application/appwindow.cpp:374
 msgid "The selected files could not be opened"
 msgstr ""
 
-#: ../src/application/appwindow.cpp:382
+#: ../src/application/appwindow.cpp:385
 msgid "The current document could not be saved"
 msgstr ""
 
@@ -170,7 +174,7 @@ msgstr ""
 msgid "Save As"
 msgstr ""
 
-#: ../src/application/interactivepagewidget.cpp:122
+#: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
 msgstr ""

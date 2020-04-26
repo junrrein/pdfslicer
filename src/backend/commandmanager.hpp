@@ -24,7 +24,7 @@ namespace Slicer {
 
 class CommandManager {
 public:
-    CommandManager() {}
+    CommandManager() = default;
 
     void execute(const std::shared_ptr<Command>& command);
     void undo();

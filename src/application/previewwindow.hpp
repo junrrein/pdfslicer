@@ -22,13 +22,14 @@
 #include "taskrunner.hpp"
 #include "zoomlevelwithactions.hpp"
 #include <glibmm/dispatcher.h>
-#include <gtkmm/window.h>
 #include <giomm/simpleactiongroup.h>
-#include <gtkmm/image.h>
-#include <gtkmm/scrolledwindow.h>
-#include <gtkmm/overlay.h>
-#include <gtkmm/button.h>
 #include <gtkmm/box.h>
+#include <gtkmm/button.h>
+#include <gtkmm/eventbox.h>
+#include <gtkmm/image.h>
+#include <gtkmm/overlay.h>
+#include <gtkmm/scrolledwindow.h>
+#include <gtkmm/window.h>
 
 namespace Slicer {
 
@@ -36,7 +37,13 @@ class PreviewWindow : public Gtk::Window {
 public:
     PreviewWindow(const Glib::RefPtr<const Page>& page,
                   TaskRunner& taskRunner);
-    virtual ~PreviewWindow();
+
+    PreviewWindow(const PreviewWindow&) = delete;
+    PreviewWindow& operator=(const PreviewWindow&) = delete;
+    PreviewWindow(PreviewWindow&&) = delete;
+    PreviewWindow& operator=(PreviewWindow&& src) = delete;
+
+    ~PreviewWindow() override;
 
 private:
     static void loadCustomCSS();
@@ -47,9 +54,10 @@ private:
 	ZoomLevelWithActions m_zoomLevel;
     static const std::vector<int> zoomLevels;
 
+    Gtk::Overlay m_overlay;
+    Gtk::ScrolledWindow m_scroller;
+    Gtk::EventBox m_eventBox;
     std::shared_ptr<PageWidget> m_pageWidget;
-	Gtk::ScrolledWindow m_scroller;
-	Gtk::Overlay m_overlay;
 	Gtk::Button m_buttonZoomIn;
 	Gtk::Button m_buttonZoomOut;
 	Gtk::Box m_boxZoom;

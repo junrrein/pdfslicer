@@ -82,7 +82,8 @@ void PreviewWindow::setupWidgets()
 	m_boxZoom.set_margin_bottom(15);
 	m_boxZoom.set_margin_right(15);
 
-    m_scroller.add(*m_pageWidget);
+    m_eventBox.add(*m_pageWidget);
+    m_scroller.add(m_eventBox);
 	m_overlay.add(m_scroller);
 	m_overlay.add_overlay(m_boxZoom);
 	add(m_overlay); // NOLINT
@@ -90,6 +91,24 @@ void PreviewWindow::setupWidgets()
 
 void PreviewWindow::setupSignalHandlers()
 {
+    m_eventBox.add_events(Gdk::SCROLL_MASK | Gdk::SMOOTH_SCROLL_MASK);
+
+    m_eventBox.signal_scroll_event().connect([this](GdkEventScroll* event) {
+        if ((event->state & Gdk::CONTROL_MASK) != 0) {
+            if (event->delta_y < 0) {
+                m_actionGroup->activate_action("zoom-in");
+                return true;
+            }
+
+            if (event->delta_y > 0) {
+                m_actionGroup->activate_action("zoom-out");
+                return true;
+            }
+        }
+
+        return false;
+    });
+
     m_zoomLevel.enable();
 
     m_zoomLevel.zoomLevelIndex().signal_changed().connect([this]() {

@@ -24,12 +24,44 @@ namespace Slicer {
 
 namespace rsv = ranges::views;
 
-View::View(TaskRunner& taskRunner)
+View::View(TaskRunner& taskRunner,
+           const std::function<void()>& onMouseWheelUp,
+           const std::function<void()>& onMouseWheelDown)
     : m_taskRunner{taskRunner}
 {
-    set_row_spacing(5);
-    set_selection_mode(Gtk::SELECTION_NONE);
-    set_sort_func(&sortFunction);
+    setupFlowbox();
+    setupSignalHandlers(onMouseWheelUp, onMouseWheelDown);
+}
+
+void View::setupFlowbox()
+{
+    m_flowBox.set_row_spacing(5);
+    m_flowBox.set_selection_mode(Gtk::SELECTION_NONE);
+    m_flowBox.set_sort_func(&sortFunction);
+
+    add(m_flowBox);
+}
+
+void View::setupSignalHandlers(const std::function<void()>& onMouseWheelUp,
+                               const std::function<void()>& onMouseWheelDown)
+{
+    add_events(Gdk::SCROLL_MASK | Gdk::SMOOTH_SCROLL_MASK);
+
+    signal_scroll_event().connect([onMouseWheelUp, onMouseWheelDown](GdkEventScroll* event) {
+        if ((event->state & Gdk::CONTROL_MASK) != 0) {
+            if (event->delta_y < 0) {
+                onMouseWheelUp();
+                return true;
+            }
+
+            if (event->delta_y > 0) {
+                onMouseWheelDown();
+                return true;
+            }
+        }
+
+        return false;
+    });
 }
 
 View::~View()
@@ -56,8 +88,8 @@ void View::clearState()
     cancelRenderingTasks();
     clearSelection();
 
-    for (Gtk::Widget* child : get_children())
-        remove(*child);
+    for (Gtk::Widget* child : m_flowBox.get_children())
+        m_flowBox.remove(*child);
 
     m_pageWidgets.clear();
 
@@ -78,8 +110,11 @@ void View::setDocument(Document& document, int targetWidgetSize)
         auto page = m_document->getPage(i);
         std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
         m_pageWidgets.push_back(pageWidget);
-        add(*pageWidget);
+        m_flowBox.add(*pageWidget);
         renderPage(pageWidget);
+
+        if (i == 0)
+            pageWidget->grab_focus();
     }
 
     m_documentConnections.emplace_back(
@@ -166,6 +201,16 @@ void View::selectEvenPages()
     selectedPagesChanged.emit();
 }
 
+void View::invertSelection()
+{
+    for (auto& widget: m_pageWidgets)
+        widget->setSelected(!widget->getSelected());
+    
+    m_lastPageSelected = nullptr;
+    
+    selectedPagesChanged.emit();
+}
+
 void View::clearSelection()
 {
     for (auto& widget : m_pageWidgets)
@@ -242,7 +287,7 @@ void View::onModelItemsChanged(guint position, guint removed, guint added)
 
     for (; removed != 0; --removed) {
         (*it)->cancelRendering();
-        remove(*(*it));
+        m_flowBox.remove(*(*it));
         it = m_pageWidgets.erase(it);
     }
 
@@ -251,7 +296,7 @@ void View::onModelItemsChanged(guint position, guint removed, guint added)
         std::shared_ptr<InteractivePageWidget> pageWidget = createPageWidget(page);
 
         m_pageWidgets.insert(it, pageWidget);
-        add(*pageWidget);
+        m_flowBox.add(*pageWidget);
         renderPage(pageWidget);
     }
 

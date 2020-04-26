@@ -33,7 +33,13 @@ public:
     InteractivePageWidget(const Glib::RefPtr<const Page>& page,
                           int targetSize,
                           bool showFileName);
-    virtual ~InteractivePageWidget() = default;
+
+    InteractivePageWidget(const InteractivePageWidget&) = delete;
+    InteractivePageWidget& operator=(const InteractivePageWidget&) = delete;
+    InteractivePageWidget(InteractivePageWidget&&) = delete;
+    InteractivePageWidget& operator=(InteractivePageWidget&& src) = delete;
+
+    ~InteractivePageWidget() override = default;
 
     void setSelected(bool selected);
     bool getSelected() const { return m_isSelected; }

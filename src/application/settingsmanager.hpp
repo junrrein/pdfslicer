@@ -30,6 +30,12 @@ struct WindowState {
 class SettingsManager {
 public:
     SettingsManager();
+
+    SettingsManager(const SettingsManager&) = delete;
+    SettingsManager& operator=(const SettingsManager&) = delete;
+    SettingsManager(SettingsManager&&) = delete;
+    SettingsManager& operator=(SettingsManager&& src) = delete;
+
     ~SettingsManager();
 
     WindowState loadWindowState();

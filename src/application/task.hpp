@@ -25,9 +25,9 @@ namespace Slicer {
 class Task {
 public:
 	Task(const std::function<void()>& funcExecute,
-		 const std::function<void()>& funcPostExecute);
+         const std::function<void()>& funcPostExecute);
 
-	bool isCanceled() const;
+    [[nodiscard]] bool isCanceled() const;
 
 	void cancel();
 	void execute();

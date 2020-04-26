@@ -22,15 +22,24 @@
 #include "taskrunner.hpp"
 #include <queue>
 #include <glibmm/dispatcher.h>
+#include <gtkmm/eventbox.h>
 #include <gtkmm/flowbox.h>
 
 namespace Slicer {
 
-class View : public Gtk::FlowBox {
+class View : public Gtk::EventBox {
 
 public:
-    View(TaskRunner& taskRunner);
-    virtual ~View();
+    View(TaskRunner& taskRunner,
+         const std::function<void()>& onMouseWheelUp,
+         const std::function<void()>& onMouseWheelDown);
+
+    View(const View&) = delete;
+    View& operator=(const View&) = delete;
+    View(View&&) = delete;
+    View& operator=(View&& src) = delete;
+
+    ~View() override;
 
     void setDocument(Document& document, int targetWidgetSize);
     void changePageSize(int targetWidgetSize);
@@ -40,6 +49,7 @@ public:
     void selectOddPages();
     void selectEvenPages();
     void clearSelection();
+    void invertSelection();
 
     unsigned int getSelectedChildIndex() const;
     std::vector<unsigned int> getSelectedChildrenIndexes() const;
@@ -47,13 +57,9 @@ public:
 
     sigc::signal<void> selectedPagesChanged;
 
-    static int sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b);
-
 private:
-    using PageWidgetList = std::list<std::shared_ptr<InteractivePageWidget>>;
-    using PageWidgetQueue = std::queue<std::weak_ptr<InteractivePageWidget>>;
-
-    PageWidgetList m_pageWidgets;
+    Gtk::FlowBox m_flowBox;
+    std::list<std::shared_ptr<InteractivePageWidget>> m_pageWidgets;
     int m_pageWidgetSize = 0;
     bool m_showFileNames = false;
     Document* m_document = nullptr;
@@ -64,6 +70,9 @@ private:
 
     std::shared_ptr<InteractivePageWidget> createPageWidget(const Glib::RefPtr<const Page>& page);
 
+    void setupFlowbox();
+    void setupSignalHandlers(const std::function<void()>& onMouseWheelUp,
+                             const std::function<void()>& onMouseWheelDown);
     void onModelItemsChanged(guint position, guint removed, guint added);
     void onModelPagesRotated(const std::vector<unsigned int>& positions);
     void onModelPagesReordered(const std::vector<unsigned int>& positions);
@@ -73,6 +82,8 @@ private:
     void renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget);
     void cancelRenderingTasks();
     void clearState();
+
+    static int sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b);
 };
 }
 

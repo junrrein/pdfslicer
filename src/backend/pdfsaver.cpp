@@ -38,7 +38,7 @@ void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile)
     QPDFPageDocumentHelper* destinationPageDocumentHelper = m_filesData.front().qpdfPageDocumentHelper.get();
     const std::vector<QPDFPageObjectHelper> originalPages = destinationPageDocumentHelper->getAllPages();
 
-    for (auto qpdfPage : originalPages)
+    for (const auto& qpdfPage : originalPages)
         destinationPageDocumentHelper->removePage(qpdfPage);
 
     // Add the wanted pages into the document.
@@ -52,7 +52,7 @@ void PdfSaver::persist(const Glib::RefPtr<Gio::File>& destinationFile)
         destinationPageDocumentHelper->addPage(qpdfPage, false);
 
         if (page.file == 0)
-            preserverdPagesFromOriginalFile.insert(static_cast<int>(page.file));
+            preserverdPagesFromOriginalFile.insert(static_cast<int>(page.pageNumber));
     }
 
     // It's necessary to manually delete the page objects of the pages

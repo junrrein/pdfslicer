@@ -102,6 +102,7 @@ const Glib::RefPtr<const Page>& InteractivePageWidget::page() const
 void InteractivePageWidget::setupWidgets()
 {
     m_previewButton.set_image_from_icon_name("system-search-symbolic");
+    m_previewButton.set_can_focus(false);
     m_previewButtonRevealer.add(m_previewButton);
     m_previewButtonRevealer.set_transition_type(Gtk::REVEALER_TRANSITION_TYPE_CROSSFADE);
     m_previewButtonRevealer.set_halign(Gtk::ALIGN_END);
@@ -141,6 +142,25 @@ void InteractivePageWidget::setupWidgets()
 
 void InteractivePageWidget::setupSignalHandlers()
 {
+    add_events(Gdk::KEY_RELEASE_MASK);
+
+    signal_key_release_event().connect([this](GdkEventKey* event) {
+        if (event->keyval == GDK_KEY_space) {
+            setSelected(!getSelected());
+            selectedChanged.emit(this);
+
+            return true;
+        }
+
+        if (event->keyval == GDK_KEY_Return || event->keyval == GDK_KEY_KP_Enter) {
+            previewRequested.emit(page());
+
+            return true;
+        }
+
+        return false;
+    });
+
     m_eventBox.signal_button_release_event().connect([this](GdkEventButton* eventButton) {
         if (eventButton->button == 1) {
             if ((eventButton->state & GDK_SHIFT_MASK) != 0) {
@@ -151,6 +171,8 @@ void InteractivePageWidget::setupSignalHandlers()
                 setSelected(!getSelected());
                 selectedChanged.emit(this);
             }
+
+            grab_focus();
 
             return true;
         }

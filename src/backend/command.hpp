@@ -23,6 +23,13 @@ namespace Slicer {
 
 class Command {
 public:
+    Command() = default;
+
+    Command(const Command&) = delete;
+    Command& operator=(const Command&) = delete;
+    Command(Command&&) = delete;
+    Command& operator=(Command&& src) = delete;
+
     virtual ~Command() = default;
 
     virtual void execute() = 0;
@@ -144,9 +151,9 @@ public:
                     const std::vector<Glib::RefPtr<Gio::File>>& files,
                     unsigned int position);
 
-    virtual void execute() override;
-    virtual void undo() override;
-    virtual void redo() override;
+    void execute() override;
+    void undo() override;
+    void redo() override;
 
 protected:
     const std::vector<Glib::RefPtr<Gio::File>> m_files;

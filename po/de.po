@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-22 03:16-0300\n"
+"POT-Creation-Date: 2020-04-26 12:21-0300\n"
 "PO-Revision-Date: 2020-02-06 16:50+0000\n"
 "Last-Translator: nautilusx <mail.ka@mailbox.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -90,6 +90,11 @@ msgid "More page selecting options…"
 msgstr "Weitere Seitenauswahloptionen …"
 
 #: ../src/application/actionbar.cpp:90
+#, fuzzy
+msgid "Invert Selection"
+msgstr "Auswahl aufheben"
+
+#: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
 msgstr "Auswahl aufheben"
 
@@ -125,12 +130,12 @@ msgstr "Tastenkombinationen"
 msgid "About PDF Slicer"
 msgstr "Über PDF Slicer"
 
-#: ../src/application/appwindow.cpp:371
+#: ../src/application/appwindow.cpp:374
 #, fuzzy
 msgid "The selected files could not be opened"
 msgstr "Die ausgewählte Datei konnte nicht geöffnet werden"
 
-#: ../src/application/appwindow.cpp:382
+#: ../src/application/appwindow.cpp:385
 msgid "The current document could not be saved"
 msgstr "Das aktuelle Dokument konnte nicht gespeichert werden"
 
@@ -180,7 +185,7 @@ msgstr "Wiederherstellen"
 msgid "Save As"
 msgstr "Speichern unter"
 
-#: ../src/application/interactivepagewidget.cpp:122
+#: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
 msgstr "Seite {pageNumber}"

@@ -29,7 +29,13 @@ class PageWidget : public Gtk::Box {
 public:
     PageWidget(const Glib::RefPtr<const Page>& page,
                int targetSize);
-    virtual ~PageWidget() = default;
+
+    PageWidget(const PageWidget&) = delete;
+    PageWidget& operator=(const PageWidget&) = delete;
+    PageWidget(PageWidget&&) = delete;
+    PageWidget& operator=(PageWidget&& src) = delete;
+
+    ~PageWidget() override = default;
 
     void changeSize(int targetSize);
     void renderPage();

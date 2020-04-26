@@ -42,12 +42,18 @@ class AppWindow : public Gtk::ApplicationWindow {
 public:
     AppWindow(TaskRunner& taskRunner,
               SettingsManager& settingsManager);
-    virtual ~AppWindow() override;
+
+    AppWindow(const AppWindow&) = delete;
+    AppWindow& operator=(const AppWindow&) = delete;
+    AppWindow(AppWindow&&) = delete;
+    AppWindow& operator=(AppWindow&& src) = delete;
+
+    ~AppWindow() override;
 
     void setDocument(std::unique_ptr<Document> document);
 
 protected:
-    virtual bool on_delete_event(GdkEventAny*) override;
+    bool on_delete_event(GdkEventAny*) override;
 
 private:
     enum class SaveFileIn {
@@ -103,6 +109,7 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_selectAllAction;
     Glib::RefPtr<Gio::SimpleAction> m_selectOddPagesAction;
     Glib::RefPtr<Gio::SimpleAction> m_selectEvenPagesAction;
+    Glib::RefPtr<Gio::SimpleAction> m_invertSelection;
     Glib::RefPtr<Gio::SimpleAction> m_cancelSelectionAction;
     Glib::RefPtr<Gio::SimpleAction> m_shortcutsAction;
     Glib::RefPtr<Gio::SimpleAction> m_aboutAction;
@@ -149,6 +156,7 @@ private:
     void onSelectAll();
     void onSelectOddPages();
     void onSelectEvenPages();
+    void onInvertSelection();
     void onCancelSelection();
     void onAboutAction();
     void onCloseWindowAction();
@@ -158,6 +166,8 @@ private:
     void onZoomLevelChanged();
     void onScrollPositionChanged();
     void onScrollLimitChanged();
+    void onViewMouseWheelUp();
+    void onViewMouseWheelDown();
     sigc::connection m_onScrollLimitChangedConnection;
     bool onWindowConfigureEvent(GdkEventConfigure*);
     bool onWindowStateEvent(GdkEventWindowState* state);
