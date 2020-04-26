@@ -201,6 +201,16 @@ void View::selectEvenPages()
     selectedPagesChanged.emit();
 }
 
+void View::invertSelection()
+{
+    for (auto& widget: m_pageWidgets)
+        widget->setSelected(!widget->getSelected());
+    
+    m_lastPageSelected = nullptr;
+    
+    selectedPagesChanged.emit();
+}
+
 void View::clearSelection()
 {
     for (auto& widget : m_pageWidgets)

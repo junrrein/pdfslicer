@@ -109,6 +109,7 @@ private:
     Glib::RefPtr<Gio::SimpleAction> m_selectAllAction;
     Glib::RefPtr<Gio::SimpleAction> m_selectOddPagesAction;
     Glib::RefPtr<Gio::SimpleAction> m_selectEvenPagesAction;
+    Glib::RefPtr<Gio::SimpleAction> m_invertSelection;
     Glib::RefPtr<Gio::SimpleAction> m_cancelSelectionAction;
     Glib::RefPtr<Gio::SimpleAction> m_shortcutsAction;
     Glib::RefPtr<Gio::SimpleAction> m_aboutAction;
@@ -155,6 +156,7 @@ private:
     void onSelectAll();
     void onSelectOddPages();
     void onSelectEvenPages();
+    void onInvertSelection();
     void onCancelSelection();
     void onAboutAction();
     void onCloseWindowAction();
