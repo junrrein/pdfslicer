@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-26 12:55-0300\n"
-"PO-Revision-Date: 2020-04-07 17:09+0000\n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
+"POT-Creation-Date: 2020-04-26 12:21-0300\n"
+"PO-Revision-Date: 2020-04-26 16:10+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/hr/>\n"
@@ -15,16 +15,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.0-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.0.2-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
-"Jednostavni program za izdvajanje, sjedinjavanje, okretanje i mijenjanje "
+"Jednostavan program za izdvajanje, sjedinjavanje, okretanje i mijenjanje "
 "redoslijeda stranica PDF dokumenata"
 
 #: ../src/application/aboutdialog.cpp:32
@@ -88,9 +88,8 @@ msgid "More page selecting options…"
 msgstr "Daljnje operacije za biranje stranica …"
 
 #: ../src/application/actionbar.cpp:90
-#, fuzzy
 msgid "Invert Selection"
-msgstr "Prekini odabir"
+msgstr "Preokreni odabir"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
