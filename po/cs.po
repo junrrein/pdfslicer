@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-04-26 12:55-0300\n"
-"PO-Revision-Date: 2020-04-10 16:09+0000\n"
+"PO-Revision-Date: 2020-04-29 01:11+0000\n"
 "Last-Translator: Tomáš Průcha <pruchatomas@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/cs/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.0-dev\n"
+"X-Generator: Weblate 4.0.2\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -87,9 +87,8 @@ msgid "More page selecting options…"
 msgstr "Další možnosti výběru stránek…"
 
 #: ../src/application/actionbar.cpp:90
-#, fuzzy
 msgid "Invert Selection"
-msgstr "Zrušit výběr"
+msgstr "Invertovat výběr"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
@@ -291,10 +290,9 @@ msgid "Select all pages"
 msgstr "Vybrat všechny stránky"
 
 #: ../data/ui/shortcuts.ui:75
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr "Zrušit výběr"
+msgstr "Invertovat aktuální výběr"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
