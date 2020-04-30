@@ -22,12 +22,14 @@
 #include <giomm/file.h>
 #include <giomm/liststore.h>
 #include <poppler/cpp/poppler-document.h>
+#include <vector>
 
 namespace Slicer {
 
 class Document {
 public:
     Document(const Glib::RefPtr<Gio::File>& sourceFile);
+    Document(const std::vector<Glib::RefPtr<Gio::File>> sourceFiles);
 
     Glib::RefPtr<Page> removePage(unsigned int index);
     std::vector<Glib::RefPtr<Page>> removePages(const std::vector<unsigned int>& indexes);
@@ -67,6 +69,8 @@ private:
 
     static FileData loadFile(const Glib::RefPtr<Gio::File>& sourceFile);
     static std::vector<Glib::RefPtr<Page>> loadPages(const FileData& fileData, unsigned int fileNumber);
+    static std::vector<Glib::RefPtr<Page>> loadPages(const FileData& fileData, unsigned int fileNumber, 
+        unsigned int page_number_shift);
 
     std::vector<FileData> m_filesData;
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;

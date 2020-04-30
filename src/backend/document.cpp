@@ -31,6 +31,18 @@ Document::Document(const Glib::RefPtr<Gio::File>& sourceFile)
     m_filesData.emplace_back(std::move(fileData));
 }
 
+Document::Document(const std::vector<Glib::RefPtr<Gio::File>> sourceFiles) : m_pages{Gio::ListStore<Page>::create()}
+{
+    unsigned int page_number_shift = 0;
+    for (auto file : sourceFiles)
+    {
+        FileData fileData = loadFile(file);
+        m_pages->splice(m_pages->get_n_items(), 0, loadPages(fileData, m_filesData.size(), page_number_shift));
+        page_number_shift += m_pages->get_n_items();
+        m_filesData.emplace_back(std::move(fileData));
+    }
+}
+
 Glib::RefPtr<Page> Document::removePage(unsigned int index)
 {
     Glib::RefPtr<Page> removedPage = m_pages->get_item(index);
@@ -236,10 +248,16 @@ Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
 std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fileData,
                                                     unsigned int fileNumber)
 {
+    return Document::loadPages(fileData, fileNumber, 0);
+}                                                    
+
+std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fileData, unsigned int fileNumber, 
+    unsigned int page_number_shift)
+{
     const Glib::ustring basename = Glib::filename_display_basename(fileData.originalFile->get_path());
     std::vector<Glib::RefPtr<Page>> result;
 
-    for (int i = 0; i < fileData.popplerDocument->pages(); ++i) {
+    for (unsigned int i = 0; i < fileData.popplerDocument->pages(); ++i) {
         std::unique_ptr<poppler::page> ppage{fileData.popplerDocument->create_page(i)};
 
         if (ppage == nullptr)
@@ -248,7 +266,7 @@ std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fi
         auto page = Glib::RefPtr<Page>{new Page{std::move(ppage),
                                                 basename,
                                                 fileNumber,
-                                                static_cast<unsigned>(i)}};
+                                                static_cast<unsigned>(i + page_number_shift)}};
         result.push_back(page);
     }
 
