@@ -2,9 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-04-26 12:55-0300\n"
-"PO-Revision-Date: 2020-03-23 06:47+0000\n"
+"PO-Revision-Date: 2020-04-29 01:11+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/es/>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0-dev\n"
+"X-Generator: Weblate 4.0.2\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -84,9 +84,8 @@ msgid "More page selecting options…"
 msgstr "Más opciones para seleccionar páginas…"
 
 #: ../src/application/actionbar.cpp:90
-#, fuzzy
 msgid "Invert Selection"
-msgstr "Cancelar Selección"
+msgstr "Invertir Selección"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
@@ -288,10 +287,9 @@ msgid "Select all pages"
 msgstr "Seleccionar todas las páginas"
 
 #: ../data/ui/shortcuts.ui:75
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr "Cancelar Selección"
+msgstr "Invertir selección actual"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
