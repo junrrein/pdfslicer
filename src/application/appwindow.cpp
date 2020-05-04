@@ -213,11 +213,13 @@ void AppWindow::setupSignalHandlers()
 
     m_savedDispatcher.connect([this]() {
         m_savingRevealer.saved();
+        m_saveAction->set_enabled(true);
         setModified(false);
     });
 
     m_savingFailedDispatcher.connect([this]() {
         m_savingRevealer.set_reveal_child(false);
+        m_saveAction->set_enabled(true);
         showSaveFileFailedErrorDialog();
     });
 
@@ -309,6 +311,7 @@ bool AppWindow::saveFileInForeground(const Glib::RefPtr<Gio::File>& file)
 void AppWindow::saveFileInBackground(const Glib::RefPtr<Gio::File>& file)
 {
     m_savingRevealer.saving();
+    m_saveAction->set_enabled(false);
     m_isSavingDocument = true;
 
     std::thread thread{[this, file]() {
