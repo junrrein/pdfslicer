@@ -97,12 +97,8 @@ void Application::setupAppMenu()
 void Application::on_open(const Application::type_vec_files& files,
                           __attribute__((unused)) const Glib::ustring& hint)
 {
-    std::vector<Glib::RefPtr<Gio::File>> files_to_open;
-    for (const Glib::RefPtr<Gio::File>& file : files) {
-        files_to_open.push_back(file);
-    }
     AppWindow* window = createWindow();
-    window->setDocument(std::make_unique<Document>(files_to_open));
+    window->setDocument(std::make_unique<Document>(files));
     window->present();
 }
 

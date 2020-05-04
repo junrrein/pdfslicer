@@ -31,16 +31,11 @@ Document::Document(const Glib::RefPtr<Gio::File>& sourceFile)
     m_filesData.emplace_back(std::move(fileData));
 }
 
-Document::Document(const std::vector<Glib::RefPtr<Gio::File>> sourceFiles) : m_pages{Gio::ListStore<Page>::create()}
+Document::Document(const std::vector<Glib::RefPtr<Gio::File>> sourceFiles) : Document(sourceFiles[0])
 {
-    unsigned int page_number_shift = 0;
-    for (auto file : sourceFiles)
-    {
-        FileData fileData = loadFile(file);
-        m_pages->splice(m_pages->get_n_items(), 0, loadPages(fileData, m_filesData.size(), page_number_shift));
-        page_number_shift += m_pages->get_n_items();
-        m_filesData.emplace_back(std::move(fileData));
-    }
+    std::vector<Glib::RefPtr<Gio::File>> additional_files(sourceFiles.size() - 1);
+    std::copy(sourceFiles.begin() + 1, sourceFiles.end(), additional_files.begin());
+    addFiles(additional_files, m_pages->get_n_items());
 }
 
 Glib::RefPtr<Page> Document::removePage(unsigned int index)
@@ -248,12 +243,6 @@ Document::FileData Document::loadFile(const Glib::RefPtr<Gio::File>& sourceFile)
 std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fileData,
                                                     unsigned int fileNumber)
 {
-    return Document::loadPages(fileData, fileNumber, 0);
-}                                                    
-
-std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fileData, unsigned int fileNumber, 
-    unsigned int page_number_shift)
-{
     const Glib::ustring basename = Glib::filename_display_basename(fileData.originalFile->get_path());
     std::vector<Glib::RefPtr<Page>> result;
 
@@ -266,11 +255,11 @@ std::vector<Glib::RefPtr<Page>> Document::loadPages(const Document::FileData& fi
         auto page = Glib::RefPtr<Page>{new Page{std::move(ppage),
                                                 basename,
                                                 fileNumber,
-                                                static_cast<unsigned>(i + page_number_shift)}};
+                                                static_cast<unsigned>(i)}};
         result.push_back(page);
     }
 
     return result;
-}
+}                                                    
 
 }

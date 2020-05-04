@@ -69,8 +69,6 @@ private:
 
     static FileData loadFile(const Glib::RefPtr<Gio::File>& sourceFile);
     static std::vector<Glib::RefPtr<Page>> loadPages(const FileData& fileData, unsigned int fileNumber);
-    static std::vector<Glib::RefPtr<Page>> loadPages(const FileData& fileData, unsigned int fileNumber, 
-        unsigned int page_number_shift);
 
     std::vector<FileData> m_filesData;
     Glib::RefPtr<Gio::ListStore<Page>> m_pages;
