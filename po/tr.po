@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Sabri Ünal <libreajans@gmail.com>, 2019, 2020.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-04-26 12:55-0300\n"
-"PO-Revision-Date: 2020-03-06 18:33+0000\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"PO-Revision-Date: 2020-05-07 22:12+0000\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/tr/>\n"
 "Language: tr\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0-dev\n"
+"X-Generator: Weblate 4.1-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -24,7 +25,7 @@ msgid ""
 "documents"
 msgstr ""
 "PDF belgelerinin sayfalarını ayıklamak, birleştirmek, döndürmek ve yeniden "
-"sıralamak için basit bir araç"
+"sıralamak için basit uygulama"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application icon"
@@ -32,7 +33,7 @@ msgstr "Uygulama simgesi"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Third-party libraries"
-msgstr "Üçüncü Taraf Kütüphaneler"
+msgstr "Üçüncü taraf kütüphaneler"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
@@ -68,7 +69,7 @@ msgstr "Sonraki sayfaları kaldır"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr "Daha fazla sayfa kaldırma işlemleri…"
+msgstr "Daha çok sayfa kaldırma işlemleri…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
@@ -84,21 +85,19 @@ msgstr "Çift sayfaları seç"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr "Daha fazla sayfa seçim işlemleri…"
+msgstr "Daha çok sayfa seçim işlemleri…"
 
 #: ../src/application/actionbar.cpp:90
-#, fuzzy
 msgid "Invert Selection"
-msgstr "Seçimi İptal Et"
+msgstr "Seçimi Ters Çevir"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
 msgstr "Seçimi İptal Et"
 
 #: ../src/application/addfiledialog.cpp:25
-#, fuzzy
 msgid "Select documents to add"
-msgstr "Belgeyi eklemek için seç"
+msgstr "Eklenecek belgeleri seç"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
@@ -128,9 +127,8 @@ msgid "About PDF Slicer"
 msgstr "PDF Slicer Hakkında"
 
 #: ../src/application/appwindow.cpp:375
-#, fuzzy
 msgid "The selected files could not be opened"
-msgstr "Seçili dosya açılamadı"
+msgstr "Seçilen dosyalar açılamadı"
 
 #: ../src/application/appwindow.cpp:386
 msgid "The current document could not be saved"
@@ -149,7 +147,6 @@ msgid "Open"
 msgstr "Aç"
 
 #: ../src/application/headerbar.cpp:60
-#, fuzzy
 msgid "Add Documents"
 msgstr "Belge Ekle"
 
@@ -166,7 +163,6 @@ msgid "After the selected page…"
 msgstr "Seçilen sayfadan sonra…"
 
 #: ../src/application/headerbar.cpp:65
-#, fuzzy
 msgid "Add Documents…"
 msgstr "Belge Ekle…"
 
@@ -192,7 +188,6 @@ msgid "Open document"
 msgstr "Belge aç"
 
 #: ../src/application/pdffilter.cpp:23
-#, fuzzy
 msgid "PDF documents"
 msgstr "PDF belgesi"
 
@@ -296,10 +291,9 @@ msgid "Select all pages"
 msgstr "Tüm sayfaları seç"
 
 #: ../data/ui/shortcuts.ui:75
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr "Seçimi İptal Et"
+msgstr "Geçerli seçimi ters çevir"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
