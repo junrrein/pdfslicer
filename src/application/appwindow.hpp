@@ -122,8 +122,6 @@ private:
     void addActions();
     void setupWidgets();
     void setupSignalHandlers();
-    void disableEditingActions();
-    void enableEditingActions();
     bool showSaveFileDialogAndSave(SaveFileIn howToSave);
     bool saveFileInForeground(const Glib::RefPtr<Gio::File>& file);
     void saveFileInBackground(const Glib::RefPtr<Gio::File>& file);
