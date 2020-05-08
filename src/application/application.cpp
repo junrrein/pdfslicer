@@ -98,7 +98,7 @@ void Application::on_open(const Application::type_vec_files& files,
 {
     for (const Glib::RefPtr<Gio::File>& file : files) {
         AppWindow* window = createWindow();
-        window->setDocument(std::make_unique<Document>(file));
+        window->setDocument(std::make_unique<Document>(files));
         window->present();
     }
 }

@@ -31,6 +31,13 @@ Document::Document(const Glib::RefPtr<Gio::File>& sourceFile)
     m_filesData.emplace_back(std::move(fileData));
 }
 
+Document::Document(const std::vector<Glib::RefPtr<Gio::File>>& sourceFiles) : Document(sourceFiles[0])
+{
+    std::vector<Glib::RefPtr<Gio::File>> additional_files(sourceFiles.size() - 1);
+    std::copy(sourceFiles.begin() + 1, sourceFiles.end(), additional_files.begin());
+    addFiles(additional_files, m_pages->get_n_items());
+}
+
 Glib::RefPtr<Page> Document::removePage(unsigned int index)
 {
     Glib::RefPtr<Page> removedPage = m_pages->get_item(index);
