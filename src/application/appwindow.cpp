@@ -213,13 +213,13 @@ void AppWindow::setupSignalHandlers()
 
     m_savedDispatcher.connect([this]() {
         m_savingRevealer.saved();
-        enableEditingActions();
+        m_saveAction->set_enabled(true);
         setModified(false);
     });
 
     m_savingFailedDispatcher.connect([this]() {
         m_savingRevealer.set_reveal_child(false);
-        enableEditingActions();
+        m_saveAction->set_enabled(true);
         showSaveFileFailedErrorDialog();
     });
 
@@ -251,31 +251,6 @@ void AppWindow::loadCustomCSS()
     Gtk::StyleContext::add_provider_for_screen(screen,
                                                provider,
                                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-}
-
-void AppWindow::disableEditingActions()
-{
-    m_openAction->set_enabled(false);
-    m_saveAction->set_enabled(false);
-    m_undoAction->set_enabled(false);
-    m_redoAction->set_enabled(false);
-    m_removeSelectedAction->set_enabled(false);
-    m_removeUnselectedAction->set_enabled(false);
-    m_removePreviousAction->set_enabled(false);
-    m_removeNextAction->set_enabled(false);
-    m_rotateRightAction->set_enabled(false);
-    m_rotateLeftAction->set_enabled(false);
-    m_moveLeftAction->set_enabled(false);
-    m_moveRightAction->set_enabled(false);
-    m_cancelSelectionAction->set_enabled(false);
-}
-
-void AppWindow::enableEditingActions()
-{
-    m_openAction->set_enabled();
-    m_saveAction->set_enabled();
-    onSelectedPagesChanged();
-    onCommandExecuted();
 }
 
 void AppWindow::onAboutAction()
@@ -336,7 +311,7 @@ bool AppWindow::saveFileInForeground(const Glib::RefPtr<Gio::File>& file)
 void AppWindow::saveFileInBackground(const Glib::RefPtr<Gio::File>& file)
 {
     m_savingRevealer.saving();
-    disableEditingActions();
+    m_saveAction->set_enabled(false);
     m_isSavingDocument = true;
 
     std::thread thread{[this, file]() {
