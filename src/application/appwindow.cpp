@@ -573,6 +573,11 @@ void AppWindow::onSelectedPagesChanged()
     const unsigned long numSelected = indexSelected.size();
     const unsigned long numPages = m_document->numberOfPages();
 
+    const bool isOddPagesActionEnabled = numPages > 0;
+    const bool isEvenPagesActionEnabled = numPages > 1;
+    m_selectOddPagesAction->set_enabled(isOddPagesActionEnabled);
+    m_selectEvenPagesAction->set_enabled(isEvenPagesActionEnabled);
+
     if (numSelected == 0) {
         m_removeSelectedAction->set_enabled(false);
         m_removeUnselectedAction->set_enabled(false);
