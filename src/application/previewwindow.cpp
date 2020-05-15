@@ -60,32 +60,11 @@ void PreviewWindow::setTitle()
 
 void PreviewWindow::setupWidgets()
 {
-	m_buttonZoomOut.set_image_from_icon_name("zoom-out-symbolic");
-	m_buttonZoomOut.set_tooltip_text(_("Zoom out"));
-	m_buttonZoomOut.get_style_context()->add_class("flat");
-	gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonZoomOut.gobj()), "preview.zoom-out"); // NOLINT
-	m_buttonZoomOut.set_margin_top(8);
-	m_buttonZoomOut.set_margin_bottom(8);
-	m_buttonZoomOut.set_margin_left(8);
-	m_buttonZoomIn.set_image_from_icon_name("zoom-in-symbolic");
-	m_buttonZoomIn.set_tooltip_text(_("Zoom in"));
-	m_buttonZoomIn.get_style_context()->add_class("flat");
-	gtk_actionable_set_action_name(GTK_ACTIONABLE(m_buttonZoomIn.gobj()), "preview.zoom-in"); // NOLINT
-	m_buttonZoomIn.set_margin_top(8);
-	m_buttonZoomIn.set_margin_bottom(8);
-	m_buttonZoomIn.set_margin_right(8);
-	m_boxZoom.pack_start(m_buttonZoomOut);
-	m_boxZoom.pack_start(m_buttonZoomIn);
-	m_boxZoom.get_style_context()->add_class("osd");
-	m_boxZoom.set_valign(Gtk::ALIGN_END);
-	m_boxZoom.set_halign(Gtk::ALIGN_END);
-	m_boxZoom.set_margin_bottom(15);
-	m_boxZoom.set_margin_right(15);
+    set_titlebar(m_previewHeaderBar);
 
     m_eventBox.add(*m_pageWidget);
     m_scroller.add(m_eventBox);
 	m_overlay.add(m_scroller);
-	m_overlay.add_overlay(m_boxZoom);
 	add(m_overlay); // NOLINT
 }
 
