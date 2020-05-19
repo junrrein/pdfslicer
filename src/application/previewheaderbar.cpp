@@ -22,7 +22,7 @@ namespace Slicer {
 
 PreviewHeaderBar::PreviewHeaderBar()
 {
-    set_title("Page preview");
+    set_title(_("Page preview"));
     set_show_close_button();
 
     setupWidgets();

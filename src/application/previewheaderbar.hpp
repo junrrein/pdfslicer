@@ -16,8 +16,8 @@
 
 #pragma once
 
-#include "appmenu.hpp"
 #include <gtkmm/headerbar.h>
+#include <gtkmm/button.h>
 
 namespace Slicer {
 
