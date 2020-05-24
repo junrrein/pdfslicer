@@ -21,6 +21,7 @@
 #include "pagewidget.hpp"
 #include "taskrunner.hpp"
 #include "zoomlevelwithactions.hpp"
+#include "previewheaderbar.hpp"
 #include <glibmm/dispatcher.h>
 #include <giomm/simpleactiongroup.h>
 #include <gtkmm/box.h>
@@ -58,9 +59,7 @@ private:
     Gtk::ScrolledWindow m_scroller;
     Gtk::EventBox m_eventBox;
     std::shared_ptr<PageWidget> m_pageWidget;
-	Gtk::Button m_buttonZoomIn;
-	Gtk::Button m_buttonZoomOut;
-	Gtk::Box m_boxZoom;
+	PreviewHeaderBar m_previewHeaderBar;
 
     void setTitle();
 	void setupWidgets();
