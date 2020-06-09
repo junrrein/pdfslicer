@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-04-26 12:55-0300\n"
-"PO-Revision-Date: 2020-04-03 05:02+0000\n"
+"PO-Revision-Date: 2020-06-10 18:41+0000\n"
 "Last-Translator: Michal Biesiada <blade-14@o2.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/pl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.0-dev\n"
+"X-Generator: Weblate 4.1-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -34,7 +34,7 @@ msgstr "Ikona aplikacji"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Third-party libraries"
-msgstr ""
+msgstr "Biblioteki stron trzecich"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
@@ -58,7 +58,7 @@ msgstr "Usuń wybrane strony"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr ""
+msgstr "Usuń niezaznaczone strony"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
