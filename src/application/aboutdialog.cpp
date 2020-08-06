@@ -29,9 +29,12 @@ AboutDialog::AboutDialog(Gtk::Window& parent)
     set_copyright(Glib::ustring{"© 2017-2020 "} + _("Slicer developers"));
     set_license_type(Gtk::LICENSE_GPL_3_0);
     set_website(config::APPLICATION_WEBSITE);
-    add_credit_section(_("Application"),
+    add_credit_section(_("Application programming"),
                        {"Julián Unrrein <junrrein@gmail.com>",
-                        "Mil Tolstoy"});
+                        "Mil Tolstoy <miltolstoy@gmail.com>"});
+    add_credit_section(_("Application design"),
+                       {"Julián Unrrein <junrrein@gmail.com>",
+                        "amivaleo https://github.com/amivaleo"});
     add_credit_section(_("Application icon"),
                        {"Lapo Calamandrei <calamandrei@gmail.com>",
                         "Tobias Bernard <tbernard@gnome.org>"});

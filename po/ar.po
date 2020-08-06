@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-06 19:01-0300\n"
+"POT-Creation-Date: 2020-08-06 19:17-0300\n"
 "PO-Revision-Date: 2020-06-12 07:41+0000\n"
 "Last-Translator: Ali Galal <ali.sameh.galal@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -32,14 +32,19 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:32
 #, fuzzy
-msgid "Application"
+msgid "Application programming"
 msgstr "ايقونة البرنامج"
 
 #: ../src/application/aboutdialog.cpp:35
-msgid "Application icon"
+#, fuzzy
+msgid "Application design"
 msgstr "ايقونة البرنامج"
 
 #: ../src/application/aboutdialog.cpp:38
+msgid "Application icon"
+msgstr "ايقونة البرنامج"
+
+#: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
 msgstr "مكتبات خارجية (طرف ثالث)"
 
@@ -321,3 +326,7 @@ msgstr "التراجع عن الأمر الأخير"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "إعادة أمر التراجع"
+
+#, fuzzy
+#~ msgid "Application"
+#~ msgstr "ايقونة البرنامج"

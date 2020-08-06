@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-06 19:01-0300\n"
+"POT-Creation-Date: 2020-08-06 19:17-0300\n"
 "PO-Revision-Date: 2020-01-24 04:21+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
@@ -32,14 +32,19 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:32
 #, fuzzy
-msgid "Application"
+msgid "Application programming"
 msgstr "Programikon"
 
 #: ../src/application/aboutdialog.cpp:35
-msgid "Application icon"
+#, fuzzy
+msgid "Application design"
 msgstr "Programikon"
 
 #: ../src/application/aboutdialog.cpp:38
+msgid "Application icon"
+msgstr "Programikon"
+
+#: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
 msgstr "Tredjepartsbibliotek"
 
@@ -340,6 +345,10 @@ msgstr "Angre siste kommando"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Gjenta angret kommando"
+
+#, fuzzy
+#~ msgid "Application"
+#~ msgstr "Programikon"
 
 #~ msgid "Saving…"
 #~ msgstr "Lagrer…"
