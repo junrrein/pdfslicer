@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-06 19:01-0300\n"
+"POT-Creation-Date: 2020-08-06 19:17-0300\n"
 "PO-Revision-Date: 2020-05-07 22:12+0000\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -33,14 +33,19 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:32
 #, fuzzy
-msgid "Application"
+msgid "Application programming"
 msgstr "Uygulama simgesi"
 
 #: ../src/application/aboutdialog.cpp:35
-msgid "Application icon"
+#, fuzzy
+msgid "Application design"
 msgstr "Uygulama simgesi"
 
 #: ../src/application/aboutdialog.cpp:38
+msgid "Application icon"
+msgstr "Uygulama simgesi"
+
+#: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
 msgstr "Üçüncü taraf kütüphaneler"
 
@@ -322,6 +327,10 @@ msgstr "Son komutu geri al"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Geri alma komutunu yinele"
+
+#, fuzzy
+#~ msgid "Application"
+#~ msgstr "Uygulama simgesi"
 
 #~ msgid "Saving…"
 #~ msgstr "Kaydediliyor…"

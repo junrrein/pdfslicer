@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-06 19:01-0300\n"
+"POT-Creation-Date: 2020-08-06 19:17-0300\n"
 "PO-Revision-Date: 2020-05-18 09:41+0000\n"
 "Last-Translator: naofum <naofum@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -32,14 +32,19 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:32
 #, fuzzy
-msgid "Application"
+msgid "Application programming"
 msgstr "アプリケーションのアイコン"
 
 #: ../src/application/aboutdialog.cpp:35
-msgid "Application icon"
+#, fuzzy
+msgid "Application design"
 msgstr "アプリケーションのアイコン"
 
 #: ../src/application/aboutdialog.cpp:38
+msgid "Application icon"
+msgstr "アプリケーションのアイコン"
+
+#: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
 msgstr "サードパーティライブラリー"
 
@@ -321,6 +326,10 @@ msgstr "最後の操作を元に戻す"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "元に戻した操作をやり直す"
+
+#, fuzzy
+#~ msgid "Application"
+#~ msgstr "アプリケーションのアイコン"
 
 #~ msgid "Saving…"
 #~ msgstr "保存しています…"

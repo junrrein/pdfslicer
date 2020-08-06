@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-06 19:01-0300\n"
+"POT-Creation-Date: 2020-08-06 19:17-0300\n"
 "PO-Revision-Date: 2020-01-21 18:21+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -33,14 +33,19 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:32
 #, fuzzy
-msgid "Application"
+msgid "Application programming"
 msgstr "Icona applicazione"
 
 #: ../src/application/aboutdialog.cpp:35
-msgid "Application icon"
+#, fuzzy
+msgid "Application design"
 msgstr "Icona applicazione"
 
 #: ../src/application/aboutdialog.cpp:38
+msgid "Application icon"
+msgstr "Icona applicazione"
+
+#: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
 msgstr "Librerie di terze parti"
 
@@ -329,6 +334,10 @@ msgstr "Annulla il comando precedente"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Ripete il comando precedente"
+
+#, fuzzy
+#~ msgid "Application"
+#~ msgstr "Icona applicazione"
 
 #~ msgid "Saving…"
 #~ msgstr "Salvataggio…"

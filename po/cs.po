@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-06 19:01-0300\n"
+"POT-Creation-Date: 2020-08-06 19:17-0300\n"
 "PO-Revision-Date: 2020-04-29 01:11+0000\n"
 "Last-Translator: Tomáš Průcha <pruchatomas@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -32,14 +32,19 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:32
 #, fuzzy
-msgid "Application"
+msgid "Application programming"
 msgstr "Ikona aplikace"
 
 #: ../src/application/aboutdialog.cpp:35
-msgid "Application icon"
+#, fuzzy
+msgid "Application design"
 msgstr "Ikona aplikace"
 
 #: ../src/application/aboutdialog.cpp:38
+msgid "Application icon"
+msgstr "Ikona aplikace"
+
+#: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
 msgstr "Knihovny třetích stran"
 
@@ -321,6 +326,10 @@ msgstr "Zrušit poslední úpravu"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Vrátit předchozí úpravu"
+
+#, fuzzy
+#~ msgid "Application"
+#~ msgstr "Ikona aplikace"
 
 #~ msgid "Saving…"
 #~ msgstr "Ukládání…"
