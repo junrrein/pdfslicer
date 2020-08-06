@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Yaron Shahrabani <sh.yaron@gmail.com>, 2019.
+# Yaron Shahrabani <sh.yaron@gmail.com>, 2019, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-04-26 12:55-0300\n"
-"PO-Revision-Date: 2019-08-14 09:24+0000\n"
+"PO-Revision-Date: 2020-07-22 10:41+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/he/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 3.8-dev\n"
+"X-Generator: Weblate 4.2-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -86,18 +86,16 @@ msgid "More page selecting options…"
 msgstr "אפשרויות בחירת עמודים נוספות…"
 
 #: ../src/application/actionbar.cpp:90
-#, fuzzy
 msgid "Invert Selection"
-msgstr "ביטול הבחירה"
+msgstr "היפוך הבחירה"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
 msgstr "ביטול הבחירה"
 
 #: ../src/application/addfiledialog.cpp:25
-#, fuzzy
 msgid "Select documents to add"
-msgstr "יש לבחור מסמך להוספה"
+msgstr "בחירת מסמכים להוספה"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
@@ -112,7 +110,7 @@ msgstr "ביטול"
 
 #: ../src/application/application.cpp:92 ../src/application/appmenu.cpp:63
 msgid "New window"
-msgstr ""
+msgstr "חלון חדש"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
@@ -127,9 +125,8 @@ msgid "About PDF Slicer"
 msgstr "על אודות PDF Slicer"
 
 #: ../src/application/appwindow.cpp:375
-#, fuzzy
 msgid "The selected files could not be opened"
-msgstr "לא ניתן לפתוח את הקובץ הנבחר"
+msgstr "לא ניתן לפתוח את הקבצים הנבחרים"
 
 #: ../src/application/appwindow.cpp:386
 msgid "The current document could not be saved"
@@ -148,27 +145,24 @@ msgid "Open"
 msgstr "פתיחה"
 
 #: ../src/application/headerbar.cpp:60
-#, fuzzy
 msgid "Add Documents"
-msgstr "הוספת מסמך…"
+msgstr "הוספת מסמכים"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr ""
+msgstr "להתחלה…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
-msgstr ""
+msgstr "לסוף…"
 
 #: ../src/application/headerbar.cpp:63
-#, fuzzy
 msgid "After the selected page…"
-msgstr "לאחר העמוד הנבחר"
+msgstr "לאחר העמוד הנבחר…"
 
 #: ../src/application/headerbar.cpp:65
-#, fuzzy
 msgid "Add Documents…"
-msgstr "הוספת מסמך…"
+msgstr "הוספת מסמכים…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
@@ -179,9 +173,8 @@ msgid "Redo"
 msgstr "החזרה"
 
 #: ../src/application/headerbar.cpp:91
-#, fuzzy
 msgid "Save As"
-msgstr "שמירה בשם…"
+msgstr "שמירה בשם"
 
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
@@ -193,9 +186,8 @@ msgid "Open document"
 msgstr "פתיחת מסמך"
 
 #: ../src/application/pdffilter.cpp:23
-#, fuzzy
 msgid "PDF documents"
-msgstr "מסמך PDF"
+msgstr "מסמכי PDF"
 
 #: ../src/application/previewwindow.cpp:64
 msgid "Zoom out"
@@ -218,21 +210,20 @@ msgid "Untitled document"
 msgstr "מסמך ללא כותרת"
 
 #: ../src/application/savingrevealer.cpp:25
-#, fuzzy
 msgid "Saving document…"
-msgstr "שמירת מסמך"
+msgstr "המסמך נשמר…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
-msgstr ""
+msgstr "המסמך נשמר בהצלחה"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr ""
+msgstr "לשמור את המסמך עם השינויים בטרם סגירתו?"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
-msgstr ""
+msgstr "לסגור מבלי לשמור"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
@@ -270,17 +261,17 @@ msgstr "התרחקות"
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr ""
+msgstr "איפוס רמת התקריב"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
 msgid "New window"
-msgstr ""
+msgstr "חלון חדש"
 
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr ""
+msgstr "סגירת החלון"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
@@ -298,10 +289,9 @@ msgid "Select all pages"
 msgstr "לבחור את כל העמודים"
 
 #: ../data/ui/shortcuts.ui:75
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr "ביטול הבחירה"
+msgstr "היפוך הבחירה הנוכחית"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"

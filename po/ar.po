@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Ali Galal <lj66163@gmail.com>, 2020.
+# Ali Galal <ali.sameh.galal@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-04-26 12:55-0300\n"
-"PO-Revision-Date: 2020-04-29 01:11+0000\n"
-"Last-Translator: Ali Galal <lj66163@gmail.com>\n"
+"PO-Revision-Date: 2020-06-12 07:41+0000\n"
+"Last-Translator: Ali Galal <ali.sameh.galal@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/ar/>\n"
 "Language: ar\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 4.0.2\n"
+"X-Generator: Weblate 4.1-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -31,7 +32,7 @@ msgstr "ايقونة البرنامج"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Third-party libraries"
-msgstr "مكتبات خارجية"
+msgstr "مكتبات خارجية (طرف ثالث)"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
@@ -142,7 +143,7 @@ msgstr "تمت إضافة ملفات متعددة"
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
-msgstr "افتح"
+msgstr "إفتح"
 
 #: ../src/application/headerbar.cpp:60
 msgid "Add Documents"
@@ -162,7 +163,7 @@ msgstr "بعد الصفحة المحددة …"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add Documents…"
-msgstr "اضافة مستندات…"
+msgstr "إضافة مستندات…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
@@ -174,7 +175,7 @@ msgstr "إعادة"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
-msgstr "حفظ باسم"
+msgstr "حفظ بإسم"
 
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
@@ -183,7 +184,7 @@ msgstr "الصفحة {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
-msgstr "افتح المستند"
+msgstr "إفتح المستند"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF documents"
@@ -199,7 +200,7 @@ msgstr "تكبير"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr "حفظ المستند باسم"
+msgstr "حفظ المستند بإسم"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
@@ -219,19 +220,19 @@ msgstr "تم حفظ المستند بنجاح"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr "حفظ المستند المعدل قبل اغلاقه؟"
+msgstr "حفظ المستند المعدل قبل إغلاقه؟"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
-msgstr "اغلق دون حفظ"
+msgstr "أغلق دون حفظ"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
-msgstr "حفظ باسم …"
+msgstr "حفظ بإسم …"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "افتح مستندًا لبدء التقطيع!"
+msgstr "إفتح مستندًا لبدء التقطيع!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
@@ -241,7 +242,7 @@ msgstr "عام"
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr "افتح المستند"
+msgstr "إفتح المستند"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
@@ -271,7 +272,7 @@ msgstr "نافذة جديدة"
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr "اغلق النافذة"
+msgstr "أغلق النافذة"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
@@ -281,7 +282,7 @@ msgstr "تعديل المستند"
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr "ازالة الصفحات المحددة"
+msgstr "إزالة الصفحات المحددة"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
