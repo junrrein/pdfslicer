@@ -26,9 +26,12 @@ AboutDialog::AboutDialog(Gtk::Window& parent)
     set_comments(_("A simple application to extract, merge, rotate and reorder pages of PDF documents"));
     set_logo_icon_name(config::APPLICATION_ID);
     set_version(config::VERSION);
-    set_copyright("Copyright © 2017-2018 Julián Unrrein");
+    set_copyright(Glib::ustring{"© 2017-2020 "} + _("Slicer developers"));
     set_license_type(Gtk::LICENSE_GPL_3_0);
     set_website(config::APPLICATION_WEBSITE);
+    add_credit_section(_("Application"),
+                       {"Julián Unrrein <junrrein@gmail.com>",
+                        "Mil Tolstoy"});
     add_credit_section(_("Application icon"),
                        {"Lapo Calamandrei <calamandrei@gmail.com>",
                         "Tobias Bernard <tbernard@gnome.org>"});

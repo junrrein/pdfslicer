@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-26 12:55-0300\n"
+"POT-Creation-Date: 2020-08-06 19:01-0300\n"
 "PO-Revision-Date: 2020-01-21 18:21+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -27,11 +27,20 @@ msgstr ""
 "Una semplice applicazione per estrarre, unire, ruotare e riordinare le "
 "pagine dei documenti PDF"
 
+#: ../src/application/aboutdialog.cpp:29
+msgid "Slicer developers"
+msgstr ""
+
 #: ../src/application/aboutdialog.cpp:32
-msgid "Application icon"
+#, fuzzy
+msgid "Application"
 msgstr "Icona applicazione"
 
 #: ../src/application/aboutdialog.cpp:35
+msgid "Application icon"
+msgstr "Icona applicazione"
+
+#: ../src/application/aboutdialog.cpp:38
 msgid "Third-party libraries"
 msgstr "Librerie di terze parti"
 
@@ -128,12 +137,12 @@ msgstr "Scorciatoie da tastiera"
 msgid "About PDF Slicer"
 msgstr "Informazioni su PDF Slicer"
 
-#: ../src/application/appwindow.cpp:375
+#: ../src/application/appwindow.cpp:350
 #, fuzzy
 msgid "The selected files could not be opened"
 msgstr "Il file selezionato non può essere aperto"
 
-#: ../src/application/appwindow.cpp:386
+#: ../src/application/appwindow.cpp:361
 msgid "The current document could not be saved"
 msgstr "Il documento corrente non può essere salvato"
 
@@ -197,11 +206,15 @@ msgstr "Apri documento"
 msgid "PDF documents"
 msgstr "Documento PDF"
 
-#: ../src/application/previewwindow.cpp:64
+#: ../src/application/previewheaderbar.cpp:25
+msgid "Page preview"
+msgstr ""
+
+#: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
 msgstr "Riduce l'ingrandimento"
 
-#: ../src/application/previewwindow.cpp:71
+#: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
 msgstr "Aumenta l'ingrandimento"
 

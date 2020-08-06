@@ -1,14 +1,16 @@
 {
     "app-id": "com.github.junrrein.PDFSlicer",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.34",
+    "runtime-version": "3.36",
     "sdk": "org.gnome.Sdk",
     "command": "pdfslicer",
     "finish-args": [
         "--filesystem=host",
         "--share=ipc",
         "--socket=x11",
-        "--socket=wayland"
+        "--socket=wayland",
+        "--talk-name=org.gtk.vfs",
+        "--talk-name=org.gtk.vfs.*"
     ],
     "cleanup": [
         "/bin/mm-common-prepare",

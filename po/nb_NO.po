@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-26 12:55-0300\n"
+"POT-Creation-Date: 2020-08-06 19:01-0300\n"
 "PO-Revision-Date: 2020-01-24 04:21+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/pdf-"
@@ -26,11 +26,20 @@ msgstr ""
 "Et enkelt program for uthenting, fletting, rotering og rekkefølgeendring av "
 "sider fra PDF-dokumenter"
 
+#: ../src/application/aboutdialog.cpp:29
+msgid "Slicer developers"
+msgstr ""
+
 #: ../src/application/aboutdialog.cpp:32
-msgid "Application icon"
+#, fuzzy
+msgid "Application"
 msgstr "Programikon"
 
 #: ../src/application/aboutdialog.cpp:35
+msgid "Application icon"
+msgstr "Programikon"
+
+#: ../src/application/aboutdialog.cpp:38
 msgid "Third-party libraries"
 msgstr "Tredjepartsbibliotek"
 
@@ -132,12 +141,12 @@ msgstr "Tastatursnarveier"
 msgid "About PDF Slicer"
 msgstr "Om PDF Slicer"
 
-#: ../src/application/appwindow.cpp:375
+#: ../src/application/appwindow.cpp:350
 #, fuzzy
 msgid "The selected files could not be opened"
 msgstr "Valgt fil kunne ikke åpnes"
 
-#: ../src/application/appwindow.cpp:386
+#: ../src/application/appwindow.cpp:361
 msgid "The current document could not be saved"
 msgstr "Nåværende dokument kunne ikke lagres"
 
@@ -203,11 +212,16 @@ msgstr "Åpne dokument"
 msgid "PDF documents"
 msgstr "PDF-dokument"
 
-#: ../src/application/previewwindow.cpp:64
+#: ../src/application/previewheaderbar.cpp:25
+#, fuzzy
+msgid "Page preview"
+msgstr "Forhåndsvis"
+
+#: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
 msgstr "Forminsk"
 
-#: ../src/application/previewwindow.cpp:71
+#: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
 msgstr "Forstørr"
 
@@ -368,6 +382,3 @@ msgstr "Gjenta angret kommando"
 
 #~ msgid "\"Move Left\" and \"Move Right\" icons"
 #~ msgstr "Ikoner for \"Flytt til venstre\" og \"Flytt til høyre"
-
-#~ msgid "Preview"
-#~ msgstr "Forhåndsvis"

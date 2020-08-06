@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-26 12:55-0300\n"
+"POT-Creation-Date: 2020-08-06 19:01-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,11 +23,19 @@ msgid ""
 "documents"
 msgstr ""
 
+#: ../src/application/aboutdialog.cpp:29
+msgid "Slicer developers"
+msgstr ""
+
 #: ../src/application/aboutdialog.cpp:32
-msgid "Application icon"
+msgid "Application"
 msgstr ""
 
 #: ../src/application/aboutdialog.cpp:35
+msgid "Application icon"
+msgstr ""
+
+#: ../src/application/aboutdialog.cpp:38
 msgid "Third-party libraries"
 msgstr ""
 
@@ -122,11 +130,11 @@ msgstr ""
 msgid "About PDF Slicer"
 msgstr ""
 
-#: ../src/application/appwindow.cpp:375
+#: ../src/application/appwindow.cpp:350
 msgid "The selected files could not be opened"
 msgstr ""
 
-#: ../src/application/appwindow.cpp:386
+#: ../src/application/appwindow.cpp:361
 msgid "The current document could not be saved"
 msgstr ""
 
@@ -187,11 +195,15 @@ msgstr ""
 msgid "PDF documents"
 msgstr ""
 
-#: ../src/application/previewwindow.cpp:64
+#: ../src/application/previewheaderbar.cpp:25
+msgid "Page preview"
+msgstr ""
+
+#: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
 msgstr ""
 
-#: ../src/application/previewwindow.cpp:71
+#: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
 msgstr ""
 
