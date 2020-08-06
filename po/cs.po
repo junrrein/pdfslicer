@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2020-04-26 12:55-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-06 19:01-0300\n"
 "PO-Revision-Date: 2020-04-29 01:11+0000\n"
 "Last-Translator: Tomáš Průcha <pruchatomas@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -26,11 +26,20 @@ msgstr ""
 "Jednoduchá aplikace pro extrahování, sloučení, otáčení a změnu pořadí "
 "stránek dokumentů PDF"
 
+#: ../src/application/aboutdialog.cpp:29
+msgid "Slicer developers"
+msgstr ""
+
 #: ../src/application/aboutdialog.cpp:32
-msgid "Application icon"
+#, fuzzy
+msgid "Application"
 msgstr "Ikona aplikace"
 
 #: ../src/application/aboutdialog.cpp:35
+msgid "Application icon"
+msgstr "Ikona aplikace"
+
+#: ../src/application/aboutdialog.cpp:38
 msgid "Third-party libraries"
 msgstr "Knihovny třetích stran"
 
@@ -125,11 +134,11 @@ msgstr "Klávesové zkratky"
 msgid "About PDF Slicer"
 msgstr "O aplikaci PDF Slicer"
 
-#: ../src/application/appwindow.cpp:375
+#: ../src/application/appwindow.cpp:350
 msgid "The selected files could not be opened"
 msgstr "Vybrané soubory nelze otevřít"
 
-#: ../src/application/appwindow.cpp:386
+#: ../src/application/appwindow.cpp:361
 msgid "The current document could not be saved"
 msgstr "Aktuální dokument nelze uložit"
 
@@ -190,11 +199,15 @@ msgstr "Otevřít dokument"
 msgid "PDF documents"
 msgstr "Dokumenty PDF"
 
-#: ../src/application/previewwindow.cpp:64
+#: ../src/application/previewheaderbar.cpp:25
+msgid "Page preview"
+msgstr ""
+
+#: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
 msgstr "Zmenšit"
 
-#: ../src/application/previewwindow.cpp:71
+#: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
 msgstr "Zvětšit"
 

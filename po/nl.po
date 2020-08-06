@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2020-04-26 12:55-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-06 19:01-0300\n"
 "PO-Revision-Date: 2020-04-29 01:11+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -26,11 +26,20 @@ msgstr ""
 "Een eenvoudige applicatie om pagina's van een PDF-document te extraheren, "
 "samenvoegen, draaien en herorganiseren"
 
+#: ../src/application/aboutdialog.cpp:29
+msgid "Slicer developers"
+msgstr ""
+
 #: ../src/application/aboutdialog.cpp:32
-msgid "Application icon"
+#, fuzzy
+msgid "Application"
 msgstr "Applicatiepictogram"
 
 #: ../src/application/aboutdialog.cpp:35
+msgid "Application icon"
+msgstr "Applicatiepictogram"
+
+#: ../src/application/aboutdialog.cpp:38
 msgid "Third-party libraries"
 msgstr "Externe bibliotheken"
 
@@ -125,11 +134,11 @@ msgstr "Sneltoetsen"
 msgid "About PDF Slicer"
 msgstr "Over PDF Slicer"
 
-#: ../src/application/appwindow.cpp:375
+#: ../src/application/appwindow.cpp:350
 msgid "The selected files could not be opened"
 msgstr "De geselecteerde bestanden kunnen niet worden geopend"
 
-#: ../src/application/appwindow.cpp:386
+#: ../src/application/appwindow.cpp:361
 msgid "The current document could not be saved"
 msgstr "Het huidige document kan niet worden opgeslagen"
 
@@ -190,11 +199,16 @@ msgstr "Document openen"
 msgid "PDF documents"
 msgstr "PDF-documenten"
 
-#: ../src/application/previewwindow.cpp:64
+#: ../src/application/previewheaderbar.cpp:25
+#, fuzzy
+msgid "Page preview"
+msgstr "Voorbeeld"
+
+#: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
 msgstr "Uitzoomen"
 
-#: ../src/application/previewwindow.cpp:71
+#: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
 msgstr "Inzoomen"
 
@@ -346,6 +360,3 @@ msgstr "Opdracht opnieuw uitvoeren"
 #~ msgstr ""
 #~ "Pictogrammen voor \"Naar links verplaatsen\" en \"Naar rechts verplaatsen"
 #~ "\""
-
-#~ msgid "Preview"
-#~ msgstr "Voorbeeld"
