@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Sabri Ünal <libreajans@gmail.com>, 2019, 2020.
 # Emin Tufan Çetin <etcetin@gmail.com>, 2020.
+# Oğuz Ersen <oguzersen@protonmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-08-06 19:17-0300\n"
-"PO-Revision-Date: 2020-05-07 22:12+0000\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"PO-Revision-Date: 2020-08-09 12:32+0000\n"
+"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/tr/>\n"
 "Language: tr\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.1-dev\n"
+"X-Generator: Weblate 4.2-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -29,7 +30,7 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr ""
+msgstr "Slicer geliştiricileri"
 
 #: ../src/application/aboutdialog.cpp:32
 #, fuzzy
@@ -37,9 +38,8 @@ msgid "Application programming"
 msgstr "Uygulama simgesi"
 
 #: ../src/application/aboutdialog.cpp:35
-#, fuzzy
 msgid "Application design"
-msgstr "Uygulama simgesi"
+msgstr "Uygulama tasarımı"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
@@ -207,7 +207,7 @@ msgstr "PDF belgesi"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr ""
+msgstr "Sayfa ön izlemesi"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
