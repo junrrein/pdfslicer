@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-08-06 19:17-0300\n"
-"PO-Revision-Date: 2020-04-29 01:11+0000\n"
+"PO-Revision-Date: 2020-08-09 12:32+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/nl/>\n"
@@ -16,33 +16,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0.2\n"
+"X-Generator: Weblate 4.2-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
-"Een eenvoudige applicatie om pagina's van een PDF-document te extraheren, "
-"samenvoegen, draaien en herorganiseren"
+"Een eenvoudige toepassing om pagina's van pdf-documenten te extraheren, "
+"draaien, herorganiseren en samen te voegen"
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr ""
+msgstr "Slicer-ontwikkelaars"
 
 #: ../src/application/aboutdialog.cpp:32
-#, fuzzy
 msgid "Application programming"
-msgstr "Applicatiepictogram"
+msgstr "Programmeur"
 
 #: ../src/application/aboutdialog.cpp:35
-#, fuzzy
 msgid "Application design"
-msgstr "Applicatiepictogram"
+msgstr "Ontwerper"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
-msgstr "Applicatiepictogram"
+msgstr "Toepassingspictogram"
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
@@ -106,7 +104,7 @@ msgstr "Selectie omkeren"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
-msgstr "Selectie annuleren"
+msgstr "Niets selecteren"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
@@ -149,11 +147,11 @@ msgstr "Het huidige document kan niet worden opgeslagen"
 
 #: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
-msgstr "Bestand {fileName} toegevoegd"
+msgstr "{fileName} is toegevoegd"
 
 #: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
-msgstr "Meerdere bestanden toegevoegd"
+msgstr "Er zijn meerdere bestanden toegevoegd"
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
@@ -205,9 +203,8 @@ msgid "PDF documents"
 msgstr "PDF-documenten"
 
 #: ../src/application/previewheaderbar.cpp:25
-#, fuzzy
 msgid "Page preview"
-msgstr "Voorbeeld"
+msgstr "Paginavoorbeeld"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
@@ -316,7 +313,7 @@ msgstr "Huidige selectie omkeren"
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr "Selectie annuleren"
+msgstr "Niets selecteren"
 
 #: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
