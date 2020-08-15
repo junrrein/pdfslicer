@@ -9,9 +9,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-08-06 19:17-0300\n"
-"PO-Revision-Date: 2020-04-29 01:11+0000\n"
+"PO-Revision-Date: 2020-08-16 19:32+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/de/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0.2\n"
+"X-Generator: Weblate 4.2-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -32,17 +32,15 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr ""
+msgstr "Slicer-Entwickler"
 
 #: ../src/application/aboutdialog.cpp:32
-#, fuzzy
 msgid "Application programming"
-msgstr "Anwendungssymbol"
+msgstr "Programmierung der Anwendung"
 
 #: ../src/application/aboutdialog.cpp:35
-#, fuzzy
 msgid "Application design"
-msgstr "Anwendungssymbol"
+msgstr "Design der Anwendung"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
@@ -209,9 +207,8 @@ msgid "PDF documents"
 msgstr "PDF-Dokumente"
 
 #: ../src/application/previewheaderbar.cpp:25
-#, fuzzy
 msgid "Page preview"
-msgstr "Vorschau"
+msgstr "Seitenvorschau"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
