@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-08-06 19:17-0300\n"
-"PO-Revision-Date: 2020-05-18 09:41+0000\n"
+"PO-Revision-Date: 2020-08-30 19:37+0000\n"
 "Last-Translator: naofum <naofum@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/ja/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.1-dev\n"
+"X-Generator: Weblate 4.2.1-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -28,17 +28,15 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr ""
+msgstr "スライサー開発者"
 
 #: ../src/application/aboutdialog.cpp:32
-#, fuzzy
 msgid "Application programming"
-msgstr "アプリケーションのアイコン"
+msgstr "アプリケーションプログラミング"
 
 #: ../src/application/aboutdialog.cpp:35
-#, fuzzy
 msgid "Application design"
-msgstr "アプリケーションのアイコン"
+msgstr "アプリケーションデザイン"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
@@ -206,7 +204,7 @@ msgstr "PDF ドキュメント"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr ""
+msgstr "ページプレビュー"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
