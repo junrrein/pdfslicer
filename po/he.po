@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-08-06 19:17-0300\n"
-"PO-Revision-Date: 2020-07-22 10:41+0000\n"
+"PO-Revision-Date: 2020-09-30 10:41+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/he/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.2-dev\n"
+"X-Generator: Weblate 4.3-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -27,17 +27,15 @@ msgstr "כלי פשוט לחילוץ, מיזוג, הטיה וסידור מחדש
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr ""
+msgstr "מפתחי Slicer"
 
 #: ../src/application/aboutdialog.cpp:32
-#, fuzzy
 msgid "Application programming"
-msgstr "סמל היישום"
+msgstr "פיתוח יישומים"
 
 #: ../src/application/aboutdialog.cpp:35
-#, fuzzy
 msgid "Application design"
-msgstr "סמל היישום"
+msgstr "עיצוב יישומים"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
@@ -205,7 +203,7 @@ msgstr "מסמכי PDF"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr ""
+msgstr "תצוגת עמוד מקדימה"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
