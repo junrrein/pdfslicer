@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Ali Galal <lj66163@gmail.com>, 2020.
 # Ali Galal <ali.sameh.galal@gmail.com>, 2020.
+# tamer dab <dabsantamer@yahoo.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-08-06 19:17-0300\n"
-"PO-Revision-Date: 2020-06-12 07:41+0000\n"
-"Last-Translator: Ali Galal <ali.sameh.galal@gmail.com>\n"
+"PO-Revision-Date: 2020-10-28 04:26+0000\n"
+"Last-Translator: tamer dab <dabsantamer@yahoo.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/ar/>\n"
 "Language: ar\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 4.1-dev\n"
+"X-Generator: Weblate 4.3.2-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -28,17 +29,15 @@ msgstr "برنامج بسيط لاستخراج ودمج وتدوير واعاد�
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr ""
+msgstr "مطورو Slicer"
 
 #: ../src/application/aboutdialog.cpp:32
-#, fuzzy
 msgid "Application programming"
-msgstr "ايقونة البرنامج"
+msgstr "برمجة التطبيقات"
 
 #: ../src/application/aboutdialog.cpp:35
-#, fuzzy
 msgid "Application design"
-msgstr "ايقونة البرنامج"
+msgstr "تصميم التطبيق"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
@@ -206,7 +205,7 @@ msgstr "مستندات PDF"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr ""
+msgstr "معاينة الصفحة"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
