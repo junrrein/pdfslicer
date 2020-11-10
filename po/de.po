@@ -6,13 +6,14 @@
 # Andreas Kleinert <Andy.Kleinert@gmail.com>, 2019.
 # nautilusx <mail.ka@mailbox.org>, 2019, 2020.
 # Milo Ivir <mail@milotype.de>, 2020.
+# Onno Giesmann <nutzer3105@gmail.com>.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-06 19:17-0300\n"
-"PO-Revision-Date: 2020-04-29 01:11+0000\n"
-"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"PO-Revision-Date: 2020-11-10 21:01+0100\n"
+"Last-Translator: Onno Giesmann <nutzer3105@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/de/>\n"
 "Language: de\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0.2\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -32,17 +33,15 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr ""
+msgstr "Entwickler des Zuschneiders"
 
 #: ../src/application/aboutdialog.cpp:32
-#, fuzzy
 msgid "Application programming"
-msgstr "Anwendungssymbol"
+msgstr "Anwendungsprogrammierung"
 
 #: ../src/application/aboutdialog.cpp:35
-#, fuzzy
 msgid "Application design"
-msgstr "Anwendungssymbol"
+msgstr "Anwendungsgestaltung"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
@@ -74,7 +73,7 @@ msgstr "Ausgewählte Seiten entfernen"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr "Ausgewählte Seiten entfernen"
+msgstr "Nicht ausgewählte Seiten entfernen"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
@@ -102,7 +101,7 @@ msgstr "Gerade Seiten auswählen"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr "Weitere Seitenauswahloptionen …"
+msgstr "Weitere Seitenauswahloptionen…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Invert Selection"
@@ -114,7 +113,7 @@ msgstr "Auswahl aufheben"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
-msgstr "Hizuzufügende Dokumente auswählen"
+msgstr "Hinzuzufügende Dokumente auswählen"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
@@ -141,11 +140,11 @@ msgstr "Tastenkombinationen"
 
 #: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
-msgstr "Über PDF Slicer"
+msgstr "Info zu PDF Slicer"
 
 #: ../src/application/appwindow.cpp:350
 msgid "The selected files could not be opened"
-msgstr "Die ausgewählten Datein konnten nicht geöffnet werden"
+msgstr "Die ausgewählten Dateien konnten nicht geöffnet werden"
 
 #: ../src/application/appwindow.cpp:361
 msgid "The current document could not be saved"
@@ -209,9 +208,8 @@ msgid "PDF documents"
 msgstr "PDF-Dokumente"
 
 #: ../src/application/previewheaderbar.cpp:25
-#, fuzzy
 msgid "Page preview"
-msgstr "Vorschau"
+msgstr "Seitenvorschau"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
