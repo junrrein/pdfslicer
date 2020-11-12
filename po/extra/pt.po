@@ -1,0 +1,38 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# ssantos <ssantos@web.de>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
+"POT-Creation-Date: 2019-07-23 19:36-0300\n"
+"PO-Revision-Date: 2020-08-30 19:37+0000\n"
+"Last-Translator: ssantos <ssantos@web.de>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/pdf-slicer/"
+"extra/pt/>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.2.1-dev\n"
+
+msgid "Extract, merge, rotate and reorder pages of PDF documents"
+msgstr "Extrair, mesclar, girar e reordenar páginas de documentos PDF"
+
+msgid ""
+"A simple tool to extract, merge, rotate and reorder pages of PDF documents"
+msgstr ""
+"Uma ferramenta simples para extrair, mesclar, girar e reordenar páginas de "
+"documentos PDF"
+
+msgid ""
+"PDF Slicer is a simple application to extract, merge, rotate and reorder "
+"pages of PDF documents. The operations can be performed on single pages or "
+"on selections/ranges of pages, and it has undo/redo support."
+msgstr ""
+"O PDF Slicer é uma aplicação simples para extrair, mesclar, girar e "
+"reordenar páginas de documentos PDF. As operações podem ser realizadas em "
+"páginas únicas ou em seleções/intervalos de páginas, e tem suporte para "
+"desfazer/refazer."

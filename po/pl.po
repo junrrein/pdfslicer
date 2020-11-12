@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-08-06 19:17-0300\n"
-"PO-Revision-Date: 2020-06-10 18:41+0000\n"
+"PO-Revision-Date: 2020-08-09 12:32+0000\n"
 "Last-Translator: WaldiS <sto@tutanota.de>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/pl/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.1-dev\n"
+"X-Generator: Weblate 4.2-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -31,17 +31,15 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr ""
+msgstr "Programiści Slicer"
 
 #: ../src/application/aboutdialog.cpp:32
-#, fuzzy
 msgid "Application programming"
-msgstr "Ikona aplikacji"
+msgstr "Programowanie aplikacji"
 
 #: ../src/application/aboutdialog.cpp:35
-#, fuzzy
 msgid "Application design"
-msgstr "Ikona aplikacji"
+msgstr "Wygląd aplikacji"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
@@ -53,11 +51,11 @@ msgstr "Biblioteki stron trzecich"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr "Rotuj w lewo"
+msgstr "Obróć w lewo"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr "Rotuj w prawo"
+msgstr "Obróć w prawo"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
@@ -192,7 +190,7 @@ msgstr "Ponów"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
-msgstr "Zapisz Jako"
+msgstr "Zapisz jako"
 
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
@@ -209,7 +207,7 @@ msgstr "Dokumenty PDF"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr ""
+msgstr "Podgląd strony"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
