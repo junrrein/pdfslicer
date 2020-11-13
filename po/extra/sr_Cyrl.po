@@ -1,0 +1,40 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Weblate <noreply@weblate.org>, 2020.
+# Pera Petrovic <srdjan.todorovic.872019@gmail.com>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
+"POT-Creation-Date: 2019-07-23 19:36-0300\n"
+"PO-Revision-Date: 2020-11-13 19:53+0000\n"
+"Last-Translator: Pera Petrovic <srdjan.todorovic.872019@gmail.com>\n"
+"Language-Team: Serbian (cyrillic) <https://hosted.weblate.org/projects/"
+"pdf-slicer/extra/sr_Cyrl/>\n"
+"Language: sr_Cyrl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.4-dev\n"
+
+msgid "Extract, merge, rotate and reorder pages of PDF documents"
+msgstr "Издвајање, спајање, ротирање и преуређивање страна PDF докумената"
+
+msgid ""
+"A simple tool to extract, merge, rotate and reorder pages of PDF documents"
+msgstr ""
+"Једноставан програм за издвајање, спајање и распоређивање страна PDF "
+"докумената"
+
+msgid ""
+"PDF Slicer is a simple application to extract, merge, rotate and reorder "
+"pages of PDF documents. The operations can be performed on single pages or "
+"on selections/ranges of pages, and it has undo/redo support."
+msgstr ""
+"PDF Slicer је једноставан програм за издвајање, спајање, ротирање и "
+"преуређивање страна PDF докумената. Операције се могу изводити на "
+"појединачним странама или на одабирима/опсегу страна и има подршку за "
+"опозивање/повратак извршених команди."
