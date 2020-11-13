@@ -1,367 +1,325 @@
-# Julián Unrrein <junrrein@gmail.com>, 2018, 2019, 2020.
-# Scoopity Whoop <Scoo0p@yandex.com>, 2020.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# taotieren <admin@taotieren.com>, 2020.
+# Weblate <noreply@weblate.org>, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-08-06 19:17-0300\n"
-"PO-Revision-Date: 2020-08-30 19:37+0000\n"
-"Last-Translator: Scoopity Whoop <Scoo0p@yandex.com>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
-"translations/es/>\n"
-"Language: es\n"
+"PO-Revision-Date: 2020-11-05 07:26+0000\n"
+"Last-Translator: taotieren <admin@taotieren.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"pdf-slicer/translations/zh_Hans/>\n"
+"Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.2.1-dev\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.3.2-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
-msgstr ""
-"Una aplicación sencilla para extraer, combinar, rotar y reordenar páginas de "
-"documentos PDF"
+msgstr "提取、合并、旋转和重新排序 PDF 文档页面的简单应用程序"
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr "Desarrolladores de Slicer"
+msgstr "Slicer 开发人员"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application programming"
-msgstr "Programación de aplicaciones"
+msgstr "应用程序"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Application design"
-msgstr "Diseño de la aplicación"
+msgstr "应用设计"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
-msgstr "Icono de aplicación"
+msgstr "应用程序图标"
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
-msgstr "Bibliotecas de terceros"
+msgstr "第三方库"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr "Rotar hacia la izquierda"
+msgstr "左旋"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr "Rotar hacia la derecha"
+msgstr "向右旋转"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
-msgstr "Mover a la izquierda"
+msgstr "左移"
 
 #: ../src/application/actionbar.cpp:48
 msgid "Move right"
-msgstr "Mover a la derecha"
+msgstr "右移"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr "Remover páginas seleccionadas"
+msgstr "删除所选页面"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr "Remover páginas no seleccionadas"
+msgstr "删除未选择的页面"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
-msgstr "Remover páginas anteriores"
+msgstr "删除以前的页面"
 
 #: ../src/application/actionbar.cpp:63
 msgid "Remove next pages"
-msgstr "Remover páginas siguientes"
+msgstr "删除下一页"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr "Más operaciones para remover páginas…"
+msgstr "更多页面删除操作…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr "Seleccionar Todo"
+msgstr "全选"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
-msgstr "Seleccionar páginas impares"
+msgstr "选择奇数页"
 
 #: ../src/application/actionbar.cpp:77
 msgid "Select even pages"
-msgstr "Seleccionar páginas pares"
+msgstr "选择偶数页面"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr "Más opciones para seleccionar páginas…"
+msgstr "更多页面选择选项…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Invert Selection"
-msgstr "Invertir Selección"
+msgstr "反选"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
-msgstr "Cancelar Selección"
+msgstr "取消选择"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
-msgstr "Seleccionar documentos a añadir"
+msgstr "选择要添加的文档"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
-msgstr "Añadir"
+msgstr "添加"
 
 #: ../src/application/addfiledialog.cpp:29
 #: ../src/application/openfiledialog.cpp:29
 #: ../src/application/savefiledialog.cpp:29
 #: ../src/application/unsavedchangesdialog.cpp:33
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "取消"
 
 #: ../src/application/application.cpp:92 ../src/application/appmenu.cpp:63
 msgid "New window"
-msgstr "Ventana nueva"
+msgstr "新窗口"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
-msgstr "Zoom"
+msgstr "缩放"
 
 #: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
-msgstr "Atajos de teclado"
+msgstr "键盘快捷键"
 
 #: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
-msgstr "Acerca de PDF Slicer"
+msgstr "关于 PDF Slicer"
 
 #: ../src/application/appwindow.cpp:350
 msgid "The selected files could not be opened"
-msgstr "No se pudieron abrir los archivos seleccionados"
+msgstr "无法打开所选文件"
 
 #: ../src/application/appwindow.cpp:361
 msgid "The current document could not be saved"
-msgstr "El documento actual no pudo ser guardado"
+msgstr "无法保存当前文档"
 
 #: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
-msgstr "Añadido archivo {fileName}"
+msgstr "已添加文件 {fileName}"
 
 #: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
-msgstr "Múltiples archivos añadidos"
+msgstr "添加了多个文件"
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
-msgstr "Abrir"
+msgstr "打开"
 
 #: ../src/application/headerbar.cpp:60
 msgid "Add Documents"
-msgstr "Añadir Documentos"
+msgstr "添加文件"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr "Al inicio…"
+msgstr "一开始…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
-msgstr "Al final…"
+msgstr "最后…"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
-msgstr "Luego de la página seleccionada…"
+msgstr "在选定页面之后…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add Documents…"
-msgstr "Añadir Documentos…"
+msgstr "添加文档…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
-msgstr "Deshacer"
+msgstr "撤消"
 
 #: ../src/application/headerbar.cpp:78
 msgid "Redo"
-msgstr "Repetir"
+msgstr "重做"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
-msgstr "Guardar Como"
+msgstr "另存为"
 
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
-msgstr "Página {pageNumber}"
+msgstr "页 {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
-msgstr "Abrir documento"
+msgstr "打开文档"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF documents"
-msgstr "Documentos PDF"
+msgstr "PDF 文档"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr "Vista previa de la página"
+msgstr "页面预览"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
-msgstr "Reducir"
+msgstr "缩小"
 
 #: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
-msgstr "Ampliar"
+msgstr "放大"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr "Guardar documento como"
+msgstr "将文档另存为"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
-msgstr "Guardar"
+msgstr "保存"
 
 #: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
-msgstr "Documento sin título"
+msgstr "无标题文档"
 
 #: ../src/application/savingrevealer.cpp:25
 msgid "Saving document…"
-msgstr "Guardando documento…"
+msgstr "正在保存文档…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
-msgstr "Documento guardado exitosamente"
+msgstr "文档成功保存"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr "¿Guardar documento modificado antes de cerrar?"
+msgstr "在关闭之前保存修改后的文档？"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
-msgstr "Cerrar sin guardar"
+msgstr "不保存关闭"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
-msgstr "Guardar Como…"
+msgstr "另存为…"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "Abra un documento ¡y empiece a rebanar!"
+msgstr "打开文档开始切片！"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr "General"
+msgstr "常规"
 
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr "Abrir documento"
+msgstr "打开文档"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr "Guardar documento"
+msgstr "保存文档"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr "Aumentar zoom"
+msgstr "放大"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr "Disminuir zoom"
+msgstr "缩小"
 
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr "Restablecer nivel de zoom"
+msgstr "重置缩放级别"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
 msgid "New window"
-msgstr "Ventana nueva"
+msgstr "新窗口"
 
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr "Cerrar ventana"
+msgstr "关闭窗口"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Document editing"
-msgstr "Edición de documentos"
+msgstr "文档编辑"
 
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr "Remover páginas seleccionadas"
+msgstr "删除所选页面"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr "Seleccionar todas las páginas"
+msgstr "选择所有页面"
 
 #: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr "Invertir selección actual"
+msgstr "反选当前"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr "Cancelar selección"
+msgstr "取消选择"
 
 #: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr "Deshacer el último comando"
+msgstr "撤消上一个命令"
 
 #: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr "Rehacer comando deshecho"
-
-#, fuzzy
-#~ msgid "Application"
-#~ msgstr "Icono de aplicación"
-
-#~ msgid "Saving…"
-#~ msgstr "Guardando…"
-
-#~ msgid "Saved!"
-#~ msgstr "¡Guardado!"
-
-#~ msgid "Open…"
-#~ msgstr "Abrir…"
-
-#~ msgid "Insertion position"
-#~ msgstr "Posición de inserción"
-
-#~ msgid "Beginning"
-#~ msgstr "Inicio"
-
-#~ msgid "End"
-#~ msgstr "Final"
-
-#~ msgctxt "plural (pages)"
-#~ msgid "Remove selected"
-#~ msgstr "Remover seleccionadas"
-
-#~ msgctxt "plural (pages)"
-#~ msgid "Remove unselected"
-#~ msgstr "Remover no seleccionadas"
-
-#~ msgctxt "plural (pages)"
-#~ msgid "Remove next"
-#~ msgstr "Remover siguientes"
-
-#~ msgid "About"
-#~ msgstr "Acerca de"
-
-#~ msgid "\"Move Left\" and \"Move Right\" icons"
-#~ msgstr "Iconos \"Mover a la Izquierda\" y \"Mover a la Derecha\""
-
-#~ msgid "Quit"
-#~ msgstr "Salir"
+msgstr "重做撤消命令"

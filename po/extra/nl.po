@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Weblate <noreply@weblate.org>, 2018.
-# Heimen Stoffels <vistausss@outlook.com>, 2019.
+# Heimen Stoffels <vistausss@outlook.com>, 2019, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-06-25 16:32-0300\n"
-"PO-Revision-Date: 2019-06-25 19:24+0000\n"
+"PO-Revision-Date: 2020-08-09 12:32+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/extra/"
 "nl/>\n"
@@ -17,28 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1-dev\n"
+"X-Generator: Weblate 4.2-dev\n"
 
 msgid "Extract, merge, rotate and reorder pages of PDF documents"
-msgstr ""
-"Een eenvoudig hulpmiddel om pagina's te extraheren uit, draaien en "
-"herordenen in een PDF-document"
+msgstr "Extraheer, draai en herorden pagina's van pdf-documenten"
 
 msgid ""
 "A simple tool to extract, merge, rotate and reorder pages of PDF documents"
 msgstr ""
-"Een eenvoudig hulpmiddel om pagina's te extraheren uit, draaien en "
-"herordenen in een PDF-document"
+"Een eenvoudig hulpmiddel om pagina's van pdf-documenten te extraheren, "
+"draaien, herorganiseren en samen te voegen"
 
 msgid ""
 "PDF Slicer is a simple application to extract, merge, rotate and reorder "
 "pages of PDF documents. The operations can be performed on single pages or "
 "on selections/ranges of pages, and it has undo/redo support."
 msgstr ""
-"PDF Slicer is een eenvoudig hulpmiddel om pagina's te extraheren uit, "
-"draaien en herordenen in een PDF-document. De handelingen kunnen worden "
-"uitgevoerd op zowel losse pagina's als selecties/reeksen van pagina's en er "
-"is ondersteuning voor ongedaan maken/opnieuw."
+"PDF Slicer is een eenvoudig hulpmiddel om pagina's van pdf-documenten te "
+"extraheren, draaien, herorganiseren en samen te voegen. De handelingen "
+"kunnen worden uitgevoerd op zowel losse pagina's als selecties/reeksen van "
+"pagina's en er is ondersteuning voor ongedaan maken/opnieuw."
 
 #~ msgid "Extract and rotate pages of a PDF document"
 #~ msgstr "Extraheer en draai pagina's uit/van een PDF-document"
