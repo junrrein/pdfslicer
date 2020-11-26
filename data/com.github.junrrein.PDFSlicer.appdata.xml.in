@@ -5,7 +5,7 @@
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
 	<name>PDF Slicer</name>
-	<launchable>@APPLICATION_ID@.desktop</launchable>
+	<launchable type="desktop-id">@APPLICATION_ID@.desktop</launchable>
 	<_summary>A simple tool to extract, merge, rotate and reorder pages of PDF documents</_summary>
 	<description>
 		<_p>
