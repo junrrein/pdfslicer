@@ -34,7 +34,7 @@
 	<releases>
 		<release version="1.8.6" date="2020-11-25">
 			<description>
-				<p>Add ability to invert the current page selection (@miltolstoy). Add Arabic translation (@3eloa). Update existing translations.</p>
+				<p>Several contributions by @miltostoy: Do not disable "edit" actions during document saving, allow opening several documents in one window, disable "Select odd/even pages" actions in corner cases and move zoom buttons to window titlebar in big previews. Add Greek translation (@iosifidis). Add Hebrew translation (@yarons). Add Chinese (Simplified) translation (@taotieren). Add Serbian translation (latin and cyrillic) (@TodorovicSrdjan). Add Slovak translation (@jose1711). Update existing translations. Other bug fixes and improvements.</p>
 			</description>
 		</release>
 		<release version="1.8.5" date="2020-05-01">
