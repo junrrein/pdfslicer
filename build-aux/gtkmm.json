@@ -28,14 +28,12 @@
 		},
 		{
 			"name": "glibmm",
-			"config-opts": [
-				"--disable-documentation"
-			],
+			"buildsystem": "meson",
 			"sources": [
 				{
 					"type": "archive",
-					"url": "http://ftp.gnome.org/pub/GNOME/sources/glibmm/2.62/glibmm-2.62.0.tar.xz",
-					"sha256": "36659f13cc73282392d1305858f3bbca46fbd1ce2f078cc9db8b9f79b2e93cfe"
+					"url": "https://download.gnome.org/sources/glibmm/2.64/glibmm-2.64.4.tar.xz",
+					"sha256": "405040ab257cef0c8f1b14fdf9f3f92d6e6403715b64f1b75e4b6f04dfb56284"
 				}
 			]
 		},
@@ -47,8 +45,8 @@
 			"sources": [
 				{
 					"type": "archive",
-					"url": "https://www.cairographics.org/releases/cairomm-1.12.2.tar.gz",
-					"sha1": "621546f32221a2ddc079167a13ce5b5409bed704"
+					"url": "https://www.cairographics.org/releases/cairomm-1.14.2.tar.xz",
+					"sha1": "8c823f5294724d8c96704786f947cd19b9dfd761"
 				}
 			]
 		},
@@ -60,8 +58,8 @@
 			"sources": [
 				{
 					"type": "archive",
-					"url": "http://ftp.gnome.org/pub/GNOME/sources/pangomm/2.42/pangomm-2.42.0.tar.xz",
-					"sha256": "ca6da067ff93a6445780c0b4b226eb84f484ab104b8391fb744a45cbc7edbf56"
+					"url": "https://download.gnome.org/sources/pangomm/2.42/pangomm-2.42.1.tar.xz",
+					"sha256": "14bf04939930870d5cfa96860ed953ad2ce07c3fd8713add4a1bfe585589f40f"
 				}
 			]
 		},
@@ -89,8 +87,8 @@
 	"sources": [
 		{
 			"type": "archive",
-			"url": "http://ftp.gnome.org/pub/GNOME/sources/gtkmm/3.24/gtkmm-3.24.1.tar.xz",
-			"sha256": "ddfe42ed2458a20a34de252854bcf4b52d3f0c671c045f56b42aa27c7542d2fd"
+			"url": "https://download.gnome.org/sources/gtkmm/3.24/gtkmm-3.24.2.tar.xz",
+			"sha256": "6d71091bcd1863133460d4188d04102810e9123de19706fb656b7bb915b4adc3"
 		}
 	]
 }
