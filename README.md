@@ -70,10 +70,11 @@ sudo xargs rm < install_manifest.txt
 
 ```bash
 flatpak remote-add --from gnome https://sdk.gnome.org/gnome.flatpakrepo
-flatpak install gnome org.gnome.Platform//3.34
-flatpak install gnome org.gnome.Sdk//3.34
-wget https://raw.githubusercontent.com/junrrein/pdfslicer/master/com.github.junrrein.PDFSlicer.json
-flatpak-builder --repo=pdfslicer-repo pdfslicer com.github.junrrein.PDFSlicer.json --force-clean
+flatpak install gnome org.gnome.Platform//3.38
+flatpak install gnome org.gnome.Sdk//3.38
+git clone https://github.com/junrrein/pdfslicer.git
+cd pdfslicer/build-aux/
+flatpak-builder --repo=pdfslicer-repo .pdfslicer com.github.junrrein.PDFSlicer.json --force-clean
 flatpak --user remote-add --no-gpg-verify --if-not-exists pdfslicer-repo pdfslicer-repo
 flatpak --user install pdfslicer-repo com.github.junrrein.PDFSlicer
 ```
@@ -83,7 +84,7 @@ Uninstall
 ```bash
 flatpak --user uninstall com.github.junrrein.PDFSlicer
 flatpak --user remote-delete pdfslicer-repo
-rm -rf pdfslicer/ pdfslicer-repo/
+rm -rf pdfslicer/
 ```
 
 # Contributing
