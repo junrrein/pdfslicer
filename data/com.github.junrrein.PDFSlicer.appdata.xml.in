@@ -36,15 +36,10 @@
 			<description>
 				<p>Most of the improvements in this release were made by contributors. Thanks a lot!</p>
 				<ul>
-					<li>Several contributions by @miltolstoy:</li>
-					<li>
-						<ul>
-							<li>Do not disable "edit" actions during document saving</li>
-							<li>Allow opening several documents in one window</li>
-							<li>Disable "Select odd/even pages" actions in corner cases</li>
-							<li>Move zoom buttons to window titlebar in big previews</li>
-						</ul>
-					</li>
+					<li>Do not disable "edit" actions during document saving (@miltolstoy)</li>
+					<li>Allow opening several documents in one window (@miltolstoy)</li>
+					<li>Disable "Select odd/even pages" actions in corner cases (@miltolstoy)</li>
+					<li>Move zoom buttons to window titlebar in big previews (@miltolstoy)</li>
 					<li>Add Greek translation (@iosifidis)</li>
 					<li>Add Hebrew translation (@yarons)</li>
 					<li>Add Chinese (Simplified) translation (@taotieren)</li>
