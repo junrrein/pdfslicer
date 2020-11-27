@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2020-08-06 19:17-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-27 16:28-0300\n"
 "PO-Revision-Date: 2020-09-30 10:41+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -120,7 +120,7 @@ msgstr "הוספה"
 msgid "Cancel"
 msgstr "ביטול"
 
-#: ../src/application/application.cpp:92 ../src/application/appmenu.cpp:63
+#: ../src/application/application.cpp:95 ../src/application/appmenu.cpp:63
 msgid "New window"
 msgstr "חלון חדש"
 
@@ -136,11 +136,11 @@ msgstr "קיצורי מקלדת"
 msgid "About PDF Slicer"
 msgstr "על אודות PDF Slicer"
 
-#: ../src/application/appwindow.cpp:350
+#: ../src/application/appwindow.cpp:353
 msgid "The selected files could not be opened"
 msgstr "לא ניתן לפתוח את הקבצים הנבחרים"
 
-#: ../src/application/appwindow.cpp:361
+#: ../src/application/appwindow.cpp:364
 msgid "The current document could not be saved"
 msgstr "לא ניתן לשמור את המסמך הנוכחי"
 
@@ -323,6 +323,18 @@ msgstr "ביטול הפעולה האחרונה"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "החזרת הפעולה שבוטלה"
+
+#: ../data/ui/shortcuts.ui:99
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Move selected pages left"
+msgstr "הסרת העמודים הנבחרים"
+
+#: ../data/ui/shortcuts.ui:105
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Move selected pages right"
+msgstr "הסרת העמודים הנבחרים"
 
 #, fuzzy
 #~ msgid "Application"

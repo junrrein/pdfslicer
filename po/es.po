@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
-"POT-Creation-Date: 2020-08-06 19:17-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-27 16:28-0300\n"
 "PO-Revision-Date: 2020-08-30 19:37+0000\n"
 "Last-Translator: Scoopity Whoop <Scoo0p@yandex.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
@@ -119,7 +119,7 @@ msgstr "Añadir"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../src/application/application.cpp:92 ../src/application/appmenu.cpp:63
+#: ../src/application/application.cpp:95 ../src/application/appmenu.cpp:63
 msgid "New window"
 msgstr "Ventana nueva"
 
@@ -135,11 +135,11 @@ msgstr "Atajos de teclado"
 msgid "About PDF Slicer"
 msgstr "Acerca de PDF Slicer"
 
-#: ../src/application/appwindow.cpp:350
+#: ../src/application/appwindow.cpp:353
 msgid "The selected files could not be opened"
 msgstr "No se pudieron abrir los archivos seleccionados"
 
-#: ../src/application/appwindow.cpp:361
+#: ../src/application/appwindow.cpp:364
 msgid "The current document could not be saved"
 msgstr "El documento actual no pudo ser guardado"
 
@@ -322,6 +322,18 @@ msgstr "Deshacer el último comando"
 msgctxt "shortcut window"
 msgid "Redo undone command"
 msgstr "Rehacer comando deshecho"
+
+#: ../data/ui/shortcuts.ui:99
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Move selected pages left"
+msgstr "Remover páginas seleccionadas"
+
+#: ../data/ui/shortcuts.ui:105
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Move selected pages right"
+msgstr "Remover páginas seleccionadas"
 
 #, fuzzy
 #~ msgid "Application"
