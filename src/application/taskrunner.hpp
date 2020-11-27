@@ -38,6 +38,7 @@ public:
 
 private:
     static void runTask(const std::shared_ptr<Task>& task);
+    static int numberOfThreads();
 
 	astp::ThreadPool m_threadpool;
 };
