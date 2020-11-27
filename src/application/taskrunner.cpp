@@ -46,6 +46,11 @@ void TaskRunner::queueFront(const std::shared_ptr<Task>& task)
         .detach();
 }
 
+void TaskRunner::waitUntilAllTasksFinish()
+{
+    m_threadpool.wait();
+}
+
 void TaskRunner::runTask(const std::shared_ptr<Task>& task)
 {
     if (task->isCanceled())

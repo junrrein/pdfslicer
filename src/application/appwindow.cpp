@@ -65,6 +65,9 @@ AppWindow::~AppWindow()
 
 void AppWindow::setDocument(std::unique_ptr<Document> document)
 {
+    m_view.cancelRenderingTasks();
+    m_taskRunner.waitUntilAllTasksFinish();
+
     m_document = std::move(document);
     m_view.setDocument(*m_document, m_zoomLevel.currentLevel());
     m_view.setShowFileNames(false);

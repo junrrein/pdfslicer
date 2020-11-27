@@ -50,6 +50,7 @@ public:
     void selectEvenPages();
     void clearSelection();
     void invertSelection();
+    void cancelRenderingTasks();
 
     unsigned int getSelectedChildIndex() const;
     std::vector<unsigned int> getSelectedChildrenIndexes() const;
@@ -80,7 +81,6 @@ private:
     void onShiftSelection(InteractivePageWidget* pageWidget);
     void onPreviewRequested(const Glib::RefPtr<const Page>& page);
     void renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget);
-    void cancelRenderingTasks();
     void clearState();
 
     static int sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b);
