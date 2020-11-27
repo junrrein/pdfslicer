@@ -1,0 +1,35 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Weblate <noreply@weblate.org>, 2019.
+# Jose Riha <jose1711 gmail com>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
+"POT-Creation-Date: 2019-07-23 19:36-0300\n"
+"PO-Revision-Date: 2020-11-18 23:17+0100\n"
+"Last-Translator: Jose Riha <jose1711@gmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/pdf-slicer/extra/cs/>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 2.4.1\n"
+
+msgid "Extract, merge, rotate and reorder pages of PDF documents"
+msgstr "Extrakcia, zlúčenie, otáčanie a zmena poradia strán v dokumentoch PDF"
+
+msgid "A simple tool to extract, merge, rotate and reorder pages of PDF documents"
+msgstr ""
+"Jednoduchý nástroj pre extrakciu, zlúčenie, otáčanie a zmenu poradia strán PDF dokumentov"
+
+msgid ""
+"PDF Slicer is a simple application to extract, merge, rotate and reorder pages of PDF "
+"documents. The operations can be performed on single pages or on selections/ranges of "
+"pages, and it has undo/redo support."
+msgstr ""
+"PDF Slicer je jednoduchá aplikácia pre extrakciu, zlúčenie, otáčanie a zmenu poradia "
+"strán v dokumentoch PDF. Operácie môžu byť vykonávané na jednotlivých stranách alebo na "
+"výbere/rozsahu strán s podporou ich vrátenia späť."

@@ -1,125 +1,125 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Tomáš Průcha <pruchatomas@gmail.com>, 2019, 2020.
+# Jose Riha <jose1711 gmail com>, 2020.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-06 19:17-0300\n"
-"PO-Revision-Date: 2020-08-09 12:32+0000\n"
-"Last-Translator: Tomáš Průcha <pruchatomas@gmail.com>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/pdf-slicer/"
-"translations/cs/>\n"
-"Language: cs\n"
+"PO-Revision-Date: 2020-11-18 23:13+0100\n"
+"Language-Team: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.2-dev\n"
+"X-Generator: Poedit 2.4.1\n"
+"Last-Translator: Jose Riha <jose1711@gmail.com>\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
+"Language: sk_SK\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
-"Jednoduchá aplikace pro extrahování, sloučení, otáčení a změnu pořadí "
-"stránek dokumentů PDF"
+"Jednoduchá aplikácia na extrakciu, zlúčenie, otáčanie a zmenu poradia "
+"stránok v dokumentoch PDF"
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr "Vytvořili"
+msgstr "Vývojári Slicera"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application programming"
-msgstr "Napsali"
+msgstr "Programovanie aplikácie"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Application design"
-msgstr "Grafika"
+msgstr "Návrh aplikácie"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
-msgstr "Ikona aplikace"
+msgstr "Ikona aplikácie"
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
-msgstr "Knihovny třetích stran"
+msgstr "Knižnice tretích strán"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr "Otočit doleva"
+msgstr "Otočiť vľavo"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr "Otočit doprava"
+msgstr "Otočiť vpravo"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
-msgstr "Přesunout doleva"
+msgstr "Presunúť doľava"
 
 #: ../src/application/actionbar.cpp:48
 msgid "Move right"
-msgstr "Přesunout doprava"
+msgstr "Presunúť doprava"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr "Odstranit vybrané stránky"
+msgstr "Odstrániť označené strany"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr "Odstranit nevybrané stránky"
+msgstr "Odstrániť neoznačené strany"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
-msgstr "Odstranit předcházející stránky"
+msgstr "Odstrániť predchádzajúce strany"
 
 #: ../src/application/actionbar.cpp:63
 msgid "Remove next pages"
-msgstr "Odstranit nadcházející stránky"
+msgstr "Odstrániť nasledujúce strany"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr "Další operace odstranění stránek…"
+msgstr "Ďalšie operácie na odstránenie strán…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr "Vybrat vše"
+msgstr "Označiť všetko"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
-msgstr "Vybrat liché stránky"
+msgstr "Označiť nepárne strany"
 
 #: ../src/application/actionbar.cpp:77
 msgid "Select even pages"
-msgstr "Vybrat sudé stránky"
+msgstr "Označiť párne strany"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr "Další možnosti výběru stránek…"
+msgstr "Ďalšie možnosti označovania strán…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Invert Selection"
-msgstr "Invertovat výběr"
+msgstr "Invertovať označenie"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
-msgstr "Zrušit výběr"
+msgstr "Zrušiť označenie"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
-msgstr "Vybrat dokumenty pro přidání"
+msgstr "Vyberte dokumenty, ktoré chcete pridať"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
-msgstr "Přidat"
+msgstr "Pridať"
 
 #: ../src/application/addfiledialog.cpp:29
 #: ../src/application/openfiledialog.cpp:29
 #: ../src/application/savefiledialog.cpp:29
 #: ../src/application/unsavedchangesdialog.cpp:33
 msgid "Cancel"
-msgstr "Zrušit"
+msgstr "Zrušiť"
 
 #: ../src/application/application.cpp:92 ../src/application/appmenu.cpp:63
 msgid "New window"
@@ -127,76 +127,76 @@ msgstr "Nové okno"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
-msgstr "Zvětšení"
+msgstr "Zväčšenie"
 
 #: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
-msgstr "Klávesové zkratky"
+msgstr "Klávesové skratky"
 
 #: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
-msgstr "O aplikaci PDF Slicer"
+msgstr "O programe PDF Slicer"
 
 #: ../src/application/appwindow.cpp:350
 msgid "The selected files could not be opened"
-msgstr "Vybrané soubory nelze otevřít"
+msgstr "Vybrané súbory sa nepodarilo otvoriť"
 
 #: ../src/application/appwindow.cpp:361
 msgid "The current document could not be saved"
-msgstr "Aktuální dokument nelze uložit"
+msgstr "Aktuálny dokument nebolo možné uložiť"
 
 #: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
-msgstr "Přidán soubor {fileName}"
+msgstr "Pridaný súbor {fileName}"
 
 #: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
-msgstr "Přidáno více souborů"
+msgstr "Pridaných viacero súborov"
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
-msgstr "Otevřít"
+msgstr "Otvoriť"
 
 #: ../src/application/headerbar.cpp:60
 msgid "Add Documents"
-msgstr "Přidat dokumenty"
+msgstr "Pridať dokumenty"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr "Na začátek…"
+msgstr "Na začiatok…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
-msgstr "Na konec…"
+msgstr "Na koniec…"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
-msgstr "Za vybranou stránku…"
+msgstr "Po označenej strane…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add Documents…"
-msgstr "Přidat dokumenty…"
+msgstr "Pridať dokumenty…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
-msgstr "Zpět"
+msgstr "Vrátiť späť"
 
 #: ../src/application/headerbar.cpp:78
 msgid "Redo"
-msgstr "Znovu"
+msgstr "Zrušiť vrátenie"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
-msgstr "Uložit jako"
+msgstr "Uložiť ako"
 
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
-msgstr "Stránka {pageNumber}"
+msgstr "Strana {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
-msgstr "Otevřít dokument"
+msgstr "Otvoriť dokument"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF documents"
@@ -204,23 +204,23 @@ msgstr "Dokumenty PDF"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr "Náhled stránky"
+msgstr "Náhľad strany"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
-msgstr "Zmenšit"
+msgstr "Oddialiť"
 
 #: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
-msgstr "Zvětšit"
+msgstr "Priblížiť"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr "Uložit dokument jako"
+msgstr "Uložiť dokument ako"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
-msgstr "Uložit"
+msgstr "Uložiť"
 
 #: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
@@ -228,57 +228,57 @@ msgstr "Dokument bez názvu"
 
 #: ../src/application/savingrevealer.cpp:25
 msgid "Saving document…"
-msgstr "Ukládání dokumentu…"
+msgstr "Ukladám dokument…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
-msgstr "Dokument úspěšně uložen"
+msgstr "Dokument bol úspešne uložený"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr "Uložit změny v dokumentu před uzavřením?"
+msgstr "Uložiť zmeny v dokumente pred zatvorením?"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
-msgstr "Zavřít bez uložení"
+msgstr "Zavrieť bez uloženia"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
-msgstr "Uložit jako…"
+msgstr "Uložiť ako…"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "Otevřete dokument a začněte upravovat!"
+msgstr "Otvorte dokument a môžete ho začať upravovať!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Obecné"
+msgstr "Všeobecné"
 
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr "Otevřít dokument"
+msgstr "Otvoriť dokument"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr "Uložit dokument"
+msgstr "Uložiť dokument"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr "Zvětšit"
+msgstr "Priblížiť"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr "Zmenšit"
+msgstr "Oddialiť"
 
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr "Výchozí zvětšení"
+msgstr "Predvolená úroveň priblíženia"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
@@ -288,7 +288,7 @@ msgstr "Nové okno"
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr "Zavřít okno"
+msgstr "Zavrieť okno"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
@@ -298,42 +298,29 @@ msgstr "Úpravy dokumentu"
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr "Odstranit vybrané stránky"
+msgstr "Odstrániť označené strany"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr "Vybrat všechny stránky"
+msgstr "Označiť všetky strany"
 
 #: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr "Invertovat aktuální výběr"
+msgstr "Invertovať aktuálny výber"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr "Zrušit výběr"
+msgstr "Zrušiť označenie"
 
 #: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr "Zrušit poslední úpravu"
+msgstr "Odvolať posledný príkaz"
 
 #: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr "Vrátit předchozí úpravu"
-
-#, fuzzy
-#~ msgid "Application"
-#~ msgstr "Ikona aplikace"
-
-#~ msgid "Saving…"
-#~ msgstr "Ukládání…"
-
-#~ msgid "Saved!"
-#~ msgstr "Uloženo!"
-
-#~ msgid "Open…"
-#~ msgstr "Otevřít…"
+msgstr "Znovu vykonať odvolaný príkaz"
