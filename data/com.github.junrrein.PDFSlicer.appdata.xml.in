@@ -32,6 +32,15 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.8.7" date="2020-11-27">
+			<description>
+				<p>Minor fixes and improvements:</p>
+				<ul>
+					<li>Add keyboard shortcuts to move pages (@abhijeetviswa)</li>
+					<li>Don't crash when opening a file while the current one is still rendering pages</li>
+				</ul>
+			</description>
+		</release>
 		<release version="1.8.6" date="2020-11-26">
 			<description>
 				<p>Most of the improvements in this release were made by contributors. Thanks a lot!</p>
