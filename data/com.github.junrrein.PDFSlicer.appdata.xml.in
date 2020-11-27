@@ -34,9 +34,10 @@
 	<releases>
 		<release version="1.8.7" date="2020-11-27">
 			<description>
-				<p>Minor fixes and improvements:</p>
+				<p>Fixes and improvements:</p>
 				<ul>
 					<li>Add keyboard shortcuts to move pages (@abhijeetviswa)</li>
+					<li>Use up to half of the CPU's cores for rendering pages</li>
 					<li>Don't crash when opening a file while the current one is still rendering pages</li>
 				</ul>
 			</description>
