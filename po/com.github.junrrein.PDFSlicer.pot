@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-06 19:17-0300\n"
+"POT-Creation-Date: 2020-11-27 16:28-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,7 +118,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: ../src/application/application.cpp:92 ../src/application/appmenu.cpp:63
+#: ../src/application/application.cpp:95 ../src/application/appmenu.cpp:63
 msgid "New window"
 msgstr ""
 
@@ -134,11 +134,11 @@ msgstr ""
 msgid "About PDF Slicer"
 msgstr ""
 
-#: ../src/application/appwindow.cpp:350
+#: ../src/application/appwindow.cpp:353
 msgid "The selected files could not be opened"
 msgstr ""
 
-#: ../src/application/appwindow.cpp:361
+#: ../src/application/appwindow.cpp:364
 msgid "The current document could not be saved"
 msgstr ""
 
@@ -320,4 +320,14 @@ msgstr ""
 #: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:99
+msgctxt "shortcut window"
+msgid "Move selected pages left"
+msgstr ""
+
+#: ../data/ui/shortcuts.ui:105
+msgctxt "shortcut window"
+msgid "Move selected pages right"
 msgstr ""

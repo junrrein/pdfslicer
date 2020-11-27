@@ -35,9 +35,11 @@ public:
 
 	void queueBack(const std::shared_ptr<Task>& task);
 	void queueFront(const std::shared_ptr<Task>& task);
+    void waitUntilAllTasksFinish();
 
 private:
     static void runTask(const std::shared_ptr<Task>& task);
+    static int numberOfThreads();
 
 	astp::ThreadPool m_threadpool;
 };

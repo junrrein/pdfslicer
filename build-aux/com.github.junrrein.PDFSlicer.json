@@ -1,7 +1,7 @@
 {
     "app-id": "com.github.junrrein.PDFSlicer",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.36",
+    "runtime-version": "3.38",
     "sdk": "org.gnome.Sdk",
     "command": "pdfslicer",
     "finish-args": [
@@ -51,8 +51,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qpdf/qpdf.git",
-                    "tag": "release-qpdf-9.0.1",
-                    "commit": "bcfb0c7d9a8c7e50f96db440184b2ce00cbc144d"
+                    "tag": "release-qpdf-10.0.4",
+                    "commit": "78b9d6bfd4cbd3e947b1c5ffe73eb97b040e312a"
                 }
             ]
         },

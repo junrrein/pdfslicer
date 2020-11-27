@@ -19,10 +19,8 @@
 
 namespace Slicer {
 
-static const int numThreads = 1;
-
 TaskRunner::TaskRunner()
-    : m_threadpool{numThreads}
+    : m_threadpool{numberOfThreads()}
 {
 }
 
@@ -48,6 +46,11 @@ void TaskRunner::queueFront(const std::shared_ptr<Task>& task)
         .detach();
 }
 
+void TaskRunner::waitUntilAllTasksFinish()
+{
+    m_threadpool.wait();
+}
+
 void TaskRunner::runTask(const std::shared_ptr<Task>& task)
 {
     if (task->isCanceled())
@@ -64,6 +67,17 @@ void TaskRunner::runTask(const std::shared_ptr<Task>& task)
 
         return false;
     });
+}
+
+int TaskRunner::numberOfThreads()
+{
+    const unsigned int numberOfCores = std::thread::hardware_concurrency();
+
+    // Use only half of the CPU's cores
+    if (numberOfCores >= 2)
+        return numberOfCores / 2;
+    else
+        return 1;
 }
 
 } // namespace Slicer

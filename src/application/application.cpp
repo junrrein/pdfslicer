@@ -78,6 +78,9 @@ void Application::addAccels()
     set_accel_for_action("win.reset-zoom", "<Control>0");
     set_accel_for_action("win.close-window", "<Control>q");
 
+    set_accel_for_action("win.move-right", "<Control>Right");
+    set_accel_for_action("win.move-left", "<Control>Left");
+
     // FIXME: The following actions don't work
     set_accels_for_action("preview.zoom-in",
                           {"<Control>plus", "<Control>KP_Add"});

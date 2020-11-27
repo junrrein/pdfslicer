@@ -1,337 +1,338 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# taotieren <admin@taotieren.com>, 2020.
-# Weblate <noreply@weblate.org>, 2020.
+# Jose Riha <jose1711 gmail com>, 2020.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2020-11-05 07:26+0000\n"
-"Last-Translator: taotieren <admin@taotieren.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/pdf-"
-"slicer/translations/zh_Hans/>\n"
-"Language: zh_Hans\n"
+"PO-Revision-Date: 2020-11-18 23:13+0100\n"
+"Last-Translator: Jose Riha <jose1711@gmail.com>\n"
+"Language-Team: sk\n"
+"Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.3.2-dev\n"
+"X-Generator: Poedit 2.4.1\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
-msgstr "提取、合并、旋转和重新排序 PDF 文档页面的简单应用程序"
+msgstr ""
+"Jednoduchá aplikácia na extrakciu, zlúčenie, otáčanie a zmenu poradia "
+"stránok v dokumentoch PDF"
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr "Slicer 开发人员"
+msgstr "Vývojári Slicera"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application programming"
-msgstr "应用程序"
+msgstr "Programovanie aplikácie"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Application design"
-msgstr "应用设计"
+msgstr "Návrh aplikácie"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
-msgstr "应用程序图标"
+msgstr "Ikona aplikácie"
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
-msgstr "第三方库"
+msgstr "Knižnice tretích strán"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr "左旋"
+msgstr "Otočiť vľavo"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr "向右旋转"
+msgstr "Otočiť vpravo"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
-msgstr "左移"
+msgstr "Presunúť doľava"
 
 #: ../src/application/actionbar.cpp:48
 msgid "Move right"
-msgstr "右移"
+msgstr "Presunúť doprava"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr "删除所选页面"
+msgstr "Odstrániť označené strany"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr "删除未选择的页面"
+msgstr "Odstrániť neoznačené strany"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
-msgstr "删除以前的页面"
+msgstr "Odstrániť predchádzajúce strany"
 
 #: ../src/application/actionbar.cpp:63
 msgid "Remove next pages"
-msgstr "删除下一页"
+msgstr "Odstrániť nasledujúce strany"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr "更多页面删除操作…"
+msgstr "Ďalšie operácie na odstránenie strán…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr "全选"
+msgstr "Označiť všetko"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
-msgstr "选择奇数页"
+msgstr "Označiť nepárne strany"
 
 #: ../src/application/actionbar.cpp:77
 msgid "Select even pages"
-msgstr "选择偶数页面"
+msgstr "Označiť párne strany"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr "更多页面选择选项…"
+msgstr "Ďalšie možnosti označovania strán…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Invert Selection"
-msgstr "反选"
+msgstr "Invertovať označenie"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
-msgstr "取消选择"
+msgstr "Zrušiť označenie"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
-msgstr "选择要添加的文档"
+msgstr "Vyberte dokumenty, ktoré chcete pridať"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
-msgstr "添加"
+msgstr "Pridať"
 
 #: ../src/application/addfiledialog.cpp:29
 #: ../src/application/openfiledialog.cpp:29
 #: ../src/application/savefiledialog.cpp:29
 #: ../src/application/unsavedchangesdialog.cpp:33
 msgid "Cancel"
-msgstr "取消"
+msgstr "Zrušiť"
 
 #: ../src/application/application.cpp:95 ../src/application/appmenu.cpp:63
 msgid "New window"
-msgstr "新窗口"
+msgstr "Nové okno"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
-msgstr "缩放"
+msgstr "Zväčšenie"
 
 #: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
-msgstr "键盘快捷键"
+msgstr "Klávesové skratky"
 
 #: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
-msgstr "关于 PDF Slicer"
+msgstr "O programe PDF Slicer"
 
 #: ../src/application/appwindow.cpp:353
 msgid "The selected files could not be opened"
-msgstr "无法打开所选文件"
+msgstr "Vybrané súbory sa nepodarilo otvoriť"
 
 #: ../src/application/appwindow.cpp:364
 msgid "The current document could not be saved"
-msgstr "无法保存当前文档"
+msgstr "Aktuálny dokument nebolo možné uložiť"
 
 #: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
-msgstr "已添加文件 {fileName}"
+msgstr "Pridaný súbor {fileName}"
 
 #: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
-msgstr "添加了多个文件"
+msgstr "Pridaných viacero súborov"
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
-msgstr "打开"
+msgstr "Otvoriť"
 
 #: ../src/application/headerbar.cpp:60
 msgid "Add Documents"
-msgstr "添加文件"
+msgstr "Pridať dokumenty"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr "一开始…"
+msgstr "Na začiatok…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
-msgstr "最后…"
+msgstr "Na koniec…"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
-msgstr "在选定页面之后…"
+msgstr "Po označenej strane…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add Documents…"
-msgstr "添加文档…"
+msgstr "Pridať dokumenty…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
-msgstr "撤消"
+msgstr "Vrátiť späť"
 
 #: ../src/application/headerbar.cpp:78
 msgid "Redo"
-msgstr "重做"
+msgstr "Zrušiť vrátenie"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
-msgstr "另存为"
+msgstr "Uložiť ako"
 
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
-msgstr "页 {pageNumber}"
+msgstr "Strana {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
-msgstr "打开文档"
+msgstr "Otvoriť dokument"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF documents"
-msgstr "PDF 文档"
+msgstr "Dokumenty PDF"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr "页面预览"
+msgstr "Náhľad strany"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
-msgstr "缩小"
+msgstr "Oddialiť"
 
 #: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
-msgstr "放大"
+msgstr "Priblížiť"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr "将文档另存为"
+msgstr "Uložiť dokument ako"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
-msgstr "保存"
+msgstr "Uložiť"
 
 #: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
-msgstr "无标题文档"
+msgstr "Dokument bez názvu"
 
 #: ../src/application/savingrevealer.cpp:25
 msgid "Saving document…"
-msgstr "正在保存文档…"
+msgstr "Ukladám dokument…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
-msgstr "文档成功保存"
+msgstr "Dokument bol úspešne uložený"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr "在关闭之前保存修改后的文档？"
+msgstr "Uložiť zmeny v dokumente pred zatvorením?"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
-msgstr "不保存关闭"
+msgstr "Zavrieť bez uloženia"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
-msgstr "另存为…"
+msgstr "Uložiť ako…"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "打开文档开始切片！"
+msgstr "Otvorte dokument a môžete ho začať upravovať!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr "常规"
+msgstr "Všeobecné"
 
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr "打开文档"
+msgstr "Otvoriť dokument"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr "保存文档"
+msgstr "Uložiť dokument"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr "放大"
+msgstr "Priblížiť"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr "缩小"
+msgstr "Oddialiť"
 
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr "重置缩放级别"
+msgstr "Predvolená úroveň priblíženia"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
 msgid "New window"
-msgstr "新窗口"
+msgstr "Nové okno"
 
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr "关闭窗口"
+msgstr "Zavrieť okno"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Document editing"
-msgstr "文档编辑"
+msgstr "Úpravy dokumentu"
 
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr "删除所选页面"
+msgstr "Odstrániť označené strany"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr "选择所有页面"
+msgstr "Označiť všetky strany"
 
 #: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr "反选当前"
+msgstr "Invertovať aktuálny výber"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr "取消选择"
+msgstr "Zrušiť označenie"
 
 #: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr "撤消上一个命令"
+msgstr "Odvolať posledný príkaz"
 
 #: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr "重做撤消命令"
+msgstr "Znovu vykonať odvolaný príkaz"
 
 #: ../data/ui/shortcuts.ui:99
 #, fuzzy
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr "删除所选页面"
+msgstr "Odstrániť označené strany"
 
 #: ../data/ui/shortcuts.ui:105
 #, fuzzy
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr "删除所选页面"
+msgstr "Odstrániť označené strany"

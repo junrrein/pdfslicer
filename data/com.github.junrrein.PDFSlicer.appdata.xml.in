@@ -5,7 +5,7 @@
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
 	<name>PDF Slicer</name>
-	<launchable>@APPLICATION_ID@.desktop</launchable>
+	<launchable type="desktop-id">@APPLICATION_ID@.desktop</launchable>
 	<_summary>A simple tool to extract, merge, rotate and reorder pages of PDF documents</_summary>
 	<description>
 		<_p>
@@ -32,6 +32,24 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.8.6" date="2020-11-26">
+			<description>
+				<p>Most of the improvements in this release were made by contributors. Thanks a lot!</p>
+				<ul>
+					<li>Do not disable "edit" actions during document saving (@miltolstoy)</li>
+					<li>Allow opening several documents in one window (@miltolstoy)</li>
+					<li>Disable "Select odd/even pages" actions in corner cases (@miltolstoy)</li>
+					<li>Move zoom buttons to window titlebar in big previews (@miltolstoy)</li>
+					<li>Add Greek translation (@iosifidis)</li>
+					<li>Add Hebrew translation (@yarons)</li>
+					<li>Add Chinese (Simplified) translation (@taotieren)</li>
+					<li>Add Serbian translations (latin and cyrillic) (@TodorovicSrdjan)</li>
+					<li>Add Slovak translation (@jose1711)</li>
+					<li>Update existing translations</li>
+					<li>Other bug fixes and improvements</li>
+				</ul>
+			</description>
+		</release>
 		<release version="1.8.5" date="2020-05-01">
 			<description>
 				<p>Add ability to invert the current page selection (@miltolstoy). Add Arabic translation (@3eloa). Update existing translations.</p>
