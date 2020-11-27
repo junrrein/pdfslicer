@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-08-06 19:17-0300\n"
-"PO-Revision-Date: 2020-08-09 12:32+0000\n"
+"PO-Revision-Date: 2020-11-27 19:23+0000\n"
 "Last-Translator: Tomáš Průcha <pruchatomas@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/cs/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.2-dev\n"
+"X-Generator: Weblate 4.4-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -28,7 +28,7 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr "Vytvořili"
+msgstr "Vývojáři PDF Slicer"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application programming"
@@ -40,7 +40,7 @@ msgstr "Grafika"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
-msgstr "Ikona aplikace"
+msgstr "Ikona"
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
