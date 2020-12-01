@@ -65,6 +65,18 @@
 						</child>
 						<child>
 							<object class="GtkShortcutsShortcut">
+								<property name="accelerator">&lt;ctrl&gt;Left</property>
+								<property name="title" translatable="yes" context="shortcut window">Move selected pages left</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="accelerator">&lt;ctrl&gt;Right</property>
+								<property name="title" translatable="yes" context="shortcut window">Move selected pages right</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkShortcutsShortcut">
 								<property name="accelerator">&lt;ctrl&gt;A</property>
 								<property name="title" translatable="yes" context="shortcut window">Select all pages</property>
 							</object>
@@ -91,18 +103,6 @@
 							<object class="GtkShortcutsShortcut">
 								<property name="accelerator">&lt;shift&gt;&lt;ctrl&gt;Z</property>
 								<property name="title" translatable="yes" context="shortcut window">Redo undone command</property>
-							</object>
-						</child>
-						<child>
-							<object class="GtkShortcutsShortcut">
-								<property name="accelerator">&lt;ctrl&gt;Left</property>
-								<property name="title" translatable="yes" context="shortcut window">Move selected pages left</property>
-							</object>
-						</child>
-						<child>
-							<object class="GtkShortcutsShortcut">
-								<property name="accelerator">&lt;ctrl&gt;Right</property>
-								<property name="title" translatable="yes" context="shortcut window">Move selected pages right</property>
 							</object>
 						</child>
 					</object>
