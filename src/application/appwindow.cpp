@@ -268,8 +268,7 @@ void AppWindow::onCloseWindowAction()
 
 void AppWindow::onShortcutsAction()
 {
-    m_shortcutsWindow->present();
-    m_shortcutsWindow->show_all_children();
+    m_shortcutsWindow->show_all();
 }
 
 void AppWindow::onSaveAction()
