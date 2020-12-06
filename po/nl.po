@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2020-08-09 12:32+0000\n"
+"PO-Revision-Date: 2020-11-30 18:29+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/nl/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.2-dev\n"
+"X-Generator: Weblate 4.4-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -326,16 +326,14 @@ msgid "Redo undone command"
 msgstr "Opdracht opnieuw uitvoeren"
 
 #: ../data/ui/shortcuts.ui:99
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr "Geselecteerde pagina's verwijderen"
+msgstr "Geselecteerde pagina's naar links verplaatsen"
 
 #: ../data/ui/shortcuts.ui:105
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr "Geselecteerde pagina's verwijderen"
+msgstr "Geselecteerde pagina's naar rechts verplaatsen"
 
 #, fuzzy
 #~ msgid "Application"
