@@ -25,7 +25,14 @@ namespace Slicer::config {
 
 std::string getPathToLocaleDir()
 {
+#ifdef __linux__
     return config::LINUX_LOCALE_DIR;
+#else // We are in Windows
+    const std::string pathToShareDir = Glib::get_system_data_dirs().at(2);
+    const std::string pathToLocaleDir = pathToShareDir + +"\\locale\\";
+
+    return pathToLocaleDir;
+#endif
 }
 
 void setupLocalization()
