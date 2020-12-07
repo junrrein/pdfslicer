@@ -1,4 +1,11 @@
-set (ICON_DIR_RELATIVE "share/icons/hicolor")
+if (MINGW)
+	set (ICON_DIR_RELATIVE "share/icons/Adwaita")
+
+	file (COPY pdfslicer.ico DESTINATION ${CMAKE_BINARY_DIR})
+	file (COPY pdfslicer.ico DESTINATION ${CMAKE_BINARY_DIR}/src)
+else ()
+	set (ICON_DIR_RELATIVE "share/icons/hicolor")
+endif ()
 
 install (FILES
 		${APPLICATION_ID}.svg

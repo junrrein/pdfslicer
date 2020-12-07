@@ -10,9 +10,13 @@ set (SOURCES
 	tempfile.cpp)
 
 add_executable (pdfslicer_tests ${SOURCES})
-target_link_libraries_system (pdfslicer_tests
-	backend
-	Catch2)
+target_link_libraries_system (pdfslicer_tests Catch2)
+
+if (MINGW)
+	target_link_libraries (pdfslicer_tests backend)
+else ()
+	target_link_libraries_system (pdfslicer_tests backend)
+endif ()
 
 target_compile_options(pdfslicer_tests PUBLIC $<$<CONFIG:DEBUG>:${SLICER_DEBUG_FLAGS}>)
 

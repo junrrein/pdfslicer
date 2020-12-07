@@ -14,9 +14,11 @@ configure_file_translation (${CMAKE_CURRENT_BINARY_DIR}/${APPLICATION_ID}.appdat
 							${CMAKE_CURRENT_BINARY_DIR}/${APPLICATION_ID}.appdata.xml
 							${CMAKE_SOURCE_DIR}/po)
 
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${APPLICATION_ID}.desktop
-			   DESTINATION
-			   share/applications)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${APPLICATION_ID}.appdata.xml
-			  DESTINATION
-			  share/metainfo)
+if (NOT MINGW)
+	install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${APPLICATION_ID}.desktop
+				   DESTINATION
+				   share/applications)
+   install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${APPLICATION_ID}.appdata.xml
+				  DESTINATION
+				  share/metainfo)
+endif ()
