@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2020-12-02 02:29+0000\n"
+"PO-Revision-Date: 2020-12-08 19:29+0000\n"
 "Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/es/>\n"
@@ -30,7 +30,7 @@ msgstr "Desarrolladores de Slicer"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application programming"
-msgstr "Programación de aplicaciones"
+msgstr "Programación de la aplicación"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Application design"
