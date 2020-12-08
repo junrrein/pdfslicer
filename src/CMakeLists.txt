@@ -13,21 +13,11 @@ add_subdirectory (logger)
 add_compile_definitions ("GETTEXT_PACKAGE=${GETTEXT_PACKAGE}")
 add_compile_definitions (SPDLOG_FMT_EXTERNAL)
 
-if (MINGW)
-	target_link_libraries (${CMAKE_PROJECT_NAME}
-		backend
-		fmt::fmt-header-only
-		Safe
-		spdlog
-		ThreadPool)
-else ()
-	target_link_libraries_system (${CMAKE_PROJECT_NAME}
-		backend
-		fmt::fmt-header-only
-		Safe
-		spdlog
-		ThreadPool)
-endif ()
+target_link_libraries_system (${CMAKE_PROJECT_NAME}
+	backend
+	fmt::fmt-header-only
+	spdlog
+	ThreadPool)
 
 if (MINGW)
 	target_sources (${CMAKE_PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/pdfslicer.rc)

@@ -18,10 +18,36 @@ pkg_check_modules (GTKMM gtkmm-3.0 IMPORTED_TARGET REQUIRED)
 pkg_check_modules (POPPLER poppler-cpp IMPORTED_TARGET REQUIRED)
 find_package (Intl REQUIRED)
 find_package (Gettext REQUIRED)
-# See https://unix.stackexchange.com/q/362289/
-set (ENV{PKG_CONFIG_ALLOW_SYSTEM_CFLAGS} 1)
-pkg_check_modules (QPDF libqpdf IMPORTED_TARGET REQUIRED)
-set (ENV{PKG_CONFIG_ALLOW_SYSTEM_CFLAGS} 0)
+
+if (MINGW)
+	include (FetchContent)
+	FetchContent_Declare(
+		qpdf
+		GIT_REPOSITORY https://github.com/qpdf/qpdf.git
+		GIT_TAG	release-qpdf-10.0.4)
+
+	FetchContent_GetProperties(qpdf)
+	if (NOT qpdf_POPULATED)
+		FetchContent_Populate (qpdf)
+
+		message ("Configuring and building QPDF")
+		execute_process (COMMAND ./configure --host=x86_64-w64-mingw32
+						 WORKING_DIRECTORY ${qpdf_SOURCE_DIR})
+		execute_process (COMMAND make -j4
+						 WORKING_DIRECTORY ${qpdf_SOURCE_DIR})
+
+		add_library (qpdf_lib STATIC IMPORTED)
+		set_target_properties (qpdf_lib PROPERTIES
+							   IMPORTED_LOCATION "${qpdf_SOURCE_DIR}/libqpdf/build/.libs/libqpdf.a")
+		target_include_directories (qpdf_lib INTERFACE ${qpdf_SOURCE_DIR}/include/)
+		target_link_libraries (qpdf_lib INTERFACE -ljpeg -lz)
+	endif ()
+else ()
+	# See https://unix.stackexchange.com/q/362289/
+	set (ENV{PKG_CONFIG_ALLOW_SYSTEM_CFLAGS} 1)
+	pkg_check_modules (QPDF libqpdf IMPORTED_TARGET REQUIRED)
+	set (ENV{PKG_CONFIG_ALLOW_SYSTEM_CFLAGS} 0)
+endif ()
 
 set (SLICER_DEBUG_FLAGS -Wall -Wextra -Wpedantic -Wshadow -Wduplicated-cond -Wduplicated-branches -Wlogical-op)
 set (CMAKE_EXPORT_COMPILE_COMMANDS ON)
