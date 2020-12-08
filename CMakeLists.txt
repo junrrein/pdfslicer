@@ -41,6 +41,7 @@ if (MINGW)
 							   IMPORTED_LOCATION "${qpdf_SOURCE_DIR}/libqpdf/build/.libs/libqpdf-28.dll"
 							   IMPORTED_IMPLIB "${qpdf_SOURCE_DIR}/libqpdf/build/.libs/libqpdf.dll.a")
 		target_include_directories (qpdf_lib INTERFACE ${qpdf_SOURCE_DIR}/include/)
+		install (FILES "${qpdf_SOURCE_DIR}/libqpdf/build/.libs/libqpdf-28.dll" DESTINATION bin)
 	endif ()
 else ()
 	# See https://unix.stackexchange.com/q/362289/

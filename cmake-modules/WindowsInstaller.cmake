@@ -1,6 +1,3 @@
-set (PDFWRITER_AESGM_DLL
-     "${CMAKE_BINARY_DIR}/third-party/PDF-Writer/LibAesgm/libLibAesgm.dll")
-
 set (FEDORA_MINGW_BASEPATH "/usr/x86_64-w64-mingw32/sys-root/mingw")
 set (FEDORA_MINGW_BINPATH "${FEDORA_MINGW_BASEPATH}/bin")
 
@@ -19,7 +16,7 @@ file (GLOB GMODULE_DLL "${FEDORA_MINGW_BINPATH}/libgmodule*.dll")
 file (GLOB GOBJECT_DLL "${FEDORA_MINGW_BINPATH}/libgobject*.dll")
 file (GLOB GTK_DLL "${FEDORA_MINGW_BINPATH}/libgtk*.dll")
 file (GLOB GTKMM_DLL "${FEDORA_MINGW_BINPATH}/libgtkmm*.dll")
-file (GLOB POPPLER_GLIB_DLL "${FEDORA_MINGW_BINPATH}/libpoppler-glib*.dll")
+file (GLOB POPPLER_CPP_DLL "${FEDORA_MINGW_BINPATH}/libpoppler-cpp*.dll")
 file (GLOB WINPTHREAD_DLL "${FEDORA_MINGW_BINPATH}/libwinpthread*.dll")
 file (GLOB SIGC_DLL "${FEDORA_MINGW_BINPATH}/libsigc*.dll")
 file (GLOB CPP_RUNTIME_DLL "${FEDORA_MINGW_BINPATH}/libstdc++*.dll")
@@ -51,9 +48,10 @@ file (GLOB RSVG_DLL "${FEDORA_MINGW_BINPATH}/librsvg*.dll")
 file (GLOB CROCO_DLL "${FEDORA_MINGW_BINPATH}/libcroco*.dll")
 file (GLOB XML2_DLL "${FEDORA_MINGW_BINPATH}/libxml2*.dll")
 file (GLOB HARFBUZZ_DLL "${FEDORA_MINGW_BINPATH}/libharfbuzz*.dll")
+file (GLOB SSP_DLL "${FEDORA_MINGW_BINPATH}/libssp*.dll")
+file (GLOB FRIBIDI_DLL "${FEDORA_MINGW_BINPATH}/libfribidi*.dll")
 
 set (SLICER_DLLS
-     ${PDFWRITER_AESGM_DLL};
      ${ATK_DLL};
      ${ATKMM_DLL};
      ${CAIRO_DLL};
@@ -69,7 +67,7 @@ set (SLICER_DLLS
      ${GOBJECT_DLL};
      ${GTK_DLL};
      ${GTKMM_DLL};
-     ${POPPLER_GLIB_DLL};
+	 ${POPPLER_CPP_DLL};
      ${WINPTHREAD_DLL};
      ${SIGC_DLL};
      ${CPP_RUNTIME_DLL};
@@ -100,7 +98,9 @@ set (SLICER_DLLS
      ${RSVG_DLL};
      ${CROCO_DLL};
      ${XML2_DLL};
-     ${HARFBUZZ_DLL})
+	 ${HARFBUZZ_DLL};
+	 ${SSP_DLL};
+	 ${FRIBIDI_DLL})
 
 install (FILES ${SLICER_DLLS} DESTINATION bin)
 
@@ -117,6 +117,10 @@ install (FILES ${GDK_SVGLOADER_DLL} DESTINATION ${GDK_PIXBUFLOADERS_RELDIR})
 set (GDK_QUERY_LOADERS_EXE
      "${FEDORA_MINGW_BINPATH}/gdk-pixbuf-query-loaders.exe")
 install (FILES ${GDK_QUERY_LOADERS_EXE} DESTINATION bin)
+
+set (GDBUS_EXE
+	 "${FEDORA_MINGW_BINPATH}/gdbus.exe")
+install (FILES ${GDBUS_EXE} DESTINATION bin)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     set (GDB_EXE "${FEDORA_MINGW_BINPATH}/gdb.exe")
