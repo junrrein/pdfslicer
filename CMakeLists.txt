@@ -36,11 +36,11 @@ if (MINGW)
 		execute_process (COMMAND make -j4
 						 WORKING_DIRECTORY ${qpdf_SOURCE_DIR})
 
-		add_library (qpdf_lib STATIC IMPORTED)
+		add_library (qpdf_lib SHARED IMPORTED)
 		set_target_properties (qpdf_lib PROPERTIES
-							   IMPORTED_LOCATION "${qpdf_SOURCE_DIR}/libqpdf/build/.libs/libqpdf.a")
+							   IMPORTED_LOCATION "${qpdf_SOURCE_DIR}/libqpdf/build/.libs/libqpdf-28.dll"
+							   IMPORTED_IMPLIB "${qpdf_SOURCE_DIR}/libqpdf/build/.libs/libqpdf.dll.a")
 		target_include_directories (qpdf_lib INTERFACE ${qpdf_SOURCE_DIR}/include/)
-		target_link_libraries (qpdf_lib INTERFACE -ljpeg -lz)
 	endif ()
 else ()
 	# See https://unix.stackexchange.com/q/362289/
