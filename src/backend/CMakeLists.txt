@@ -18,12 +18,7 @@ target_link_libraries_system (backend
 	stduuid
 	range-v3
 	PkgConfig::GTKMM
-	PkgConfig::POPPLER)
-
-if (MINGW)
-	target_link_libraries_system (backend qpdf_lib)
-else ()
-	target_link_libraries_system (backend PkgConfig::QPDF)
-endif ()
+	PkgConfig::POPPLER
+	qpdf_lib)
 
 target_compile_options(backend PUBLIC $<$<CONFIG:DEBUG>:${SLICER_DEBUG_FLAGS}>)

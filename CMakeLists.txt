@@ -47,6 +47,7 @@ else ()
 	# See https://unix.stackexchange.com/q/362289/
 	set (ENV{PKG_CONFIG_ALLOW_SYSTEM_CFLAGS} 1)
 	pkg_check_modules (QPDF libqpdf IMPORTED_TARGET REQUIRED)
+	add_library (qpdf_lib ALIAS PkgConfig::QPDF)
 	set (ENV{PKG_CONFIG_ALLOW_SYSTEM_CFLAGS} 0)
 endif ()
 
