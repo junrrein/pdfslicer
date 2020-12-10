@@ -16,18 +16,28 @@ with undo/redo support.
 # Table of Contents
 
 * [Installing](#installing)
+* [Contributing](#contributing)
+  * [Translations](#translations)
+  * [Code](#code)
 * [Building](#building)
   * [Fedora](#fedora)
   * [Flatpak](#flatpak)
   * [Windows cross-compilation (Fedora only)](#windows-cross-compilation-fedora-only)
-* [Contributing](#contributing)
-  * [Translations](#translations)
-  * [Code](#code)
 * [License](#license)
 
 # Installing
 
 You can install PDF Slicer using Flatpak. [Get it from Flathub](https://flathub.org/apps/details/com.github.junrrein.PDFSlicer).
+
+# Contributing
+
+## Translations
+
+You can contribute your translations at [PDF Slicer's Weblate page](https://hosted.weblate.org/projects/pdf-slicer/).
+
+## Code
+
+Check out the [HACKING.md](HACKING.md) file.
 
 # Building
 
@@ -100,16 +110,6 @@ make package
 ```
 
 This proccess will generate the installer inside the `build-pdfslicer` directory with name `PDF Slicer.exe`.
-
-# Contributing
-
-## Translations
-
-You can contribute your translations at [PDF Slicer's Weblate page](https://hosted.weblate.org/projects/pdf-slicer/).
-
-## Code
-
-Check out the [HACKING.md](HACKING.md) file.
 
 # License
 
