@@ -35,7 +35,7 @@ You can install PDF Slicer using Flatpak. [Get it from Flathub](https://flathub.
 
 ## Windows
 
-You can get the latest installer from the [Releases page](https://github.com/junrrein/pdfslicer/releases).
+You can get the latest installer from the [Releases page](https://github.com/junrrein/pdfslicer/releases/latest).
 
 # Contributing
 
