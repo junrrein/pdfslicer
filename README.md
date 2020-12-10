@@ -19,6 +19,7 @@ with undo/redo support.
 * [Building](#building)
   * [Fedora](#fedora)
   * [Flatpak](#flatpak)
+  * [Windows cross-compilation (Fedora only)](#windows-cross-compilation-fedora-only)
 * [Contributing](#contributing)
   * [Translations](#translations)
   * [Code](#code)
@@ -86,6 +87,19 @@ flatpak --user uninstall com.github.junrrein.PDFSlicer
 flatpak --user remote-delete pdfslicer-repo
 rm -rf pdfslicer/
 ```
+
+## Windows cross-compilation (Fedora only)
+
+```bash
+sudo dnf install mingw64-gcc-c++ mingw64-gdb mingw64-gtkmm30 mingw64-hicolor-icon-theme mingw64-librsvg2 mingw64-poppler-cpp mingw64-openssl mingw32-nsis
+git clone --recursive https://github.com/junrrein/pdfslicer.git
+mkdir build-pdfslicer
+cd build-pdfslicer
+mingw64-cmake ../pdfslicer -DCMAKE_BUILD_TYPE=Release
+make package
+```
+
+This proccess will generate the installer inside the `build-pdfslicer` directory with name `PDF Slicer.exe`.
 
 # Contributing
 
