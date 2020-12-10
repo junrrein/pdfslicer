@@ -32,6 +32,16 @@
 		</screenshot>
 	</screenshots>
 	<releases>
+		<release version="1.8.8" date="2020-12-09">
+			<description>
+				<p>This release brings:</p>
+				<ul>
+					<li>Windows support</li>
+					<li>A small bug fix. Sections in the Shortcuts window now reflow correctly</li>
+					<li>Updated translations</li>
+				</ul>
+			</description>
+		</release>
 		<release version="1.8.7" date="2020-11-27">
 			<description>
 				<p>Fixes and improvements:</p>
