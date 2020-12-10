@@ -12,7 +12,7 @@ if (NOT qpdf_POPULATED)
 	set (QPDF_IMPLIB "${qpdf_SOURCE_DIR}/libqpdf/build/.libs/libqpdf.dll.a")
 
 	add_custom_command (OUTPUT ${QPDF_DLL} ${QPDF_IMPLIB}
-						COMMAND ./configure --host=x86_64-w64-mingw32
+						COMMAND ${CMAKE_COMMAND} -E env "LIBS=-lz -ljpeg" ./configure --host=x86_64-w64-mingw32 --disable-static --disable-external-libs --disable-implicit-crypto --enable-crypto-openssl
 						COMMAND make -j4
 						WORKING_DIRECTORY ${qpdf_SOURCE_DIR}
 						VERBATIM

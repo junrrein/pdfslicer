@@ -50,6 +50,7 @@ file (GLOB XML2_DLL "${FEDORA_MINGW_BINPATH}/libxml2*.dll")
 file (GLOB HARFBUZZ_DLL "${FEDORA_MINGW_BINPATH}/libharfbuzz*.dll")
 file (GLOB SSP_DLL "${FEDORA_MINGW_BINPATH}/libssp*.dll")
 file (GLOB FRIBIDI_DLL "${FEDORA_MINGW_BINPATH}/libfribidi*.dll")
+file (GLOB CRYPTO_DLL "${FEDORA_MINGW_BINPATH}/libcrypto*.dll")
 
 set (SLICER_DLLS
      ${ATK_DLL};
@@ -100,7 +101,8 @@ set (SLICER_DLLS
      ${XML2_DLL};
 	 ${HARFBUZZ_DLL};
 	 ${SSP_DLL};
-	 ${FRIBIDI_DLL})
+	 ${FRIBIDI_DLL};
+	 ${CRYPTO_DLL})
 
 install (FILES ${SLICER_DLLS} DESTINATION bin)
 
