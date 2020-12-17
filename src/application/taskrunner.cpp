@@ -16,6 +16,7 @@
 
 #include "taskrunner.hpp"
 #include <glibmm/main.h>
+#include <gsl/gsl>
 
 namespace Slicer {
 
@@ -73,9 +74,9 @@ int TaskRunner::numberOfThreads()
 
     // Use only half of the CPU's cores
     if (numberOfCores >= 2)
-        return numberOfCores / 2;
-    else
-        return 1;
+        return gsl::narrow<int>(numberOfCores / 2);
+
+    return 1;
 }
 
 } // namespace Slicer
