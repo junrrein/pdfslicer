@@ -29,7 +29,7 @@ PageRenderer::RenderDimensions PageRenderer::getRenderDimensions(int targetSize)
 {
     const Page::Size outputSize = m_page->scaledRotatedSize(targetSize);
     const Page::Size rotatedSize = m_page->rotatedSize();
-    double scale;
+    double scale = NAN;
 
     if (rotatedSize.width >= rotatedSize.height)
         scale = static_cast<double>(outputSize.width) / rotatedSize.width;
