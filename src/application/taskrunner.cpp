@@ -61,11 +61,9 @@ void TaskRunner::runTask(const std::shared_ptr<Task>& task)
     if (task->isCanceled())
         return;
 
-    Glib::signal_idle().connect([task]() {
+    Glib::signal_idle().connect_once([task]() {
         if (!task->isCanceled())
             task->postExecute();
-
-        return false;
     });
 }
 
