@@ -257,21 +257,9 @@ int View::sortFunction(Gtk::FlowBoxChild* a, Gtk::FlowBoxChild* b)
 
 void View::renderPage(const std::shared_ptr<InteractivePageWidget>& pageWidget)
 {
-    std::weak_ptr<InteractivePageWidget> weakWidget = pageWidget;
-
-    auto funcExecute = [weakWidget]() {
-        if (auto widget = weakWidget.lock(); widget != nullptr)
-            widget->renderPage();
-    };
-
-    auto funcPostExecute = [weakWidget]() {
-        if (auto widget = weakWidget.lock(); widget != nullptr)
-            widget->showPage();
-    };
-
-    auto task = std::make_shared<Task>(funcExecute, funcPostExecute);
-    pageWidget->setRenderingTask(task);
-    m_taskRunner.queueBack(task);
+    auto task = std::make_shared<RenderTask<InteractivePageWidget>>(pageWidget, m_pageWidgetSize);
+    pageWidget->setRenderingTask(std::static_pointer_cast<Task>(task));
+    m_taskRunner.queueBack(std::static_pointer_cast<Task>(task));
 }
 
 void View::cancelRenderingTasks()

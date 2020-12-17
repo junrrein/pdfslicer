@@ -79,6 +79,11 @@ void InteractivePageWidget::changeSize(int targetSize)
     m_pageWidget.changeSize(targetSize);
 }
 
+void InteractivePageWidget::setImage(const Glib::RefPtr<Gdk::Pixbuf>& image)
+{
+    m_pageWidget.setImage(image);
+}
+
 void InteractivePageWidget::renderPage()
 {
     m_pageWidget.renderPage();

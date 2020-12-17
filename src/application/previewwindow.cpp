@@ -118,21 +118,10 @@ void PreviewWindow::loadCustomCSS()
 
 void PreviewWindow::renderPage()
 {
-    std::weak_ptr<PageWidget> weakWidget = m_pageWidget;
-
-    auto funcExecute = [weakWidget]() {
-        if (auto widget = weakWidget.lock(); widget != nullptr)
-            widget->renderPage();
-    };
-
-    auto funcPostExecute = [weakWidget]() {
-        if (auto widget = weakWidget.lock(); widget != nullptr)
-            widget->showPage();
-    };
-
-    auto task = std::make_shared<Task>(funcExecute, funcPostExecute);
-    m_pageWidget->setRenderingTask(task);
-    m_taskRunner.queueFront(task);
+    auto task = std::make_shared<RenderTask<PageWidget>>(m_pageWidget,
+                                                         m_zoomLevel.currentLevel());
+    m_pageWidget->setRenderingTask(std::static_pointer_cast<Task>(task));
+    m_taskRunner.queueFront(std::static_pointer_cast<Task>(task));
 }
 
 } // namespace Slicer

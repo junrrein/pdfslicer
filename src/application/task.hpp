@@ -18,25 +18,62 @@
 #define SLICER_TASK_HPP
 
 #include <atomic>
-#include <functional>
+#include <memory>
+#include "pagerenderer.hpp"
 
 namespace Slicer {
 
 class Task {
 public:
-	Task(const std::function<void()>& funcExecute,
-         const std::function<void()>& funcPostExecute);
-
     [[nodiscard]] bool isCanceled() const;
 
 	void cancel();
-	void execute();
-	void postExecute();
+    virtual void execute() = 0;
+    virtual void postExecute(){};
+
+    virtual ~Task(){};
 
 private:
 	std::atomic_bool m_isCanceled = false;
-	std::function<void()> m_funcExecute;
-	std::function<void()> m_funcPostExecute;
+};
+
+template <typename T>
+class RenderTask : public Task {
+public:
+    RenderTask(std::weak_ptr<T> weakWidget,
+               int targetSize)
+        : m_weakWidget{weakWidget}
+        , m_targetSize{targetSize}
+    {
+    }
+
+    void execute() override
+    {
+        auto widget = m_weakWidget.lock();
+
+        if (widget == nullptr)
+            return;
+
+        m_renderedPage = PageRenderer{widget->page()}.render(m_targetSize);
+    }
+
+    void postExecute() override
+    {
+        auto widget = m_weakWidget.lock();
+
+        if (widget == nullptr)
+            return;
+
+        widget->setImage(m_renderedPage);
+        widget->showPage();
+    }
+
+    ~RenderTask() override{};
+
+private:
+    std::weak_ptr<T> m_weakWidget;
+    const int m_targetSize;
+    Glib::RefPtr<Gdk::Pixbuf> m_renderedPage;
 };
 
 } // namespace Slicer

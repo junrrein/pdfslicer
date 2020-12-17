@@ -18,13 +18,6 @@
 
 namespace Slicer {
 
-Task::Task(const std::function<void()>& funcExecute,
-           const std::function<void()>& funcPostExecute)
-    : m_funcExecute{funcExecute}
-    , m_funcPostExecute{funcPostExecute}
-{
-}
-
 bool Task::isCanceled() const
 {
     return m_isCanceled;
@@ -33,16 +26,6 @@ bool Task::isCanceled() const
 void Task::cancel()
 {
     m_isCanceled = true;
-}
-
-void Task::execute()
-{
-    m_funcExecute();
-}
-
-void Task::postExecute()
-{
-    m_funcPostExecute();
 }
 
 } // namespace Slicer

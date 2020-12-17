@@ -54,7 +54,9 @@ public:
                             const InteractivePageWidget& b);
 
     // Interface of Slicer::PageWidget
+    const Glib::RefPtr<const Page>& page() const;
     void changeSize(int targetSize);
+    void setImage(const Glib::RefPtr<Gdk::Pixbuf>& image);
     void renderPage();
     void showSpinner();
     void showPage();
@@ -77,7 +79,6 @@ private:
     Gtk::Label m_fileNameLabel;
     Gtk::Label m_pageNumberLabel;
 
-    const Glib::RefPtr<const Page>& page() const;
     void setupWidgets();
     void setupSignalHandlers();
 };
