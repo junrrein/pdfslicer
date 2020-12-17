@@ -57,7 +57,6 @@ public:
     const Glib::RefPtr<const Page>& page() const;
     void changeSize(int targetSize);
     void setImage(const Glib::RefPtr<Gdk::Pixbuf>& image);
-    void renderPage();
     void showSpinner();
     void showPage();
     void setRenderingTask(const std::weak_ptr<Task>& task);

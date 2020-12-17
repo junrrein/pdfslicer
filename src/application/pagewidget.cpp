@@ -53,11 +53,6 @@ void PageWidget::setupWidgets()
     show_all();
 }
 
-void PageWidget::renderPage()
-{
-    m_thumbnail.set(PageRenderer{m_page}.render(m_targetSize));
-}
-
 void PageWidget::setImage(const Glib::RefPtr<Gdk::Pixbuf>& image)
 {
     m_thumbnail.set(image);

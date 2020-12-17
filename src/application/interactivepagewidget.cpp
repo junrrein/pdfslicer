@@ -84,11 +84,6 @@ void InteractivePageWidget::setImage(const Glib::RefPtr<Gdk::Pixbuf>& image)
     m_pageWidget.setImage(image);
 }
 
-void InteractivePageWidget::renderPage()
-{
-    m_pageWidget.renderPage();
-}
-
 void InteractivePageWidget::showSpinner()
 {
     m_pageWidget.showSpinner();
