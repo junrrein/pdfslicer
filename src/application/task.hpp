@@ -25,13 +25,18 @@ namespace Slicer {
 
 class Task {
 public:
+    Task(const Task&) = delete;
+    Task& operator=(const Task&) = delete;
+    Task(Task&&) = delete;
+    Task& operator=(Task&& src) = delete;
+
     [[nodiscard]] bool isCanceled() const;
 
 	void cancel();
     virtual void execute() = 0;
     virtual void postExecute(){};
 
-    virtual ~Task(){};
+    virtual ~Task() = default;
 
 private:
 	std::atomic_bool m_isCanceled = false;
@@ -46,6 +51,11 @@ public:
         , m_targetSize{targetSize}
     {
     }
+
+    RenderTask(const RenderTask&) = delete;
+    RenderTask& operator=(const RenderTask&) = delete;
+    RenderTask(RenderTask&&) = delete;
+    RenderTask& operator=(RenderTask&& src) = delete;
 
     void execute() override
     {
@@ -68,7 +78,7 @@ public:
         widget->showPage();
     }
 
-    ~RenderTask() override{};
+    ~RenderTask() override = default;
 
 private:
     std::weak_ptr<T> m_weakWidget;
