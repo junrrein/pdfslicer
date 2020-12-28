@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2020-11-30 18:29+0000\n"
+"PO-Revision-Date: 2020-12-29 13:29+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/hr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.4.1-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -164,11 +164,11 @@ msgstr "Dodaj dokumente"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr "Na početku …"
+msgstr "Na početak …"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
-msgstr "Na kraju …"
+msgstr "Na kraj …"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
