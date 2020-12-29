@@ -1,12 +1,13 @@
 # Julián Unrrein <junrrein@gmail.com>, 2018, 2019, 2020.
 # Scoopity Whoop <Scoo0p@yandex.com>, 2020.
+# Toni Estévez <toni.estevez@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2020-12-08 19:29+0000\n"
-"Last-Translator: Julián Unrrein <junrrein@gmail.com>\n"
+"PO-Revision-Date: 2020-12-30 17:29+0000\n"
+"Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/es/>\n"
 "Language: es\n"
@@ -14,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.4.1-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -38,7 +39,7 @@ msgstr "Diseño de la aplicación"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
-msgstr "Icono de aplicación"
+msgstr "Icono de la aplicación"
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
@@ -46,11 +47,11 @@ msgstr "Bibliotecas de terceros"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr "Rotar hacia la izquierda"
+msgstr "Rotar a la izquierda"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr "Rotar hacia la derecha"
+msgstr "Rotar a la derecha"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
@@ -62,27 +63,27 @@ msgstr "Mover a la derecha"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr "Remover páginas seleccionadas"
+msgstr "Eliminar páginas seleccionadas"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr "Remover páginas no seleccionadas"
+msgstr "Eliminar páginas no seleccionadas"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
-msgstr "Remover páginas anteriores"
+msgstr "Eliminar páginas anteriores"
 
 #: ../src/application/actionbar.cpp:63
 msgid "Remove next pages"
-msgstr "Remover páginas siguientes"
+msgstr "Eliminar páginas siguientes"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr "Más operaciones para remover páginas…"
+msgstr "Más operaciones para eliminar páginas…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr "Seleccionar Todo"
+msgstr "Seleccionar todas"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
@@ -98,15 +99,15 @@ msgstr "Más opciones para seleccionar páginas…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Invert Selection"
-msgstr "Invertir Selección"
+msgstr "Invertir la selección"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
-msgstr "Cancelar Selección"
+msgstr "Cancelar la selección"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
-msgstr "Seleccionar documentos a añadir"
+msgstr "Seleccionar documentos para añadir"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
@@ -125,7 +126,7 @@ msgstr "Ventana nueva"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
-msgstr "Zoom"
+msgstr "Ampliación"
 
 #: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
@@ -137,19 +138,19 @@ msgstr "Acerca de PDF Slicer"
 
 #: ../src/application/appwindow.cpp:353
 msgid "The selected files could not be opened"
-msgstr "No se pudieron abrir los archivos seleccionados"
+msgstr "No se han podido abrir los archivos seleccionados"
 
 #: ../src/application/appwindow.cpp:364
 msgid "The current document could not be saved"
-msgstr "El documento actual no pudo ser guardado"
+msgstr "No se ha podido guardar el documento actual"
 
 #: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
-msgstr "Añadido archivo {fileName}"
+msgstr "Añadido el archivo {fileName}"
 
 #: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
-msgstr "Múltiples archivos añadidos"
+msgstr "Añadidos múltiples archivos"
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
@@ -157,11 +158,11 @@ msgstr "Abrir"
 
 #: ../src/application/headerbar.cpp:60
 msgid "Add Documents"
-msgstr "Añadir Documentos"
+msgstr "Añadir documentos"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr "Al inicio…"
+msgstr "Al principio…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
@@ -169,11 +170,11 @@ msgstr "Al final…"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
-msgstr "Luego de la página seleccionada…"
+msgstr "Después de la página seleccionada…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add Documents…"
-msgstr "Añadir Documentos…"
+msgstr "Añadir documentos…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
@@ -181,11 +182,11 @@ msgstr "Deshacer"
 
 #: ../src/application/headerbar.cpp:78
 msgid "Redo"
-msgstr "Repetir"
+msgstr "Rehacer"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
-msgstr "Guardar Como"
+msgstr "Guardar como"
 
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
@@ -194,7 +195,7 @@ msgstr "Página {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
-msgstr "Abrir documento"
+msgstr "Abrir un documento"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF documents"
@@ -214,7 +215,7 @@ msgstr "Ampliar"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr "Guardar documento como"
+msgstr "Guardar el documento como"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
@@ -226,15 +227,15 @@ msgstr "Documento sin título"
 
 #: ../src/application/savingrevealer.cpp:25
 msgid "Saving document…"
-msgstr "Guardando documento…"
+msgstr "Guardando el documento…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
-msgstr "Documento guardado exitosamente"
+msgstr "Documento guardado correctamente"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr "¿Guardar documento modificado antes de cerrar?"
+msgstr "¿Guardar el documento modificado antes de cerrar?"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
@@ -242,11 +243,11 @@ msgstr "Cerrar sin guardar"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
-msgstr "Guardar Como…"
+msgstr "Guardar como…"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "Abra un documento ¡y empiece a rebanar!"
+msgstr "¡Abra un documento y comience a cortar!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
@@ -256,27 +257,27 @@ msgstr "General"
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr "Abrir documento"
+msgstr "Abrir un documento"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr "Guardar documento"
+msgstr "Guardar el documento"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr "Aumentar zoom"
+msgstr "Ampliar"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr "Disminuir zoom"
+msgstr "Reducir"
 
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr "Restablecer nivel de zoom"
+msgstr "Restablecer el nivel de ampliación"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
@@ -286,7 +287,7 @@ msgstr "Ventana nueva"
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr "Cerrar ventana"
+msgstr "Cerrar la ventana"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
@@ -296,7 +297,7 @@ msgstr "Edición de documentos"
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr "Remover páginas seleccionadas"
+msgstr "Eliminar páginas seleccionadas"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
@@ -306,32 +307,32 @@ msgstr "Seleccionar todas las páginas"
 #: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr "Invertir selección actual"
+msgstr "Invertir la selección actual"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr "Cancelar selección"
+msgstr "Cancelar la selección"
 
 #: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr "Deshacer el último comando"
+msgstr "Deshacer la última orden"
 
 #: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr "Rehacer comando deshecho"
+msgstr "Rehacer la orden deshecha"
 
 #: ../data/ui/shortcuts.ui:99
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr "Moves páginas seleccionadas hacia la izquierda"
+msgstr "Mover las páginas seleccionadas a la izquierda"
 
 #: ../data/ui/shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr "Moves páginas seleccionadas hacia la derecha"
+msgstr "Mover las páginas seleccionadas a la derecha"
 
 #, fuzzy
 #~ msgid "Application"
