@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # naofum <naofum@gmail.com>, 2019, 2020.
+# Takuro Onoue <kusanaginoturugi@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2020-08-30 19:37+0000\n"
-"Last-Translator: naofum <naofum@gmail.com>\n"
+"PO-Revision-Date: 2021-01-06 07:29+0000\n"
+"Last-Translator: Takuro Onoue <kusanaginoturugi@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/ja/>\n"
 "Language: ja\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.2.1-dev\n"
+"X-Generator: Weblate 4.4.1-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -326,16 +327,14 @@ msgid "Redo undone command"
 msgstr "元に戻した操作をやり直す"
 
 #: ../data/ui/shortcuts.ui:99
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr "選択したページを削除"
+msgstr "選択したページを左に移動"
 
 #: ../data/ui/shortcuts.ui:105
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr "選択したページを削除"
+msgstr "選択したページを右に移動"
 
 #, fuzzy
 #~ msgid "Application"
