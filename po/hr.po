@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Milo Ivir <mail@milotype.de>, 2019, 2020.
+# Milo Ivir <mail@milotype.de>, 2019, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2020-12-29 13:29+0000\n"
+"PO-Revision-Date: 2021-01-08 12:32+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/hr/>\n"
@@ -57,11 +57,11 @@ msgstr "Okreni udesno"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
-msgstr "Pomakni ulijevo"
+msgstr "Premjesti ulijevo"
 
 #: ../src/application/actionbar.cpp:48
 msgid "Move right"
-msgstr "Pomakni udesno"
+msgstr "Premjesti udesno"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
@@ -148,7 +148,7 @@ msgstr "Nije bilo moguće spremiti trenutačnu datoteku"
 
 #: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
-msgstr "Dodana datoteka {fileName}"
+msgstr "Dodana je datoteka {fileName}"
 
 #: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
@@ -209,11 +209,11 @@ msgstr "Pretprikaz stranice"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
-msgstr "Povećaj prikaz"
+msgstr "Umanji prikaz"
 
 #: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
-msgstr "Smanji prikaz"
+msgstr "Uvećaj prikaz"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
@@ -269,17 +269,17 @@ msgstr "Spremi dokument"
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr "Smanji prikaz"
+msgstr "Uvećaj prikaz"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr "Povećaj prikaz"
+msgstr "Umanji prikaz"
 
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr "Vrati razinu zumiranja"
+msgstr "Standardno uvećanje"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
@@ -319,7 +319,7 @@ msgstr "Prekini odabir"
 #: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr "Vrati zadnju naredbu"
+msgstr "Poništi zadnju naredbu"
 
 #: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
