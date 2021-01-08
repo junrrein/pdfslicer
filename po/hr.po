@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2021-01-08 12:32+0000\n"
+"PO-Revision-Date: 2021-01-08 13:04+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/hr/>\n"
@@ -136,7 +136,7 @@ msgstr "Tipkovnički prečaci"
 
 #: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
-msgstr "O programu PDF Slicer"
+msgstr "O programu PDF rezač"
 
 #: ../src/application/appwindow.cpp:353
 msgid "The selected files could not be opened"
@@ -249,7 +249,7 @@ msgstr "Spremi kao …"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "Otvori jedan dokument za započinjanje rezanja!"
+msgstr "Otvori jedan dokument i počni rezati!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
