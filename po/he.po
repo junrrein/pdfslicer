@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Yaron Shahrabani <sh.yaron@gmail.com>, 2019, 2020.
+# Yaron Shahrabani <sh.yaron@gmail.com>, 2019, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2020-09-30 10:41+0000\n"
+"PO-Revision-Date: 2021-01-19 22:32+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/he/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.5-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -325,16 +325,14 @@ msgid "Redo undone command"
 msgstr "החזרת הפעולה שבוטלה"
 
 #: ../data/ui/shortcuts.ui:99
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr "הסרת העמודים הנבחרים"
+msgstr "העברת העמודים הנבחרים שמאלה"
 
 #: ../data/ui/shortcuts.ui:105
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr "הסרת העמודים הנבחרים"
+msgstr "העברת העמודים הנבחרים ימינה"
 
 #, fuzzy
 #~ msgid "Application"
