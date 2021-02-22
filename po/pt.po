@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# ssantos <ssantos@web.de>, 2020.
+# ssantos <ssantos@web.de>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2020-08-30 19:37+0000\n"
+"PO-Revision-Date: 2021-02-23 17:50+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/pt/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.2.1-dev\n"
+"X-Generator: Weblate 4.5\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -326,13 +326,11 @@ msgid "Redo undone command"
 msgstr "Refaz o comando desfeito"
 
 #: ../data/ui/shortcuts.ui:99
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr "Remover páginas selecionadas"
+msgstr "Mover páginas selecionadas para a esquerda"
 
 #: ../data/ui/shortcuts.ui:105
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr "Remover páginas selecionadas"
+msgstr "Mover páginas selecionadas para a direita"
