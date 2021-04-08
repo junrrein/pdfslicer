@@ -12,7 +12,7 @@ SCENARIO("Adding a new file to an existing document")
         Document doc{multipagePdfFile};
         REQUIRE(doc.numberOfPages() == 15);
 
-        WHEN("A 5-page PDF file is added to the beggining")
+        WHEN("A 5-page PDF file is added to the beginning")
         {
             doc.addFile(Gio::File::create_for_path(multipage2Path), 0);
 

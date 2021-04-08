@@ -162,7 +162,7 @@ msgid "Add Documents"
 msgstr "Pridať dokumenty"
 
 #: ../src/application/headerbar.cpp:61
-msgid "At the beggining…"
+msgid "At the beginning…"
 msgstr "Na začiatok…"
 
 #: ../src/application/headerbar.cpp:62

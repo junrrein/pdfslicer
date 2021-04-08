@@ -163,7 +163,7 @@ msgid "Add Documents"
 msgstr "Ajouter des documents"
 
 #: ../src/application/headerbar.cpp:61
-msgid "At the beggining…"
+msgid "At the beginning…"
 msgstr "Au début…"
 
 #: ../src/application/headerbar.cpp:62
