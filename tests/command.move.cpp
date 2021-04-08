@@ -213,7 +213,7 @@ SCENARIO("Moving 2 adjacent pages across different places of a document, using t
             }
         }
 
-        WHEN("The last 2 pages are moved to the beggining")
+        WHEN("The last 2 pages are moved to the beginning")
         {
             MovePageRangeCommand command{doc, 13, 14, 0};
             command.execute();

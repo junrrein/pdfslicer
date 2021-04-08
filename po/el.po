@@ -164,7 +164,7 @@ msgid "Add Documents"
 msgstr "Προσθήκη εγγράφων"
 
 #: ../src/application/headerbar.cpp:61
-msgid "At the beggining…"
+msgid "At the beginning…"
 msgstr "Στην αρχή…"
 
 #: ../src/application/headerbar.cpp:62

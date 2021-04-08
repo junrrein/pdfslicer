@@ -164,7 +164,7 @@ msgid "Add Documents"
 msgstr "Belge Ekle"
 
 #: ../src/application/headerbar.cpp:61
-msgid "At the beggining…"
+msgid "At the beginning…"
 msgstr "Başlangıçta…"
 
 #: ../src/application/headerbar.cpp:62

@@ -58,7 +58,7 @@ void HeaderBar::setupWidgets()
     Glib::RefPtr<Gio::Menu> addDocumentMenu = Gio::Menu::create();
     Glib::RefPtr<Gio::Menu> addDocumentSubmenu = Gio::Menu::create();
     addDocumentMenu->append_section(_("Add Documents"), addDocumentSubmenu);
-    addDocumentSubmenu->append(_("At the beggining…"), "win.add-document-at-beginning");
+    addDocumentSubmenu->append(_("At the beginning…"), "win.add-document-at-beginning");
     addDocumentSubmenu->append(_("At the end…"), "win.add-document-at-end");
     addDocumentSubmenu->append(_("After the selected page…"), "win.add-document-after-selected");
     m_buttonAddDocument.set_image_from_icon_name("list-add-symbolic");

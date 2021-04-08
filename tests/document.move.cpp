@@ -141,7 +141,7 @@ SCENARIO("Moving 2 adjacent pages across different places of a document")
             REQUIRE(doc.getPage(9)->indexInFile() == 7);
         }
 
-        WHEN("The last 2 pages are moved to the beggining")
+        WHEN("The last 2 pages are moved to the beginning")
         {
             doc.movePageRange(13, 14, 0);
 

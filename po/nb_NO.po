@@ -173,7 +173,7 @@ msgid "Add Documents"
 msgstr "Åpne et dokument"
 
 #: ../src/application/headerbar.cpp:61
-msgid "At the beggining…"
+msgid "At the beginning…"
 msgstr "I begynnelsen…"
 
 #: ../src/application/headerbar.cpp:62
