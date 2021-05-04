@@ -5,15 +5,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-05-05 21:32+0000\n"
+"Last-Translator: Fontan 030 <pomanfedurin@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/pdf-slicer/"
+"translations/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -39,7 +43,7 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
-msgstr ""
+msgstr "Сторонние библиотеки"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
@@ -79,7 +83,7 @@ msgstr ""
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr ""
+msgstr "Выбрать всё"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
@@ -95,11 +99,11 @@ msgstr ""
 
 #: ../src/application/actionbar.cpp:90
 msgid "Invert Selection"
-msgstr ""
+msgstr "Инвертировать выделение"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
-msgstr ""
+msgstr "Снять выделение"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
@@ -118,7 +122,7 @@ msgstr ""
 
 #: ../src/application/application.cpp:95 ../src/application/appmenu.cpp:63
 msgid "New window"
-msgstr ""
+msgstr "Новое окно"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
@@ -126,11 +130,11 @@ msgstr ""
 
 #: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "Сочетания клавиш"
 
 #: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
-msgstr ""
+msgstr "О PDF Slicer"
 
 #: ../src/application/appwindow.cpp:353
 msgid "The selected files could not be opened"
@@ -150,7 +154,7 @@ msgstr ""
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
-msgstr ""
+msgstr "Открыть"
 
 #: ../src/application/headerbar.cpp:60
 msgid "Add Documents"
@@ -158,11 +162,11 @@ msgstr ""
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr ""
+msgstr "В начале…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
-msgstr ""
+msgstr "В конце…"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
@@ -182,7 +186,7 @@ msgstr ""
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
-msgstr ""
+msgstr "Сохранить как"
 
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
@@ -215,7 +219,7 @@ msgstr ""
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
-msgstr ""
+msgstr "Сохранить"
 
 #: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
@@ -263,12 +267,12 @@ msgstr ""
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "Увеличить"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "Уменьшить"
 
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
@@ -278,12 +282,12 @@ msgstr ""
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
 msgid "New window"
-msgstr ""
+msgstr "Новое окно"
 
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr ""
+msgstr "Закрыть окно"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
@@ -298,7 +302,7 @@ msgstr ""
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr ""
+msgstr "Выбрать все страницы"
 
 #: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
