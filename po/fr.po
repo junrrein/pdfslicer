@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Florian <floflr@zaclys.net>, 2019, 2020.
 # Yvan Masson <yvan@masson-informatique.fr>, 2019.
+# J. Lavoie <j.lavoie@net-c.ca>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2020-11-30 18:29+0000\n"
-"Last-Translator: Florian <floflr@zaclys.net>\n"
+"PO-Revision-Date: 2021-05-07 23:32+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/fr/>\n"
 "Language: fr\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -81,7 +82,7 @@ msgstr "Supprimer les pages suivantes"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr "Plus d'opérations de suppression de pages.…"
+msgstr "Plus d'opérations de suppression de pages…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
