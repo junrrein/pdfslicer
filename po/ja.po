@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # naofum <naofum@gmail.com>, 2019, 2020.
 # Takuro Onoue <kusanaginoturugi@gmail.com>, 2021.
+# Shogo Takata <pineapplehunter.daniel@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2021-01-06 07:29+0000\n"
-"Last-Translator: Takuro Onoue <kusanaginoturugi@gmail.com>\n"
+"PO-Revision-Date: 2021-05-20 01:32+0000\n"
+"Last-Translator: Shogo Takata <pineapplehunter.daniel@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/ja/>\n"
 "Language: ja\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.4.1-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -89,11 +90,11 @@ msgstr "すべて選択"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
-msgstr "奇数ページを削除"
+msgstr "奇数ページを選択"
 
 #: ../src/application/actionbar.cpp:77
 msgid "Select even pages"
-msgstr "偶数ページを削除"
+msgstr "偶数ページを選択"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
