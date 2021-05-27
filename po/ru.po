@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2021-05-05 21:32+0000\n"
+"PO-Revision-Date: 2021-05-28 17:34+0000\n"
 "Last-Translator: Fontan 030 <pomanfedurin@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/ru/>\n"
@@ -27,7 +27,7 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr ""
+msgstr "Разработчики Slicer"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application programming"
@@ -47,39 +47,39 @@ msgstr "Сторонние библиотеки"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr ""
+msgstr "Повернуть налево"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr ""
+msgstr "Повернуть направо"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
-msgstr ""
+msgstr "Переместить влево"
 
 #: ../src/application/actionbar.cpp:48
 msgid "Move right"
-msgstr ""
+msgstr "Переместить вправо"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr ""
+msgstr "Удалить выбранные страницы"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr ""
+msgstr "Удалить невыбранные страницы"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
-msgstr ""
+msgstr "Удалить предыдущие страницы"
 
 #: ../src/application/actionbar.cpp:63
 msgid "Remove next pages"
-msgstr ""
+msgstr "Удалить последующие страницы"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr ""
+msgstr "Другие варианты удаления страниц…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
@@ -87,15 +87,15 @@ msgstr "Выбрать всё"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
-msgstr ""
+msgstr "Выбрать нечётные страницы"
 
 #: ../src/application/actionbar.cpp:77
 msgid "Select even pages"
-msgstr ""
+msgstr "Выбрать чётные страницы"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr ""
+msgstr "Другие варианты выделения страниц…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Invert Selection"
@@ -111,14 +111,14 @@ msgstr ""
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
-msgstr ""
+msgstr "Добавить"
 
 #: ../src/application/addfiledialog.cpp:29
 #: ../src/application/openfiledialog.cpp:29
 #: ../src/application/savefiledialog.cpp:29
 #: ../src/application/unsavedchangesdialog.cpp:33
 msgid "Cancel"
-msgstr ""
+msgstr "Отмена"
 
 #: ../src/application/application.cpp:95 ../src/application/appmenu.cpp:63
 msgid "New window"
@@ -126,7 +126,7 @@ msgstr "Новое окно"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
-msgstr ""
+msgstr "Масштаб"
 
 #: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
@@ -146,11 +146,11 @@ msgstr ""
 
 #: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
-msgstr ""
+msgstr "Добавлен файл {fileName}"
 
 #: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
-msgstr ""
+msgstr "Добавлено несколько файлов"
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
@@ -170,7 +170,7 @@ msgstr "В конце…"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
-msgstr ""
+msgstr "После выбранной страницы…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add Documents…"
@@ -178,11 +178,11 @@ msgstr ""
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
-msgstr ""
+msgstr "Отменить"
 
 #: ../src/application/headerbar.cpp:78
 msgid "Redo"
-msgstr ""
+msgstr "Повторить"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
@@ -191,7 +191,7 @@ msgstr "Сохранить как"
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
-msgstr ""
+msgstr "Страница {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
@@ -203,15 +203,15 @@ msgstr ""
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr ""
+msgstr "Предпросмотр страницы"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
-msgstr ""
+msgstr "Уменьшить"
 
 #: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
-msgstr ""
+msgstr "Увеличить"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
@@ -231,23 +231,23 @@ msgstr ""
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
-msgstr ""
+msgstr "Документ успешно сохранён"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr ""
+msgstr "Сохранить изменённый документ перед закрытием?"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
-msgstr ""
+msgstr "Не сохранять"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
-msgstr ""
+msgstr "Сохранить как…"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr ""
+msgstr "Откройте документ, чтобы приступить к редактированию!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
