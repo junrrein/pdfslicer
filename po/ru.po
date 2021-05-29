@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2021-05-28 17:34+0000\n"
+"PO-Revision-Date: 2021-05-30 17:33+0000\n"
 "Last-Translator: Fontan 030 <pomanfedurin@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/ru/>\n"
@@ -24,6 +24,8 @@ msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
+"Простое приложение для извлечения, объединения, поворота и перестановки "
+"страниц PDF-документов"
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
@@ -31,15 +33,15 @@ msgstr "Разработчики Slicer"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application programming"
-msgstr ""
+msgstr "Программирование"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Application design"
-msgstr ""
+msgstr "Дизайн"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
-msgstr ""
+msgstr "Значок приложения"
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
@@ -107,7 +109,7 @@ msgstr "Снять выделение"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
-msgstr ""
+msgstr "Выберите документы для добавления"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
@@ -138,11 +140,11 @@ msgstr "О PDF Slicer"
 
 #: ../src/application/appwindow.cpp:353
 msgid "The selected files could not be opened"
-msgstr ""
+msgstr "Не удалось открыть выбранные файлы"
 
 #: ../src/application/appwindow.cpp:364
 msgid "The current document could not be saved"
-msgstr ""
+msgstr "Не удалось сохранить текущий документ"
 
 #: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
@@ -158,15 +160,15 @@ msgstr "Открыть"
 
 #: ../src/application/headerbar.cpp:60
 msgid "Add Documents"
-msgstr ""
+msgstr "Добавить документы"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr "В начале…"
+msgstr "В начало…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
-msgstr "В конце…"
+msgstr "В конец…"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
@@ -174,7 +176,7 @@ msgstr "После выбранной страницы…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add Documents…"
-msgstr ""
+msgstr "Добавить документы…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
@@ -195,11 +197,11 @@ msgstr "Страница {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
-msgstr ""
+msgstr "Открыть документ"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF documents"
-msgstr ""
+msgstr "PDF-файлы"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
@@ -215,7 +217,7 @@ msgstr "Увеличить"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr ""
+msgstr "Сохранить документ как"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
@@ -223,11 +225,11 @@ msgstr "Сохранить"
 
 #: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
-msgstr ""
+msgstr "Безымянный документ"
 
 #: ../src/application/savingrevealer.cpp:25
 msgid "Saving document…"
-msgstr ""
+msgstr "Документ сохраняется…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
@@ -252,17 +254,17 @@ msgstr "Откройте документ, чтобы приступить к р
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Общие"
 
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr ""
+msgstr "Открыть документ"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr ""
+msgstr "Сохранить документ"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
@@ -277,7 +279,7 @@ msgstr "Уменьшить"
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr ""
+msgstr "Сбросить масштаб"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
@@ -292,12 +294,12 @@ msgstr "Закрыть окно"
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Document editing"
-msgstr ""
+msgstr "Редактирование документов"
 
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr ""
+msgstr "Удалить выбранные страницы"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
@@ -307,29 +309,29 @@ msgstr "Выбрать все страницы"
 #: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr ""
+msgstr "Инвертировать выделение"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr ""
+msgstr "Снять выделение"
 
 #: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr ""
+msgstr "Отменить последнее действие"
 
 #: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr ""
+msgstr "Повторить отменённое действие"
 
 #: ../data/ui/shortcuts.ui:99
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr ""
+msgstr "Переместить выбранные страницы влево"
 
 #: ../data/ui/shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr ""
+msgstr "Переместить выбранные страницы вправо"
