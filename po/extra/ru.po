@@ -1,0 +1,41 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-23 19:36-0300\n"
+"PO-Revision-Date: 2021-06-17 00:22+1000\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Language: ru\n"
+
+msgid "Extract, merge, rotate and reorder pages of PDF documents"
+msgstr ""
+"Извлечение, объединение, поворот и изменение порядка страниц в документах "
+"PDF"
+
+msgid ""
+"A simple tool to extract, merge, rotate and reorder pages of PDF documents"
+msgstr ""
+"Простой инструмент для извлечения, объединения, поворота и изменения "
+"порядка страниц в документах PDF"
+
+msgid ""
+"PDF Slicer is a simple application to extract, merge, rotate and reorder "
+"pages of PDF documents. The operations can be performed on single pages or "
+"on selections/ranges of pages, and it has undo/redo support."
+msgstr ""
+"PDF Slicer - это простое приложение для извлечения, объединения, поворота "
+"и изменения порядка страниц в документах PDF. Операции могут выполняться "
+"для отдельных страниц или на выделенных / диапазонах страниц, также он "
+"имеет функции отмены/повтора."
