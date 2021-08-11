@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2019, 2020, 2021.
+# Avi Markovitz <avi.markovitz@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2021-01-19 22:32+0000\n"
-"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"PO-Revision-Date: 2021-08-12 06:33+0000\n"
+"Last-Translator: Avi Markovitz <avi.markovitz@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/he/>\n"
 "Language: he\n"
@@ -17,29 +18,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.5-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
-msgstr "כלי פשוט לחילוץ, מיזוג, הטיה וסידור מחדש של עמודים במסמכי PDF"
+msgstr "כלי פשוט לחילוץ, מיזוג, סיבוב וסידור עמודים מחדש במסמך PDF"
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr "מפתחי Slicer"
+msgstr "מפתחי סליקר"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application programming"
-msgstr "פיתוח יישומים"
+msgstr "פיתוח יישום"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Application design"
-msgstr "עיצוב יישומים"
+msgstr "עיצוב יישום"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
-msgstr "סמל היישום"
+msgstr "סמל יישום"
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
@@ -47,11 +48,11 @@ msgstr "ספריות צד־שלישי"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr "הטיה לשמאל"
+msgstr "סיבוב לשמאל"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr "הטיה לימין"
+msgstr "סיבוב לימין"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
@@ -63,11 +64,11 @@ msgstr "העברה ימינה"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr "הסרת העמודים הנבחרים"
+msgstr "הסרת עמודים שנבחרו"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr "הסרת העמודים שלא נבחרו"
+msgstr "הסרת עמודים שלא נבחרו"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
@@ -79,31 +80,31 @@ msgstr "הסרת העמודים הבאים"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr "פעולות הסרת עמודים נוספות…"
+msgstr "פעולות הסרת עמודים, נוספות…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr "לבחור הכול"
+msgstr "בחירת הכול"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
-msgstr "לבחור עמודים אי־זוגיים"
+msgstr "בחירת עמודים אי־זוגיים"
 
 #: ../src/application/actionbar.cpp:77
 msgid "Select even pages"
-msgstr "לבחור עמודים זוגיים"
+msgstr "בחירת עמודים זוגיים"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr "אפשרויות בחירת עמודים נוספות…"
+msgstr "אפשרויות בחירת עמודים, נוספות…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Invert Selection"
-msgstr "היפוך הבחירה"
+msgstr "היפוך בחירה"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
-msgstr "ביטול הבחירה"
+msgstr "ביטול בחירה"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
@@ -134,11 +135,11 @@ msgstr "קיצורי מקלדת"
 
 #: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
-msgstr "על אודות PDF Slicer"
+msgstr "על אודות PDF סליקר"
 
 #: ../src/application/appwindow.cpp:353
 msgid "The selected files could not be opened"
-msgstr "לא ניתן לפתוח את הקבצים הנבחרים"
+msgstr "לא ניתן לפתוח את הקבצים שנבחרו"
 
 #: ../src/application/appwindow.cpp:364
 msgid "The current document could not be saved"
@@ -146,11 +147,11 @@ msgstr "לא ניתן לשמור את המסמך הנוכחי"
 
 #: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
-msgstr "הקובץ {fileName} נוסף"
+msgstr "הקובץ {fileName} התווסף"
 
 #: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
-msgstr "נוספו מגוון קבצים"
+msgstr "נוספו מספר קבצים"
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
@@ -170,7 +171,7 @@ msgstr "לסוף…"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
-msgstr "לאחר העמוד הנבחר…"
+msgstr "לאחר העמוד שנבחר…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add Documents…"
@@ -178,7 +179,7 @@ msgstr "הוספת מסמכים…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
-msgstr "ביטול"
+msgstr "הסגה"
 
 #: ../src/application/headerbar.cpp:78
 msgid "Redo"
@@ -215,7 +216,7 @@ msgstr "התקרבות"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr "שמירת המסמך בשם"
+msgstr "שמירת מסמך בשם"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
@@ -227,7 +228,7 @@ msgstr "מסמך ללא כותרת"
 
 #: ../src/application/savingrevealer.cpp:25
 msgid "Saving document…"
-msgstr "המסמך נשמר…"
+msgstr "שמירת מסמך…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
@@ -235,11 +236,11 @@ msgstr "המסמך נשמר בהצלחה"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr "לשמור את המסמך עם השינויים בטרם סגירתו?"
+msgstr "שמירת המסמך עם השינויים בטרם סגירתו?"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
-msgstr "לסגור מבלי לשמור"
+msgstr "סגירה ללא שמירה"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
@@ -247,7 +248,7 @@ msgstr "שמירה בשם…"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "יש לפתוח מסמך כדי להתחיל לחתוך!"
+msgstr "נא לפתוח מסמך כדי להתחיל לחתוך!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
@@ -287,7 +288,7 @@ msgstr "חלון חדש"
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr "סגירת החלון"
+msgstr "סגירת חלון"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
@@ -297,12 +298,12 @@ msgstr "עריכת מסמך"
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr "הסרת העמודים הנבחרים"
+msgstr "הסרת עמודים שנבחרו"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr "לבחור את כל העמודים"
+msgstr "בחירת כל העמודים"
 
 #: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
@@ -317,22 +318,22 @@ msgstr "ביטול הבחירה"
 #: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr "ביטול הפעולה האחרונה"
+msgstr "הסגת הפעולה האחרונה"
 
 #: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr "החזרת הפעולה שבוטלה"
+msgstr "החזרת הפעולה שהוסגה"
 
 #: ../data/ui/shortcuts.ui:99
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr "העברת העמודים הנבחרים שמאלה"
+msgstr "העברת עמודים שנבחרו שמאלה"
 
 #: ../data/ui/shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr "העברת העמודים הנבחרים ימינה"
+msgstr "העברת העמודים שנבחרו ימינה"
 
 #, fuzzy
 #~ msgid "Application"
