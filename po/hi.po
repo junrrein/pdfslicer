@@ -5,327 +5,332 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-09-30 15:04+0000\n"
+"Last-Translator: Hemish <hemish04082005@gmail.com>\n"
+"Language-Team: Hindi <https://hosted.weblate.org/projects/pdf-slicer/"
+"translations/hi/>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
+"PDF दस्तावेज़ों के पृष्ठों को निकालने, मर्ज करने, घुमाने और पुन: व्यवस्थित "
+"करने के लिए एक सरल ए"
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr ""
+msgstr "Slicer के निर्माता"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application programming"
-msgstr ""
+msgstr "ऐप की प्रोग्रामिंग"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Application design"
-msgstr ""
+msgstr "एप का प्ररूप (Design)"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
-msgstr ""
+msgstr "एप का आइक"
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
-msgstr ""
+msgstr "तृतीय पक्षिय लाइब्रेरिज़"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr ""
+msgstr "बायीं तरफ घुमाएँ"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr ""
+msgstr "दायीं तरफ घुमाएँ"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
-msgstr ""
+msgstr "बाईं और ले जाएँ"
 
 #: ../src/application/actionbar.cpp:48
 msgid "Move right"
-msgstr ""
+msgstr "दाईं ओर ले जाएँ"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr ""
+msgstr "चयनित पृष्ठ हटाएं"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr ""
+msgstr "अचयनित पृष्ठ हटाएं"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
-msgstr ""
+msgstr "पिछले पृष्ठ हटाएं"
 
 #: ../src/application/actionbar.cpp:63
 msgid "Remove next pages"
-msgstr ""
+msgstr "अगले पेज हटाएं"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr ""
+msgstr "और पेज हटाने की कार्रवाइयां…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr ""
+msgstr "सभी पृष्ठ चुनें"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
-msgstr ""
+msgstr "विषम पृष्ठों को चुनें"
 
 #: ../src/application/actionbar.cpp:77
 msgid "Select even pages"
-msgstr ""
+msgstr "सम पृष्ठों को चुनें"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr ""
+msgstr "अधिक पृष्ठ चयन विकल्प…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Invert Selection"
-msgstr ""
+msgstr "चयन को उलटा करें"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
-msgstr ""
+msgstr "चुनाव रद्द करें"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
-msgstr ""
+msgstr "जोड़ने के लिए दस्तावेज़ चुनें"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
-msgstr ""
+msgstr "जोड़ें"
 
 #: ../src/application/addfiledialog.cpp:29
 #: ../src/application/openfiledialog.cpp:29
 #: ../src/application/savefiledialog.cpp:29
 #: ../src/application/unsavedchangesdialog.cpp:33
 msgid "Cancel"
-msgstr ""
+msgstr "रद्द करें"
 
 #: ../src/application/application.cpp:95 ../src/application/appmenu.cpp:63
 msgid "New window"
-msgstr ""
+msgstr "नई विंडो"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
-msgstr ""
+msgstr "बड़ा-छोटा करें"
 
 #: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "कुंजीपटल (keyboard) शार्टकट"
 
 #: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
-msgstr ""
+msgstr "PDF Slicer के बारे में"
 
 #: ../src/application/appwindow.cpp:353
 msgid "The selected files could not be opened"
-msgstr ""
+msgstr "चुनी गई फ़ाइलें खोली नहीं जा सकीं"
 
 #: ../src/application/appwindow.cpp:364
 msgid "The current document could not be saved"
-msgstr ""
+msgstr "वर्तमान दस्तावेज़ सहेजा नहीं जा सका"
 
 #: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
-msgstr ""
+msgstr "{fileName} फ़ाइल जोड़ी गई"
 
 #: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
-msgstr ""
+msgstr "एकाधिक फ़ाइलें जोड़ी गईं"
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
-msgstr ""
+msgstr "खोलें"
 
 #: ../src/application/headerbar.cpp:60
 msgid "Add Documents"
-msgstr ""
+msgstr "दस्तावेज़ जोड़ें"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr ""
+msgstr "शुरू में…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
-msgstr ""
+msgstr "अंत में…"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
-msgstr ""
+msgstr "चयनित पृष्ठ के बाद…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add Documents…"
-msgstr ""
+msgstr "दस्तावेज़ जोड़ें…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
-msgstr ""
+msgstr "पूर्ववत (Undo)"
 
 #: ../src/application/headerbar.cpp:78
 msgid "Redo"
-msgstr ""
+msgstr "फिर से करें (Redo)"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
-msgstr ""
+msgstr "अलग रूप में सहेजें"
 
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
-msgstr ""
+msgstr "पृष्ठ {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
-msgstr ""
+msgstr "दस्तावेज़ खोलें"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF documents"
-msgstr ""
+msgstr "PDF दस्तावेज़"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr ""
+msgstr "पृष्ठ पूर्वावलोकन (Preview)"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
-msgstr ""
+msgstr "छोटा करें (Zoom out)"
 
 #: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
-msgstr ""
+msgstr "बड़ा करें (Zoom in)"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr ""
+msgstr "दस्तावेज़ अलग रूप में सहेजें"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
-msgstr ""
+msgstr "सहेजें (Save)"
 
 #: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
-msgstr ""
+msgstr "अनाम दस्तावेज़"
 
 #: ../src/application/savingrevealer.cpp:25
 msgid "Saving document…"
-msgstr ""
+msgstr "दस्तावेज़ सहेजा जा रहा है…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
-msgstr ""
+msgstr "दस्तावेज़ सफलतापूर्वक सहेजा गया"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr ""
+msgstr "बंद करने से पहले संशोधित दस्तावेज़ सहेजें?"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
-msgstr ""
+msgstr "सहेजे बिना बंद करें"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
-msgstr ""
+msgstr "अलग रूप में सहेजें…"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr ""
+msgstr "व्यवस्थित करने के लिए एक दस्तावेज़ खोलें!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "आम (General)"
 
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr ""
+msgstr "दस्तावेज़ खोलें"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr ""
+msgstr "दस्तावेज़ सहेजें"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "बड़ा करें (Zoom in)"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "छोटा करें (Zoom out)"
 
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr ""
+msgstr "ज़ूम स्तर रीसेट करें"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
 msgid "New window"
-msgstr ""
+msgstr "नई विंडो"
 
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr ""
+msgstr "विंडो बंद करें"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Document editing"
-msgstr ""
+msgstr "दस्तावेज़ संपादन"
 
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr ""
+msgstr "चुने हुए पृष्ठ हटाएँ"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr ""
+msgstr "सभी पृष्ठ चुनें"
 
 #: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr ""
+msgstr "वर्तमान चयन को उल्टा करें"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr ""
+msgstr "चयन रद्द करें"
 
 #: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr ""
+msgstr "अंतिम आदेश पूर्ववत करें"
 
 #: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr ""
+msgstr "पूर्ववत आदेश फिर से करें"
 
 #: ../data/ui/shortcuts.ui:99
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr ""
+msgstr "चयनित पृष्ठों को बाएँ ले जाएँ"
 
 #: ../data/ui/shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr ""
+msgstr "चयनित पृष्ठों को दाईं ओर ले जाएँ"
