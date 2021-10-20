@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2021-10-02 20:35+0000\n"
+"PO-Revision-Date: 2021-10-21 16:34+0000\n"
 "Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/eu/>\n"
@@ -28,309 +28,309 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr ""
+msgstr "Slicer garatzaileak"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application programming"
-msgstr ""
+msgstr "Aplikazioaren programazioa"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Application design"
-msgstr ""
+msgstr "Aplikazioaren diseinua"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
-msgstr ""
+msgstr "Aplikazioaren ikonoa"
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
-msgstr ""
+msgstr "Hirugarrenen liburutegiak"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr ""
+msgstr "Biratu ezkerrera"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr ""
+msgstr "Biratu eskuinera"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
-msgstr ""
+msgstr "Ezkerrera mugitu"
 
 #: ../src/application/actionbar.cpp:48
 msgid "Move right"
-msgstr ""
+msgstr "Eskuinera mugitu"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr ""
+msgstr "Ezabatu hautatutako orriak"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr ""
+msgstr "Ezabatu hautatu gabeko orriak"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
-msgstr ""
+msgstr "Ezabatu aurreko orrialdeak"
 
 #: ../src/application/actionbar.cpp:63
 msgid "Remove next pages"
-msgstr ""
+msgstr "Ezabatu hurrengo orriak"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr ""
+msgstr "Orrialdeak ezabatzeko eragiketa gehiago…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr ""
+msgstr "Hautatu guztiak"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
-msgstr ""
+msgstr "Hautatu orrialde bakoitiak"
 
 #: ../src/application/actionbar.cpp:77
 msgid "Select even pages"
-msgstr ""
+msgstr "Hautatu orrialde bikoitiak"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr ""
+msgstr "Orrialdeak hautatzeko aukera gehiago gutxienez…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Invert Selection"
-msgstr ""
+msgstr "Hautaketa inbertitu"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
-msgstr ""
+msgstr "Hautaketa bertan behera utzi"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
-msgstr ""
+msgstr "Hautatu dokumentuak gehitzeko"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
-msgstr ""
+msgstr "Gehitu"
 
 #: ../src/application/addfiledialog.cpp:29
 #: ../src/application/openfiledialog.cpp:29
 #: ../src/application/savefiledialog.cpp:29
 #: ../src/application/unsavedchangesdialog.cpp:33
 msgid "Cancel"
-msgstr ""
+msgstr "Ezeztatu"
 
 #: ../src/application/application.cpp:95 ../src/application/appmenu.cpp:63
 msgid "New window"
-msgstr ""
+msgstr "Leiho berria"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
-msgstr ""
+msgstr "Handitzea"
 
 #: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "Teklatu-lasterbideak"
 
 #: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
-msgstr ""
+msgstr "PDF Sliceri buruz"
 
 #: ../src/application/appwindow.cpp:353
 msgid "The selected files could not be opened"
-msgstr ""
+msgstr "Ezin izan dira ireki aukeratutako fitxategiak"
 
 #: ../src/application/appwindow.cpp:364
 msgid "The current document could not be saved"
-msgstr ""
+msgstr "Ezin izan da gorde dokumentua"
 
 #: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
-msgstr ""
+msgstr "{fileName} fitxategia gehitu da"
 
 #: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
-msgstr ""
+msgstr "Fitxategi ugari erantsi dira"
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
-msgstr ""
+msgstr "Ireki"
 
 #: ../src/application/headerbar.cpp:60
 msgid "Add Documents"
-msgstr ""
+msgstr "Erantsi dokumentuak"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr ""
+msgstr "Hasieran…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
-msgstr ""
+msgstr "Azkenean…"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
-msgstr ""
+msgstr "Hautatutako orriaren ondoren…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add Documents…"
-msgstr ""
+msgstr "Dokumentuak gehitu…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
-msgstr ""
+msgstr "Desegin"
 
 #: ../src/application/headerbar.cpp:78
 msgid "Redo"
-msgstr ""
+msgstr "Berregin"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
-msgstr ""
+msgstr "Gorde honela"
 
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
-msgstr ""
+msgstr "Orrialdea {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
-msgstr ""
+msgstr "Ireki dokumentu bat"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF documents"
-msgstr ""
+msgstr "PDF dokumentuak"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr ""
+msgstr "Orrialdearen aurrebista"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
-msgstr ""
+msgstr "Murriztu"
 
 #: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
-msgstr ""
+msgstr "Handitu"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr ""
+msgstr "Gorde dokumentua honela"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
-msgstr ""
+msgstr "Gorde"
 
 #: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
-msgstr ""
+msgstr "Titulurik gabeko dokumentua"
 
 #: ../src/application/savingrevealer.cpp:25
 msgid "Saving document…"
-msgstr ""
+msgstr "Dokumentua gordetzen…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
-msgstr ""
+msgstr "Dokumentua behar bezala gorde da"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr ""
+msgstr "Gorde aldatutako dokumentua itxi aurretik?"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
-msgstr ""
+msgstr "Cerrar sin guardar"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
-msgstr ""
+msgstr "Gorde honela…"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr ""
+msgstr "Ireki dokumentu bat eta hasi mozten!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Orokorra"
 
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr ""
+msgstr "Ireki dokumentu bat"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr ""
+msgstr "Gorde dokumentua"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "Handitu"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "Murriztu"
 
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr ""
+msgstr "Zabaltze-maila berrezartu"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
 msgid "New window"
-msgstr ""
+msgstr "Leiho berria"
 
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr ""
+msgstr "Itxi leihoa"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Document editing"
-msgstr ""
+msgstr "Dokumentuak editatzea"
 
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr ""
+msgstr "Ezabatu hautatutako orriak"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr ""
+msgstr "Hautatu orrialde guztiak"
 
 #: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr ""
+msgstr "Hautaketa inbertitu"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr ""
+msgstr "Hautaketa bertan behera utzi"
 
 #: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr ""
+msgstr "Azken agindua desegin"
 
 #: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr ""
+msgstr "Desegindako agindua berregin"
 
 #: ../data/ui/shortcuts.ui:99
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr ""
+msgstr "Hautatutako orriak ezkerrera mugitu"
 
 #: ../data/ui/shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr ""
+msgstr "Hautatutako orriak eskuinera mugitu"
