@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Jimmy Scionti <jimmy.scionti@gmail.com>, 2019.
-# albanobattistella <albano_battistella@hotmail.com>, 2020.
+# albanobattistella <albano_battistella@hotmail.com>, 2020,2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2020-01-21 18:21+0000\n"
+"PO-Revision-Date: 2021-11-03 18:21+0100\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/it/>\n"
@@ -29,17 +29,15 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr ""
+msgstr "Sviluppatori di Slicer"
 
 #: ../src/application/aboutdialog.cpp:32
-#, fuzzy
 msgid "Application programming"
-msgstr "Icona applicazione"
+msgstr "Programmazione dell' applicazione"
 
 #: ../src/application/aboutdialog.cpp:35
-#, fuzzy
 msgid "Application design"
-msgstr "Icona applicazione"
+msgstr "Design dell'applicazione"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
@@ -102,18 +100,16 @@ msgid "More page selecting options…"
 msgstr "Ulteriori operazioni di selzione delle pagine…"
 
 #: ../src/application/actionbar.cpp:90
-#, fuzzy
 msgid "Invert Selection"
-msgstr "Annulla la selezione"
+msgstr "Inverti selezione"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
 msgstr "Annulla la selezione"
 
 #: ../src/application/addfiledialog.cpp:25
-#, fuzzy
 msgid "Select documents to add"
-msgstr "Seleziona il documento da aggiungere"
+msgstr "Seleziona documenti da aggiungere"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
@@ -143,9 +139,8 @@ msgid "About PDF Slicer"
 msgstr "Informazioni su PDF Slicer"
 
 #: ../src/application/appwindow.cpp:353
-#, fuzzy
 msgid "The selected files could not be opened"
-msgstr "Il file selezionato non può essere aperto"
+msgstr "I file selezionati non può essere aperto"
 
 #: ../src/application/appwindow.cpp:364
 msgid "The current document could not be saved"
@@ -164,9 +159,8 @@ msgid "Open"
 msgstr "Apri"
 
 #: ../src/application/headerbar.cpp:60
-#, fuzzy
 msgid "Add Documents"
-msgstr "Aggiungi un documento"
+msgstr "Aggiungi documenti"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
@@ -181,9 +175,8 @@ msgid "After the selected page…"
 msgstr "Dopo la pagina selezionata…"
 
 #: ../src/application/headerbar.cpp:65
-#, fuzzy
 msgid "Add Documents…"
-msgstr "Aggiungere un documento…"
+msgstr "Aggiungi documenti…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
@@ -207,13 +200,12 @@ msgid "Open document"
 msgstr "Apri documento"
 
 #: ../src/application/pdffilter.cpp:23
-#, fuzzy
 msgid "PDF documents"
-msgstr "Documento PDF"
+msgstr "Documenti PDF"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr ""
+msgstr "Pagina di anteprima"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
@@ -315,10 +307,9 @@ msgid "Select all pages"
 msgstr "Seleziona tutte le pagine"
 
 #: ../data/ui/shortcuts.ui:75
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr "Annulla la selezione"
+msgstr "Inverti la selezione corrente"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
@@ -336,20 +327,17 @@ msgid "Redo undone command"
 msgstr "Ripete il comando precedente"
 
 #: ../data/ui/shortcuts.ui:99
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr "Rimuovere le pagine selezionate"
+msgstr "Sposta le pagine selezionate a sinistra"
 
 #: ../data/ui/shortcuts.ui:105
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr "Rimuovere le pagine selezionate"
+msgstr "Sposta le pagine selezionate a destra"
 
-#, fuzzy
 #~ msgid "Application"
-#~ msgstr "Icona applicazione"
+#~ msgstr "Applicazione"
 
 #~ msgid "Saving…"
 #~ msgstr "Salvataggio…"
