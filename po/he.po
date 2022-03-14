@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2019, 2020, 2021.
 # Avi Markovitz <avi.markovitz@gmail.com>, 2021.
+# Yosef Or Boczko <yoseforb@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2021-08-12 06:33+0000\n"
-"Last-Translator: Avi Markovitz <avi.markovitz@gmail.com>\n"
+"PO-Revision-Date: 2022-03-15 21:55+0000\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/he/>\n"
 "Language: he\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -48,11 +49,11 @@ msgstr "ספריות צד־שלישי"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr "סיבוב לשמאל"
+msgstr "סיבוב שמאלה"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr "סיבוב לימין"
+msgstr "סיבוב ימינה"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
@@ -64,11 +65,11 @@ msgstr "העברה ימינה"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr "הסרת עמודים שנבחרו"
+msgstr "הסרת העמודים שנבחרו"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr "הסרת עמודים שלא נבחרו"
+msgstr "הסרת העמודים שלא נבחרו"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
@@ -80,7 +81,7 @@ msgstr "הסרת העמודים הבאים"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr "פעולות הסרת עמודים, נוספות…"
+msgstr "פעולות נוספות להסרת עמודים…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
@@ -96,7 +97,7 @@ msgstr "בחירת עמודים זוגיים"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr "אפשרויות בחירת עמודים, נוספות…"
+msgstr "אפשרויות נוספות לבחירת עמודים…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Invert Selection"
@@ -131,11 +132,11 @@ msgstr "תקריב"
 
 #: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
-msgstr "קיצורי מקלדת"
+msgstr "צירופי מקשים"
 
 #: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
-msgstr "על אודות PDF סליקר"
+msgstr "על אודות פורס PDF"
 
 #: ../src/application/appwindow.cpp:353
 msgid "The selected files could not be opened"
@@ -179,11 +180,11 @@ msgstr "הוספת מסמכים…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
-msgstr "הסגה"
+msgstr "ביטול"
 
 #: ../src/application/headerbar.cpp:78
 msgid "Redo"
-msgstr "החזרה"
+msgstr "ביצוע חוזר"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
@@ -204,7 +205,7 @@ msgstr "מסמכי PDF"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr "תצוגת עמוד מקדימה"
+msgstr "תצוגה מקדימה לעמוד"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
@@ -248,7 +249,7 @@ msgstr "שמירה בשם…"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "נא לפתוח מסמך כדי להתחיל לחתוך!"
+msgstr "יש לפתוח מסמך על מנת להתחיל לחתוך!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
@@ -318,17 +319,17 @@ msgstr "ביטול הבחירה"
 #: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr "הסגת הפעולה האחרונה"
+msgstr "ביטול הפעולה האחרונה"
 
 #: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr "החזרת הפעולה שהוסגה"
+msgstr "ביצוע הפעולה האחרונה שוב"
 
 #: ../data/ui/shortcuts.ui:99
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr "העברת עמודים שנבחרו שמאלה"
+msgstr "העברת העמודים שנבחרו שמאלה"
 
 #: ../data/ui/shortcuts.ui:105
 msgctxt "shortcut window"
