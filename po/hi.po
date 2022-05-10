@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Hemish <hemish04082005@gmail.com>, 2021.
+# bkaskar <roypbc@yahoo.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2021-09-30 15:04+0000\n"
-"Last-Translator: Hemish <hemish04082005@gmail.com>\n"
+"PO-Revision-Date: 2022-05-11 21:18+0000\n"
+"Last-Translator: bkaskar <roypbc@yahoo.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/hi/>\n"
 "Language: hi\n"
@@ -16,31 +17,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.12.1\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
-"PDF दस्तावेज़ों के पृष्ठों को निकालने, मर्ज करने, घुमाने और पुन: व्यवस्थित "
-"करने के लिए एक सरल ए"
+"PDF दस्तावेज़ों के पृष्ठों को निष्कर्ष, विलय, घुमाने और पुन: व्यवस्थित करने "
+"का एक सरल अनुप्रयोग"
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr "Slicer के निर्माता"
+msgstr "स्लाइसर के निर्माता"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application programming"
-msgstr "ऐप की प्रोग्रामिंग"
+msgstr "एप्लीकेशन प्रोग्रामिंग"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Application design"
-msgstr "एप का प्ररूप (Design)"
+msgstr "एप्लीकेशन का प्ररूप (Design)"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
-msgstr "एप का आइक"
+msgstr "एप्लीकेशन का चिह्न"
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
@@ -64,7 +65,7 @@ msgstr "दाईं ओर ले जाएँ"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr "चयनित पृष्ठ हटाएं"
+msgstr "चुने हुए पृष्ठ हटाएँ"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
@@ -76,15 +77,15 @@ msgstr "पिछले पृष्ठ हटाएं"
 
 #: ../src/application/actionbar.cpp:63
 msgid "Remove next pages"
-msgstr "अगले पेज हटाएं"
+msgstr "अगले पृष्ठ हटाएं"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr "और पेज हटाने की कार्रवाइयां…"
+msgstr "और पृष्ठ हटाने की कार्रवाइयां…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr "सभी पृष्ठ चुनें"
+msgstr "सभी का चयन करें"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
@@ -96,11 +97,11 @@ msgstr "सम पृष्ठों को चुनें"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr "अधिक पृष्ठ चयन विकल्प…"
+msgstr "और पृष्ठ चयन के विकल्प…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Invert Selection"
-msgstr "चयन को उलटा करें"
+msgstr "चयन विलोम"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
@@ -163,7 +164,7 @@ msgstr "दस्तावेज़ जोड़ें"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr "शुरू में…"
+msgstr "शुरुआत में…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
@@ -187,7 +188,7 @@ msgstr "फिर से करें (Redo)"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
-msgstr "अलग रूप में सहेजें"
+msgstr "अलग नाम से सहेजें"
 
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
