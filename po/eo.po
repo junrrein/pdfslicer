@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Lo Hall <loppan@e.email>, 2022.
+# phlostically <phlostically@mailinator.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2022-03-30 16:06+0000\n"
-"Last-Translator: Lo Hall <loppan@e.email>\n"
+"PO-Revision-Date: 2022-05-25 00:18+0000\n"
+"Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/eo/>\n"
 "Language: eo\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.13-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -32,35 +33,35 @@ msgstr "La disvolvistoj de Slicer"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application programming"
-msgstr "Programado de programo"
+msgstr "Programado"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Application design"
-msgstr "Desegnado de Programo"
+msgstr "Fasonado de programo"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
-msgstr "Bildsimbolo de Programo"
+msgstr "Piktogramo"
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
-msgstr "Biblioteko de tria partio"
+msgstr "Bibliotekoj de triaj partioj"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr "Turnigi maldekstrume"
+msgstr "Turni malhorloĝdirekte"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr "Turnigi dekstrume"
+msgstr "Turni horloĝdirekte"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
-msgstr "Movigi maldekstra"
+msgstr "Movi maldekstren"
 
 #: ../src/application/actionbar.cpp:48
 msgid "Move right"
-msgstr "Movi dekstra"
+msgstr "Movi dekstren"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
@@ -84,7 +85,7 @@ msgstr "Pli da agordoj pri la forigado de paĝoj…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr "Elekti ĉiojn"
+msgstr "Elekti ĉion"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
@@ -99,21 +100,20 @@ msgid "More page selecting options…"
 msgstr "Pli da agordoj pri la elektado de paĝoj…"
 
 #: ../src/application/actionbar.cpp:90
-#, fuzzy
 msgid "Invert Selection"
-msgstr "Inverti Elekton"
+msgstr "Inversigi elektitan paĝaron"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
-msgstr "Nuligi Elekton"
+msgstr "Nuligi elektadon"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
-msgstr "Elekti dokumentojn, kiujn vi volas aldoni"
+msgstr "Elekti tiujn dokumentojn, kiujn vi volas enmeti"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
-msgstr "Aldoni"
+msgstr "Enmeti"
 
 #: ../src/application/addfiledialog.cpp:29
 #: ../src/application/openfiledialog.cpp:29
@@ -143,196 +143,195 @@ msgid "The selected files could not be opened"
 msgstr "La elektitaj dosieroj ne estis malfermeblaj"
 
 #: ../src/application/appwindow.cpp:364
-#, fuzzy
 msgid "The current document could not be saved"
-msgstr "La nuna dokumento ne povis esti konservita"
+msgstr "La aktuala dokumento ne estas konservebla"
 
 #: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
-msgstr "Aldonigis dosieron {nomoDeLaDosiero}"
+msgstr "Enmetis dosieron {fileName}"
 
 #: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
-msgstr ""
+msgstr "Pluraj dosieroj estis enmetitaj"
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
-msgstr ""
+msgstr "Malfermi"
 
 #: ../src/application/headerbar.cpp:60
 msgid "Add Documents"
-msgstr ""
+msgstr "Enmeti dokumentojn"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr ""
+msgstr "Ĉe la komenco…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
-msgstr ""
+msgstr "Ĉe la fino…"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
-msgstr ""
+msgstr "Post la elektita paĝo…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add Documents…"
-msgstr ""
+msgstr "Enmeti dokumentojn…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
-msgstr ""
+msgstr "Malfari"
 
 #: ../src/application/headerbar.cpp:78
 msgid "Redo"
-msgstr ""
+msgstr "Refari"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
-msgstr ""
+msgstr "Konservi kiel"
 
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
-msgstr ""
+msgstr "Paĝo {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
-msgstr ""
+msgstr "Malfermi dokumenton"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF documents"
-msgstr ""
+msgstr "PDF-dokumentoj"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr ""
+msgstr "Antaŭrigardo de paĝo"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
-msgstr ""
+msgstr "Elzomi"
 
 #: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
-msgstr ""
+msgstr "Enzomi"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr ""
+msgstr "Konservi dokumenton kiel"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
-msgstr ""
+msgstr "Konservi"
 
 #: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
-msgstr ""
+msgstr "Sentitola dokumento"
 
 #: ../src/application/savingrevealer.cpp:25
 msgid "Saving document…"
-msgstr ""
+msgstr "Konservante dokumenton…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
-msgstr ""
+msgstr "Dokumento sukcese konservita"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr ""
+msgstr "Ĉu konservi modifitan dokumenton antaŭ ol fermi?"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
-msgstr ""
+msgstr "Fermi sen konservado"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
-msgstr ""
+msgstr "Konservi kiel…"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr ""
+msgstr "Malfermu dokumento por ekuzi Slicer!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Ĝenerala"
 
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr ""
+msgstr "Malfermi dokumenton"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr ""
+msgstr "Konservi dokumenton"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "Enzomi"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "Elzomi"
 
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr ""
+msgstr "Restarigi norman zomnivelon"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
 msgid "New window"
-msgstr ""
+msgstr "Nova fenestro"
 
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr ""
+msgstr "Fermi fenestron"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Document editing"
-msgstr ""
+msgstr "Redaktado de dokumento"
 
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr ""
+msgstr "Forigi elektitajn paĝojn"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr ""
+msgstr "Elekti ĉiujn paĝojn"
 
 #: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr ""
+msgstr "Inversigi aktualan elektitan paĝaron"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr ""
+msgstr "Nuligi elektadon"
 
 #: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr ""
+msgstr "Malfari lastan komandon"
 
 #: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr ""
+msgstr "Refari malfaritan komandon"
 
 #: ../data/ui/shortcuts.ui:99
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr ""
+msgstr "Movi elektitajn paĝojn maldekstren"
 
 #: ../data/ui/shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr ""
+msgstr "Movi elektitajn paĝojn dekstren"
