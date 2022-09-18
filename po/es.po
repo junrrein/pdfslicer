@@ -1,12 +1,12 @@
 # Julián Unrrein <junrrein@gmail.com>, 2018, 2019, 2020.
 # Scoopity Whoop <Scoo0p@yandex.com>, 2020.
-# Toni Estévez <toni.estevez@gmail.com>, 2020.
+# Toni Estévez <toni.estevez@gmail.com>, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2020-12-30 17:29+0000\n"
+"PO-Revision-Date: 2022-09-19 13:20+0000\n"
 "Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/es/>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.1-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -107,7 +107,7 @@ msgstr "Cancelar la selección"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
-msgstr "Seleccionar documentos para añadir"
+msgstr "Seleccionar documentos para añadirlos"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
@@ -307,7 +307,7 @@ msgstr "Seleccionar todas las páginas"
 #: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr "Invertir la selección actual"
+msgstr "Invertir la selección"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
@@ -327,12 +327,12 @@ msgstr "Rehacer la orden deshecha"
 #: ../data/ui/shortcuts.ui:99
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr "Mover las páginas seleccionadas a la izquierda"
+msgstr "Mover a la izquierda las páginas seleccionadas"
 
 #: ../data/ui/shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr "Mover las páginas seleccionadas a la derecha"
+msgstr "Mover a la derecha las páginas seleccionadas"
 
 #, fuzzy
 #~ msgid "Application"
