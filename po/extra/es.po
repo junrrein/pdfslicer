@@ -1,11 +1,11 @@
 # Julián Unrrein <junrrein@gmail.com>, 2019.
-# Toni Estévez <toni.estevez@gmail.com>, 2020.
+# Toni Estévez <toni.estevez@gmail.com>, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-06-25 16:32-0300\n"
-"PO-Revision-Date: 2020-12-30 17:29+0000\n"
+"PO-Revision-Date: 2022-09-19 13:20+0000\n"
 "Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/extra/"
 "es/>\n"
@@ -14,12 +14,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.1-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 msgid "Extract, merge, rotate and reorder pages of PDF documents"
-msgstr ""
-"Una herramienta para extraer, combinar, rotar y reordenar páginas de "
-"documentos PDF"
+msgstr "Extrae, combina, rota y reordena páginas de documentos PDF"
 
 msgid ""
 "A simple tool to extract, merge, rotate and reorder pages of PDF documents"
