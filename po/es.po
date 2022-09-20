@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2022-09-19 13:20+0000\n"
+"PO-Revision-Date: 2022-09-21 01:17+0000\n"
 "Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/es/>\n"
@@ -107,7 +107,7 @@ msgstr "Cancelar la selección"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
-msgstr "Seleccionar documentos para añadirlos"
+msgstr "Seleccione documentos para añadirlos"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
@@ -162,7 +162,7 @@ msgstr "Añadir documentos"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr "Al principio…"
+msgstr "Al inicio…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
@@ -247,7 +247,7 @@ msgstr "Guardar como…"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "¡Abra un documento y comience a cortar!"
+msgstr "¡Abra un documento para empezar a cortar!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
