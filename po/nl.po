@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Heimen Stoffels <vistausss@outlook.com>, 2018, 2019, 2020.
+# Philip Goto <philip.goto@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2020-11-30 18:29+0000\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"PO-Revision-Date: 2023-01-26 17:52+0000\n"
+"Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/nl/>\n"
 "Language: nl\n"
@@ -16,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
 msgstr ""
-"Een eenvoudige toepassing om pagina's van pdf-documenten te extraheren, "
-"draaien, herorganiseren en samen te voegen"
+"Een eenvoudige app om pagina's van pdf-documenten te extraheren, draaien, "
+"herorganiseren en samen te voegen"
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
@@ -40,7 +41,7 @@ msgstr "Ontwerper"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
-msgstr "Toepassingspictogram"
+msgstr "App-pictogram"
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
