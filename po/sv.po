@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Lo Hall <loppan@e.email>, 2022.
+# Luna Jernberg <droidbittin@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2022-03-30 16:06+0000\n"
-"Last-Translator: Lo Hall <loppan@e.email>\n"
+"PO-Revision-Date: 2023-02-20 12:35+0000\n"
+"Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/sv/>\n"
 "Language: sv\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -28,7 +29,7 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr ""
+msgstr "Slicer utvecklare"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application programming"
@@ -80,257 +81,257 @@ msgstr "Ta bort kommande sidor"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr ""
+msgstr "Fler ta bort sida åtgärder…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr ""
+msgstr "Välj alla"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
-msgstr ""
+msgstr "Välj udda sidor"
 
 #: ../src/application/actionbar.cpp:77
 msgid "Select even pages"
-msgstr ""
+msgstr "Välj jämna sidor"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr ""
+msgstr "Fler val av sida alternativ…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Invert Selection"
-msgstr ""
+msgstr "Invertera valda"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
-msgstr ""
+msgstr "Avbryt val"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
-msgstr ""
+msgstr "Välj dokument att lägga till"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
-msgstr ""
+msgstr "Lägg till"
 
 #: ../src/application/addfiledialog.cpp:29
 #: ../src/application/openfiledialog.cpp:29
 #: ../src/application/savefiledialog.cpp:29
 #: ../src/application/unsavedchangesdialog.cpp:33
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 #: ../src/application/application.cpp:95 ../src/application/appmenu.cpp:63
 msgid "New window"
-msgstr ""
+msgstr "Nytt fönster"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
-msgstr ""
+msgstr "Zoom"
 
 #: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "Tangentbordsgenvägar"
 
 #: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
-msgstr ""
+msgstr "Om PDF Slicer"
 
 #: ../src/application/appwindow.cpp:353
 msgid "The selected files could not be opened"
-msgstr ""
+msgstr "De valda filerna kunde inte öppnas"
 
 #: ../src/application/appwindow.cpp:364
 msgid "The current document could not be saved"
-msgstr ""
+msgstr "Det aktuella dokumentet kunde inte sparas"
 
 #: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
-msgstr ""
+msgstr "La till fil {fileName}"
 
 #: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
-msgstr ""
+msgstr "Flera filer har lagts till"
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
-msgstr ""
+msgstr "Öppna"
 
 #: ../src/application/headerbar.cpp:60
 msgid "Add Documents"
-msgstr ""
+msgstr "Lägg till dokument"
 
 #: ../src/application/headerbar.cpp:61
 msgid "At the beggining…"
-msgstr ""
+msgstr "I början…"
 
 #: ../src/application/headerbar.cpp:62
 msgid "At the end…"
-msgstr ""
+msgstr "I slutet…"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
-msgstr ""
+msgstr "Efter den valda sidan…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add Documents…"
-msgstr ""
+msgstr "Lägg till dokument…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
-msgstr ""
+msgstr "Ångra"
 
 #: ../src/application/headerbar.cpp:78
 msgid "Redo"
-msgstr ""
+msgstr "Gör om"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
-msgstr ""
+msgstr "Spara som"
 
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
 msgid "Page {pageNumber}"
-msgstr ""
+msgstr "Sida {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
-msgstr ""
+msgstr "Öppna dokument"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF documents"
-msgstr ""
+msgstr "PDF dokument"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr ""
+msgstr "Förhandsgranskning av sida"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
-msgstr ""
+msgstr "Zooma ut"
 
 #: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
-msgstr ""
+msgstr "Zooma in"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr ""
+msgstr "Spara dokument som"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
-msgstr ""
+msgstr "Spara"
 
 #: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
-msgstr ""
+msgstr "Namnlöst dokument"
 
 #: ../src/application/savingrevealer.cpp:25
 msgid "Saving document…"
-msgstr ""
+msgstr "Sparar dokument…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
-msgstr ""
+msgstr "Dokumentet har sparats framgångsrikt"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr ""
+msgstr "Spara modifierade dokument innan du stänger?"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
-msgstr ""
+msgstr "Stäng utan att spara"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
-msgstr ""
+msgstr "Spara som…"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr ""
+msgstr "Öppna ett dokument för att börja skiva!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Allmänt"
 
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr ""
+msgstr "Öppna dokument"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Save document"
-msgstr ""
+msgstr "Spara dokument"
 
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr ""
+msgstr "Zooma in"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr ""
+msgstr "Zooma ut"
 
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr ""
+msgstr "Återställ zoomnivå"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
 msgid "New window"
-msgstr ""
+msgstr "Nytt fönster"
 
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr ""
+msgstr "Stäng fönster"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Document editing"
-msgstr ""
+msgstr "Dokumentredigering"
 
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr ""
+msgstr "Ta bort valda sidor"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr ""
+msgstr "Välj alla sidor"
 
 #: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr ""
+msgstr "Invertera aktuellt val"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr ""
+msgstr "Avbryt val"
 
 #: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr ""
+msgstr "Ångra senaste kommando"
 
 #: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
 msgid "Redo undone command"
-msgstr ""
+msgstr "Gör om senaste kommando"
 
 #: ../data/ui/shortcuts.ui:99
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr ""
+msgstr "Flytta valda sidor vänster"
 
 #: ../data/ui/shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr ""
+msgstr "Flytta valda sidor höger"
