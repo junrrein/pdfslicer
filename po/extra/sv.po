@@ -1,30 +1,37 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# Luna Jernberg <droidbittin@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-07-23 19:36-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-02-20 12:35+0000\n"
+"Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/pdf-slicer/extra/"
+"sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 msgid "Extract, merge, rotate and reorder pages of PDF documents"
-msgstr ""
+msgstr "Extrahera, slå samman, rotera och ordna om sidor i PDF-dokument"
 
 msgid ""
 "A simple tool to extract, merge, rotate and reorder pages of PDF documents"
 msgstr ""
+"Ett enkelt verktyg för att extrahera, slå samman, rotera och omordna sidor i "
+"PDF-dokument"
 
 msgid ""
 "PDF Slicer is a simple application to extract, merge, rotate and reorder "
 "pages of PDF documents. The operations can be performed on single pages or "
 "on selections/ranges of pages, and it has undo/redo support."
 msgstr ""
+"PDF Slicer är ett enkelt program för att extrahera, sammanfoga, rotera och "
+"omordna sidor i PDF-dokument. Åtgärderna kan utföras på enstaka sidor eller "
+"på urval/intervall av sidor, och det har stöd för ångra/gör om."
