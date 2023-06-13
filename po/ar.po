@@ -4,13 +4,14 @@
 # Ali Galal <lj66163@gmail.com>, 2020.
 # Ali Galal <ali.sameh.galal@gmail.com>, 2020.
 # tamer dab <dabsantamer@yahoo.com>, 2020.
+# mohammadA <mohammadAbdulhadi1@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2020-10-28 04:26+0000\n"
-"Last-Translator: tamer dab <dabsantamer@yahoo.com>\n"
+"PO-Revision-Date: 2023-06-14 11:50+0000\n"
+"Last-Translator: mohammadA <mohammadAbdulhadi1@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/ar/>\n"
 "Language: ar\n"
@@ -19,13 +20,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 4.3.2-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
 "A simple application to extract, merge, rotate and reorder pages of PDF "
 "documents"
-msgstr "برنامج بسيط لاستخراج ودمج وتدوير واعادة ترتيب صفحات مستندات ال PDF"
+msgstr "برنامج بسيط لاستخراج ودمج وتدوير وترتيب صفحات مستندات PDF"
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
@@ -33,7 +34,7 @@ msgstr "مطورو Slicer"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application programming"
-msgstr "برمجة التطبيقات"
+msgstr "برمجة التطبيق"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Application design"
@@ -41,7 +42,7 @@ msgstr "تصميم التطبيق"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
-msgstr "ايقونة البرنامج"
+msgstr "أيقونة البرنامج"
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
@@ -49,67 +50,67 @@ msgstr "مكتبات خارجية (طرف ثالث)"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
-msgstr "تدوير لليسار"
+msgstr "دوِّر إلى اليسار"
 
 #: ../src/application/actionbar.cpp:35
 msgid "Rotate right"
-msgstr "تدوير لليمين"
+msgstr "دوِّر إلى اليمين"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
-msgstr "تحريك لليسار"
+msgstr "حرِّك إلى اليسار"
 
 #: ../src/application/actionbar.cpp:48
 msgid "Move right"
-msgstr "تحريك لليمين"
+msgstr "حرِّك إلى اليمين"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr "حذف الصفحات المحددة"
+msgstr "احذف الصفحات المختارة"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
-msgstr "حذف الصفحات الغير محددة"
+msgstr "احذف الصفحات غير المختارة"
 
 #: ../src/application/actionbar.cpp:62
 msgid "Remove previous pages"
-msgstr "حذف الصفحات السابقة"
+msgstr "احذف الصفحات السابقة"
 
 #: ../src/application/actionbar.cpp:63
 msgid "Remove next pages"
-msgstr "حذف الصفحات التالية"
+msgstr "احذف الصفحات التالية"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr "المزيد من عمليات إزالة الصفحة …"
+msgstr "المزيد من عمليات إزالة الصفحات…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr "اختيار الكل"
+msgstr "اختر الكل"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
-msgstr "حدد الصفحات الفردية"
+msgstr "اختر الصفحات الفردية"
 
 #: ../src/application/actionbar.cpp:77
 msgid "Select even pages"
-msgstr "حدد الصفحات الزوجية"
+msgstr "اختر الصفحات الزوجية"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr "المزيد من خيارات تحديد الصفحة …"
+msgstr "المزيد من خيارات اختيار الصفحات…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Invert Selection"
-msgstr "عكس التحديد"
+msgstr "اعكس التحديد"
 
 #: ../src/application/actionbar.cpp:93
 msgid "Cancel Selection"
-msgstr "انهاء التحديد"
+msgstr "أنهِ التحديد"
 
 #: ../src/application/addfiledialog.cpp:25
 msgid "Select documents to add"
-msgstr "حدد المستندات لإضافتها"
+msgstr "اختر المستندات لإضافتها"
 
 #: ../src/application/addfiledialog.cpp:28
 msgid "Add"
@@ -120,7 +121,7 @@ msgstr "أضف"
 #: ../src/application/savefiledialog.cpp:29
 #: ../src/application/unsavedchangesdialog.cpp:33
 msgid "Cancel"
-msgstr "إغلاق"
+msgstr "ألغ"
 
 #: ../src/application/application.cpp:95 ../src/application/appmenu.cpp:63
 msgid "New window"
@@ -128,7 +129,7 @@ msgstr "نافذة جديدة"
 
 #: ../src/application/appmenu.cpp:45
 msgid "Zoom"
-msgstr "تكبير/تصغير"
+msgstr "تقريب"
 
 #: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
@@ -136,11 +137,11 @@ msgstr "اختصارات لوحة المفاتيح"
 
 #: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
-msgstr "حول PDF Slicer"
+msgstr "عن PDF Slicer"
 
 #: ../src/application/appwindow.cpp:353
 msgid "The selected files could not be opened"
-msgstr "لا يمكن فتح الملفات المحددة"
+msgstr "تعذر فتح الملفات المختارة"
 
 #: ../src/application/appwindow.cpp:364
 msgid "The current document could not be saved"
@@ -148,15 +149,15 @@ msgstr "تعذر حفظ المستند الحالي"
 
 #: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
-msgstr "تمت إضافة الملف {fileName}"
+msgstr "أُضيف الملف {fileName}"
 
 #: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
-msgstr "تمت إضافة ملفات متعددة"
+msgstr "أُضيفت ملفات متعددة"
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
-msgstr "إفتح"
+msgstr "افتح"
 
 #: ../src/application/headerbar.cpp:60
 msgid "Add Documents"
@@ -172,11 +173,11 @@ msgstr "في النهاية…"
 
 #: ../src/application/headerbar.cpp:63
 msgid "After the selected page…"
-msgstr "بعد الصفحة المحددة …"
+msgstr "بعد الصفحة المختارة…"
 
 #: ../src/application/headerbar.cpp:65
 msgid "Add Documents…"
-msgstr "إضافة مستندات…"
+msgstr "أضف مستندات…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
@@ -184,11 +185,11 @@ msgstr "تراجع"
 
 #: ../src/application/headerbar.cpp:78
 msgid "Redo"
-msgstr "إعادة"
+msgstr "أعد"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
-msgstr "حفظ بإسم"
+msgstr "احفظ باسم"
 
 #: ../src/application/interactivepagewidget.cpp:123
 #: ../src/application/previewwindow.cpp:57
@@ -197,7 +198,7 @@ msgstr "الصفحة {pageNumber}"
 
 #: ../src/application/openfiledialog.cpp:25
 msgid "Open document"
-msgstr "إفتح المستند"
+msgstr "افتح المستند"
 
 #: ../src/application/pdffilter.cpp:23
 msgid "PDF documents"
@@ -209,19 +210,19 @@ msgstr "معاينة الصفحة"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
-msgstr "تصغير"
+msgstr "بعِّد"
 
 #: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
-msgstr "تكبير"
+msgstr "قرِّب"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr "حفظ المستند بإسم"
+msgstr "احفظ المستند باسم"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
-msgstr "حفظ"
+msgstr "احفظ"
 
 #: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
@@ -229,15 +230,15 @@ msgstr "مستند بدون عنوان"
 
 #: ../src/application/savingrevealer.cpp:25
 msgid "Saving document…"
-msgstr "جارٍ حفظ المستند …"
+msgstr "يحفظ المستند…"
 
 #: ../src/application/savingrevealer.cpp:32
 msgid "Document succesfully saved"
-msgstr "تم حفظ المستند بنجاح"
+msgstr "حُفظ المستند بنجاح"
 
 #: ../src/application/unsavedchangesdialog.cpp:24
 msgid "Save modified document before closing?"
-msgstr "حفظ المستند المعدل قبل إغلاقه؟"
+msgstr "أحفظ المستند المعدل قبل إغلاقه؟"
 
 #: ../src/application/unsavedchangesdialog.cpp:32
 msgid "Close without Saving"
@@ -245,11 +246,11 @@ msgstr "أغلق دون حفظ"
 
 #: ../src/application/unsavedchangesdialog.cpp:34
 msgid "Save As…"
-msgstr "حفظ بإسم …"
+msgstr "احفظ باسم…"
 
 #: ../src/application/welcomescreen.cpp:29
 msgid "Open a document to start slicing!"
-msgstr "إفتح مستندًا لبدء التقطيع!"
+msgstr "افتح مستندًا لبدء التقطيع!"
 
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
@@ -259,7 +260,7 @@ msgstr "عام"
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Open document"
-msgstr "إفتح المستند"
+msgstr "فتح مستند"
 
 #: ../data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
@@ -269,17 +270,17 @@ msgstr "حفظ المستند"
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr "تكبير"
+msgstr "تقريب"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr "تصغير"
+msgstr "تبعيد"
 
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr "إعادة تعيين مستوى التكبير"
+msgstr "تصفير مستوى التقريب"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
@@ -289,7 +290,7 @@ msgstr "نافذة جديدة"
 #: ../data/ui/shortcuts.ui:52
 msgctxt "shortcut window"
 msgid "Close window"
-msgstr "أغلق النافذة"
+msgstr "إغلاق النافذة"
 
 #: ../data/ui/shortcuts.ui:59
 msgctxt "shortcut window"
@@ -299,27 +300,27 @@ msgstr "تعديل المستند"
 #: ../data/ui/shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Remove selected pages"
-msgstr "إزالة الصفحات المحددة"
+msgstr "إزالة الصفحات المختارة"
 
 #: ../data/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Select all pages"
-msgstr "تحديد كل الصفحات"
+msgstr "اختيار كل الصفحات"
 
 #: ../data/ui/shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Invert current selection"
-msgstr "عكس التحديد الحالي"
+msgstr "عكس الاختيار الحالي"
 
 #: ../data/ui/shortcuts.ui:81
 msgctxt "shortcut window"
 msgid "Cancel selection"
-msgstr "إنهاء التحديد"
+msgstr "إنهاء الاختيار"
 
 #: ../data/ui/shortcuts.ui:87
 msgctxt "shortcut window"
 msgid "Undo last command"
-msgstr "التراجع عن الأمر الأخير"
+msgstr "تراجع عن آخر أمر"
 
 #: ../data/ui/shortcuts.ui:93
 msgctxt "shortcut window"
@@ -327,16 +328,14 @@ msgid "Redo undone command"
 msgstr "إعادة أمر التراجع"
 
 #: ../data/ui/shortcuts.ui:99
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Move selected pages left"
-msgstr "حذف الصفحات المحددة"
+msgstr "نقل الصفحة المختارة إلى اليسار"
 
 #: ../data/ui/shortcuts.ui:105
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr "حذف الصفحات المحددة"
+msgstr "نقل الصفحة المختارة إلى اليمين"
 
 #, fuzzy
 #~ msgid "Application"
