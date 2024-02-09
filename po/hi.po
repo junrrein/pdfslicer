@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Hemish <hemish04082005@gmail.com>, 2021.
 # bkaskar <roypbc@yahoo.com>, 2022.
+# Nitin Khalia <weblate.scrambled777@simplelogin.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2022-05-11 21:18+0000\n"
-"Last-Translator: bkaskar <roypbc@yahoo.com>\n"
+"PO-Revision-Date: 2024-02-10 15:02+0000\n"
+"Last-Translator: Nitin Khalia <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/hi/>\n"
 "Language: hi\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #: ../src/application/aboutdialog.cpp:26
 msgid ""
@@ -29,7 +30,7 @@ msgstr ""
 
 #: ../src/application/aboutdialog.cpp:29
 msgid "Slicer developers"
-msgstr "स्लाइसर के निर्माता"
+msgstr "Slicer डेवलपर्स"
 
 #: ../src/application/aboutdialog.cpp:32
 msgid "Application programming"
@@ -37,15 +38,15 @@ msgstr "एप्लीकेशन प्रोग्रामिंग"
 
 #: ../src/application/aboutdialog.cpp:35
 msgid "Application design"
-msgstr "एप्लीकेशन का प्ररूप (Design)"
+msgstr "एप्लिकेशन डिज़ाइन"
 
 #: ../src/application/aboutdialog.cpp:38
 msgid "Application icon"
-msgstr "एप्लीकेशन का चिह्न"
+msgstr "एप्लिकेशन आइकन"
 
 #: ../src/application/aboutdialog.cpp:41
 msgid "Third-party libraries"
-msgstr "तृतीय पक्षिय लाइब्रेरिज़"
+msgstr "तृतीय-पक्ष लाइब्रेरिज़"
 
 #: ../src/application/actionbar.cpp:30
 msgid "Rotate left"
@@ -57,15 +58,15 @@ msgstr "दायीं तरफ घुमाएँ"
 
 #: ../src/application/actionbar.cpp:43
 msgid "Move left"
-msgstr "बाईं और ले जाएँ"
+msgstr "बाएँ ले जाएँ"
 
 #: ../src/application/actionbar.cpp:48
 msgid "Move right"
-msgstr "दाईं ओर ले जाएँ"
+msgstr "दाईं ले जाएँ"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
-msgstr "चुने हुए पृष्ठ हटाएँ"
+msgstr "चयनित पृष्ठ हटाएँ"
 
 #: ../src/application/actionbar.cpp:61
 msgid "Remove unselected pages"
@@ -81,11 +82,11 @@ msgstr "अगले पृष्ठ हटाएं"
 
 #: ../src/application/actionbar.cpp:65
 msgid "More page removing operations…"
-msgstr "और पृष्ठ हटाने की कार्रवाइयां…"
+msgstr "अधिक पृष्ठ हटाने की कार्रवाई…"
 
 #: ../src/application/actionbar.cpp:72
 msgid "Select All"
-msgstr "सभी का चयन करें"
+msgstr "सबका चयन करें"
 
 #: ../src/application/actionbar.cpp:76
 msgid "Select odd pages"
@@ -180,11 +181,11 @@ msgstr "दस्तावेज़ जोड़ें…"
 
 #: ../src/application/headerbar.cpp:75
 msgid "Undo"
-msgstr "पूर्ववत (Undo)"
+msgstr "पूर्ववत"
 
 #: ../src/application/headerbar.cpp:78
 msgid "Redo"
-msgstr "फिर से करें (Redo)"
+msgstr "पुनः करें"
 
 #: ../src/application/headerbar.cpp:91
 msgid "Save As"
@@ -205,23 +206,23 @@ msgstr "PDF दस्तावेज़"
 
 #: ../src/application/previewheaderbar.cpp:25
 msgid "Page preview"
-msgstr "पृष्ठ पूर्वावलोकन (Preview)"
+msgstr "पृष्ठ पूर्वावलोकन"
 
 #: ../src/application/previewheaderbar.cpp:34
 msgid "Zoom out"
-msgstr "छोटा करें (Zoom out)"
+msgstr "ज़ूम आउट"
 
 #: ../src/application/previewheaderbar.cpp:38
 msgid "Zoom in"
-msgstr "बड़ा करें (Zoom in)"
+msgstr "ज़ूम इन"
 
 #: ../src/application/savefiledialog.cpp:25
 msgid "Save document as"
-msgstr "दस्तावेज़ अलग रूप में सहेजें"
+msgstr "दस्तावेज़ को इस रूप में सहेजें"
 
 #: ../src/application/savefiledialog.cpp:28
 msgid "Save"
-msgstr "सहेजें (Save)"
+msgstr "सहेजें"
 
 #: ../src/application/savefiledialog.cpp:31
 msgid "Untitled document"
@@ -254,7 +255,7 @@ msgstr "व्यवस्थित करने के लिए एक दस�
 #: ../data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr "आम (General)"
+msgstr "जनरल"
 
 #: ../data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
@@ -269,17 +270,17 @@ msgstr "दस्तावेज़ सहेजें"
 #: ../data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr "बड़ा करें (Zoom in)"
+msgstr "ज़ूम इन"
 
 #: ../data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr "छोटा करें (Zoom out)"
+msgstr "ज़ूम आउट"
 
 #: ../data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Reset zoom level"
-msgstr "ज़ूम स्तर रीसेट करें"
+msgstr "ज़ूम लेवल रीसेट करें"
 
 #: ../data/ui/shortcuts.ui:46
 msgctxt "shortcut window"
@@ -334,4 +335,4 @@ msgstr "चयनित पृष्ठों को बाएँ ले जा�
 #: ../data/ui/shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Move selected pages right"
-msgstr "चयनित पृष्ठों को दाईं ओर ले जाएँ"
+msgstr "चयनित पृष्ठों को दाएँ ले जाएँ"
