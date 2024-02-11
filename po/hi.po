@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2020-11-27 16:28-0300\n"
-"PO-Revision-Date: 2024-02-10 15:02+0000\n"
+"PO-Revision-Date: 2024-02-12 19:01+0000\n"
 "Last-Translator: Nitin Khalia <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/pdf-slicer/"
 "translations/hi/>\n"
@@ -62,7 +62,7 @@ msgstr "बाएँ ले जाएँ"
 
 #: ../src/application/actionbar.cpp:48
 msgid "Move right"
-msgstr "दाईं ले जाएँ"
+msgstr "दाएं ले जाएँ"
 
 #: ../src/application/actionbar.cpp:56
 msgid "Remove selected pages"
@@ -98,7 +98,7 @@ msgstr "सम पृष्ठों को चुनें"
 
 #: ../src/application/actionbar.cpp:80
 msgid "More page selecting options…"
-msgstr "और पृष्ठ चयन के विकल्प…"
+msgstr "पृष्ठ चयन के और विकल्प…"
 
 #: ../src/application/actionbar.cpp:90
 msgid "Invert Selection"
@@ -133,7 +133,7 @@ msgstr "बड़ा-छोटा करें"
 
 #: ../src/application/appmenu.cpp:67
 msgid "Keyboard shortcuts"
-msgstr "कुंजीपटल (keyboard) शार्टकट"
+msgstr "कीबोर्ड शॉर्टकट"
 
 #: ../src/application/appmenu.cpp:71
 msgid "About PDF Slicer"
@@ -141,7 +141,7 @@ msgstr "PDF Slicer के बारे में"
 
 #: ../src/application/appwindow.cpp:353
 msgid "The selected files could not be opened"
-msgstr "चुनी गई फ़ाइलें खोली नहीं जा सकीं"
+msgstr "चुनी गई फाइलें खोली नहीं जा सकीं"
 
 #: ../src/application/appwindow.cpp:364
 msgid "The current document could not be saved"
@@ -149,11 +149,11 @@ msgstr "वर्तमान दस्तावेज़ सहेजा नह
 
 #: ../src/application/guicommand.cpp:72
 msgid "Added file {fileName}"
-msgstr "{fileName} फ़ाइल जोड़ी गई"
+msgstr "{fileName} फाइल जोड़ी गई"
 
 #: ../src/application/guicommand.cpp:76
 msgid "Multiple files added"
-msgstr "एकाधिक फ़ाइलें जोड़ी गईं"
+msgstr "एकाधिक फाइलें जोड़ी गईं"
 
 #: ../src/application/headerbar.cpp:55 ../src/application/openfiledialog.cpp:28
 msgid "Open"
