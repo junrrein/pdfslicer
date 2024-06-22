@@ -2,28 +2,35 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Languages add-on <noreply-addon-languages@weblate.org>, 2024.
+# 구병우 <dodamby@ajou.ac.kr>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: junrrein@gmail.com\n"
 "POT-Creation-Date: 2019-07-23 19:36-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-06-22 12:43+0000\n"
+"Last-Translator: 구병우 <dodamby@ajou.ac.kr>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/pdf-slicer/extra/"
+"ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.6-rc\n"
 
 msgid "Extract, merge, rotate and reorder pages of PDF documents"
-msgstr ""
+msgstr "PDF 문서의 페이지 추출, 병합, 회전 및 순서 변경"
 
 msgid ""
 "A simple tool to extract, merge, rotate and reorder pages of PDF documents"
-msgstr ""
+msgstr "PDF 문서의 페이지를 추출, 병합, 회전 및 순서 변경할 수 있는 간단한 도구"
 
 msgid ""
 "PDF Slicer is a simple application to extract, merge, rotate and reorder "
 "pages of PDF documents. The operations can be performed on single pages or "
 "on selections/ranges of pages, and it has undo/redo support."
 msgstr ""
+"PDF Slicer는 PDF 문서의 페이지를 추출하고 병합하며 회전하고 재정렬하는 "
+"간단한 애플리케이션입니다. 이 도구를 사용하면 단일 페이지나 페이지 선택/"
+"범위에 대해 작업할 수 있으며, 되돌리기/다시 실행 기능도 지원합니다."
