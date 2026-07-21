@@ -32,6 +32,7 @@ Application::Application()
     : Gtk::Application(config::APPLICATION_ID, Gio::APPLICATION_HANDLES_OPEN)
 {
     Glib::set_application_name(config::APPLICATION_NAME);
+    Glib::set_prgname(config::APPLICATION_ID);
 }
 
 void Application::addActions()
