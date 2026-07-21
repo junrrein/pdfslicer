@@ -16,7 +16,6 @@
 
 #include "application.hpp"
 #include <document.hpp>
-#include <giomm/menu.h>
 #include <glibmm/miscutils.h>
 #include <glibmm/i18n.h>
 #include <config.hpp>
@@ -87,13 +86,6 @@ void Application::addAccels()
     set_accels_for_action("preview.zoom-out",
                           {"<Control>minus", "<Control>KP_Subtract"});
     set_accel_for_action("preview.reset-zoom", "<Control>0");
-}
-
-void Application::setupAppMenu()
-{
-    auto menu = Gio::Menu::create();
-    menu->append(_("New window"), "app.new-window");
-    set_app_menu(menu);
 }
 
 void Application::on_open(const Application::type_vec_files& files,
