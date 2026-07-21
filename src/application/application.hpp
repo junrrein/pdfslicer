@@ -45,7 +45,6 @@ private:
 
     void addActions();
     void addAccels();
-    void setupAppMenu();
 
     void on_startup() override;
     void on_activate() override;
