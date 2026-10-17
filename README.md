@@ -1,6 +1,5 @@
-<a href="https://hosted.weblate.org/engage/pdf-slicer/?utm_source=widget">
-<img src="https://hosted.weblate.org/widgets/pdf-slicer/-/svg-badge.svg" alt="Translation state" />
-</a>
+> [!WARNING]
+> **PDF Slicer is no longer maintained.** The project has been archived and will not receive further updates. For a maintained alternative, see [PDF Arranger](https://pdfarranger.net/).
 
 # PDF Slicer
 
@@ -19,7 +18,6 @@ with undo/redo support.
   * [Linux](#linux)
   * [Windows](#windows)
 * [Contributing](#contributing)
-  * [Translations](#translations)
   * [Code](#code)
 * [Building](#building)
   * [Fedora](#fedora)
@@ -38,10 +36,6 @@ You can install PDF Slicer using Flatpak. [Get it from Flathub](https://flathub.
 You can get the latest installer from the [Releases page](https://github.com/junrrein/pdfslicer/releases/latest).
 
 # Contributing
-
-## Translations
-
-You can contribute your translations at [PDF Slicer's Weblate page](https://hosted.weblate.org/projects/pdf-slicer/).
 
 ## Code
 
